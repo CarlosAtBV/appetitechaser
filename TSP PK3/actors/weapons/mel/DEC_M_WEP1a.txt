@@ -76,7 +76,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	ML1F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
     ML1F ABCD 1
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"FireBerserk")
-    ML1F E 1 A_CustomPunch(10,0,0,"BasicMeleePuff",70)
+    ML1F E 1 A_TSP_Melee(10)//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
     Goto FireA
   FireBerserk:
     ML1F E 1 A_CustomPunch(15,0,0,"BasicMeleePuff",70)
@@ -125,7 +125,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
     ML2F ABC 1
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RightHookBerserk")
-    ML2F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    ML2F D 1 A_TSP_Melee(12)//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
     Goto RightHookA
   RightHookBerserk:
     ML2F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
@@ -172,7 +172,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySound("*melee")
     ML3F ABC 1 
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"LeftOverheadBerserk")
-    ML3F E 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    ML3F E 1 A_TSP_Melee(12)//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
     Goto LeftOverheadA
   LeftOverheadBerserk:
     ML3F E 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
@@ -214,11 +214,12 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
     ML4F ABC 1
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherBerserk")
-    ML4F D 1 A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+    ML4F D 1 A_TSP_Melee(14)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+	// [Py] replace later
+    /*ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
     ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
     ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
-    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
-    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)*/
     Goto ScorpionTailFinisherA
   ScorpionTailFinisherBerserk:
     ML4F D 1 A_CustomPunch(28,0,0,"UppercutMeleePuff",90)
@@ -403,7 +404,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
     ML7F AB 1 
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"CrossDuoBerserk")
-    ML7F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    ML7F D 1 A_TSP_Melee(12)//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
     Goto CrossDuoA
   CrossDuoBerserk:
     ML7F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
@@ -492,7 +493,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
     ML8F ABD 1 
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RapidFireFinishBerserk")
-    ML8F E 5 A_CustomPunch(16,0,0,"StrongMeleePuff",90)
+    ML8F E 5 A_TSP_Melee(16)//A_CustomPunch(16,0,0,"StrongMeleePuff",90)
     Goto RapidFireFinishA
   RapidFireFinishBerserk:
     ML8F E 5 A_CustomPunch(32,0,0,"StrongMeleePuff",90)
@@ -642,7 +643,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySound("*melee")
     MK5F ABC 1
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"UpperKickBerserk")
-    MK5F D 2 A_CustomPunch(12,0,0,"BasicMeleePuff",90)
+    MK5F D 2 A_TSP_Melee(12)//A_CustomPunch(12,0,0,"BasicMeleePuff",90)
     Goto UpperKickA
   UpperKickBerserk:
     MK5F D 2 A_CustomPunch(24,0,0,"BasicMeleePuff",90)

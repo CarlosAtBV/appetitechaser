@@ -1,0 +1,35 @@
+Class TSP_Weapon_Core : DoomWeapon
+{
+	// A_TSP_Melee()
+	
+	action void A_TSP_Melee(int mDamage)
+	{
+		bool hasHit = false;
+		//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
+		ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+		
+		Actor mo;
+		
+		int mMaxHealth = 0;
+		
+		while (mo = Actor(MonsterFinder.Next()))
+		{
+			if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<72) && mo.Health>0
+			&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<80)
+			{
+					int damageamount = mDamage;
+					int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
+					mMaxHealth = mo.GetSpawnHealth();
+					mo.A_PlaySound("basicmelee/contact",CHAN_BODY);
+					hashit=true;
+			}
+		}
+		if(hashit)
+		{
+			A_Quake (2,5,0,750,0);
+			//A_PlaySound("flesh/hit",CHAN_WEAPON);
+			SoundAlert(invoker.owner);
+			A_SetTics(max(1,mMaxHealth/100));
+		}
+	}
+}

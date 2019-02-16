@@ -41,7 +41,7 @@ ACTOR MagSlingToken: Inventory
 // might see some combined shenanigans in here!
 /////////////////////////////////////////////////////
 
-ACTOR TSPMelBaseWeapon : Weapon
+ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 {
   +INVENTORY.UNTOSSABLE
 	States
