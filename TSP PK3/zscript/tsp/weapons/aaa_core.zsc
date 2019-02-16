@@ -19,9 +19,10 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				int damageamount = mDamage;
 				int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
-				if(mo.resolveState("Pain"))
+				if(mo.Health>0)
 				{
 					mo.SetStateLabel("Pain");
+					mo.A_SetTics(35*10);
 				}
 				for(int i = 0;i<3;i++)
 				{
