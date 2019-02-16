@@ -89,11 +89,12 @@ OptionMenu "OptionsMenu2"
     Submenu "Sound Options",                        "SoundOptions"
     Submenu "Display Options",                      "VideoOptions"
     Submenu "Set video mode",                       "VideoModeMenu"
-	Submenu "GZDoom Options Menu",                  "OptionsMenu"
     StaticText " "
 	StaticText "Reset Settings", 1
     SafeCommand "Reset to defaults",                "reset2defaults"
     SafeCommand "Reset to last saved",              "reset2saved"
+    StaticText " "
+    Submenu "GZDoom Options Menu",                  "OptionsMenu"
     Command "Go to console",                        "menuconsole"
 }
 
