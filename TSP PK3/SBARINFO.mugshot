@@ -1,0 +1,45 @@
+	mugshot "Normal", health2
+	{
+	ST01 80;
+	ST02 1;
+	ST03 1;
+	ST02 1;
+	}
+	
+	mugshot "God"
+    {
+	GOD1 40;
+	GOD2 2;
+	GOD3 2;
+	GOD4 2;
+	GOD5 2;
+	GOD4 2;
+	GOD3 2;
+	GOD2 2;
+	GOD1 26;
+	GODA 1;
+	GODB 1;
+	GODA 1;
+    }
+	
+	mugshot "Pain", health
+	{
+	KILL0 35;
+	}
+
+	mugshot "Rampage", health
+	{
+	KILL0 1;
+	}
+	
+	mugshot "Grin", health
+	{
+	EVL0 70;
+	}
+	
+    mugshot "Ouch", health
+	{
+	OUCH0 35;
+	}
+
+

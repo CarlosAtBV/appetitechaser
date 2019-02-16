@@ -1,0 +1,80 @@
+ACTOR TSP919mUpgradeKitLS : CustomInventory
+{
+  Scale .75
+  Radius 20
+  Height 16
+  Inventory.MaxAmount 1
+  Inventory.PickupMessage "Found a 919m.0 Upgrade Kit. [\cf+Auto Fire Mode\c-]"
+  Inventory.PickupSound "upgrade/ls"
+  States
+  {
+  Spawn:
+    UPGD A -1
+    Loop
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("919mUpgrade", 1, "NotPickup")
+    TNT1 A 0 A_GiveInventory("919mUpgrade", 1)
+    Stop
+  NotPickup:
+    TNT1 A 0 A_Print("You already have this upgrade!")
+    Fail
+  }
+}
+
+ACTOR TSP919mUpgradeKit : CustomInventory
+{
+  Scale .75
+  Radius 20
+  Height 16
+  Inventory.MaxAmount 1
+  Inventory.PickupMessage "Found a 919m.0 Upgrade Kit! [\cf+Auto Fire Mode\c-]"
+  Inventory.PickupSound "upgrade/normal"
+  States
+  {
+  Spawn:
+    UPGD A -1
+    Loop
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("919mUpgrade", 1, "NotPickup")
+    TNT1 A 0 A_GiveInventory("919mUpgrade", 1)
+    Stop
+  NotPickup:
+    TNT1 A 0 A_Print("You already have this upgrade!")
+    Fail
+  }
+}
+
+ACTOR 919mUpgrade : Inventory
+{
+  +IGNORESKILL
+  Inventory.MaxAmount 1
+}
+
+ACTOR TSPMeleeSpecialKit : CustomInventory
+{
+  Scale .75
+  Radius 20
+  Height 16
+  Inventory.MaxAmount 1
+  Inventory.PickupMessage "Unlocked your hidden potential. [\cf+Character Special\c-]"
+  Inventory.PickupSound "upgrade/normal"
+  States
+  {
+  Spawn:
+    UPGD A -1
+    Loop
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("MeleeSpecialUpgrade", 1, "NotPickup")
+    TNT1 A 0 A_GiveInventory("MeleeSpecialUpgrade", 1)
+    Stop
+  NotPickup:
+    TNT1 A 0 A_Print("You already have this upgrade!")
+    Fail
+  }
+}
+
+ACTOR MeleeSpecialUpgrade : Inventory
+{
+  +IGNORESKILL
+  Inventory.MaxAmount 1
+}

@@ -1,0 +1,71 @@
+/////////////////////////
+// Slot 1 Weapons (Melee)
+/////////////////////////
+
+///////////////////////////
+//
+// Slot 2 Weapons (Pistols)
+//
+///////////////////////////
+
+
+ACTOR TSPFistsOnlyPistol
+{
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetFistsStartCVAR") == true,"FistsOnlyPickup")
+    Stop
+  FistsOnlyPickup:
+    TNT1 A 0
+    TNT1 A 0 A_Jump(150,"Nothing")
+    TNT1 A 0 A_SpawnItemEx("TSPPistolPickup",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)  
+    Stop
+  Nothing:
+    TNT1 A 0
+    Stop
+  }
+}
+
+///////////////////
+// Starting Pistols
+///////////////////
+
+ACTOR TSPPistolPickup : CustomInventory Replaces Pistol 
+{
+    Inventory.PickupMessage "$Mel919Pistol"
+	Inventory.PickupSound "misc/w_pkup"
+	+INVENTORY.AUTOACTIVATE
+	States
+	{
+	Spawn:
+      919P A -1
+	  Stop
+	Pickup:
+	  TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelPickup")
+	  TNT1 A 0 A_JumpIfInventory("IsRoboMel",1,"MelPickup")
+	  Fail
+	MelPickup:
+	  TNT1 A 0 A_JumpIfInventory("Mel919mPistol", 1, "AmmoCheck")
+	  TNT1 A 0 A_GiveInventory("Mel919mPistol", 1)
+	  TNT1 A 0 A_GiveInventory("TSPPistolAmmo", 15)
+	  TNT1 A 1 ACS_NamedExecuteAlways("TSPPickupSounds",0 ,1)
+	  Stop
+	RoboMelPickup:
+	  TNT1 A 0 A_JumpIfInventory("RoboMel917Pistol", 1, "AmmoCheck")
+	  TNT1 A 0 A_GiveInventory("RoboMel917Pistol", 1)
+	  TNT1 A 0 A_GiveInventory("TSPPistolAmmo", 30)
+	  TNT1 A 1 ACS_NamedExecuteAlways("TSPPickupSounds",0 ,1)
+	  Stop
+	AmmoCheck:
+      TNT1 A 0 A_JumpIfInventory("TSPPistolAmmo", 0, "PickupFail")
+	  TNT1 A 0 A_GiveInventory("TSPPistolAmmo", 15)
+	  Stop
+	PickupFail:
+      919P A 1
+      Fail
+	}
+}

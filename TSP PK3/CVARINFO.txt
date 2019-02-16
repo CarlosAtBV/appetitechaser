@@ -1,0 +1,8 @@
+server bool tsp_zmelee = false;
+server bool tsp_fistsstart = false;
+server bool tsp_meleesupreme = false;
+
+server bool tsp_goldenpistol = false;
+server bool tsp_actionmode = false;
+//Hmm
+server bool tsp_supersecret = false;

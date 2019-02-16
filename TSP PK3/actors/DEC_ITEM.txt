@@ -1,0 +1,516 @@
+//===========================================================================
+// Armor
+//
+// Sprites by Sangelothi, BloodyAcid, Infirnex, and Cardboard Marty
+//===========================================================================
+
+ACTOR TSPGreenArmorPickup : CustomInventory Replaces GreenArmor
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\cp+100 Armor\c-]"
+  Inventory.PickupSound "armor/lightarmor"
+  Inventory.Icon "FLRMA0"
+  States
+  {
+  Spawn:
+    FLRM A 13
+    FLRM B 7 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("BasicArmor", 100, "PickupFail")
+    //TNT1 A 0 A_TakeInventory("TSPBlueDamageReduction",9)
+    //TNT1 A 0 A_TakeInventory("TSPBlueArmorDamage",9)
+    TNT1 A 0 A_GiveInventory("TSPGreenArmor")
+    //TNT1 A 0 A_GiveInventory("TSPGreenArmorDamage")
+    //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
+    Stop
+  PickupFail:
+    FLRM A 1
+    Fail
+  }
+}
+
+
+ACTOR TSPBlueArmorPickup : CustomInventory Replaces BlueArmor
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+200 Armor\c-]"
+  Inventory.PickupSound "armor/heavyarmor"
+  Inventory.Icon "PSRMA0"
+  States
+  {
+  Spawn:
+    PSRM A 13
+    PSRM B 7 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("BasicArmor", 200, "PickupFail")
+    //TNT1 A 0 A_TakeInventory("TSPGreenDamageReduction",9)
+    //TNT1 A 0 A_TakeInventory("TSPGreenArmorDamage",9)
+    TNT1 A 0 A_GiveInventory("TSPBlueArmor")
+    //TNT1 A 0 A_GiveInventory("TSPBlueArmorDamage")
+    //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
+    Stop
+  PickupFail:
+    FLRM A 1
+    Fail
+  }
+}
+
+ACTOR TSPGreenArmor : BasicArmorPickup
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\cp+100 Armor\c-]"
+  Inventory.PickupSound "armor/lightarmor"
+  Inventory.Icon "FLRMA0"
+  Armor.SavePercent 34
+  Armor.SaveAmount 100
+  States
+  {
+  Spawn:
+    FLRM A 13
+    FLRM B 7 Bright
+    Loop
+  }
+}
+
+ACTOR TSPSurvivorArmor : TSPGreenArmor
+{
+  Armor.SavePercent 50
+  Armor.SaveAmount 50
+}
+
+ACTOR TSPBlueArmor : BasicArmorPickup
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+200 Armor\c-]"
+  Inventory.PickupSound "armor/heavyarmor"
+  Inventory.Icon "PSRMA0"
+  Armor.SavePercent 50
+  Armor.SaveAmount 200
+  States
+  {
+  Spawn:
+    PSRM A 13
+    PSRM B 7 Bright
+    Loop
+  }
+}
+
+ACTOR TSPGreenDamageReduction : PowerProtection
+{
+  DamageFactor "Normal", 0.95
+  +INVENTORY.PERSISTENTPOWER
+}
+
+ACTOR TSPGreenArmorDamage : PowerupGiver
+{
+  Inventory.MaxAmount 0
+  Powerup.Type "TSPGreenDamageReduction"
+  Powerup.Duration 0x7FFFFFFF
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.PERSISTENTPOWER
+}
+
+ACTOR TSPBlueDamageReduction : PowerProtection
+{
+  DamageFactor "Normal", 0.90
+  +INVENTORY.PERSISTENTPOWER
+}
+
+ACTOR TSPBlueArmorDamage : PowerupGiver
+{
+  Inventory.MaxAmount 0
+  Powerup.Type "TSPBlueDamageReduction"
+  Powerup.Duration 0x7FFFFFFF
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.PERSISTENTPOWER
+}
+
+//////////////
+// Armor Bonus
+//////////////
+
+ACTOR TSPArmorBonusDrop Replaces ArmorBonus
+{
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 5,"LoneSurvivorSpawn")
+    TNT1 A 0 A_Jump(60, "SpawnRedBonus")
+    TNT1 A 0 A_SpawnItemEx("TSPArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  LoneSurvivorSpawn:
+    TNT1 A 0 A_Jump(25,"Nothing")
+    TNT1 A 0 A_Jump(50,"SpawnRedBonus")
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  EasySpawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  SpawnRedBonus:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  Nothing:
+    TNT1 A 0
+    Stop
+  }
+}
+
+ACTOR TSPArmorBonus : BasicArmorBonus
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Found a nano-shield. [\cp+1 Armor\c-]"
+  Inventory.PickupSound "armor/armorshard"
+  Inventory.Icon "ARSDD0"
+  Armor.SavePercent 100
+  Armor.SaveAmount 1
+  Armor.MaxSaveAmount 250
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  States
+  {
+  Spawn:
+    ARSD ABCDCB 6
+    Loop
+  }
+}
+
+ACTOR TSPRedArmorBonus : BasicArmorBonus
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Found a nano-shield duo. [\cp+2 Armor\c-]"
+  Inventory.PickupSound "armor/armorshard"
+  Inventory.Icon "ARSED0"
+  Armor.SavePercent 100
+  Armor.SaveAmount 2
+  Armor.MaxSaveAmount 300
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  States
+  {
+  Spawn:
+    ARSE ABCDCB 6
+    Loop
+  }
+}
+
+//===========================================================================
+// Health
+//
+// Sprites by Sangelothi, BloodyAcid, zrrion the insect,
+// Captain Toenail, and Cardboard Marty
+//===========================================================================
+
+ACTOR TSPMegaSphereBlueArmor : TSPBlueArmor
+{
+  Armor.SavePercent 50
+  Armor.SaveAmount 250
+}
+
+
+ACTOR TSPMegasphere : Megasphere replaces Megasphere
+{
+  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\cp+250 Armor\c-][\cn+200 Health\c-]"
+  Inventory.PickupSound "health/supercharge"
+  +INVENTORY.BIGPOWERUP
+  +FLOATBOB
+  States
+  {
+  Spawn:
+    SPOT ABCDCB 3 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("TSPMegaSphereBlueArmor", 1)
+    TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
+    //TNT1 A 0 A_GiveInventory("TSPBlueArmorDamage")
+    //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
+    Stop
+  }
+}
+
+ACTOR TSPSoulsphere : Soulsphere replaces Soulsphere
+{
+  Inventory.PickupMessage "\cfPicked up the \cnVitality Sphere!\c- [\cn+100 Health\c-]"
+  Inventory.PickupSound "health/vitalitysphere"
+  +INVENTORY.BIGPOWERUP
+  +FLOATBOB
+  States
+  {
+  Spawn:
+    LIFE ABCDCB 6 Bright
+    Loop
+  }
+}
+
+
+ACTOR TSPMedikit : Medikit Replaces Medikit
+{
+  Inventory.PickupMessage "Picked up a field-grade medikit. [\cn+25 Health\c-]"
+  Health.LowMessage 25, "Picked up a MUCH needed medikit. [\cn+25 Health\c-]"
+  Inventory.PickupSound "health/medkit"
+  Inventory.Icon "MDK1A0"
+  States
+  {
+  Spawn:
+    MDK1 ABCDEFG 5
+    Loop
+  }
+}
+
+
+//Sangelothi and amv2k9
+ACTOR TSPStimpack : Stimpack Replaces Stimpack
+{
+  Inventory.PickupMessage "Picked up a quick-fix medikit. [\cn+10 Health\c-]"
+  Health.LowMessage 25, "Picked up a MUCH needed quick-fix medikit. [\cn+10 Health\c-]"
+  Inventory.PickupSound "health/stimpack"
+  States
+  {
+  Spawn:
+    STPK A 20
+    STPK ABC 2
+    STPK DDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEE 1
+    STPK CBA 2
+    Loop
+  }
+}
+
+///////////////
+// Health Bonus
+///////////////
+
+ACTOR TSPHealthBonusDrop Replaces HealthBonus
+{
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 5,"LoneSurvivorSpawn")
+    TNT1 A 0 A_Jump(60, "SpawnRedHealth")
+    TNT1 A 0 A_SpawnItemEx("TSPHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  LoneSurvivorSpawn:
+    TNT1 A 0 A_Jump(25,"Nothing")
+    TNT1 A 0 A_Jump(50,"SpawnRedHealth")
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  EasySpawn:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  SpawnRedHealth:
+    TNT1 A 0
+    TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    Stop
+  Nothing:
+    TNT1 A 0
+    Stop
+  }
+}
+
+ACTOR TSPHealthBonus : HealthBonus
+{
+  Inventory.PickupMessage "Picked up a vial of veti-gel. [\cn+1 Health\c-]"
+  Health.LowMessage 25, "Picked up a vial of veti-gel. Better find some more. [\cn+1 Health\c-]"
+  Inventory.PickupSound "health/healthbonus"
+  States
+  {
+  Spawn:
+    ASRM ABCDEFG 7
+    Loop
+  }
+}
+
+ACTOR TSPRedHealthBonus : HealthBonus
+{
+  Inventory.PickupMessage "Picked up a vial of red veti-gel. [\cn+2 Health\c-]"
+  Health.LowMessage 25, "Picked up a vial of red veti-gel. Better find some more. [\cn+2 Health\c-]"
+  Inventory.PickupSound "health/healthbonus"
+  Inventory.Amount 2
+  Inventory.MaxAmount 250
+  States
+  {
+  Spawn:
+    ASRN ABCDEFG 7
+    Loop
+  }
+}
+
+ACTOR Over100Health : Inventory
+{
+    Inventory.MaxAmount 1
+    +UNDROPPABLE
+}
+
+//////////
+
+ACTOR TSPBerserk : Berserk Replaces Berserk
+{
+  States
+  {
+  Pickup:
+    TNT1 A 0 A_GiveInventory("PowerStrength")
+    TNT1 A 0 HealThing(100, 0)
+    TNT1 A 0 A_SelectWeapon("MelMelee")
+    Stop
+  }
+}
+
+ACTOR TSPBlurSphere : BlurSphere {}
+
+ACTOR TSPBlurSpherePickup : CustomInventory Replaces BlurSphere
+{
+  Game Doom
+  SpawnID 135
+  +COUNTITEM
+  +VISIBILITYPULSE
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.ALWAYSPICKUP
+  +INVENTORY.BIGPOWERUP
+  RenderStyle Translucent
+  Inventory.PickupMessage "$GOTINVIS" // "Partial Invisibility"
+  States
+  {
+  Spawn:
+    PINS ABCD 6 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("TSPBlurSphere")
+    TNT1 A 0 A_GiveInventory("TSPInvisDamage")
+    Stop
+  }
+}
+
+ACTOR TSPInvisDamageReduction : PowerProtection
+{
+  DamageFactor "Normal", 0.9
+  +INVENTORY.PERSISTENTPOWER
+}
+
+ACTOR TSPInvisDamage : PowerupGiver
+{
+  Inventory.MaxAmount 0
+  Powerup.Type "TSPInvisDamageReduction"
+  Powerup.Duration -60
+  +INVENTORY.AUTOACTIVATE
+  +INVENTORY.PERSISTENTPOWER
+}
+
+//===========================================================================
+// Miscellaneous
+//===========================================================================
+
+ACTOR BackpackSpawner replaces Backpack
+{
+  DropItem PoisonShellThrown 150
+  DropItem PoisonShellThrown 150
+  DropItem HellFireShellThrown 150
+  DropItem HellFireShellThrown 150
+  DropItem HellFireShellThrown 150
+  DropItem HellFireShellThrown 150
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem ElectricShellThrown 250
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  DropItem BuckshotShellThrown 255
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    TNT1 A 0 A_SpawnItemEx("BackPack2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+    TNT1 A 1 A_NoBlocking
+    Stop
+  }
+}
+
+ACTOR BackPack2 : BackPack {}
+
+ACTOR TSPRadSuit : CustomInventory Replaces RadSuit
+{
+  Game Doom
+  Height 46
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  Inventory.MaxAmount 0
+  Inventory.PickupMessage "$GOTSUIT" // "Radiation Shielding Suit"
+  States
+  {
+  Spawn:
+    SUIT A -1 Bright
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("GasSuit", 1)
+    TNT1 A 0 A_GiveInventory("RadSuit", 1)
+    Stop
+  }
+}
+
+ACTOR GasSuitProtection : PowerProtection
+{
+  DamageFactor "GasShellDamage", 0
+}
+
+ACTOR GasSuit : PowerupGiver
+{
+  Inventory.MaxAmount 0
+  Powerup.Type "GasSuitProtection"
+  Powerup.Duration -60
+  +INVENTORY.AUTOACTIVATE
+}
+
+//New Barrel that's invulnerable to your punches. YOU'RE WELCOME ERIC.
+
+ACTOR TSPExplosiveBarrel : ExplosiveBarrel Replaces ExplosiveBarrel
+{
+  DamageFactor "MagDive", 0.0
+  DamageFactor "StrongMelee", 0.0
+  DamageFactor "Melee", 0.0
+  DamageFactor "Uppercut", 0.0
+  DamageFactor "Sling", 0.0
+  +PUSHABLE
+  +SLIDESONWALLS
+  +FORCEPAIN
+  Obituary "%o went KABOOM! Nice going %o!"
+  States
+  {
+  Pain.Sling:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
+    Goto Spawn
+  Pain.Uppercut:
+    TNT1 A 0 A_FaceTarget
+	TNT1 A 0 Thrustthing(angle*256/360+192, random(3,4), 0, 0)
+	TNT1 A 0 Thrustthingz(0,27,0,1)
+    Goto Spawn
+  }
+}

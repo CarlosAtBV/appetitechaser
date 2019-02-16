@@ -1,0 +1,182 @@
+gameinfo
+{
+  dimcolor = "#000000"
+  dimamount = "0.5"
+  titlemusic = "TSPTitle"
+  intermissionmusic = "TSP_INT"
+  drawreadthis = true
+  creditpage = "SP_CRED"
+  titlepage = "SP_TITLE"
+  finalepage = "tsp_flat"
+  finaleflat = "tsp_flat"
+  finalemusic = "tsp_read"
+  PlayerClasses = "SpacePirate"
+  armoricons = "FLRMA0", 0.5, "PSRMA0"
+  pausesign = "SP_PAUSE"
+  cursorpic = "M_SPCRS"
+  menufontcolor_title = "GRAY"
+  menufontcolor_label = "TSPGREEN"
+  menufontcolor_value = "GRAY"
+  menufontcolor_action = "TSPGREEN"
+  menufontcolor_header = "WHITE"
+  menufontcolor_highlight = "Blue"
+  menufontcolor_selection = "LightBlue"
+  menuslidercolor = "LightBlue"
+}
+
+map TITLEMAP "Into Burning Space"
+{
+    sky1 = "SPACE", -0.1
+	music = "TSPTITLE"
+}
+
+map TSPTRIAL "Digital Training Grounds"
+{
+    sky1 = "SPACE", -0.1
+	music = "TSPTITLE"
+}
+
+clearskills
+
+skill TSPbaby
+{
+  AutoUseHealth
+  AmmoFactor = 2
+  DamageFactor = 0.5
+  EasyBossBrain
+  SpawnFilter = Baby
+  PicName = "SPSKILL1"
+  Name = "Easy Peasy"
+  ACSReturn = 0
+  Key = "1"
+}
+
+/*
+skill TSPnormal
+{
+  ReplaceActor = "ZombieMan","TSPZombieSpawner" 
+  ReplaceActor = "ShotgunGuy","ShotgunguySpawner" 
+  ReplaceActor = "Chaingunguy","ChaingunnerSpawner" 
+  ReplaceActor = "DoomImp","ImpSpawner" 
+  ReplaceActor = "Archvile","ArchvileSpawner"
+  ReplaceActor = "LostSoul","LostSoulSpawner"
+  ReplaceActor = "Cacodemon","CacodemonSpawner"
+  ReplaceActor = "BaronOfHell","BaronOfHellSpawner"
+  ReplaceActor = "HellKnight","HellKnightSpawner"
+  ReplaceActor = "Demon","DemonSpawner"
+  ReplaceActor = "Spectre","SpectreSpawner"
+  ReplaceActor = "Fatso","FatsoSpawner"
+  ReplaceActor = "PainElemental","PainElementalSpawner"
+  ReplaceActor = "Revenant","RevenantSpawner"
+  ReplaceActor = "Arachnotron","ArachnotronSpawner"
+  ReplaceActor = "Cyberdemon","CyberdemonSpawner"
+  ReplaceActor = "SpiderMastermind","SpiderMastermindSpawner"
+  ReplaceActor = "WolfensteinSS","WolfensteinSSSpawner"
+  SpawnFilter = Normal
+//  PicName = "SP_HURT"
+  Key = "2"
+  Name = "Slightly Tense"
+  ACSReturn = 1
+}
+*/
+
+skill TSPMedium
+{
+  DefaultSkill
+  SpawnFilter = Normal
+  PicName = "SPSKILL2"
+  Name = "Bring It On!"
+  ACSReturn = 1
+  Key = "2"
+}
+
+skill TSPhard
+{
+  SpawnFilter = Hard
+  PicName = "SPSKILL3"
+  Name = "High Intensity!!"
+  ACSReturn = 2
+  Key = "3"
+}
+
+skill TSPhardest
+{
+  Aggressiveness = 0.5
+  MonsterHealth =  1.5
+  //MustConfirm
+  SpawnFilter = Hard
+  PicName = "SPSKILL4"
+  Name = "Purest, Darkest Hell"
+  ACSReturn = 3
+  Key = "4"
+}
+
+/*
+skill TSPnightmare
+{
+  ReplaceActor = "ZombieMan","TSPZombieSpawnerHard"  
+  ReplaceActor = "ShotgunGuy","ShotgunguySpawnerHard"  
+  ReplaceActor = "Chaingunguy","ChaingunnerSpawnerHard"  
+  ReplaceActor = "DoomImp","ImpSpawnerHard"  
+  ReplaceActor = "Archvile","ArchvileSpawnerHard" 
+  ReplaceActor = "LostSoul","LostSoulSpawnerHard" 
+  ReplaceActor = "Cacodemon","CacodemonSpawnerHard" 
+  ReplaceActor = "BaronOfHell","BaronOfHellSpawnerHard" 
+  ReplaceActor = "HellKnight","HellKnightSpawnerHard" 
+  ReplaceActor = "Demon","DemonSpawnerHard" 
+  ReplaceActor = "Spectre","SpectreSpawnerHard" 
+  ReplaceActor = "Fatso","FatsoSpawnerHard" 
+  ReplaceActor = "PainElemental","PainElementalSpawnerHard" 
+  ReplaceActor = "Revenant","RevenantSpawnerHard" 
+  ReplaceActor = "Arachnotron","ArachnotronSpawnerHard" 
+  ReplaceActor = "Cyberdemon","CyberdemonSpawnerHard" 
+  ReplaceActor = "SpiderMastermind","SpiderMastermindSpawnerHard" 
+  ReplaceActor = "WolfensteinSS","WolfensteinSSSpawnerHard" 
+  AmmoFactor = 2
+  FastMonsters
+  DisableCheats
+  RespawnTime = 12
+  SpawnFilter = Nightmare
+  PicName = "SP_NMARE"
+  Name = "$SKILL_NIGHTMARE"
+  MustConfirm
+  ACSReturn = 5
+  Key = "n"
+}
+*/
+
+skill TSPdante
+{
+  damagefactor = 255
+  monsterhealth = 0.001
+  spawnfilter = Hard
+  PicName = "SPSKILLD"
+  name = "Death to Pirates"
+  mustconfirm = "$SKILLNONFINISH"
+  ACSReturn = 4
+  Key = "5"
+}
+
+skill TSPNotFinished
+{
+  damagefactor = 2.0
+  monsterhealth = 2.0
+  spawnfilter = Hard
+  PicName = "SPSKILLN"
+  mustconfirm = "$SKILLNONFINISH"
+  ACSReturn = 999
+  Key = "0"
+}
+
+/*
+skill TSPSurvivor
+{
+  damagefactor = 2.0
+  monsterhealth = 2.0
+  spawnfilter = Hard
+  PicName = "SPSKILL6"
+  mustconfirm = "Stranded on a base with limited supplies and now all Hell is breaking loose. Can you survive the horror?"
+  ACSReturn = 5
+  Key = "6"
+}
+*/

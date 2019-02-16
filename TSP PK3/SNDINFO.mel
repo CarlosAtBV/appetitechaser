@@ -1,0 +1,235 @@
+//////////////////////
+// Mel Player Sounds
+//////////////////////
+
+$playeralias	Melody      male  	*pain100	mel/pain100
+$playeralias	Melody      male  	*pain75		mel/pain75
+$playeralias	Melody      male  	*pain50		mel/pain50
+$playeralias	Melody      male  	*pain25		mel/pain25
+$playeralias	Melody	    male  	*death		mel/death
+$playeralias	Melody      male  	*xdeath		mel/xdeath
+$playeralias	Melody      male  	*gibbed		mel/xdeath
+$playeralias	Melody      male  	*grunt		mel/land
+$playeralias	Melody	    male  	*jump		mel/jump
+$playersound    Melody	    male      *land       melland
+$playeralias    Melody	    male      *usefail    mel/unf
+$playeralias	Melody   	male  	*melee      mel/meleeyell
+$playeralias	Melody   	male  	*strongmelee       mel/strongmeleeyell
+
+$random mel/pain25 { melpn251 melpn252 melpn253 melpn254 }
+melpn251 melpn251
+melpn252 melpn252
+melpn253 melpn253
+melpn254 melpn254
+
+$random mel/pain50 { melpn501 melpn502 melpn503 melpn504 }
+melpn501 melpn501
+melpn502 melpn502
+melpn503 melpn503
+melpn504 melpn504
+
+$random mel/pain75 { melpn751 melpn752 melpn753 melpn754 }
+melpn751 melpn751
+melpn752 melpn752
+melpn753 melpn753
+melpn754 melpn754
+
+$random mel/pain100 { melpn101 melpn102 melpn103 melpn104 }
+melpn101 melpn101
+melpn102 melpn102
+melpn103 melpn103
+melpn104 melpn104
+
+$random mel/death { meldth1 meldth2 }
+meldth1 meldth1
+meldth2 meldth2
+
+$random mel/xdeath { melxdth1 melxdth2 }
+melxdth1 melxdth1
+melxdth2 melxdth2
+
+$random mel/land { melland1 melland2 melland3 }
+melland1 melland1
+melland2 melland2
+melland3 melland3
+
+$random mel/unf { melunf1 melunf2 }
+melunf1 melunf1
+melunf2 melunf2
+
+$random mel/jump { meljump1 meljump2 meljump3 }
+meljump1 meljump1
+meljump2 meljump2
+meljump3 meljump3
+
+//////////////////
+//Mel's Melee
+//////////////////
+
+$random mel/meleeyell  { mel/meleeyell1 mel/meleeyell2 mel/meleeyell3 mel/meleeyell4 mel/meleeyell5 mel/meleeyell6 null null null null null null null null null null null null null null null null }
+mel/meleeyell1 melha1
+mel/meleeyell2 melha2
+mel/meleeyell3 melha3
+mel/meleeyell4 melha4
+mel/meleeyell5 melha5
+mel/meleeyell6 melha6
+
+$random mel/strongmeleeyell { mel/strongmeleeyell1 mel/strongmeleeyell2 mel/strongmeleeyell3 mel/strongmeleeyell4 mel/strongmeleeyell5 mel/strongmeleeyell6 null null null null null null null null null null }
+mel/strongmeleeyell1 melsha1
+mel/strongmeleeyell2 melsha2
+mel/strongmeleeyell3 melsha3
+mel/strongmeleeyell4 melsha4
+mel/strongmeleeyell5 melsha5
+mel/strongmeleeyell6 melsha6
+
+
+/////////////////////
+//Mel's Mag Manuevers
+/////////////////////
+magpull magpull
+magpush magpush
+magphit magphit
+magsling magsling
+maghit maghit
+magloop magloop
+
+magpunch/charge magphc1
+magpunch/chargefin magphcf1
+magpunch/chargeloop magphcl
+$random magpunch/contact { magpunch/contact1 magpunch/contact2 }
+magpunch/contact1 magphe1
+magpunch/contact2 magphe2
+$random magpunch/wall { magpunch/wall1 magpunch/wall2 magpunch/wall3 }
+magpunch/wall1 magphw1
+magpunch/wall2 magphw2
+magpunch/wall3 magphw3
+
+$random magpunch/miss { magpunch/miss1 magpunch/miss2 magpunch/miss3 }
+magpunch/miss1 magphm1
+magpunch/miss2 magphm2
+magpunch/miss3 magphm3
+
+
+////////////////////
+//Mel's Pickup Lines
+////////////////////
+
+melflavpickup/Kushiel					MELPGLV
+$random melflavpickup/persephone { melflavpickup/persphone1 melflavpickup/persphone2 melflavpickup/persphone3 melflavpickup/persphone4 }
+melflavpickup/persphone1               MELPBZK1
+melflavpickup/persphone2               MELPBZK2
+melflavpickup/persphone3               MELPBZK3
+melflavpickup/persphone4               MELPBZK4
+melflavpickup/Pistol					MELPPST
+melflavpickup/Deagle                   MELPDEAG
+melflavpickup/zekeshotgun				MELPSHT
+melflavpickup/Crossbow					MELPCBOW
+melflavpickup/Ammobox50				MELPCUZI
+$random melflavpickup/RocketNailgunLauncher {melflavpickup/RocketLauncher1 melflavpickup/RocketLauncher2}
+melflavpickup/RocketLauncher1			MELPCNL
+melflavpickup/RocketLauncher2			MELPCRL
+$random melflavpickup/flamethrower {melflavpickup/Flamethrower1 melflavpickup/Flamethrower2}
+melflavpickup/Flamethrower1			MELPCFL1
+melflavpickup/Flamethrower2			MELPCFL2
+$random melflavpickup/caster { melflavpickup/caster1 melflavpickup/caster2 melflavpickup/caster3 }
+melflavpickup/caster1                  MELPCAS1
+melflavpickup/caster2                  MELPCAS2
+melflavpickup/caster3                  MELPCAS3
+
+/*
+//////////////////
+//Mel Caster Lines
+//////////////////
+$random melcaster/badshell { melcaster/badshell1 melcaster/badshell2 melcaster/badshell3 melcaster/badshell4 melcaster/badshell5 }
+melcaster/badshell1                 MELCSBD1
+melcaster/badshell2                 MELCSBD2
+melcaster/badshell3                 MELCSBD3
+melcaster/badshell4                 MELCSBD4
+melcaster/badshell5                 MELCSBD5
+$random melcaster/mehshell { melcaster/mehshell1 melcaster/mehshell2 melcaster/mehshell3}
+melcaster/mehshell1                 MELCSEH1
+melcaster/mehshell2                 MELCSEH2
+melcaster/mehshell3                 MELCSEH3
+$random melcaster/goodshell { melcaster/goodshell1 melcaster/goodshell2 melcaster/goodshell3 melcaster/goodshell4 }
+melcaster/goodshell1                MELCSGD1
+melcaster/goodshell2                MELCSGD2
+melcaster/goodshell3                MELCSGD3
+melcaster/goodshell4                MELCSGD4
+$random melcaster/rareshell { melcaster/rareshell1 melcaster/rareshell2 melcaster/rareshell3 melcaster/rareshell4 melcaster/rareshell5 }
+melcaster/rareshell1                MELCSRE1
+melcaster/rareshell2                MELCSRE2
+melcaster/rareshell3                MELCSRE3
+melcaster/rareshell4                MELCSRE4
+melcaster/rareshell5                MELCSRE5
+melcaster/number9                   MELCSN91
+melcaster/number11                  MELCSN11
+$random melcaster/number13 { melcaster/number131 melcaster/number132 }
+melcaster/number131                 MELCS131
+melcaster/number132                 MELCS132
+$random melcaster/dud { melcaster/dud1 melcaster/dud2 }
+melcaster/dud1                      MELCSDD1
+melcaster/dud2                      MELCSDD2
+$random melcaster/line { melcaster/line1 melcaster/line2 melcaster/line3 melcaster/line4 melcaster/line5 melcaster/line6 melcaster/line7 }
+melcaster/line1                     MELCSHT1
+melcaster/line2                     MELCSHT2
+melcaster/line3                     MELCSHT3
+melcaster/line4                     MELCSHT4
+melcaster/line5                     MELCSHT5
+melcaster/line6                     MELCSHT6
+melcaster/line7                     MELCSHT7
+
+//////////////////
+//Mel Taunts
+//////////////////
+
+//Kushiel Taunts
+$random mel/kushieltaunt { mel/kushieltaunt1 mel/kushieltaunt2 mel/kushieltaunt3 mel/kushieltaunt4 }
+mel/kushieltaunt1                   MELOLK1
+mel/kushieltaunt2                   MELOLK2
+mel/kushieltaunt3                   MELOLK3
+mel/kushieltaunt4                   MELOLK4
+//Melee Taunts
+$random mel/meleetaunt { mel/meleetaunt1 mel/meleetaunt2 mel/meleetaunt3 mel/meleetaunt4 mel/meleetaunt5 }
+mel/meleetaunt1 melolm1
+mel/meleetaunt2 melolm2
+mel/meleetaunt3 melolm3
+mel/meleetaunt4 melolm4
+mel/meleetaunt5 melolm5
+//Generic Taunts
+$random mel/generictaunt { mel/generictaunt1 mel/generictaunt2 mel/generictaunt3 mel/generictaunt4 mel/generictaunt5 mel/generictaunt6 mel/generictaunt7 mel/generictaunt8 mel/generictaunt9 mel/generictaunt10 mel/generictaunt11 mel/generictaunt12 mel/generictaunt13 mel/generictaunt14 mel/generictaunt15 mel/generictaunt16 mel/generictaunt17 mel/generictaunt18 mel/generictaunt19 mel/generictaunt20 mel/generictaunt21 mel/generictaunt22 mel/generictaunt23 mel/generictaunt24 mel/generictaunt25 mel/generictaunt26 mel/generictaunt27 mel/generictaunt28 mel/generictaunt29 }
+mel/generictaunt1 melolg1
+mel/generictaunt2 melolg2
+mel/generictaunt3 melolg3
+mel/generictaunt4 melolg4
+mel/generictaunt5 melolg5
+mel/generictaunt6 melolg6
+mel/generictaunt7 melolg7
+mel/generictaunt8 melolg8
+mel/generictaunt9 melolg9
+mel/generictaunt10 melolg10
+mel/generictaunt11 melolg11
+mel/generictaunt12 melolg12
+mel/generictaunt13 melolg13
+mel/generictaunt14 melolg14
+mel/generictaunt15 melolg15
+mel/generictaunt16 melolg16
+mel/generictaunt17 melolg17
+mel/generictaunt18 melolg18
+mel/generictaunt19 melolg19
+mel/generictaunt20 melolg20
+mel/generictaunt21 melolg21
+mel/generictaunt22 melolg22
+mel/generictaunt23 melolg23
+mel/generictaunt24 melolg24
+mel/generictaunt25 melolg25
+mel/generictaunt26 melolg26
+mel/generictaunt27 melolg27
+mel/generictaunt28 melolg28
+mel/generictaunt29 melolg29
+//AAAAAAAA Taunts
+$random mel/revanenttaunt { mel/revanenttaunt1 mel/revanenttaunt2 }
+mel/revanenttaunt1 melolr1
+mel/revanenttaunt2 melolr2
+//Cultist Taunt
+mel/cultisttaunt melolc1
+*/

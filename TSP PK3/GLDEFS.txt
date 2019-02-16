@@ -1,0 +1,26 @@
+//===========================================================================
+// Megasphere
+//===========================================================================
+pulselight TSPMEGASPHERE
+{
+  Color 0.0 0.8 0.4
+  Size 40
+  SecondarySize 42
+  Interval 2.0
+  Offset 0 16 0
+}
+
+object TSPMegaSphere
+{
+  frame SPOT { light TSPMEGASPHERE }
+}
+
+skybox SPACE
+{
+TSPS_N
+TSPS_E
+TSPS_S
+TSPS_W
+TSPS_T
+TSPS_B
+}

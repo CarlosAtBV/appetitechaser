@@ -1,0 +1,327 @@
+//===========================================================================
+// RoboMel's Melee Style
+//
+// Decorate by Cardboard Marty
+// Sprites by Cardboard Marty, Blox, Scuba Steve, Banjo Entertainment
+//===========================================================================
+
+ACTOR RoboMelMelee : TSPMelBaseWeapon
+{
+  Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
+  Obituary "%o was assimilated by %k's fists."
+  Weapon.Kickback 250
+  Weapon.BobStyle Alpha
+  Weapon.BobSpeed 1.2
+  Weapon.BobRangeY 1.0
+  Weapon.BobRangeX 0.5
+  Tag "Melee"
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  +WEAPON.NOALERT
+  +WEAPON.NOAUTOAIM
+  +WEAPON.NOAUTOFIRE
+  +NOEXTREMEDEATH
+  +INVENTORY.UNDROPPABLE
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Deselect:
+    TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
+    211D ABC 1
+    TNT1 A 6
+    TNT1 A 0 A_TakeInventory("RoboMelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("RoboMelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+  DeselectLoop:
+    TNT1 A 1 A_Lower
+    Loop
+  Select:
+    TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
+    TNT1 A 6 SetPlayerProperty(0,1,2)
+    211D CBA 1
+  SelectLoop:
+    211G A 1 A_Raise
+    Loop
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    211G A 1 A_WeaponReady
+    Loop
+// Punches
+  Fire:
+    TNT1 A 0 A_JumpIfInventory("RoboMelAlternateCombo", 4, "Breakthrough") // K-K-P-P-P
+    TNT1 A 0 A_JumpIfInventory("RoboMelAlternateCombo", 3, "CrossoverDuo") // K-K-P-P-P
+    TNT1 A 0 A_JumpIfInventory("RoboMelAlternateCombo", 2, "Crossover") // K-K-P
+    VL1F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    VL1F ABC 1
+    VL1F D 0 A_JumpIfInventory("PowerStrength",1,"FireBerserk")
+    VL1F D 1 A_CustomPunch(6,0,0,"BasicMeleePuff",70)
+    Goto FireA
+  FireBerserk:
+    VL1F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto FireA
+  FireA:
+    VL1F EFG 1
+    TNT1 A 2
+    TNT1 A 0 A_GiveInventory("RoboMelPrimaryCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+	
+// K-K-P DEFAULT
+  CrossOver:
+	//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 1,"SFRightHook") // SF
+	//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 2,"MKRightHook") // MK2
+    //TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 3,"64RightHook") // Smash 64
+    TNT1 A 2 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML8F A 1
+    TNT1 D 0 A_JumpIfInventory("PowerStrength",1,"CrossOverBerserk")
+    ML8F D 1 A_CustomPunch(8,0,0,"BasicMeleePuff",70)
+    Goto CrossOverA
+  CrossOverBerserk:
+    ML8F D 1 A_CustomPunch(16,0,0,"BasicMeleePuff",70)
+    Goto CrossOverA
+	
+// K-K-P END
+  CrossOverA:
+    ML8F E 1
+    TNT1 A 0 A_GiveInventory("RoboMelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML8F D 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML8F B 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML8F A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+	
+// K-K-P-P DEFAULT
+  CrossOverDuo:
+	//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 1,"SFRightHook") // SF
+	//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 2,"MKRightHook") // MK2
+    //TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMeleeSoundsCVAR") == 3,"64RightHook") // Smash 64
+    TNT1 A 1 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML7F A 1
+    TNT1 D 0 A_JumpIfInventory("PowerStrength",1,"CrossOverDuoBerserk")
+    ML7F D 1 A_CustomPunch(8,0,0,"BasicMeleePuff",70)
+    Goto CrossOverDuoA
+  CrossOverDuoBerserk:
+    ML7F D 1 A_CustomPunch(16,0,0,"BasicMeleePuff",70)
+    Goto CrossOverDuoA
+	
+// K-K-P-P END
+  CrossOverDuoA:
+    TNT1 A 0 A_GiveInventory("RoboMelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML7F C 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML7F B 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    ML7F A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+	
+// K-K-P-P-P Default
+  Breakthrough:
+    TNT1 A 3 A_PlaySound("*strongmelee")
+    MLGF A 0 A_PlaySoundEX("magpush", "SoundSlot6")
+    MLGF ABCDEFGH 1
+    TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15)
+    MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION) 
+    MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION)
+	MLGF I 0 A_SpawnItemEx ("MagPushPainProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION)
+    MLGF I 1 A_SpawnItemEx ("MagPushProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION)
+    MLGF HGFEDCBA 1
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+	TNT1 A 6
+    Goto AfterMelee
+
+// Kicks
+  AltFire:
+    TNT1 A 0 A_JumpIfInventory("RoboMelAlternateCombo",1,"HookKick") // K-K
+// K DEFAULT
+  DefaultKick:
+    TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    TNT1 A 0 A_PlaySound("*melee")
+    2111 ABCD 1
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"AltFireBerserk")
+    2111 E 1 A_CustomPunch(10,0,0,"BasicMeleePuff",90)
+    Goto AltFireA
+  AltFireBerserk:
+    2111 E 1 A_CustomPunch(20,0,0,"BasicMeleePuff",70)
+    Goto AltFireA
+	
+// K END
+  AltFireA:
+    2111 F 1
+    TNT1 A 0 A_GiveInventory("RoboMelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    2111 G 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+	
+// K-K Default
+  HookKick:
+    TNT1 A 2 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    2112 ABC 1
+    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"HookKickBerserk")
+    2112 D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",90)
+    Goto HookKickA
+  HookKickBerserk:
+    2112 D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto HookKickA
+	
+// K-K End
+  HookKickA:
+    2112 EFG 1
+    TNT1 A 0 A_GiveInventory("RoboMelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+	
+  AfterMelee:
+    TNT1 A 0 A_TakeInventory("RoboMelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("RoboMelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+	TNT1 A 4
+    211D CBA 1
+    211G A 1
+    Goto Ready
+  SPMelee:
+    VLED ABCDE 1 
+    TNT1 A 5 A_WeaponReady
+    Goto Ready
+  }
+}
+
+ACTOR RoboMelPrimaryCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR RoboMelAlternateCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}

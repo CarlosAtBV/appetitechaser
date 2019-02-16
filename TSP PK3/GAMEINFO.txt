@@ -1,0 +1,2 @@
+STARTUPTITLE = "Blue Vertigo Presents: The Space Pirate (v0.1)"
+STARTUPCOLORS = "aad13d", "0a7358"

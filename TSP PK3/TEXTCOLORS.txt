@@ -1,0 +1,31 @@
+TSPGreen
+{
+	#1d3948  #84bb9b
+Console:
+	#223b44  #2a3f4b    0 127
+	#5da590  #add0a5  128 256
+Flat:
+	#5da590
+}
+
+Mel
+{
+	#02594e  #268846    0 127
+	#519f25  #aad13d  128 256
+Console:
+	#02594e  #268846    0 127
+	#519f25  #aad13d  128 256
+Flat:
+	#519f25
+}
+
+RoboMel
+{
+	#074f3f  #3e896f    0 127
+	#749b7e  #dfdfd2  128 256
+Console:
+	#074f3f  #3e896f    0 127
+	#749b7e  #dfdfd2  128 256
+Flat:
+	#3e896f
+}

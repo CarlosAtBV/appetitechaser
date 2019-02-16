@@ -1,0 +1,58 @@
+//Menu Sounds
+menu/activate activate
+menu/backup backup
+menu/prompt prompt
+menu/change change
+menu/choose choose
+menu/cursor cursor
+menu/invalid invalid
+
+menu/dismiss dismiss
+menu/clear clear
+
+//Intermission Sounds
+$alias                intermission/tick             intermission/tick
+$alias                intermission/cooptotal        menu/choose
+$alias                intermission/nextstage        menu/change
+$alias                intermission/paststats        menu/choose
+$alias                intermission/pastcoopstats    menu/choose
+$alias                intermission/pastdmstats      menu/active
+
+intermission/tick inttick
+
+$random menu/quit1 { quit3 quit4 quit5 quit6 secretmessage quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
+$random menu/quit2 { quit3 quit4 quit5 quit6 secretmessage quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
+quit1 quit
+$volume quit1 2.0
+secretmessage quit2
+quit3 quit3
+quit4 quit4
+quit5 quit5
+quit6 quit6
+
+//Startup
+misc/startupdone         GAMELOAD
+
+item/pickupls            PCKUPLS
+
+//Armor Pickups
+
+armor/lightarmor         larmpck1
+armor/heavyarmor         harmpck1
+armor/armorshard         sarmpck1
+
+//Health Pickups
+
+health/supercharge       SURCHRGE
+health/medkit            MDKPCK1
+health/stimpack          STMPPCK
+health/healthbonus       HLBNPCK
+health/vitalitysphere    VITSPHRE
+
+//Upgrade
+upgrade/normal           UPGDNM
+upgrade/ls               UPGDLS
+
+//Bounties
+bounty/start            BOUNTST
+bounty/finish           BOUNTFIN

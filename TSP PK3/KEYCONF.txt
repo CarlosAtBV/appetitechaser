@@ -1,0 +1,9 @@
+defaultbind f +BV_Trait
+alias +BV_Trait "use StartTrait"
+alias -BV_Trait "use StopTrait"
+
+defaultbind q +BV_Melee
+alias +BV_Melee "use StartMelee" //"give Melee"
+alias -BV_Melee "use StopMelee" //"give Melee"
+
+alias BV_MSwitch "use MeleeButtonActor" 

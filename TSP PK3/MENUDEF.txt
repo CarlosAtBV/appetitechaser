@@ -1,0 +1,273 @@
+DEFAULTLISTMENU
+{
+	Font "DBIGFONT", "Green" //Font "MENUFNT", "DarkGreen"
+	Selector "M_SPSEL", -22, 3
+	Linespacing 15
+}
+
+LISTMENU "MainMenu"
+{
+//	StaticPatch 44, -20, "SP_HEDR"
+	Position 90, 15
+	Linespacing 29
+		
+	PatchItem "SP_NGAME",  "n",	"PlayerclassMenu"
+	PatchItem "SP_CONF",	     "o",	"OptionsMenu2"
+	PatchItem "SP_RTHS",         "h",   "ReadThisMenu"
+	PatchItem "SP_LOAD",         "l",	"LoadGameMenu"
+	PatchItem "SP_SAVE",         "s",	"SaveGameMenu"
+	PatchItem "SP_QUIT",	 "q",	"QuitMenu"
+}
+
+ListMenu "SkillMenu"
+{
+		StaticPatch 103, 39, "SPSKILL"
+	    Position 16, 15
+	    Linespacing 29
+}
+
+ListMenu "PlayerclassMenu"
+{
+		NetgameMessage "$NEWGAME"
+		
+		StaticPatch 103, 39, "SP_CSLT"
+		Font "DBIGFONT", "TSPGreen"
+		Position 32, 18
+		Linespacing 18
+		PlayerDisplay 226, 51, "20 00 00", "80 00 40"
+		Selector "M_SPSEL", -22, -2
+}
+
+ListMenu "EpisodeMenu"
+{
+	NetgameMessage "$NEWGAME"
+    StaticPatch 103, 39, "SP_EPIS"	
+	Font "DBIGFONT", "Red"
+	Position 25, 43
+}
+
+ListMenu "LoadGameMenu"
+{
+	NetgameMessage "If you want to load the game in multiplayer, do it while launching it."
+	StaticTextCentered 90, -20, "Restore Memory"
+	Position 60, 54
+	Class "LoadMenu"
+}
+
+ListMenu "SaveGameMenu"
+{
+	StaticTextCentered 90, -20, "Save Memory"
+	Position 60, 54
+	Class "SaveMenu"
+}
+
+
+//=============
+// Options Menu
+//=============
+OptionMenu "OptionsMenu2"
+{
+    Title "$CONFIGHEADER"
+	StaticText " "
+	StaticText "Bindings and Controls", 1
+    Submenu "Customize Controls",                   "CustomizeControls2"
+    Submenu "Mouse Options",                        "MouseOptions"
+    Submenu "Controller Options",                     "JoystickOptions"
+    StaticText " "
+	StaticText "Character and Gameplay Customization", 1
+    Submenu "The Space Pirate Modifiers",           "TSPCustomOptions"
+    Submenu "Character Setup",                      "PlayerMenu"
+    Submenu "Multiplayer Options (Zandronum)",		            "ZA_MultiplayerOptions" // [TP]
+    Submenu "Other Mod Options",                   "OtherModOptions"
+	StaticText " "
+	StaticText "Other Gameplay Options", 1
+    Submenu "Doom Gameplay Options",                "GameplayOptions"
+    Submenu "Compatibility Options",                "CompatibilityOptions"
+    Submenu "Automap Options",                      "AutomapOptions"
+    Submenu "HUD Options",                          "HUDOptions"
+    Submenu "Miscellaneous Options",                "MiscOptions"
+    Submenu "Sound Options",                        "SoundOptions"
+    Submenu "Display Options",                      "VideoOptions"
+    Submenu "Set video mode",                       "VideoModeMenu"
+	Submenu "GZDoom Options Menu",                  "OptionsMenu"
+    StaticText " "
+	StaticText "Reset Settings", 1
+    SafeCommand "Reset to defaults",                "reset2defaults"
+    SafeCommand "Reset to last saved",              "reset2saved"
+    Command "Go to console",                        "menuconsole"
+}
+
+//==================
+//TSP CUSTOM OPTIONS
+//==================
+OptionMenu "TSPCustomOptions"
+{
+    Title "$TSPMENU2"
+    StaticText      ""
+    StaticText      "$TSPGAMEPLAY1"
+	StaticText      "$TSPGAMEPLAY2"
+	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
+	Option "Start with Melee Only",          "tsp_fistsstart", "OnOff"
+	Option "Melee Supreme!",                 "tsp_meleesupreme", "TSPMeleeSupremeOnOff"
+	//Option "Melee Sounds",                   "tsp_meleesounds", "TSPMeleeSounds"
+	//StaticText      ""
+	//StaticText      "Mel Specific Modifiers", 2
+    //Option "Alternate Special Attack",    "tsp_melmagpush", "MelMagSpecialFire"
+    StaticText      ""
+    StaticText      "$TSPCHEATS1"
+	StaticText      "$TSPCHEATS2"
+	Option "Start with Golden Pistol",        "tsp_goldenpistol", "OnOff"
+	//Option "WOG Beam Infinite Mode",         "tsp_beaminf", "OnOff"
+	Option "Kano Transformations",           "tsp_supersecret", "OnOff"
+}
+
+OptionValue TSPMeleeSupremeOnOff
+{
+	0, "$OPTVAL_OFF"
+	1, "$TSPMELEESUPREME_ON"
+}
+
+OptionValue TSPMeleeSounds
+{
+    0, "$TSPDEFAULT"
+	1, "$CPS1MELEESND"
+	2, "$MKMELEESND"
+	3, "$SMASHMELEESND"
+}
+    
+//==================
+//Other Mod Options!
+//==================
+
+OptionMenu "OtherModOptions"
+{
+    Title "Other Mod Options"
+	StaticText "Options for other compatible mods"
+	StaticText ""
+	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
+	Submenu "Champion Options", "mk_ChampionMenu"
+}
+
+//=======================
+//Customize Controls Menu
+//=======================
+OptionMenu "CustomizeControls2"
+{
+	Title "$CUSTOMERCONTROLS1"
+	ScrollTop 2
+	StaticTextSwitchable 	"$CONFIGCONTROLS1", "$CONFIGCONTROLS2", "ControlMessage"
+	StaticText 	""
+	StaticText "$MOVEMENTCONTROL"
+	Control 	"Move forward",			"+forward"
+	Control 	"Move backward",		"+back"
+	Control 	"Strafe left",			"+moveleft"
+	Control 	"Strafe right",			"+moveright"
+	Control 	"Use / Open",			"+use"
+	Control 	"Jump",				"+jump"
+	Control 	"Crouch",			"+crouch"
+	StaticText 	""
+	StaticText "$WEAPON1CONTROL"
+	StaticText "$WEAPON2CONTROL"
+	Control 	"Fire",				"+attack"
+	Control 	"Altfire",			"+altattack"
+	Control 	"Reload",			"+reload"
+	Control 	"Melee",    "+BV_Melee"
+	Control 	"Character Trait",    "+BV_Trait"
+	Control     "Quick Switch Melee",  "BV_MSwitch"
+	StaticText 	""
+	StaticText 	"$WEAPONSCONTROL"
+	Control 	"Next weapon",			"weapnext"
+	Control 	"Previous weapon",		"weapprev"
+	StaticText 	""
+	Control		"Weapon Slot 1",		"slot 1"
+	Control		"Weapon Slot 2",		"slot 2"
+	Control		"Weapon Slot 3",		"slot 3"
+	Control		"Weapon Slot 4",		"slot 4"
+	Control		"Weapon Slot 5",		"slot 5"
+	Control		"Weapon Slot 6",		"slot 6"
+	Control		"Weapon Slot 7",		"slot 7"
+	Control		"Weapon Slot 8",		"slot 8"
+	Control		"Weapon Slot 9",		"slot 9"
+	Control		"Weapon Slot 0",		"slot 0"
+	StaticText 	""
+	StaticText 	"$INVENTORYCONTROL"
+	Control 	"Activate item",		"invuse"
+	Control 	"Activate all items",	"invuseall"
+	Control 	"Next item",			"invnext"
+	Control 	"Previous item",		"invprev"
+	Control 	"Drop item",			"invdrop"
+	Control		"Query item",			"invquery"
+	StaticText 	""
+	StaticText 	"$CHATCONTROL"
+	Control 	"Say",					"messagemode"
+	Control 	"Team say",				"messagemode2"
+	StaticText 	""
+	StaticText 	"$MISCELLANEOUSCONTROL"
+	Control 	"Toggle automap",		"togglemap"
+	Control 	"Chasecam",				"chase"
+	Control 	"Coop spy",				"spynext"
+	Control 	"Screenshot",			"screenshot"
+	Control  	"Open console",			"toggleconsole"
+	StaticText 	""
+	StaticText 	"$OTHERMOVEMENTCONTROL"
+	Control 	"Turn left",			"+left"
+	Control 	"Turn right",			"+right"
+	Control 	"Crouch Toggle",		"crouch"
+	Control 	"Swim up",				"+moveup"
+	Control 	"Swim down",			"+movedown"
+	Control 	"Stop flying",			"land"
+	Control 	"Mouse look",			"+mlook"
+	Control 	"Keyboard look",		"+klook"
+	Control 	"Look up",				"+lookup"
+	Control 	"Look down",			"+lookdown"
+	Control 	"Center view",			"centerview"
+	Control 	"Run",					"+speed"
+	Control 	"Strafe",				"+strafe"
+	Control 	"Show Scoreboard",		"+showscores"
+	/*StaticText 	""
+	StaticText 	"Strife Popup Screens", 1
+	Control 	"Mission objectives",	"showpop 1"
+	Control 	"Weapons/ammo/stats",	"showpop 3"*/
+}
+
+/*
+//=====================
+// Character Setup Menu
+//=====================
+OptionValue "Gender"
+{
+	0, "$MALETSP"
+	1, "$FEMALETSP"
+	2, "$OTHERTSP"
+//	3, "$MK2TSP"
+}
+*/
+
+ListMenu "PlayerMenu"
+{
+    Font "DBIGFONT", "Blue"
+	StaticTextCentered 160, 6, "Character Setup"
+	Font "SmallFont"
+	Linespacing 14
+	Position 48, 36
+	
+	PlayerNameBox "$CSName", 0, "Playerbox"
+	ValueText "$CSCharacter", "Class"
+	ValueText "$CSSkin", "Skin"
+	ValueText "$CSGender", "Gender", "Gender"
+	Selector "-", -16, -1
+	MouseWindow 0, 220
+	PlayerDisplay 220, 80, "20 00 00", "80 00 40", 1, "PlayerDisplay"		
+	ValueText "$CSColor", "Color"
+	Linespacing 10
+	Slider "$CSRed", "Red", 0, 255, 16
+	Slider "$CSGreen", "Green", 0, 255, 16
+	Linespacing 14
+	Slider "$CSBlue", "Blue", 0, 255, 16
+	ValueText "$CSTeam", "Team"
+	Slider "$CSAutoaim", "Autoaim", 0, 35, 1
+	ValueText "$CSSwitchPickup", "Switch", "OffOn"
+	ValueText "$CSAlwaysRun", "AlwaysRun", "OnOff"
+	Class "PlayerMenu"
+}
+

@@ -1,0 +1,57 @@
+actor TrainingDummy
+{
+  Obituary "How did this even happen?!"
+  Health 99999
+  Radius 20
+  Height 56
+  Mass 3000 // he's a heavy boy I guess
+  PainChance 200
+  PainChance "Uppercut", 255
+  //Mel Specific
+  PainChance "Sling", 255
+  PainChance "MagDive", 255
+  //RoboMel Speciifc
+  PainSound "dummy/pain"
+  DeathSound "dummy/death"
+  Monster
+  +FLOORCLIP
+  States
+  {
+  Spawn:
+    TSAT A 10 
+    loop
+  Pain:
+    TNT1 A 0 A_FaceTarget
+    TSAT G 6
+    TSAT G 8 A_Pain
+    goto Spawn
+  Pain.Uppercut:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 Thrustthing(angle*256/360+192, random(3,4), 0, 0)
+    TNT1 A 0 Thrustthingz(0,27,0,1)
+    Goto Pain
+  Pain.Sling:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
+	Goto PAin
+  Pain.MagDive:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 Thrustthing(angle*256/360+128, 10, 0, 0)
+    Goto Pain
+  Death.Uppercut:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 Thrustthing(angle*256/360+192, random(3,4), 0, 0)
+    TNT1 A 0 Thrustthingz(0,27,0,1)
+    Goto Death
+  Death:
+    TSAT H 5
+    TSAT I 5 A_Scream
+    TSAT J 5 A_NoBlocking
+    TSAT K 5
+    TSAT L -1
+    stop
+  Raise:
+    TSAT LKJIH 5
+    goto Spawn
+  }
+}

@@ -1,0 +1,103 @@
+ACTOR SpacePirate : DoomPlayer
+{
+  Player.ViewHeight 47
+  Player.AttackZOffset 20
+  Player.StartItem "IsMel", 1
+  Player.StartItem "StartMelee", 1
+  Player.StartItem "StopMelee", 1
+  Player.StartItem "StartTrait", 1
+  Player.StartItem "StopTrait", 1
+  Player.StartItem "DropCurrentShells", 1
+  Player.StartItem "MeleeButtonActor", 1
+  //Player.StartItem "MelStartInventory", 1
+  //Player.StartItem "Mel919MPistol"
+  //Player.StartItem "MelMelee"
+  Player.SoundClass "Melody"
+  Player.DisplayName "$MELNAME"
+  Player.Face MCW
+  Player.Portrait "Mel_Port"
+  Player.WeaponSlot 1, MelMelee
+  Species "Player"
+  +THRUSPECIES
+  +PLAYERPAWN.NOTHRUSTWHENINVUL
+  DamageFactor "Poison", 2.0
+  DamageFactor "GasShellDamage", 1.5
+  DamageFactor "Shrapnel", 0.5
+  DamageFactor "WOGChargeBeam", 0.0 
+  DamageFactor "WOGBeam", 0.0 
+  DamageFactor "Sling", 0.0
+  var int user_DProjTID;
+}
+
+ACTOR IsMel : Inventory
+{
+  Inventory.MaxAmount 1
+}
+
+/*
+ACTOR TSPSurvivorModePickup : CustomInventory
+{
+  +INVENTORY.AUTOACTIVATE
+  States
+  {
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelPickup")
+    TNT1 A 0 A_JumpIfInventory("IsVexler",1,"MelPickup")
+    Fail
+  MelPickup:
+    TNT1 A 0 A_GiveInventory("TSPSurvivorArmor")
+    TNT1 A 0 A_GiveInventory("TSPLoadOut", 1)
+    TNT1 A 0 A_GiveInventory("AutoPistolMag", 15)
+    TNT1 A 0 A_GiveInventory("TSPPistolAmmoMag", 2)
+    TNT1 A 0 A_GiveInventory("PMag15", 2)    
+    TNT1 A 0 A_GiveInventory("AmmoboxAmmoMag", 1)
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetFistsStartCVAR") == true,"MelMeleeOnlyPickup")
+    TNT1 A 0 A_GiveInventory("TSPCarryLimit", 4)
+    TNT1 A 0 A_GiveInventory("MelMelee")
+    TNT1 A 0 A_GiveInventory("MelDahliaCrossbow")
+    TNT1 A 0 A_GiveInventory("MelAmmoBox50LS")
+    TNT1 A 0 A_GiveInventory("Mel919mPistolLS")
+    TNT1 A 0 A_TakeInventory("DahliaExplosiveAmmo", 999)
+    Stop
+    MelMeleeOnlyPickup:
+    TNT1 A 0 A_GiveInventory("MelMelee")
+    TNT1 A 0 A_GiveInventory("TSPCarryLimit", 4)
+    Stop
+  }
+}
+
+actor MelReady : Boolean {}
+actor MelWaiting: Boolean { Inventory.MaxAmount 15 }
+actor MelTaunted : Boolean {}
+actor MelTauntCooldown: Boolean { Inventory.MaxAmount 5 }
+actor MelBossSee : Boolean {}
+actor MelBallgag : Boolean {}
+
+actor MelTaunt : CustomInventory
+{
+  Inventory.MaxAmount 0
+  +AUTOACTIVATE
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    stop
+  UseStop:
+    TNT1 A 0
+    stop
+  }
+}
+
+actor MelTauntMelee : MelTaunt
+{
+  States
+  {
+  Pickup:
+    TNT1 A 0 A_JumpIfInventory("MelTauntCooldown", 1, "UseStop")
+    TNT1 A 0 A_JumpIfInventory("MelBallgag", 1, "UseStop")
+    TNT1 A 9
+    TNT1 A 0 A_PlaySound("mel/meleetaunt", 2)
+    TNT1 A 0 A_GiveInventory("MelTauntCooldown", 5)
+    Stop
+  }
+}    */

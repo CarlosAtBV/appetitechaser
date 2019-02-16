@@ -1,0 +1,147 @@
+//Universal Melee Sounds
+$random basicmelee/miss { basicmelee/miss1 basicmelee/miss2 basicmelee/miss3 basicmelee/miss4 basicmelee/miss5 }
+basicmelee/miss1 bmlmiss1
+basicmelee/miss2 bmlmiss2
+basicmelee/miss3 bmlmiss3
+basicmelee/miss4 bmlmiss4
+basicmelee/miss5 bmlmiss5
+
+$random strongmelee/miss { strongmelee/miss1 strongmelee/miss2 strongmelee/miss3 strongmelee/miss4 strongmelee/miss5 }
+strongmelee/miss1 smlmiss1
+strongmelee/miss2 smlmiss2
+strongmelee/miss3 smlmiss3
+strongmelee/miss4 smlmiss4
+strongmelee/miss5 smlmiss5
+
+$random basicmelee/wall { basicmelee/wall1 basicmelee/wall2 basicmelee/wall3 basicmelee/wall4 }
+basicmelee/wall1 bmlwall1
+basicmelee/wall2 bmlwall2
+basicmelee/wall3 bmlwall3
+basicmelee/wall4 bmlwall4
+
+$random basicmelee/contact { basicmelee/contact1 basicmelee/contact2 basicmelee/contact3 basicmelee/contact4 }
+basicmelee/contact1 bmlhit1
+basicmelee/contact2 bmlhit2
+basicmelee/contact3 bmlhit3
+basicmelee/contact4 bmlhit4
+
+$random strongmelee/wall { strongmelee/wall1 strongmelee/wall2 strongmelee/wall3 strongmelee/wall4 }
+strongmelee/wall1 smlwall1
+strongmelee/wall2 smlwall2
+strongmelee/wall3 smlwall3
+strongmelee/wall4 smlwall4
+
+$random strongmelee/contact { strongmelee/contact1 strongmelee/contact2 strongmelee/contact3 strongmelee/contact4 strongmelee/contact5 }
+strongmelee/contact1 smlhit1
+strongmelee/contact2 smlhit2
+strongmelee/contact3 smlhit3
+strongmelee/contact4 smlhit4
+strongmelee/contact5 smlhit5
+
+$random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
+uppercutmelee/contact1 umlhit1
+uppercutmelee/contact2 umlhit2
+
+//MA919m Pistol, 919m Gold, 917 Pistol
+$random 919m/fire { 919m/fire1 919m/fire2 919m/fire3 }
+919m/fire1 PSTFR1
+919m/fire2 PSTFR2
+919m/fire3 PSTFR3
+
+$random 919m/goldfire { 919m/goldfire1 919m/goldfire2 919m/goldfire3 }
+919m/goldfire1 GPSFR1
+919m/goldfire2 GPSFR2
+919m/goldfire3 GPSFR3
+
+$random 917/fire { 917/fire1 917/fire2 917/fire3 }
+917/fire1 7PSFR1
+917/fire2 7PSFR2
+917/fire3 7PSFR3
+
+919m/magout pstmgout
+919m/magin1 pstmgin1
+919m/magin2 pstmgin2
+919m/slide pstsld
+919m/cock pstcock
+919m/dry pstempty
+919m/autoselect pstfas
+919m/autodeselect pstfau
+
+919m/select pstsel
+919m/deselect pstdsel
+919m/magflip pstflip
+
+919m/goldmagout gpsmgout
+919m/goldmagin1 gpsmgin1
+919m/goldmagin2 gpsmgin2
+919m/goldcock gpscock
+919m/goldselect gpssel
+919m/golddeselect gpsdsel
+
+917/magout 7psmgout
+917/magin1 7psmgin1
+917/magin2 7psmgin2
+917/cock   7pscock
+917/select 7pssel
+917/deselect 7psdsel
+917/jam    7psjam
+917/clear  7psclear
+
+//The Toolbox
+toolbox/equip RLNGUP2
+toolbox/deequip RLNGDWN2
+toolbox/on RLNGUP
+toolbox/off RLNGDOWN
+toolbox/prime RLNGSTC
+toolbox/rocket RLNGRLST
+toolbox/grind RLNGRND
+toolbox/nailgun RLNGNGST
+toolbox/empty RLNGNO
+toolbox/reload1 RLNGLD1
+toolbox/reload2 RLNGLD2
+
+toolbox/ammo1 RLNGAM1
+toolbox/ammo2 RLNGAM2
+
+$limit toolbox/nailgunimpact 0
+$random toolbox/nailgunimpact { toolbox/nailgunimpact1 toolbox/nailgunimpact2 toolbox/nailgunimpact3 toolbox/nailgunimpact4 toolbox/nailgunimpact5 toolbox/nailgunimpact6 toolbox/nailgunimpact6 toolbox/nailgunimpact7 toolbox/nailgunimpact8 }
+toolbox/nailgunimpact1 RLNGIMW1
+toolbox/nailgunimpact2 RLNGIMW2
+toolbox/nailgunimpact3 RLNGIMW3
+toolbox/nailgunimpact4 RLNGIMW4
+toolbox/nailgunimpact5 RLNGIMW5
+toolbox/nailgunimpact6 RLNGIMW6
+toolbox/nailgunimpact7 RLNGIMW7
+toolbox/nailgunimpact8 RLNGIMW8
+
+$limit toolbox/nailgunflesh 0
+$random toolbox/nailgunflesh { toolbox/nailgunflesh1 toolbox/nailgunflesh2 toolbox/nailgunflesh3 }
+toolbox/nailgunflesh1 RLNGIMF1
+toolbox/nailgunflesh2 RLNGIMF2
+toolbox/nailgunflesh3 RLNGIMF3
+
+$limit toolbox/rocketimpact 0
+$random toolbox/rocketimpact { toolbox/rocketimpact1 toolbox/rocketimpact2 toolbox/rocketimpact3 }
+toolbox/rocketimpact1 RLNGEXP1
+toolbox/rocketimpact2 RLNGEXP2
+toolbox/rocketimpact3 RLNGEXP3
+
+$limit toolbox/rocketfly 0
+$random toolbox/rocketfly { toolbox/rocketfly1 toolbox/rocketfly2 toolbox/rocketfly3 }
+toolbox/rocketfly1 RLNGFLY1
+toolbox/rocketfly2 RLNGFLY2
+toolbox/rocketfly3 RLNGFLY3
+
+//Weapon Junk
+$random weapons/casing  { weapons/casing1 weapons/casing2 weapons/casing3 }
+weapons/casing1			dscasin1
+weapons/casing2			dscasin2
+weapons/casing3			dscasin3
+
+$random weapons/smallclip { sc1 sc2 sc3 sc4 sc5 sc6 }
+sc1 dsbounc1
+sc2 dsbounc2
+sc3 dsbounc3
+sc4 dsbounc4
+sc5 dsbounc5
+sc6 dsbounc6

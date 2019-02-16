@@ -1,0 +1,132 @@
+ACTOR ComboCooldown: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+/////////////////////
+//DEFAULT MELEE PUFFS
+/////////////////////
+
+ACTOR BasicMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound "basicmelee/wall"
+  SeeSound "basicmelee/contact"
+  DamageType Melee
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR StrongMeleePuff : BasicMeleePuff
+{ 
+  AttackSound "strongmelee/wall"
+  SeeSound "strongmelee/contact"
+  DamageType Melee
+  DamageType StrongMelee
+}
+
+ACTOR UppercutMeleePuff : StrongMeleePuff
+{ 
+  SeeSound "uppercutmelee/contact"
+  DamageType Uppercut
+}
+
+///////////////////
+//DUMMY MELEE PUFFS
+///////////////////
+
+ACTOR BlankMeleePuff : BasicMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound ""
+  SeeSound ""
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  -BLOODSPLATTER
+  Decal "none"
+}
+
+////////////////
+//SF MELEE PUFFS
+////////////////
+
+ACTOR SFBasicMeleePuff : BasicMeleePuff
+{ 
+  AttackSound "sfmelee/wall"
+  SeeSound "sfbasicmelee/contact"
+}
+
+ACTOR SFStrongMeleePuff : StrongMeleePuff
+{ 
+  AttackSound "sfstrongmelee/wall"
+  SeeSound "sfstrongmelee/contact"
+}
+
+ACTOR SFUppercutMeleePuff : UppercutMeleePuff
+{ 
+  AttackSound "sfstrongmelee/wall"
+  SeeSound "sfuppercutmelee/contact"
+}
+
+////////////////
+//MK MELEE PUFFS
+////////////////
+
+ACTOR MKBasicMeleePuff : BasicMeleePuff
+{ 
+  AttackSound "mkmelee/wall"
+  SeeSound "mkbasicmelee/contact"
+}
+
+ACTOR MKStrongMeleePuff : StrongMeleePuff
+{ 
+  AttackSound "mkstrongmelee/wall"
+  SeeSound "mkstrongmelee/contact"
+}
+
+ACTOR MKUppercutMeleePuff : UppercutMeleePuff
+{ 
+  AttackSound "mkstrongmelee/wall"
+  SeeSound "mkuppercutmelee/contact"
+}
+
+////////////////
+//64 MELEE PUFFS
+////////////////
+
+ACTOR 64BasicMeleePuff : BasicMeleePuff
+{ 
+  AttackSound "64melee/wall"
+  SeeSound "64basicmelee/contact"
+}
+
+ACTOR 64StrongMeleePuff : StrongMeleePuff
+{ 
+  AttackSound "64melee/wall"
+  SeeSound "64strongmelee/contact"
+}
+
+ACTOR 64UppercutMeleePuff : UppercutMeleePuff
+{ 
+  AttackSound "64melee/wall"
+  SeeSound "64uppercutmelee/contact"
+}

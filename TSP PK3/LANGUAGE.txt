@@ -1,0 +1,197 @@
+[enu default]
+
+QUITMSG = "\cnI now have a quarrel with you.";
+QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
+QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";
+QUITMSG3 = "\cnIf someone were unfortunate enough\nto make an enemy of\c- \cgthe Anten Seven\c-\n\cnand forced to fight against them,\nI would say only this\c-\n\n\cr...farewell, friend.";
+QUITMSG4 = "\cnNo one's gonna draw you a map.\n\n\ckYou have to walk your own path.";
+QUITMSG5 = "\cnBelieve in yourself and create your own destiny.\n\n\crDon't fear fate.";
+QUITMSG6 = "\cnWhat exactly awaits at\n\cfthe Galatic Leyline\cn?";
+QUITMSG7 = "\cnGo to \cfthe Galactic Leyline.\n\n\cnNo one can stop you.";
+QUITMSG8 = "\cnGrab what you want and rip through the dark\nas you run \cgThrough The Night!";
+QUITMSG9 = "\cnAre you gonna just keep running away?";
+QUITMSG10 = "\cnNothing good can ever come from\nstaying with normal people.";
+QUITMSG11 = "\cnThere is no \ckknowledge\cn that is not \c-power\cn.";
+QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSPGREEN]The Space Pirate\cn!";
+QUITMSG13 = "\cnIf there is the slimmest chance,\nno matter how small,\nyou have to go for it.\nNever give up hope.\nThat's what it means to be an outlaw.";
+QUITMSG14 = "\cnWhaddya doing in my mod? Get outta here.\n\n...\c-GET OUTTA HERE!";
+DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
+TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";
+TXT_NO = "\cc[\c-\cgNo\c-\cc]\c-";
+OPTVAL_ON = "\cc[\c-\cdOn\c-\cc]\c-";
+OPTVAL_OFF = "\cc[\c-\cgOff\c-\cc]\c-";
+OPTVAL_AUTO = "\cc[\c-\cuAuto\c-\cc]\c-";
+
+STSTR_DQDON = "\cfOmni-Shields on!\c- \cc[\c-\cd+\c-\cfInvincibility\c-\cc]\c-";
+STSTR_DQDOFF = "\cuOmni-Shields off.\c- \cc[\c-\cg-\c-\cfInvincibility\c-\cc]\c-";
+STSTR_KFAADDED = "\cfYou've been gifted a hyper space arsenal with\c- \cdkeys\c- \cfto match!\c-";
+STSTR_FAADDED = "\cfYou've been gifted a hyper space arsenal!";
+STSTR_NCON = "\ccTry to save myself, myself keeps slipping away...\c- \cc[\c-\cd+\c-\ctGhost\c-\cc]\c-"; 
+STSTR_NCOFF = "\cuTried to overcome the complications and the catches...\c- \cc[\c-\cg-\c-\ctGhost\c-\cc]\c-";
+STSTR_BEHOLD = "We should be able to beam you down something useful. \cc[\c-\cpR\c- \chI\c- \cdV\c- \cuA\c- \ckL\c- \cgS\c-\cc]\c-"; //jesus christ
+STSTR_BEHOLDX = "\cfUse this wisely!";
+STSTR_CHOPPERS = "\cgA chainsaw? What's with you and brutality, anyway?";
+TXT_BUDDHAON = "\cjYou have this strange sense of invulnerability...";
+TXT_BUDDHAOFF = "But now it looks like that feeling is gone.";
+TXT_DEFAULTPICKUPMSG = "\caGET OUTTA HERE!";
+
+OB_SUICIDE = "%o took matters into %p own hands.";
+OB_FALLING = "%o took a lesson in gravity.";
+OB_CRUSH = "%o would fit nicely into a thermos now.";
+OB_EXIT = "Hey look everybody! %o tried to exit! That's what happens.";
+OB_WATER = "%o is sleeping with this fishes. RIP %o.";
+OB_SLIME = "%o became radioactive, that can't be good.";
+OB_LAVA = "Fire burns?! Well I'm glad %o found out for the rest of us.";
+OB_BARREL = "%o went KABOOM! Yikes!";
+OB_KILLEDSELF = "%o couldn't take it anymore.";
+OB_VOODOO = "%o attempts to destroy some dimensional anomaly...and failed.";
+OB_MONTELEFRAG = "%o imploded thanks to the unperfected art of teleporting.";
+OB_DEFAULT = "%o fell asleep. FOREVER.";
+OB_FRIENDLY1 = "%k and %o had a bit of a falling out, you see.";
+OB_FRIENDLY2 = "%k took an opportunity to kill %o when they least expected it.";
+OB_FRIENDLY3 = "I'm sure %o would've forgiven %k for that shot.";
+OB_FRIENDLY4 = "%k told %o to get outta here. With lethal force.";
+
+//Key Pickup Messages
+GOTBLUECARD = "Acquired a \chblue keycard\c-!";
+GOTYELWCARD = "Acquired a \ckyellow keycard\c-!";
+GOTREDCARD = "Acquired a \cgred keycard\c-!";
+GOTBLUESKUL = "Acquired a \chblue skull\c- key!";
+GOTYELWSKUL = "Acquired a \ckyellow skull key\c-!";
+GOTREDSKUL = "Acquired a \cgred skull key\c-!";
+PD_BLUEO = "\chBlue key\c- required to activate this object";
+PD_REDO = "\cgRed key\c- required to activate this object";
+PD_YELLOWO = "\ckYellow key\c- required to activate this object";
+PD_BLUEK = "\chBlue key\c- required to open this door";
+PD_REDK = "\cgRed key\c- required to open this door";
+PD_YELLOWK = "\ckYellow key\c- required to open this door";
+PD_BLUECO = "\chBlue card\c- required to activate this object";
+PD_REDCO = "\cgRed card\c- required to activate this object";
+PD_YELLOWCO = "\ckYellow card\c- required to activate this object";
+PD_BLUESO = "\chBlue skull\c- required to activate this object";
+PD_REDSO = "\cgRed skull\c- required to activate this object";
+PD_YELLOWSO = "\ckYellow skull\- required to activate this object";
+
+//Boom Key Pickup Messages
+PD_BLUEC = "\chBlue card\c- \ccrequired to open this door\c-";
+PD_REDC = "\cgRed card\c- \ccrequired to open this door\c-";
+PD_YELLOWC = "\ckYellow card\c- \ccrequired to open this door\c-";
+PD_BLUES = "\chBlue skull\c- \ccrequired to open this door\c-";
+PD_REDS = "\cgRed skull\c- \ccrequired to open this door\c-";
+PD_YELLOWS = "\ckYellow skull\c- \ccrequired to open this door\c-";
+PD_ANY = "Any key will open this door";
+PD_ANYOBJ = "\cdAny key\c- will activate this object";
+PD_ALL3 = "You need all three keys to open this door";
+PD_ALL3O = "You need all three keys to activate this object";
+PD_ALL6 = "You need all six keys to open this door";
+PD_ALL6O = "You need all six keys to activate this object";
+PD_ALLKEYS = "You need all the keys";
+
+SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
+
+//Character
+MELNAME = "\c[Mel]Mel\c-";
+ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
+
+MELRUBY = "\cgRuby\c-";
+
+//Menu Junk
+MNU_CHOOSECLASS		= "Character Select";
+MNU_CHOOSESKILL		= "Difficulty Select";
+TSPCustomControls = "\cfCustomize Controls\c-";
+TSPMouseOptions = "\cfMouse Options\c-";
+TSPControllerOptions = "\cfController Options\c-";
+
+//TSP Menu Options
+TSPMENU1 = "\c[TSPGREEN]The Space Pirate\c- \cjModifiers\c-";
+TSPMENU2 = "\c[TSPGREEN]Modifiers\c-";
+TSPGAMEPLAY1 = "\cjGameplay Modifiers\c-";
+TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)\c-";
+TSPGRAPHICS1 = "\cjGraphic Modifiers\c-";
+TSPGRAPHICS2 = "\cu(Adjust graphical settings)\c-";
+TSPCHEATS1 = "\ckCheats and Fun Stuff!\c-";
+TSPCHEATS2 = "\cu(Enable cheat options and other shenanigans)\c-";
+
+TSPDEFAULT = "\ccDefault\c-";
+TSPMELEESUPREME_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgNo Weapon\c-\cc/\c-\cgAmmo Drops\c-\cc!\c-";
+CPS1MELEESND = "\ciCPS-1\c-";
+MKMELEESND = "\crKombat\c-";
+SMASHMELEESND = "\ckSmash\c-";
+
+
+//Character Setup
+CSMenuOption = "\chCharacter Setup\c-";
+CSCharacter = "\c[TSPGREEN]Character\c-"; 
+CSName = "\chName\c-";
+CSGender = "\ccGender\c-";
+CSSkin = "\ccCostume\c-";
+CSColor = "\ccColor\c-";
+CSRED = "\cgRed\c-";
+CSBLUE = "\chBlue\c-";
+CSGREEN = "\cdGreen\c-";
+CSTeam = "\ccTeam\c-";
+CSAutoAim = "\ccAutoAim\c-";
+CSSwitchPickup = "\ccSwitch on Pickup\c-";
+CSAlwaysRun = "\ccAlways Run\c-";
+
+//Genders
+OPTVAL_MALE					= "\cyMale";
+OPTVAL_FEMALE				= "\caFemale";
+OPTVAL_NEUTRAL				= "\ckNeutral";
+OPTVAL_OTHER				= "\cjObject";
+MK2TSP = "\c[TSPGREEN]TSP MK2\c-";
+
+//Controls Menu
+CONFIGHEADER = "\cfConfiguration\c-";
+CUSTOMERCONTROLS1 = "\cfCustomize Controls\c-";
+CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
+CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
+MOVEMENTCONTROL = "\ccMovement Controls\c-";
+WEAPON1CONTROL = "\ccWeapon Function\c-";
+WEAPON2CONTROL = "\cu(Be sure to bind these!)\c-";
+WEAPONSCONTROL = "\ccWeapons\c-";
+INVENTORYCONTROL = "\ccInventory\c-";
+CHATCONTROL = "\ccChat\c-";
+MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
+OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
+
+//Startup
+STARTUP1 = "\ccWelcome to\c- \c[TSPGREEN]The Space Pirate!";
+STARTUP2 = "\cpVersion: 0.2 - \c[RoboMel]Unknown Automaton";
+STARTUP3 = "Chat with us at \cdhttps://discord.gg/gRZNVGn";
+STARTUP4 = "Or check out the public plan doc at \cdtinyurl.com/tspmanual";
+STARTUP5 = "\cuLOOK TO LA LUNA";
+
+//Difficult
+SKILLNONFINISH = "\ccThis mode is currently unfinished!\n\nMaybe it'll be done by\c- \cg2099\c-\cc?\c-";
+NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more often\nammo drops are \caless frequent\c-,\nand monsters do \camore damage\c- to you.\n\nYou sure you're ready for this?";
+
+//WEAPON PICKUPS
+Mel919Pistol = "\cc[\c-\cyMakoto Type 919 Mod.0\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
+RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
+GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
+
+ZekeShotgun = "\cc[\c-\cqBlackwood Arms 240 Zeke\c-\cc]\c- \cc[\c-\cjClass:\c- \cqShotgun\c-\cj,\c- \cjSlot\c- \cq3\c-\cc]\c-";
+DahliaCrossbow = "\cc[\c-\cv''Dahlia'' Custom Concealable Weapon\c-\cc]\c- \cc[\c-\cjClass:\c- \cvBow\c-\cj,\c- \cjSlot\c- \cq3\c-\cc]\c-";
+
+AmmoBox50 = "\cc[\c-\ckKurdd & Schaumers AB-50\c-\cc]\c- \cc[\c-\cjClass:\c- \ckAutomatic\c-\cj,\c- \cjSlot\c- \ck4\c-\cc]\c-";
+MP40 = "\cc[\c-\ckMaschinenpistole 40\c-\cc]\c- \cc[\c-\cjClass:\c- \ckAutomatic\c-\cj,\c- \cjSlot\c- \ck4\c-\cc]\c-";
+
+Toolbox = "\cc[\c-\cgMarston Arms RPG-2090 (The Toolbox)\c-\cc]\c- \cc[\c-\cjClass:\c- \cgProjectile Weapon\c-\cj,\c- \cjSlot\c- \ck5\c-\cc]\c-";
+
+//AMMO PICKUPS
+PistolAmmo5 = "Picked up a pistol magazine. \cc[\c-\cd+5\c- \cyPistol Ammo\c-\cc]\c-";
+PistolAmmo10 = "Picked up a pistol magazine. \cc[\c-\cd+10\c- \cyPistol Ammo\c-\cc]\c-";
+PistolAmmo15 = "Picked up a pistol magazine. \cc[\c-\cd+15\c- \cyPistol Ammo\c-\cc]\c-";
+
+SMGAmmo15 = "Picked up machine gun ammo. \cc[\c-\cd+15\c- \ckMachine Gun Ammo\c-\cc]\c-";
+SMGAmmo30 = "Picked up machine gun ammo. \cc[\c-\cd+30\c- \ckMachine Gun Ammo\c-\cc]\c-";
+AmmoCrate = "Found an assorted ammo crate! \cc[\c-\cd+15\c- \cyPistol Ammo\c-\cc]\c- \cc[\c-\cd+50\c- \ckMachine Gun Ammo\c-\cc]\c- \cc[\c-\cd+5\c- \cvBolts\c-\cc]\c-";
+
+BoltsNormal5 = "Picked up a box of crossbow bolts. \cc[\c-\cd+5\c- \cvBolts\c-\cc]\c-";
+BoltsNormal10 = "Picked up a box of crossbow bolts. \cc[\c-\cd+10\c- \cvBolts\c-\cc]\c-";
+BoltsSplode5 = "Picked up a box of explosive bolts. \cc[\c-\cd+5\c- \cgExplosive Bolts\c-\cc]\c-";
+BoltsSplode10 = "Picked up a box of explosive bolts. \cc[\c-\cd+10\c- \cgExplosive Bolts\c-\cc]\c-";
+
+ToolboxRocket1 = "Picked up a rocket. \cc[\c-\cd+1\c- \cgLauncher Ammo\c-\cc]\c-";
+ToolboxRocketBox5 = "Picked up a crate of rockets. \cc[\c-\cd+10\c- \cgLauncher Ammo\c-\cc]\c-";
