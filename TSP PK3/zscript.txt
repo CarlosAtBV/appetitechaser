@@ -39,6 +39,8 @@ Class TSP_EventHandler : EventHandler
 	
 	int gamemode;
 	
+	array<TSP_Hunters_SpawnPoint > hunters_demonSpawnPoints;
+	
 	override void WorldLoaded(WorldEvent e)
 	{
 		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
@@ -53,6 +55,9 @@ Class TSP_EventHandler : EventHandler
 				{
 					if(mo.bIsMonster)
 					{
+						TSP_Hunters_SpawnPoint spawn = new("TSP_Hunters_SpawnPoint");
+						spawn.pos = mo.pos;
+						hunters_demonSpawnPoints.Push(spawn);
 						mo.A_Die();
 						mo.Destroy();
 					}
@@ -70,11 +75,11 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
+		Console.Printf(e.Inflictor.." fug");
 		if(e.Inflictor == players[0].mo)
 		{
-			Console.Printf("yes good");
+			hunters_score += e.Thing.SpawnHealth()*max(1,hunters_combo);
 			hunters_combo++;
-			hunters_score += e.Thing.SpawnHealth()*hunters_combo;
 			hunters_combotime = 10*35;
 		}
 	}
@@ -91,13 +96,18 @@ Class TSP_EventHandler : EventHandler
 				int spawnangle;
 				[spawnpos, spawnangle] = G_PickDeathmatchStart();
 				
+				if(random(1,2)==2)
+				{
+					spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
+				}
+				
 				Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos);
 				Actor.Spawn("TeleportFog",spawnpos);
 				enemy.angle = spawnangle;
 				hunters_wave++;
 				players[0].mo.SoundAlert(players[0].mo);
-				spawndelay = 35*5;
-				if(hunters_wave%5==0)
+				spawndelay = 35*3;
+				if(hunters_wave%6==0)
 				{
 					hunters_monsterMax++;
 				}

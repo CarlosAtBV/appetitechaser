@@ -1,3 +1,8 @@
+Class TSP_Hunters_SpawnPoint : Thinker
+{
+	Vector3 pos;
+}
+
 Class TSP_Gamemode_Hunters : Thinker
 {
 	
