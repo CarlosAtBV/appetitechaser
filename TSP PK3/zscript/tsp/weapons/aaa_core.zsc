@@ -2,7 +2,7 @@ Class TSP_Weapon_Core : DoomWeapon
 {
 	// A_TSP_Melee(damage, range, puff, angle, pitch, flags)
 	
-	action void A_TSP_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", int mAngle = 80, int mPitch = 80, int flags = 0)
+	action void A_TSP_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", int mAngle = 45, int mPitch = 45, int flags = 0)
 	{
 		bool hasHit = false;
 		//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
@@ -27,6 +27,7 @@ Class TSP_Weapon_Core : DoomWeapon
 				// baron stun shorter
 				stuntime = 24*(40.0/myMaxHealth);
 				stuntime = max(4,stuntime);
+				mo.Thrust(4,AngleTo(mo));
 				int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
 				//mo.A_Quake(2,4,0,750);
 				if(mo.resolveState("Pain")!=null&&mo.Health>0)
