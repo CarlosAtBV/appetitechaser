@@ -1,8 +1,8 @@
 Class TSP_Weapon_Core : DoomWeapon
 {
-	// A_TSP_Melee()
+	// A_TSP_Melee(damage, range, puff, angle, pitch, flags)
 	
-	action void A_TSP_Melee(int mDamage)
+	action void A_TSP_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", int mAngle = 80, int mPitch = 80, int flags = 0)
 	{
 		bool hasHit = false;
 		//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
@@ -12,10 +12,13 @@ Class TSP_Weapon_Core : DoomWeapon
 		
 		int mMaxHealth = 0;
 		
+		Class<Actor > epicPuffy = mPuff;
+		string epicPuffy_sound = GetDefaultByType(epicPuffy).seeSound;
+		
 		while (mo = Actor(MonsterFinder.Next()))
 		{
-			if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<72) && mo.Health>0
-			&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<80)
+			if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
+			&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)
 			{
 				int damageamount = mDamage;
 				int myMaxHealth = mo.GetSpawnHealth();
@@ -28,7 +31,6 @@ Class TSP_Weapon_Core : DoomWeapon
 				//mo.A_Quake(2,4,0,750);
 				if(mo.resolveState("Pain")!=null&&mo.Health>0)
 				{
-					Console.Printf("CUM!");
 					mo.SetStateLabel("Pain");
 					mo.A_SetTics(stuntime);
 				}
@@ -40,7 +42,8 @@ Class TSP_Weapon_Core : DoomWeapon
 						blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
 					}
 				}
-				mo.A_PlaySound("basicmelee/contact",CHAN_BODY);
+				mo.A_PlaySound(epicPuffy_sound,CHAN_BODY);
+				
 				if(myMaxHealth > mMaxHealth)
 				{
 					mMaxHealth = mo.GetSpawnHealth();
@@ -53,6 +56,10 @@ Class TSP_Weapon_Core : DoomWeapon
 			//A_PlaySound("flesh/hit",CHAN_WEAPON);
 			SoundAlert(invoker.owner);
 			A_SetTics(max(2,mMaxHealth/300));
+		}
+		else
+		{
+			A_FireBullets(0,0,1,0,mPuff,0,mRange);
 		}
 	}
 }
