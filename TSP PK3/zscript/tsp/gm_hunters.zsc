@@ -33,6 +33,7 @@ Class TSP_Gamemode_Hunters : Thinker
 				{
 					Inventory itemActor = Inventory(mo);
 					itemActor.bAlwaysRespawn = true;
+					itemActor.bDropped = false;
 					/*itemActor.bAlwaysRespawn = true;
 					itemActor.RespawnTics = 5;
 					Console.Printf(""..itemActor.bAlwaysRespawn);*/
