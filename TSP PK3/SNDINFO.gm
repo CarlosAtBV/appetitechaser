@@ -1,0 +1,11 @@
+// From Dota 2 (custom game lines)
+
+announcer/hunters/gameover "sounds/placeholder/hunters/Ann_custom_end_08.ogg"
+
+announcer/hunters/30secs "sounds/placeholder/hunters/Ann_custom_timer_sec_30.ogg"
+announcer/hunters/10secs "sounds/placeholder/hunters/Ann_custom_timer_sec_10.ogg"
+announcer/hunters/5secs "sounds/placeholder/hunters/Ann_custom_countdown_05.ogg"
+announcer/hunters/4secs "sounds/placeholder/hunters/Ann_custom_countdown_04.ogg"
+announcer/hunters/3secs "sounds/placeholder/hunters/Ann_custom_countdown_03.ogg"
+announcer/hunters/2secs "sounds/placeholder/hunters/Ann_custom_countdown_02.ogg"
+announcer/hunters/1secs "sounds/placeholder/hunters/Ann_custom_countdown_01.ogg"

@@ -122,11 +122,21 @@ Class TSP_EventHandler : EventHandler
 				if(hunters_time==0)
 				{
 					gameover = true;
-					S_Sound("quit6",0);
+					S_Sound("announcer/hunters/gameover",CHAN_VOICE);
 				}
 				else
 				{
 					hunters_time--;
+					switch(hunters_time)
+					{
+						case 30: S_Sound("announcer/hunters/30secs",CHAN_VOICE); break;
+						case 10: S_Sound("announcer/hunters/10secs",CHAN_VOICE); break;
+						case 5: S_Sound("announcer/hunters/5secs",CHAN_VOICE); break;
+						case 4: S_Sound("announcer/hunters/4secs",CHAN_VOICE); break;
+						case 3: S_Sound("announcer/hunters/3secs",CHAN_VOICE); break;
+						case 2: S_Sound("announcer/hunters/2secs",CHAN_VOICE); break;
+						case 1: S_Sound("announcer/hunters/1secs",CHAN_VOICE); break;
+					}
 				}
 			}
 			
