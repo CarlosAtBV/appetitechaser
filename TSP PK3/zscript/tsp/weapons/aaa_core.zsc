@@ -18,19 +18,30 @@ Class TSP_Weapon_Core : DoomWeapon
 			&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<80)
 			{
 				int damageamount = mDamage;
+				int myMaxHealth = mo.GetSpawnHealth();
+				double stuntime;
+				// zombieman stun longer
+				// baron stun shorter
+				stuntime = 24*(40.0/myMaxHealth);
+				Console.Printf("stuntime: "..stuntime);
+				stuntime = max(4,stuntime);
+				Console.Printf("final stuntime: "..stuntime);
 				int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
 				if(mo.Health>0)
 				{
 					mo.SetStateLabel("Pain");
-					mo.A_SetTics(35*10);
+					mo.A_SetTics(stuntime);
 				}
 				for(int i = 0;i<3;i++)
 				{
 					Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
 					blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
 				}
-				mMaxHealth = mo.GetSpawnHealth();
 				mo.A_PlaySound("basicmelee/contact",CHAN_BODY);
+				if(myMaxHealth > mMaxHealth)
+				{
+					mMaxHealth = mo.GetSpawnHealth();
+				}
 				hashit=true;
 			}
 		}
