@@ -1,3 +1,29 @@
+Class TSP_EnemyHandler_OnHit : Thinker
+{
+	Actor owner;
+	
+	double oldZ;
+	
+	override void Tick(void)
+	{
+		if(owner.health<1)
+		{
+			Destroy();
+			return;
+		}
+		
+		if(owner.vel.z==oldZ)
+		{
+			owner.SetStateLabel("See");
+			Destroy();
+			return;
+		}
+		oldZ = owner.vel.z;
+
+		Super.Tick();
+	}
+}
+
 Class TSP_Weapon_Core : DoomWeapon
 {
 	// A_TSP_Melee(damage, range, puff, angle, pitch, flags)
@@ -27,6 +53,14 @@ Class TSP_Weapon_Core : DoomWeapon
 				// baron stun shorter
 				stuntime = 24*(40.0/myMaxHealth);
 				stuntime = max(4,stuntime);
+				
+				if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
+				{
+					stuntime = -1;
+					TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
+					handlerThing.owner = mo;
+					mo.A_PlaySound(mo.PainSound,CHAN_VOICE);
+				}
 				
 				double fugSin = sin(angle);
 				double fugCos = cos(angle);
