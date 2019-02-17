@@ -51,6 +51,11 @@ Class TSP_StatusScreen : StatusScreen
 			ss_textAlpha += 0.1;
 		}
 		
+		if(bcnt==13)
+		{
+			S_Sound("menu/prompt",0);
+		}
+		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
 		
 		if (accelerateStage)
