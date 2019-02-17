@@ -23,19 +23,22 @@ Class TSP_Weapon_Core : DoomWeapon
 				// zombieman stun longer
 				// baron stun shorter
 				stuntime = 24*(40.0/myMaxHealth);
-				Console.Printf("stuntime: "..stuntime);
 				stuntime = max(4,stuntime);
-				Console.Printf("final stuntime: "..stuntime);
 				int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
-				if(mo.Health>0)
+				//mo.A_Quake(2,4,0,750);
+				if(mo.resolveState("Pain")!=null&&mo.Health>0)
 				{
+					Console.Printf("CUM!");
 					mo.SetStateLabel("Pain");
 					mo.A_SetTics(stuntime);
 				}
-				for(int i = 0;i<3;i++)
+				if(!mo.bNoBlood)
 				{
-					Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
-					blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
+					for(int i = 0;i<3;i++)
+					{
+						Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
+						blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
+					}
 				}
 				mo.A_PlaySound("basicmelee/contact",CHAN_BODY);
 				if(myMaxHealth > mMaxHealth)
@@ -47,7 +50,6 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 		if(hashit)
 		{
-			A_Quake (2,5,0,750,0);
 			//A_PlaySound("flesh/hit",CHAN_WEAPON);
 			SoundAlert(invoker.owner);
 			A_SetTics(max(2,mMaxHealth/300));
