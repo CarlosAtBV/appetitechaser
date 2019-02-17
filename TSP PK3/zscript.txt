@@ -8,11 +8,42 @@ version "3.1.0"
 
 Class TSP_EventHandler : EventHandler
 {
+	TSP_Gamemode_Hunters hunterThinker;
+	
 	override void WorldLoaded(WorldEvent e)
 	{
 		if(CVar.GetCVar("tsp_gamemode",players[0]).GetInt()==1)
 		{
 			new("TSP_Gamemode_Hunters");
+		}
+	}
+	
+	override void WorldTick()
+	{
+		if(hunterThinker==null)
+		{
+			ThinkerIterator SecretFinder = ThinkerIterator.Create("TSP_Gamemode_Hunters");
+			TSP_Gamemode_Hunters mo;
+			while (mo = TSP_Gamemode_Hunters(SecretFinder.Next()))
+			{
+				if(mo!=null)
+				{
+					hunterThinker = mo;
+				}
+			}
+		}
+	}
+	
+	override void RenderOverlay(RenderEvent e)
+	{
+		if(hunterThinker!=null)
+		{
+			int time = hunterThinker.hunters_time;
+			int minutes = time/60;
+			time -= minutes*60;
+			int seconds = time;
+			string timer = minutes..":"..seconds;
+			screen.DrawText(BigFont, Font.CR_YELLOW, 160-BigFont.StringWidth(timer)/2, 4, timer, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
 	}
 }
