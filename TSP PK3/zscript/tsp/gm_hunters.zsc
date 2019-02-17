@@ -1,0 +1,37 @@
+Class TSP_Gamemode_Hunters : Thinker
+{
+	int spawndelay;
+	
+	override void PostBeginPlay()
+	{
+		ThinkerIterator SecretFinder = ThinkerIterator.Create("Actor");
+        Actor mo;
+		while (mo = Actor(SecretFinder.Next()))
+		{
+			if(mo!=null&&mo.bIsMonster)
+			{
+				mo.A_Die();
+				mo.Destroy();
+			}
+		}
+	}
+	
+	override void Tick()
+	{
+		if(spawndelay<1)
+		{
+			Vector3 spawnpos;
+			int spawnangle;
+			[spawnpos, spawnangle] = G_PickDeathmatchStart();
+			
+			Actor enemy = Actor.Spawn("ZombieMan",spawnpos);
+			Actor.Spawn("TeleportFog",spawnpos);
+			enemy.angle = spawnangle;
+			spawndelay = 35*5;
+		}
+		else
+		{
+			spawndelay--;
+		}
+	}
+}

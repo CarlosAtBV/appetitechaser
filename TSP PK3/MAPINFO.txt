@@ -22,6 +22,8 @@ gameinfo
   menufontcolor_highlight = "Blue"
   menufontcolor_selection = "LightBlue"
   menuslidercolor = "LightBlue"
+  
+	AddEventHandlers = "TSP_EventHandler"
 }
 
 map TITLEMAP "Into Burning Space"

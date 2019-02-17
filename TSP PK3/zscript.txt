@@ -2,18 +2,17 @@ version "3.1.0"
 
 #include "zscript/tsp/menu_items.zsc"
 
+#include "zscript/tsp/gm_hunters.zsc"
+
 #include "zscript/tsp/weapons/aaa_core.zsc"
 
 Class TSP_EventHandler : EventHandler
 {
-	/*override void WorldThingSpawned(WorldEvent e)
+	override void WorldLoaded(WorldEvent e)
 	{
-		switch(e.Thing.GetClassName())
+		if(CVar.GetCVar("tsp_gamemode",players[0]).GetInt()==1)
 		{
-			case 'BaronOfHell':
-			case 'HellKnight':
-				e.Thing.BloodColor = "DarkGreen";
-				break;
+			new("TSP_Gamemode_Hunters");
 		}
-	}*/
+	}
 }
