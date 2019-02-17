@@ -8,42 +8,139 @@ version "3.1.0"
 
 Class TSP_EventHandler : EventHandler
 {
+	bool gameover;
+	int spawndelay;
+	int hunters_wave;
+	int hunters_monsterMax;
+	
+	int hunters_score;
+	
+	int hunters_time;
+	
+	int hunters_endtimer;
+	
+	static const string hunters_demonSpawns[] =
+	{
+		"Zombieman",
+		"DoomImp",
+		"ShotgunGuy",
+		"Demon",
+		"ChaingunGuy",
+		"LostSoul",
+		"Spectre",
+		"Cacodemon",
+		"HellKnight"
+	};
+	
 	TSP_Gamemode_Hunters hunterThinker;
+	
+	int gamemode;
 	
 	override void WorldLoaded(WorldEvent e)
 	{
-		if(CVar.GetCVar("tsp_gamemode",players[0]).GetInt()==1)
+		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		
+		if(gamemode==1)
 		{
-			new("TSP_Gamemode_Hunters");
+			ThinkerIterator SecretFinder = ThinkerIterator.Create("Actor");
+			Actor mo;
+			while (mo = Actor(SecretFinder.Next()))
+			{
+				if(mo!=null)
+				{
+					if(mo.bIsMonster)
+					{
+						mo.A_Die();
+						mo.Destroy();
+					}
+					else if (mo is "Inventory")
+					{
+						Inventory itemActor = Inventory(mo);
+						itemActor.bAlwaysRespawn = true;
+						itemActor.bDropped = false;
+					}
+				}
+			}
+			hunters_time = 120;
+		}
+	}
+	
+	override void WorldThingDied(WorldEvent e)
+	{
+		if(e.Inflictor == players[0].mo)
+		{
+			Console.Printf("yes good");
+			hunters_score += e.Thing.SpawnHealth();
 		}
 	}
 	
 	override void WorldTick()
 	{
-		if(hunterThinker==null)
+		if(gamemode==0) return;
+		
+		if(!gameover)
 		{
-			ThinkerIterator SecretFinder = ThinkerIterator.Create("TSP_Gamemode_Hunters");
-			TSP_Gamemode_Hunters mo;
-			while (mo = TSP_Gamemode_Hunters(SecretFinder.Next()))
+			if(spawndelay<1)
 			{
-				if(mo!=null)
+				Vector3 spawnpos;
+				int spawnangle;
+				[spawnpos, spawnangle] = G_PickDeathmatchStart();
+				
+				Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos);
+				Actor.Spawn("TeleportFog",spawnpos);
+				enemy.angle = spawnangle;
+				hunters_wave++;
+				players[0].mo.SoundAlert(players[0].mo);
+				spawndelay = 35*5;
+				if(hunters_wave%5==0)
 				{
-					hunterThinker = mo;
+					hunters_monsterMax++;
 				}
+			}
+			else
+			{
+				spawndelay--;
+			}
+			
+			if(level.maptime%35==0)
+			{
+				if(hunters_time==0)
+				{
+					gameover = true;
+					S_Sound("quit6",0);
+				}
+				else
+				{
+					hunters_time--;
+				}
+			}
+		}
+		else
+		{
+			hunters_endtimer++;
+			if(hunters_endtimer>=(35*5))
+			{
+				players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
 			}
 		}
 	}
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		if(hunterThinker!=null)
+		if(gamemode == 1)
 		{
-			int time = hunterThinker.hunters_time;
+			int time = hunters_time;
 			int minutes = time/60;
 			time -= minutes*60;
-			int seconds = time;
+			string seconds = ""..time;
+			if(time<10)
+			{
+				seconds = "0"..seconds;
+			}
 			string timer = minutes..":"..seconds;
+			string scoredisplay = ""..hunters_score;
 			screen.DrawText(BigFont, Font.CR_YELLOW, 160-BigFont.StringWidth(timer)/2, 4, timer, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
 	}
 }

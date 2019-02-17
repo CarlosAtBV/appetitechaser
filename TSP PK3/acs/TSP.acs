@@ -1,0 +1,9 @@
+// [Py] new stuff
+
+#library "TSP"
+#include "zcommon.acs"
+
+Script "TSP_GotoNextLevel" (void)
+{
+	Exit_Normal(0);
+}

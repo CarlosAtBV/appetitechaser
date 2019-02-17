@@ -1,75 +1,11 @@
 Class TSP_Gamemode_Hunters : Thinker
 {
-	int spawndelay;
-	int hunters_wave;
-	int hunters_monsterMax;
-	
-	int hunters_time;
-	
-	static const string hunters_demonSpawns[] =
-	{
-		"Zombieman",
-		"DoomImp",
-		"ShotgunGuy",
-		"Demon",
-		"ChaingunGuy",
-		"LostSoul",
-		"Spectre",
-		"Cacodemon",
-		"HellKnight"
-	};
 	
 	override void PostBeginPlay()
 	{
-		ThinkerIterator SecretFinder = ThinkerIterator.Create("Actor");
-        Actor mo;
-		while (mo = Actor(SecretFinder.Next()))
-		{
-			if(mo!=null)
-			{
-				if(mo.bIsMonster)
-				{
-					mo.A_Die();
-					mo.Destroy();
-				}
-				else if (mo is "Inventory")
-				{
-					Inventory itemActor = Inventory(mo);
-					itemActor.bAlwaysRespawn = true;
-					itemActor.bDropped = false;
-				}
-			}
-		}
-		hunters_time = 120;
 	}
 	
 	override void Tick()
 	{
-		if(spawndelay<1)
-		{
-			Vector3 spawnpos;
-			int spawnangle;
-			[spawnpos, spawnangle] = G_PickDeathmatchStart();
-			
-			Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos);
-			Actor.Spawn("TeleportFog",spawnpos);
-			enemy.angle = spawnangle;
-			hunters_wave++;
-			players[0].mo.SoundAlert(players[0].mo);
-			spawndelay = 35*5;
-			if(hunters_wave%5==0)
-			{
-				hunters_monsterMax++;
-			}
-		}
-		else
-		{
-			spawndelay--;
-		}
-		
-		if(level.maptime%35==0)
-		{
-			hunters_time--;
-		}
 	}
 }
