@@ -75,8 +75,7 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
-		Console.Printf(e.Inflictor.." fug");
-		if(e.Inflictor == players[0].mo)
+		if(e.Thing.target == players[0].mo)
 		{
 			hunters_score += e.Thing.SpawnHealth()*max(1,hunters_combo);
 			hunters_combo++;
@@ -90,6 +89,15 @@ Class TSP_EventHandler : EventHandler
 		
 		if(!gameover)
 		{
+			if(hunters_combotime>0)
+			{
+				hunters_combotime--;
+			}
+			else if(hunters_combo>0)
+			{
+				hunters_combo = 0;
+			}
+			
 			if(spawndelay<1)
 			{
 				Vector3 spawnpos;
@@ -139,15 +147,6 @@ Class TSP_EventHandler : EventHandler
 					}
 				}
 			}
-			
-			if(hunters_combotime>0)
-			{
-				hunters_combotime--;
-			}
-			else if(hunters_combo>0)
-			{
-				hunters_combo = 0;
-			}
 		}
 		else
 		{
@@ -161,8 +160,15 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
+		TextureID combobar_bg = TexMan.CheckForTexture("HUD_ABR2",TexMan.Type_MiscPatch);
+		TextureID combobar_fg = TexMan.CheckForTexture("HUD_ABR1",TexMan.Type_MiscPatch);
+		
 		if(gamemode == 1)
 		{
+			double thingwidth = 61*(hunters_combotime/double(35*10));
+			screen.DrawTexture (combobar_bg, true, 160-31, 32, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawTexture (combobar_fg, true, 160-31, 32, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_WindowRightF, 0+thingwidth);
+			
 			int time = hunters_time;
 			int minutes = time/60;
 			time -= minutes*60;
