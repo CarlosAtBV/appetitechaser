@@ -8,6 +8,12 @@ Class TSP_StatusScreen : StatusScreen
 	
 	double ss_textAlpha;
 	
+	static const string ss_tallyLeft[] =
+	{
+		"Kills:","Items:","Secrets:","Clear Time:"
+	};
+	int ss_tallyRight[4];
+	
 	override void initStats ()
 	{
 		intermissioncounter = gameinfo.intermissioncounter;
@@ -21,6 +27,11 @@ Class TSP_StatusScreen : StatusScreen
 		cnt_total_time = -1;
 		
 		ss_levelName = level.LevelName;
+		
+		ss_tallyRight[0] = level.killed_monsters;
+		ss_tallyRight[1] = level.found_items;
+		ss_tallyRight[2] = level.found_secrets;
+		ss_tallyRight[3] = level.totaltime;
 	}
 	
 	override void Ticker(void)
@@ -33,12 +44,20 @@ Class TSP_StatusScreen : StatusScreen
 			StartMusic();
 		}
 		
+		checkForAccelerate();
+		
 		if(bcnt>12)
 		{
 			ss_textAlpha += 0.1;
 		}
 		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
+		
+		if (accelerateStage)
+		{
+			End();
+			level.WorldDone();
+		}
 	}
 
 	override void updateStats ()
@@ -49,17 +68,25 @@ Class TSP_StatusScreen : StatusScreen
 	{
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
 		screen.DrawTexture (spacebg, true, 160+ss_bgPos.x, 120+ss_bgPos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
+		
+		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(108.0/240.0), screen.GetWidth(), screen.GetHeight()*(116.0/240.0));
+		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(16.0/240.0), screen.GetWidth(), screen.GetHeight()*(32.0/240.0));
+		
 		screen.DrawText(BigFont, Font.CR_WHITE, 160-BigFont.StringWidth(ss_levelName)/2, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth("Finished!")/2, 20+BigFont.GetHeight()+2, "Finished!", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		
 		int yoff = 0;
 		screen.DrawText(SmallFont, Font.CR_WHITE, 16, 112+yoff, "Kills:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[0]), 112+yoff, ""..ss_tallyRight[0], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 		screen.DrawText(SmallFont, Font.CR_WHITE, 16, 112+yoff, "Items:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[1]), 112+yoff, ""..ss_tallyRight[1], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 		screen.DrawText(SmallFont, Font.CR_WHITE, 16, 112+yoff, "Secrets:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[2]), 112+yoff, ""..ss_tallyRight[2], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 		screen.DrawText(SmallFont, Font.CR_WHITE, 16, 112+yoff, "Clear Time:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[3]), 112+yoff, ""..ss_tallyRight[3], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 	}
 }
