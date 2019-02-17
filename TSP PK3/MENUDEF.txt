@@ -11,12 +11,21 @@ LISTMENU "MainMenu"
 	Position 90, 15
 	Linespacing 29
 		
-	PatchItem "SP_NGAME",  "n",	"PlayerclassMenu"
+	PatchItem "SP_NGAME",  "n",	"TSP_GameModeMenu"
 	PatchItem "SP_CONF",	     "o",	"OptionsMenu2"
 	PatchItem "SP_RTHS",         "h",   "ReadThisMenu"
 	PatchItem "SP_LOAD",         "l",	"LoadGameMenu"
 	PatchItem "SP_SAVE",         "s",	"SaveGameMenu"
 	PatchItem "SP_QUIT",	 "q",	"QuitMenu"
+}
+
+ListMenu "TSP_GameModeMenu"
+{
+	Selector "M_SPSEL", -22, 0
+	StaticTextCentered 160, 15, "SELECT GAMEMODE FUCKER"
+	Position 16, 64
+	TSP_MenuItem_GamemodeItem "$TSP_GAMEMODE_DEFAULT", "D", "PlayerclassMenu", 0
+	TSP_MenuItem_GamemodeItem "$TSP_GAMEMODE_HUNTERS", "B", "PlayerclassMenu", 1
 }
 
 ListMenu "SkillMenu"

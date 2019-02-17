@@ -1,0 +1,21 @@
+Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTextItem
+{
+	String mText;
+	Font mFont;
+	int mColor;
+	int mColorSelected;
+	
+	override bool Activate()
+	{
+		CVar.GetCVar("tsp_gamemode", players[0]).SetInt(mParam);
+		Console.Printf("[\cbDEBUG\c-] set gamemode to \ck"..mParam);
+		Menu.SetMenu("PlayerClassMenu",mParam);
+		return true;
+	}
+	
+	/*override void Drawer(bool selected)
+	{
+		Console.Printf(mText);
+		screen.DrawText(mFont, selected ? mColorSelected : mColor, mXpos, mYpos, mText, DTA_Clean, true);
+	}*/
+}

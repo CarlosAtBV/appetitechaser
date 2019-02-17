@@ -1,0 +1,4 @@
+[enu default]
+
+TSP_GAMEMODE_DEFAULT = "Gaming Mode";
+TSP_GAMEMODE_HUNTERS = "Bounty Hunters";

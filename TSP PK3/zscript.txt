@@ -1,5 +1,7 @@
 version "3.1.0"
 
+#include "zscript/tsp/menu_items.zsc"
+
 #include "zscript/tsp/weapons/aaa_core.zsc"
 
 Class TSP_EventHandler : EventHandler
