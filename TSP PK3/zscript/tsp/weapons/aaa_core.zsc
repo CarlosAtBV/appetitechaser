@@ -1,3 +1,28 @@
+Class TSP_ThinkerFreezer : Thinker
+{
+	int timeleft;
+	
+	override void PostBeginPlay(void)
+	{
+		level.frozen = true;
+	}
+	
+	override void Tick(void)
+	{
+		if(timeleft>0)
+		{
+			timeleft--;
+		}
+		else
+		{
+			level.frozen = false;
+			Destroy();
+		}
+
+		Super.Tick();
+	}
+}
+
 Class TSP_EnemyHandler_OnHit : Thinker
 {
 	Actor owner;
@@ -90,10 +115,11 @@ Class TSP_Weapon_Core : DoomWeapon
 					}
 					mo.A_PlaySound(epicPuffy_sound,CHAN_BODY);
 					
-					if(myMaxHealth > mMaxHealth)
+					/*if(myMaxHealth > mMaxHealth)
 					{
 						mMaxHealth = mo.GetSpawnHealth();
-					}
+					}*/
+					mMaxHealth += mo.GetSpawnHealth();
 					hashit=true;
 				}
 			}
@@ -102,6 +128,8 @@ Class TSP_Weapon_Core : DoomWeapon
 				//A_PlaySound("flesh/hit",CHAN_WEAPON);
 				SoundAlert(invoker.owner);
 				A_SetTics(max(2,mMaxHealth/300));
+				TSP_ThinkerFreezer freeza = new("TSP_ThinkerFreezer");
+				freeza.timeleft = max(2,mMaxHealth/300);
 			}
 			else
 			{

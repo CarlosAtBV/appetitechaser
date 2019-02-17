@@ -144,10 +144,10 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_Recoil(-15)
 	MLGC ABC 1
     TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"HornetBerserk")
-    MLGC D 1 A_CustomPunch(60,0,0,"MagDivePuff",90)
+    MLGC D 1 A_TSP_Melee(60+1+1+1,90,"MagDivePuff")/*A_CustomPunch(60,0,0,"MagDivePuff",90)
     TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
     TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
-    TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)*/
     Goto HornetA
   HornetBerserk:
     MLGC D 1 A_CustomPunch(120,0,0,"MagDivePuff",90)
