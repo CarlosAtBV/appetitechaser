@@ -9,6 +9,7 @@ Actor TraitPressed : Boolean {}
 Actor PlayingPickupSound : Boolean {}
 
 // [Py] poo poo pee pee
+// [MK] you fool
 
 Actor StartMelee : CustomInventory
 {
@@ -20,7 +21,6 @@ Actor StartMelee : CustomInventory
   {
   Use:
     TNT1 A 0 A_GiveInventory("MeleePressed", 1)
-    TNT1 A 0 A_GiveInventory("MakeHellFireBurst", 1)
     Fail
   }
 }
@@ -35,7 +35,6 @@ Actor StopMelee : CustomInventory
   {
   Use:
     TNT1 A 0 A_TakeInventory("MeleePressed", 1)
-    TNT1 A 0 A_TakeInventory("MakeHellFireBurst", 1)
     Fail
   }
 }
@@ -68,6 +67,7 @@ Actor StopTrait : CustomInventory
   }
 }
 
+// This will get rewritten soon!
 
 // Weapon sprites are like such!
 // 1111A0
@@ -96,7 +96,7 @@ ACTOR WeaponSelectMemory : Inventory
   // 221 = Robomel 917 Pistol
   Inventory.MaxAmount 999
 }
-
+/*
 Actor MeleeButtonActor : CustomInventory
 {
   -INVBAR
@@ -153,7 +153,7 @@ Actor MeleeButtonActor : CustomInventory
     Fail
   }
 }
-
+*/
 Actor MeleeSelected : Boolean {}
 
 //Characters
@@ -171,7 +171,7 @@ Actor MeleeSelected : Boolean {}
 
 //The rest
 #include "Actors/DEC_SFX.txt" //Special Effects (Casings, Smoke, Etc.)
-#include "Actors/DEC_WEP_PICKUPS.txt" //Weapon pickups and such
+//#include "Actors/DEC_WEP_PICKUPS.txt" //Weapon pickups and such
 
 ///////////////////////////////////////////////////////
 // Weapons
