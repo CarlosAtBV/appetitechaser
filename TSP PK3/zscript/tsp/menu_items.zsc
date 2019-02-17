@@ -5,6 +5,9 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 	int mColor;
 	int mColorSelected;
 	
+	double xOff;
+	int xOffOriginal;
+	
 	override bool Activate()
 	{
 		CVar.GetCVar("tsp_gamemode", players[0]).SetInt(mParam);
@@ -13,9 +16,14 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 		return true;
 	}
 	
-	/*override void Drawer(bool selected)
+	override void Drawer(bool selected)
 	{
-		Console.Printf(mText);
-		screen.DrawText(mFont, selected ? mColorSelected : mColor, mXpos, mYpos, mText, DTA_Clean, true);
-	}*/
+		if(xOffOriginal==0)
+		{
+			xOffOriginal = mXpos;
+		}
+		xOff = xOff + ((16*selected) - xOff)/5;
+		mXpos = xOffOriginal+xOff;
+		super.Drawer(selected);
+	}
 }

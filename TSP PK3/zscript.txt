@@ -104,7 +104,7 @@ Class TSP_EventHandler : EventHandler
 				int spawnangle;
 				[spawnpos, spawnangle] = G_PickDeathmatchStart();
 				
-				if(random(1,2)==2)
+				if(random(1,2)==2&&hunters_demonSpawnPoints.Size()!=0)
 				{
 					spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
 				}
