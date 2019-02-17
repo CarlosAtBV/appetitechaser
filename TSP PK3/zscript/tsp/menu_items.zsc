@@ -1,4 +1,4 @@
-Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTextItem
+Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 {
 	String mText;
 	Font mFont;

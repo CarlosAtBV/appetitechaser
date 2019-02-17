@@ -24,8 +24,8 @@ ListMenu "TSP_GameModeMenu"
 	StaticPatch 103, 39, "SPMODE"
 	Position 16, 15
 	Linespacing 29
-	TSP_MenuItem_GamemodeItem "$TSP_GAMEMODE_DEFAULT", "D", "PlayerclassMenu", 0
-	TSP_MenuItem_GamemodeItem "$TSP_GAMEMODE_HUNTERS", "B", "PlayerclassMenu", 1
+	TSP_MenuItem_GamemodeItem "SPMODE1", "D", "PlayerclassMenu", 0
+	TSP_MenuItem_GamemodeItem "SPMODE2", "B", "PlayerclassMenu", 1
 }
 
 ListMenu "SkillMenu"
