@@ -1,6 +1,20 @@
 Class TSP_Gamemode_Hunters : Thinker
 {
 	int spawndelay;
+	int hunters_wave;
+	
+	static const string hunters_demonSpawns[] =
+	{
+		"Zombieman",
+		"DoomImp",
+		"ShotgunGuy",
+		"Demon",
+		"ChaingunGuy",
+		"LostSoul",
+		"Spectre",
+		"Cacodemon",
+		"HellKnight"
+	};
 	
 	override void PostBeginPlay()
 	{
@@ -8,10 +22,21 @@ Class TSP_Gamemode_Hunters : Thinker
         Actor mo;
 		while (mo = Actor(SecretFinder.Next()))
 		{
-			if(mo!=null&&mo.bIsMonster)
+			if(mo!=null)
 			{
-				mo.A_Die();
-				mo.Destroy();
+				if(mo.bIsMonster)
+				{
+					mo.A_Die();
+					mo.Destroy();
+				}
+				else if (mo is "Inventory")
+				{
+					Inventory itemActor = Inventory(mo);
+					itemActor.bAlwaysRespawn = true;
+					/*itemActor.bAlwaysRespawn = true;
+					itemActor.RespawnTics = 5;
+					Console.Printf(""..itemActor.bAlwaysRespawn);*/
+				}
 			}
 		}
 	}
@@ -24,9 +49,10 @@ Class TSP_Gamemode_Hunters : Thinker
 			int spawnangle;
 			[spawnpos, spawnangle] = G_PickDeathmatchStart();
 			
-			Actor enemy = Actor.Spawn("ZombieMan",spawnpos);
+			Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_wave,hunters_demonSpawns.Size()-1))],spawnpos);
 			Actor.Spawn("TeleportFog",spawnpos);
 			enemy.angle = spawnangle;
+			hunters_wave++;
 			spawndelay = 35*5;
 		}
 		else
