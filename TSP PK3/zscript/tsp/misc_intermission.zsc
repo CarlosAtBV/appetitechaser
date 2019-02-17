@@ -1,0 +1,26 @@
+Class TSP_StatusScreen : StatusScreen
+{
+	int intermissioncounter;
+	
+	override void initStats ()
+	{
+		intermissioncounter = gameinfo.intermissioncounter;
+		CurState = StatCount;
+		acceleratestage = 0;
+		sp_state = 1;
+		cnt_kills[0] = cnt_items[0] = cnt_secret[0] = -1;
+		cnt_time = cnt_par = -1;
+		cnt_pause = Thinker.TICRATE;
+	
+		cnt_total_time = -1;
+	}
+
+	override void updateStats ()
+	{
+	}
+
+	override void drawStats (void)
+	{
+		screen.DrawText(BigFont, Font.CR_WHITE, 160-BigFont.StringWidth("CUM")/2, 4, "CUM", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+	}
+}

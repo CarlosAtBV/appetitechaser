@@ -16,7 +16,7 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 		return true;
 	}
 	
-	override void Drawer(bool selected)
+	/*override void Drawer(bool selected)
 	{
 		if(xOffOriginal==0)
 		{
@@ -25,5 +25,5 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 		xOff = xOff + ((16*selected) - xOff)/5;
 		mXpos = xOffOriginal+xOff;
 		super.Drawer(selected);
-	}
+	}*/
 }

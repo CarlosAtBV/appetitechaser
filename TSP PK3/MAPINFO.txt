@@ -24,6 +24,7 @@ gameinfo
   menuslidercolor = "LightBlue"
   
 	AddEventHandlers = "TSP_EventHandler"
+	StatScreen_Single = "TSP_StatusScreen"
 }
 
 map TITLEMAP "Into Burning Space"
