@@ -1,12 +1,5 @@
-//===========
-// Menu Stuff
-//===========
-
-REMAP SP_HEDR M_TSPHD
-
 //================
 // Character Icons
 //================
 
 REMAP Mel_Port Mel_PHD
-REMAP Rel_Port Rel_PHD
