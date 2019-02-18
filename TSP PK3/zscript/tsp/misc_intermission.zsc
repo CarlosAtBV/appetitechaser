@@ -39,7 +39,7 @@ Class TSP_StatusScreen : StatusScreen
 		ss_tallyRight[2] = level.found_secrets;
 		ss_tallyRight[3] = level.totaltime;
 		
-		int time = level.totaltime;
+		int time = level.totaltime/35;
 		
 		int hours = time/3600;
 		time -= hours*3600;
