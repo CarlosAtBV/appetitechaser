@@ -1,4 +1,4 @@
-ACTOR SpacePirate : DoomPlayer
+ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
 {
   Player.ViewHeight 47
   Player.AttackZOffset 20

@@ -10,6 +10,8 @@ version "3.1.0"
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
 Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.
 
+#include "zscript/tsp/misc_player.zsc"
+
 Class TSP_EventHandler : EventHandler
 {
 	bool gameover;
