@@ -24,9 +24,13 @@ Class TSP_StatusScreen : StatusScreen
 		"E","D","C","B","A","S"
 	};
 	
+	bool ss_missionFailed;
+	string ss_missionStatus;
+	
 	override void initStats ()
 	{
 		int gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
+		Console.Printf(""..players[0].mo.health);
 		
 		intermissioncounter = gameinfo.intermissioncounter;
 		CurState = StatCount;
@@ -90,6 +94,13 @@ Class TSP_StatusScreen : StatusScreen
 		+(double(level.found_secrets)/max(1,level.total_secrets));
 		
 		ss_rankCalc = int(ss_ranks.Size()*(ss_rankCalc/4));
+		
+		ss_missionStatus = "Mission Complete!";
+		if(players[0].mo.health<0)
+		{
+			ss_missionFailed = true;
+			ss_missionStatus = "Mission Failed!";
+		}
 	}
 	
 	override void Ticker(void)
@@ -133,23 +144,30 @@ Class TSP_StatusScreen : StatusScreen
 	{
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
 		TextureID melbg = TexMan.CheckForTexture("TESTMEL2",TexMan.Type_MiscPatch);
+		
+		Color secondColor = Font.FindFontColor("TSPGreen");
+		if(ss_missionFailed)
+		{
+			secondColor = Font.FindFontColor("TSPRed");
+		}
+		
 		screen.DrawTexture (spacebg, true, 160+ss_bgPos.x, 0+ss_bgPos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
 		
 		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(108.0/240.0), screen.GetWidth(), screen.GetHeight()*(116.0/240.0));
 		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(16.0/240.0), screen.GetWidth(), screen.GetHeight()*(32.0/240.0));
 		
-		screen.DrawTexture (melbg, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawTexture (melbg, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Desaturate, ss_missionFailed ? 255 : 0);
 		
 		screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
-		screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), 24, 20+BigFont.GetHeight()+2, "Mission Complete!", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		
 		for(int i = 0;i<4;i++)
 		{
-			screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+			screen.DrawText(SmallFont, secondColor, 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 			screen.DrawText(SmallFont, Font.CR_WHITE, SS_RIGHTSTATSX-SmallFont.StringWidth(""..ss_tallyRight[i]), 112+18*i, ""..ss_tallyRight[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		}
 		
-		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen"), 8, 188, "Rank:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(BigFont, secondColor, 8, 188, "Rank:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		screen.DrawText(BigFont, Font.CR_WHITE, SS_RIGHTSTATSX+8-BigFont.StringWidth(ss_ranks[ss_rankCalc]), 188, ss_ranks[ss_rankCalc], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 	}
 }

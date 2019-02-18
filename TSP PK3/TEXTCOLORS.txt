@@ -7,6 +7,10 @@ Console:
 Flat:
 	#5da590
 }
+TSPRed
+{
+	#460b0b  #c72424
+}
 
 Mel
 {
