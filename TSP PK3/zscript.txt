@@ -7,6 +7,8 @@ version "3.1.0"
 
 #include "zscript/tsp/weapons/aaa_core.zsc"
 
+Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
+
 Class TSP_EventHandler : EventHandler
 {
 	bool gameover;
@@ -79,6 +81,7 @@ Class TSP_EventHandler : EventHandler
 		if(e.Thing.target == players[0].mo)
 		{
 			players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
+			players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
 			hunters_combo++;
 			hunters_combotime = 10*35;
 		}

@@ -1,3 +1,5 @@
+//todo: clear inventory on map start for bounty hunters
+
 Class TSP_StatusScreen : StatusScreen
 {
 	int intermissioncounter;
@@ -76,7 +78,7 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyLeft[1] = "Max. Combo:";
 				ss_tallyLeft[2] = "Score:";
 				ss_tallyLeft[3] = "----:";
-				ss_tallyRight[0] = ""..level.killed_monsters;
+				ss_tallyRight[0] = ""..players[0].mo.CountInv("TSP_Hunters_Kills");
 				ss_tallyRight[1] = "----";
 				ss_tallyRight[2] = ""..players[0].mo.score;
 				ss_tallyRight[3] = "----";
