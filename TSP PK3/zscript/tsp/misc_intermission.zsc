@@ -14,10 +14,7 @@ Class TSP_StatusScreen : StatusScreen
 	
 	double ss_rankCalc;
 	
-	static const string ss_tallyLeft[] =
-	{
-		"Kills:","Items:","Secrets:","Clear Time:"
-	};
+	string ss_tallyLeft[4];
 	string ss_tallyRight[4];
 	
 	static const string ss_ranks[] =
@@ -27,6 +24,8 @@ Class TSP_StatusScreen : StatusScreen
 	
 	override void initStats ()
 	{
+		int gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
+		
 		intermissioncounter = gameinfo.intermissioncounter;
 		CurState = StatCount;
 		acceleratestage = 0;
@@ -37,11 +36,9 @@ Class TSP_StatusScreen : StatusScreen
 	
 		cnt_total_time = -1;
 		
-		ss_levelName = level.LevelName;
+		//
 		
-		ss_tallyRight[0] = level.killed_monsters.." / "..level.total_monsters;
-		ss_tallyRight[1] = level.found_items.." / "..level.total_items;
-		ss_tallyRight[2] = level.found_secrets.." / "..level.total_secrets;
+		ss_levelName = level.LevelName;
 		
 		int time = level.totaltime/35;
 		
@@ -62,15 +59,35 @@ Class TSP_StatusScreen : StatusScreen
 			ss_seconds = "0"..ss_seconds;
 		}
 		
-		ss_tallyRight[3] = ss_hours..":"..ss_minutes..":"..ss_seconds;
+		switch(gamemode)
+		{
+			case 0:
+				ss_tallyLeft[0] = "Kills:";
+				ss_tallyLeft[1] = "Items:";
+				ss_tallyLeft[2] = "Secrets:";
+				ss_tallyLeft[3] = "Clear Time:";
+				ss_tallyRight[0] = level.killed_monsters.." / "..level.total_monsters;
+				ss_tallyRight[1] = level.found_items.." / "..level.total_items;
+				ss_tallyRight[2] = level.found_secrets.." / "..level.total_secrets;
+				ss_tallyRight[3] = ss_hours..":"..ss_minutes..":"..ss_seconds;
+				break;
+			case 1:
+				ss_tallyLeft[0] = "Kills:";
+				ss_tallyLeft[1] = "Max. Combo:";
+				ss_tallyLeft[2] = "Score:";
+				ss_tallyLeft[3] = "----:";
+				ss_tallyRight[0] = ""..level.killed_monsters;
+				ss_tallyRight[1] = "----";
+				ss_tallyRight[2] = ""..players[0].mo.score;
+				ss_tallyRight[3] = "----";
+				break;
+		}
 		
 		ss_rankCalc = (double(level.killed_monsters)/max(1,level.total_monsters))
 		+(double(level.found_items)/max(1,level.total_items))
 		+(double(level.found_secrets)/max(1,level.total_secrets));
-		Console.Printf(""..ss_rankCalc/4);
 		
 		ss_rankCalc = int(ss_ranks.Size()*(ss_rankCalc/4));
-		Console.Printf(""..ss_rankCalc);
 	}
 	
 	override void Ticker(void)
@@ -97,7 +114,7 @@ Class TSP_StatusScreen : StatusScreen
 		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
 		
-		if(bcnt>12accelerateStage)
+		if(bcnt>12 && accelerateStage)
 		{
 			End();
 			level.WorldDone();

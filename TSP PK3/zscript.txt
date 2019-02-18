@@ -78,7 +78,7 @@ Class TSP_EventHandler : EventHandler
 	{
 		if(e.Thing.target == players[0].mo)
 		{
-			hunters_score += e.Thing.SpawnHealth()*max(1,hunters_combo);
+			players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
 			hunters_combo++;
 			hunters_combotime = 10*35;
 		}
@@ -161,6 +161,8 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
+		if(players[0].mo == null) return;
+		
 		TextureID combobar_bg = TexMan.CheckForTexture("HUD_ABR2",TexMan.Type_MiscPatch);
 		TextureID combobar_fg = TexMan.CheckForTexture("HUD_ABR1",TexMan.Type_MiscPatch);
 		
@@ -179,7 +181,7 @@ Class TSP_EventHandler : EventHandler
 				seconds = "0"..seconds;
 			}
 			string timer = minutes..":"..seconds;
-			string scoredisplay = ""..hunters_score;
+			string scoredisplay = ""..players[0].mo.score;
 			
 			if(hunters_combo>1)
 			{
