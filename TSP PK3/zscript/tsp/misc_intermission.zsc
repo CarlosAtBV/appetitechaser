@@ -97,7 +97,7 @@ Class TSP_StatusScreen : StatusScreen
 		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
 		
-		if (accelerateStage)
+		if(bcnt>12accelerateStage)
 		{
 			End();
 			level.WorldDone();
