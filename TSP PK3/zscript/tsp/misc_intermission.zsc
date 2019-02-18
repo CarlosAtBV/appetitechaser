@@ -79,7 +79,7 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyLeft[2] = "Score:";
 				ss_tallyLeft[3] = "----:";
 				ss_tallyRight[0] = ""..players[0].mo.CountInv("TSP_Hunters_Kills");
-				ss_tallyRight[1] = "----";
+				ss_tallyRight[1] = ""..players[0].mo.CountInv("TSP_Hunters_MaxCombo");
 				ss_tallyRight[2] = ""..players[0].mo.score;
 				ss_tallyRight[3] = "----";
 				break;

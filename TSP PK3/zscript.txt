@@ -8,6 +8,7 @@ version "3.1.0"
 #include "zscript/tsp/weapons/aaa_core.zsc"
 
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
+Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.
 
 Class TSP_EventHandler : EventHandler
 {
@@ -41,6 +42,8 @@ Class TSP_EventHandler : EventHandler
 	TSP_Gamemode_Hunters hunterThinker;
 	
 	int gamemode;
+	
+	int hunters_maxCombo;
 	
 	array<TSP_Hunters_SpawnPoint > hunters_demonSpawnPoints;
 	
@@ -99,6 +102,10 @@ Class TSP_EventHandler : EventHandler
 			}
 			else if(hunters_combo>0)
 			{
+				if(hunters_combo>hunters_maxCombo)
+				{
+					hunters_maxCombo = hunters_combo;
+				}
 				hunters_combo = 0;
 			}
 			
@@ -131,8 +138,13 @@ Class TSP_EventHandler : EventHandler
 			
 			if(level.maptime%35==0)
 			{
-				if(hunters_time==0)
+				if(hunters_time==0||players[0].mo.health<1)
 				{
+					if(hunters_combo>hunters_maxCombo)
+					{
+						hunters_maxCombo = hunters_combo;
+						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
+					}
 					gameover = true;
 					S_Sound("announcer/hunters/gameover",CHAN_VOICE);
 				}
