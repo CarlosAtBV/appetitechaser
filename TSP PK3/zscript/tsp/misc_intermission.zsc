@@ -8,11 +8,17 @@ Class TSP_StatusScreen : StatusScreen
 	
 	double ss_textAlpha;
 	
+	string ss_hours;
+	string ss_minutes;
+	string ss_seconds;
+	
 	static const string ss_tallyLeft[] =
 	{
 		"Kills:","Items:","Secrets:","Clear Time:"
 	};
 	int ss_tallyRight[4];
+	
+	string ss_clearTime;
 	
 	override void initStats ()
 	{
@@ -32,6 +38,27 @@ Class TSP_StatusScreen : StatusScreen
 		ss_tallyRight[1] = level.found_items;
 		ss_tallyRight[2] = level.found_secrets;
 		ss_tallyRight[3] = level.totaltime;
+		
+		int time = level.totaltime;
+		
+		int hours = time/3600;
+		time -= hours*3600;
+		int minutes = time/60;
+		time -= minutes*60;
+		
+		ss_hours = ""..hours;
+		ss_minutes = ""..minutes;
+		if(minutes<10)
+		{
+			ss_minutes = "0"..ss_minutes;
+		}
+		ss_seconds = ""..time;
+		if(time<10)
+		{
+			ss_seconds = "0"..ss_seconds;
+		}
+		
+		ss_clearTime = ss_hours..":"..ss_minutes..":"..ss_seconds;
 	}
 	
 	override void Ticker(void)
@@ -91,7 +118,7 @@ Class TSP_StatusScreen : StatusScreen
 		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[2]), 112+yoff, ""..ss_tallyRight[2], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 		screen.DrawText(SmallFont, Font.CR_WHITE, 16, 112+yoff, "Clear Time:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
-		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(""..ss_tallyRight[3]), 112+yoff, ""..ss_tallyRight[3], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 304-SmallFont.StringWidth(ss_clearTime), 112+yoff, ss_clearTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		yoff += 18;
 	}
 }
