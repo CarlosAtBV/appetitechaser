@@ -145,8 +145,8 @@ Class TSP_EventHandler : EventHandler
 					if(hunters_combo>hunters_maxCombo)
 					{
 						hunters_maxCombo = hunters_combo;
-						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
 					}
+					players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
 					gameover = true;
 					S_Sound("announcer/hunters/gameover",CHAN_VOICE);
 				}
