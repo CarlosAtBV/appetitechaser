@@ -42,6 +42,22 @@ $random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
 uppercutmelee/contact1 umlhit1
 uppercutmelee/contact2 umlhit2
 
+/////////
+// MEL
+/////////
+
+// Slot 2: DARLING NIKKI
+// SOUND CREDITS/SOURCES: 
+// [FIRING]
+// - The Chronicles of Riddick: Assault on Dark Athena
+// - PlanetSide 2
+// - Sniper Elite 3
+
+$random nikki/firea { nikki/firea1 nikki/firea2 nikki/firea3 }
+nikki/firea1 121AFR1
+nikki/firea2 121AFR2
+nikki/firea3 121AFR3
+
 //MA919m Pistol, 919m Gold, 917 Pistol
 $random 919m/fire { 919m/fire1 919m/fire2 919m/fire3 }
 919m/fire1 PSTFR1

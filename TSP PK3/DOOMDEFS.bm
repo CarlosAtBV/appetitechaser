@@ -1,0 +1,18 @@
+//===========================================================================
+// MEL
+//===========================================================================
+// TRAIT
+
+// DARLING NIKKI
+
+BrightMap Sprite 121FA0
+{
+  map "brightmaps\weapons\Mel\Darling Nikki\bm121FA"
+  DisableFullBright
+}
+
+BrightMap Sprite 121FB0
+{
+  map "brightmaps\weapons\Mel\Darling Nikki\bm121FB"
+  DisableFullBright
+}

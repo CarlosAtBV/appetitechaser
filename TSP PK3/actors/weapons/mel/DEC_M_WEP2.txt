@@ -4,7 +4,14 @@
 //
 // by Cardboard Marty
 // Sprites by Cardboard Marty
-// 
+// Additional sprites by Jetplane (Flashes)
+// Model Bases:
+// - 2019 Detective Special: ported by Programmer Network
+//   * Model by Toasty Fresh 
+// - Atlas 45 (Custom) and Atlas 45 (Default): ported by Kalash
+//   * From "Call of Duty: Advanced Warfare"
+// - AE4 HMG Short: ported by Kalash, from
+//   * From "Call of Duty: Advanced Warfare"
 //
 //===========================================================================
 
@@ -64,7 +71,7 @@ ACTOR MelPistol : TSPMelLightWeapon
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_AlertMonsters
     121F A 1 A_GunFlash
-    TNT1 A 0 A_PlaySound("919m/fire", 6)
+    TNT1 A 0 A_PlaySound("nikki/firea", 6)
     TNT1 A 0 A_Light2
     121F B 1 BRIGHT A_FireBullets(3,2,-1,8,"BulletPuff",1)
     121F C 1 BRIGHT A_Light1
