@@ -77,6 +77,19 @@ Class TSP_EventHandler : EventHandler
 					}
 				}
 			}
+			
+			let player = players[0].mo;
+			if(player!=null)
+			{
+				player.score = 0;
+				player.ClearInventory();
+				player.GiveDefaultInventory();
+				if(player.health>0)
+				{
+					player.health = player.player.health = player.SpawnHealth();
+				}
+			}
+			
 			hunters_time = 120;
 		}
 	}
