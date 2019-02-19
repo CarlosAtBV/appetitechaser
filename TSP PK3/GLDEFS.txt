@@ -1,4 +1,23 @@
 //===========================================================================
+// MEL
+//===========================================================================
+// TRAIT
+
+// DARLING NIKKI
+
+BrightMap Sprite 121FA0
+{
+  map "brightmaps/weapons/Mel/Darling Nikki/bm121FA.png"
+  DisableFullBright
+}
+
+BrightMap Sprite 121FB0
+{
+  map "brightmaps/weapons/Mel/Darling Nikki/bm121FB.png"
+  DisableFullBright
+}
+
+//===========================================================================
 // Megasphere
 //===========================================================================
 pulselight TSPMEGASPHERE

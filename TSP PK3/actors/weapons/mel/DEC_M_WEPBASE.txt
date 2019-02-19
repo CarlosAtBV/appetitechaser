@@ -79,7 +79,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
     MLGF ABCDEFGH 1
     TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
-    MLGF I 1 A_TSP_Grapple()//A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
+    MLGF I 1 A_TSP_Grapple//A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
     MLGF JKLM 1
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
