@@ -96,7 +96,9 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
-		if(e.Thing.target == players[0].mo)
+		if(gamemode==0) return;
+		
+		if(!gameover && e.Thing.target == players[0].mo)
 		{
 			players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
 			players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
