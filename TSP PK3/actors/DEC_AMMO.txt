@@ -1,0 +1,23 @@
+//============
+// Pistol Ammo
+//============
+
+ACTOR TSPPistolAmmo : Ammo
+{
+  +IGNORESKILL
+  Inventory.Amount 5
+  Inventory.MaxAmount 150
+  Ammo.BackpackAmount 15
+  Ammo.BackpackMaxAmount 300
+  Ammo.DropAmount 5
+  //Inventory.Icon "919AA0"
+  Inventory.PickupMessage "Picked up a pistol magazine. [\cj+5 Pistol Ammo\c-]"
+  Inventory.PickupSound "919m/magout"
+  Tag "Pistol Ammo"
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Stop
+  }
+}

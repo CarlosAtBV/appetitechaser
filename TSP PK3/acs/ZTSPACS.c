@@ -361,7 +361,7 @@ script "TSPHUDHealthNumberColor" ENTER
 
 script "TSPDifficultyLoadouts" ENTER
 {
-  if (GameSkill() == 0) { GiveInventory("TSPEasyModePickup",1); }
+  if (GameSkill() == 0) { GiveInventory("TSPNormalModePickup",1); }
   if (GameSkill() == 1) { GiveInventory("TSPNormalModePickup",1); }
   if (GameSkill() == 2) { GiveInventory("TSPNormalModePickup",1); }
   if (GameSkill() == 3) { GiveInventory("TSPNormalModePickup",1); }

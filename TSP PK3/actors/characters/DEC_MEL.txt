@@ -7,7 +7,6 @@ ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
   Player.StartItem "StopMelee", 1
   Player.StartItem "StartTrait", 1
   Player.StartItem "StopTrait", 1
-  Player.StartItem "DropCurrentShells", 1
   Player.StartItem "MeleeButtonActor", 1
   //Player.StartItem "MelStartInventory", 1
   //Player.StartItem "Mel919MPistol"
@@ -17,14 +16,10 @@ ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
   Player.Face MCW
   Player.Portrait "Mel_Port"
   Player.WeaponSlot 1, MelMelee
+  Player.WeaponSlot 2, MelPistol
   Species "Player"
   +THRUSPECIES
   +PLAYERPAWN.NOTHRUSTWHENINVUL
-  DamageFactor "Poison", 2.0
-  DamageFactor "GasShellDamage", 1.5
-  DamageFactor "Shrapnel", 0.5
-  DamageFactor "WOGChargeBeam", 0.0 
-  DamageFactor "WOGBeam", 0.0 
   DamageFactor "Sling", 0.0
   var int user_DProjTID;
 }

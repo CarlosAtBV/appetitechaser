@@ -71,10 +71,9 @@ ACTOR TSPNormalModePickup : CustomInventory
     TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelPickup")
     Fail
   MelPickup:
-    //TNT1 A 0 A_GiveInventory("TSPLoadOut", 1)
     TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetFistsStartCVAR") == true,"MelMeleeOnlyPickup")
     TNT1 A 0 A_GiveInventory("MelMelee")
-    Stop
+	TNT1 A 0 A_GiveInventory("MelPistol")
     Stop
   MelMeleeOnlyPickup:
     TNT1 A 0 A_GiveInventory("MelMelee")

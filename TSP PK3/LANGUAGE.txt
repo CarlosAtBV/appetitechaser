@@ -167,8 +167,11 @@ SKILLNONFINISH = "\ccThis mode is currently unfinished!\n\nMaybe it'll be done b
 NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more often\nammo drops are \caless frequent\c-,\nand monsters do \camore damage\c- to you.\n\nYou sure you're ready for this?";
 
 //WEAPON PICKUPS
-Mel919Pistol = "\cc[\c-\cyMakoto Type 919 Mod.0\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
-MelDarlingNikki = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
+MelMeleeTag = "\cc[\c-\c[Mel]Bare Knuckle\c-\cc]\c- \cc[\c-\cjClass:\c- \clMelee\c-\cj\cc]\c-";
+
+MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
+MelPistolTag = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj\cc]\c-";
+
 RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 
