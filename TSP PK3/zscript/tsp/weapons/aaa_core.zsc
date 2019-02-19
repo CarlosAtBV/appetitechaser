@@ -146,7 +146,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	//
 	//==========================================================================
 	
-		action void A_TSP_Grapple()
+		action void A_TSP_Grapple(int range = 256)
 		{
 			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
 			
@@ -154,7 +154,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			
 			while (mo = Actor(MonsterFinder.Next()))
 			{
-				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<256) && mo.Health>0
+				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
 				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
 				{
 					int myMaxHealth = mo.GetSpawnHealth();
