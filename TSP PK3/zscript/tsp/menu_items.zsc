@@ -1,12 +1,80 @@
-Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
+Class TSP_ListMenu : ListMenu
+{
+	override void Ticker ()
+	{
+		Super.Ticker();
+		for(int i=0;i<mDesc.mItems.Size(); i++)
+		{
+			if(mDesc.mItems[i] is "ListMenuItemTSP_MenuItem_PatchItem")
+			{
+				ListMenuItemTSP_MenuItem_PatchItem menuItem = ListMenuItemTSP_MenuItem_PatchItem(mDesc.mItems[i]);
+				if(mDesc.mSelectedItem == i)
+				{
+					menuItem.xOffTarg = 8;
+				}
+				else
+				{
+					menuItem.xOffTarg = 0;
+				}
+			}
+		}
+	}
+}
+
+Class TSP_ListMenu_Skill : TSP_ListMenu
+{
+	bool retainOldPos;
+	int oldPos;
+	
+	override void Ticker ()
+	{
+		for(int i=0;i<mDesc.mItems.Size(); i++)
+		{
+			if(!(mDesc.mItems[i] is "ListMenuItemTSP_MenuItem_PatchItem") && mDesc.mItems[i] is "ListMenuItemPatchItem")
+			{
+				retainOldPos = true;
+				oldPos = mDesc.mSelectedItem;
+				ListMenuItemTSP_MenuItem_PatchItem fuckItem = new("ListMenuItemTSP_MenuItem_PatchItem");
+				ListMenuItemPatchItem oldItem = ListMenuItemPatchItem(mDesc.mItems[i]);
+				fuckItem.InitDirect(oldItem.GetX(),oldItem.GetY(),oldItem.mHeight,oldItem.mTexture,"f",oldItem.GetAction(),oldItem.mParam);
+				fuckItem.mEnabled = mDesc.mItems[i].mEnabled;
+				mDesc.mItems.Delete(i);
+				mDesc.mItems.Push(fuckitem);
+				i--;
+			}
+		}
+		if(retainOldPos)
+		{
+			retainOldPos = false;
+			mDesc.mSelectedItem = oldPos;
+		}
+		Super.Ticker();
+	}
+}
+
+Class ListMenuItemTSP_MenuItem_PatchItem : ListMenuItemPatchItem
+{
+	double xOff;
+	int xOffTarg;
+	int xOffOriginal;
+	
+	override void Ticker()
+	{
+		xOff = xOff + (xOffTarg - xOff)/5;
+	}
+	
+	override void Drawer(bool selected)
+	{
+		screen.DrawTexture (mTexture, true, mXpos+xOff, mYpos, DTA_Clean, true);
+	}
+}
+
+Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTSP_MenuItem_PatchItem
 {
 	String mText;
 	Font mFont;
 	int mColor;
 	int mColorSelected;
-	
-	double xOff;
-	int xOffOriginal;
 	
 	override bool Activate()
 	{
@@ -15,15 +83,4 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemPatchItem
 		Menu.SetMenu("PlayerClassMenu",mParam);
 		return true;
 	}
-	
-	/*override void Drawer(bool selected)
-	{
-		if(xOffOriginal==0)
-		{
-			xOffOriginal = mXpos;
-		}
-		xOff = xOff + ((16*selected) - xOff)/5;
-		mXpos = xOffOriginal+xOff;
-		super.Drawer(selected);
-	}*/
 }
