@@ -223,5 +223,10 @@ Class TSP_EventHandler : EventHandler
 			screen.DrawText(BigFont, Font.CR_YELLOW, 160-BigFont.StringWidth(timer)/2, 4, timer, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
+		
+		if(gameover)
+		{
+			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
+		}
 	}
 }
