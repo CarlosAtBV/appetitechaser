@@ -6,6 +6,11 @@ Class TSP_ShopItem
 	BrokenLines brokendesc;
 }
 
+Class TSP_ShopPage
+{
+	Array<TSP_ShopItem > itemlist;
+}
+
 Class TSP_ShopMenu : GenericMenu
 {
 	const SHOP_SHOPLISTX = 160;
@@ -14,7 +19,11 @@ Class TSP_ShopMenu : GenericMenu
 	const SHOP_ITEMPADDING = 8;
 	const SHOP_ITEMWIDTH = 152;
 	
-	Array<TSP_ShopItem > shopitems;
+	Array<TSP_ShopPage > shopPages;
+	
+	TSP_ShopPage curPage;
+	
+	int sm_pageSelected;
 	
 	void CreateShopItem (string name = "???", string desc = "No description available.", int price = 0, Class<Inventory > item = "HealthBonus", int itemamount = 1)
 	{
@@ -23,34 +32,76 @@ Class TSP_ShopMenu : GenericMenu
 		tempItem.desc = desc;
 		tempItem.price = price;
 		tempItem.brokendesc = SmallFont.BreakLines(desc, SHOP_ITEMWIDTH);
-		shopitems.Push(tempItem);
+		if(curPage==null)
+		{
+			ThrowAbortException("No page was defined for shop item \""..name.."\"");
+		}
+		curPage.itemlist.Push(tempItem);
+	}
+	
+	void NewShopPage ()
+	{
+		if(curPage!=null) shopPages.Push(curPage);
+		curPage = new("TSP_ShopPage");
 	}
 	
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		NewShopPage();
 		CreateShopItem("Dick Smasher","blam blam ka-bam",69);
 		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
 		for(int i = 0;i<2;i++)
 		{
 			CreateShopItem("Test Item "..i);
 		}
+		NewShopPage();
+		CreateShopItem("Thi Doll","yea",18000);
+		NewShopPage();
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Left:
+				if(sm_pageSelected>0)
+				{
+					sm_pageSelected--;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+
+			case MKEY_Right:
+				if(sm_pageSelected<shopPages.Size()-1)
+				{
+					sm_pageSelected++;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
 	}
 	
 	override void Drawer () 
 	{
 		int sy = 16;
-		for(int i = 0;i<shopitems.Size();i++)
+		
+		TSP_ShopPage dd_curPage = shopPages[sm_pageSelected];
+		
+		screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, 0, "Page "..sm_pageSelected, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
+		for(int i = 0;i<dd_curPage.itemlist.Size();i++)
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, sy, shopitems[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, sy, dd_curPage.itemlist[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
-			int c = shopitems[i].brokendesc.Count();
+			int c = dd_curPage.itemlist[i].brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), SHOP_SHOPLISTX, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), shopitems[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), SHOP_SHOPLISTX, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curPage.itemlist[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
-			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(shopitems[i].price.." credits"), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), shopitems[i].price.." credits", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(dd_curPage.itemlist[i].price.." credits"), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), dd_curPage.itemlist[i].price.." credits", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 		}
 	}
