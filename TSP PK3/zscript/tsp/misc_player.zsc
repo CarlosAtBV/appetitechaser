@@ -56,13 +56,16 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			return;
 		}
 		
-		if(pp_shieldHitDelay>0)
+		if(health>0)
 		{
-			pp_shieldHitDelay--;
-		}
-		else if (CountInv("TSP_PlayerPawn_Shield")<100)
-		{
-			GiveInventory("TSP_PlayerPawn_Shield",1);
+			if(pp_shieldHitDelay>0)
+			{
+				pp_shieldHitDelay--;
+			}
+			else if (CountInv("TSP_PlayerPawn_Shield")<100)
+			{
+				GiveInventory("TSP_PlayerPawn_Shield",1);
+			}
 		}
 	}
 	

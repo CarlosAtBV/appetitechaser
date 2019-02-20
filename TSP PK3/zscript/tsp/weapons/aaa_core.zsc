@@ -97,9 +97,12 @@ Class TSP_Weapon_Core : DoomWeapon
 					double fugSin = sin(angle);
 					double fugCos = cos(angle);
 					
-					mo.vel.X = mThrustVert * fugCos + mThrustHorz * fugSin;
-					mo.vel.Y = mThrustVert * fugSin - mThrustHorz * fugCos;
-					mo.vel.Z = mThrustUp;
+					if(!mo.bBoss)
+					{
+						mo.vel.X = mThrustVert * fugCos + mThrustHorz * fugSin;
+						mo.vel.Y = mThrustVert * fugSin - mThrustHorz * fugCos;
+						mo.vel.Z = mThrustUp;
+					}
 					
 					int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
 					//mo.A_Quake(2,4,0,750);
@@ -173,5 +176,10 @@ Class TSP_Weapon_Core : DoomWeapon
 					}
 				}
 			}
+		}
+		
+		action void A_TSP_ThrustForwardsButLikeVeryForwards (double speed = 16)
+		{
+			invoker.owner.Vel3DFromAngle(speed, invoker.owner.angle, invoker.owner.pitch);
 		}
 }
