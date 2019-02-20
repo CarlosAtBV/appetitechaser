@@ -177,4 +177,9 @@ Class TSP_Weapon_Core : DoomWeapon
 				}
 			}
 		}
+		
+		action void A_TSP_ThrustForwardsButLikeVeryForwards (double speed = 16)
+		{
+			invoker.owner.Vel3DFromAngle(speed, invoker.owner.angle, invoker.owner.pitch);
+		}
 }

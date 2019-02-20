@@ -136,9 +136,9 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     Goto AfterMelee
 //DIVEKICK!
   Hornet:
-    TNT1 A 3 Thrustthingz(0,10,0,0)
+    TNT1 A 3 A_TSP_ThrustForwardsButLikeVeryForwards(10)/*Thrustthingz(0,10,0,0)
     TNT1 A 0 Thrustthingz(0,15,1,0)
-    TNT1 A 0 Thrustthing(angle*256/360,5, 0, 0)
+    TNT1 A 0 Thrustthing(angle*256/360,5, 0, 0)*/
     TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot5")
     TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
     TNT1 A 0 A_Recoil(-15)
