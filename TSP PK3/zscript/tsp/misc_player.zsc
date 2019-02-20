@@ -6,21 +6,42 @@ Class TSP_PlayerPawn_Shield : Inventory
 	}
 }
 
+Class TSP_PlayerPawn_IPlaySounds : Actor
+{
+	Default
+	{
+		RenderStyle "None";
+	}
+	
+	States
+	{
+		Spawn:
+			TNT1 A -1;
+			Stop;
+	}
+}
+
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
 	int pp_gamemode;
 	int pp_shieldHitDelay;
+	bool pp_shieldLowSound;
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
+		pp_shieldHitDelay = 35*5;
+		
 		if(CountInv("TSP_PlayerPawn_Shield"))
 		{
 			int truDamage = damage;
 			damage = 0;
 			
 			TakeInventory("TSP_PlayerPawn_Shield",truDamage);
-			pp_shieldHitDelay = 35*5;
 			A_PlaySound("shield/hit",CHAN_BODY);
+			if(CountInv("TSP_PlayerPawn_Shield")<1)
+			{
+				A_PlaySound("shield/depleted",CHAN_BODY);
+			}
 			return 0;
 		}
 		

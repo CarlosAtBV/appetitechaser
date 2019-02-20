@@ -59,4 +59,5 @@ bounty/finish           BOUNTFIN
 
 //Shield
 
-shield/hit "sounds/placeholder/player/shield_hit.wav"
+shield/hit "sounds/placeholder/player/shield_hit.ogg"
+shield/depleted "sounds/placeholder/player/shield_depleted.ogg"
