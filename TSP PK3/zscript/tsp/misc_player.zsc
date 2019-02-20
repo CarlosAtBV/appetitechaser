@@ -27,6 +27,24 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
 	}
 	
+	override void Tick ()
+	{
+		Super.Tick();
+		if (!player || !player.mo || player.mo != self)
+		{
+			return;
+		}
+		
+		if(pp_shieldHitDelay>0)
+		{
+			pp_shieldHitDelay--;
+		}
+		else if (CountInv("TSP_PlayerPawn_Shield")<100)
+		{
+			GiveInventory("TSP_PlayerPawn_Shield",1);
+		}
+	}
+	
 	override void DeathThink ()
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
