@@ -101,7 +101,8 @@ Class TSP_ShopMenu : GenericMenu
 				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), SHOP_SHOPLISTX, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curPage.itemlist[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
-			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(dd_curPage.itemlist[i].price.." credits"), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), dd_curPage.itemlist[i].price.." credits", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			string price = " \$ "..dd_curPage.itemlist[i].price;
+			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 		}
 	}
