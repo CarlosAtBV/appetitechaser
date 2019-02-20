@@ -2,6 +2,7 @@ ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
 {
   Player.ViewHeight 47
   Player.AttackZOffset 20
+  Player.JumpZ 9.0
   Player.StartItem "IsMel", 1
   Player.StartItem "StartMelee", 1
   Player.StartItem "StopMelee", 1
