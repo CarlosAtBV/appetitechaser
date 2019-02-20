@@ -1,8 +1,10 @@
+const TSP_INITMAXSHIELD = 50;
+
 Class TSP_PlayerPawn_Shield : Inventory
 {
 	Default
 	{
-		Inventory.MaxAmount 100;
+		Inventory.MaxAmount TSP_INITMAXSHIELD;
 	}
 }
 
@@ -62,7 +64,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			{
 				pp_shieldHitDelay--;
 			}
-			else if (CountInv("TSP_PlayerPawn_Shield")<100)
+			else if (CountInv("TSP_PlayerPawn_Shield")<TSP_INITMAXSHIELD)
 			{
 				GiveInventory("TSP_PlayerPawn_Shield",1);
 			}
