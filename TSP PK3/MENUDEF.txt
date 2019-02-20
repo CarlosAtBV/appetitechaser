@@ -88,7 +88,6 @@ OptionMenu "OptionsMenu2"
 	StaticText "Character and Gameplay Customization", 1
     Submenu "The Space Pirate Modifiers",           "TSPCustomOptions"
     Submenu "Character Setup",                      "PlayerMenu"
-    Submenu "Multiplayer Options (Zandronum)",		            "ZA_MultiplayerOptions" // [TP]
     Submenu "Other Mod Options",                   "OtherModOptions"
 	StaticText " "
 	StaticText "Other Gameplay Options", 1
