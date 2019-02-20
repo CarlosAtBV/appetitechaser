@@ -3,7 +3,7 @@ statusbar fullscreen, fullscreenoffsets
 {
     //main stats
     drawimage "HUDBASE", 5, -69;
-    drawbar "HUD_ABR1", "HUD_ABR2", Armor (250), horizontal, interpolate(5), 61, -15;
+    drawbar "HUD_ABR1", "HUD_ABR2", TSP_PlayerPawn_Shield, horizontal, interpolate(5), 61, -15;
 	drawbar "HUD_HBR1", "HUD_HBR2", Health, horizontal, interpolate(5), 61, -61;
 	//
 	
@@ -24,7 +24,7 @@ statusbar fullscreen, fullscreenoffsets
 	drawnumber 3, TSP_HUDFONT, Cyan, health, alignment(right), interpolate(6), 121, -52, 1;
 	}
 	// armer number stats
-	drawnumber 3, TSP_HUDFONT, Green, armor, alignment(right), interpolate(6), whennotzero, 121, -34, 1, Green, 50, Orange, 101;
+	drawnumber 3, TSP_HUDFONT, Green, TSP_PlayerPawn_Shield, alignment(right), interpolate(6), whennotzero, 121, -34, 1, Green, 50, Orange, 101;
     // kiz
     drawkeybar 6, vertical, reverserows, auto, -10, 2, 0, 3, auto;
 	

@@ -1,6 +1,31 @@
+Class TSP_PlayerPawn_Shield : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 100;
+	}
+}
+
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
 	int pp_gamemode;
+	int pp_shieldHitDelay;
+	
+	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+	{
+		if(CountInv("TSP_PlayerPawn_Shield"))
+		{
+			int truDamage = damage;
+			damage = 0;
+			
+			TakeInventory("TSP_PlayerPawn_Shield",truDamage);
+			pp_shieldHitDelay = 35*5;
+			A_PlaySound("shield/hit",CHAN_BODY);
+			return 0;
+		}
+		
+		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
 	
 	override void DeathThink ()
 	{

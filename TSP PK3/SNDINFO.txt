@@ -56,3 +56,7 @@ upgrade/ls               UPGDLS
 //Bounties
 bounty/start            BOUNTST
 bounty/finish           BOUNTFIN
+
+//Shield
+
+shield/hit "sounds/placeholder/player/shield_hit.wav"
