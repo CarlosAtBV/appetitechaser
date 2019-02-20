@@ -1,0 +1,57 @@
+Class TSP_ShopItem
+{
+	string name;
+	string desc;
+	int price;
+	BrokenLines brokendesc;
+}
+
+Class TSP_ShopMenu : GenericMenu
+{
+	const SHOP_SHOPLISTX = 160;
+	
+	const SHOP_ITEMHEIGHT = (9*4);
+	const SHOP_ITEMPADDING = 8;
+	const SHOP_ITEMWIDTH = 152;
+	
+	Array<TSP_ShopItem > shopitems;
+	
+	void CreateShopItem (string name = "???", string desc = "No description available.", int price = 0, Class<Inventory > item = "HealthBonus", int itemamount = 1)
+	{
+		TSP_ShopItem tempItem = new("TSP_ShopItem");
+		tempItem.name = name;
+		tempItem.desc = desc;
+		tempItem.price = price;
+		tempItem.brokendesc = SmallFont.BreakLines(desc, SHOP_ITEMWIDTH);
+		shopitems.Push(tempItem);
+	}
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		CreateShopItem("Dick Smasher","blam blam ka-bam",69);
+		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
+		for(int i = 0;i<2;i++)
+		{
+			CreateShopItem("Test Item "..i);
+		}
+	}
+	
+	override void Drawer () 
+	{
+		int sy = 16;
+		for(int i = 0;i<shopitems.Size();i++)
+		{
+			screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, sy, shopitems[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			
+			int c = shopitems[i].brokendesc.Count();
+			for (int g = 0; g < c; g++)
+			{
+				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), SHOP_SHOPLISTX, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), shopitems[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			}
+			
+			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(shopitems[i].price.." credits"), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), shopitems[i].price.." credits", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
+		}
+	}
+}

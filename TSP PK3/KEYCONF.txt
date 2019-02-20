@@ -7,3 +7,9 @@ alias +BV_Melee "use StartMelee" //"give Melee"
 alias -BV_Melee "use StopMelee" //"give Melee"
 
 alias BV_MSwitch "use MeleeButtonActor" 
+
+defaultbind , BV_OpenShop
+alias BV_OpenShop "openmenu TSP_ShopMenu"
+
+addkeysection "The Space Pirate Binds" "TSPB"
+addmenukey "Shop Menu" "BV_OpenShop"
