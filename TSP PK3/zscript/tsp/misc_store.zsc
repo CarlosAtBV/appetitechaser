@@ -17,6 +17,7 @@ Class TSP_ShopMenu : GenericMenu
 	
 	const SHOP_ITEMHEIGHT = (9*4);
 	const SHOP_ITEMPADDING = 8;
+	const SHOP_ITEMPADDINGX = 4;
 	const SHOP_ITEMWIDTH = 152;
 	
 	Array<TSP_ShopPage > shopPages;
@@ -83,26 +84,47 @@ Class TSP_ShopMenu : GenericMenu
 		return super.MenuEvent(mkey, fromcontroller);
 	}
 	
+	void DrawBG(int x, int y, int width, int height, string cbg = "#000000")
+	{
+		Vector2 start, size;
+		[start, size] = screen.VirtualToRealCoords((x,y), (width, height), (320,240));
+		screen.Dim(cbg,0.5,start.x,start.y,size.x,size.y);
+	}
+	
+	void DrawButton(string name, Vector2 center, Vector2 size, bool active)
+	{
+		DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, active ? "#00FF00" : "#000000");
+		screen.DrawText(SmallFont, Font.CR_WHITE, center.x-SmallFont.StringWidth(name)/2, center.y-SmallFont.GetHeight()/2, name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+	}
+	
 	override void Drawer () 
 	{
-		int sy = 16;
+		int sy = 28;
+		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
+		
+		string gbd_sign = "\f$";
 		
 		TSP_ShopPage dd_curPage = shopPages[sm_pageSelected];
 		
-		screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, 0, "Page "..sm_pageSelected, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		string money = gbd_sign..players[0].mo.CountInv("TSP_GlobalDollars");
+		screen.DrawText(SmallFont, Font.CR_WHITE, 4, 4, money, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
+		DrawBG(160,0,160,240);
+		DrawButton("Retail",(SHOP_SHOPLISTX+41,2+11),(77,22),sm_pageSelected == 0);
+		DrawButton("Employer",(SHOP_SHOPLISTX+41+79,2+11),(77,22),sm_pageSelected == 1);
 		
 		for(int i = 0;i<dd_curPage.itemlist.Size();i++)
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, SHOP_SHOPLISTX, sy, dd_curPage.itemlist[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, dd_curPage.itemlist[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
 			int c = dd_curPage.itemlist[i].brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), SHOP_SHOPLISTX, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curPage.itemlist[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curPage.itemlist[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
-			string price = " \$ "..dd_curPage.itemlist[i].price;
-			screen.DrawText(SmallFont, Font.CR_GREEN, SHOP_SHOPLISTX+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			string price = gbd_sign..dd_curPage.itemlist[i].price;
+			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 		}
 	}

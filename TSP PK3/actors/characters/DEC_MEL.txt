@@ -10,6 +10,7 @@ ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
   Player.StartItem "StopTrait", 1
   Player.StartItem "MeleeButtonActor", 1
   Player.StartItem "TSP_PlayerPawn_Shield", 100
+  Player.StartItem "TSP_GlobalDollars", 500
   //Player.StartItem "MelStartInventory", 1
   //Player.StartItem "Mel919MPistol"
   //Player.StartItem "MelMelee"

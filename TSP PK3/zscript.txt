@@ -110,6 +110,9 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldTick()
 	{
+		/*Menu curMenu
+		if(Menu.GetCurrentMenu()*/
+		
 		if(gamemode==0) return;
 		
 		if(!gameover)
