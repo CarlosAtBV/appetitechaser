@@ -11,6 +11,10 @@ TSPRed
 {
 	#460b0b  #c72424
 }
+TSPVantaBlack
+{
+	#000000  #000000
+}
 
 Mel
 {

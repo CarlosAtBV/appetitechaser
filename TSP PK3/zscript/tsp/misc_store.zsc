@@ -39,13 +39,15 @@ Class TSP_ShopMenu : GenericMenu
 	
 	int sm_moveMode;
 	
+	Font sm_tinyFont;
+	
 	void CreateShopItem (string name = "???", string desc = "No description available.", int price = 0, Class<Inventory > item = "HealthBonus", int itemamount = 1)
 	{
 		TSP_ShopItem tempItem = new("TSP_ShopItem");
 		tempItem.name = name;
 		tempItem.desc = desc;
 		tempItem.price = price;
-		tempItem.brokendesc = SmallFont.BreakLines(desc, SHOP_ITEMWIDTH);
+		tempItem.brokendesc = sm_tinyFont.BreakLines(desc, 140);
 		if(curPage==null)
 		{
 			ThrowAbortException("No page was defined for shop item \""..name.."\"");
@@ -72,14 +74,17 @@ Class TSP_ShopMenu : GenericMenu
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		sm_tinyFont = "TinyFont";
 		NewShopPage("Retail");
 		NewShopTab("Weapon");
-		CreateShopItem("Pistol - Spitfire","blam blam ka-bam",150);
-		CreateShopItem("Pistol - Whisper","blam blam ka-bam",150);
+		CreateShopItem("Nikki - Spitfire","You can shoot a shitload of bullets instead of just one. Jesus mary and joseph thats a lot of bullets",150);
+		CreateShopItem("Nikki - Whisper","Add a silencer to Darling Nikki. wow I didn't know mel was into that kind of thing",150);
 		NewShopTab("Vitals");
+		CreateShopItem("100 Max. Shield","Increase you maximum shield points to 100.",150);
+		CreateShopItem("Faster Regen","Your shield will be regenerated faster poo poo head",300);
 		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
 		NewShopTab("Weed");
-		for(int i = 0;i<2;i++)
+		for(int i = 0;i<25;i++)
 		{
 			CreateShopItem("Test Item "..i);
 		}
@@ -144,7 +149,7 @@ Class TSP_ShopMenu : GenericMenu
 					sm_moveMode--;
 					S_Sound("menu/cursor",CHAN_UI);
 				}
-				else
+				else if(sm_itemSelected>0)
 				{
 					sm_itemSelected--;
 					S_Sound("menu/cursor",CHAN_UI);
@@ -236,6 +241,18 @@ Class TSP_ShopMenu : GenericMenu
 		}
 		
 		DrawBG(2,178,156,56);
+		
+		if(sm_moveMode == 2)
+		{
+			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curTab.itemList[sm_itemSelected].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			
+			int c = dd_curTab.itemList[sm_itemSelected].brokendesc.Count();
+			for (int g = 0; g < c; g++)
+			{
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			}
+		}
 			
 			/*int c = dd_curItem.brokendesc.Count();
 			for (int g = 0; g < c; g++)
