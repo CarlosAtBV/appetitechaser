@@ -68,6 +68,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			{
 				A_PlaySound("shield/depleted",CHAN_BODY);
 			}
+			A_SetBlend("#56E7FF", 0.1, 8, "#56E7FF", 0.0);
 			return 0;
 		}
 		
