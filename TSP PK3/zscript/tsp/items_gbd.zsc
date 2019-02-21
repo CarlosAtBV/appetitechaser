@@ -31,6 +31,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 		if(players[0].mo!=null&&players[0].mo.health>0&&Distance3D(players[0].mo)<grabradius)
 		{
 			epicMovin = true;
+			bNoClip = true;
 		}
 		if(grabradius<1024)
 		{
