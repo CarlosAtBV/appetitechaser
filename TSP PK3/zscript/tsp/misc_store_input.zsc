@@ -1,0 +1,216 @@
+Extend Class TSP_ShopMenu
+{
+	int mouseHover;
+	Vector2 virtualMPos;
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		int sel = -1;
+		
+		int mouserx = x;
+		int mousery = y;
+		Vector2 start; Vector2 size;
+		[start, size] = Screen.VirtualToRealCoords((0, 0), (320, 240), (320, 240));
+		Vector2 adjustedMPos = (x,y) - start;
+		virtualMPos = (adjustedMPos.x * 320 / size.x, adjustedMPos.y * 240 / size.y);
+		
+		int v = 0;
+		int pageSize = shopPages.Size();
+		for(int i = 0;i<shopPages.Size();i++)
+		{
+			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/pageSize)/2)+(SHOP_SHOPLISTW/pageSize)*i;
+			int py = SHOP_SHOPLISTY+(SHOP_SHOPLISTH/2)+(SHOP_SHOPLISTH+SHOP_SHOPLISTPADDING)*v;
+			if(virtualMpos.x>px-(SHOP_SHOPLISTW/pageSize)/2-2
+			&&virtualMpos.x<px+(SHOP_SHOPLISTW/pageSize)/2-2
+			&&virtualMpos.y>py-(SHOP_SHOPLISTH/2)
+			&&virtualMpos.y<py+(SHOP_SHOPLISTH/2))
+			{
+				sm_moveMode = 0;
+				sm_pageHovered = i;
+			}
+		}
+		
+		v++;
+		int tabSize = shopPages[sm_pageSelected].shopTabs.Size();
+		for(int i = 0;i<tabSize;i++)
+		{
+			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/tabSize)/2)+(SHOP_SHOPLISTW/tabSize)*i;
+			int py = SHOP_SHOPLISTY+(SHOP_SHOPLISTH/2)+(SHOP_SHOPLISTH+SHOP_SHOPLISTPADDING)*v;
+			if(virtualMpos.x>px-(SHOP_SHOPLISTW/tabSize)/2-2
+			&&virtualMpos.x<px+(SHOP_SHOPLISTW/tabSize)/2-2
+			&&virtualMpos.y>py-(SHOP_SHOPLISTH/2)
+			&&virtualMpos.y<py+(SHOP_SHOPLISTH/2))
+			{
+				sm_moveMode = 1;
+				sm_tabHovered = i;
+			}
+		}
+		
+		int sy = 52;
+		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
+		
+		TSP_ShopPage curPage = shopPages[sm_pageSelected];
+		TSP_ShopTab curTab = curPage.shopTabs[sm_tabSelected];
+		for(int i = 0;i<curTab.itemlist.Size();i++)
+		{
+			int px = SHOP_SHOPLISTX;
+			int py = sy;
+			if(virtualMpos.x>px
+			&&virtualMpos.x<px+SHOP_ITEMWIDTH
+			&&virtualMpos.y>py
+			&&virtualMpos.y<py+SHOP_ITEMHEIGHT)
+			{
+				sm_moveMode = 2;
+				sm_itemHovered = i;
+			}
+			
+			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool OnUIEvent(UIEvent ev)
+	{
+		if (mMouseCapture || m_use_mouse == 1)
+		{
+			if (ev.type == UIEvent.Type_LButtonDown)
+			{
+				switch(sm_moveMode)
+				{
+					case 0:
+						int me_prevPage = sm_pageSelected;
+						sm_pageSelected = sm_pageHovered;
+						if(me_prevPage!=sm_pageSelected)
+						{
+							sm_tabSelected = 0;
+							sm_itemSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 1:
+						int me_prevTab = sm_tabSelected;
+						sm_tabSelected = sm_tabHovered;
+						if(me_prevTab!=sm_tabSelected)
+						{
+							sm_itemSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 2:
+						int me_prevItem = sm_itemSelected;
+						sm_itemSelected = sm_itemHovered;
+						if(me_prevItem!=sm_itemSelected)
+						{
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+				}
+			}
+		}
+		return Super.OnUIEvent(ev); 
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		TSP_ShopPage me_curPage = shopPages[sm_pageSelected];
+		TSP_ShopTab me_curTab = me_curPage.shopTabs[sm_tabSelected];
+		TSP_ShopItem me_curItem = me_curTab.itemlist[sm_itemSelected];
+		
+		switch (mkey)
+		{
+			case MKEY_Left:
+				switch(sm_moveMode)
+				{
+					case 0:
+						if(sm_pageSelected>0)
+						{
+							sm_pageSelected--;
+							sm_pageHovered=sm_pageSelected;
+							sm_tabSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 1:
+						if(sm_tabSelected>0)
+						{
+							sm_tabSelected--;
+							sm_tabHovered=sm_tabSelected;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+				}
+				return true;
+
+			case MKEY_Right:
+				switch(sm_moveMode)
+				{
+					case 0:
+						if(sm_pageSelected<shopPages.Size()-1)
+						{
+							sm_pageSelected++;
+							sm_pageHovered=sm_pageSelected;
+							sm_tabSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 1:
+						if(sm_tabSelected<me_curPage.shopTabs.Size()-1)
+						{
+							sm_tabSelected++;
+							sm_tabHovered=sm_tabSelected;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+				}
+				return true;
+
+			case MKEY_Up:
+				if(sm_itemSelected==0&&sm_moveMode>0)
+				{
+					sm_moveMode--;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				else if(sm_itemSelected>0)
+				{
+					sm_itemSelected--;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+			case MKEY_Down:
+				if(sm_moveMode<2)
+				{
+					sm_moveMode++;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				else if(sm_itemSelected < me_curTab.itemlist.Size()-1)
+				{
+					sm_itemSelected++;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+				
+			case MKEY_Enter:
+				if(sm_moveMode==2)
+				{
+					if(me_curItem.inv_class!=null&&(me_curItem.level_class==null||(me_curItem.level<GetDefaultByType(me_curItem.level_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+					{
+						string givestuff = "buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price+me_curItem.price_increment*me_curItem.level;
+						if(me_curItem.level_class!=null)
+						{
+							givestuff = givestuff..":"..me_curItem.level_class.GetClassName();
+							me_curItem.level++;
+						}
+						EventHandler.SendNetworkEvent(givestuff);
+						S_Sound("shop/purchase",CHAN_UI);
+					}
+					else
+					{
+						S_Sound("menu/invalid",CHAN_UI);
+					}
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+}
