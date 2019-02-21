@@ -18,6 +18,7 @@ Class TSP_ShopItem
 Class TSP_ShopEmploy
 {
 	int employer;
+	Vector2 pos;
 }
 
 Class TSP_ShopHeader
@@ -212,15 +213,16 @@ Class TSP_ShopMenu : GenericMenu
 			TextureID tabBG = TexMan.CheckForTexture(dd_curTab.bg,TexMan.Type_MiscPatch);
 			screen.DrawTexture(tabBG, true, 160, sy, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
-			screen.DrawText(SmallFont, Font.CR_WHITE, 160+2, sy, dd_curTab.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 160+3, sy, dd_curTab.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			BrokenLines tabDesc = sm_TinyFont.BreakLines(dd_curTab.desc,100);
 			int c = tabDesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 160+3, sy+SmallFont.GetHeight()+5+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 160+2, sy+SmallFont.GetHeight()+4+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 160+4, sy+SmallFont.GetHeight()+5+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 160+3, sy+SmallFont.GetHeight()+4+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
-			DrawButton("Accept",(160+80,160),(64,22),false,sm_moveMode==2);
+			
+			DrawButton("Accept",(curTab.employ.pos.x,curTab.employ.pos.y),(64,22),false,sm_moveMode==2);//210
 		}
 		
 		DrawBG(2,178,156,56);

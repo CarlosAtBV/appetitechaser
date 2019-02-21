@@ -74,6 +74,7 @@ Extend Class TSP_ShopMenu
 									tokenboy = tokenitup.GoThru();
 									TSP_ShopEmploy curItem = new("TSP_ShopEmploy");
 									curItem.employer = tokenboy.value.ToInt();
+									curItem.pos = (160+80,216);
 									curTab.employ = curItem;
 								}
 								if(tokenboy.value == "bg")

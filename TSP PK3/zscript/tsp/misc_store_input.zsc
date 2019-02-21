@@ -6,6 +6,7 @@ Extend Class TSP_ShopMenu
 	override bool MouseEvent(int type, int x, int y)
 	{
 		int sel = -1;
+		//int sm_moveMode = -1;
 		
 		int mouserx = x;
 		int mousery = y;
@@ -68,6 +69,18 @@ Extend Class TSP_ShopMenu
 			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 		}
 		
+		if(curTab.employ!=null)
+		{
+			if(virtualMpos.x>curTab.employ.pos.x-16
+			&&virtualMpos.x<curTab.employ.pos.x+16
+			&&virtualMpos.y>curTab.employ.pos.y-11
+			&&virtualMpos.y<curTab.employ.pos.x+11)
+			{
+				sm_moveMode = 2;
+				sm_itemHovered = 0;
+			}
+		}
+		
 		return Super.MouseEvent(type, x, y);
 	}
 	
@@ -104,6 +117,10 @@ Extend Class TSP_ShopMenu
 						if(me_prevItem!=sm_itemSelected)
 						{
 							S_Sound("menu/cursor",CHAN_UI);
+						}
+						else
+						{
+							MenuEvent(MKEY_Enter,false);
 						}
 						break;
 				}
@@ -148,7 +165,7 @@ Extend Class TSP_ShopMenu
 				switch(sm_moveMode)
 				{
 					case 0:
-						if(sm_pageSelected<shopPages.Size()-1)
+						if(sm_pageSelected<shopPages_visible.Size()-1)
 						{
 							sm_pageSelected++;
 							sm_pageHovered=sm_pageSelected;
