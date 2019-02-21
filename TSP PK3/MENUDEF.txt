@@ -8,16 +8,16 @@ DEFAULTLISTMENU
 
 LISTMENU "MainMenu"
 {
-//	StaticPatch 44, -20, "SP_HEDR"
-	Position 90, 15
+	StaticPatch 103, 39, "SP_MAIN"
+	Position 88, 15
 	Linespacing 29
 		
-	TSP_MenuItem_PatchItem "SP_NGAME",  "n",	"TSP_GameModeMenu"
-	TSP_MenuItem_PatchItem "SP_CONF",	     "o",	"OptionsMenu2"
-	TSP_MenuItem_PatchItem "SP_RTHS",         "h",   "ReadThisMenu"
-	TSP_MenuItem_PatchItem "SP_LOAD",         "l",	"LoadGameMenu"
-	TSP_MenuItem_PatchItem "SP_SAVE",         "s",	"SaveGameMenu"
-	TSP_MenuItem_PatchItem "SP_QUIT",	 "q",	"QuitMenu"
+	TSP_MenuItem_PatchItem "SPMENU1",  "n",	"TSP_GameModeMenu"
+	TSP_MenuItem_PatchItem "SPMENU2",	     "o",	"OptionsMenu2"
+	TSP_MenuItem_PatchItem "SPMENU3",         "h",   "ReadThisMenu"
+	TSP_MenuItem_PatchItem "SPMENU4",         "l",	"LoadGameMenu"
+	TSP_MenuItem_PatchItem "SPMENU5",         "s",	"SaveGameMenu"
+	TSP_MenuItem_PatchItem "SPMENU6",	 "q",	"QuitMenu"
 }
 
 ListMenu "TSP_GameModeMenu"
