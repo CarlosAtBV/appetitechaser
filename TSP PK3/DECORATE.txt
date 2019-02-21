@@ -151,6 +151,7 @@ Actor MeleeSelected : Boolean {}
 
 #include "Actors/Weapons/Mel/DEC_M_WEP1.txt" // BARE KNUCKLE
 #include "Actors/Weapons/Mel/DEC_M_WEP2.txt" // DARLING NIKKI
+#include "Actors/Weapons/Mel/DEC_M_WEP2a.txt" // DARLING NIKKI (Spitfire)
 
 // THE TOOLBOX
 //#include "Actors/Weapons/Mel/DEC_M_WEP5a.txt" // MEL

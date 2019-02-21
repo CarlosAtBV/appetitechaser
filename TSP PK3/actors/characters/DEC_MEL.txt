@@ -19,7 +19,7 @@ ACTOR SpacePirate : TSP_PlayerPawn_ZSCBase
   Player.Face MCW
   Player.Portrait "Mel_Port"
   Player.WeaponSlot 1, MelMelee
-  Player.WeaponSlot 2, MelPistol
+  Player.WeaponSlot 2, MelPistol, MelPistolA
   Species "Player"
   +THRUSPECIES
   +PLAYERPAWN.NOTHRUSTWHENINVUL

@@ -169,8 +169,12 @@ NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more 
 //WEAPON PICKUPS
 MelMeleeTag = "\cc[\c-\c[Mel]Bare Knuckle\c-\cc]\c-\n\cc[\c-\cjClass:\c- \clMelee\c-\cj\cc]\c-";
 
+//DARLING NIKKI
 MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 MelPistolTag = "\cc[\c-\cyDarling Nikki\c-\cc]\c-\n\cc[\c-\cjClass:\c- \cyPistol\c-\cj\cc]\c-";
+//DARLING NIKKI (SPITFIRE)
+MelPistolATag = "\cc[\c-\cyDarling Nikki\c- \cc(\c-\cfSPITFIRE\c-\cc)\c-\cc]\c-\n\cc[\c-\cjClass:\c- \cyPistol\c-\cj\cc]\c-";
+
 
 RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
