@@ -6,14 +6,22 @@ Class TSP_ShopItem
 	BrokenLines brokendesc;
 }
 
+Class TSP_ShopTab
+{
+	string name;
+	Array<TSP_ShopItem > itemlist;
+}
+
 Class TSP_ShopPage
 {
-	Array<TSP_ShopItem > itemlist;
+	Array<TSP_ShopTab > shopTabs;
+	string name;
 }
 
 Class TSP_ShopMenu : GenericMenu
 {
-	const SHOP_SHOPLISTX = 160;
+	const SHOP_SHOPLISTX = 162 ;
+	const SHOP_SHOPLISTW = 158;
 	
 	const SHOP_ITEMHEIGHT = (9*4);
 	const SHOP_ITEMPADDING = 8;
@@ -23,8 +31,12 @@ Class TSP_ShopMenu : GenericMenu
 	Array<TSP_ShopPage > shopPages;
 	
 	TSP_ShopPage curPage;
+	TSP_ShopTab curTab;
 	
 	int sm_pageSelected;
+	int sm_tabSelected;
+	
+	int sm_moveMode;
 	
 	void CreateShopItem (string name = "???", string desc = "No description available.", int price = 0, Class<Inventory > item = "HealthBonus", int itemamount = 1)
 	{
@@ -37,47 +49,102 @@ Class TSP_ShopMenu : GenericMenu
 		{
 			ThrowAbortException("No page was defined for shop item \""..name.."\"");
 		}
-		curPage.itemlist.Push(tempItem);
+		curTab.itemlist.Push(tempItem);
 	}
 	
-	void NewShopPage ()
+	void NewShopPage (string name = "???")
 	{
+		if(curTab!=null) curPage.shopTabs.Push(curTab);
+		curTab = null;
 		if(curPage!=null) shopPages.Push(curPage);
 		curPage = new("TSP_ShopPage");
+		curPage.name = name;
+	}
+	
+	void NewShopTab (string name = "???")
+	{
+		if(curTab!=null) curPage.shopTabs.Push(curTab);
+		curTab = new("TSP_ShopTab");
+		curTab.name = name;
 	}
 	
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
-		NewShopPage();
+		NewShopPage("Retail");
+		NewShopTab("Weapons");
 		CreateShopItem("Dick Smasher","blam blam ka-bam",69);
+		NewShopTab("Vitals");
 		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
+		NewShopTab("Weed");
 		for(int i = 0;i<2;i++)
 		{
 			CreateShopItem("Test Item "..i);
 		}
-		NewShopPage();
+		NewShopPage("Employer");
+		NewShopTab("Shite");
 		CreateShopItem("Thi Doll","yea",18000);
 		NewShopPage();
 	}
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
+		TSP_ShopPage me_curPage = shopPages[sm_pageSelected];
+		
 		switch (mkey)
 		{
 			case MKEY_Left:
-				if(sm_pageSelected>0)
+				switch(sm_moveMode)
 				{
-					sm_pageSelected--;
-					S_Sound("menu/cursor",CHAN_UI);
+					case 0:
+						if(sm_pageSelected>0)
+						{
+							sm_pageSelected--;
+							sm_tabSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 1:
+						if(sm_tabSelected>0)
+						{
+							sm_tabSelected--;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
 				}
 				return true;
 
 			case MKEY_Right:
-				if(sm_pageSelected<shopPages.Size()-1)
+				switch(sm_moveMode)
 				{
-					sm_pageSelected++;
-					S_Sound("menu/cursor",CHAN_UI);
+					case 0:
+						if(sm_pageSelected<shopPages.Size()-1)
+						{
+							sm_pageSelected++;
+							sm_tabSelected = 0;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+					case 1:
+						if(sm_tabSelected<me_curPage.shopTabs.Size()-1)
+						{
+							sm_tabSelected++;
+							S_Sound("menu/cursor",CHAN_UI);
+						}
+						break;
+				}
+				return true;
+
+			case MKEY_Up:
+				if(sm_moveMode>0)
+				{
+					sm_moveMode--;
+				}
+				return true;
+			case MKEY_Down:
+				if(sm_moveMode<2)
+				{
+					sm_moveMode++;
 				}
 				return true;
 		}
@@ -99,31 +166,45 @@ Class TSP_ShopMenu : GenericMenu
 	
 	override void Drawer () 
 	{
-		int sy = 28;
-		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
-		
 		string gbd_sign = "\f$";
 		
 		TSP_ShopPage dd_curPage = shopPages[sm_pageSelected];
+		TSP_ShopTab dd_curTab = dd_curPage.shopTabs[sm_tabSelected];
 		
 		string money = gbd_sign..players[0].mo.CountInv("TSP_GlobalDollars");
 		screen.DrawText(SmallFont, Font.CR_WHITE, 4, 4, money, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 		DrawBG(160,0,160,240);
-		DrawButton("Retail",(SHOP_SHOPLISTX+41,2+11),(77,22),sm_pageSelected == 0);
-		DrawButton("Employer",(SHOP_SHOPLISTX+41+79,2+11),(77,22),sm_pageSelected == 1);
-		
-		for(int i = 0;i<dd_curPage.itemlist.Size();i++)
+		int pageSize = shopPages.Size();
+		for(int i = 0;i<shopPages.Size();i++)
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, dd_curPage.itemlist[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/pageSize)/2)+(SHOP_SHOPLISTW/pageSize)*i;
+			DrawButton(shopPages[i].name,(px,2+11),((SHOP_SHOPLISTW/pageSize)-2,22),sm_moveMode==0 && sm_pageSelected == i);
+		}
+		
+		int tabSize = shopPages[sm_pageSelected].shopTabs.Size();
+		for(int i = 0;i<tabSize;i++)
+		{
+			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/tabSize)/2)+(SHOP_SHOPLISTW/tabSize)*i;
+			DrawButton(dd_curPage.shopTabs[i].name,(px,37),((SHOP_SHOPLISTW/tabSize)-2,22),sm_moveMode==1 && sm_tabSelected == i);
+		}
+		
+		int sy = 52;
+		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
+		
+		for(int i = 0;i<dd_curTab.itemlist.Size();i++)
+		{
+			TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
 			
-			int c = dd_curPage.itemlist[i].brokendesc.Count();
+			screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, dd_curItem.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			
+			int c = dd_curItem.brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curPage.itemlist[i].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
-			string price = gbd_sign..dd_curPage.itemlist[i].price;
+			string price = gbd_sign..dd_curItem.price;
 			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 		}
