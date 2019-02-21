@@ -102,14 +102,23 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
-		if(gamemode==0) return;
-		
-		if(!gameover && e.Thing.target == players[0].mo)
+		switch(gamemode)
 		{
-			players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
-			players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
-			hunters_combo++;
-			hunters_combotime = 10*35;
+			case 0:
+				if(e.Thing.target == players[0].mo)
+				{
+					e.Thing.target.GiveInventory("TSP_GlobalDollars",e.Thing.SpawnHealth());
+				}
+				break;
+			case 1:
+				if(!gameover && e.Thing.target == players[0].mo)
+				{
+					players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
+					players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
+					hunters_combo++;
+					hunters_combotime = 10*35;
+				}
+				break;
 		}
 	}
 	
