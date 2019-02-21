@@ -193,12 +193,11 @@ Extend Class TSP_ShopMenu
 			case MKEY_Enter:
 				if(sm_moveMode==2)
 				{
-					if(me_curItem.inv_class!=null&&(me_curItem.level_class==null||(me_curItem.level<GetDefaultByType(me_curItem.level_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+					if(me_curItem.inv_class!=null&&(!(me_curItem.inv_class is "TSP_UpgradeBase")||(me_curItem.level<GetDefaultByType(me_curItem.inv_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
 					{
 						string givestuff = "buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price+me_curItem.price_increment*me_curItem.level;
-						if(me_curItem.level_class!=null)
+						if(me_curItem.inv_class is "TSP_UpgradeBase")
 						{
-							givestuff = givestuff..":"..me_curItem.level_class.GetClassName();
 							me_curItem.level++;
 						}
 						EventHandler.SendNetworkEvent(givestuff);

@@ -66,20 +66,6 @@ Class TSP_ShopMenu : GenericMenu
 	
 	Font sm_tinyFont;
 	
-	void CreateShopItem (string name = "???", string desc = "No description available.", int price = 0, Class<Inventory > item = "HealthBonus", int itemamount = 1)
-	{
-		TSP_ShopItem tempItem = new("TSP_ShopItem");
-		tempItem.name = name;
-		tempItem.desc = desc;
-		tempItem.price = price;
-		tempItem.brokendesc = sm_tinyFont.BreakLines(desc, 140);
-		if(curPage==null)
-		{
-			ThrowAbortException("No page was defined for shop item \""..name.."\"");
-		}
-		curTab.itemlist.Push(tempItem);
-	}
-	
 	void NewShopPage (string name = "???")
 	{
 		if(curTab!=null) curPage.shopTabs.Push(curTab);

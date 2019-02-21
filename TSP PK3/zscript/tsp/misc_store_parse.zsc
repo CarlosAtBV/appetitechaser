@@ -77,7 +77,7 @@ Extend Class TSP_ShopMenu
 									curItem.names.Copy(names);
 									curItem.desc = "No description available.";
 									curItem.inv_class = null;//"HealthBonus";
-									curItem.inv_amount = 0;//25;
+									curItem.inv_amount = 1;//25;
 									curItem.price = 0;
 									curItem.price_increment = 0;
 									curItem.level = 0;
@@ -117,9 +117,9 @@ Extend Class TSP_ShopMenu
 									}
 									
 									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);
-									if(curItem.level_class!=null)
+									if(curItem.inv_class is "TSP_UpgradeBase")
 									{
-										curItem.level = players[0].mo.CountInv(curItem.level_class);
+										curItem.level = players[0].mo.CountInv(curItem.inv_class);
 									}
 									curTab.itemlist.Push(curItem);
 								}

@@ -278,16 +278,16 @@ Class TSP_EventHandler : EventHandler
 			}
 			array<string> shopitem;
 			e.Name.Split(shopitem, ":");
-			if (shopitem.size() >=4)
+			if (shopitem.size()==4)
 			{
 				if (shopitem[0] ~== "buyitem")
 				{
 					int price = shopitem[3].ToInt();
 					players[0].mo.TakeInventory("TSP_GlobalDollars",price);
-					players[0].mo.GiveInventory(shopitem[1],shopitem[2].ToInt());
-					if(shopitem.Size()==5)
+					Class<Actor > cls = shopitem[1];
+					if(players[0].mo.GiveInventory(shopitem[1],shopitem[2].ToInt())&& cls is "TSP_UpgradeBase")
 					{
-						players[0].mo.GiveInventory(shopitem[4],1);
+						TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
 					}
 				}
 			}
