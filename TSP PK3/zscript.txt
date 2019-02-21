@@ -1,8 +1,11 @@
 version "3.1.0"
 
+#include "zscript/tsp/misc/misc_tokenizer.zsc"
+
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
 #include "zscript/tsp/misc_store.zsc"
+#include "zscript/tsp/misc_store_parse.zsc"
 
 #include "zscript/tsp/gm_hunters.zsc"
 

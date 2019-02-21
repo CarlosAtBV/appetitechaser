@@ -1,0 +1,32 @@
+// I'm gay and I piss and shit all over the place
+
+page
+{
+	name "Retail";
+	tab "Weapons"
+	{
+		item "Gun"
+		{
+			price 200;
+		}
+	}
+	tab "Vitality"
+	{
+		item "Cheebos"
+		{
+			price 200;
+		}
+	}
+}
+
+page
+{
+	name "Employer";
+	tab "Shite"
+	{
+		item "Thi Doll"
+		{
+			price 200;
+		}
+	}
+}

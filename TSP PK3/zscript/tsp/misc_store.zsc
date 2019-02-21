@@ -4,6 +4,8 @@ Class TSP_ShopItem
 	string desc;
 	int price;
 	BrokenLines brokendesc;
+	Array<Inventory > canthave;
+	Array<Inventory > musthave;
 }
 
 Class TSP_ShopTab
@@ -32,6 +34,7 @@ Class TSP_ShopMenu : GenericMenu
 	
 	TSP_ShopPage curPage;
 	TSP_ShopTab curTab;
+	TSP_ShopItem curItem;
 	
 	int sm_pageSelected;
 	int sm_tabSelected;
@@ -75,7 +78,7 @@ Class TSP_ShopMenu : GenericMenu
 	{
 		Super.Init(parent);
 		sm_tinyFont = "TinyFont";
-		NewShopPage("Retail");
+		/*NewShopPage("Retail");
 		NewShopTab("Weapon");
 		CreateShopItem("Nikki - Spitfire","You can shoot a shitload of bullets instead of just one. Jesus mary and joseph thats a lot of bullets",150);
 		CreateShopItem("Nikki - Whisper","Add a silencer to Darling Nikki. wow I didn't know mel was into that kind of thing",150);
@@ -91,7 +94,9 @@ Class TSP_ShopMenu : GenericMenu
 		NewShopPage("Employer");
 		NewShopTab("Shite");
 		CreateShopItem("Thi Doll","yea",18000);
-		NewShopPage();
+		NewShopPage();*/
+		
+		parseShopLumps();
 	}
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)

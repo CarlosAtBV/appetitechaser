@@ -1,0 +1,90 @@
+Extend Class TSP_ShopMenu
+{
+	void parseShopLumps ()
+	{	
+		for(int file = -1; (file = Wads.FindLump("TSPSTORE", file + 1)) != -1;)
+		{
+			parseThisLump(file);
+		}
+	}
+	
+	const MAXITERATIONS = 9001;
+	
+	bool parse_stayIn(TSP_Token token,int net)
+	{
+		Console.Printf("\cl"..(token.type!=TSPT_EOF && token.type!=TSPT_BraceC && net<MAXITERATIONS));
+		return (token.type!=TSPT_EOF && token.type!=TSPT_BraceC && net<MAXITERATIONS);
+	}
+	
+	void parseThisLump(int file)
+	{
+		Console.Printf("Processing new store lump");
+		let lumpy = Wads.ReadLump(file);
+		Console.Printf(""..lumpy);
+		TSP_Tokenizer tokenitup = TSP_Tokenizer.Create(lumpy);
+		TSP_Token tokenboy = tokenitup.GoThru();
+		
+		int safetyNet = 0;
+		int i;
+		while(tokenboy.type!=TSPT_EOF&&safetyNet<MAXITERATIONS)
+		{
+			if(tokenboy.type == TSPT_Identifier)
+			{
+				if(tokenboy.value == "page")
+				{
+					Console.Printf("Creating new store page");
+					curPage = new("TSP_ShopPage");
+					curPage.name = "???";
+					for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
+					{
+						Console.Printf(tokenboy.value.." "..tokenboy.type);
+						if(tokenboy.value == "name")
+						{
+							tokenboy = tokenitup.GoThru();
+							curPage.name = tokenboy.value;
+						}
+						if(tokenboy.value == "tab")
+						{
+							curTab = new("TSP_ShopTab");
+							curTab.name = tokenitup.GoThru().value;
+							for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
+							{
+								if(tokenboy.value == "name")
+								{
+									tokenboy = tokenitup.GoThru();
+									curTab.name = tokenboy.value;
+								}
+								
+								// Create Item
+								if(tokenboy.value == "item")
+								{
+									curItem = new("TSP_ShopItem");
+									curItem.name = tokenitup.GoThru().value;
+									curItem.desc = "No description available.";
+									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
+									{
+										if(tokenboy.value == "price")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.price = tokenboy.value.ToInt();
+										}
+									}
+									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);
+									curTab.itemlist.Push(curItem);
+								}
+								
+							}
+							curPage.shopTabs.Push(curTab);
+							//tokenboy = tokenitup.GoThru();
+						}
+						safetyNet++;
+					}
+					shopPages.Push(curPage);
+				}
+			}
+			tokenboy = tokenitup.GoThru();
+			safetyNet++;
+		}
+		Console.Printf(""..safetyNet);
+	}
+}
