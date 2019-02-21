@@ -6,12 +6,22 @@ Class TSP_ShopItem
 	BrokenLines brokendesc;
 	Array<Inventory > canthave;
 	Array<Inventory > musthave;
+	
+	Class<Inventory > inv_class;
+	int inv_amount;
+}
+
+Class TSP_ShopHeader
+{
+	int slot;
+	string name;
 }
 
 Class TSP_ShopTab
 {
 	string name;
 	Array<TSP_ShopItem > itemlist;
+	Array<TSP_ShopHeader > headers;
 }
 
 Class TSP_ShopPage
@@ -34,6 +44,7 @@ Class TSP_ShopMenu : GenericMenu
 	
 	TSP_ShopPage curPage;
 	TSP_ShopTab curTab;
+	TSP_ShopHeader curHeader;
 	TSP_ShopItem curItem;
 	
 	int sm_pageSelected;
@@ -103,6 +114,7 @@ Class TSP_ShopMenu : GenericMenu
 	{
 		TSP_ShopPage me_curPage = shopPages[sm_pageSelected];
 		TSP_ShopTab me_curTab = me_curPage.shopTabs[sm_tabSelected];
+		TSP_ShopItem me_curItem = me_curTab.itemlist[sm_itemSelected];
 		
 		switch (mkey)
 		{
@@ -170,6 +182,21 @@ Class TSP_ShopMenu : GenericMenu
 				{
 					sm_itemSelected++;
 					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+				
+			case MKEY_Enter:
+				if(sm_moveMode==2)
+				{
+					if(me_curItem.inv_class!=null&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+					{
+						EventHandler.SendNetworkEvent("buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price);
+						S_Sound("shop/purchase",CHAN_UI);
+					}
+					else
+					{
+						S_Sound("menu/invalid",CHAN_UI);
+					}
 				}
 				return true;
 		}
@@ -249,13 +276,20 @@ Class TSP_ShopMenu : GenericMenu
 		
 		if(sm_moveMode == 2)
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curTab.itemList[sm_itemSelected].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			bool dd_validItem = (dd_curTab.itemList[sm_itemSelected].inv_class != null);
+			double dd_alpha = dd_validItem ? 1.0 : 0.25;
+			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curTab.itemList[sm_itemSelected].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			
 			int c = dd_curTab.itemList[sm_itemSelected].brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+			}
+			
+			if(!dd_validItem)
+			{
+				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth("ITEM UNAVAILABLE")/2, 201, "ITEM UNAVAILABLE", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 		}
 			

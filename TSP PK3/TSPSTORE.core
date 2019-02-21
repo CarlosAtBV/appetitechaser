@@ -5,16 +5,39 @@ page
 	name "Retail";
 	tab "Weapons"
 	{
-		item "Gun"
+		item "Gooder Bullets"
+		{
+			desc "Makes your guns gooder.";
+			price 200;
+		}
+		item "Gooder Fast"
 		{
 			price 200;
 		}
 	}
 	tab "Vitality"
 	{
+		item "Duper Shield"
+		{
+			desc "Increases your shield's maximum limit by 50 points.";
+			price 250;
+			inv_class "TSP_PlayerPawn_MaxShield";
+			inv_amount 50;
+		}
 		item "Cheebos"
 		{
-			price 200;
+			desc "Get 15 health fool";
+			inv_class "HealthBonus";
+			inv_amount 15;
+			price 25;
+		}
+	}
+	tab "Weed"
+	{
+		item "Weed"
+		{
+			desc "lmao";
+			price 18000;
 		}
 	}
 }
@@ -22,11 +45,17 @@ page
 page
 {
 	name "Employer";
-	tab "Shite"
+	tab "Mods"
 	{
-		item "Thi Doll"
+		item "Spare Change"
 		{
-			price 200;
+			desc "Receive a cash bonus when exiting a level.";
+			price 500;
+		}
+		item "Cheapskate"
+		{
+			desc "All store items have a 10% discount.";
+			price 1500;
 		}
 	}
 }

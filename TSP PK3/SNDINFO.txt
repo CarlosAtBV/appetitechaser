@@ -61,3 +61,7 @@ bounty/finish           BOUNTFIN
 
 shield/hit "sounds/placeholder/player/shield_hit.ogg"
 shield/depleted "sounds/placeholder/player/shield_depleted.ogg"
+
+//shop
+
+shop/purchase "sounds/placeholder/shop/PASSGO.wav"

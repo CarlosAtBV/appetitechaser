@@ -20,7 +20,8 @@ Extend Class TSP_ShopMenu
 	{
 		Console.Printf("Processing new store lump");
 		let lumpy = Wads.ReadLump(file);
-		Console.Printf(""..lumpy);
+		
+		//Console.Printf(""..lumpy);
 		TSP_Tokenizer tokenitup = TSP_Tokenizer.Create(lumpy);
 		TSP_Token tokenboy = tokenitup.GoThru();
 		
@@ -41,7 +42,7 @@ Extend Class TSP_ShopMenu
 						if(tokenboy.value == "name")
 						{
 							tokenboy = tokenitup.GoThru();
-							curPage.name = tokenboy.value;
+							curPage.name = StringTable.Localize(tokenboy.value);
 						}
 						if(tokenboy.value == "tab")
 						{
@@ -61,12 +62,30 @@ Extend Class TSP_ShopMenu
 									curItem = new("TSP_ShopItem");
 									curItem.name = tokenitup.GoThru().value;
 									curItem.desc = "No description available.";
+									curItem.inv_class = null;//"HealthBonus";
+									curItem.inv_amount = 0;//25;
+									curItem.price = 0;
 									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 									{
 										if(tokenboy.value == "price")
 										{
 											tokenboy = tokenitup.GoThru();
 											curItem.price = tokenboy.value.ToInt();
+										}
+										if(tokenboy.value == "desc")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.desc = tokenboy.value;
+										}
+										if(tokenboy.value == "inv_class")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.inv_class = tokenboy.value;
+										}
+										if(tokenboy.value == "inv_amount")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.inv_amount = tokenboy.value.ToInt();
 										}
 									}
 									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);
