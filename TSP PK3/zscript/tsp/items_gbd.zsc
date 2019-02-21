@@ -4,7 +4,31 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 	{
 		Inventory.PickupSound "money/pickup";
 		+BRIGHT
+		Scale 0.75;
 	}
+	
+	int grabRadius;
+	
+	override void Tick()
+	{
+		super.Tick();
+		if(Distance3D(players[0].mo)<64)
+		{
+			Touch(Actor(players[0].mo));
+			Destroy();
+			return;
+		}
+		if(players[0].mo!=null&&players[0].mo.health>0&&Distance3D(players[0].mo)<grabradius)
+		{
+			//Console.Printf("GRAB ME PUSSY");
+			Thrust(1,AngleTo(players[0].mo));
+		}
+		if(grabradius<1024)
+		{
+			grabradius++;
+		}
+	}
+	
 	States
 	{
 		Spawn:
