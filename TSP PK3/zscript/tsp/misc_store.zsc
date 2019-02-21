@@ -23,10 +23,10 @@ Class TSP_ShopMenu : GenericMenu
 	const SHOP_SHOPLISTX = 162 ;
 	const SHOP_SHOPLISTW = 158;
 	
-	const SHOP_ITEMHEIGHT = (9*4);
-	const SHOP_ITEMPADDING = 8;
+	const SHOP_ITEMHEIGHT = 9;
+	const SHOP_ITEMPADDING = 3;
 	const SHOP_ITEMPADDINGX = 4;
-	const SHOP_ITEMWIDTH = 152;
+	const SHOP_ITEMWIDTH = 150;
 	
 	Array<TSP_ShopPage > shopPages;
 	
@@ -35,6 +35,7 @@ Class TSP_ShopMenu : GenericMenu
 	
 	int sm_pageSelected;
 	int sm_tabSelected;
+	int sm_itemSelected;
 	
 	int sm_moveMode;
 	
@@ -72,8 +73,9 @@ Class TSP_ShopMenu : GenericMenu
 	{
 		Super.Init(parent);
 		NewShopPage("Retail");
-		NewShopTab("Weapons");
-		CreateShopItem("Dick Smasher","blam blam ka-bam",69);
+		NewShopTab("Weapon");
+		CreateShopItem("Pistol - Spitfire","blam blam ka-bam",150);
+		CreateShopItem("Pistol - Whisper","blam blam ka-bam",150);
 		NewShopTab("Vitals");
 		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
 		NewShopTab("Weed");
@@ -90,6 +92,7 @@ Class TSP_ShopMenu : GenericMenu
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
 		TSP_ShopPage me_curPage = shopPages[sm_pageSelected];
+		TSP_ShopTab me_curTab = me_curPage.shopTabs[sm_tabSelected];
 		
 		switch (mkey)
 		{
@@ -136,15 +139,27 @@ Class TSP_ShopMenu : GenericMenu
 				return true;
 
 			case MKEY_Up:
-				if(sm_moveMode>0)
+				if(sm_itemSelected==0&&sm_moveMode>0)
 				{
 					sm_moveMode--;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				else
+				{
+					sm_itemSelected--;
+					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
 			case MKEY_Down:
 				if(sm_moveMode<2)
 				{
 					sm_moveMode++;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				else if(sm_itemSelected < me_curTab.itemlist.Size()-1)
+				{
+					sm_itemSelected++;
+					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
 		}
@@ -158,10 +173,15 @@ Class TSP_ShopMenu : GenericMenu
 		screen.Dim(cbg,0.5,start.x,start.y,size.x,size.y);
 	}
 	
-	void DrawButton(string name, Vector2 center, Vector2 size, bool active)
+	void DrawButton(string name, Vector2 center, Vector2 size, bool active = false, bool outline = false)
 	{
-		DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, active ? "#00FF00" : "#000000");
-		screen.DrawText(SmallFont, Font.CR_WHITE, center.x-SmallFont.StringWidth(name)/2, center.y-SmallFont.GetHeight()/2, name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, "#000000");
+		DrawBG(center.x-size.x/2,center.y+(size.y/2)-4,size.x,4, active ? "#00FF00" : "#000000");
+		screen.DrawText(SmallFont, active ? Font.CR_GREEN : Font.CR_WHITE, center.x-SmallFont.StringWidth(name)/2, center.y-SmallFont.GetHeight()/2, name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		if(outline)
+		{
+			DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, "#FFFF00");
+		}
 	}
 	
 	override void Drawer () 
@@ -179,14 +199,14 @@ Class TSP_ShopMenu : GenericMenu
 		for(int i = 0;i<shopPages.Size();i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/pageSize)/2)+(SHOP_SHOPLISTW/pageSize)*i;
-			DrawButton(shopPages[i].name,(px,2+11),((SHOP_SHOPLISTW/pageSize)-2,22),sm_moveMode==0 && sm_pageSelected == i);
+			DrawButton(shopPages[i].name,(px,2+11),((SHOP_SHOPLISTW/pageSize)-2,22),sm_pageSelected == i,sm_moveMode == 0 && sm_pageSelected == i);
 		}
 		
 		int tabSize = shopPages[sm_pageSelected].shopTabs.Size();
 		for(int i = 0;i<tabSize;i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/tabSize)/2)+(SHOP_SHOPLISTW/tabSize)*i;
-			DrawButton(dd_curPage.shopTabs[i].name,(px,37),((SHOP_SHOPLISTW/tabSize)-2,22),sm_moveMode==1 && sm_tabSelected == i);
+			DrawButton(dd_curPage.shopTabs[i].name,(px,37),((SHOP_SHOPLISTW/tabSize)-2,22),sm_tabSelected == i,sm_moveMode == 1 && sm_tabSelected == i);
 		}
 		
 		int sy = 52;
@@ -194,19 +214,33 @@ Class TSP_ShopMenu : GenericMenu
 		
 		for(int i = 0;i<dd_curTab.itemlist.Size();i++)
 		{
+			DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
+			if(sm_itemSelected == i)
+			{
+				DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
+			}
+			
 			TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
 			
-			screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, dd_curItem.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
-			int c = dd_curItem.brokendesc.Count();
+			string price = gbd_sign..dd_curItem.price;
+			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			
+			if(sm_moveMode == 2 && sm_itemSelected == i)
+			{
+				DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#FFFF00");
+			}
+			
+			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
+		}
+		
+		DrawBG(2,178,156,56);
+			
+			/*int c = dd_curItem.brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
 				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			}
-			
-			string price = gbd_sign..dd_curItem.price;
-			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy+SHOP_ITEMHEIGHT-SmallFont.GetHeight(), price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
-		}
+			}*/
 	}
 }
