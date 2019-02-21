@@ -31,7 +31,7 @@ page
 	}
 	tab "Vitality"
 	{
-		item "Super Shield", "Duper Shield", "Ultra Shield"
+		item "Alpha Shield", "Delta Shield", "Zeta Shield"
 		{
 			desc "Increases your shield's maximum limit by 25 points.";
 			price 500;

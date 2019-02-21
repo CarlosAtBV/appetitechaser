@@ -17,29 +17,29 @@ Class TSP_ShopItem
 	
 	int level;
 	
-	bool canBuy()
+	bool, string canBuy()
 	{
 		TSP_PlayerPawn_ZSCBase player = TSP_PlayerPawn_ZSCBase(players[0].mo);
 		
 		if(player.CountInv("TSP_GlobalDollars")<price)
 		{
-			return false;
+			return false, StringTable.Localize("$TSP_SHOP_NOMONEY");
 		}
 		
 		if(mod_take!=null&&mod_give!=null)
 		{
 			if(player.CountInv(mod_give)==0&&player.CountInv(mod_take)==1)
 			{
-				return true;
+				return true, "";
 			}
 		}
 		
 		if(inv_class != null)
 		{
-			return true;
+			return true, "";
 		}
 		
-		return false;
+		return false, StringTable.Localize("$TSP_SHOP_CANTINV");
 	}
 	
 	string itemString()
@@ -221,6 +221,8 @@ Class TSP_ShopMenu : GenericMenu
 		{
 			for(int i = 0;i<dd_curTab.itemlist.Size();i++)
 			{
+				bool dd_canBuy = dd_curTab.itemlist[i].canBuy();
+				
 				DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
 				if(sm_itemSelected == i)
 				{
@@ -229,7 +231,11 @@ Class TSP_ShopMenu : GenericMenu
 				
 				TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
 				
-				screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				if(sm_itemSelected==i)
+				{
+					screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
+				}
 				
 				string price;
 				if(!(dd_curItem.inv_class is "TSP_UpgradeBase")||dd_curItem.level<GetDefaultByType(dd_curItem.inv_class).MaxAmount)
@@ -273,7 +279,10 @@ Class TSP_ShopMenu : GenericMenu
 		{
 			TSP_ShopItem dd_curItem = dd_curTab.itemlist[sm_itemSelected];
 			
-			bool dd_validItem = dd_curTab.itemList[sm_itemSelected].canBuy();
+			bool dd_validItem;
+			string dd_errorMessage;
+			[dd_validItem, dd_errorMessage] = dd_curTab.itemList[sm_itemSelected].canBuy();
+			
 			double dd_alpha = dd_validItem ? 1.0 : 0.25;
 			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			
@@ -286,7 +295,7 @@ Class TSP_ShopMenu : GenericMenu
 			
 			if(!dd_validItem)
 			{
-				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth("ITEM UNAVAILABLE")/2, 201, "ITEM UNAVAILABLE", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth(dd_errorMessage)/2, 201, dd_errorMessage, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 		}
 			

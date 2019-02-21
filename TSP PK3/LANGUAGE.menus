@@ -3,6 +3,9 @@
 TSP_GAMEMODE_DEFAULT = "Gaming Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters";
 
+TSP_SHOP_CANTINV = "Inv. Class Not Found";
+TSP_SHOP_NOMONEY = "Insufficient Funds";
+
 TSP_EMPLOYER_MODS = "Mods";
 
 TSP_EMPLOYER_KEI_DESC = "\tThe Kei Pirates are pirates and they are from space. They like to drive pirate ships and they like to steal gold. If you join them, you will be doing the same thing you do now, but now you have to report to a boss.\n\n\tNew members have to undergo pirate initiation, in which they must watch all 14 Pirates of the Carribean movies before taking an in-depth test. If you succeed, you may become a Pirate de la Kei.";
