@@ -8,6 +8,8 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 	}
 	
 	int grabRadius;
+	int mineSpeeden;
+	bool epicMovin;
 	
 	override void Tick()
 	{
@@ -18,14 +20,21 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 			Destroy();
 			return;
 		}
+		if(epicMovin)
+		{
+			if(mineSpeeden<32)
+			{
+				mineSpeeden++;
+			}
+			Vel3DFromAngle(mineSpeeden,AngleTo(players[0].mo),-atan2(players[0].mo.pos.z+24 - pos.z,Distance2D(players[0].mo)));
+		}
 		if(players[0].mo!=null&&players[0].mo.health>0&&Distance3D(players[0].mo)<grabradius)
 		{
-			//Console.Printf("GRAB ME PUSSY");
-			Vel3DFromAngle(3,AngleTo(players[0].mo),-atan2(players[0].mo.pos.z+24 - pos.z,Distance2D(players[0].mo)));
+			epicMovin = true;
 		}
 		if(grabradius<1024)
 		{
-			grabradius+=8;
+			grabradius+=2;
 		}
 	}
 	
