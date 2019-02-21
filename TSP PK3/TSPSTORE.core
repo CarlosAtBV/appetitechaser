@@ -14,6 +14,12 @@ page
 		{
 			price 200;
 		}
+		item "Mod - Spitfire"
+		{
+			price 50;
+			mod_take "MelPistol";
+			mod_give "MelPistolA";
+		}
 		item "BFG 9000"
 		{
 			desc "big fucking nut";

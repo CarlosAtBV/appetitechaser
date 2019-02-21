@@ -301,25 +301,26 @@ Class TSP_EventHandler : EventHandler
 			}
 			array<string> shopitem;
 			e.Name.Split(shopitem, ":");
-			if(shopitem.size()==4)
+			if(shopitem[0] ~== "shopmod")
 			{
-				if(shopitem[0] ~== "buyitem")
+				int price = shopitem[3].ToInt();
+				players[0].mo.GiveInventory(shopitem[2],1);
+				players[0].mo.A_SelectWeapon(shopitem[2]);
+				players[0].mo.TakeInventory(shopitem[1],1);
+			}
+			else if(shopitem[0] ~== "buyitem")
+			{
+				int price = shopitem[3].ToInt();
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
+				Class<Actor > cls = shopitem[1];
+				if(players[0].mo.GiveInventory(shopitem[1],shopitem[2].ToInt())&& cls is "TSP_UpgradeBase")
 				{
-					int price = shopitem[3].ToInt();
-					players[0].mo.TakeInventory("TSP_GlobalDollars",price);
-					Class<Actor > cls = shopitem[1];
-					if(players[0].mo.GiveInventory(shopitem[1],shopitem[2].ToInt())&& cls is "TSP_UpgradeBase")
-					{
-						TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
-					}
+					TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
 				}
 			}
-			else if(shopitem.size()==2)
+			else if(shopitem[0] ~== "employer")
 			{
-				if(shopitem[0] ~== "employer")
-				{
-					TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
-				}
+				TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
 			}
 		}
 	}
