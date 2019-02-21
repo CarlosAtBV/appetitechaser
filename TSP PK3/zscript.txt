@@ -304,6 +304,7 @@ Class TSP_EventHandler : EventHandler
 			if(shopitem[0] ~== "shopmod")
 			{
 				int price = shopitem[3].ToInt();
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
 				players[0].mo.GiveInventory(shopitem[2],1);
 				players[0].mo.A_SelectWeapon(shopitem[2]);
 				players[0].mo.TakeInventory(shopitem[1],1);
