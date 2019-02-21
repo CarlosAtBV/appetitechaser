@@ -17,7 +17,30 @@ version "3.1.0"
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
 Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.
 
+#include "zscript/tsp/misc_upgrades.zsc"
 #include "zscript/tsp/misc_player.zsc"
+
+Class TSP_GlobalVariables : Thinker
+{
+	int tsp_employer;
+
+	TSP_GlobalVariables Init()
+	{
+		ChangeStatNum(STAT_STATIC);
+		return self;
+	}
+
+	static TSP_GlobalVariables Get()
+	{
+		ThinkerIterator it = ThinkerIterator.Create("TSP_GlobalVariables",STAT_STATIC);
+		let p = TSP_GlobalVariables(it.Next());
+		if (p == null)
+		{
+			p = new("TSP_GlobalVariables").Init();
+		}
+		return p;
+	}
+}
 
 Class TSP_EventHandler : EventHandler
 {
@@ -278,9 +301,9 @@ Class TSP_EventHandler : EventHandler
 			}
 			array<string> shopitem;
 			e.Name.Split(shopitem, ":");
-			if (shopitem.size()==4)
+			if(shopitem.size()==4)
 			{
-				if (shopitem[0] ~== "buyitem")
+				if(shopitem[0] ~== "buyitem")
 				{
 					int price = shopitem[3].ToInt();
 					players[0].mo.TakeInventory("TSP_GlobalDollars",price);
@@ -289,6 +312,13 @@ Class TSP_EventHandler : EventHandler
 					{
 						TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
 					}
+				}
+			}
+			else if(shopitem.size()==2)
+			{
+				if(shopitem[0] ~== "employer")
+				{
+					TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
 				}
 			}
 		}

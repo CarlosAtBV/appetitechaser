@@ -15,8 +15,8 @@ Extend Class TSP_ShopMenu
 		virtualMPos = (adjustedMPos.x * 320 / size.x, adjustedMPos.y * 240 / size.y);
 		
 		int v = 0;
-		int pageSize = shopPages.Size();
-		for(int i = 0;i<shopPages.Size();i++)
+		int pageSize = shopPages_visible.Size();
+		for(int i = 0;i<shopPages_visible.Size();i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/pageSize)/2)+(SHOP_SHOPLISTW/pageSize)*i;
 			int py = SHOP_SHOPLISTY+(SHOP_SHOPLISTH/2)+(SHOP_SHOPLISTH+SHOP_SHOPLISTPADDING)*v;
@@ -31,7 +31,7 @@ Extend Class TSP_ShopMenu
 		}
 		
 		v++;
-		int tabSize = shopPages[sm_pageSelected].shopTabs.Size();
+		int tabSize = shopPages_visible[sm_pageSelected].shopTabs.Size();
 		for(int i = 0;i<tabSize;i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/tabSize)/2)+(SHOP_SHOPLISTW/tabSize)*i;
@@ -49,8 +49,9 @@ Extend Class TSP_ShopMenu
 		int sy = 52;
 		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
 		
-		TSP_ShopPage curPage = shopPages[sm_pageSelected];
+		TSP_ShopPage curPage = shopPages_visible[sm_pageSelected];
 		TSP_ShopTab curTab = curPage.shopTabs[sm_tabSelected];
+		
 		for(int i = 0;i<curTab.itemlist.Size();i++)
 		{
 			int px = SHOP_SHOPLISTX;
@@ -113,9 +114,10 @@ Extend Class TSP_ShopMenu
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
-		TSP_ShopPage me_curPage = shopPages[sm_pageSelected];
+		TSP_ShopPage me_curPage = shopPages_visible[sm_pageSelected];
 		TSP_ShopTab me_curTab = me_curPage.shopTabs[sm_tabSelected];
-		TSP_ShopItem me_curItem = me_curTab.itemlist[sm_itemSelected];
+		TSP_ShopItem me_curItem;
+		if(me_curTab.itemlist.Size()>0) me_curItem = me_curTab.itemlist[sm_itemSelected];
 		
 		switch (mkey)
 		{
@@ -193,19 +195,28 @@ Extend Class TSP_ShopMenu
 			case MKEY_Enter:
 				if(sm_moveMode==2)
 				{
-					if(me_curItem.inv_class!=null&&(!(me_curItem.inv_class is "TSP_UpgradeBase")||(me_curItem.level<GetDefaultByType(me_curItem.inv_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+					if(me_curTab.employ!=null)
 					{
-						string givestuff = "buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price+me_curItem.price_increment*me_curItem.level;
-						if(me_curItem.inv_class is "TSP_UpgradeBase")
-						{
-							me_curItem.level++;
-						}
-						EventHandler.SendNetworkEvent(givestuff);
-						S_Sound("shop/purchase",CHAN_UI);
+						EventHandler.SendNetworkEvent("employer:"..me_curTab.employ.employer);
+						S_Sound("shop/choose",CHAN_UI);
+						updateShopPages(me_curTab.employ.employer,1);
 					}
 					else
 					{
-						S_Sound("menu/invalid",CHAN_UI);
+						if(me_curItem.inv_class!=null&&(!(me_curItem.inv_class is "TSP_UpgradeBase")||(me_curItem.level<GetDefaultByType(me_curItem.inv_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+						{
+							string givestuff = "buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price+me_curItem.price_increment*me_curItem.level;
+							if(me_curItem.inv_class is "TSP_UpgradeBase")
+							{
+								me_curItem.level++;
+							}
+							EventHandler.SendNetworkEvent(givestuff);
+							S_Sound("shop/purchase",CHAN_UI);
+						}
+						else
+						{
+							S_Sound("menu/invalid",CHAN_UI);
+						}
 					}
 				}
 				return true;

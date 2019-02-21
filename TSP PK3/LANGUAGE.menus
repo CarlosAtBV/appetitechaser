@@ -2,3 +2,9 @@
 
 TSP_GAMEMODE_DEFAULT = "Gaming Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters";
+
+TSP_EMPLOYER_MODS = "Mods";
+
+TSP_EMPLOYER_KEI_DESC = "\tThe Kei Pirates are pirates and they are from space. They like to drive pirate ships and they like to steal gold. If you join them, you will be doing the same thing you do now, but now you have to report to a boss. Honestly, starting your own piracy business would be the option I would recommend. You get to set your own hours, and you get to do things the way you want them to be done.\n\n\tNew members have to undergo pirate initiation, in which they must watch all 14 Pirates of the Carribean movies before taking an in-depth test. If you succeed, you may become a Pirate de la Kei.";
+TSP_EMPLOYER_ARC_DESC = "\tARC STAR is basically kinda epic. Conceived as a smalltown startup business in Kentucky, they overtook the job of governing the expanse after a freak accident caused various planets in the solar system to shoot out in different directions, requiring a massive army of soldiers to manually push the planets back into orbit. They shoot guns largely.\n\n\tIf you join, you will be performing legal piracy, as dictated by ARC STAR. You are not allowed to make fun of ARC STAR under your employment. ARC SHART. SHART STAR.";
+TSP_EMPLOYER_VEX_DESC = "\tAlan B. Vexler is a man who wears his sunglasses at night because, in reality, he lacks vision orbs. If you serve under him, you will work towards his goal of manufacturing the Thi Virus and spreading it across the galaxy, allowing him to hit that yeet, as well as excrete.";

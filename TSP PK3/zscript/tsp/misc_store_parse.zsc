@@ -38,6 +38,7 @@ Extend Class TSP_ShopMenu
 					Console.Printf("Creating new store page");
 					curPage = new("TSP_ShopPage");
 					curPage.name = "???";
+					curPage.employer = -1;
 					for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 					{
 						Console.Printf(tokenboy.value.." "..tokenboy.type);
@@ -46,16 +47,34 @@ Extend Class TSP_ShopMenu
 							tokenboy = tokenitup.GoThru();
 							curPage.name = StringTable.Localize(tokenboy.value);
 						}
+						if(tokenboy.value == "ifEmployer")
+						{
+							tokenboy = tokenitup.GoThru();
+							curPage.employer = StringTable.Localize(tokenboy.value).ToInt();
+						}
 						if(tokenboy.value == "tab")
 						{
 							curTab = new("TSP_ShopTab");
 							curTab.name = tokenitup.GoThru().value;
+							curTab.desc = "";
 							for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 							{
 								if(tokenboy.value == "name")
 								{
 									tokenboy = tokenitup.GoThru();
 									curTab.name = tokenboy.value;
+								}
+								if(tokenboy.value == "desc")
+								{
+									tokenboy = tokenitup.GoThru();
+									curTab.desc = StringTable.Localize(tokenboy.value);
+								}
+								if(tokenboy.value == "employ")
+								{
+									tokenboy = tokenitup.GoThru();
+									TSP_ShopEmploy curItem = new("TSP_ShopEmploy");
+									curItem.employer = tokenboy.value.ToInt();
+									curTab.employ = curItem;
 								}
 								
 								// Create Item
@@ -108,11 +127,6 @@ Extend Class TSP_ShopMenu
 										{
 											tokenboy = tokenitup.GoThru();
 											curItem.inv_amount = tokenboy.value.ToInt();
-										}
-										if(tokenboy.value == "level_class")
-										{
-											tokenboy = tokenitup.GoThru();
-											curItem.level_class = tokenboy.value;
 										}
 									}
 									

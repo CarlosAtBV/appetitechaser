@@ -58,18 +58,72 @@ page
 
 page
 {
-	name "Employer";
-	tab "Mods"
+	name "Kei Pirates";
+	ifEmployer 1;
+	tab "$TSP_EMPLOYER_MODS"
 	{
 		item "Spare Change"
 		{
 			desc "Receive a cash bonus when exiting a level.";
 			price 500;
 		}
+		item "Looter"
+		{
+			desc "Enemies drop additional Global Dollars.";
+			price 1000;
+		}
 		item "Cheapskate"
 		{
 			desc "All store items have a 10% discount.";
 			price 1500;
 		}
+	}
+}
+
+page
+{
+	name "ARC STAR";
+	ifEmployer 2;
+	tab "$TSP_EMPLOYER_MODS"
+	{
+		item "Boof"
+		{
+			price 27000;
+		}
+	}
+}
+
+page
+{
+	name "Vexler";
+	ifEmployer 3;
+	tab "$TSP_EMPLOYER_MODS"
+	{
+		item "Vexler's Glasses"
+		{
+			desc "Makes you cool";
+			price 19000;
+		}
+	}
+}
+
+page
+{
+	name "Employers";
+	ifEmployer 0;
+	tab "Kei Pirates"
+	{
+		desc "$TSP_EMPLOYER_KEI_DESC";
+		employ 1;
+	}
+	tab "ARC STAR"
+	{
+		desc "$TSP_EMPLOYER_ARC_DESC";
+		employ 2;
+	}
+	tab "Vexler"
+	{
+		desc "$TSP_EMPLOYER_VEX_DESC";
+		employ 3;
 	}
 }

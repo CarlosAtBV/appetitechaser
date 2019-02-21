@@ -11,9 +11,13 @@ Class TSP_ShopItem
 	
 	Class<Inventory > inv_class;
 	int inv_amount;
-	Class<Inventory > level_class;
 	
 	int level;
+}
+
+Class TSP_ShopEmploy
+{
+	int employer;
 }
 
 Class TSP_ShopHeader
@@ -25,14 +29,17 @@ Class TSP_ShopHeader
 Class TSP_ShopTab
 {
 	string name;
+	string desc;
 	Array<TSP_ShopItem > itemlist;
 	Array<TSP_ShopHeader > headers;
+	TSP_ShopEmploy employ;
 }
 
 Class TSP_ShopPage
 {
 	Array<TSP_ShopTab > shopTabs;
 	string name;
+	int employer;
 }
 
 Class TSP_ShopMenu : GenericMenu
@@ -49,6 +56,7 @@ Class TSP_ShopMenu : GenericMenu
 	const SHOP_ITEMWIDTH = 150;
 	
 	Array<TSP_ShopPage > shopPages;
+	Array<TSP_ShopPage > shopPages_visible;
 	
 	TSP_ShopPage curPage;
 	TSP_ShopTab curTab;
@@ -66,6 +74,8 @@ Class TSP_ShopMenu : GenericMenu
 	
 	Font sm_tinyFont;
 	
+	int sm_employer;
+	
 	void NewShopPage (string name = "???")
 	{
 		if(curTab!=null) curPage.shopTabs.Push(curTab);
@@ -82,29 +92,34 @@ Class TSP_ShopMenu : GenericMenu
 		curTab.name = name;
 	}
 	
+	void updateShopPages(int employer,int landingPage = 0)
+	{
+		shopPages_visible.Clear();
+		sm_employer = employer;
+		for(int i = 0;i<shopPages.Size();i++)
+		{
+			if(shopPages[i].employer == -1 || shopPages[i].employer == sm_employer)
+			{
+				shopPages_visible.Push(shopPages[i]);
+			}
+		}
+		sm_pageSelected = landingPage;
+		sm_tabSelected = 0;
+		sm_itemSelected = 0;
+		sm_pageHovered = 0;
+		sm_tabHovered = 0;
+		sm_itemHovered = 0;
+	}
+	
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		
 		sm_tinyFont = "TinyFont";
-		/*NewShopPage("Retail");
-		NewShopTab("Weapon");
-		CreateShopItem("Nikki - Spitfire","You can shoot a shitload of bullets instead of just one. Jesus mary and joseph thats a lot of bullets",150);
-		CreateShopItem("Nikki - Whisper","Add a silencer to Darling Nikki. wow I didn't know mel was into that kind of thing",150);
-		NewShopTab("Vitals");
-		CreateShopItem("100 Max. Shield","Increase you maximum shield points to 100.",150);
-		CreateShopItem("Faster Regen","Your shield will be regenerated faster poo poo head",300);
-		CreateShopItem("Cheebos","don't eat them because they belong to thi",18000);
-		NewShopTab("Weed");
-		for(int i = 0;i<25;i++)
-		{
-			CreateShopItem("Test Item "..i);
-		}
-		NewShopPage("Employer");
-		NewShopTab("Shite");
-		CreateShopItem("Thi Doll","yea",18000);
-		NewShopPage();*/
 		
 		parseShopLumps();
+		
+		updateShopPages(TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer);
 	}
 	
 	void DrawBG(int x, int y, int width, int height, string cbg = "#000000")
@@ -129,7 +144,7 @@ Class TSP_ShopMenu : GenericMenu
 	{
 		string gbd_sign = "\f$";
 		
-		TSP_ShopPage dd_curPage = shopPages[sm_pageSelected];
+		TSP_ShopPage dd_curPage = shopPages_visible[sm_pageSelected];
 		TSP_ShopTab dd_curTab = dd_curPage.shopTabs[sm_tabSelected];
 		
 		string money = gbd_sign..players[0].mo.CountInv("TSP_GlobalDollars");
@@ -138,16 +153,16 @@ Class TSP_ShopMenu : GenericMenu
 		DrawBG(160,0,160,240);
 		
 		int v = 0;
-		int pageSize = shopPages.Size();
-		for(int i = 0;i<shopPages.Size();i++)
+		int pageSize = shopPages_visible.Size();
+		for(int i = 0;i<shopPages_visible.Size();i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/pageSize)/2)+(SHOP_SHOPLISTW/pageSize)*i;
 			int py = SHOP_SHOPLISTY+(SHOP_SHOPLISTH/2)+(SHOP_SHOPLISTH+SHOP_SHOPLISTPADDING)*v;
-			DrawButton(shopPages[i].name,(px,py),((SHOP_SHOPLISTW/pageSize)-2,22),sm_pageSelected == i,sm_moveMode == 0 && sm_pageHovered == i);
+			DrawButton(shopPages_visible[i].name,(px,py),((SHOP_SHOPLISTW/pageSize)-2,22),sm_pageSelected == i,sm_moveMode == 0 && sm_pageHovered == i);
 		}
 		
 		v++;
-		int tabSize = shopPages[sm_pageSelected].shopTabs.Size();
+		int tabSize = shopPages_visible[sm_pageSelected].shopTabs.Size();
 		for(int i = 0;i<tabSize;i++)
 		{
 			int px = SHOP_SHOPLISTX+((SHOP_SHOPLISTW/tabSize)/2)+(SHOP_SHOPLISTW/tabSize)*i;
@@ -158,40 +173,53 @@ Class TSP_ShopMenu : GenericMenu
 		int sy = 52;
 		int sx = SHOP_SHOPLISTX+SHOP_ITEMPADDINGX;
 		
-		for(int i = 0;i<dd_curTab.itemlist.Size();i++)
+		if(dd_curTab.desc=="")
 		{
-			DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
-			if(sm_itemSelected == i)
+			for(int i = 0;i<dd_curTab.itemlist.Size();i++)
 			{
-				DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
+				DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
+				if(sm_itemSelected == i)
+				{
+					DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
+				}
+				
+				TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
+				
+				screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				
+				string price;
+				if(!(dd_curItem.inv_class is "TSP_UpgradeBase")||dd_curItem.level<GetDefaultByType(dd_curItem.inv_class).MaxAmount)
+				{
+					price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
+				}
+				else
+				{
+					price = "\c[TSPRed]---";
+				}
+				screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				
+				if(sm_moveMode == 2 && sm_itemHovered == i)
+				{
+					DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#FFFF00");
+				}
+				
+				sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
 			}
-			
-			TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
-			
-			screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			
-			string price;
-			if(dd_curItem.level_class==null||dd_curItem.level<GetDefaultByType(dd_curItem.level_class).MaxAmount)
+		}
+		else
+		{
+			BrokenLines tabDesc = sm_TinyFont.BreakLines(dd_curTab.desc,152);
+			int c = tabDesc.Count();
+			for (int g = 0; g < c; g++)
 			{
-				price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 160+2, sy+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
-			else
-			{
-				price = "\c[TSPRed]---";
-			}
-			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			
-			if(sm_moveMode == 2 && sm_itemHovered == i)
-			{
-				DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#FFFF00");
-			}
-			
-			sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
+			DrawButton("Accept",(160+80,160),(64,22),false,sm_moveMode==2);
 		}
 		
 		DrawBG(2,178,156,56);
 		
-		if(sm_moveMode == 2)
+		if(sm_moveMode == 2 && dd_curTab.employ==null)
 		{
 			TSP_ShopItem dd_curItem = dd_curTab.itemlist[sm_itemSelected];
 			

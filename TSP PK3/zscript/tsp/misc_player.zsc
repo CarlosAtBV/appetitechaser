@@ -1,31 +1,5 @@
 const TSP_INITMAXSHIELD = 50;
 
-Class TSP_UpgradeBase : Inventory
-{
-	Default
-	{
-		Inventory.Amount 1;
-	}
-	
-	virtual void UpgradeEffect(Actor victim)
-	{
-	}
-}
-
-Class TSP_Upgrade_Shield : TSP_UpgradeBase
-{
-	Default
-	{
-		Inventory.MaxAmount 3;
-	}
-	
-	override void UpgradeEffect(Actor victim)
-	{
-		victim.GiveInventory("TSP_PlayerPawn_MaxShield",25);
-		Console.Printf("\ccYour shield is enhanced further... [\cf"..victim.CountInv("TSP_PlayerPawn_MaxShield").."\cc]");
-	}
-}
-
 Class TSP_PlayerPawn_MaxShield : Inventory
 {
 	Default
@@ -66,6 +40,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int pp_initShield;
 	
 	Property StartShield : pp_initShield;
+	
+	TSP_GlobalVariables gvars;
 	//property FallingScreamSpeed: FallingScreamMinSpeed, FallingScreamMaxSpeed;
 	
 	override void PostBeginPlay()
@@ -73,6 +49,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		super.PostBeginPlay();
 		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
+		gvars = TSP_GlobalVariables.Get();
+		gvars.tsp_employer = 0;
 	}
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
