@@ -18,6 +18,8 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 
 Class TSP_EventHandler : EventHandler
 {
+	ui bool tsp_shopmusic;
+	
 	bool gameover;
 	int spawndelay;
 	int hunters_wave;
@@ -113,9 +115,6 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldTick()
 	{
-		/*Menu curMenu
-		if(Menu.GetCurrentMenu()*/
-		
 		if(gamemode==0) return;
 		
 		if(!gameover)
@@ -200,6 +199,17 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
+		if(Menu.GetCurrentMenu() is "TSP_ShopMenu" && !tsp_shopmusic)
+		{
+			S_ChangeMusic("music/TSP_INT.ogg");
+			tsp_shopmusic = true;
+		}
+		else if(!(Menu.GetCurrentMenu() is "TSP_ShopMenu") && tsp_shopmusic)
+		{
+			S_ChangeMusic("*");
+			tsp_shopmusic = false;
+		}
+		
 		if(players[0].mo == null) return;
 		
 		TextureID combobar_bg = TexMan.CheckForTexture("HUD_ABR2",TexMan.Type_MiscPatch);
