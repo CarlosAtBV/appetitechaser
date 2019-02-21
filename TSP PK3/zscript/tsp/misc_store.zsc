@@ -246,7 +246,7 @@ Class TSP_ShopMenu : GenericMenu
 				{
 					price = "\c[TSPRed]---";
 				}
-				screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSPRed"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 				
 				if(sm_moveMode == 2 && sm_itemHovered == i)
 				{
