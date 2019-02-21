@@ -21,11 +21,11 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 		if(players[0].mo!=null&&players[0].mo.health>0&&Distance3D(players[0].mo)<grabradius)
 		{
 			//Console.Printf("GRAB ME PUSSY");
-			Thrust(1,AngleTo(players[0].mo));
+			Vel3DFromAngle(3,AngleTo(players[0].mo),-atan2(players[0].mo.pos.z+24 - pos.z,Distance2D(players[0].mo)));
 		}
 		if(grabradius<1024)
 		{
-			grabradius++;
+			grabradius+=8;
 		}
 	}
 	
