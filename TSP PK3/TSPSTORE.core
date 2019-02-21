@@ -19,6 +19,7 @@ page
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolA";
+			desc "mel can now shoot fat ropes like a champ";
 		}
 		item "BFG 9000"
 		{
