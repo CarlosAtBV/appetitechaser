@@ -1,0 +1,42 @@
+Class TSP_GlobalDollarPickup_Base : CustomInventory
+{
+	Default
+	{
+		Inventory.PickupSound "money/pickup";
+		+BRIGHT
+	}
+	States
+	{
+		Spawn:
+			GBL1 ABCDEFGH 2;
+			Loop;
+	}
+}
+
+Class TSP_GlobalDollarPickup_1 : TSP_GlobalDollarPickup_Base
+{
+	Default
+	{
+		Inventory.PickupMessage "\ccPicked up a Global Dollar [\cq$1\cc]";
+	}
+	States
+	{
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSP_GlobalDollars",1);
+			Stop;
+	}
+}
+Class TSP_GlobalDollarPickup_5 : TSP_GlobalDollarPickup_Base
+{
+	Default
+	{
+		Inventory.PickupMessage "\ccPicked up a Global Dollar [\ck$5\cc]";
+		Translation "0:255=%[0.72,0.28,0.16]:[1.90,1.25,0.54]";
+	}
+	States
+	{
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSP_GlobalDollars",5);
+			Stop;
+	}
+}
