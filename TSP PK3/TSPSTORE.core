@@ -114,6 +114,7 @@ page
 	tab "Kei Pirates"
 	{
 		desc "$TSP_EMPLOYER_KEI_DESC";
+		bg "graphics/store/store_bg_kel.png";
 		employ 1;
 	}
 	tab "ARC STAR"

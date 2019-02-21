@@ -76,6 +76,11 @@ Extend Class TSP_ShopMenu
 									curItem.employer = tokenboy.value.ToInt();
 									curTab.employ = curItem;
 								}
+								if(tokenboy.value == "bg")
+								{
+									tokenboy = tokenitup.GoThru();
+									curTab.bg = tokenboy.value;
+								}
 								
 								// Create Item
 								if(tokenboy.value == "item")

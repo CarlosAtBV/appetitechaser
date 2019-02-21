@@ -198,7 +198,7 @@ Extend Class TSP_ShopMenu
 					if(me_curTab.employ!=null)
 					{
 						EventHandler.SendNetworkEvent("employer:"..me_curTab.employ.employer);
-						S_Sound("shop/choose",CHAN_UI);
+						S_Sound("shop/hired",CHAN_UI);
 						updateShopPages(me_curTab.employ.employer,1);
 					}
 					else
