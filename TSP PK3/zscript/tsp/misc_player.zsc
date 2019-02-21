@@ -1,5 +1,13 @@
 const TSP_INITMAXSHIELD = 50;
 
+Class TSP_Level_ShieldUpgrade : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 3;
+	}
+}
+
 Class TSP_PlayerPawn_MaxShield : Inventory
 {
 	Default

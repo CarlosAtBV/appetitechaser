@@ -1,14 +1,19 @@
 Class TSP_ShopItem
 {
 	string name;
+	Array<string > names;
 	string desc;
 	int price;
+	int price_increment;
 	BrokenLines brokendesc;
 	Array<Inventory > canthave;
 	Array<Inventory > musthave;
 	
 	Class<Inventory > inv_class;
 	int inv_amount;
+	Class<Inventory > level_class;
+	
+	int level;
 }
 
 Class TSP_ShopHeader
@@ -45,7 +50,6 @@ Class TSP_ShopMenu : GenericMenu
 	TSP_ShopPage curPage;
 	TSP_ShopTab curTab;
 	TSP_ShopHeader curHeader;
-	TSP_ShopItem curItem;
 	
 	int sm_pageSelected;
 	int sm_tabSelected;
@@ -188,9 +192,15 @@ Class TSP_ShopMenu : GenericMenu
 			case MKEY_Enter:
 				if(sm_moveMode==2)
 				{
-					if(me_curItem.inv_class!=null&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
+					if(me_curItem.inv_class!=null&&(me_curItem.level_class==null||(me_curItem.level<GetDefaultByType(me_curItem.level_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
 					{
-						EventHandler.SendNetworkEvent("buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price);
+						string givestuff = "buyitem:"..me_curItem.inv_class.GetClassName()..":"..me_curItem.inv_amount..":"..me_curItem.price+me_curItem.price_increment*me_curItem.level;
+						if(me_curItem.level_class!=null)
+						{
+							givestuff = givestuff..":"..me_curItem.level_class.GetClassName();
+							me_curItem.level++;
+						}
+						EventHandler.SendNetworkEvent(givestuff);
 						S_Sound("shop/purchase",CHAN_UI);
 					}
 					else
@@ -259,9 +269,17 @@ Class TSP_ShopMenu : GenericMenu
 			
 			TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
 			
-			screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, sm_itemSelected == i ? Font.CR_GREEN : Font.CR_WHITE, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
-			string price = gbd_sign..dd_curItem.price;
+			string price;
+			if(dd_curItem.level_class==null||dd_curItem.level<GetDefaultByType(dd_curItem.level_class).MaxAmount)
+			{
+				price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
+			}
+			else
+			{
+				price = "\c[TSPRed]---";
+			}
 			screen.DrawText(SmallFont, Font.CR_GREEN, sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
 			if(sm_moveMode == 2 && sm_itemSelected == i)
@@ -276,9 +294,11 @@ Class TSP_ShopMenu : GenericMenu
 		
 		if(sm_moveMode == 2)
 		{
+			TSP_ShopItem dd_curItem = dd_curTab.itemlist[sm_itemSelected];
+			
 			bool dd_validItem = (dd_curTab.itemList[sm_itemSelected].inv_class != null);
 			double dd_alpha = dd_validItem ? 1.0 : 0.25;
-			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curTab.itemList[sm_itemSelected].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			
 			int c = dd_curTab.itemList[sm_itemSelected].brokendesc.Count();
 			for (int g = 0; g < c; g++)

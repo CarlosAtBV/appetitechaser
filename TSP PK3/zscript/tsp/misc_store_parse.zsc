@@ -10,6 +10,8 @@ Extend Class TSP_ShopMenu
 	
 	const MAXITERATIONS = 9001;
 	
+	Array<TSP_ShopItem > curItems;
+	
 	bool parse_stayIn(TSP_Token token,int net)
 	{
 		Console.Printf("\cl"..(token.type!=TSPT_EOF && token.type!=TSPT_BraceC && net<MAXITERATIONS));
@@ -59,18 +61,38 @@ Extend Class TSP_ShopMenu
 								// Create Item
 								if(tokenboy.value == "item")
 								{
-									curItem = new("TSP_ShopItem");
-									curItem.name = tokenitup.GoThru().value;
+									Array<String > names;
+									names.Clear();
+									names.Push(tokenitup.GoThru().value);
+									while(tokenitup.GoThru().type == TSPT_Comma)
+									{
+										names.Push(tokenitup.GoThru().value);
+									}
+									names.Push("\c[TSPRed]-SOLD OUT-");
+									for(int i = 0;i<names.Size();i++)
+									{
+										Console.Printf(""..names[i]);
+									}
+									TSP_ShopItem curItem = new("TSP_ShopItem");
+									curItem.names.Copy(names);
 									curItem.desc = "No description available.";
 									curItem.inv_class = null;//"HealthBonus";
 									curItem.inv_amount = 0;//25;
 									curItem.price = 0;
+									curItem.price_increment = 0;
+									curItem.level = 0;
+									
 									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 									{
 										if(tokenboy.value == "price")
 										{
 											tokenboy = tokenitup.GoThru();
 											curItem.price = tokenboy.value.ToInt();
+										}
+										if(tokenboy.value == "price_increment")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.price_increment = tokenboy.value.ToInt();
 										}
 										if(tokenboy.value == "desc")
 										{
@@ -87,8 +109,18 @@ Extend Class TSP_ShopMenu
 											tokenboy = tokenitup.GoThru();
 											curItem.inv_amount = tokenboy.value.ToInt();
 										}
+										if(tokenboy.value == "level_class")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.level_class = tokenboy.value;
+										}
 									}
+									
 									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);
+									if(curItem.level_class!=null)
+									{
+										curItem.level = players[0].mo.CountInv(curItem.level_class);
+									}
 									curTab.itemlist.Push(curItem);
 								}
 								

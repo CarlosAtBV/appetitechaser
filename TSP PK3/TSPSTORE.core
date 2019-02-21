@@ -24,12 +24,14 @@ page
 	}
 	tab "Vitality"
 	{
-		item "Duper Shield"
+		item "Super Shield", "Duper Shield", "Ultra Shield"
 		{
-			desc "Increases your shield's maximum limit by 50 points.";
+			desc "Increases your shield's maximum limit by 25 points.";
 			price 250;
+			price_increment 100;
 			inv_class "TSP_PlayerPawn_MaxShield";
-			inv_amount 50;
+			inv_amount 25;
+			level_class "TSP_Level_ShieldUpgrade";
 		}
 		item "Cheebos"
 		{
