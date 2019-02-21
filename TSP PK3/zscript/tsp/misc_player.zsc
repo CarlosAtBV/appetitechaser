@@ -37,6 +37,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int pp_shieldHitDelay;
 	bool pp_shieldLowSound;
 	
+	int pp_initShield;
+	
+	Property StartShield : pp_initShield;
+	//property FallingScreamSpeed: FallingScreamMinSpeed, FallingScreamMaxSpeed;
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
+		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
+	}
+	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
 		pp_shieldHitDelay = 35*5;
