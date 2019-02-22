@@ -31,10 +31,24 @@ Class TSP_PlayerPawn_IPlaySounds : Actor
 	}
 }
 
+Class TSP_AngleChecker : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+}
+
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
 	bool ptp_wallJump;
-	
+	bool ptp_wallJumpReadySound;
 	
 	int pp_gamemode;
 	int pp_shieldHitDelay;
@@ -120,16 +134,32 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		FLineTraceData traceStuff;
 		
-		double angley = angle+atan2(-sign(player.cmd.sidemove),sign(player.cmd.forwardmove));
+		int sidedir = sign(player.cmd.sidemove);
+		double angley = angle+atan2(-sidedir,sign(player.cmd.forwardmove));//atan2(prev.y - pos.y,prev.x - pos.x)+180;
 		Console.Printf(""..angley);
-		LineTrace(angley, radius+16, 0, 0, 0.0, 0.0, 0.0, traceStuff);
+		LineTrace(angley, (radius+24)*abs(sidedir), 0, 0, 26.0, 0.0, 0.0, traceStuff);
 		
-		if(traceStuff.HitType == TRACE_HitWall && oldVelZ!=vel.z && !ptp_wallJump && player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))
+		if(traceStuff.HitType == TRACE_HitWall && oldVelZ!=vel.z && !ptp_wallJump)
 		{
-			Thrust(6,angle+(45*sign(player.cmd.sidemove)));
-			A_PlaySound("*jump",CHAN_VOICE);
-			vel.z = 12;
-			ptp_wallJump = true;
+			if(!ptp_wallJumpReadySound)
+			{
+				A_PlaySound("*land",CHAN_VOICE);
+				ptp_wallJumpReadySound = true;
+			}
+			if(player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))
+			{
+				Thrust(8,angle+(25*sidedir));
+				A_PlaySound("*jump",CHAN_VOICE);
+				vel.z = 12;
+				ptp_wallJump = true;
+			}
+		}
+		else
+		{
+			if(ptp_wallJumpReadySound)
+			{
+				ptp_wallJumpReadySound = false;
+			}
 		}
 		
 		oldVelZ = vel.z;
