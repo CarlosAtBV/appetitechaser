@@ -49,7 +49,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 		
 		if(upgrade!=null)
 		{
-			if(player.CountInv(upgrade))
+			if(player.FindInventory(upgrade,true))
 			{
 				return true, "";
 			}

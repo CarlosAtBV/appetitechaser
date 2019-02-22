@@ -322,7 +322,7 @@ Class TSP_EventHandler : EventHandler
 			else if(shopitem[0] ~== "upgrade")
 			{
 				int price = shopitem[3].ToInt();
-				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1]));
+				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1],true));
 				if(wepon!=null)
 				{
 					switch(shopitem[2].ToInt())
