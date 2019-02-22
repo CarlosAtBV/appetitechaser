@@ -36,6 +36,20 @@ Class TSP_ShopItem : TSP_ShopListItem
 			}
 			maxlevel = tehMax;
 		}
+		
+		while(names.Size()<=maxlevel&&names.Size()<99)
+		{
+			names.Push("\ckNEED NAME FOR LVL "..names.Size()+1);
+		}
+	}
+	
+	bool isMax()
+	{
+		if(upgrade&&level>=maxlevel)
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	bool, string canBuy()
@@ -321,11 +335,20 @@ Class TSP_ShopMenu : GenericMenu
 						DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
 					}
 					bool dd_canBuy = dd_curItem.canBuy();
+					string dd_name;
+					if(!dd_curItem.isMax())
+					{
+						dd_name = dd_curItem.names[dd_curItem.level];
+					}
+					else
+					{
+						dd_name = "\c[TSPRed]-SOLD OUT-";
+					}
 					
-					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					if(sm_itemSelected==i)
 					{
-						screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
+						screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
 					}
 					
 					string price;

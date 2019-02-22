@@ -16,13 +16,14 @@ page
 			price 200;
 		}
 		header "Darling Nikki";
-		item "Power"
+		item "Hooked Bullets", "Drill Bullets", "Epic Bullets"
 		{
 			price 5;
 			upgrade "MelPistol";
 			upgradeType 0;
+			desc "Increases the damage of your bullets.";
 		}
-		item "Ammo"
+		item "Double Mag", "Expanded Mag", "Bullet Replicator"
 		{
 			price 5;
 			upgrade "MelPistol";

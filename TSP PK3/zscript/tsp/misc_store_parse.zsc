@@ -98,7 +98,6 @@ Extend Class TSP_ShopMenu
 									{
 										names.Push(tokenitup.GoThru().value);
 									}
-									names.Push("\c[TSPRed]-SOLD OUT-");
 									TSP_ShopItem curItem = new("TSP_ShopItem");
 									curItem.names.Copy(names);
 									curItem.desc = "No description available.";
@@ -107,6 +106,7 @@ Extend Class TSP_ShopMenu
 									curItem.price = 0;
 									curItem.price_increment = 0;
 									curItem.level = 0;
+									curItem.maxlevel = -1;
 									
 									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 									{
@@ -164,6 +164,7 @@ Extend Class TSP_ShopMenu
 									{
 										curItem.level = players[0].mo.CountInv(curItem.inv_class);
 									}
+									curItem.Create();
 									curTab.itemlist.Push(curItem);
 								}
 								
