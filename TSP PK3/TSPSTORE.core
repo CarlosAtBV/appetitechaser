@@ -16,12 +16,13 @@ page
 			price 200;
 		}
 		header "Darling Nikki";
-		item "Hooked Bullets", "Drill Bullets", "Palladium Bullets"
+		item "Hooked Bullets", "Drill Bullets", "Thermotian Bullets"
 		{
-			price 5;
+			price 450;
+			price_increment 300;
 			upgrade "MelPistol";
 			upgradeType 0;
-			descs "Increases the damage of your bullets.", "Shoots cum", "AAAAAAAGH";
+			descs "$TSP_SHOP_BULLDESC1", "$TSP_SHOP_BULLDESC2", "$TSP_SHOP_BULLDESC3";
 		}
 		item "Double Mag", "Expanded Mag", "Bullet Replicator"
 		{

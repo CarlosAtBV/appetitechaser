@@ -61,19 +61,28 @@ Class TSP_Weapon_Core : DoomWeapon
 	int tspw_reloadlevel;
 	int tspw_maxreloadlevel;
 	
+	double tspw_powermult1, tspw_powermult2, tspw_powermult3;
+	
 	Property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
+	Property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	
 	Default
 	{
 		TSP_Weapon_Core.MaxLevels 3, 3, 3;
+		TSP_Weapon_Core.PowerMult 2, 3, 4;
 	}
 	
 	
 		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "BulletPuff", int flags = 1, double range = 0, class<Actor> missile = null, double Spawnheight = 32, double Spawnofs_xy = 0)
 		{
-			Console.Printf(""..invoker.tspw_powerlevel);
 			int fbDamage = damageperbullet;
-			fbDamage *= (invoker.tspw_powerlevel+1);
+			switch(invoker.tspw_powerlevel)
+			{
+				 case 1: fbDamage *= (invoker.tspw_powermult1); break;
+				 case 2: fbDamage *= (invoker.tspw_powermult2); break;
+				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
+			}
+			Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
 			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,flags,range,missile,spawnheight,spawnofs_xy);
 		}
 		

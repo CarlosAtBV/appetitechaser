@@ -437,24 +437,24 @@ Class TSP_ShopMenu : GenericMenu
 			{
 				dd_name = "\c[TSPRed]-SOLD OUT-";
 			}
-			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 183, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			
 			string desceh;
 			if(dd_curItem.level<dd_curItem.descs.Size())
 			{
-				desceh = dd_curItem.descs[dd_curItem.level];
+				desceh = StringTable.Localize(dd_curItem.descs[dd_curItem.level]);
 			}
 			else
 			{
 				desceh = "No description available.";
 			}
 			
-			BrokenLines curDesc = sm_TinyFont.BreakLines(desceh,154);
+			BrokenLines curDesc = sm_TinyFont.BreakLines(desceh,138);
 			int c = curDesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+				screen.DrawText("TinyFont", Font.CR_WHITE, 13, 196+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha, DTA_FillColor, Font.CR_BLACK);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 195+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			}
 			
 			if(!dd_validItem)

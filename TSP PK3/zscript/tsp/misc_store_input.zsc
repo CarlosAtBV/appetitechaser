@@ -59,7 +59,7 @@ Extend Class TSP_ShopMenu
 			int py = sy;
 			if(virtualMpos.x>px
 			&&virtualMpos.x<px+SHOP_ITEMWIDTH
-			&&virtualMpos.y>py
+			&&virtualMpos.y>=py
 			&&virtualMpos.y<py+SHOP_ITEMHEIGHT)
 			{
 				sm_moveMode = 2;
