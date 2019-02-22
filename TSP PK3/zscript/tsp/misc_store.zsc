@@ -12,6 +12,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 	BrokenLines brokendesc;
 	Array<Inventory > canthave;
 	Array<Inventory > musthave;
+	string icon;
 	
 	Class<Inventory > inv_class;
 	int inv_amount;
@@ -421,6 +422,13 @@ Class TSP_ShopMenu : GenericMenu
 		if(sm_moveMode == 2 && dd_curTab.employ==null && dd_queryItem is "TSP_ShopItem")
 		{
 			TSP_ShopItem dd_curItem = TSP_ShopItem(dd_curTab.itemlist[sm_itemSelected]);
+			
+			TextureID dd_icon;
+			if(dd_curItem.icon!="")
+			{
+				dd_icon = TexMan.CheckForTexture(dd_curItem.icon,TexMan.Type_MiscPatch);
+				screen.DrawTexture(dd_icon, true, 80+sin(menutime()*1)*8, 90+sin(menutime()*2)*2, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
+			}
 			
 			bool dd_validItem;
 			string dd_errorMessage;

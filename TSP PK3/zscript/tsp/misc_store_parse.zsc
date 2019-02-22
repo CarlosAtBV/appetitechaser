@@ -121,6 +121,11 @@ Extend Class TSP_ShopMenu
 											tokenboy = tokenitup.GoThru();
 											curItem.price_increment = tokenboy.value.ToInt();
 										}
+										if(tokenboy.value == "icon")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.icon = tokenboy.value;
+										}
 										if(tokenboy.value == "desc")
 										{
 											tokenboy = tokenitup.GoThru();

@@ -53,20 +53,14 @@ page
 	}
 	tab "Vitality"
 	{
-		header "Shield";
-		item "Alpha Shield", "Delta Shield", "Zeta Shield"
-		{
-			desc "Increases your shield's maximum limit by 25 points.";
-			price 500;
-			price_increment 500;
-			inv_class "TSP_Upgrade_Shield";
-		}
+		header "Health";
 		item "Cheebos"
 		{
-			desc "Get 15 health fool";
+			icon "graphics/store/items/store_item_cheebos.png";
+			desc "Bite upon a single (one) Cheebo";
 			inv_class "HealthBonus";
-			inv_amount 15;
-			price 25;
+			inv_amount 1;
+			price 5;
 		}
 		item "Epic Heal"
 		{
@@ -75,13 +69,24 @@ page
 			inv_amount 1;
 			price 90000;
 		}
+		header "Shield";
+		item "$TSP_SHOP_SHIELDNAME1", "$TSP_SHOP_SHIELDNAME2", "$TSP_SHOP_SHIELDNAME3"
+		{
+			descs "$TSP_SHOP_SHIELDDESC1", "$TSP_SHOP_SHIELDDESC2", "$TSP_SHOP_SHIELDDESC3";
+			price 500;
+			price_increment 500;
+			inv_class "TSP_Upgrade_Shield";
+		}
 	}
-	tab "Weed"
+	tab "Traits"
 	{
+		header "Good Shit";
 		item "Weed"
 		{
 			desc "lmao";
-			price 18000;
+			inv_class "HealthBonus";
+			inv_amount 100;
+			price 100;
 		}
 	}
 }
