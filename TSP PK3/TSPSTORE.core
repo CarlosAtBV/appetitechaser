@@ -132,6 +132,7 @@ page
 	tab "Vexler"
 	{
 		desc "$TSP_EMPLOYER_VEX_DESC";
+		bg "graphics/store/store_bg_vex.png";
 		employ 3;
 	}
 }
