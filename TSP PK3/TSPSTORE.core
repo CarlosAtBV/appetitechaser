@@ -5,6 +5,7 @@ page
 	name "Retail";
 	tab "Weapons"
 	{
+		header "General";
 		item "Gooder Bullets"
 		{
 			desc "Makes your guns gooder.";
@@ -14,23 +15,37 @@ page
 		{
 			price 200;
 		}
+		header "Darling Nikki";
+		item "Power"
+		{
+			price 5;
+		}
+		item "Ammo"
+		{
+			price 10;
+		}
+		item "Reload"
+		{
+			price 15;
+		}
 		item "Mod - Spitfire"
 		{
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolA";
-			desc "mel can now shoot fat ropes like a champ";
+			desc "Switch to full-auto mode! With full-auto on, primary fires HELLA FAST!";
 		}
-		item "BFG 9000"
+		item "Mod - Whisper"
 		{
-			desc "big fucking nut";
-			price 2;
-			inv_class "BFG9000";
-			inv_amount 1;
+			price 50;
+			mod_take "MelPistol";
+			mod_give "BFG9000";
+			desc "Adds a silencer to Darling Nikki, allowing you to kill";
 		}
 	}
 	tab "Vitality"
 	{
+		header "Shield";
 		item "Alpha Shield", "Delta Shield", "Zeta Shield"
 		{
 			desc "Increases your shield's maximum limit by 25 points.";

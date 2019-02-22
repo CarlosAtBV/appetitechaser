@@ -90,6 +90,14 @@ Extend Class TSP_ShopMenu
 		{
 			if (ev.type == UIEvent.Type_LButtonDown)
 			{
+				TSP_ShopPage curPage = shopPages_visible[sm_pageSelected];
+				TSP_ShopTab curTab = curPage.shopTabs[sm_tabSelected];
+				TSP_ShopListItem curItem; 
+				if(curTab.itemlist.Size()!=0)
+				{
+					curItem = curTab.itemlist[sm_itemHovered];
+				}
+				
 				switch(sm_moveMode)
 				{
 					case 0:
@@ -98,7 +106,7 @@ Extend Class TSP_ShopMenu
 						if(me_prevPage!=sm_pageSelected)
 						{
 							sm_tabSelected = 0;
-							sm_itemSelected = 0;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
@@ -107,20 +115,23 @@ Extend Class TSP_ShopMenu
 						sm_tabSelected = sm_tabHovered;
 						if(me_prevTab!=sm_tabSelected)
 						{
-							sm_itemSelected = 0;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
 					case 2:
-						int me_prevItem = sm_itemSelected;
-						sm_itemSelected = sm_itemHovered;
-						if(me_prevItem!=sm_itemSelected)
+						if(curItem!=null && curItem is "TSP_ShopItem")
 						{
-							S_Sound("menu/cursor",CHAN_UI);
-						}
-						else
-						{
-							MenuEvent(MKEY_Enter,false);
+							int me_prevItem = sm_itemSelected;
+							sm_itemSelected = sm_itemHovered;
+							if(me_prevItem!=sm_itemSelected)
+							{
+								S_Sound("menu/cursor",CHAN_UI);
+							}
+							else
+							{
+								MenuEvent(MKEY_Enter,false);
+							}
 						}
 						break;
 				}
@@ -133,8 +144,16 @@ Extend Class TSP_ShopMenu
 	{
 		TSP_ShopPage me_curPage = shopPages_visible[sm_pageSelected];
 		TSP_ShopTab me_curTab = me_curPage.shopTabs[sm_tabSelected];
+		TSP_ShopListItem me_curListItem;
 		TSP_ShopItem me_curItem;
-		if(me_curTab.itemlist.Size()>0) me_curItem = me_curTab.itemlist[sm_itemSelected];
+		if(me_curTab.itemlist.Size()>0)
+		{
+			me_curListItem = me_curTab.itemlist[sm_itemSelected];
+			if(me_curListItem is "TSP_ShopItem")
+			{
+				me_curItem = TSP_ShopItem(me_curListItem);
+			}
+		}
 		
 		switch (mkey)
 		{
@@ -147,6 +166,8 @@ Extend Class TSP_ShopMenu
 							sm_pageSelected--;
 							sm_pageHovered=sm_pageSelected;
 							sm_tabSelected = 0;
+							sm_tabHovered = 0;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
@@ -155,6 +176,7 @@ Extend Class TSP_ShopMenu
 						{
 							sm_tabSelected--;
 							sm_tabHovered=sm_tabSelected;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
@@ -170,6 +192,8 @@ Extend Class TSP_ShopMenu
 							sm_pageSelected++;
 							sm_pageHovered=sm_pageSelected;
 							sm_tabSelected = 0;
+							sm_tabHovered = 0;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
@@ -178,6 +202,7 @@ Extend Class TSP_ShopMenu
 						{
 							sm_tabSelected++;
 							sm_tabHovered=sm_tabSelected;
+							findBestSelection();
 							S_Sound("menu/cursor",CHAN_UI);
 						}
 						break;
@@ -193,6 +218,16 @@ Extend Class TSP_ShopMenu
 				else if(sm_itemSelected>0)
 				{
 					sm_itemSelected--;
+					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected>0)
+					{
+						sm_itemSelected--;
+					}
+					if((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected==0)
+					{
+						sm_itemSelected++;
+						sm_moveMode--;
+					}
+					sm_itemHovered = sm_itemSelected;
 					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
@@ -205,6 +240,11 @@ Extend Class TSP_ShopMenu
 				else if(sm_itemSelected < me_curTab.itemlist.Size()-1)
 				{
 					sm_itemSelected++;
+					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected<me_curTab.itemlist.Size()-1)
+					{
+						sm_itemSelected++;
+					}
+					sm_itemHovered = sm_itemSelected;
 					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;

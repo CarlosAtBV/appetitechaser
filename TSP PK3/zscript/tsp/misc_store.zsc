@@ -1,6 +1,9 @@
-Class TSP_ShopItem
+Class TSP_ShopListItem
 {
-	string name;
+}
+
+Class TSP_ShopItem : TSP_ShopListItem
+{
 	Array<string > names;
 	string desc;
 	int price;
@@ -63,7 +66,7 @@ Class TSP_ShopEmploy
 	Vector2 pos;
 }
 
-Class TSP_ShopHeader
+Class TSP_ShopHeader : TSP_ShopListItem
 {
 	int slot;
 	string name;
@@ -73,7 +76,7 @@ Class TSP_ShopTab
 {
 	string name;
 	string desc;
-	Array<TSP_ShopItem > itemlist;
+	Array<TSP_ShopListItem > itemlist;
 	Array<TSP_ShopHeader > headers;
 	TSP_ShopEmploy employ;
 	string bg;
@@ -153,6 +156,40 @@ Class TSP_ShopMenu : GenericMenu
 		sm_pageHovered = 0;
 		sm_tabHovered = 0;
 		sm_itemHovered = 0;
+		
+		TSP_ShopPage curPage = shopPages_visible[sm_pageSelected];
+		TSP_ShopTab curTab = curPage.shopTabs[sm_tabSelected];
+		TSP_ShopListItem curItem;
+		for(int i = 0;i<curTab.itemlist.Size();i++)
+		{
+			curItem = curTab.itemlist[i];
+			if(curItem is "TSP_ShopItem")
+			{
+				sm_itemHovered = i;
+				sm_itemSelected = i;
+				break;
+			}
+		}
+	}
+	
+	void findBestSelection()
+	{
+		TSP_ShopPage curPage = shopPages_visible[sm_pageSelected];
+		TSP_ShopTab curTab = curPage.shopTabs[sm_tabSelected];
+		TSP_ShopListItem curItem;
+		sm_itemHovered = 0;
+		sm_itemSelected = 0;
+		for(int i = 0;i<curTab.itemlist.Size();i++)
+		{
+			curItem = curTab.itemlist[i];
+			if(curItem is "TSP_ShopItem")
+			{
+				sm_itemHovered = i;
+				sm_itemSelected = i;
+				Console.Printf(TSP_ShopItem(curItem).names[0].." is the best");
+				break;
+			}
+		}
 	}
 	
 	override void Init(Menu parent)
@@ -221,36 +258,46 @@ Class TSP_ShopMenu : GenericMenu
 		{
 			for(int i = 0;i<dd_curTab.itemlist.Size();i++)
 			{
-				bool dd_canBuy = dd_curTab.itemlist[i].canBuy();
 				
-				DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
-				if(sm_itemSelected == i)
+				TSP_ShopListItem dd_queryItem = dd_curTab.itemlist[i];
+				
+				if(dd_queryItem is "TSP_ShopItem")
 				{
-					DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
+					TSP_ShopItem dd_curItem = TSP_ShopItem(dd_curTab.itemlist[i]);
+					DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#000000");
+					if(sm_itemSelected == i)
+					{
+						DrawBG(sx,sy+SHOP_ITEMHEIGHT-2,SHOP_ITEMWIDTH,2, "#00FF00");
+					}
+					bool dd_canBuy = dd_curItem.canBuy();
+					
+					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					if(sm_itemSelected==i)
+					{
+						screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
+					}
+					
+					string price;
+					if(!(dd_curItem.inv_class is "TSP_UpgradeBase")||dd_curItem.level<GetDefaultByType(dd_curItem.inv_class).MaxAmount)
+					{
+						price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
+					}
+					else
+					{
+						price = "\c[TSPRed]---";
+					}
+					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSPRed"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					
+					if(sm_moveMode == 2 && sm_itemHovered == i)
+					{
+						DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#FFFF00");
+					}
 				}
-				
-				TSP_ShopItem dd_curItem = dd_curTab.itemlist[i];
-				
-				screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-				if(sm_itemSelected==i)
+				else if(dd_queryItem is "TSP_ShopHeader")
 				{
-					screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
-				}
-				
-				string price;
-				if(!(dd_curItem.inv_class is "TSP_UpgradeBase")||dd_curItem.level<GetDefaultByType(dd_curItem.inv_class).MaxAmount)
-				{
-					price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
-				}
-				else
-				{
-					price = "\c[TSPRed]---";
-				}
-				screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSPRed"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-				
-				if(sm_moveMode == 2 && sm_itemHovered == i)
-				{
-					DrawBG(sx,sy,SHOP_ITEMWIDTH,SHOP_ITEMHEIGHT, "#FFFF00");
+					TSP_ShopHeader dd_curItem = TSP_ShopHeader(dd_curTab.itemlist[i]);
+					string headText = "\cc[ \c-"..dd_curItem.name.."\cc ]";
+					screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), 160+80-SmallFont.StringWidth(headText)/2, sy, headText, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 				}
 				
 				sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
@@ -275,22 +322,28 @@ Class TSP_ShopMenu : GenericMenu
 		
 		DrawBG(2,178,156,56);
 		
-		if(sm_moveMode == 2 && dd_curTab.employ==null)
+		TSP_ShopListItem dd_queryItem;
+		if(dd_curTab.itemlist.Size()>0)
 		{
-			TSP_ShopItem dd_curItem = dd_curTab.itemlist[sm_itemSelected];
+			dd_queryItem = dd_curTab.itemlist[sm_itemSelected];
+		}
+		
+		if(sm_moveMode == 2 && dd_curTab.employ==null && dd_queryItem is "TSP_ShopItem")
+		{
+			TSP_ShopItem dd_curItem = TSP_ShopItem(dd_curTab.itemlist[sm_itemSelected]);
 			
 			bool dd_validItem;
 			string dd_errorMessage;
-			[dd_validItem, dd_errorMessage] = dd_curTab.itemList[sm_itemSelected].canBuy();
+			[dd_validItem, dd_errorMessage] = dd_curItem.canBuy();
 			
 			double dd_alpha = dd_validItem ? 1.0 : 0.25;
 			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 184, dd_curItem.names[dd_curItem.level], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			
-			int c = dd_curTab.itemList[sm_itemSelected].brokendesc.Count();
+			int c = dd_curItem.brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), dd_curTab.itemList[sm_itemSelected].brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 13, 197+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 196+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
 			}
 			
 			if(!dd_validItem)

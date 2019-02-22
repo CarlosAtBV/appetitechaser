@@ -35,13 +35,11 @@ Extend Class TSP_ShopMenu
 			{
 				if(tokenboy.value == "page")
 				{
-					Console.Printf("Creating new store page");
 					curPage = new("TSP_ShopPage");
 					curPage.name = "???";
 					curPage.employer = -1;
 					for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 					{
-						Console.Printf(tokenboy.value.." "..tokenboy.type);
 						if(tokenboy.value == "name")
 						{
 							tokenboy = tokenitup.GoThru();
@@ -82,6 +80,13 @@ Extend Class TSP_ShopMenu
 									tokenboy = tokenitup.GoThru();
 									curTab.bg = tokenboy.value;
 								}
+								if(tokenboy.value == "header")
+								{
+									tokenboy = tokenitup.GoThru();
+									TSP_ShopHeader curItem = new("TSP_ShopHeader");
+									curItem.name = tokenboy.value;
+									curTab.itemlist.Push(curItem);
+								}
 								
 								// Create Item
 								if(tokenboy.value == "item")
@@ -94,10 +99,6 @@ Extend Class TSP_ShopMenu
 										names.Push(tokenitup.GoThru().value);
 									}
 									names.Push("\c[TSPRed]-SOLD OUT-");
-									for(int i = 0;i<names.Size();i++)
-									{
-										Console.Printf(""..names[i]);
-									}
 									TSP_ShopItem curItem = new("TSP_ShopItem");
 									curItem.names.Copy(names);
 									curItem.desc = "No description available.";
