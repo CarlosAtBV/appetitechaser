@@ -262,7 +262,7 @@ Class TSP_ShopMenu : GenericMenu
 			screen.DrawTexture(tabBG, true, 160, sy, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
 			screen.DrawText(SmallFont, Font.CR_WHITE, 160+3, sy, dd_curTab.name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			BrokenLines tabDesc = sm_TinyFont.BreakLines(dd_curTab.desc,100);
+			BrokenLines tabDesc = sm_TinyFont.BreakLines(dd_curTab.desc,154);
 			int c = tabDesc.Count();
 			for (int g = 0; g < c; g++)
 			{
