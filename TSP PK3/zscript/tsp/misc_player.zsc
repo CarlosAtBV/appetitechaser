@@ -57,7 +57,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		pp_shieldHitDelay = 35*5;
 		
-		if(CountInv("TSP_PlayerPawn_Shield"))
+		if(mod!='Suicide' && CountInv("TSP_PlayerPawn_Shield"))
 		{
 			int truDamage = damage;
 			damage = 0;
