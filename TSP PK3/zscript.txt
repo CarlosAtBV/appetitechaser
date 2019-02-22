@@ -304,8 +304,13 @@ Class TSP_EventHandler : EventHandler
 			if(shopitem[0] ~== "shopmod")
 			{
 				int price = shopitem[3].ToInt();
+				TSP_Weapon_Core oldWepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1],true));
 				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
 				players[0].mo.GiveInventory(shopitem[2],1);
+				TSP_Weapon_Core newWepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[2],true));
+				newWepon.tspw_powerlevel = oldWepon.tspw_powerlevel;
+				newWepon.tspw_ammolevel = oldWepon.tspw_ammolevel;
+				newWepon.tspw_reloadlevel = oldWepon.tspw_reloadlevel;
 				players[0].mo.A_SelectWeapon(shopitem[2]);
 				players[0].mo.TakeInventory(shopitem[1],1);
 			}
