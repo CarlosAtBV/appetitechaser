@@ -36,3 +36,7 @@ TSP_SHOP_MAGNAME2 = "SubSpace Magazine";
 TSP_SHOP_MAGDESC2 = "\cc(\ct2x ammo capacity\cc)\c-\nSubSpace's latest product holds twice the normal amount of ammo! Never lose your groove in a firefight again!";
 TSP_SHOP_MAGNAME3 = "VoidTech Magazine";
 TSP_SHOP_MAGDESC3 = "\cc(\ct2.5x ammo capacity\cc)\c-\nThe Expanse is cold and endless, so get the magazine to match it. Depend on resilience, depend on VoidTech.";
+
+// Darling Nikki
+
+	TSP_SHOP_DNMODA = "\cc(\ctAlt-Fire\cc)\c-\nRemoves the firerate limiter on Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";

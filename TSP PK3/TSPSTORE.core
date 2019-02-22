@@ -44,14 +44,14 @@ page
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolA";
-			desc "Switch to full-auto mode! With full-auto on, primary fires HELLA FAST!";
+			desc "$TSP_SHOP_DNMODA";
 		}
 		item "Mod - Whisper"
 		{
 			price 50;
 			mod_take "MelPistol";
 			mod_give "BFG9000";
-			desc "Adds a silencer to Darling Nikki, allowing you to kill";
+			desc "$TSP_SHOP_DNMODB";
 		}
 	}
 	tab "Vitality"
