@@ -146,18 +146,17 @@ page
 {
 	name "Employers";
 	ifEmployer 0;
-	tab "Kei Pirates"
+	tab "$TSP_EMPLOYER_KEI_NAME"
 	{
 		desc "$TSP_EMPLOYER_KEI_DESC";
-		bg "graphics/store/store_bg_kel.png";
 		employ 1;
 	}
-	tab "ARC STAR"
+	tab "$TSP_EMPLOYER_ARC_NAME"
 	{
 		desc "$TSP_EMPLOYER_ARC_DESC";
 		employ 2;
 	}
-	tab "Vexler"
+	tab "$TSP_EMPLOYER_VEX_NAME"
 	{
 		desc "$TSP_EMPLOYER_VEX_DESC";
 		employ 3;
