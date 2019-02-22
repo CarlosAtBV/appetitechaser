@@ -17,8 +17,26 @@ Class TSP_ShopItem : TSP_ShopListItem
 	
 	Class<Weapon > mod_take;
 	Class<Weapon > mod_give;
+	Class<Weapon > upgrade;
+	int upgradeType;
 	
 	int level;
+	int maxlevel;
+	
+	void Create()
+	{
+		if(upgrade!=null)
+		{
+			int tehMax;
+			switch(upgradeType)
+			{
+				case 0: tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxpowerlevel; break;
+				case 1: tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxammolevel; break;
+				case 2: tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxreloadlevel; break;
+			}
+			maxlevel = tehMax;
+		}
+	}
 	
 	bool, string canBuy()
 	{
@@ -27,6 +45,14 @@ Class TSP_ShopItem : TSP_ShopListItem
 		if(player.CountInv("TSP_GlobalDollars")<price)
 		{
 			return false, StringTable.Localize("$TSP_SHOP_NOMONEY");
+		}
+		
+		if(upgrade!=null)
+		{
+			if(player.CountInv(upgrade))
+			{
+				return true, "";
+			}
 		}
 		
 		if(mod_take!=null&&mod_give!=null)
@@ -48,6 +74,10 @@ Class TSP_ShopItem : TSP_ShopListItem
 	string itemString()
 	{
 		string giver;
+		if(upgrade!=null)
+		{
+			giver = "upgrade:"..upgrade.GetClassName()..":"..upgradeType..":"..price;
+		}
 		if(mod_take!=null&&mod_give!=null)
 		{
 			giver = "shopmod:"..mod_take.GetClassName()..":"..mod_give.GetClassName()..":"..price;

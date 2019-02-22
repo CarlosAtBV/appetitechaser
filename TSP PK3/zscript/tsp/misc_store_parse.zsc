@@ -146,6 +146,17 @@ Extend Class TSP_ShopMenu
 											tokenboy = tokenitup.GoThru();
 											curItem.mod_give = tokenboy.value;
 										}
+										
+										if(tokenboy.value == "upgrade")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.upgrade = tokenboy.value;
+										}
+										if(tokenboy.value == "upgradeType")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.upgradeType = tokenboy.value.ToInt();
+										}
 									}
 									
 									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);

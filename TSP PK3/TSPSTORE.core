@@ -19,14 +19,20 @@ page
 		item "Power"
 		{
 			price 5;
+			upgrade "MelPistol";
+			upgradeType 0;
 		}
 		item "Ammo"
 		{
-			price 10;
+			price 5;
+			upgrade "MelPistol";
+			upgradeType 1;
 		}
 		item "Reload"
 		{
-			price 15;
+			price 5;
+			upgrade "MelPistol";
+			upgradeType 2;
 		}
 		item "Mod - Spitfire"
 		{

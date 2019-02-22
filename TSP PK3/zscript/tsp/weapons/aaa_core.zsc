@@ -54,6 +54,29 @@ Class TSP_EnemyHandler_OnHit : Thinker
 
 Class TSP_Weapon_Core : DoomWeapon
 {
+	int tspw_powerlevel;
+	int tspw_maxpowerlevel;
+	int tspw_ammolevel;
+	int tspw_maxammolevel;
+	int tspw_reloadlevel;
+	int tspw_maxreloadlevel;
+	
+	Property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
+	
+	Default
+	{
+		TSP_Weapon_Core.MaxLevels 3, 3, 3;
+	}
+	
+	
+		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "BulletPuff", int flags = 1, double range = 0, class<Actor> missile = null, double Spawnheight = 32, double Spawnofs_xy = 0)
+		{
+			Console.Printf(""..invoker.tspw_powerlevel);
+			int fbDamage = damageperbullet;
+			fbDamage *= (invoker.tspw_powerlevel+1);
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,flags,range,missile,spawnheight,spawnofs_xy);
+		}
+		
 	//==========================================================================
 	//
 	// A_TSP_Melee(damage, range, puff, thrustHorz, thrustVert, thrustUp, angle)

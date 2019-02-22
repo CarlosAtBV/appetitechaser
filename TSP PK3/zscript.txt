@@ -319,6 +319,21 @@ Class TSP_EventHandler : EventHandler
 					TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
 				}
 			}
+			else if(shopitem[0] ~== "upgrade")
+			{
+				int price = shopitem[3].ToInt();
+				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1]));
+				if(wepon!=null)
+				{
+					switch(shopitem[2].ToInt())
+					{
+						case 0: wepon.tspw_powerlevel++; break;
+						case 1: wepon.tspw_ammolevel++; break;
+						case 2: wepon.tspw_reloadlevel++; break;
+					}
+				}
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
+			}
 			else if(shopitem[0] ~== "employer")
 			{
 				TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
