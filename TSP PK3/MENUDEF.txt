@@ -27,6 +27,8 @@ ListMenu "TSP_GameModeMenu"
 	Linespacing 29
 	TSP_MenuItem_GamemodeItem "SPMODE1", "D", "PlayerclassMenu", 0
 	TSP_MenuItem_GamemodeItem "SPMODE2", "B", "PlayerclassMenu", 1
+	TSP_MenuItem_GamemodeItem "SPMODET", "T", "PlayerclassMenu", 2
+	TSP_MenuItem_PatchItem "SPMODEM", "M", "TSPCustomOptions", 0
 }
 
 ListMenu "SkillMenu"
