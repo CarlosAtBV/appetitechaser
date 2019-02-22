@@ -92,7 +92,9 @@ Extend Class TSP_ShopMenu
 								if(tokenboy.value == "item")
 								{
 									Array<String > names;
+									Array<String > descs;
 									names.Clear();
+									descs.Clear();
 									names.Push(tokenitup.GoThru().value);
 									while(tokenitup.GoThru().type == TSPT_Comma)
 									{
@@ -100,7 +102,6 @@ Extend Class TSP_ShopMenu
 									}
 									TSP_ShopItem curItem = new("TSP_ShopItem");
 									curItem.names.Copy(names);
-									curItem.desc = "No description available.";
 									curItem.inv_class = null;//"HealthBonus";
 									curItem.inv_amount = 1;//25;
 									curItem.price = 0;
@@ -123,7 +124,16 @@ Extend Class TSP_ShopMenu
 										if(tokenboy.value == "desc")
 										{
 											tokenboy = tokenitup.GoThru();
-											curItem.desc = tokenboy.value;
+											curItem.descs.Push(tokenboy.value);
+										}
+										if(tokenboy.value == "descs")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.descs.Push(tokenboy.value);
+											while(tokenitup.GoThru().type == TSPT_Comma)
+											{
+												curItem.descs.Push(tokenitup.GoThru().value);
+											}
 										}
 										if(tokenboy.value == "inv_class")
 										{
