@@ -136,6 +136,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			ptp_wallJump = false;
 		}
 		
+		if(player.crouchfactor<1.0)
+		{
+			Thrust(14,angle);
+		}
+		
 		FLineTraceData traceStuff;
 		
 		int sidedir = sign(player.cmd.sidemove);
