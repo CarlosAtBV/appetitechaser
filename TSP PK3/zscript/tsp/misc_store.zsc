@@ -25,7 +25,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 	int level;
 	int maxlevel;
 	
-	void Create()
+	void updateLevels()
 	{
 		if(upgrade!=null)
 		{
@@ -53,7 +53,20 @@ Class TSP_ShopItem : TSP_ShopListItem
 				maxlevel = tehMax;
 			}
 		}
-		
+		else if(inv_class!=null)
+		{
+			Inventory moddy = players[0].mo.FindInventory(inv_class,true);
+			if(moddy!=null)
+			{
+				maxlevel = moddy.MaxAmount;
+				level = moddy.Amount;
+			}
+		}
+	}
+	
+	void Create()
+	{
+		updateLevels();
 		while(names.Size()<=maxlevel&&names.Size()<99)
 		{
 			names.Push("\ckNEED NAME FOR LVL "..names.Size()+1);
@@ -62,7 +75,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 	
 	bool isMax()
 	{
-		if(upgrade&&level>=maxlevel)
+		if(level>=maxlevel&&maxlevel!=-1)
 		{
 			return true;
 		}
@@ -71,56 +84,34 @@ Class TSP_ShopItem : TSP_ShopListItem
 	
 	bool, string canBuy()
 	{
+		if(inv_class == null&&upgrade==null&&mod_give==null)
+		{
+			return false, StringTable.Localize("$TSP_SHOP_CANTINV");
+		}
+		
 		TSP_PlayerPawn_ZSCBase player = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		
+		updateLevels();
+		
+		if(isMax())
+		{
+			return false, StringTable.Localize("$TSP_SHOP_MAXAMT");
+		}
 		
 		if(player.CountInv("TSP_GlobalDollars")<price)
 		{
 			return false, StringTable.Localize("$TSP_SHOP_NOMONEY");
 		}
 		
-		if(upgrade!=null)
-		{
-			TSP_Weapon_Core wepon = TSP_Weapon_Core(player.FindInventory(upgrade,true));
-			if(wepon!=null)
-			{
-				int tehMax;
-				int tehLevel;
-				switch(upgradeType)
-				{
-					case 0:
-						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxpowerlevel;
-						tehLevel = wepon.tspw_powerlevel;
-						break;
-					case 1:
-						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxammolevel;
-						tehLevel = wepon.tspw_ammolevel;
-						break;
-					case 2:
-						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxreloadlevel;
-						tehLevel = wepon.tspw_reloadlevel;
-						break;
-				}
-				if(tehLevel<tehMax)
-				{
-					return true, "";
-				}
-			}
-		}
-		
 		if(mod_take!=null&&mod_give!=null)
 		{
-			if(player.CountInv(mod_give)==0&&player.CountInv(mod_take)==1)
+			if(player.CountInv(mod_give)!=0||player.CountInv(mod_take)!=1)
 			{
-				return true, "";
+				return false, StringTable.Localize("$TSP_SHOP_MODSEL");
 			}
 		}
 		
-		if(inv_class != null)
-		{
-			return true, "";
-		}
-		
-		return false, StringTable.Localize("$TSP_SHOP_CANTINV");
+		return true, "";
 	}
 	
 	string itemString()
@@ -359,7 +350,7 @@ Class TSP_ShopMenu : GenericMenu
 					}
 					else
 					{
-						dd_name = "\c[TSPRed]-SOLD OUT-";
+						dd_name = "\cm-SOLD OUT-";
 					}
 					
 					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
@@ -369,13 +360,13 @@ Class TSP_ShopMenu : GenericMenu
 					}
 					
 					string price;
-					if(!(dd_curItem.inv_class is "TSP_UpgradeBase")||dd_curItem.level<GetDefaultByType(dd_curItem.inv_class).MaxAmount)
+					if(!dd_curItem.isMax())
 					{
 						price = gbd_sign..dd_curItem.price+dd_curItem.price_increment*dd_curItem.level;
 					}
 					else
 					{
-						price = "\c[TSPRed]---";
+						price = "\cm---";
 					}
 					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSPRed"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					
@@ -419,22 +410,23 @@ Class TSP_ShopMenu : GenericMenu
 			dd_queryItem = dd_curTab.itemlist[sm_itemSelected];
 		}
 		
-		if(sm_moveMode == 2 && dd_curTab.employ==null && dd_queryItem is "TSP_ShopItem")
+		if(dd_queryItem!=null && dd_curTab.employ==null && dd_queryItem is "TSP_ShopItem")
 		{
-			TSP_ShopItem dd_curItem = TSP_ShopItem(dd_curTab.itemlist[sm_itemSelected]);
+			TSP_ShopItem dd_curItem = TSP_ShopItem(dd_queryItem);
 			
 			TextureID dd_icon;
-			if(dd_curItem.icon!="")
-			{
-				dd_icon = TexMan.CheckForTexture(dd_curItem.icon,TexMan.Type_MiscPatch);
-				screen.DrawTexture(dd_icon, true, 80+sin(menutime()*1)*8, 90+sin(menutime()*2)*2, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
-			}
 			
 			bool dd_validItem;
 			string dd_errorMessage;
 			[dd_validItem, dd_errorMessage] = dd_curItem.canBuy();
 			
-			double dd_alpha = dd_validItem ? 1.0 : 0.25;
+			double dd_alpha = dd_validItem ? 1.0 : 0.75;
+			
+			if(dd_curItem.icon!="")
+			{
+				dd_icon = TexMan.CheckForTexture(dd_curItem.icon,TexMan.Type_MiscPatch);
+				screen.DrawTexture(dd_icon, true, 80+sin(menutime()*1)*8, 100+sin(menutime()*2)*2, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true, DTA_TranslationIndex, dd_validItem ? 0 : Translation.GetID('TSP_Shop_Darken'), DTA_Alpha, dd_alpha);
+			}
 			
 			string dd_name;
 			if(!dd_curItem.isMax()&&dd_curItem.level<dd_curItem.names.Size())
@@ -445,7 +437,7 @@ Class TSP_ShopMenu : GenericMenu
 			{
 				dd_name = "\c[TSPRed]-SOLD OUT-";
 			}
-			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 183, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 183, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
 			string desceh;
 			if(dd_curItem.level<dd_curItem.descs.Size())
@@ -461,13 +453,13 @@ Class TSP_ShopMenu : GenericMenu
 			int c = curDesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.CR_WHITE, 13, 196+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha, DTA_FillColor, Font.CR_BLACK);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 195+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, dd_alpha);
+				screen.DrawText("TinyFont", Font.CR_WHITE, 13, 196+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_FillColor, Font.CR_BLACK);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 195+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
 			if(!dd_validItem)
 			{
-				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth(dd_errorMessage)/2, 201, dd_errorMessage, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth(dd_errorMessage)/2, 100, dd_errorMessage, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 		}
 			

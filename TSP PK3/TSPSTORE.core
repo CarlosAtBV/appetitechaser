@@ -75,6 +75,7 @@ page
 			descs "$TSP_SHOP_SHIELDDESC1", "$TSP_SHOP_SHIELDDESC2", "$TSP_SHOP_SHIELDDESC3";
 			price 500;
 			price_increment 500;
+			icon "graphics/store/items/store_item_shield.png";
 			inv_class "TSP_Upgrade_Shield";
 		}
 	}

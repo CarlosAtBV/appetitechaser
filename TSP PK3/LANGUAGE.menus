@@ -3,8 +3,10 @@
 TSP_GAMEMODE_DEFAULT = "Gaming Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters";
 
-TSP_SHOP_CANTINV = "Inv. Class Not Found";
+TSP_SHOP_CANTINV = "This Shit Don't Exist";
 TSP_SHOP_NOMONEY = "Insufficient Funds";
+TSP_SHOP_MAXAMT = "Maximum Tier Reached";
+TSP_SHOP_MODSEL = "Weapon Already Modded";
 
 TSP_EMPLOYER_MODS = "Mods";
 
@@ -18,9 +20,9 @@ TSP_EMPLOYER_VEX_DESC = "ED 02.27.2145 NX-\cg%ERROR%\c-\n\nGreetings,\n\n\tI hav
 TSP_EMPLOYER_THI_NAME = "Barret";
 TSP_EMPLOYER_THI_DESC = "ED 11.23.2144 NX-04493550\n\nDear Melody,\n\nWhy don't you answer my calls give me back my fucking Cheebos you asshole I will chew on your clit and punch you in the eyelids you fucker\n\nI know where you live,\nThi Barret";
 
-TSP_SHOP_BULLDESC1 = "\cc(\ct2x base damage\cc)\c-\nThese bullets have extruded hooks lined along the shaft, embedding the bullet inside.";
-TSP_SHOP_BULLDESC2 = "\cc(\ct3x base damage\cc)\c-\nPatented by an asteroid miner in 2127, this drill-tipped bullet allows it to travel deeper than normal.";
-TSP_SHOP_BULLDESC3 = "\cc(\ct4x base damage\cc)\c-\nMade from the rare metal Thermotia, these bullets generate enough heat to cut through flesh like butter.";
+TSP_SHOP_BULLDESC1 = "\cc(\ct1.5x base damage\cc)\c-\nThese bullets have extruded hooks lined along the shaft, embedding the bullet inside.";
+TSP_SHOP_BULLDESC2 = "\cc(\ct1.75x base damage\cc)\c-\nPatented by an asteroid miner in 2127, this drill-tipped bullet allows it to travel deeper than normal.";
+TSP_SHOP_BULLDESC3 = "\cc(\ct2x base damage\cc)\c-\nMade from the rare metal Thermotia, these bullets generate enough heat to cut through flesh like butter.";
 
 TSP_SHOP_SHIELDNAME1 = "Alpha Generator";
 TSP_SHOP_SHIELDDESC1 = "\cc(\ct50 shield points\cc)\c-\nThese shield projectors are secured to the user's body using metal bands. Quite uncomfortable, actually.";
