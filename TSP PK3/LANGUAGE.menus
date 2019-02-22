@@ -30,3 +30,9 @@ TSP_SHOP_SHIELDNAME2 = "Delta Generator";
 TSP_SHOP_SHIELDDESC2 = "\cc(\ct75 shield points\cc)\c-\nThis generator runs its generation routine twice, thickening the shield layer at the cost of additional power.";
 TSP_SHOP_SHIELDNAME3 = "Zeta Generator";
 TSP_SHOP_SHIELDDESC3 = "\cc(\ct100 shield points\cc)\c-\nThe shield is generated in multiple different patches, preventing from the whole shield falling if one fails.";
+
+TSP_SHOP_MAGDESC1 = "\cc(\ct1.5x ammo capacity\cc)\c-\nA run-of-the-mill expanded magazine, compatible with all \"frankenweapons.\" Warranty is void upon installation.";
+TSP_SHOP_MAGNAME2 = "SubSpace Magazine";
+TSP_SHOP_MAGDESC2 = "\cc(\ct2x ammo capacity\cc)\c-\nSubSpace's latest product holds twice the normal amount of ammo! Never lose your groove in a firefight again!";
+TSP_SHOP_MAGNAME3 = "VoidTech Magazine";
+TSP_SHOP_MAGDESC3 = "\cc(\ct2.5x ammo capacity\cc)\c-\nThe Expanse is cold and endless, so get the magazine to match it. Depend on resilience, depend on VoidTech.";

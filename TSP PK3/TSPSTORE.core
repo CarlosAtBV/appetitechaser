@@ -18,17 +18,20 @@ page
 		header "Darling Nikki";
 		item "Hooked Bullets", "Drill Bullets", "Thermotian Bullets"
 		{
+			icons "BRS3K0","BRS3J0","BRS3I0";
 			price 450;
 			price_increment 300;
 			upgrade "MelPistol";
 			upgradeType 0;
 			descs "$TSP_SHOP_BULLDESC1", "$TSP_SHOP_BULLDESC2", "$TSP_SHOP_BULLDESC3";
 		}
-		item "Double Mag", "Expanded Mag", "Bullet Replicator"
+		item "Expanded Magazine", "$TSP_SHOP_MAGNAME2", "$TSP_SHOP_MAGNAME3"
 		{
-			price 5;
+			price 300;
+			price_increment 200;
 			upgrade "MelPistol";
 			upgradeType 1;
+			descs "$TSP_SHOP_MAGDESC1", "$TSP_SHOP_MAGDESC2", "$TSP_SHOP_MAGDESC3";
 		}
 		item "Speed Loader", "Magnetized Clip", "Auto-Loader"
 		{
@@ -75,7 +78,7 @@ page
 			descs "$TSP_SHOP_SHIELDDESC1", "$TSP_SHOP_SHIELDDESC2", "$TSP_SHOP_SHIELDDESC3";
 			price 500;
 			price_increment 500;
-			icon "graphics/store/items/store_item_shield.png";
+			icons "graphics/store/items/store_item_shield.png";
 			inv_class "TSP_Upgrade_Shield";
 		}
 	}

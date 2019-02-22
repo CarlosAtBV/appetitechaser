@@ -6,6 +6,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 {
 	Array<string > names;
 	Array<string > descs;
+	Array<string > icons;
 	string desc;
 	int price;
 	int price_increment;
@@ -62,6 +63,16 @@ Class TSP_ShopItem : TSP_ShopListItem
 				level = moddy.Amount;
 			}
 		}
+	}
+	
+	TextureID getIcon()
+	{
+		string icon;
+		if(icons.Size()>0)
+		{
+			icon = icons[clamp(level,0,icons.Size()-1)];
+		}
+		return TexMan.CheckForTexture(icon,TexMan.Type_MiscPatch);
 	}
 	
 	void Create()
@@ -296,6 +307,8 @@ Class TSP_ShopMenu : GenericMenu
 	
 	override void Drawer () 
 	{
+		super.Drawer();
+		
 		string gbd_sign = "\f$";
 		
 		TSP_ShopPage dd_curPage = shopPages_visible[sm_pageSelected];
@@ -422,11 +435,8 @@ Class TSP_ShopMenu : GenericMenu
 			
 			double dd_alpha = dd_validItem ? 1.0 : 0.75;
 			
-			if(dd_curItem.icon!="")
-			{
-				dd_icon = TexMan.CheckForTexture(dd_curItem.icon,TexMan.Type_MiscPatch);
-				screen.DrawTexture(dd_icon, true, 80+sin(menutime()*1)*8, 100+sin(menutime()*2)*2, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true, DTA_TranslationIndex, dd_validItem ? 0 : Translation.GetID('TSP_Shop_Darken'), DTA_Alpha, dd_alpha);
-			}
+			dd_icon = dd_curItem.getIcon();
+			screen.DrawTexture(dd_icon, true, 80+sin(menutime()*1)*8, 100+sin(menutime()*2)*2, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true, DTA_TranslationIndex, dd_validItem ? 0 : Translation.GetID('TSP_Shop_Darken'), DTA_Alpha, dd_alpha);
 			
 			string dd_name;
 			if(!dd_curItem.isMax()&&dd_curItem.level<dd_curItem.names.Size())

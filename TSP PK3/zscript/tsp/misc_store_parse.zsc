@@ -121,10 +121,14 @@ Extend Class TSP_ShopMenu
 											tokenboy = tokenitup.GoThru();
 											curItem.price_increment = tokenboy.value.ToInt();
 										}
-										if(tokenboy.value == "icon")
+										if(tokenboy.value == "icons")
 										{
 											tokenboy = tokenitup.GoThru();
-											curItem.icon = tokenboy.value;
+											curItem.icons.Push(tokenboy.value);
+											while(tokenitup.GoThru().type == TSPT_Comma)
+											{
+												curItem.icons.Push(tokenitup.GoThru().value);
+											}
 										}
 										if(tokenboy.value == "desc")
 										{
