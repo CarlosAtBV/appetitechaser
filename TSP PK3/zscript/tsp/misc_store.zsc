@@ -49,9 +49,30 @@ Class TSP_ShopItem : TSP_ShopListItem
 		
 		if(upgrade!=null)
 		{
-			if(player.FindInventory(upgrade,true))
+			TSP_Weapon_Core wepon = TSP_Weapon_Core(player.FindInventory(upgrade,true));
+			if(wepon!=null)
 			{
-				return true, "";
+				int tehMax;
+				int tehLevel;
+				switch(upgradeType)
+				{
+					case 0:
+						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxpowerlevel;
+						tehLevel = wepon.tspw_powerlevel;
+						break;
+					case 1:
+						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxammolevel;
+						tehLevel = wepon.tspw_ammolevel;
+						break;
+					case 2:
+						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxreloadlevel;
+						tehLevel = wepon.tspw_reloadlevel;
+						break;
+				}
+				if(tehLevel<tehMax)
+				{
+					return true, "";
+				}
 			}
 		}
 		
