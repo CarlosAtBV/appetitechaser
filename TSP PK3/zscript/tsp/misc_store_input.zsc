@@ -120,7 +120,7 @@ Extend Class TSP_ShopMenu
 						}
 						break;
 					case 2:
-						if(curItem!=null && curItem is "TSP_ShopItem")
+						if((curItem!=null && curItem is "TSP_ShopItem")||curTab.employ!=null)
 						{
 							int me_prevItem = sm_itemSelected;
 							sm_itemSelected = sm_itemHovered;
