@@ -140,7 +140,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		if(player.crouchfactor<1.0&&pos.z==floorz&&vel.z!=oldVelZ)
 		{
-			Thrust(24,angle);
+			vel.x*=4;
+			vel.y*=4;
 		}
 		
 		FLineTraceData traceStuff;

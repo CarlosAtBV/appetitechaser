@@ -109,7 +109,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 			return false, StringTable.Localize("$TSP_SHOP_MAXAMT");
 		}
 		
-		if(player.CountInv("TSP_GlobalDollars")<price)
+		if(player.CountInv("TSP_GlobalDollars")<price+(price_increment*level))
 		{
 			return false, StringTable.Localize("$TSP_SHOP_NOMONEY");
 		}
