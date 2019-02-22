@@ -110,14 +110,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void Tick ()
 	{
 		Super.Tick();
+		
 		if (!player || !player.mo || player.mo != self)
 		{
 			return;
-		}
-		
-		if(oldVelZ==vel.z)
-		{
-			ptp_wallJump = false;
 		}
 		
 		if(health>0)
@@ -130,6 +126,14 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			{
 				GiveInventory("TSP_PlayerPawn_Shield",1);
 			}
+		}
+	}
+	
+	override void CheckJump()
+	{
+		if(oldVelZ==vel.z)
+		{
+			ptp_wallJump = false;
 		}
 		
 		FLineTraceData traceStuff;
@@ -163,6 +167,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		
 		oldVelZ = vel.z;
+		
+		super.CheckJump();
 	}
 	
 	override void DeathThink ()
