@@ -136,9 +136,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			ptp_wallJump = false;
 		}
 		
-		if(player.crouchfactor<1.0)
+		Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
+		
+		if(player.crouchfactor<1.0&&pos.z==floorz&&vel.z!=oldVelZ)
 		{
-			Thrust(14,angle);
+			Thrust(24,angle);
 		}
 		
 		FLineTraceData traceStuff;
