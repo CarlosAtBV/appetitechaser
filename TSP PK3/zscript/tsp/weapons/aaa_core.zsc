@@ -258,6 +258,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	override void PostBeginPlay()
 	{
+		super.PostBeginPlay();
 		tspw_curclip = GetClipCapacity();
 	}
 	

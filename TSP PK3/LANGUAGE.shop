@@ -32,3 +32,4 @@ TSP_SHOP_MAGDESC3 = "\cc(\ct2.5x ammo capacity\cc)\c-\nThe Expanse is cold and e
 // Darling Nikki
 
 	TSP_SHOP_DNMODA = "\cc(\ctFire Mode\cc)\c-\nAdds an alternative firing mode to Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";
+	TSP_SHOP_DNMODB = "\cc(\ctFire Mode\cc)\c-\nAdds a silencer to Nikki, allowing you to take out targets silently. Alt-fire lets you aim down the sights.";
