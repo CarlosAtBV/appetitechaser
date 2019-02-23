@@ -69,3 +69,14 @@ shop/hired "sounds/placeholder/shop/victory.ogg"
 money/pickup "sounds/placeholder/gibemonie.ogg"
 
 world/jumppad "sounds/placeholder/jumppad.ogg"
+
+$random hit/flesh { hit/flesh1 hit/flesh2 hit/flesh3 hit/flesh4 hit/flesh5 hit/flesh6 }
+hit/flesh1 "sounds/placeholder/gore/d4fleshhit_1.ogg"
+hit/flesh2 "sounds/placeholder/gore/d4fleshhit_2.ogg"
+hit/flesh3 "sounds/placeholder/gore/d4fleshhit_3.ogg"
+hit/flesh4 "sounds/placeholder/gore/d4fleshhit_4.ogg"
+hit/flesh5 "sounds/placeholder/gore/d4fleshhit_5.ogg"
+hit/flesh6 "sounds/placeholder/gore/d4fleshhit_6.ogg"
+
+$rolloff hit/flesh 200 2000
+$volume hit/flesh 1.0
