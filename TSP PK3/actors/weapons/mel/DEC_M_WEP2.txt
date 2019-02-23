@@ -25,16 +25,12 @@ ACTOR MelPistol : TSPMelLightWeapon
   Weapon.BobSpeed 2.2
   Weapon.BobRangeY 0.5
   Weapon.BobRangeX 0.7
-  /*Weapon.AmmoType "MelPistolMagDefault"
-  Weapon.AmmoGive 0
-  Weapon.AmmoUse 1
-  Weapon.AmmoType2 "TSPPistolAmmo"
-  Weapon.AmmoGive2 0
-  Weapon.AmmoUse2 0*/
   Weapon.AmmoType "TSPPistolAmmo"
   Weapon.AmmoGive 0
   Weapon.AmmoUse 1
-  TSP_Weapon_Core.ClipSize 15
+  
+  TSP_Weapon_Core.ClipSize 15 //Initial starting size of clip
+  
   Tag "$MELPISTOLTAG"
   +NOAUTOFIRE
   +AMMO_OPTIONAL

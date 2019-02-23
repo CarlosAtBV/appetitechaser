@@ -17,8 +17,8 @@
 
 ACTOR MelPistolA : MelPistol
 {
-	+TSP_Weapon_Core.MODFIREMODE
-	TSP_Weapon_Core.ModTag "Spitfire"
+	+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
+	TSP_Weapon_Core.ModTag "Spitfire" //Used for "---- On/Off" message when switching mod fire on or off
 	States
 	{
 		ModFire:  
