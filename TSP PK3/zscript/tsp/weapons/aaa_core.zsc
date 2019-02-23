@@ -101,6 +101,7 @@ Class TSP_EnemyHandler_OnHit : Thinker
 		if(owner.CountInv("TSP_EnemyHandler_IsSupered")>0)
 		{
 			owner.bNoGravity = true;
+			owner.bNoPain = true;
 			owner.vel.x *= 0.85;
 			owner.vel.y *= 0.85;
 			owner.vel.z *= 0.85;
@@ -109,6 +110,7 @@ Class TSP_EnemyHandler_OnHit : Thinker
 		else
 		{
 			owner.bNoGravity = false;
+			owner.bNoPain = false;
 			if(fx) fx.Destroy();
 			if(owner.vel.z==oldZ)
 			{
@@ -349,7 +351,7 @@ Class TSP_Weapon_Core : DoomWeapon
 					
 					int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
 					//mo.A_Quake(2,4,0,750);
-					if(mo.resolveState("Pain")!=null&&mo.Health>0)
+					if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
 					{
 						mo.SetStateLabel("Pain");
 						mo.A_SetTics(stuntime);
@@ -413,6 +415,11 @@ Class TSP_Weapon_Core : DoomWeapon
 					bool isSupered = mo.CountInv("TSP_EnemyHandler_IsSupered");
 					if(isSupered)
 					{
+						if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
+						{
+							mo.SetStateLabel("Pain");
+							mo.A_SetTics(stuntime);
+						}
 						mo.TakeInventory("TSP_EnemyHandler_IsSupered",1000);
 						mo.DamageMobj(invoker.owner,invoker.owner,200,'Melee',DMG_THRUSTLESS);
 						mo.vel = (0,0,-32);
