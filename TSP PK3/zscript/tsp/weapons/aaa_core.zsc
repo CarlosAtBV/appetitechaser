@@ -146,9 +146,11 @@ Class TSP_Weapon_Core : DoomWeapon
 	int tspw_maxreloadlevel;
 	
 	double tspw_powermult1, tspw_powermult2, tspw_powermult3;
+	double tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	
 	property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
 	property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
+	property AmmoMult : tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	
 	int tspw_curclip;
 	int tspw_clipsize;
@@ -158,6 +160,20 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		TSP_Weapon_Core.MaxLevels 3, 3, 3;
 		TSP_Weapon_Core.PowerMult 1.5, 1.75, 2.0;
+		TSP_Weapon_Core.AmmoMult 1.5, 2.0, 2.5;
+		+INVENTORY.UNTOSSABLE
+	}
+	
+	int GetClipCapacity()
+	{
+		int clipcap = tspw_clipsize;
+		switch(tspw_ammolevel)
+		{
+			 case 1: clipcap *= (tspw_ammomult1); break;
+			 case 2: clipcap *= (tspw_ammomult2); break;
+			 case 3: clipcap *= (tspw_ammomult3); break;
+		}
+		return clipcap;
 	}
 	
 	override State GetAtkState (bool hold)
@@ -188,7 +204,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	override void PostBeginPlay()
 	{
-		tspw_curclip = tspw_clipsize;
+		tspw_curclip = GetClipCapacity();
 	}
 	
 	bool canReload()
@@ -200,7 +216,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		int oldFlags = flags;
 		flags ^= WRF_ALLOWRELOAD;
-		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.tspw_clipsize && invoker.canReload())
+		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())
 		{
 			flags |= WRF_ALLOWRELOAD;
 		}
@@ -241,7 +257,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		if(amt<1)
 		{
-			while(invoker.tspw_curclip<invoker.tspw_clipsize && invoker.canReload())
+			while(invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())
 			{
 				invoker.tspw_curclip++;
 				invoker.owner.TakeInventory(invoker.ammo1.GetClass(),1);

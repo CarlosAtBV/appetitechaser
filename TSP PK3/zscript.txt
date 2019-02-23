@@ -342,6 +342,7 @@ Class TSP_EventHandler : EventHandler
 				newWepon.tspw_powerlevel = oldWepon.tspw_powerlevel;
 				newWepon.tspw_ammolevel = oldWepon.tspw_ammolevel;
 				newWepon.tspw_reloadlevel = oldWepon.tspw_reloadlevel;
+				//newWepon.tspw_curclip = oldWepon.tspw_curclip;
 				players[0].mo.A_SelectWeapon(shopitem[2]);
 				players[0].mo.TakeInventory(shopitem[1],1);
 			}
