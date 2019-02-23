@@ -33,9 +33,11 @@ page
 			upgradeType 1;
 			descs "$TSP_SHOP_MAGDESC1", "$TSP_SHOP_MAGDESC2", "$TSP_SHOP_MAGDESC3";
 		}
-		item "Speed Loader", "Magnetized Clip", "Auto-Loader"
+		item "$TSP_SHOP_NIKKI_RLDNAME1", "$TSP_SHOP_NIKKI_RLDNAME2", "$TSP_SHOP_NIKKI_RLDNAME3"
 		{
-			price 5;
+			price 275;
+			price_increment 250;
+			descs "$TSP_SHOP_NIKKI_RLDDESC1","$TSP_SHOP_NIKKI_RLDDESC2","$TSP_SHOP_NIKKI_RLDDESC3";
 			upgrade "MelPistol";
 			upgradeType 2;
 		}

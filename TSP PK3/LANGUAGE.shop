@@ -1,0 +1,34 @@
+[default enu]
+
+TSP_SHOP_BULLDESC1 = "\cc(\ct1.5x base damage\cc)\c-\nThese bullets have extruded hooks lined along the shaft, embedding the bullet inside.";
+TSP_SHOP_BULLDESC2 = "\cc(\ct1.75x base damage\cc)\c-\nPatented by an asteroid miner in 2127, this drill-tipped bullet allows it to travel deeper than normal.";
+TSP_SHOP_BULLDESC3 = "\cc(\ct2x base damage\cc)\c-\nMade from the rare metal Thermotia, these bullets generate enough heat to cut through flesh like butter.";
+
+TSP_SHOP_SHIELDNAME1 = "Alpha Generator";
+TSP_SHOP_SHIELDDESC1 = "\cc(\ct50 shield points\cc)\c-\nThese shield projectors are secured to the user's body using metal bands. Quite uncomfortable, actually.";
+TSP_SHOP_SHIELDNAME2 = "Delta Generator";
+TSP_SHOP_SHIELDDESC2 = "\cc(\ct75 shield points\cc)\c-\nThis generator runs its generation routine twice, thickening the shield layer at the cost of additional power.";
+TSP_SHOP_SHIELDNAME3 = "Zeta Generator";
+TSP_SHOP_SHIELDDESC3 = "\cc(\ct100 shield points\cc)\c-\nThe shield is generated in multiple different patches, preventing from the whole shield falling if one fails.";
+
+TSP_SHOP_MAGDESC1 = "\cc(\ct1.5x ammo capacity\cc)\c-\nA run-of-the-mill expanded magazine, compatible with all \"frankenweapons.\" Warranty is void upon installation.";
+TSP_SHOP_MAGNAME2 = "SubSpace Magazine";
+TSP_SHOP_MAGDESC2 = "\cc(\ct2x ammo capacity\cc)\c-\nSubSpace's latest product holds twice the normal amount of ammo! Never lose your groove in a firefight again!";
+TSP_SHOP_MAGNAME3 = "VoidTech Magazine";
+TSP_SHOP_MAGDESC3 = "\cc(\ct2.5x ammo capacity\cc)\c-\nThe Expanse is cold and endless, so get the magazine to match it. Depend on resilience, depend on VoidTech.";
+
+TSP_SHOP_NIKKI_RLDNAME1 = "Flash Loader";
+TSP_SHOP_NIKKI_RLDDESC1 = "\cc(\ct1.5x faster reload\cc)\c-\nThe sleek shape of this speed loader reduces the hassle of reloading, allowing you to focus on the battle.";
+TSP_SHOP_NIKKI_RLDNAME2 = "MegaTon Mag-Clip";
+TSP_SHOP_NIKKI_RLDDESC2 = "\cc(\ct2.0x faster reload\cc)\c-\nBehold; the latest in magnetized clip technology! Just hold it near the slot and let science do the rest.";
+TSP_SHOP_NIKKI_RLDNAME3 = "SisKorp Replicator";
+TSP_SHOP_NIKKI_RLDDESC3 = "\cc(\ct2.5x faster reload\cc)\c-\nManaging your ammunition is history with SisKorp's new automatic bullet replicator. Never load a bullet again!";
+
+TSP_SHOP_MAGNAME2 = "SubSpace Magazine";
+TSP_SHOP_MAGDESC2 = "\cc(\ct2x ammo capacity\cc)\c-\nSubSpace's latest product holds twice the normal amount of ammo! Never lose your groove in a firefight again!";
+TSP_SHOP_MAGNAME3 = "VoidTech Magazine";
+TSP_SHOP_MAGDESC3 = "\cc(\ct2.5x ammo capacity\cc)\c-\nThe Expanse is cold and endless, so get the magazine to match it. Depend on resilience, depend on VoidTech.";
+
+// Darling Nikki
+
+	TSP_SHOP_DNMODA = "\cc(\ctFire Mode\cc)\c-\nAdds an alternative firing mode to Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";

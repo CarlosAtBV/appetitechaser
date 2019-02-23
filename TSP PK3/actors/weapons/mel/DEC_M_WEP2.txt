@@ -90,7 +90,8 @@ ACTOR MelPistol : TSPMelLightWeapon
 	TNT1 A 0 A_FireCustomMissile("SpentClip1",3,0,5,0)
 	121R I 1 A_PlaySound("919m/magout", 6)
 	121R JKLLMNO 1
-	121R PPPPPPPPPPPPPPPPPPPPPP 1
+	121R P 22 A_TSP_ReloadSpeed(22)
+	//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
 	121R QRS 1
 	TNT1 A 0 A_PlaySound("919m/magin1", 5)
 	121R TUUUVWXYZ 1
