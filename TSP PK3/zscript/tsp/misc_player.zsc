@@ -50,6 +50,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	bool ptp_wallJump;
 	bool ptp_wallJumpReadySound;
 	
+	int ptp_wallJumps;
+	
 	int pp_gamemode;
 	int pp_shieldHitDelay;
 	bool pp_shieldLowSound;
@@ -133,7 +135,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		if(oldVelZ==vel.z)
 		{
-			ptp_wallJump = false;
+			ptp_wallJumps = 0;
 		}
 		
 		Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
@@ -163,8 +165,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				vel = (0,0,0);
 				Thrust(14,angle+(25*sidedir));
 				A_PlaySound("*jump",CHAN_VOICE);
-				vel.z = 12;
-				ptp_wallJump = true;
+				vel.z = clamp(12-(ptp_wallJumps/1.25),0,12);
+				ptp_wallJumps++;
 			}
 		}
 		else

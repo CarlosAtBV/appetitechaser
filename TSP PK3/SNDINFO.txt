@@ -67,3 +67,5 @@ shield/depleted "sounds/placeholder/player/shield_depleted.ogg"
 shop/purchase "sounds/placeholder/shop/PASSGO.wav"
 shop/hired "sounds/placeholder/shop/victory.ogg"
 money/pickup "sounds/placeholder/gibemonie.ogg"
+
+world/jumppad "sounds/placeholder/jumppad.ogg"

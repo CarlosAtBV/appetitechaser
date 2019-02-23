@@ -2,11 +2,16 @@ Extend Class TSP_ShopMenu
 {
 	int mouseHover;
 	Vector2 virtualMPos;
+	Vector2 oldMPos;
 	
 	override bool MouseEvent(int type, int x, int y)
 	{
 		int sel = -1;
 		//int sm_moveMode = -1;
+		if(oldMPos.x!=x||oldMPos.y!=y)
+		{
+			sm_moveMode = -1;
+		}
 		
 		int mouserx = x;
 		int mousery = y;
@@ -80,6 +85,8 @@ Extend Class TSP_ShopMenu
 				sm_itemHovered = 0;
 			}
 		}
+		
+		oldMPos = virtualMPos;
 		
 		return Super.MouseEvent(type, x, y);
 	}
