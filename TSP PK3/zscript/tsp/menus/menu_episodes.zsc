@@ -1,0 +1,134 @@
+Class TSP_EpisodeMenu_Item
+{
+	TextureID patch;
+	string name;
+	
+	int mYpos;
+	
+	/*virtual int GetWidth()
+	{
+		//return max(1, max(mFont.StringWidth(StringTable.Localize(name)),mFont.StringWidth(StringTable.Localize(sub)))); 
+	}*/
+}
+
+Class TSP_EpisodeMenu : GenericMenu
+{
+	Array<TSP_EpisodeMenu_Item > episodes;
+	
+	int em_itemSelected;
+	int em_itemHovered;
+	
+	static const string numerals[] =
+	{
+		"I",
+		"II",
+		"III",
+		"IV",
+		"V",
+		"VI",
+		"VII",
+		"VIII",
+		"IX",
+		"X",
+		"XI",
+		"XII",
+		"XIII",
+		"XIV",
+		"XV",
+		"XVI",
+		"XVII",
+		"XVII",
+		"XIX"
+	};
+	
+	void updateShit()
+	{
+		int maxSize = episodes.Size();
+		for(int i = 0;i<episodes.Size();i++)
+		{
+			Console.Printf(""..episodes[i].name);
+			if(episodes[i].name.Left(3)~=="TSP")
+			{
+				episodes.Delete(i);
+			}
+		}
+		if(CVar.GetCVar("tsp_gamemode",players[0]).GetInt()==2)
+		{
+			SetMenu("SkillMenu",maxSize-1);
+		}
+	}
+	
+	void DrawTextOutline(Font font, Color color, int x, int y, string text)
+	{
+		Color color_outline = Font.FindFontColor("TSPVantaBlack");
+		
+		screen.DrawText(font, color_outline, x-1, y, text, DTA_Clean, true);
+		screen.DrawText(font, color_outline, x, y-1, text, DTA_Clean, true);
+		screen.DrawText(font, color_outline, x+1, y, text, DTA_Clean, true);
+		screen.DrawText(font, color_outline, x, y+1, text, DTA_Clean, true);
+		
+		screen.DrawText(font, color, x, y, text, DTA_Clean, true);
+	}
+	
+	override void Drawer()
+	{
+		TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
+		TextureID header = TexMan.CheckForTexture("SP_EPIS",TexMan.Type_MiscPatch);
+		
+		screen.DrawTexture (bg, true, 103, 39, DTA_Clean, true);
+		screen.DrawTexture (header, true, 103, 39, DTA_Clean, true);
+		
+		int sx = 20;
+		int sy = 17;
+		
+		bool getout;
+		int iterator = 0;
+		for(int i = 0;i<2;i++)
+		{
+			for(int v = 0;v<6;v++)
+			{
+				DrawTextOutline(BigFont, em_itemSelected == iterator ? Font.CR_YELLOW : Font.FindFontColor("TSPGreen"), sx, sy, "Chapter "..iterator+1);
+				sy += BigFont.GetHeight()+3;
+				screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, episodes[iterator].name, DTA_Clean, true);
+				sy += SmallFont.GetHeight()+1;
+				iterator++;
+				if(iterator>=episodes.Size())
+				{
+					getout = true;
+					break;
+				}
+			}
+			sy = 17;
+			sx += 140;
+			if(getout) break;
+		}
+	}
+
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Up:
+				if(em_itemSelected>0)
+				{
+					em_itemSelected--;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+			
+			case MKEY_Down:
+				if(em_itemSelected<episodes.Size()-1)
+				{
+					em_itemSelected++;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+				
+			case MKEY_Enter:
+				S_Sound("menu/accept",CHAN_UI);
+				SetMenu("SkillMenu",em_itemSelected);
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+}

@@ -1,60 +1,3 @@
-Class TSP_EpisodeMenu_Item
-{
-	TextureID patch;
-	string name;
-}
-
-Class TSP_EpisodeMenu : GenericMenu
-{
-	Array<TSP_EpisodeMenu_Item > episodes;
-	
-	static const string numerals[] =
-	{
-		"I",
-		"II",
-		"III",
-		"IV",
-		"V",
-		"VI",
-		"VII",
-		"VIII",
-		"IX",
-		"X",
-		"XI",
-		"XII",
-		"XIII",
-		"XIV",
-		"XV",
-		"XVI",
-		"XVII",
-		"XVII",
-		"XIX"
-	};
-	
-	override void Drawer()
-	{
-		Color color_outline = Font.FindFontColor("TSPVantaBlack");
-		
-		int sy = 0;
-		for(int i = 0;i<episodes.Size();i++)
-		{
-			/*screen.DrawText(BigFont, color_outline, -1, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, 0, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, 1, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, 1, 0+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, 1, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, 0, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, -1, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(BigFont, color_outline, -1, 0+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);*/
-			
-			screen.DrawText(BigFont, Font.FindFontColor("TSPGreen"), 0, sy, "Chapter "..numerals[i]..":", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			sy += BigFont.GetHeight()+1;
-			screen.DrawText(SmallFont, Font.CR_WHITE, 0, sy, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			sy += SmallFont.GetHeight();
-		}
-	}
-}
-
 Class TSP_EpisodeMenuButFake : ListMenu
 {
 	override void Ticker()
@@ -82,11 +25,49 @@ Class TSP_EpisodeMenuButFake : ListMenu
 		sin.SetMenu("TSP_EpisodeMenu",0);
 		TSP_EpisodeMenu(sin.GetCurrentMenu()).episodes.Copy(episodes);
 		sin.GetCurrentMenu().mParentMenu = father;
+		TSP_EpisodeMenu(sin.GetCurrentMenu()).updateShit();
 	}
 }
 
 Class TSP_ListMenu : ListMenu
 {
+	override bool MouseEvent(int type, int x, int y)
+	{
+		int sel = -1;
+
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		x = ((x - (screen.GetWidth() / 2)) / CleanXfac) + 160;
+		y = ((y - (screen.GetHeight() / 2)) / CleanYfac) + 100;
+
+		if (mFocusControl != NULL)
+		{
+			mFocusControl.MouseEvent(type, x, y);
+			return true;
+		}
+		else
+		{
+			if ((mDesc.mWLeft <= 0 || x > mDesc.mWLeft) &&
+				(mDesc.mWRight <= 0 || x < mDesc.mWRight))
+			{
+				for(int i=0;i<mDesc.mItems.Size(); i++)
+				{
+					if (mDesc.mItems[i].CheckCoordinate(x, y))
+					{
+						if (i != mDesc.mSelectedItem)
+						{
+							MenuSound("menu/cursor");
+						}
+						mDesc.mSelectedItem = i;
+						mDesc.mItems[i].MouseEvent(type, x, y);
+						return true;
+					}
+				}
+			}
+		}
+		mDesc.mSelectedItem = -1;
+		return Super.MouseEvent(type, x, y);
+	}
+	
 	override void Ticker ()
 	{
 		Super.Ticker();
@@ -97,18 +78,10 @@ Class TSP_ListMenu : ListMenu
 				ListMenuItemTSP_MenuItem_PatchItem menuItem = ListMenuItemTSP_MenuItem_PatchItem(mDesc.mItems[i]);
 				if(mDesc.mSelectedItem == i)
 				{
-					if(menuItem.xOffTarg == 0)
-					{
-						S_Sound("menu/cursor",CHAN_UI);
-					}
 					menuItem.xOffTarg = 8;
 				}
 				else
 				{
-					if(menuItem.xOffTarg == 8)
-					{
-						S_Sound("menu/cursor",CHAN_UI);
-					}
 					menuItem.xOffTarg = 0;
 				}
 			}

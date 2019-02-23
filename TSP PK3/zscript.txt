@@ -4,6 +4,7 @@ version "3.1.0"
 
 #include "zscript/tsp/items_gbd.zsc"
 
+#include "zscript/tsp/menus/menu_episodes.zsc"
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
 #include "zscript/tsp/misc_store.zsc"
@@ -267,6 +268,7 @@ Class TSP_EventHandler : EventHandler
 					sin.SetMenu("TSP_EpisodeMenu",0);
 					TSP_EpisodeMenu(sin.GetCurrentMenu()).episodes.Copy(episodes);
 					sin.GetCurrentMenu().mParentMenu = father;
+					TSP_EpisodeMenu(sin.GetCurrentMenu()).updateShit();
 				}
 			}
 		}
