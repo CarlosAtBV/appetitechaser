@@ -130,6 +130,13 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		TSPM_SUPERFREEZE = 1,
 	};
+	
+	bool tspw_altmode;
+	string tspw_altname;
+	
+	int tspw_weaponflags;
+	flagdef ModFireMode: tspw_weaponflags, 0;
+	property ModTag : tspw_altname;
 
 	int tspw_powerlevel;
 	int tspw_maxpowerlevel;
@@ -153,6 +160,32 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.PowerMult 1.5, 1.75, 2.0;
 	}
 	
+	override State GetAtkState (bool hold)
+	{
+		State s = null;
+		if(tspw_altmode)
+		{
+			if (hold) s = FindState('ModHold');
+			if (s == null) s = FindState('ModFire');
+		}
+		else
+		{
+			if (hold) s = FindState('Hold');
+			if (s == null) s = FindState('Fire');
+		}
+		return s;
+	}
+	override State GetAltAtkState (bool hold)
+	{
+		State s = null;
+		if(!bModFireMode)
+		{
+			if (hold) s = FindState('AltHold');
+			if (s == null) s = FindState('AltFire');
+		}
+		return s;
+	}
+	
 	override void PostBeginPlay()
 	{
 		tspw_curclip = tspw_clipsize;
@@ -171,6 +204,15 @@ Class TSP_Weapon_Core : DoomWeapon
 		{
 			flags |= WRF_ALLOWRELOAD;
 		}
+		
+		if(invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
+		{
+			invoker.tspw_altmode = !invoker.tspw_altmode;
+			string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
+			A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
+			TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
+		}
+		
 		A_WeaponReady(flags);
 	}
 	

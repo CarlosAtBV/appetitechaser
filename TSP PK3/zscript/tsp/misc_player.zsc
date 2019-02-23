@@ -58,6 +58,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	int pp_initShield;
 	
+	string pp_notification;
+	int pp_notificationTime;
+	
 	Property StartShield : pp_initShield;
 	
 	TSP_GlobalVariables gvars;
@@ -70,6 +73,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
 		gvars = TSP_GlobalVariables.Get();
 		gvars.tsp_employer = 0;
+	}
+	
+	void notifyMessage (string message, int time = 70)
+	{
+		pp_notification = message;
+		pp_notificationTime = time;
 	}
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
@@ -128,6 +137,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			{
 				GiveInventory("TSP_PlayerPawn_Shield",1);
 			}
+		}
+		
+		if(pp_notificationTime>0)
+		{
+			pp_notificationTime--;
 		}
 	}
 	

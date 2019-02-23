@@ -1,7 +1,7 @@
 Class TSP_StatusBar : BaseStatusBar
 {
 	HUDFont mHUDFont;
-	HUDFont mIndexFont;
+	HUDFont mSmallFont;
 	HUDFont mAmountFont;
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
@@ -15,8 +15,8 @@ Class TSP_StatusBar : BaseStatusBar
 		// Create the font used for the fullscreen HUD
 		Font fnt = "TSP_HUDFONT";
 		mHUDFont = HUDFont.Create(fnt,1,false);
-		fnt = "INDEXFONT_DOOM";
-		mIndexFont = HUDFont.Create(fnt, fnt.GetCharWidth("0"), true);
+		fnt = "SmallFont";
+		mSmallFont = HUDFont.Create(fnt);
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -115,6 +115,14 @@ Class TSP_StatusBar : BaseStatusBar
 					alpha = 0.6;
 					DrawString(mHUDFont, FormatNumber(a1.Amount, 3), (-8, -70), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
 				}
+			}
+			
+			TSP_PlayerPawn_ZSCBase playerObj = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
+			if(playerObj.pp_notificationTime>0)
+			{
+				Centering = true;
+				DrawString(mSmallFont, playerObj.pp_notification, (0,-36), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW|DI_SCREEN_CENTER_BOTTOM, Font.CR_GREEN);
+				Centering = false;
 			}
 		}
 	}

@@ -59,16 +59,19 @@ bounty/finish           BOUNTFIN
 
 //Shield
 
-shield/hit "sounds/placeholder/player/shield_hit.ogg"
-shield/depleted "sounds/placeholder/player/shield_depleted.ogg"
+shield/hit "sounds/placeholder/player/shield_hit.ogg" // From Halo: Combat Evolved
+shield/depleted "sounds/placeholder/player/shield_depleted.ogg" // From Halo: Combat Evolved
 
 //shop
 
-shop/purchase "sounds/placeholder/shop/PASSGO.wav"
-shop/hired "sounds/placeholder/shop/victory.ogg"
-money/pickup "sounds/placeholder/gibemonie.ogg"
+shop/purchase "sounds/placeholder/shop/PASSGO.wav" // From Monopoly (1995)
+shop/hired "sounds/placeholder/shop/victory.ogg" // From Roblox
+money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age of Kings
 
-world/jumppad "sounds/placeholder/jumppad.ogg"
+world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
+
+weapon/mod/on "sounds/placeholder/modon.wav" // From Fortress Forever
+weapon/mod/off "sounds/placeholder/modoff.wav" // From Fortress Forever
 
 $random hit/flesh { hit/flesh1 hit/flesh2 hit/flesh3 hit/flesh4 hit/flesh5 hit/flesh6 }
 hit/flesh1 "sounds/placeholder/gore/d4fleshhit_1.ogg"
