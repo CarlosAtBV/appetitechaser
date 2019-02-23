@@ -48,6 +48,7 @@ map TEST "The Cum Zone"
 episode TEST
 {
 	name = "TSP: Training Mode"
+	noskillmenu
 }
 /*episode MAP02
 {
