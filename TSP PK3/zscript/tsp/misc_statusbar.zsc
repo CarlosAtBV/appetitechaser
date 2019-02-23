@@ -25,6 +25,7 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	override void Tick()
 	{
+		super.Tick();
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 	}

@@ -152,7 +152,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			ptp_wallJumps = 0;
 		}
 		
-		Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
+		//Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
 		
 		if(player.crouchfactor<1.0&&pos.z==floorz&&vel.z!=oldVelZ)
 		{
@@ -164,7 +164,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		int sidedir = sign(player.cmd.sidemove);
 		double angley = angle+atan2(-sidedir,sign(player.cmd.forwardmove));//atan2(prev.y - pos.y,prev.x - pos.x)+180;
-		Console.Printf(""..angley);
+		//Console.Printf(""..angley);
 		LineTrace(angley, (radius+24)*abs(sidedir), 0, 0, 26.0, 0.0, 0.0, traceStuff);
 		
 		if(traceStuff.HitType == TRACE_HitWall && oldVelZ!=vel.z)
