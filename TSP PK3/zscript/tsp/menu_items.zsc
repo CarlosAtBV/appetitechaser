@@ -1,3 +1,90 @@
+Class TSP_EpisodeMenu_Item
+{
+	TextureID patch;
+	string name;
+}
+
+Class TSP_EpisodeMenu : GenericMenu
+{
+	Array<TSP_EpisodeMenu_Item > episodes;
+	
+	static const string numerals[] =
+	{
+		"I",
+		"II",
+		"III",
+		"IV",
+		"V",
+		"VI",
+		"VII",
+		"VIII",
+		"IX",
+		"X",
+		"XI",
+		"XII",
+		"XIII",
+		"XIV",
+		"XV",
+		"XVI",
+		"XVII",
+		"XVII",
+		"XIX"
+	};
+	
+	override void Drawer()
+	{
+		Color color_outline = Font.FindFontColor("TSPVantaBlack");
+		
+		int sy = 0;
+		for(int i = 0;i<episodes.Size();i++)
+		{
+			/*screen.DrawText(BigFont, color_outline, -1, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, 0, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, 1, -1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, 1, 0+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, 1, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, 0, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, -1, 1+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(BigFont, color_outline, -1, 0+(BigFont.GetHeight()+2)*i, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);*/
+			
+			screen.DrawText(BigFont, Font.FindFontColor("TSPGreen"), 0, sy, "Chapter "..numerals[i]..":", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			sy += BigFont.GetHeight()+1;
+			screen.DrawText(SmallFont, Font.CR_WHITE, 0, sy, episodes[i].name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			sy += SmallFont.GetHeight();
+		}
+	}
+}
+
+Class TSP_EpisodeMenuButFake : ListMenu
+{
+	override void Ticker()
+	{
+		ListMenu sin = self;
+		Menu father = sin.mParentMenu;
+		Array<TSP_EpisodeMenu_Item > episodes;
+		episodes.Clear();
+		for(int i = 0;i < sin.mDesc.mItems.Size();i++)
+		{
+			TSP_EpisodeMenu_Item newOption = new("TSP_EpisodeMenu_Item");
+			if(sin.mDesc.mItems[i] is "ListMenuItemTextItem")
+			{
+				newOption.name = ListMenuItemTextItem(sin.mDesc.mItems[i]).mText;
+				episodes.Push(newOption);
+				continue;
+			}
+			else if (sin.mDesc.mItems[i] is "ListMenuItemPatchItem")
+			{
+				newOption.patch = ListMenuItemPatchItem(sin.mDesc.mItems[i]).mTexture;
+				episodes.Push(newOption);
+				continue;
+			}
+		}
+		sin.SetMenu("TSP_EpisodeMenu",0);
+		TSP_EpisodeMenu(sin.GetCurrentMenu()).episodes.Copy(episodes);
+		sin.GetCurrentMenu().mParentMenu = father;
+	}
+}
+
 Class TSP_ListMenu : ListMenu
 {
 	override void Ticker ()

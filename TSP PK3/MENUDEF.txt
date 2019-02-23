@@ -53,6 +53,7 @@ ListMenu "PlayerclassMenu"
 
 ListMenu "EpisodeMenu"
 {
+	Class "TSP_EpisodeMenuButFake"
 	NetgameMessage "$NEWGAME"
     StaticPatch 103, 39, "SP_EPIS"	
 	Font "DBIGFONT", "Red"

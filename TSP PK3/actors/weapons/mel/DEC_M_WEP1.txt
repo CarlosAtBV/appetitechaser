@@ -211,7 +211,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
     ML4F ABC 1
     ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherBerserk")
-    ML4F D 1 A_TSP_Melee(14,90,"UppercutMeleePuff",0,8,16)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+    ML4F D 1 A_TSP_Melee(14,90,"UppercutMeleePuff",0,8,16,45,45,TSPM_SUPERFREEZE)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
 	// [Py] replace later
     /*ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
     ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)

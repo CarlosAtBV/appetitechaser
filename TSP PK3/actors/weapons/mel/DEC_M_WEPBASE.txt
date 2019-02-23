@@ -67,17 +67,18 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 	TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "MagPull")
     TNT1 A 0 A_GiveInventory("MagPushToken", 1)
     TNT1 A 0 A_GiveInventory("MagSlingToken", 1)
-    TNT1 A 7 A_WeaponReady
+    TNT1 A 2 A_WeaponReady//7
 	Goto MagPull
   SPTraitCombo:
 	TNT1 A 0 A_GiveInventory("MagPushToken", 1)
     TNT1 A 0 A_GiveInventory("MagSlingToken", 1)
-    TNT1 A 7 A_WeaponReady
+    TNT1 A 2 A_WeaponReady//7
 	Goto MagPull
   MagPull:
     TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
     MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
-    MLGF ABCDEFGH 1
+    //MLGF ABCDEFGH 1
+	MLGF ABCDEFGH 1
     TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
     MLGF I 1 A_TSP_Grapple//A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
     MLGF JKLM 1
@@ -184,7 +185,7 @@ ACTOR TSPMelLightWeapon : TSPMelBaseWeapon
   SPTrait:
     TNT1 A 0 A_GiveInventory("MagPushToken", 1)
     TNT1 A 0 A_GiveInventory("MagSlingToken", 1)
-    TNT1 A 7 A_WeaponReady
+    TNT1 A 2 A_WeaponReady //TNT1 A 7 A_WeaponReady
 	Goto MagPull
 	}
 }

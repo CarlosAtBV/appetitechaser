@@ -10,7 +10,7 @@ gameinfo
   finalepage = "tsp_flat"
   finaleflat = "tsp_flat"
   finalemusic = "tsp_read"
-  PlayerClasses = "SpacePirate"
+  PlayerClasses = "SpacePirate", "TSP_DummyPlayer"
   armoricons = "FLRMA0", 0.5, "PSRMA0"
   pausesign = "SP_PAUSE"
   cursorpic = "M_SPCRS"
@@ -45,6 +45,66 @@ map TEST "The Cum Zone"
 	music = "D_MESSAG"
 }
 
+episode TEST
+{
+	name = "TSP: Training Mode"
+}
+/*episode MAP02
+{
+	name = "Cum"
+}
+episode MAP03
+{
+	name = "Shite"
+}
+episode MAP04
+{
+	name = "Blerp"
+}
+episode MAP05
+{
+	name = "Boop"
+}
+episode MAP06
+{
+	name = "Yarp"
+}
+episode MAP07
+{
+	name = "TSP: Training Mode"
+}
+episode MAP08
+{
+	name = "TSP: Training Mode"
+}
+episode MAP09
+{
+	name = "TSP: Training Mode"
+}
+episode MAP10
+{
+	name = "TSP: Training Mode"
+}
+episode MAP11
+{
+	name = "TSP: Training Mode"
+}
+episode MAP12
+{
+	name = "TSP: Training Mode"
+}
+episode MAP13
+{
+	name = "TSP: Training Mode"
+}
+episode MAP14
+{
+	name = "TSP: Training Mode"
+}
+episode MAP15
+{
+	name = "TSP: Training Mode"
+}*/
 
 clearskills
 

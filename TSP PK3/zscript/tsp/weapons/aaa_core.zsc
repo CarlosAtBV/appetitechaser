@@ -23,11 +23,65 @@ Class TSP_ThinkerFreezer : Thinker
 	}
 }
 
+Class TSP_MagFX : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		+BRIGHT
+		RenderStyle "Add";
+		Translation "0:255=%[0.00,0.00,0.00]:[0.35,2.00,0.48]";
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		if(target!=null)
+		{
+			SetOrigin(target.pos+(0,0,target.height/2),true);
+		}
+		else
+		{
+			Destroy();
+		}
+	}
+	
+	States
+	{
+		Spawn:
+			MFX0 ABCD 2;
+			Loop;
+	}
+}
+
+Class TSP_EnemyHandler_IsSupered : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1000;
+	}
+}
+
 Class TSP_EnemyHandler_OnHit : Thinker
 {
 	Actor owner;
 	
 	double oldZ;
+	
+	int superFreeze;
+	
+	Actor fx;
+	
+	override void PostBeginPlay()
+	{
+		if(superFreeze>0)
+		{
+			fx = Actor.Spawn("TSP_MagFX",owner.pos);
+			fx.target = owner;
+			owner.GiveInventory("TSP_EnemyHandler_IsSupered",superFreeze);
+		}
+	}
 	
 	override void Tick(void)
 	{
@@ -35,15 +89,33 @@ Class TSP_EnemyHandler_OnHit : Thinker
 		
 		if(owner.health<1)
 		{
+			owner.bNoGravity = false;
+			if(fx)
+			{
+				fx.Destroy();
+			}
 			Destroy();
 			return;
 		}
 		
-		if(owner.vel.z==oldZ)
+		if(owner.CountInv("TSP_EnemyHandler_IsSupered")>0)
 		{
-			owner.SetStateLabel("See");
-			Destroy();
-			return;
+			owner.bNoGravity = true;
+			owner.vel.x *= 0.85;
+			owner.vel.y *= 0.85;
+			owner.vel.z *= 0.85;
+			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1);
+		}
+		else
+		{
+			owner.bNoGravity = false;
+			if(fx) fx.Destroy();
+			if(owner.vel.z==oldZ)
+			{
+				owner.SetStateLabel("See");
+				Destroy();
+				return;
+			}
 		}
 		
 		oldZ = owner.vel.z;
@@ -54,6 +126,11 @@ Class TSP_EnemyHandler_OnHit : Thinker
 
 Class TSP_Weapon_Core : DoomWeapon
 {
+	enum EMeleeFlags
+	{
+		TSPM_SUPERFREEZE = 1,
+	};
+
 	int tspw_powerlevel;
 	int tspw_maxpowerlevel;
 	int tspw_ammolevel;
@@ -122,6 +199,10 @@ Class TSP_Weapon_Core : DoomWeapon
 					{
 						stuntime = -1;
 						TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
+						if(flags & TSPM_SUPERFREEZE)
+						{
+							handlerThing.superfreeze = 35*5;
+						}
 						handlerThing.owner = mo;
 						mo.A_PlaySound(mo.PainSound,CHAN_VOICE);
 					}
@@ -199,7 +280,17 @@ Class TSP_Weapon_Core : DoomWeapon
 					stuntime = 24*(40.0/myMaxHealth);
 					stuntime = max(4,stuntime);
 					
-					mo.Vel3DFromAngle(32, mo.AngleTo(self), 0);
+					bool isSupered = mo.CountInv("TSP_EnemyHandler_IsSupered");
+					if(isSupered)
+					{
+						mo.TakeInventory("TSP_EnemyHandler_IsSupered",1000);
+						mo.DamageMobj(invoker.owner,invoker.owner,200,'Melee',DMG_THRUSTLESS);
+						mo.vel = (0,0,-32);
+					}
+					else
+					{
+						mo.Vel3DFromAngle(32, mo.AngleTo(self), 0);
+					}
 					
 					if(mo.resolveState("Pain")!=null&&mo.Health>0)
 					{

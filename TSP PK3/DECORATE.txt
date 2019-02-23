@@ -121,6 +121,7 @@ Actor MeleeSelected : Boolean {}
 //Characters
 #include "Actors/Characters/DEC_LOAD.txt" //Character Loadout Stuff
 #include "Actors/Characters/DEC_MEL.txt" // Mel's Player Stuff
+#include "Actors/Characters/DEC_DUMMY.txt" // [Py] epic player
 
 //Enemies
 #include "Actors/Enemies/DEC_H_DUMMY.txt" // Training Dummy
