@@ -97,10 +97,18 @@ Class TSP_ListMenu : ListMenu
 				ListMenuItemTSP_MenuItem_PatchItem menuItem = ListMenuItemTSP_MenuItem_PatchItem(mDesc.mItems[i]);
 				if(mDesc.mSelectedItem == i)
 				{
+					if(menuItem.xOffTarg == 0)
+					{
+						S_Sound("menu/cursor",CHAN_UI);
+					}
 					menuItem.xOffTarg = 8;
 				}
 				else
 				{
+					if(menuItem.xOffTarg == 8)
+					{
+						S_Sound("menu/cursor",CHAN_UI);
+					}
 					menuItem.xOffTarg = 0;
 				}
 			}
