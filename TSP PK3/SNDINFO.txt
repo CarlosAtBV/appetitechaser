@@ -73,6 +73,9 @@ world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
 weapon/mod/on "sounds/placeholder/modon.wav" // From Fortress Forever
 weapon/mod/off "sounds/placeholder/modoff.wav" // From Fortress Forever
 
+mag/fissure/start "sounds/placeholder/d2fissure_start.ogg" //From Dota 2
+mag/fissure/hit "sounds/placeholder/d2fissure_hit.ogg" //From Dota 2
+
 $random hit/flesh { hit/flesh1 hit/flesh2 hit/flesh3 hit/flesh4 hit/flesh5 hit/flesh6 }
 hit/flesh1 "sounds/placeholder/gore/d4fleshhit_1.ogg"
 hit/flesh2 "sounds/placeholder/gore/d4fleshhit_2.ogg"

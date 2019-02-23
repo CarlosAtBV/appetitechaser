@@ -23,6 +23,24 @@ Class TSP_ThinkerFreezer : Thinker
 	}
 }
 
+Class TSP_MagSmokeFX : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		RenderStyle "Add";
+	}
+	
+	States
+	{
+		Spawn:
+			SMOK A 0;
+			SMOK A 0 A_SetScale(randompick(-1,1),randompick(-1,1));
+			SMOK ABCDEFGHIJKLMNOPQ 1;
+			Stop;
+	}
+}
+
 Class TSP_MagFX : Actor
 {
 	Default
@@ -60,6 +78,37 @@ Class TSP_EnemyHandler_IsSupered : Inventory
 	Default
 	{
 		Inventory.MaxAmount 1000;
+	}
+}
+
+Class TSP_EnemyHandler_SlamDunk : Thinker
+{
+	Actor inflictor;
+	Actor owner;
+	double oldZ;
+	
+	override void PostBeginPlay()
+	{
+		oldZ = owner.pos.z+1;
+	}
+	
+	override void Tick()
+	{
+		if(oldZ==owner.pos.z)
+		{
+			if(!owner.bNoPain&&owner.resolveState("Pain")!=null&&owner.Health>0)
+			{
+				owner.SetStateLabel("Pain");
+				owner.A_SetTics(12);
+			}
+			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1000);
+			owner.DamageMobj(inflictor,inflictor,200,'Melee',DMG_THRUSTLESS);
+			owner.A_PlaySound("mag/fissure/hit",CHAN_5);
+			owner.A_QuakeEx(1,1,1,4,0,192);
+			Destroy();
+		}
+		
+		oldZ = owner.pos.z;
 	}
 }
 
@@ -415,13 +464,10 @@ Class TSP_Weapon_Core : DoomWeapon
 					bool isSupered = mo.CountInv("TSP_EnemyHandler_IsSupered");
 					if(isSupered)
 					{
-						if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
-						{
-							mo.SetStateLabel("Pain");
-							mo.A_SetTics(stuntime);
-						}
-						mo.TakeInventory("TSP_EnemyHandler_IsSupered",1000);
-						mo.DamageMobj(invoker.owner,invoker.owner,200,'Melee',DMG_THRUSTLESS);
+						TSP_EnemyHandler_SlamDunk slamdunk = new("TSP_EnemyHandler_SlamDunk");
+						slamdunk.owner = mo;
+						slamdunk.inflictor = invoker.owner;
+						mo.A_PlaySound("mag/fissure/start",CHAN_5);
 						mo.vel = (0,0,-32);
 					}
 					else
