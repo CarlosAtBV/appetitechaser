@@ -25,6 +25,7 @@ gameinfo
   
 	AddEventHandlers = "TSP_EventHandler"
 	StatScreen_Single = "TSP_StatusScreen"
+	StatusBarClass = "TSP_StatusBar"
 }
 
 map TITLEMAP "Into Burning Space"

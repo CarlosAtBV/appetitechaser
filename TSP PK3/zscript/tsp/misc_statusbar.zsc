@@ -1,0 +1,165 @@
+Class TSP_StatusBar : BaseStatusBar
+{
+	HUDFont mHUDFont;
+	HUDFont mIndexFont;
+	HUDFont mAmountFont;
+	InventoryBarState diparms;
+	LinearValueInterpolator mHealthInterpolator;
+	LinearValueInterpolator mShieldInterpolator;
+
+	override void Init()
+	{
+		Super.Init();
+		SetSize(32, 320, 240);
+
+		// Create the font used for the fullscreen HUD
+		Font fnt = "TSP_HUDFONT";
+		mHUDFont = HUDFont.Create(fnt,1,false);
+		fnt = "INDEXFONT_DOOM";
+		mIndexFont = HUDFont.Create(fnt, fnt.GetCharWidth("0"), true);
+		mAmountFont = HUDFont.Create("INDEXFONT");
+		diparms = InventoryBarState.Create();
+		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
+		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
+	}
+	
+	override void Tick()
+	{
+		mHealthInterpolator.Update(CPlayer.health);
+		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
+	}
+
+	override void Draw (int state, double TicFrac)
+	{
+		Super.Draw (state, TicFrac);
+
+		if (state == HUD_StatusBar||state == HUD_Fullscreen)
+		{
+			BeginHUD(1.0,true,320,240);
+			
+			alpha = 1.0;
+			
+			int health = mHealthInterpolator.GetValue();
+			int shield = mShieldInterpolator.GetValue();
+			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
+			
+			// Main Stats
+			DrawImage("HUDBASE", (5, -69), DI_ITEM_OFFSETS);
+			DrawBar("HUD_ABR1", "HUD_ABR2", shield, maxShield, (61, -15), 0, 0, DI_ITEM_OFFSETS);
+			DrawBar("HUD_HBR1", "HUD_HBR2", health, 100, (61, -61), 0, 0, DI_ITEM_OFFSETS);
+			
+			//Melody Crosswell
+			if(CPlayer.mo is "SpacePirate")
+			{
+				DrawImage("HUD_MEL1", (5, -69), DI_ITEM_OFFSETS);
+			}
+			
+			Color hpColor;
+			if(health>100)
+			{
+				hpColor = Font.CR_GOLD;
+			}
+			else if(health>75)
+			{
+				hpColor = Font.CR_LIGHTBLUE;
+			}
+			else if(health>50)
+			{
+				hpColor = Font.CR_CYAN;
+			}
+			else
+			{
+				hpColor = Font.CR_RED;
+			}
+			DrawString(mHUDFont, FormatNumber(health, 3), (121, -52), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, hpColor);
+			
+			// sheld number stats
+			DrawString(mHUDFont, FormatNumber(shield, 3), (121, -34), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
+			
+			// kiz
+			
+			Vector2 keypos = (-10, 2);
+			int rowc = 0;
+			double roww = 0;
+			for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
+			{
+				if (i is "Key" && i.Icon.IsValid())
+				{
+					DrawTexture(i.Icon, keypos, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP);
+					Vector2 size = TexMan.GetScaledSize(i.Icon);
+					keypos.Y += size.Y + 2;
+					roww = max(roww, size.X);
+					if (++rowc == 3)
+					{
+						keypos.Y = 2;
+						keypos.X -= roww + 2;
+						roww = 0;
+						rowc = 0;
+					}
+				}
+			}
+			
+			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
+			
+			Inventory a1 = GetCurrentAmmo();
+			if (a1 != null)
+			{
+				alpha = 0.3;
+				DrawImage("HUD_AMOE", (-102, -72), DI_ITEM_OFFSETS);
+				alpha = 0.5;
+				DrawImage("HUD_AMOD", (-64, -70), DI_ITEM_OFFSETS);
+				alpha = 0.0;
+				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core" && TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_clipsize>0)
+				{
+					DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (-68, -70), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_BLUE);
+					alpha = 0.6;
+					DrawString(mHUDFont, FormatNumber(a1.Amount, 3), (-8, -70), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
+				}
+			}
+		}
+	}
+}
+
+/*LowerHealthCap false;
+statusbar fullscreen, fullscreenoffsets
+{
+    //main stats
+    drawimage "HUDBASE", 5, -69;
+    drawbar "HUD_ABR1", "HUD_ABR2", TSP_PlayerPawn_Shield, horizontal, interpolate(5), 61, -15;
+	drawbar "HUD_HBR1", "HUD_HBR2", Health, horizontal, interpolate(5), 61, -61;
+	//
+	
+	InInventory IsMel
+	{
+    drawimage "HUD_MEL1", 5, -69;
+	drawmugshot 5, 5, -69;
+	}
+	
+    // helf number stats
+    InInventory not Over100Health
+    {
+	drawnumber 3, TSP_HUDFONT, Gold, health, alignment(right), interpolate(6), 121, -52, 1, Red, 50, LightBlue, 75;
+	}
+	
+	InInventory Over100Health
+    {
+	drawnumber 3, TSP_HUDFONT, Cyan, health, alignment(right), interpolate(6), 121, -52, 1;
+	}
+	// armer number stats
+	drawnumber 3, TSP_HUDFONT, Green, TSP_PlayerPawn_Shield, alignment(right), interpolate(6), whennotzero, 121, -34, 1, Green, 50, Orange, 101;
+    // kiz
+    drawkeybar 6, vertical, reverserows, auto, -10, 2, 0, 3, auto;
+	
+	// ammo number stats
+	
+   usesammo
+    {
+	      Alpha 0.3
+	      drawimage "HUD_AMOE", -102, -72;
+		  Alpha 0.5
+		  drawimage "HUD_AMOD", -64, -70;
+    }
+	drawnumber 3, TSP_HUDFont, Blue, ammo1, alignment(right), drawshadow(0,1), -68, -70, 1;
+    Alpha 0.6
+    drawnumber 3, TSP_HUDFont, Green, ammo2, alignment(right), drawshadow(0,1), -8, -70, 1;
+}*/

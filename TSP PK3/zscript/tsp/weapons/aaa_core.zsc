@@ -140,8 +140,12 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	double tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	
-	Property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
-	Property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
+	property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
+	property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
+	
+	int tspw_curclip;
+	int tspw_clipsize;
+	property ClipSize : tspw_clipsize;
 	
 	Default
 	{
@@ -149,6 +153,70 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.PowerMult 1.5, 1.75, 2.0;
 	}
 	
+	override void PostBeginPlay()
+	{
+		tspw_curclip = tspw_clipsize;
+	}
+	
+	bool canReload()
+	{
+		return (owner.CountInv(ammo1.GetClass())>0);
+	}
+	
+	action void A_TSP_WeaponReady(int flags = 0)
+	{
+		int oldFlags = flags;
+		flags ^= WRF_ALLOWRELOAD;
+		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.tspw_clipsize && invoker.canReload())
+		{
+			flags |= WRF_ALLOWRELOAD;
+		}
+		A_WeaponReady(flags);
+	}
+	
+	action state A_TSP_JumpIfClipEmpty(StateLabel state)
+	{
+		if(invoker.tspw_curclip==0)
+		{
+			return resolveState(state);
+		}
+		return resolveState(null);
+	}
+	
+	action state A_TSP_CheckReload()
+	{
+		if(invoker.tspw_curclip==0)
+		{
+			if(invoker.owner.CountInv(invoker.ammo1.GetClass())>0)
+			{
+				return resolveState("Reload");
+			}
+		}
+		return resolveState(null);
+	}
+	
+	action void A_TSP_ReloadAmmo(int amt = 0)
+	{
+		if(amt<1)
+		{
+			while(invoker.tspw_curclip<invoker.tspw_clipsize && invoker.canReload())
+			{
+				invoker.tspw_curclip++;
+				invoker.owner.TakeInventory(invoker.ammo1.GetClass(),1);
+			}
+		}
+		else
+		{
+			invoker.tspw_curclip += amt;
+			invoker.owner.TakeInventory(invoker.ammo1.GetClass(),1);
+		}
+	}
+		
+	//==========================================================================
+	//
+	// A_TSP_FireBullets()
+	//
+	//==========================================================================
 	
 		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "BulletPuff", int flags = 1, double range = 0, class<Actor> missile = null, double Spawnheight = 32, double Spawnofs_xy = 0)
 		{
@@ -160,7 +228,11 @@ Class TSP_Weapon_Core : DoomWeapon
 				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
 			}
 			Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,flags,range,missile,spawnheight,spawnofs_xy);
+			if(invoker.tspw_clipsize>0 && invoker.tspw_curclip > 0)
+			{
+				invoker.tspw_curclip--;
+			}
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,missile,spawnheight,spawnofs_xy);
 		}
 		
 	//==========================================================================
