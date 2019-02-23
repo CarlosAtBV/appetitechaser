@@ -251,6 +251,7 @@ Class TSP_EventHandler : EventHandler
 			if(Menu.GetCurrentMenu() is "OptionMenu")
 			{
 				OptionMenu sins = OptionMenu(Menu.GetCurrentMenu());
+				int it = 0;
 				if(sins.mDesc.mTitle == "$MNU_EPISODE")
 				{
 					OptionMenu sin = sins;
@@ -264,6 +265,8 @@ Class TSP_EventHandler : EventHandler
 						{
 							newOption.name = OptionMenuItem(sin.mDesc.mItems[i]).mLabel;
 						}
+						newOption.id = it;
+						it++;
 						episodes.Push(newOption);
 					}
 					sin.SetMenu("TSP_EpisodeMenu",0);

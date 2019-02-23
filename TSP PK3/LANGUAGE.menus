@@ -8,6 +8,9 @@ TSP_SHOP_NOMONEY = "Insufficient Funds";
 TSP_SHOP_MAXAMT = "Maximum Tier Reached";
 TSP_SHOP_MODSEL = "Weapon Already Modded";
 
+TSPMAP_GROSSE_NAME = "Grosse";
+TSPMAP_GROSSE_DESC = "I shoot ropes like a madman.";
+
 TSP_EMPLOYER_MODS = "Mods";
 
 TSP_EMPLOYER_KEI_NAME = "Shi";

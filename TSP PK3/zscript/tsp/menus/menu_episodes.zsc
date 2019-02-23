@@ -2,6 +2,8 @@ Class TSP_EpisodeMenu_Item
 {
 	TextureID patch;
 	string name;
+	string sub;
+	int id;
 	
 	int mYpos;
 	
@@ -44,15 +46,37 @@ Class TSP_EpisodeMenu : GenericMenu
 	void updateShit()
 	{
 		int maxSize = episodes.Size();
+		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		for(int i = 0;i<episodes.Size();i++)
 		{
 			Console.Printf(""..episodes[i].name);
-			if(episodes[i].name.Left(3)~=="TSP")
+			switch(gamemode)
 			{
-				episodes.Delete(i);
+				case 0:
+					if(episodes[i].name.Left(3)=="TSP")
+					{
+						episodes.Delete(i);
+						i--;
+					}
+					break;
+				case 1:
+					if(episodes[i].name.Left(5)!="TSPBH")
+					{
+						episodes.Delete(i);
+						i--;
+					}
+					else
+					{
+						array<string > fucker;
+						fucker.Clear();
+						episodes[i].name.Split(fucker,":");
+						episodes[i].name = StringTable.Localize("$TSPMAP_"..fucker[1].."_NAME");
+						episodes[i].sub = StringTable.Localize("$TSPMAP_"..fucker[1].."_DESC");
+					}
+					break;
 			}
 		}
-		if(CVar.GetCVar("tsp_gamemode",players[0]).GetInt()==2)
+		if(gamemode==2)
 		{
 			SetMenu("SkillMenu",maxSize-1);
 		}
@@ -87,9 +111,21 @@ Class TSP_EpisodeMenu : GenericMenu
 		{
 			for(int v = 0;v<6;v++)
 			{
-				DrawTextOutline(BigFont, em_itemSelected == iterator ? Font.CR_YELLOW : Font.FindFontColor("TSPGreen"), sx, sy, "Chapter "..iterator+1);
+				string bTitle, bSub;
+				
+				if(episodes[iterator].sub=="")
+				{
+					bTitle = "Chapter "..iterator+1;
+					bSub = episodes[iterator].name;
+				}
+				else
+				{
+					bTitle = episodes[iterator].name;
+					bSub = episodes[iterator].sub;
+				}
+				DrawTextOutline(BigFont, em_itemSelected == iterator ? Font.CR_YELLOW : Font.FindFontColor("TSPGreen"), sx, sy, bTitle);
 				sy += BigFont.GetHeight()+3;
-				screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, episodes[iterator].name, DTA_Clean, true);
+				screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, bSub, DTA_Clean, true);
 				sy += SmallFont.GetHeight()+1;
 				iterator++;
 				if(iterator>=episodes.Size())
@@ -126,7 +162,7 @@ Class TSP_EpisodeMenu : GenericMenu
 				
 			case MKEY_Enter:
 				S_Sound("menu/accept",CHAN_UI);
-				SetMenu("SkillMenu",em_itemSelected);
+				SetMenu("SkillMenu",episodes[em_itemSelected].id);
 				return true;
 		}
 		return super.MenuEvent(mkey, fromcontroller);

@@ -46,9 +46,15 @@ map TEST "The Cum Zone"
 	music = "D_MESSAG"
 }
 
+episode MAP32
+{
+	name = "TSPBH:Grosse"
+	noskillmenu
+}
+
 episode TEST
 {
-	name = "TSP: Training Mode"
+	name = "TSP:Training"
 	noskillmenu
 }
 /*episode MAP02

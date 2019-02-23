@@ -6,19 +6,23 @@ Class TSP_EpisodeMenuButFake : ListMenu
 		Menu father = sin.mParentMenu;
 		Array<TSP_EpisodeMenu_Item > episodes;
 		episodes.Clear();
+		int it = 0;
 		for(int i = 0;i < sin.mDesc.mItems.Size();i++)
 		{
 			TSP_EpisodeMenu_Item newOption = new("TSP_EpisodeMenu_Item");
+			newOption.id = it;
 			if(sin.mDesc.mItems[i] is "ListMenuItemTextItem")
 			{
 				newOption.name = ListMenuItemTextItem(sin.mDesc.mItems[i]).mText;
 				episodes.Push(newOption);
+				it++;
 				continue;
 			}
 			else if (sin.mDesc.mItems[i] is "ListMenuItemPatchItem")
 			{
 				newOption.patch = ListMenuItemPatchItem(sin.mDesc.mItems[i]).mTexture;
 				episodes.Push(newOption);
+				it++;
 				continue;
 			}
 		}
