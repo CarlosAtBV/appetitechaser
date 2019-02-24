@@ -15,7 +15,7 @@ texture M_SPSEL
     pic MSPSEL12 tics 2
 
 // Mel Hud BG
-texture HUD_MEL1
+texture HUD_MELB
     pic HUD_MELB tics 60
     pic HUD_MEL1 tics 2
     pic HUD_MEL2 tics 2
@@ -25,14 +25,6 @@ texture HUD_MEL1
     pic HUD_MEL6 tics 2
 	pic HUD_MEL7 tics 2
     pic HUD_MEL8 tics 2
-    pic HUD_MEL9 tics 2
-    pic HUDMEL10 tics 2
-    pic HUDMEL11 tics 2
-    pic HUDMEL12 tics 2
-    pic HUDMEL13 tics 2
-    pic HUDMEL14 tics 2
-    pic HUDMEL15 tics 2
-    pic HUDMEL16 tics 2
 	
 // Robo-Mel Hud BG
 texture HUD_RBM1
