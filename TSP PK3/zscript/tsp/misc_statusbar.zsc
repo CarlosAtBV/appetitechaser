@@ -3,6 +3,7 @@ Class TSP_StatusBar : BaseStatusBar
 	HUDFont mHUDFont;
 	HUDFont mSmallFont;
 	HUDFont mAmountFont;
+	HUDFont mTinyFont;
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
@@ -18,6 +19,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mHUDFont = HUDFont.Create(fnt,1,false);
 		fnt = "SmallFont";
 		mSmallFont = HUDFont.Create(fnt);
+		mTinyFont = HUDFont.Create("TINYFONT");
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -32,6 +34,9 @@ Class TSP_StatusBar : BaseStatusBar
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
 	}
+	
+	const HUDLEFT_X = 7;
+	const HUDLEFT_Y = -71;
 
 	override void Draw (int state, double TicFrac)
 	{
@@ -48,17 +53,22 @@ Class TSP_StatusBar : BaseStatusBar
 			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			
-			// Main Stats
-			DrawImage("HUDBASE", (5, -69), DI_ITEM_OFFSETS);
-			DrawBar("HUD_ABR1", "HUD_ABR2", shield, maxShield, (61, -15), 0, 0, DI_ITEM_OFFSETS);
-			DrawBar("HUD_HBR1", "HUD_HBR2", health, 100, (61, -61), 0, 0, DI_ITEM_OFFSETS);
+			// Monet
+			DrawImage("HUD_GBD1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+113, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
 			
-			//Melody Crosswell
+			// Main Stats
+			DrawBar("HUD_SHDF", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+61, HUDLEFT_Y+46), 0, 0, DI_ITEM_OFFSETS);
+			DrawBar("HUD_HLTF", "HUD_HLTE", health, 100, (HUDLEFT_X+61, HUDLEFT_Y+35), 0, 0, DI_ITEM_OFFSETS);
+			
 			if(CPlayer.mo is "SpacePirate")
 			{
-				DrawImage("HUD_MEL1", (5, -69), DI_ITEM_OFFSETS);
+				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-			DrawTexture(GetMugShot(5), (5, -69), DI_ITEM_OFFSETS);
+			DrawImage("HUD_BAS1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			
+			//Melody Crosswell
+			DrawTexture(GetMugShot(5), (HUDLEFT_X+3, HUDLEFT_Y-2), DI_ITEM_OFFSETS);
 			
 			Color hpColor;
 			if(health>100)
@@ -77,13 +87,10 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				hpColor = Font.CR_RED;
 			}
-			DrawString(mHUDFont, FormatNumber(health, 3), (121, -52), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, hpColor);
-			
-			DrawString(mSmallFont, "$", (56, -72), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_YELLOW);
-			DrawString(mSmallFont, FormatNumber(money, 180000), (118, -72), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
+			DrawString(mSmallFont, ""..health, (HUDLEFT_X+75, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
 			
 			// sheld number stats
-			DrawString(mHUDFont, FormatNumber(shield, 3), (121, -34), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
+			DrawString(mSmallFont, ""..shield, (HUDLEFT_X+75, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
 			
 			// kiz
 			
@@ -111,18 +118,28 @@ Class TSP_StatusBar : BaseStatusBar
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
 			
 			Inventory a1 = GetCurrentAmmo();
+			if(CPlayer.ReadyWeapon)
+			{
+				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (-143, -19), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
+			}
+			
 			if (a1 != null)
 			{
-				alpha = 0.3;
-				DrawImage("HUD_AMOE", (-102, -72), DI_ITEM_OFFSETS);
-				alpha = 0.5;
-				DrawImage("HUD_AMOD", (-64, -70), DI_ITEM_OFFSETS);
-				alpha = 0.0;
 				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core" && TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_clipsize>0)
 				{
-					DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (-68, -70), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_BLUE);
+					int ammoRed = TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_clipsize*0.4;
+					Color ammoColor;
+					if(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip<ammoRed)
+					{
+						ammoColor = Font.FindFontColor("TSPRed");
+					}
+					else
+					{
+						ammoColor = Font.CR_WHITE;
+					}
+					DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (-54, -54), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
 					alpha = 0.6;
-					DrawString(mHUDFont, FormatNumber(a1.Amount, 3), (-8, -70), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
+					DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (-54, -35), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
 				}
 			}
 			
