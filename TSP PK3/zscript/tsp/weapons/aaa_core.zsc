@@ -296,7 +296,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			flags |= WRF_ALLOWRELOAD;
 		}
 		
-		if(invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
+		if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
 		{
 			invoker.tspw_altmode = !invoker.tspw_altmode;
 			string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
