@@ -74,27 +74,27 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_GiveInventory("MagSlingToken", 1)
     TNT1 A 2 A_WeaponReady//7
 	Goto MagPull
-  MagPull:
-	Goto MagSling
-    TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
-    MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
-    //MLGF ABCDEFGH 1
-	MLGF ABCDEFGH 1
-    TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
-    MLGF I 1 A_TSP_Grapple//A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
-    MLGF JKLM 1
-    TNT1 A 0 A_TakeInventory("MagPushToken", 99)
-    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
-    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-    TNT1 A 6
-	Goto MagPullFinish
-  MagPullFinish:
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart")
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
-    TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
-	TNT1 A 0 A_Jump(256, "AfterMelee")
-	TNT1 A 0
-    Goto AfterMelee
+	MagPull:
+	TraitFire:
+		TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+		MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
+		//MLGF ABCDEFGH 1
+		MLGF ABCDEFGH 1
+		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+		MLGF I 1 A_TSP_Grapple//A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
+		MLGF JKLM 1
+		TNT1 A 0 A_TakeInventory("MagPushToken", 99)
+		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+		TNT1 A 6
+		Goto MagPullFinish
+	MagPullFinish:
+		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart")
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
+		TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
+		TNT1 A 0 A_Jump(256, "AfterMelee")
+		TNT1 A 0
+		Goto AfterMelee
   MagPush:
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
@@ -119,6 +119,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 	TNT1 A 0 A_Jump(256, "AfterMelee")
     Goto AfterMelee
   MagSling:
+	TraitAltFire:
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)

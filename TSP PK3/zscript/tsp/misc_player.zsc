@@ -64,7 +64,55 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Property StartShield : pp_initShield;
 	
 	TSP_GlobalVariables gvars;
-	//property FallingScreamSpeed: FallingScreamMinSpeed, FallingScreamMaxSpeed;
+	
+	override void FireWeaponAlt (State stat)
+	{
+		if (player.Bot == null && bot_observer)
+		{
+			return;
+		}
+
+		let weapn = player.ReadyWeapon;
+		//[Py] added this epic shit
+		if (weapn == null)
+		{
+			return;
+		}
+		
+		if(weapn is "TSP_Weapon_Core")
+		{
+			if(weapn.FindState('TraitAltFire') == null && !weapn.CheckAmmo (Weapon.AltFire, true))
+			{
+				return;
+			}
+		}
+		else
+		{
+			if(weapn.FindState('AltFire') == null || !weapn.CheckAmmo (Weapon.AltFire, true))
+			{
+				return;
+			}
+		}
+
+		player.WeaponState &= ~WF_WEAPONBOBBING;
+		PlayAttacking ();
+		weapn.bAltFire = true;
+
+		if (stat == null)
+		{
+			stat = weapn.GetAltAtkState(!!player.refire);
+		}
+		
+		if(stat!=null) //[Py] bullshit shit
+		{
+			player.SetPsprite(PSP_WEAPON, stat);
+		}
+		
+		if (!weapn.bNoAlert)
+		{
+			SoundAlert (self, false);
+		}
+	}
 	
 	override void PostBeginPlay()
 	{

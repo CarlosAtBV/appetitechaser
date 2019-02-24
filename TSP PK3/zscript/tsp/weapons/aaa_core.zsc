@@ -153,7 +153,10 @@ Class TSP_EnemyHandler_OnHit : Thinker
 			owner.bNoPain = true;
 			owner.vel.x *= 0.85;
 			owner.vel.y *= 0.85;
-			owner.vel.z *= 0.85;
+			if(owner.vel.z>0)
+			{
+				owner.vel.z *= 0.85;
+			}
 			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1);
 		}
 		else
@@ -177,6 +180,8 @@ Class TSP_EnemyHandler_OnHit : Thinker
 
 Class TSP_Weapon_Core : DoomWeapon
 {
+	bool tspw_traitmode;
+	
 	bool tspw_altmode;
 	string tspw_altname;
 	
@@ -228,7 +233,12 @@ Class TSP_Weapon_Core : DoomWeapon
 	override State GetAtkState (bool hold)
 	{
 		State s = null;
-		if(tspw_altmode)
+		if(tspw_traitmode)
+		{
+			if (hold) s = FindState('TraitHold');
+			if (s == null) s = FindState('TraitFire');
+		}
+		else if(tspw_altmode)
 		{
 			if (hold) s = FindState('ModHold');
 			if (s == null) s = FindState('ModFire');
@@ -243,7 +253,12 @@ Class TSP_Weapon_Core : DoomWeapon
 	override State GetAltAtkState (bool hold)
 	{
 		State s = null;
-		if(!bModFireMode)
+		if(tspw_traitmode)
+		{
+			if (hold) s = FindState('TraitAltHold');
+			if (s == null) s = FindState('TraitAltFire');
+		}
+		else if(!bModFireMode)
 		{
 			if (hold) s = FindState('AltHold');
 			if (s == null) s = FindState('AltFire');
@@ -255,6 +270,16 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		super.PostBeginPlay();
 		tspw_curclip = GetClipCapacity();
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		if(owner!=null)
+		{
+			tspw_traitmode = (owner.player.cmd.buttons & BT_USER1);
+		}
 	}
 	
 	bool canReload()
