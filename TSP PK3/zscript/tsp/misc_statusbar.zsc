@@ -6,6 +6,7 @@ Class TSP_StatusBar : BaseStatusBar
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
+	LinearValueInterpolator mMoneyInterpolator;
 
 	override void Init()
 	{
@@ -21,6 +22,7 @@ Class TSP_StatusBar : BaseStatusBar
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
 		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
+		mMoneyInterpolator = LinearValueInterpolator.Create(0, 8);
 	}
 	
 	override void Tick()
@@ -28,6 +30,7 @@ Class TSP_StatusBar : BaseStatusBar
 		super.Tick();
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
+		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
 	}
 
 	override void Draw (int state, double TicFrac)
@@ -36,12 +39,13 @@ Class TSP_StatusBar : BaseStatusBar
 
 		if (state == HUD_StatusBar||state == HUD_Fullscreen)
 		{
-			BeginHUD(1.0,true,320,240);
+			BeginHUD(1.0);//,true,320,240);
 			
 			alpha = 1.0;
 			
 			int health = mHealthInterpolator.GetValue();
 			int shield = mShieldInterpolator.GetValue();
+			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			
 			// Main Stats
@@ -74,6 +78,9 @@ Class TSP_StatusBar : BaseStatusBar
 				hpColor = Font.CR_RED;
 			}
 			DrawString(mHUDFont, FormatNumber(health, 3), (121, -52), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, hpColor);
+			
+			DrawString(mSmallFont, "$", (56, -72), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_YELLOW);
+			DrawString(mSmallFont, FormatNumber(money, 180000), (118, -72), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
 			
 			// sheld number stats
 			DrawString(mHUDFont, FormatNumber(shield, 3), (121, -34), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_GREEN);
