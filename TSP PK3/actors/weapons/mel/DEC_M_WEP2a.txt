@@ -10,7 +10,7 @@
 //   * Model by Toasty Fresh 
 // - Atlas 45 (Custom) and Atlas 45 (Default): ported by Kalash
 //   * From "Call of Duty: Advanced Warfare"
-// - AE4 HMG Short: ported by Kalash, from
+// - AE4 HMG Short: ported by Kalash
 //   * From "Call of Duty: Advanced Warfare"
 //
 //===========================================================================
