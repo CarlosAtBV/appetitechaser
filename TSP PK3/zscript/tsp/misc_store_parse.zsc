@@ -108,6 +108,7 @@ Extend Class TSP_ShopMenu
 									curItem.price_increment = 0;
 									curItem.level = 0;
 									curItem.maxlevel = -1;
+									curItem.descInt = "N/A";
 									
 									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 									{

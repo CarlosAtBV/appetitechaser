@@ -23,6 +23,8 @@ Class TSP_ShopItem : TSP_ShopListItem
 	Class<Weapon > upgrade;
 	int upgradeType;
 	
+	string descInt;
+	
 	int level;
 	int maxlevel;
 	
@@ -40,15 +42,41 @@ Class TSP_ShopItem : TSP_ShopListItem
 					case 0:
 						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxpowerlevel;
 						tehLevel = wepon.tspw_powerlevel;
+						switch(tehLevel+1)
+						{
+							case 1: descInt = ""..wepon.tspw_powermult1; break;
+							case 2: descInt = ""..wepon.tspw_powermult2; break;
+							case 3: descInt = ""..wepon.tspw_powermult3; break;
+						}
 						break;
 					case 1:
 						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxammolevel;
 						tehLevel = wepon.tspw_ammolevel;
+						switch(tehLevel+1)
+						{
+							case 1: descInt = ""..wepon.tspw_ammomult1; break;
+							case 2: descInt = ""..wepon.tspw_ammomult2; break;
+							case 3: descInt = ""..wepon.tspw_ammomult3; break;
+						}
 						break;
 					case 2:
 						tehMax = TSP_Weapon_Core(GetDefaultByType(upgrade)).tspw_maxreloadlevel;
 						tehLevel = wepon.tspw_reloadlevel;
+						switch(tehLevel+1)
+						{
+							case 1: descInt = ""..wepon.tspw_reloadmult1; break;
+							case 2: descInt = ""..wepon.tspw_reloadmult2; break;
+							case 3: descInt = ""..wepon.tspw_reloadmult3; break;
+						}
 						break;
+				}
+				if(descInt.CharAt(3)=="0")
+				{
+					descInt = descInt.Left(3);
+				}
+				else
+				{
+					descInt = descInt.Left(4);
 				}
 				level = tehLevel;
 				maxlevel = tehMax;
@@ -452,7 +480,7 @@ Class TSP_ShopMenu : GenericMenu
 			string desceh;
 			if(dd_curItem.level<dd_curItem.descs.Size())
 			{
-				desceh = StringTable.Localize(dd_curItem.descs[dd_curItem.level]);
+				desceh = String.Format(StringTable.Localize(dd_curItem.descs[dd_curItem.level]),dd_curItem.descInt);
 			}
 			else
 			{
