@@ -1,0 +1,185 @@
+Extend Class TSP_Weapon_Core
+{
+	enum EMeleeFlags
+	{
+		TSPM_SUPERFREEZE = 1,
+	};
+	
+	//==========================================================================
+	//
+	// A_TSP_Melee(damage, range, puff, thrustHorz, thrustVert, thrustUp, angle)
+	//
+	//==========================================================================
+	
+		action void A_TSP_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", double mThrustHorz = 0, double mThrustVert = 0, double mThrustUp = 0, int mAngle = 45, int mPitch = 45, int flags = 0)
+		{
+			bool hasHit = false;
+			//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
+			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+			
+			Actor mo;
+			
+			int mMaxHealth = 0;
+			
+			Class<Actor > epicPuffy = mPuff;
+			string epicPuffy_sound = GetDefaultByType(epicPuffy).seeSound;
+			
+			while (mo = Actor(MonsterFinder.Next()))
+			{
+				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
+				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)
+				{
+					int damageamount = mDamage;
+					int myMaxHealth = mo.GetSpawnHealth();
+					double stuntime;
+					// zombieman stun longer
+					// baron stun shorter
+					stuntime = 24*(40.0/myMaxHealth);
+					stuntime = max(4,stuntime);
+					
+					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
+					{
+						stuntime = -1;
+						TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
+						if(flags & TSPM_SUPERFREEZE)
+						{
+							handlerThing.superfreeze = 35*5;
+						}
+						handlerThing.owner = mo;
+						mo.A_PlaySound(mo.PainSound,CHAN_VOICE);
+					}
+					
+					double fugSin = sin(angle);
+					double fugCos = cos(angle);
+					
+					if(!mo.bBoss)
+					{
+						mo.vel.X = mThrustVert * fugCos + mThrustHorz * fugSin;
+						mo.vel.Y = mThrustVert * fugSin - mThrustHorz * fugCos;
+						mo.vel.Z = mThrustUp;
+					}
+					
+					int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
+					//mo.A_Quake(2,4,0,750);
+					if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
+					{
+						mo.SetStateLabel("Pain");
+						mo.A_SetTics(stuntime);
+					}
+					if(!mo.bNoBlood)
+					{
+						for(int i = 0;i<3;i++)
+						{
+							Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
+							blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
+						}
+					}
+					mo.A_PlaySound(epicPuffy_sound,CHAN_BODY);
+					
+					/*if(myMaxHealth > mMaxHealth)
+					{
+						mMaxHealth = mo.GetSpawnHealth();
+					}*/
+					mMaxHealth += mo.GetSpawnHealth();
+					hashit=true;
+				}
+			}
+			if(hashit)
+			{
+				//A_PlaySound("flesh/hit",CHAN_WEAPON);
+				SoundAlert(invoker.owner);
+				A_SetTics(max(2,mMaxHealth/300));
+				TSP_ThinkerFreezer freeza = new("TSP_ThinkerFreezer");
+				freeza.timeleft = max(2,mMaxHealth/300);
+			}
+			else
+			{
+				A_FireBullets(0,0,1,0,mPuff,0,mRange);
+			}
+		}
+	
+	//==========================================================================
+	//
+	// A_TSP_Grapple()
+	//
+	//==========================================================================
+	
+		action void A_TSP_Grapple(int range = 512)
+		{
+			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+			
+			Actor mo;
+			
+			while (mo = Actor(MonsterFinder.Next()))
+			{
+				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
+				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
+				{
+					int myMaxHealth = mo.GetSpawnHealth();
+					double stuntime;
+					// zombieman stun longer
+					// baron stun shorter
+					stuntime = 24*(40.0/myMaxHealth);
+					stuntime = max(4,stuntime);
+					
+					bool isSupered = mo.CountInv("TSP_EnemyHandler_IsSupered");
+					if(isSupered)
+					{
+						TSP_EnemyHandler_SlamDunk slamdunk = new("TSP_EnemyHandler_SlamDunk");
+						slamdunk.owner = mo;
+						slamdunk.inflictor = invoker.owner;
+						mo.A_PlaySound("mag/fissure/start",CHAN_5);
+						mo.vel = (0,0,-32);
+					}
+					else
+					{
+						mo.Vel3DFromAngle(32, mo.AngleTo(self), 0);
+					}
+					
+					if(mo.resolveState("Pain")!=null&&mo.Health>0)
+					{
+						mo.SetStateLabel("Pain");
+						mo.A_SetTics(stuntime);
+					}
+				}
+			}
+		}
+	
+	//==========================================================================
+	//
+	// A_TSP_Sling()
+	//
+	//==========================================================================
+	
+		action void A_TSP_Sling(int range = 512)
+		{
+			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+			
+			Actor mo;
+			Actor theZoop;
+			
+			while (mo = Actor(MonsterFinder.Next()))
+			{
+				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
+				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
+				{
+					if(!theZoop||invoker.owner.Distance3D(mo)<invoker.owner.Distance3D(theZoop))
+					{
+						theZoop = mo;
+					}
+				}
+			}
+			
+			if(theZoop!=null)
+			{
+				double mineAngle = theZoop.AngleTo(invoker.owner);
+				int thicc = theZoop.radius+invoker.owner.radius;
+				invoker.owner.SetOrigin(theZoop.pos+(cos(mineAngle)*thicc,sin(mineAngle)*thicc,0),true);
+			}
+		}
+		
+		action void A_TSP_ThrustForwardsButLikeVeryForwards (double speed = 16)
+		{
+			invoker.owner.Vel3DFromAngle(speed, invoker.owner.angle, invoker.owner.pitch-15);
+		}
+}
