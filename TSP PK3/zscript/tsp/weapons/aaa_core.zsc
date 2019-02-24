@@ -209,6 +209,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	int tspw_clipsize;
 	property ClipSize : tspw_clipsize;
 	
+	TSP_PlayerPawn_ZSCBase tspw_owner;
+	
 	Default
 	{
 		TSP_Weapon_Core.MaxLevels 3, 3, 3;
@@ -279,6 +281,10 @@ Class TSP_Weapon_Core : DoomWeapon
 		if(owner!=null)
 		{
 			tspw_traitmode = (owner.player.cmd.buttons & BT_USER1);
+			if(tspw_owner==null)
+			{
+				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
+			}
 		}
 	}
 	
@@ -288,7 +294,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	}
 	
 	action void A_TSP_WeaponReady(int flags = 0)
-	{
+	{	
 		int oldFlags = flags;
 		flags ^= WRF_ALLOWRELOAD;
 		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())

@@ -164,28 +164,16 @@ Extend Class TSP_Weapon_Core
 	
 		action void A_TSP_Sling(int range = 512)
 		{
-			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
-			
-			Actor mo;
-			Actor theZoop;
-			
-			while (mo = Actor(MonsterFinder.Next()))
-			{
-				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
-				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
-				{
-					if(!theZoop||invoker.owner.Distance3D(mo)<invoker.owner.Distance3D(theZoop))
-					{
-						theZoop = mo;
-					}
-				}
-			}
-			
+			Actor theZoop = TSP_PlayerPawn_ZSCBase(invoker.owner).theZoop;
 			if(theZoop!=null)
 			{
-				double mineAngle = theZoop.AngleTo(invoker.owner);
-				int thicc = theZoop.radius+invoker.owner.radius;
-				invoker.owner.SetOrigin(theZoop.pos+(cos(mineAngle)*thicc,sin(mineAngle)*thicc,0),true);
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingTarget = theZoop;
+				double mineAngle = invoker.owner.AngleTo(theZoop);
+				//LineTrace(AngleTo(mo), 512, -atan2(pos.z+24 - mo.pos.z,Distance2D(mo)), 0, 24.0, 0.0, 0.0, traceStuff);
+				double minePitch = atan2(invoker.owner.pos.z - theZoop.pos.z,invoker.owner.Distance2D(theZoop));
+				invoker.owner.Vel3DFromAngle(invoker.owner.Distance3D(theZoop)/3, mineAngle, minePitch);
+				//int thicc = theZoop.radius+invoker.owner.radius;
+				//invoker.owner.SetOrigin(theZoop.pos+(cos(mineAngle)*thicc,sin(mineAngle)*thicc,0),true);
 			}
 		}
 		

@@ -67,6 +67,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	double oldVelZ;
 	
+	Actor pp_slingTarget;
+	
 	override void FireWeaponAlt (State stat)
 	{
 		if (player.Bot == null && bot_observer)
@@ -166,6 +168,53 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		return 0;
 	}
 	
+	Actor theZoop;
+	Actor oldZoop;
+	void searchForZoopTarget()
+	{
+		theZoop = null;
+		
+		if(player.ReadyWeapon&&player.ReadyWeapon is "TSP_Weapon_Core")
+		{
+			TSP_Weapon_Core epicWeapon = TSP_Weapon_Core(player.ReadyWeapon);
+			if(epicWeapon.tspw_traitmode)
+			{
+				ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+				
+				Actor mo;
+				
+				while (mo = Actor(MonsterFinder.Next()))
+				{
+					double pitchTo = pitch-atan2(pos.z - mo.pos.z,Distance2D(mo));
+					if(mo!=self && (Distance3D(mo)-mo.radius<512) && mo.Health>0
+					&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),angle))<15 && abs(pitchTo)<15)
+					{
+						if(!theZoop||Distance3D(mo)<Distance3D(theZoop))
+						{
+							//FLineTraceData traceStuff;
+							//LineTrace(AngleTo(mo), 512, -atan2(pos.z+24 - mo.pos.z,Distance2D(mo)), 0, 24.0, 0.0, 0.0, traceStuff);
+							if(CheckSight(mo))
+							{
+								theZoop = mo;
+								theZoop.A_SetTranslation("TSP_TargetYea");
+								theZoop.bBRIGHT = true;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		if((theZoop==null||theZoop!=oldZoop)&&oldZoop!=null)
+		{
+			Console.Printf("Shart");
+			oldZoop.Translation = GetDefaultByType(oldZoop.GetClass()).Translation;
+			oldZoop.bBRIGHT = GetDefaultByType(oldZoop.GetClass()).bBRIGHT;
+		}
+		
+		oldZoop = theZoop;
+	}
+	
 	override void Tick ()
 	{
 		oldVelZ = vel.z;
@@ -193,6 +242,39 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		{
 			pp_notificationTime--;
 		}
+		
+		/*if(pp_enemyTargeter==null)
+		{
+			pp_enemyTargeter = TSP_EnemyTargeter(Spawn("TSP_EnemyTargeter",pos));
+		}*/
+		
+		/*if(theZoop!=null)
+		{
+			if(pp_enemyTargeter.follower==null)
+			{
+				pp_enemyTargeter.SetOrigin(theZoop.pos, false);
+			}
+			pp_enemyTargeter.follower = theZoop;
+		}
+		else
+		{
+			pp_enemyTargeter.follower = null;
+		}*/
+		
+		if(pp_slingTarget)
+		{
+			if(pp_slingTarget.health<1)
+			{
+				pp_slingTarget=null;
+			}
+			else if(Distance3D(pp_slingTarget)-pp_slingTarget.radius<64)
+			{
+				pp_slingTarget=null;
+				A_Stop();
+			}
+		}
+		
+		searchForZoopTarget();
 	}
 	
 	override void CheckJump()
