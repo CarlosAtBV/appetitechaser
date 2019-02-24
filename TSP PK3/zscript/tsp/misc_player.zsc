@@ -168,6 +168,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void Tick ()
 	{
+		oldVelZ = vel.z;
+		
 		Super.Tick();
 		
 		if (!player || !player.mo || player.mo != self)
@@ -238,8 +240,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				ptp_wallJumpReadySound = false;
 			}
 		}
-		
-		oldVelZ = vel.z;
 		
 		super.CheckJump();
 	}

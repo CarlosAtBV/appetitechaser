@@ -7,12 +7,12 @@ Extend Class TSP_Weapon_Core
 	
 	action state A_TSP_JumpIfInAir(StateLabel state)
 	{
+		double oldVelZ = TSP_PlayerPawn_ZSCBase(invoker.owner).oldVelZ;
+		double velZ = TSP_PlayerPawn_ZSCBase(invoker.owner).vel.z;
 		if(invoker.owner.vel.z!=0)
 		{
-			Console.Printf("SHART");
 			return resolveState(state);
 		}
-		Console.Printf("CUM");
 		return resolveState(null);
 	}
 	
