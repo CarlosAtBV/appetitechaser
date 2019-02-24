@@ -77,6 +77,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 	MagPull:
 	TraitFire:
 		TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+		"----" A 0 A_TSP_JumpIfInAir("Hornet")
 		MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
 		//MLGF ABCDEFGH 1
 		MLGF ABCDEFGH 1

@@ -5,6 +5,17 @@ Extend Class TSP_Weapon_Core
 		TSPM_SUPERFREEZE = 1,
 	};
 	
+	action state A_TSP_JumpIfInAir(StateLabel state)
+	{
+		if(invoker.owner.vel.z!=0)
+		{
+			Console.Printf("SHART");
+			return resolveState(state);
+		}
+		Console.Printf("CUM");
+		return resolveState(null);
+	}
+	
 	//==========================================================================
 	//
 	// A_TSP_Melee(damage, range, puff, thrustHorz, thrustVert, thrustUp, angle)

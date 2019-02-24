@@ -65,6 +65,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	TSP_GlobalVariables gvars;
 	
+	double oldVelZ;
+	
 	override void FireWeaponAlt (State stat)
 	{
 		if (player.Bot == null && bot_observer)
@@ -163,8 +165,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		return 0;
 	}
-	
-	double oldVelZ;
 	
 	override void Tick ()
 	{
