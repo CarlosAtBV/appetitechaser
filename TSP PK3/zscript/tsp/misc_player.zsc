@@ -62,6 +62,8 @@ Class TSP_Seat : Actor
 				usie.pp_sit = self;
 				usie.A_SetSize(2,2);
 				usie.pp_sit_oldPos = usie.pos;
+				usie.A_SetAngle(angle,SPF_INTERPOLATE);
+				usie.A_SetPitch(pitch,SPF_INTERPOLATE);
 				return true;
 			}
 			else
