@@ -5,6 +5,16 @@ Extend Class TSP_Weapon_Core
 		TSPM_SUPERFREEZE = 1,
 	};
 	
+	action state A_TSP_JumpIfHolding(StateLabel state)
+	{
+		Console.Printf((invoker.owner.player.cmd.buttons & BT_ATTACK).." ~ "..(invoker.owner.player.oldbuttons & BT_ATTACK));
+		if(invoker.owner.player.cmd.buttons & BT_ATTACK && invoker.owner.player.oldbuttons & BT_ATTACK)
+		{
+			return resolveState(state);
+		}
+		return resolveState(null);
+	}
+	
 	action state A_TSP_JumpIfInAir(StateLabel state)
 	{
 		double oldVelZ = TSP_PlayerPawn_ZSCBase(invoker.owner).oldVelZ;
