@@ -22,7 +22,32 @@ ACTOR TSPPistolAmmo : Ammo
 	}
 }
 
-ACTOR TSP_ClipReplacer : RandomSpawner replaces Clip
+ACTOR TSPPistolAmmoBig : TSPPistolAmmo
+{
+	Inventory.PickupMessage "Picked up a box of ammo. [\cj+500 Pistol Ammo\c-]"
+	Inventory.Amount 50
+	States
+	{
+		Spawn:
+			AMMO A -1
+			Stop
+	}
+}
+
+ACTOR TSP_DoomClipReplacer : RandomSpawner replaces Clip
 {
 	DropItem "TSPPistolAmmo"
+}
+ACTOR TSP_DoomClipBoxReplacer : RandomSpawner replaces ClipBox
+{
+	DropItem "TSPPistolAmmoBig"
+}
+
+ACTOR TSP_ChexClipReplacer : RandomSpawner replaces MiniZorchRecharge
+{
+	DropItem "TSPPistolAmmo"
+}
+ACTOR TSP_ChexClipBoxReplacer : RandomSpawner replaces MiniZorchPack
+{
+	DropItem "TSPPistolAmmoBig"
 }
