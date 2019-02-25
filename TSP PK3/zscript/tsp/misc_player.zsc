@@ -47,6 +47,10 @@ Class TSP_AngleChecker : Actor
 
 Class TSP_Seat : Actor
 {
+	Default
+	{
+		+NOGRAVITY
+	}
 	override bool Used(Actor user)
 	{
 		Console.Printf("nut");
@@ -56,10 +60,17 @@ Class TSP_Seat : Actor
 			if(usie.pp_sit==null)
 			{
 				usie.pp_sit = self;
+				usie.A_SetSize(2,2);
+				usie.pp_sit_oldPos = usie.pos;
+				return true;
 			}
 			else
 			{
 				usie.pp_sit = null;
+				usie.A_SetSize(GetDefaultByType(usie.GetClass()).radius,GetDefaultByType(usie.GetClass()).height);
+				usie.SetOrigin(usie.pp_sit_oldPos,false);
+				usie.player.viewheight = usie.viewheight;
+				return true;
 			}
 		}
 		return false;
@@ -236,6 +247,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		oldZoop = theZoop;*/
 	}
 	
+	Vector3 pp_sit_oldPos;
+	
 	override void Tick ()
 	{
 		oldVelZ = vel.z;
@@ -299,7 +312,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		if(pp_sit!=null)
 		{
-			SetOrigin(pp_sit.pos,true);
+			SetOrigin(pp_sit.pos,false);
+			player.viewheight = 32;
 		}
 	}
 	
