@@ -61,12 +61,20 @@ Class TSP_StatusBar : BaseStatusBar
 			DrawBar("HUD_SHDF", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+61, HUDLEFT_Y+46), 0, 0, DI_ITEM_OFFSETS);
 			DrawBar("HUD_HLTF", "HUD_HLTE", health, 100, (HUDLEFT_X+61, HUDLEFT_Y+35), 0, 0, DI_ITEM_OFFSETS);
 			
-			if(CPlayer.mo is "SpacePirate")
-			{
-				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			}
 			DrawImage("HUD_BAS1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
+			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
+			{
+				case 0: DrawImage("HUD_SHUE", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 1: DrawImage("HUD_SHU1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 2: DrawImage("HUD_SHU2", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 3: DrawImage("HUD_SHU3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+			}
+			
+			if(CPlayer.mo is "SpacePirate")
+			{
+				DrawImage("HUD_MEL1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			}
 			//Melody Crosswell
 			DrawTexture(GetMugShot(5), (HUDLEFT_X+3, HUDLEFT_Y-2), DI_ITEM_OFFSETS);
 			
