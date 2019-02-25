@@ -5,10 +5,26 @@ Extend Class TSP_Weapon_Core
 		TSPM_SUPERFREEZE = 1,
 	};
 	
+	int tspw_comboHold;
+	
+	action state A_TSP_HoldForCombo(StateLabel state)
+	{
+		if(invoker.owner.player.cmd.buttons & BT_ATTACK)
+		{
+			invoker.tspw_comboHold++;
+		}
+		else if (invoker.owner.player.oldbuttons & BT_ATTACK)
+		{
+			invoker.tspw_comboHold = 0;
+			return resolveState(state);
+		}
+		return resolveState(null);
+	}
+	
 	action state A_TSP_JumpIfHolding(StateLabel state)
 	{
-		Console.Printf((invoker.owner.player.cmd.buttons & BT_ATTACK).." ~ "..(invoker.owner.player.oldbuttons & BT_ATTACK));
-		if(invoker.owner.player.cmd.buttons & BT_ATTACK && invoker.owner.player.oldbuttons & BT_ATTACK)
+		//Console.Printf((invoker.owner.player.cmd.buttons & BT_ATTACK).." ~ "..(invoker.owner.player.oldbuttons & BT_ATTACK));
+		if(invoker.tspw_comboHold>4)//if(invoker.owner.player.cmd.buttons & BT_ATTACK && invoker.owner.player.oldbuttons & BT_ATTACK)
 		{
 			return resolveState(state);
 		}
