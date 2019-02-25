@@ -12,6 +12,11 @@ Class TSP_StatusBar : BaseStatusBar
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
 	double mTraitAlpha;
+	
+	static const string mUpgBar[] =
+	{
+		"HUD_UPGE","HUD_UPG1","HUD_UPG2","HUD_UPGF"
+	};
 
 	override void Init()
 	{
@@ -45,6 +50,8 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	const HUDLEFT_X = 7;
 	const HUDLEFT_Y = -71;
+	const HUDRIGHT_X = -148;
+	const HUDRIGHT_Y = -60;
 
 	override void Draw (int state, double TicFrac)
 	{
@@ -134,31 +141,54 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 			}
 			
+			// rIGHT HAND SIDE
+			
+			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
+			
+			DrawImage("HUD_MELC", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("HUD_MLN1", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			Inventory a1 = GetCurrentAmmo();
 			if(CPlayer.ReadyWeapon)
 			{
-				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (-143, -19), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
+				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (HUDRIGHT_X+105, HUDRIGHT_Y+48), DI_TEXT_ALIGN_RIGHT);
+			}
+			
+			for(int i = 0;i<10;i++)
+			{
+				if(CPlayer.HasWeaponsInSlot(i+1))
+				{
+					DrawString(mTinyFont, ""..i+1, (HUDRIGHT_X+99+6*i, HUDRIGHT_Y+15), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREY);
+				}
 			}
 			
 			if (a1 != null)
 			{
-				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core" && TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_clipsize>0)
+				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core")
 				{
-					int ammoRed = TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_clipsize*0.4;
-					Color ammoColor;
-					if(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip<ammoRed)
+					TSP_Weapon_Core wepon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
+					DrawImage("HUD_UPGT", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					
+					DrawImage(mUpgBar[wepon.tspw_reloadlevel], (HUDRIGHT_X+51, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
+					DrawImage(mUpgBar[wepon.tspw_ammolevel], (HUDRIGHT_X+51+13, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
+					DrawImage(mUpgBar[wepon.tspw_powerlevel], (HUDRIGHT_X+51+26, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
+					if(wepon.tspw_clipsize>0)
 					{
-						ammoColor = Font.FindFontColor("TSPRed");
+						int ammoRed = wepon.tspw_clipsize*0.4;
+						Color ammoColor;
+						if(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip<ammoRed)
+						{
+							ammoColor = Font.FindFontColor("TSPRed");
+						}
+						else
+						{
+							ammoColor = Font.FindFontColor("TSPLimeGreen");
+						}
+						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+133, HUDRIGHT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
+						alpha = 0.6;
+						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+132, HUDRIGHT_Y+41), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPYeller"));
 					}
-					else
-					{
-						ammoColor = Font.CR_WHITE;
-					}
-					DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (-54, -54), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
-					alpha = 0.6;
-					DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (-54, -35), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
 				}
 			}
 			

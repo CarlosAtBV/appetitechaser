@@ -15,6 +15,14 @@ TSPVantaBlack
 {
 	#000000  #000000
 }
+TSPLimeGreen
+{
+	#172702  #B9DE7F
+}
+TSPYeller
+{
+	#000000  #E8BF00
+}
 
 Mel
 {
