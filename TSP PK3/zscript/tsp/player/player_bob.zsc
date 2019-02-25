@@ -1,0 +1,142 @@
+Extend Class TSP_PlayerPawn_ZSCBase
+{
+	double dbobfactor;
+	double dbobz;
+	double dbobangle;
+	double dbobanglereal;
+	double dbobpitch;
+	double dbobpitchreal;
+	
+	override Vector2 BobWeapon (double ticfrac)
+	{
+		if(player.WeaponState & WF_WEAPONREADY)
+		{
+			if(dbobfactor<1.0)
+			{
+				dbobfactor += 0.01;
+			}
+		}
+		else
+		{
+			if(dbobfactor>0.0)
+			{
+				dbobfactor -= 0.01;
+			}
+		}
+		
+		double dlandz = 0;
+		if(player.jumptics>0)
+		{
+			dlandz = player.jumptics;
+		}
+		
+		double dbobzf = ((pos.z-prev.z)+dlandz);
+		//dbobzf = clamp(dbobzf,0,666);
+		dbobz = dbobz + ( dbobzf  - dbobz )/6;
+		
+		dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 6;
+		dbobanglereal = dbobanglereal + DeltaAngle( dbobanglereal,dbobangle ) / 6;
+		dbobpitch = dbobpitch + DeltaAngle( dbobpitch,-pitch ) / 6;
+		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 6;
+		
+		//Console.Printf(""..dbobangle-angle);
+		
+		Vector2 p1, p2, r;
+		Vector2 result;
+
+		float bobtarget;
+
+		let player = self.player;
+		if (!player) return (0, 0);
+		let weapon = player.ReadyWeapon;
+
+		if (weapon == null || weapon.bDontBob)
+		{
+			return (0, 0);
+		}
+
+		// [XA] Get the current weapon's bob properties.
+		int bobstyle = weapon.BobStyle;
+		double BobSpeed = (weapon.BobSpeed * 128);
+		double Rangex = weapon.BobRangeX;
+		double Rangey = weapon.BobRangeY;
+
+		for (int i = 0; i < 2; i++)
+		{
+			// Bob the weapon based on movement speed. ([SP] And user's bob speed setting)
+			double angle = (BobSpeed * player.GetWBobSpeed() * 35 /	TICRATE*(level.time - 1 + i)) * (360. / 8192.);
+
+			// [RH] Smooth transitions between bobbing and not-bobbing frames.
+			// This also fixes the bug where you can "stick" a weapon off-center by
+			// shooting it when it's at the peak of its swing.
+			bobtarget = double(player.bob);//double((player.WeaponState & WF_WEAPONBOBBING) ? player.bob : 0.);
+			if (curbob != bobtarget)
+			{
+				if (abs(bobtarget - curbob) <= 1)
+				{
+					curbob = bobtarget;
+				}
+				else
+				{
+					double zoom = MAX(1., abs(curbob - bobtarget) / 40);
+					if (curbob > bobtarget)
+					{
+						curbob -= zoom;
+					}
+					else
+					{
+						curbob += zoom;
+					}
+				}
+			}
+
+			if (curbob != 0)
+			{
+				//[SP] Added in decorate player.viewbob checks
+				double bobx = (player.bob * Rangex * ViewBob)*dbobfactor;
+				double boby = (player.bob * Rangey * ViewBob)*dbobfactor;
+				switch (bobstyle)
+				{
+				case Bob_Normal:
+					r.X = bobx * cos(angle);
+					r.Y = boby * abs(sin(angle));
+					break;
+
+				case Bob_Inverse:
+					r.X = bobx*cos(angle);
+					r.Y = boby * (1. - abs(sin(angle)));
+					break;
+
+				case Bob_Alpha:
+					r.X = bobx * sin(angle);
+					r.Y = boby * abs(sin(angle));
+					break;
+
+				case Bob_InverseAlpha:
+					r.X = bobx * sin(angle);
+					r.Y = boby * (1. - abs(sin(angle)));
+					break;
+
+				case Bob_Smooth:
+					r.X = bobx*cos(angle);
+					r.Y = 0.5f * (boby * (1. - (cos(angle * 2))));
+					break;
+
+				case Bob_InverseSmooth:
+					r.X = bobx*cos(angle);
+					r.Y = 0.5f * (boby * (1. + (cos(angle * 2))));
+				}
+			}
+			else
+			{
+				r = (0, 0);
+			}
+			r.Y += dbobz;
+			
+			r.X = ceil(r.X+DeltaAngle(dbobanglereal,dbobangle)/2);
+			r.Y = ceil(r.Y+DeltaAngle(dbobpitchreal,dbobpitch)/2);
+			if (i == 0) p1 = r; else p2 = r;
+		}
+		return p1 * (1. - ticfrac) + p2 * ticfrac;
+	}
+}
