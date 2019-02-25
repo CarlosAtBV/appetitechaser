@@ -12,7 +12,7 @@ Extend Class TSP_Weapon_Core
 		if(invoker.owner.player.cmd.buttons & BT_ATTACK)
 		{
 			invoker.tspw_comboHold++;
-			if(invoker.tspw_comboHold>4)
+			if(invoker.tspw_comboHold>6)
 			{
 				invoker.tspw_comboHold = 0;
 				return resolveState(state2);
