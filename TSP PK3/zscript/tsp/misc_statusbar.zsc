@@ -21,7 +21,7 @@ Class TSP_StatusBar : BaseStatusBar
 	override void Init()
 	{
 		Super.Init();
-		SetSize(32, 320, 240);
+		SetSize(0, 320, 240);
 
 		// Create the font used for the fullscreen HUD
 		Font fnt = "TSP_HUDFONT";
