@@ -173,6 +173,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
+		if(FindInventory("TSP_Upgrade_ARC_Tank"))
+		{
+			Console.Printf("hell yea");
+			damage *= 0.75;
+		}
+		
 		pp_shieldHitDelay = 35*5;
 		
 		if(mod!='Suicide' && CountInv("TSP_PlayerPawn_Shield"))
@@ -207,6 +213,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	}
 	
 	Actor theZoop;
+	
 	void searchForZoopTarget()
 	{
 		pp_traitMode = player.cmd.buttons & BT_USER1;

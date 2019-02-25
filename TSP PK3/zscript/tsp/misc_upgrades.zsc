@@ -20,6 +20,6 @@ Class TSP_Upgrade_Shield : TSP_UpgradeBase
 	override void UpgradeEffect(Actor victim)
 	{
 		victim.GiveInventory("TSP_PlayerPawn_MaxShield",25);
-		Console.Printf("\ccYour shield is enhanced further... [\cf"..victim.CountInv("TSP_PlayerPawn_MaxShield").."\cc]");
+		//Console.Printf("\ccYour shield is enhanced further... [\cf"..victim.CountInv("TSP_PlayerPawn_MaxShield").."\cc]");
 	}
 }

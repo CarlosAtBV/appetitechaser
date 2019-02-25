@@ -124,6 +124,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+	//"----" A 0 A_TSP_ObtainTarget
     MLGF A 0 A_PlaySoundEX("magsling", "SoundSlot6")
     MLGF ABCDEFGH 1
     TNT1 A 0 A_SetBlend("45 55 20", 0.4, 15)

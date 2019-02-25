@@ -1,0 +1,7 @@
+Class TSP_Upgrade_ARC_Tank : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+}

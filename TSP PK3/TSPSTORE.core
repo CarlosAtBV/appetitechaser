@@ -127,9 +127,13 @@ page
 	ifEmployer 2;
 	tab "$TSP_EMPLOYER_MODS"
 	{
-		item "Boof"
+		item "Tank"
 		{
-			price 27000;
+			descs "+25 damage resistance";
+			price 500;
+			price_increment 500;
+			icons "graphics/store/items/store_item_shield.png";
+			inv_class "TSP_Upgrade_ARC_Tank";
 		}
 	}
 }
