@@ -8,6 +8,10 @@ Class TSP_StatusBar : BaseStatusBar
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
 	LinearValueInterpolator mMoneyInterpolator;
+	
+	TSP_PlayerPawn_ZSCBase tsp_player;
+	
+	double mTraitAlpha;
 
 	override void Init()
 	{
@@ -33,6 +37,10 @@ Class TSP_StatusBar : BaseStatusBar
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
+		
+		tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
+		
+		mTraitAlpha = mTraitAlpha + (tsp_player.pp_traitMode - mTraitAlpha)/4;
 	}
 	
 	const HUDLEFT_X = 7;
@@ -57,6 +65,9 @@ Class TSP_StatusBar : BaseStatusBar
 			DrawImage("HUD_GBD1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+113, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
 			
+			DrawImage("HUD_MELE", (HUDLEFT_X+117, HUDLEFT_Y+45), DI_ITEM_OFFSETS);
+			DrawImage("HUD_MELF", (HUDLEFT_X+117, HUDLEFT_Y+45), DI_ITEM_OFFSETS, mTraitAlpha);
+			
 			// Main Stats
 			DrawBar("HUD_SHDF", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+61, HUDLEFT_Y+46), 0, 0, DI_ITEM_OFFSETS);
 			DrawBar("HUD_HLTF", "HUD_HLTE", health, 100, (HUDLEFT_X+61, HUDLEFT_Y+35), 0, 0, DI_ITEM_OFFSETS);
@@ -73,7 +84,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.mo is "SpacePirate")
 			{
-				DrawImage("HUD_MEL1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			//Melody Crosswell
 			DrawTexture(GetMugShot(5), (HUDLEFT_X+3, HUDLEFT_Y-2), DI_ITEM_OFFSETS);

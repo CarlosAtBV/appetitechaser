@@ -56,6 +56,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int pp_shieldHitDelay;
 	bool pp_shieldLowSound;
 	
+	bool pp_traitMode;
+	
 	int pp_initShield;
 	
 	string pp_notification;
@@ -172,6 +174,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Actor oldZoop;
 	void searchForZoopTarget()
 	{
+		pp_traitMode = player.cmd.buttons & BT_USER1;
+		
 		theZoop = null;
 		
 		if(player.ReadyWeapon&&player.ReadyWeapon is "TSP_Weapon_Core")
