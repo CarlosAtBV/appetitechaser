@@ -457,7 +457,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 		}		
 
-		if (pp_gamemode==0 && (player.cmd.buttons & BT_USE ||
+		if (pp_gamemode!=1 && (player.cmd.buttons & BT_USE ||
 			((multiplayer || alwaysapplydmflags) && sv_forcerespawn)) && !sv_norespawn)
 		{
 			if (level.time >= player.respawn_time || ((player.cmd.buttons & BT_USE) && player.Bot == NULL))
