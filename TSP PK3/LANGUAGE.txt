@@ -174,7 +174,8 @@ MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPist
 MelPistolTag = "\cc[\c-\cyDarling Nikki\c-\cc]\c-";
 
 //DARLING NIKKI (SPITFIRE)
-MelPistolATag = "\cc[\c-\cyDarling Nikki\c- \cc(\c-\cfSPITFIRE\c-\cc)\c-\cc]\c-";
+MelPistolATag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \ciSPITFIRE\c-\cc]\c-";
+MelPistolBTag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \cuWHISPER\c-\cc]\c-";
 
 
 RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";

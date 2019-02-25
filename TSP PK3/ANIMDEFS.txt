@@ -25,24 +25,3 @@ texture HUD_MELB
     pic HUD_MEL6 tics 2
 	pic HUD_MEL7 tics 2
     pic HUD_MEL8 tics 2
-	
-// Robo-Mel Hud BG
-texture HUD_RBM1
-    pic HUD_RBMB tics 60
-    pic HUD_RBM1 tics 2
-    pic HUD_RBM2 tics 2
-    pic HUD_RBM3 tics 2
-    pic HUD_RBM4 tics 2
-	pic HUD_RBM5 tics 2
-    pic HUD_RBM6 tics 2
-	pic HUD_RBM7 tics 2
-    pic HUD_RBM8 tics 2
-    pic HUD_RBM9 tics 2
-    pic HUDRBM10 tics 2
-    pic HUDRBM11 tics 2
-    pic HUDRBM12 tics 2
-    pic HUDRBM13 tics 2
-    pic HUDRBM14 tics 2
-    pic HUDRBM15 tics 2
-    pic HUDRBM16 tics 2
-
