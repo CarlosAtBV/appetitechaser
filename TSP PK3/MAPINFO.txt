@@ -45,6 +45,11 @@ map TEST "The Cum Zone"
     sky1 = "SPACE", -0.1
 	music = "D_MESSAG"
 }
+map TSP_SHIP "The Indigo Skyline"
+{
+    sky1 = "SPACE", -0.1
+	music = "D_MESSAG"
+}
 
 episode MAP32
 {
@@ -52,7 +57,7 @@ episode MAP32
 	noskillmenu
 }
 
-episode TEST
+episode TSP_SHIP
 {
 	name = "TSP:Training"
 	noskillmenu
