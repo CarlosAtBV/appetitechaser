@@ -45,6 +45,28 @@ Class TSP_GlobalVariables : Thinker
 	}
 }
 
+Class TSP_DebugFontMenu : GenericMenu
+{
+	static const string epicFonts[] =
+	{
+		"BigFont",
+		"SmallFont",
+		"TinyFont"
+	};
+	override void Drawer()
+	{
+		super.Drawer();
+		screen.Dim("6F0E76", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
+		int y = 0;
+		for(int i = 0;i<epicFonts.Size();i++)
+		{
+			Font disFont = Font.FindFont(epicFonts[i]);
+			screen.DrawText(disFont, Font.CR_UNTRANSLATED, 64, 64+y, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+			y += disFont.GetHeight()+4;
+		}
+	}
+}
+
 Class TSP_EventHandler : EventHandler
 {
 	ui bool tsp_shopmusic;

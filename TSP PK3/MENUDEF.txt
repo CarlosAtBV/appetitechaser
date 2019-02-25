@@ -107,6 +107,7 @@ OptionMenu "OptionsMenu2"
     SafeCommand "Reset to defaults",                "reset2defaults"
     SafeCommand "Reset to last saved",              "reset2saved"
     StaticText " "
+	SubMenu "Font Debug Menu",						"TSP_DebugFontMenu"
     Submenu "GZDoom Options Menu",                  "OptionsMenu"
     Command "Go to console",                        "menuconsole"
 }
