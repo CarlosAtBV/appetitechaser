@@ -45,6 +45,27 @@ Class TSP_AngleChecker : Actor
 	}
 }
 
+Class TSP_Seat : Actor
+{
+	override bool Used(Actor user)
+	{
+		Console.Printf("nut");
+		if(user is "TSP_PlayerPawn_ZSCBase")
+		{
+			TSP_PlayerPawn_ZSCBase usie = TSP_PlayerPawn_ZSCBase(user);
+			if(usie.pp_sit==null)
+			{
+				usie.pp_sit = self;
+			}
+			else
+			{
+				usie.pp_sit = null;
+			}
+		}
+		return false;
+	}
+}
+
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
 	bool ptp_wallJump;
@@ -62,6 +83,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	string pp_notification;
 	int pp_notificationTime;
+	
+	TSP_Seat pp_sit;
 	
 	Property StartShield : pp_initShield;
 	
@@ -279,6 +302,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		
 		searchForZoopTarget();
+		
+		if(pp_sit!=null)
+		{
+			SetOrigin(pp_sit.pos,true);
+		}
 	}
 	
 	override void CheckJump()
