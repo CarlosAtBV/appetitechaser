@@ -7,11 +7,16 @@ Extend Class TSP_Weapon_Core
 	
 	int tspw_comboHold;
 	
-	action state A_TSP_HoldForCombo(StateLabel state)
+	action state A_TSP_HoldForCombo(StateLabel state,StateLabel state2)
 	{
 		if(invoker.owner.player.cmd.buttons & BT_ATTACK)
 		{
 			invoker.tspw_comboHold++;
+			if(invoker.tspw_comboHold>4)
+			{
+				invoker.tspw_comboHold = 0;
+				return resolveState(state2);
+			}
 		}
 		else if (invoker.owner.player.oldbuttons & BT_ATTACK)
 		{
