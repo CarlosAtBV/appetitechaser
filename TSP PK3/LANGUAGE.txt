@@ -171,7 +171,7 @@ MelMeleeTag = "\cc[\c-\c[Mel]Bare Knuckle\c-\cc]\c-";
 
 //DARLING NIKKI
 MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
-MelPistolTag = "\cc[\c-\cyMAG POW RLD MOD\c-\cc]\c-";
+MelPistolTag = "\cc[\c-\cyDarling Nikki\c-\cc]\c-";
 
 //DARLING NIKKI (SPITFIRE)
 MelPistolATag = "\cc[\c-\cyDarling Nikki\c- \cc(\c-\cfSPITFIRE\c-\cc)\c-\cc]\c-";
