@@ -6,6 +6,9 @@ Class TSP_EpisodeMenu_Item
 	int id;
 	
 	int mYpos;
+	int mXpos;
+	int mWidth;
+	int mHeight;
 	
 	/*virtual int GetWidth()
 	{
@@ -47,6 +50,7 @@ Class TSP_EpisodeMenu : GenericMenu
 	{
 		int maxSize = episodes.Size();
 		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		int selHeight = BigFont.GetHeight()+3+SmallFont.GetHeight()+1;
 		for(int i = 0;i<episodes.Size();i++)
 		{
 			Console.Printf(""..episodes[i].name);
@@ -76,6 +80,23 @@ Class TSP_EpisodeMenu : GenericMenu
 					break;
 			}
 		}
+		
+		int sx = 20;
+		int sy = 17;
+		for(int i = 0;i<episodes.Size();i++)
+		{
+			if(i==6)
+			{
+				sx += 140;
+				sy = 17;
+			}
+			episodes[i].mXpos = sx;
+			episodes[i].mYpos = sy;
+			episodes[i].mWidth = 160;
+			episodes[i].mHeight = selHeight-2;
+			sy += selHeight;
+		}
+		
 		if(gamemode==2)
 		{
 			SetMenu("SkillMenu",maxSize-1);
@@ -113,6 +134,9 @@ Class TSP_EpisodeMenu : GenericMenu
 			{
 				string bTitle, bSub;
 				
+				sx = episodes[iterator].mXpos;
+				sy = episodes[iterator].mYpos;
+				
 				if(episodes[iterator].sub=="")
 				{
 					bTitle = "Chapter "..iterator+1;
@@ -134,8 +158,8 @@ Class TSP_EpisodeMenu : GenericMenu
 					break;
 				}
 			}
-			sy = 17;
-			sx += 140;
+			//sy = 17;
+			//sx += 140;
 			if(getout) break;
 		}
 	}
@@ -145,7 +169,7 @@ Class TSP_EpisodeMenu : GenericMenu
 		switch (mkey)
 		{
 			case MKEY_Up:
-				if(em_itemSelected>0)
+				if(em_itemSelected!=6&&em_itemSelected>0)
 				{
 					em_itemSelected--;
 					S_Sound("menu/cursor",CHAN_UI);
@@ -153,18 +177,64 @@ Class TSP_EpisodeMenu : GenericMenu
 				return true;
 			
 			case MKEY_Down:
-				if(em_itemSelected<episodes.Size()-1)
+				if(em_itemSelected!=5&&em_itemSelected<episodes.Size()-1)
 				{
 					em_itemSelected++;
 					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
+			
+			case MKEY_Left:
+				em_itemSelected-=6;
+				while(em_itemSelected<0)
+				{
+					em_itemSelected++;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+			case MKEY_Right:
+				em_itemSelected+=6;
+				while(em_itemSelected>=episodes.Size())
+				{
+					em_itemSelected--;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
 				
 			case MKEY_Enter:
-				S_Sound("menu/accept",CHAN_UI);
+				S_Sound("menu/choose",CHAN_UI);
 				SetMenu("SkillMenu",episodes[em_itemSelected].id);
 				return true;
 		}
 		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		int sel = -1;
+
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		x = ((x - (screen.GetWidth() / 2)) / CleanXfac) + 160;
+		y = ((y - (screen.GetHeight() / 2)) / CleanYfac) + 100;
+		
+		int iterator = 0;
+		for(int i = 0;i<episodes.Size();i++)
+		{
+			if(x>episodes[i].mXpos
+			&& x<episodes[i].mXpos+episodes[i].mWidth
+			&& y>episodes[i].mYpos
+			&& y<episodes[i].mYpos+episodes[i].mHeight)
+			{
+				em_itemSelected = i;
+				break;
+			}
+		}
+
+		if (type == Menu.MOUSE_Release)
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		return Super.MouseEvent(type, x, y);
 	}
 }
