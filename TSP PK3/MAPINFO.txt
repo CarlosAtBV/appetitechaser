@@ -44,11 +44,13 @@ map TEST "The Cum Zone"
 {
     sky1 = "SPACE", -0.1
 	music = "D_MESSAG"
+	lightmode = 0
 }
 map TSP_SHIP "The Indigo Skyline"
 {
     sky1 = "SPACE", -0.1
 	music = "D_MESSAG"
+	lightmode = 0
 }
 
 episode MAP32
