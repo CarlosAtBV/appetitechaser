@@ -16,7 +16,7 @@ page
 			price 200;
 		}
 		header "Darling Nikki";
-		item "Hooked Bullets", "Drill Bullets", "Thermotian Bullets"
+		item "$TSP_SHOP_BULLNAME1", "$TSP_SHOP_BULLNAME2", "$TSP_SHOP_BULLNAME3"
 		{
 			icons "BRS3K0","BRS3J0","BRS3I0";
 			price 450;
