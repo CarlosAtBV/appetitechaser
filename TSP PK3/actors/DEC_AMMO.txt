@@ -17,7 +17,7 @@ ACTOR TSPPistolAmmo : Ammo
 	States
 	{
 		Spawn:
-		TNT1 A -1
+		919F A -1
 		Stop
 	}
 }
