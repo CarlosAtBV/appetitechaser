@@ -111,12 +111,14 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
 		super.GiveDefaultInventory();
-		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
-		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
+		
 		if(pp_gamemode==1)
 		{
 			OnBountyHunterLoadout();
 		}
+		
+		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
+		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
 	}
 	
 	virtual void OnBountyHunterLoadout()

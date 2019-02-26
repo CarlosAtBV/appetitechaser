@@ -33,10 +33,11 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 	override void OnBountyHunterLoadout()
 	{
 		super.OnBountyHunterLoadout();
+		
 		GiveInventory("MelMelee",1);
 		GiveInventory("MelPistolA",1);
 		GiveInventory("TSPPistolAmmo",75);
-		GiveInventory("TSP_PlayerPawn_Shield",50);
-		GiveInventory("TSP_PlayerPawn_MaxShield",50);
+		
+		pp_initShield = 50;
 	}
 }
