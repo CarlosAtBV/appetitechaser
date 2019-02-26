@@ -83,8 +83,8 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = true;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 578.0025f;
-		viewpositiony = -653.8018f;
+		viewpositionx = -389.3903f;
+		viewpositiony = -1026.663f;
 		viewscale = 0.2958524f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
@@ -110,8 +110,8 @@ maps
 			
 			sidedef
 			{
-				offsetx_mid = 1;
 				offsetx_bottom = 1;
+				offsetx_mid = 1;
 				offsetx_top = 1;
 				offsety_top = 1;
 				offsety_mid = 1;
@@ -120,20 +120,16 @@ maps
 			
 			sector
 			{
-				rotationfloor = 17;
+				rotationfloor = 1;
 				xpanningfloor = 1;
 				ypanningfloor = 1;
 				xpanningceiling = 1;
 				ypanningceiling = 1;
-				rotationceiling = 17;
+				rotationceiling = 1;
 				xscaleceiling = 1;
 				yscaleceiling = 1;
 				xscalefloor = 1;
 				yscalefloor = 1;
-				color_wallbottom = 0;
-				color_floor = 0;
-				color_ceiling = 0;
-				color_walltop = 0;
 			}
 		}
 		
