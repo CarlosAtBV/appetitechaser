@@ -504,4 +504,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 		}
 	}
+	
+	void PlayerFinishLevel (int mode, int flags)
+	{
+		Console.Printf("shart");
+		
+		super.PlayerFinishLevel(mode,flags);
+
+		if (pp_gamemode == TSP_GM_HUNTERS && player.playerstate != PST_DEAD)
+		{
+			player.health = health = SpawnHealth();
+			ClearInventory();
+			GiveDefaultInventory();
+		}
+	}
 }

@@ -71,6 +71,8 @@ Extend Class TSP_Weapon_Core
 				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
 				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)
 				{
+					Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
+					
 					int damageamount = mDamage;
 					int myMaxHealth = mo.GetSpawnHealth();
 					double stuntime;

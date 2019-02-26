@@ -1,5 +1,23 @@
 //Bullet Casings taken from ww-diaz-v3, by WildWeasel
 
+ACTOR TSP_HitSpark_Small
+{
+	+NOINTERACTION
+	+ROLLSPRITE
+	//RenderStyle "Add"
+	States
+	{
+		Spawn:
+			THS0 A 0
+			THS0 A 0
+			{
+				A_SetRoll(random(0,360));
+			}
+			THS0 ABCDEFGHIJK 1
+			Stop
+	}
+}
+
 ACTOR 9mmCasingSpawner   //Borrowed from the in-limbo ZNew mod
 {
   Speed 15
