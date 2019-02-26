@@ -116,11 +116,20 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		{
 			OnBountyHunterLoadout();
 		}
+		else
+		{
+			OnStandardLoadout();
+		}
 		
 		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
 	}
 	
+	virtual void OnStandardLoadout()
+	{
+		ClearInventory();
+		Console.Printf("\c[TSPYeller]APPLYING STANDARD LOADOUT TEST");
+	}
 	virtual void OnBountyHunterLoadout()
 	{
 		ClearInventory();
