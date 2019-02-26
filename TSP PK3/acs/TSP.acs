@@ -7,3 +7,8 @@ Script "TSP_GotoNextLevel" (void)
 {
 	Exit_Normal(0);
 }
+
+Script "TSPGetGameSkill" (void)
+{
+	SetResultValue(GameSkill());
+}
