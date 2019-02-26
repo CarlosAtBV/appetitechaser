@@ -4,7 +4,8 @@ ACTOR TSP_HitSpark_Small
 {
 	+NOINTERACTION
 	+ROLLSPRITE
-	//RenderStyle "Add"
+	+BRIGHT
+	RenderStyle "Add"
 	States
 	{
 		Spawn:
@@ -13,7 +14,7 @@ ACTOR TSP_HitSpark_Small
 			{
 				A_SetRoll(random(0,360));
 			}
-			THS0 ABCDEFGHIJK 1
+			THS0 CDEFGHIJK 1
 			Stop
 	}
 }
