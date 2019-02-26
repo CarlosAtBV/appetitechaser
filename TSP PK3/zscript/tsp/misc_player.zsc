@@ -107,6 +107,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Actor pp_slingTarget;
 	
+	virtual void OnBountyHunterLoadout()
+	{
+		ClearInventory();
+		Console.Printf("\c[TSPGreen]APPLYING BOUNTY HUNTER LOADOUT TEST");
+	}
+	
 	override void FireWeaponAlt (State stat)
 	{
 		if (player.Bot == null && bot_observer)
@@ -159,8 +165,16 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void PostBeginPlay()
 	{
 		super.PostBeginPlay();
+		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
+		
 		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
+		
+		if(pp_gamemode==1)
+		{
+			OnBountyHunterLoadout();
+		}
+		
 		gvars = TSP_GlobalVariables.Get();
 		gvars.tsp_employer = 0;
 	}

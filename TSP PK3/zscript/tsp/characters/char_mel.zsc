@@ -1,0 +1,37 @@
+Class SpacePirate : TSP_PlayerPawn_ZSCBase
+{
+	Default
+	{
+		Player.ViewHeight 47;
+		Player.AttackZOffset 20;
+		Player.JumpZ 9.0;
+		Player.StartItem "IsMel", 1;
+		Player.StartItem "StartMelee", 1;
+		Player.StartItem "StopMelee", 1;
+		Player.StartItem "StartTrait", 1;
+		Player.StartItem "StopTrait", 1;
+		Player.StartItem "MeleeButtonActor", 1;
+		TSP_PlayerPawn_ZSCBase.StartShield 25;
+		Player.StartItem "TSP_GlobalDollars", 100;
+		//Player.StartItem "MelStartInventory", 1
+		//Player.StartItem "Mel919MPistol"
+		//Player.StartItem "MelMelee"
+		Player.SoundClass "Melody";
+		Player.DisplayName "$MELNAME";
+		Player.Face "MCW";
+		Player.Portrait "Mel_Port";
+		Player.WeaponSlot 1, "MelMelee";
+		Player.WeaponSlot 2, "MelPistol", "MelPistolA";
+		Species "Player";
+		+THRUSPECIES
+		+PLAYERPAWN.NOTHRUSTWHENINVUL
+		DamageFactor "Sling", 0.0;
+		//var int user_DProjTID;
+	}
+	
+	override void OnBountyHunterLoadout()
+	{
+		super.OnBountyHunterLoadout();
+		GiveInventory("TSP_PlayerPawn_MaxShield",999);
+	}
+}
