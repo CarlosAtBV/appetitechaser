@@ -126,6 +126,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
 		
+		GiveInventory("TSP_GlobalDollars",TSP_STARTINGMONEY);
+		
 		PickWeapon(pp_meleestart,true);
 	}
 	

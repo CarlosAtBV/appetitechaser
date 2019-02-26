@@ -1,5 +1,7 @@
 version "3.7.0"
 
+const TSP_STARTINGMONEY = 100;
+
 enum ETSPGamemodes
 {
 	TSP_GM_STANDARD = 0,
