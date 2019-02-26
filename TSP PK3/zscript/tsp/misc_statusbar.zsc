@@ -94,7 +94,7 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			//Melody Crosswell
-			DrawTexture(GetMugShot(5), (HUDLEFT_X+3, HUDLEFT_Y-2), DI_ITEM_OFFSETS);
+			DrawTexture(GetMugShot(5), (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			Color hpColor;
 			if(health>100)
