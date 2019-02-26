@@ -133,8 +133,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			}
 			r.Y += dbobz;
 			
-			r.X = ceil(r.X+DeltaAngle(dbobanglereal,dbobangle)/2);
-			r.Y = ceil(r.Y+DeltaAngle(dbobpitchreal,dbobpitch)/2);
+			r.X = r.X+DeltaAngle(dbobanglereal,dbobangle)/2;
+			r.Y = clamp(r.Y+DeltaAngle(dbobpitchreal,dbobpitch)/2,0,64);
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		return p1 * (1. - ticfrac) + p2 * ticfrac;
