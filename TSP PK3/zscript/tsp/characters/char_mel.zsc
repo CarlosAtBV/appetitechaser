@@ -1,3 +1,9 @@
+// Melody Croswel
+// Master space pirate of space piracy
+// There be a finite amount of people who work under this impression
+// you may even say that this amount is limited to a single person working under the profession
+// A single person under the profession of performing smuggling in outer space
+
 Class SpacePirate : TSP_PlayerPawn_ZSCBase
 {
 	Default
@@ -37,6 +43,11 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		GiveInventory("MelMelee",1);
 		GiveInventory("MelPistolA",1);
 		GiveInventory("TSPPistolAmmo",75);
+		//SUZUKA (SHOTGUN MOD)
+		//MACHINE GUN AMMO (x150)
+		//HEAL ITEM (x1)
+		
+		//MAG GRAPPLE (LV 2)
 		
 		pp_initShield = 50;
 	}
