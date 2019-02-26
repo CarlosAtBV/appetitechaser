@@ -107,6 +107,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Actor pp_slingTarget;
 	
+	override void GiveDefaultInventory()
+	{
+		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
+		super.GiveDefaultInventory();
+		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
+		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
+		if(pp_gamemode==1)
+		{
+			OnBountyHunterLoadout();
+		}
+	}
+	
 	virtual void OnBountyHunterLoadout()
 	{
 		ClearInventory();
@@ -165,15 +177,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void PostBeginPlay()
 	{
 		super.PostBeginPlay();
-		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
-		
-		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
-		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
-		
-		if(pp_gamemode==1)
-		{
-			OnBountyHunterLoadout();
-		}
+		//pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
 		
 		gvars = TSP_GlobalVariables.Get();
 		gvars.tsp_employer = 0;
