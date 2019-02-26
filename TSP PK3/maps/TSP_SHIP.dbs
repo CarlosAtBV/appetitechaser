@@ -81,11 +81,11 @@ maps
 		overridefloorheight = false;
 		overrideceilheight = false;
 		overridebrightness = false;
-		uselongtexturenames = false;
+		uselongtexturenames = true;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 180.7567f;
-		viewpositiony = 186.8513f;
-		viewscale = 11.64883f;
+		viewpositionx = 9.949942f;
+		viewpositiony = 405.4333f;
+		viewscale = 3.137366f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -96,7 +96,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 4f;
+			gridsize = 8f;
 		}
 		
 		fieldtypes
