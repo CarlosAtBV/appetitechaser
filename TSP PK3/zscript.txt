@@ -1,5 +1,12 @@
 version "3.7.0"
 
+enum ETSPGamemodes
+{
+	TSP_GM_STANDARD = 0,
+	TSP_GM_HUNTERS = 1,
+	TSP_GM_TRAINING = 2,
+};
+
 #include "zscript/tsp/misc/misc_tokenizer.zsc"
 
 #include "zscript/tsp/items_gbd.zsc"
@@ -159,7 +166,7 @@ Class TSP_EventHandler : EventHandler
 	{
 		switch(gamemode)
 		{
-			case 0:
+			case TSP_GM_STANDARD:
 				int myHealth = e.Thing.SpawnHealth()/5;
 				while(myHealth>=5)
 				{
@@ -174,7 +181,7 @@ Class TSP_EventHandler : EventHandler
 					myHealth-=1;
 				}
 				break;
-			case 1:
+			case TSP_GM_HUNTERS:
 				if(!gameover && e.Thing.target == players[0].mo)
 				{
 					players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
@@ -188,7 +195,7 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldTick()
 	{
-		if(gamemode==1)
+		if(gamemode==TSP_GM_HUNTERS)
 		{
 			if(!gameover)
 			{
