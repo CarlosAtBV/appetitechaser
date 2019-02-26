@@ -24,7 +24,7 @@ ACTOR TSPPistolAmmo : Ammo
 
 ACTOR TSPPistolAmmoBig : TSPPistolAmmo
 {
-	Inventory.PickupMessage "Picked up a box of ammo. [\cj+500 Pistol Ammo\c-]"
+	Inventory.PickupMessage "Picked up a box of ammo. [\cj+50 Pistol Ammo\c-]"
 	Inventory.Amount 50
 	States
 	{
