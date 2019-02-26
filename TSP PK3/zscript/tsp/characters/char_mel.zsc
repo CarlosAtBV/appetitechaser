@@ -13,9 +13,10 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.StartItem "MeleeButtonActor", 1;
 		TSP_PlayerPawn_ZSCBase.StartShield 25;
 		Player.StartItem "TSP_GlobalDollars", 100;
-		//Player.StartItem "MelStartInventory", 1
-		//Player.StartItem "Mel919MPistol"
-		//Player.StartItem "MelMelee"
+		Player.StartItem "MelMelee";
+		Player.StartItem "MelPistol";
+		Player.StartItem "TSPPistolAmmo", 60;
+		
 		Player.SoundClass "Melody";
 		Player.DisplayName "$MELNAME";
 		Player.Face "MCW";
@@ -32,6 +33,10 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 	override void OnBountyHunterLoadout()
 	{
 		super.OnBountyHunterLoadout();
-		GiveInventory("TSP_PlayerPawn_MaxShield",999);
+		GiveInventory("MelMelee",1);
+		GiveInventory("MelPistolA",1);
+		GiveInventory("TSPPistolAmmo",75);
+		GiveInventory("TSP_PlayerPawn_Shield",50);
+		GiveInventory("TSP_PlayerPawn_MaxShield",50);
 	}
 }
