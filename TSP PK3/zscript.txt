@@ -171,6 +171,21 @@ Class TSP_EventHandler : EventHandler
 		}
 	}
 	
+	/*override void WorldUnloaded(WorldEvent e)
+	{
+		let player = players[0].mo;
+		if(player!=null)
+		{
+			player.score = 0;
+			player.ClearInventory();
+			player.GiveDefaultInventory();
+			if(player.health>0)
+			{
+				player.health = player.player.health = player.SpawnHealth();
+			}
+		}
+	}*/
+	
 	override void WorldThingSpawned(WorldEvent e)
 	{
 		if(tsp_meleeonly && e.Thing is "Ammo")
@@ -430,5 +445,20 @@ Class TSP_EventHandler : EventHandler
 				TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
 			}
 		}
+	}
+}
+
+Class TSP_ShipProp0 : Actor
+{
+	Default
+	{
+		Radius 4;
+		Translation "Ice";
+	}
+	States
+	{
+		Spawn:
+			ISP0 A -1;
+			Stop;
 	}
 }
