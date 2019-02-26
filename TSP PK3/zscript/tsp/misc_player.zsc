@@ -87,6 +87,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int ptp_wallJumps;
 	
 	int pp_gamemode;
+	bool pp_meleeonly;
 	int pp_shieldHitDelay;
 	bool pp_shieldLowSound;
 	
@@ -110,6 +111,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void GiveDefaultInventory()
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
+		pp_meleeonly = CVar.GetCVar("tsp_fistsstart").GetBool();
 		super.GiveDefaultInventory();
 		
 		if(pp_gamemode==1)

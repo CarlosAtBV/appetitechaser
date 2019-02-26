@@ -41,8 +41,11 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		super.OnStandardLoadout();
 		
 		GiveInventory("MelMelee",1);
-		GiveInventory("MelPistol",1);
-		GiveInventory("TSPPistolAmmo",60);
+		if(!pp_meleeonly)
+		{
+			GiveInventory("MelPistol",1);
+			GiveInventory("TSPPistolAmmo",60);
+		}
 		
 		pp_initShield = 25;
 	}
@@ -52,8 +55,11 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		super.OnBountyHunterLoadout();
 		
 		GiveInventory("MelMelee",1);
-		GiveInventory("MelPistolA",1);
-		GiveInventory("TSPPistolAmmo",75);
+		if(!pp_meleeonly)
+		{
+			GiveInventory("MelPistolA",1);
+			GiveInventory("TSPPistolAmmo",75);
+		}
 		//SUZUKA (SHOTGUN MOD)
 		//MACHINE GUN AMMO (x150)
 		//HEAL ITEM (x1)
