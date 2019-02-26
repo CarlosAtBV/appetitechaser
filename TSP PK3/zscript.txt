@@ -96,6 +96,8 @@ Class TSP_EventHandler : EventHandler
 	int hunters_combo;
 	int hunters_combotime;
 	
+	bool tsp_meleeonly;
+	
 	static const string hunters_demonSpawns[] =
 	{
 		"Zombieman",
@@ -116,6 +118,11 @@ Class TSP_EventHandler : EventHandler
 	int hunters_maxCombo;
 	
 	array<TSP_Hunters_SpawnPoint > hunters_demonSpawnPoints;
+	
+	override void OnRegister()
+	{
+		tsp_meleeonly = CVar.GetCVar("tsp_meleesupreme",players[0]).GetBool();
+	}
 	
 	override void WorldLoaded(WorldEvent e)
 	{
@@ -146,7 +153,7 @@ Class TSP_EventHandler : EventHandler
 				}
 			}
 			
-			let player = players[0].mo;
+			/*let player = players[0].mo;
 			if(player!=null)
 			{
 				player.score = 0;
@@ -156,9 +163,17 @@ Class TSP_EventHandler : EventHandler
 				{
 					player.health = player.player.health = player.SpawnHealth();
 				}
-			}
+			}*/
 			
 			hunters_time = 120;
+		}
+	}
+	
+	override void WorldThingSpawned(WorldEvent e)
+	{
+		if(tsp_meleeonly && e.Thing is "Ammo")
+		{
+			e.Thing.Destroy();
 		}
 	}
 	
