@@ -83,9 +83,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = -19.65341f;
-		viewpositiony = -367.1901f;
-		viewscale = 0.8449878f;
+		viewpositionx = 180.7567f;
+		viewpositiony = 186.8513f;
+		viewscale = 11.64883f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -96,7 +96,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 8f;
+			gridsize = 4f;
 		}
 		
 		fieldtypes
@@ -110,8 +110,8 @@ maps
 			
 			sidedef
 			{
-				offsetx_bottom = 1;
 				offsetx_mid = 1;
+				offsetx_bottom = 1;
 				offsetx_top = 1;
 				offsety_top = 1;
 				offsety_mid = 1;
