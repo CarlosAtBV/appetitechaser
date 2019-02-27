@@ -39,7 +39,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
     TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
-    MLED ABCDE 1
+    111D ABC 1
     TNT1 A 3
   DeselectLoop:
     TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
@@ -48,14 +48,14 @@ ACTOR MelMelee : TSPMelBaseWeapon
   Select:
     TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
     TNT1 A 4 SetPlayerProperty(0,1,2)
-    MLEU ABCDE 1
+    111U ABC 1
   SelectLoop:
     TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Raise
-    MLEG A 1 A_Raise
+    111G A 1 A_Raise
     Loop
   Ready:
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-    MLEG A 1 A_WeaponReady
+    111G A 1 A_WeaponReady
     Loop
 	
 //Punch!
@@ -593,12 +593,12 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
-    MLED EDCBA 1
-    MLEG A 1
+    111U ABC 1
+    111G A 1
     Goto Ready
 
   SPTraitStart:
-    MLED ABCDE 1 
+    111U CBA 1 
 	Goto SPTrait
   }
 }
