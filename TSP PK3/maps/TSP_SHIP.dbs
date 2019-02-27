@@ -83,8 +83,8 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = true;
 		useresourcesinreadonlymode = false;
-		viewpositionx = -26.05773f;
-		viewpositiony = -147.3845f;
+		viewpositionx = 11.15826f;
+		viewpositiony = -277.027f;
 		viewscale = 2.413358f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
@@ -113,8 +113,8 @@ maps
 				offsetx_bottom = 1;
 				offsetx_mid = 1;
 				offsetx_top = 1;
-				offsety_top = 1;
 				offsety_mid = 1;
+				offsety_top = 1;
 				offsety_bottom = 1;
 			}
 			
