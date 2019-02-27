@@ -103,18 +103,6 @@ Class TSP_EpisodeMenu : GenericMenu
 		}
 	}
 	
-	void DrawTextOutline(Font font, Color color, int x, int y, string text)
-	{
-		Color color_outline = Font.FindFontColor("TSPVantaBlack");
-		
-		screen.DrawText(font, color_outline, x-1, y, text, DTA_Clean, true);
-		screen.DrawText(font, color_outline, x, y-1, text, DTA_Clean, true);
-		screen.DrawText(font, color_outline, x+1, y, text, DTA_Clean, true);
-		screen.DrawText(font, color_outline, x, y+1, text, DTA_Clean, true);
-		
-		screen.DrawText(font, color, x, y, text, DTA_Clean, true);
-	}
-	
 	override void Drawer()
 	{
 		TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
@@ -147,7 +135,7 @@ Class TSP_EpisodeMenu : GenericMenu
 					bTitle = episodes[iterator].name;
 					bSub = episodes[iterator].sub;
 				}
-				DrawTextOutline(BigFont, em_itemSelected == iterator ? Font.CR_YELLOW : Font.FindFontColor("TSPGreen"), sx, sy, bTitle);
+				screen.DrawText(BigFont, em_itemSelected == iterator ? Font.FindFontColor("TSPYeller") : Font.FindFontColor("TSPGreen1"), sx, sy, bTitle, DTA_Clean, true);
 				sy += BigFont.GetHeight()+3;
 				screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, bSub, DTA_Clean, true);
 				sy += SmallFont.GetHeight()+1;

@@ -1,0 +1,7 @@
+Class TSP_DummyPlayer : TSP_PlayerPawn_ZSCBase
+{
+	Default
+	{
+		Player.DisplayName "Dummel";
+	}
+}
