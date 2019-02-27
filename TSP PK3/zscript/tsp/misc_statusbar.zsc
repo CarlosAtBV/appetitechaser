@@ -93,8 +93,14 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
+			
 			//Melody Crosswell
 			DrawTexture(GetMugShot(5), (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			
+			if(CPlayer.mo is "TSP_DummyPlayer")
+			{
+				DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
+			}
 			
 			Color hpColor;
 			if(health>100)

@@ -1,4 +1,4 @@
-Class TSP_DummyPlayer : TSP_PlayerPawn_ZSCBase
+Class TSP_DummyPlayer : SpacePirate
 {
 	Default
 	{

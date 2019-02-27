@@ -129,6 +129,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		GiveInventory("TSP_GlobalDollars",TSP_STARTINGMONEY);
 		
 		PickWeapon(pp_meleestart,true);
+		
+		Console.Printf(""..GetClassName());
 	}
 	
 	virtual void OnStandardLoadout()
