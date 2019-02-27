@@ -16,6 +16,14 @@ Class TSP_PlayerPawn_Shield : Inventory
 	}
 }
 
+Class TSP_PlayerPawn_BonusShield : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 200;
+	}
+}
+
 Class TSP_PlayerPawn_IPlaySounds : Actor
 {
 	Default
