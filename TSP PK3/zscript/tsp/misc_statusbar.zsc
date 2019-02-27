@@ -126,24 +126,25 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// kiz
 			
-			Vector2 keypos = (-10, 2);
+			//Vector2 keypos = (HUDRIGHT_X+25, HUDRIGHT_Y+21);
+			Vector2 keypos = (HUDRIGHT_X+22, HUDRIGHT_Y+21);
 			int rowc = 0;
 			double roww = 0;
 			for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
 			{
 				if (i is "Key" && i.Icon.IsValid())
 				{
-					DrawTexture(i.Icon, keypos, DI_SCREEN_RIGHT_TOP|DI_ITEM_LEFT_TOP);
+					DrawTexture(i.Icon, keypos, DI_ITEM_LEFT_BOTTOM);
 					Vector2 size = TexMan.GetScaledSize(i.Icon);
-					keypos.Y += size.Y + 2;
+					keypos.X += size.X + 2;
 					roww = max(roww, size.X);
-					if (++rowc == 3)
+					/*if (++rowc == 3)
 					{
 						keypos.Y = 2;
 						keypos.X -= roww + 2;
 						roww = 0;
 						rowc = 0;
-					}
+					}*/
 				}
 			}
 			
@@ -158,6 +159,7 @@ Class TSP_StatusBar : BaseStatusBar
 			Inventory a1 = GetCurrentAmmo();
 			if(CPlayer.ReadyWeapon)
 			{
+				DrawInventoryIcon(CPlayer.ReadyWeapon,(HUDRIGHT_X+22, HUDRIGHT_Y+42),DI_ITEM_LEFT,0.5);
 				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (HUDRIGHT_X+105, HUDRIGHT_Y+48), DI_TEXT_ALIGN_RIGHT);
 			}
 			
