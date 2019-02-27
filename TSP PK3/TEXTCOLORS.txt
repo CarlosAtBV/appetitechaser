@@ -50,6 +50,10 @@ TSPVantaBlack
 }
 TSPLimeGreen // OULINE
 {
+	#172702  #B9DE7F
+}
+TSPLimeGreen1 // OULINE
+{
 	#000000  #000000    0  1
 	#172702  #172702    2  127
 	#719638  #B9DE7F  128  256
