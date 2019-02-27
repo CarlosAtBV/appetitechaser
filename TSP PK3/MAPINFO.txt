@@ -14,7 +14,7 @@ gameinfo
   armoricons = "FLRMA0", 0.5, "PSRMA0"
   pausesign = "SP_PAUSE"
   cursorpic = "M_SPCRS"
-  menufontcolor_title = "GRAY"
+  menufontcolor_title = "TSPGRAY"
   menufontcolor_label = "TSPGREEN"
   menufontcolor_value = "GRAY"
   menufontcolor_action = "TSPGREEN"

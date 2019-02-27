@@ -91,6 +91,7 @@ SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
 
 //Character
 MELNAME = "\c[Mel]Mel\c-";
+MELNAMECS = "\c[Mel1]Mel\c-";
 ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
 
 MELRUBY = "\cgRuby\c-";
@@ -98,13 +99,13 @@ MELRUBY = "\cgRuby\c-";
 //Menu Junk
 MNU_CHOOSECLASS		= "Character Select";
 MNU_CHOOSESKILL		= "Difficulty Select";
-TSPCustomControls = "\cfCustomize Controls\c-";
-TSPMouseOptions = "\cfMouse Options\c-";
-TSPControllerOptions = "\cfController Options\c-";
+TSPCustomControls = "\c[TSPYELLER]Customize Controls\c-";
+TSPMouseOptions = "\c[TSPYELLER]Mouse Options\c-";
+TSPControllerOptions = "\c[TSPYELLER]Controller Options\c-";
 
 //TSP Menu Options
 TSPMENU1 = "\c[TSPGREEN]The Space Pirate\c- \cjModifiers\c-";
-TSPMENU2 = "\c[TSPGREEN]Modifiers\c-";
+TSPMENU2 = "\c[TSPGREEN1]Modifiers\c-";
 TSPGAMEPLAY1 = "\cjGameplay Modifiers\c-";
 TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)\c-";
 TSPGRAPHICS1 = "\cjGraphic Modifiers\c-";
@@ -120,7 +121,7 @@ SMASHMELEESND = "\ckSmash\c-";
 
 
 //Character Setup
-CSMenuOption = "\chCharacter Setup\c-";
+CSMenuOption = "\c[TSPBLUE]Character Setup\c-";
 CSCharacter = "\c[TSPGREEN]Character\c-"; 
 CSName = "\chName\c-";
 CSGender = "\ccGender\c-";
@@ -142,8 +143,8 @@ OPTVAL_OTHER				= "\cjObject";
 MK2TSP = "\c[TSPGREEN]TSP MK2\c-";
 
 //Controls Menu
-CONFIGHEADER = "\cfConfiguration\c-";
-CUSTOMERCONTROLS1 = "\cfCustomize Controls\c-";
+CONFIGHEADER = "\c[TSPYeller]Configuration\c-";
+CUSTOMERCONTROLS1 = "\c[TSPYeller]Customize Controls\c-";
 CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
 CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
 MOVEMENTCONTROL = "\ccMovement Controls\c-";

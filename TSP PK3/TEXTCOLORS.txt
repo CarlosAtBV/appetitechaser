@@ -2,31 +2,81 @@ TSPGreen
 {
 	#1d3948  #84bb9b
 Console:
-	#223b44  #2a3f4b    0 127
-	#5da590  #add0a5  128 256
+	#223b44  #2a3f4b    0  127
+	#5da590  #add0a5  128  256
 Flat:
 	#5da590
 }
+
+TSPGreen1 //Outlined
+{
+	#000000  #000000    0  1    // BLACK OUTLINE
+	#39505c  #39505c    2  127 
+	#395f68  #398382  128  210
+	#469990  #b8d7b1  211  256
+Console:
+	#223b44  #2a3f4b    0  127
+	#5da590  #add0a5  128  256
+Flat:
+	#5da590
+}
+
+
+TSPGray // OUTLINE
+{
+	#000000  #000000    0  1    // BLACK OUTLINE
+	#5a5a5a  #5a5a5a    2  127  // DARKEST PART OF THE GRADIENT
+	#7e7e7e  #eeeeee  128  256
+Console:
+	#272727  #8B8B8B    0 127
+	#505050  #FFFFFF  128 256
+Flat:
+	#CCCCCC
+}
+
 TSPRed
 {
 	#460b0b  #c72424
+}
+TSPBlue // OUTLINE
+{
+	#000000  #000000    0  1
+	#1e3b69  #1e3b69    2  127
+	#244273  #5d8ede  128  256
 }
 TSPVantaBlack
 {
 	#000000  #000000
 }
-TSPLimeGreen
+TSPLimeGreen // OULINE
 {
-	#172702  #B9DE7F
+	#000000  #000000    0  1
+	#172702  #172702    2  127
+	#719638  #B9DE7F  128  256
 }
-TSPYeller
+TSPYeller // OUTLINE
 {
-	#000000  #E8BF00
+	#000000  #000000    0  1
+	#68431e  #68431e    2  127
+	#735024  #ddd05c  128  256
 }
+
 
 Mel
 {
 	#02594e  #268846    0 127
+	#519f25  #aad13d  128 256
+Console:
+	#02594e  #268846    0 127
+	#519f25  #aad13d  128 256
+Flat:
+	#519f25
+}
+
+Mel1
+{
+	#000000  #000000    0  1
+	#02594e  #268846    2 127
 	#519f25  #aad13d  128 256
 Console:
 	#02594e  #268846    0 127

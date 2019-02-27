@@ -22,7 +22,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.StartItem "TSPPistolAmmo", 60;*/
 		
 		Player.SoundClass "Melody";
-		Player.DisplayName "$MELNAME";
+		Player.DisplayName "$MELNAMECS";
 		Player.Face "MCW";
 		Player.Portrait "Mel_Port";
 		Player.WeaponSlot 1, "MelMelee";
