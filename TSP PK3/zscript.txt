@@ -204,7 +204,7 @@ Class TSP_EventHandler : EventHandler
 	{
 		switch(gamemode)
 		{
-			case TSP_GM_STANDARD:
+			default:
 				int myHealth = e.Thing.SpawnHealth()/5;
 				while(myHealth>=5)
 				{
