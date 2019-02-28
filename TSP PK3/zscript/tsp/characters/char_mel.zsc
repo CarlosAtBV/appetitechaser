@@ -43,7 +43,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		if(!pp_meleestart)
 		{
 			GiveInventory("MelPistol",1);
-			GiveInventory("TSPPistolAmmo",60);
+			GiveInventory("TSPPistolAmmo",65);
 		}
 		
 		pp_initShield = 25;

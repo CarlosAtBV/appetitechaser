@@ -1,0 +1,35 @@
+Class TSP_WeaponPickup : CustomInventory
+{
+	string tsp_weapontogive;
+	int tsp_ammotogive;
+	
+	Property WeaponToGive : tsp_weapontogive;
+	Property AmmoToGive : tsp_ammotogive;
+	
+	Default
+	{
+		Inventory.PickupSound "misc/w_pkup";
+	}
+	
+	override bool TryPickup (in out Actor toucher)
+	{
+		bool worked = false;
+		Class<Weapon > tehepicweponofdoom = tsp_weapontogive;
+		if(tehepicweponofdoom!=null)
+		{
+			if(toucher.FindInventory(tehepicweponofdoom,true))
+			{
+				worked = toucher.GiveInventory(GetDefaultByType(tehepicweponofdoom).AmmoType1,tsp_ammotogive);
+			}
+			else
+			{
+				worked = toucher.GiveInventory(tehepicweponofdoom,1);
+			}
+		}
+		if(worked)
+		{
+			GoAwayAndDie();
+		}
+		return worked;
+	}
+}

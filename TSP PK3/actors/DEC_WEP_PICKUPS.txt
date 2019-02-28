@@ -30,3 +30,16 @@ ACTOR TSPFistsOnlyPistol
   }
 }
 */
+
+ACTOR TSP_Pickup_MelPistol : TSP_WeaponPickup replaces Pistol
+{
+	TSP_WeaponPickup.WeaponToGive "MelPistol"
+	TSP_WeaponPickup.AmmoToGive 15
+	Inventory.PickupMessage "$MelPistolPickup"
+	States
+	{
+		Spawn:
+			121P A -1
+			Stop
+	}
+}
