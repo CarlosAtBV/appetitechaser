@@ -22,6 +22,7 @@ gameinfo
   menufontcolor_highlight = "Blue"
   menufontcolor_selection = "LightBlue"
   menuslidercolor = "LightBlue"
+  AddQuitMessages = "$QUITMSG15"
   
 	AddEventHandlers = "TSP_EventHandler"
 	StatScreen_Single = "TSP_StatusScreen"
