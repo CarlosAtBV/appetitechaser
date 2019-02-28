@@ -31,7 +31,7 @@ ACTOR TSPFistsOnlyPistol
 }
 */
 
-ACTOR TSP_Pickup_MelPistol : TSP_WeaponPickup replaces Pistol
+/*ACTOR TSP_Pickup_MelPistol : TSP_WeaponPickup replaces Pistol
 {
 	TSP_WeaponPickup.WeaponToGive "MelPistol"
 	TSP_WeaponPickup.AmmoToGive 15
@@ -42,4 +42,4 @@ ACTOR TSP_Pickup_MelPistol : TSP_WeaponPickup replaces Pistol
 			121P A -1
 			Stop
 	}
-}
+}*/

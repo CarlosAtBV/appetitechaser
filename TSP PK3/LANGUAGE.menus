@@ -10,6 +10,8 @@ TSP_SHOP_MODSEL = "Weapon Already Modded";
 
 TSPMAP_GROSSE_NAME = "Grosse";
 TSPMAP_GROSSE_DESC = "I shoot ropes like a madman.";
+TSPMAP_TRAINING_NAME = "The Indigo Skyline";
+TSPMAP_TRAINING_DESC = "yhart she blows";
 
 TSP_EMPLOYER_MODS = "Mods";
 

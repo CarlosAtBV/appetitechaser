@@ -46,9 +46,11 @@ Class TSP_EpisodeMenu : GenericMenu
 		"XIX"
 	};
 	
+	int maxSize;
+	
 	void updateShit()
 	{
-		int maxSize = episodes.Size();
+		maxSize = episodes.Size();
 		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		int selHeight = BigFont.GetHeight()+3+SmallFont.GetHeight()+1;
 		for(int i = 0;i<episodes.Size();i++)
@@ -65,6 +67,21 @@ Class TSP_EpisodeMenu : GenericMenu
 					break;
 				case 1:
 					if(episodes[i].name.Left(5)!="TSPBH")
+					{
+						episodes.Delete(i);
+						i--;
+					}
+					else
+					{
+						array<string > fucker;
+						fucker.Clear();
+						episodes[i].name.Split(fucker,":");
+						episodes[i].name = StringTable.Localize("$TSPMAP_"..fucker[1].."_NAME");
+						episodes[i].sub = StringTable.Localize("$TSPMAP_"..fucker[1].."_DESC");
+					}
+					break;
+				case 2:
+					if(episodes[i].name.Left(4)!="TSPT")
 					{
 						episodes.Delete(i);
 						i--;
@@ -95,11 +112,6 @@ Class TSP_EpisodeMenu : GenericMenu
 			episodes[i].mWidth = 160;
 			episodes[i].mHeight = selHeight-2;
 			sy += selHeight;
-		}
-		
-		if(gamemode==2)
-		{
-			SetMenu("SkillMenu",maxSize-1);
 		}
 	}
 	

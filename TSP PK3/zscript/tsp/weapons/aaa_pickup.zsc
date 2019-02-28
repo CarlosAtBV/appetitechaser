@@ -11,10 +11,40 @@ Class TSP_WeaponPickup : CustomInventory
 		Inventory.PickupSound "misc/w_pkup";
 	}
 	
+	virtual bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool worked;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'SpacePirate':
+				Console.Printf("u r mel");
+				break;
+			case 'TSP_DummyPlayer':
+				Console.Printf("u r dummel");
+				break;
+		}
+		
+		return worked;
+	}
+	
+	override void PostBeginPlay()
+	{
+		switch(PlayerClasses[players[consoleplayer].CurrentPlayerClass].Type.GetClassName())
+		{
+			case 'SpacePirate':
+				SetStateLabel("SpacePirate");
+				break;
+			case 'TSP_DummyPlayer':
+				SetStateLabel("TSP_DummyPlayer");
+				break;
+		}
+	}
+	
 	override bool TryPickup (in out Actor toucher)
 	{
-		bool worked = false;
-		Class<Weapon > tehepicweponofdoom = tsp_weapontogive;
+		bool worked = FunnyWeaponToGive(toucher);
+		/*Class<Weapon > tehepicweponofdoom = tsp_weapontogive;
 		if(tehepicweponofdoom!=null)
 		{
 			if(toucher.FindInventory(tehepicweponofdoom,true))
@@ -25,11 +55,58 @@ Class TSP_WeaponPickup : CustomInventory
 			{
 				worked = toucher.GiveInventory(tehepicweponofdoom,1);
 			}
-		}
+		}*/
 		if(worked)
 		{
 			GoAwayAndDie();
 		}
 		return worked;
+	}
+	
+	bool GiveTSPWeapon(Actor fucker, Class<Inventory > tspweapon, int ammoamt = 1)
+	{
+		bool given;
+		if(tspweapon!=null)
+		{
+			if(fucker.FindInventory(tspweapon,true))
+			{
+				given = fucker.GiveInventory(Weapon(GetDefaultByType(tspweapon)).AmmoType1,ammoamt);
+			}
+			else
+			{
+				given = fucker.GiveInventory(tspweapon,1);
+			}
+		}
+		return given;
+	}
+}
+
+Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'SpacePirate':
+				thingGiven = GiveTSPWeapon(toucher,"MelPistol",15);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		SpacePirate:
+			121P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
 	}
 }
