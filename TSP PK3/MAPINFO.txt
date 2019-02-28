@@ -68,7 +68,7 @@ episode MAP32
 
 episode TSP_SHIP
 {
-	name = "TSP:Training"
+	name = "TSPT:Training"
 	noskillmenu
 }
 /*episode MAP02
