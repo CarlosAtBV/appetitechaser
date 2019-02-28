@@ -12,3 +12,9 @@ Script "TSPGetGameSkill" (void)
 {
 	SetResultValue(GameSkill());
 }
+
+//By DoomRater
+Script "PlayerSpeed"(int movespeed)
+{
+	SetActorProperty(0,APROP_Speed,movespeed*1.0/100);
+}
