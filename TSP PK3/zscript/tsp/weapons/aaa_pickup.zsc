@@ -2,6 +2,7 @@ Class TSP_WeaponPickup : CustomInventory
 {
 	string tsp_weapontogive;
 	int tsp_ammotogive;
+	string tsp_pickupmessage;
 	
 	Property WeaponToGive : tsp_weapontogive;
 	Property AmmoToGive : tsp_ammotogive;
@@ -76,8 +77,14 @@ Class TSP_WeaponPickup : CustomInventory
 			{
 				given = fucker.GiveInventory(tspweapon,1);
 			}
+			PrintPickupMessage(true,GetDefaultByType(tspweapon).PickupMessage());
 		}
 		return given;
+	}
+	
+	override String PickupMessage ()
+	{
+		return "";
 	}
 }
 
