@@ -53,6 +53,13 @@ map TSP_SHIP "The Indigo Skyline"
 	lightmode = 0
 }
 
+map TSP02 "Neoscape - Obstacle Course"
+{
+    //sky1 = "SPACE", -0.1
+	music = "TSP_OBST"
+	lightmode = 0
+}
+
 episode MAP32
 {
 	name = "TSPBH:Grosse"
@@ -61,7 +68,7 @@ episode MAP32
 
 episode TSP_SHIP
 {
-	name = "TSPT:Training"
+	name = "TSP:Training"
 	noskillmenu
 }
 /*episode MAP02

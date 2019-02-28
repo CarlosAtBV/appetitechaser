@@ -25,3 +25,20 @@ texture HUD_MELB
     pic HUD_MEL6 tics 2
 	pic HUD_MEL7 tics 2
     pic HUD_MEL8 tics 2
+
+//////////////////////
+// TEXTURES
+//////////////////////
+
+// Textures by Arvell
+// From Diabolus Ex
+texture CYBF00
+    pic CYBF00 tics 3
+	pic CYBF01 tics 3
+	pic CYBF02 tics 3
+	pic CYBF03 tics 3
+	pic CYBF04 tics 3
+	pic CYBF05 tics 3
+	pic CYBF06 tics 3
+	pic CYBF07 tics 3
+	
