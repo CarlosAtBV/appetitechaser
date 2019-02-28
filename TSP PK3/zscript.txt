@@ -194,6 +194,10 @@ Class TSP_EventHandler : EventHandler
 		{
 			e.Thing.Destroy();
 		}
+		if(gamemode == TSP_GM_HUNTERS && e.Thing is "TSP_WeaponPickup")
+		{
+			e.Thing.Destroy();
+		}
 	}
 	
 	override void WorldThingDied(WorldEvent e)
