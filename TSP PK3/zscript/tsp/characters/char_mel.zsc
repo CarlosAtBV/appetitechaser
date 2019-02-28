@@ -47,6 +47,8 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		}
 		
 		pp_initShield = 25;
+		
+		GiveInventory("IsMel",1);
 	}
 	
 	override void OnBountyHunterLoadout()
@@ -66,5 +68,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		//MAG GRAPPLE (LV 2)
 		
 		pp_initShield = 50;
+		
+		GiveInventory("IsMel",1);
 	}
 }
