@@ -110,7 +110,7 @@ ACTOR WeaponSelectMemory : Inventory
 {
   // Mel Weapons
   // 111 = Bare Knuckle
-  // 121 = 
+  // 121 = Darling Nikki
   Inventory.MaxAmount 999
 }
 

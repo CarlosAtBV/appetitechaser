@@ -11,12 +11,13 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.ViewHeight 47;
 		Player.AttackZOffset 20;
 		Player.JumpZ 9.0;
-		/*Player.StartItem "IsMel", 1;
+		Player.StartItem "MeleeButtonActor", 1;
+		Player.StartItem "IsMel", 1;
 		Player.StartItem "StartMelee", 1;
 		Player.StartItem "StopMelee", 1;
-		Player.StartItem "StartTrait", 1;
+		/*Player.StartItem "StartTrait", 1;
 		Player.StartItem "StopTrait", 1;
-		Player.StartItem "MeleeButtonActor", 1;*/
+		*/
 		/*Player.StartItem "MelMelee";
 		Player.StartItem "MelPistol";
 		Player.StartItem "TSPPistolAmmo", 60;*/
