@@ -381,7 +381,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			player.viewheight = 32;
 		}
 		
-		TSPBobTime();
 	}
 	
 	override void CheckJump()
