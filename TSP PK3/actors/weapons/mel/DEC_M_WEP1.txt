@@ -236,7 +236,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 10)
 	ChargeLvl1:
 		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 10, "ChargeComplete")
-	    TNT1 A 5 A_GiveInventory("ChargedAttack", 1)
+	    TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
 		TNT1 A 1 A_Quake(1,2,0,5,"")
 		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
 		TNT1 A 0 A_Refire("ChargeLvl1")
