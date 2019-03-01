@@ -1,0 +1,17 @@
+Class TSP_CharacterMenu_BH : GenericMenu
+{
+	override void Drawer()
+	{
+		TextureID charslot = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
+		bool side = false;
+		for(int v = 0;v<6;v++)
+		{
+			int xoff = 28*side;
+			for(int i = 0;i<5;i++)
+			{
+				screen.DrawTexture (charslot, true, 28+xoff+(56*i), 15+31*v, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
+			}
+			side = !side;
+		}
+	}
+}

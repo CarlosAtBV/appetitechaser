@@ -14,6 +14,7 @@ enum ETSPGamemodes
 #include "zscript/tsp/items_gbd.zsc"
 
 #include "zscript/tsp/menus/menu_episodes.zsc"
+#include "zscript/tsp/menus/menu_characters_bh.zsc"
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
 #include "zscript/tsp/misc_store.zsc"
