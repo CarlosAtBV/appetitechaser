@@ -2,6 +2,6 @@ Class TSP_DummyPlayer : SpacePirate
 {
 	Default
 	{
-		Player.DisplayName "Dummel";
+		Player.DisplayName "Epic Mel";
 	}
 }
