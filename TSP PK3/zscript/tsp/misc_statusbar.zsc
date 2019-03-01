@@ -98,7 +98,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.mo is "TSP_DummyPlayer")
 			{
-				DrawImage("EPICMEL", (HUDLEFT_X+34, HUDLEFT_Y+63), DI_ITEM_CENTER_BOTTOM);
+				DrawImage("EPICMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_CENTER_BOTTOM);
 				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
 			}
 			else

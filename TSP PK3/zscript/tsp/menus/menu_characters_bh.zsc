@@ -48,16 +48,19 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			side = !side;
 		}
 		
+		TextureID charicon = TexMan.CheckForTexture(PlayerPawn(GetDefaultByType(PlayerClasses[cm_curSelection].Type)).Portrait,TexMan.Type_MiscPatch);
+		screen.DrawTexture (charicon, true, -10, 100, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
 		Font dd_tinyfont = Font.FindFont("TinyFont");
 		string selectionName = PlayerPawn.GetPrintableDisplayName(PlayerClasses[cm_curSelection].Type);
-		BrokenLines selectionDesc = dd_tinyfont.BreakLines(StringTable.Localize(TSP_PlayerPawn_ZSCBase(GetDefaultByType(PlayerClasses[cm_curSelection].Type)).pp_menudesc),320-4);
+		BrokenLines selectionDesc = dd_tinyfont.BreakLines(StringTable.Localize(TSP_PlayerPawn_ZSCBase(GetDefaultByType(PlayerClasses[cm_curSelection].Type)).pp_menudesc),320-64);
 		int c = selectionDesc.Count();
 		for (int g = 0; g < c; g++)
 		{
-			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 4, 120+32+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 64, 120+32+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
 		
-		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 4, 120, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 64, 120, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 	}
 }
