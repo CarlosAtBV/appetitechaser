@@ -1,7 +1,8 @@
 [enu default]
 
-TSP_GAMEMODE_DEFAULT = "Gaming Mode";
-TSP_GAMEMODE_HUNTERS = "Bounty Hunters";
+TSP_GAMEMODE_STANDARD = "Standard Mode";
+TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
+TSP_GAMEMODE_TRAINING = "Training Mode";
 
 TSP_SHOP_CANTINV = "This Shit Don't Exist";
 TSP_SHOP_NOMONEY = "Insufficient Funds";

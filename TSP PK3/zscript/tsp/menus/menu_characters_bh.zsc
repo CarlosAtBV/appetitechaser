@@ -1,9 +1,19 @@
 Class TSP_CharacterMenu_BH : GenericMenu
 {
-	const CSS_X = 0;
-	const CSS_Y = 32;
+	const CSS_X = 10;
+	const CSS_Y = 42;
+	
+	const CSS_ICONW = 56;
+	const CSS_ICONH = 31;
 	
 	int cm_curSelection;
+	
+	static const string gamemodeNames[] =
+	{
+		"$TSP_GAMEMODE_STANDARD",
+		"$TSP_GAMEMODE_HUNTERS",
+		"$TSP_GAMEMODE_TRAINING"
+	};
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
@@ -28,28 +38,43 @@ Class TSP_CharacterMenu_BH : GenericMenu
 	
 	override void Drawer()
 	{
-		TextureID charslot = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
 		bool side = false;
 		int dd_it = 0;
+		
+		int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(StringTable.Localize(gamemodeNames[gamemode]))/2, 4, gamemodeNames[gamemode], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
+		TextureID warnlimt = TexMan.CheckForTexture("WARNLIMT",TexMan.Type_MiscPatch);
+		//screen.DrawTexture (warnlimt, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 200);
+		
+		TextureID dd_slotBG = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
+		
 		for(int v = 0;v<2;v++)
 		{
-			int xoff = 28*side;
+			int xoff = (CSS_ICONW/2)*side;
 			for(int i = 0;i<5;i++)
 			{
-				string text = "???";
-				if(dd_it<PlayerClasses.Size())
+				int xpos = CSS_X+((CSS_ICONW/2)+xoff+(CSS_ICONW*i));
+				int ypos = CSS_Y+(15+((CSS_ICONH+18)*v));
+				
+				TextureID charslot;
+				charslot = TexMan.CheckForTexture("MCWST01",TexMan.Type_MiscPatch);
+				/*if(dd_it<PlayerClasses.Size())
 				{
-					text = PlayerPawn.GetPrintableDisplayName(PlayerClasses[i].Type);
+					charslot = TexMan.CheckForTexture(PlayerPawn(GetDefaultByType(PlayerClasses[i].Type)).Portrait,TexMan.Type_MiscPatch);
 				}
-				screen.DrawTexture (charslot, true, CSS_X+(28+xoff+(56*i)), CSS_Y+(15+31*v), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
-				screen.DrawText(SmallFont, Font.CR_WHITE, CSS_X+(28+xoff+(56*i))-SmallFont.StringWidth(text)/2, CSS_Y+((15+31*v)-4), text, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				else
+				{
+					charslot = TexMan.CheckForTexture("unk_port",TexMan.Type_MiscPatch);
+				}*/
+				screen.DrawTexture (dd_slotBG, true, xpos, ypos, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
+				screen.DrawTexture (charslot, true, xpos, ypos, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
 				dd_it++;
 			}
 			side = !side;
 		}
 		
-		TextureID charicon = TexMan.CheckForTexture(PlayerPawn(GetDefaultByType(PlayerClasses[cm_curSelection].Type)).Portrait,TexMan.Type_MiscPatch);
-		screen.DrawTexture (charicon, true, -10, 100, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		//screen.DrawTexture (charicon, true, -10, 100, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 		Font dd_tinyfont = Font.FindFont("TinyFont");
 		string selectionName = PlayerPawn.GetPrintableDisplayName(PlayerClasses[cm_curSelection].Type);
@@ -57,10 +82,10 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		int c = selectionDesc.Count();
 		for (int g = 0; g < c; g++)
 		{
-			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 64, 120+32+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 64, 140+32+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
 		
-		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 64, 120, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 64, 140, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 	}
 }
