@@ -119,7 +119,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void GiveDefaultInventory()
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
-		pp_meleestart = CVar.GetCVar("tsp_fistsstart").GetBool();
+		pp_meleestart = CVar.GetCVar("tsp_fistsstart").GetBool()||CVar.GetCVar("tsp_meleesupreme").GetBool();
 		super.GiveDefaultInventory();
 		
 		if(pp_gamemode==1)
