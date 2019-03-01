@@ -2,6 +2,30 @@ Class TSP_CharacterMenu_BH : GenericMenu
 {
 	const CSS_X = 0;
 	const CSS_Y = 32;
+	
+	int cm_curSelection;
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Left:
+				cm_curSelection = 0;
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+			case MKEY_Right:
+				cm_curSelection = 1;
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+				
+			case MKEY_Enter:
+				S_Sound("menu/choose",CHAN_UI);
+				SetMenu("EpisodeMenu",cm_curSelection);
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
 	override void Drawer()
 	{
 		TextureID charslot = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
@@ -23,5 +47,17 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			}
 			side = !side;
 		}
+		
+		Font dd_tinyfont = Font.FindFont("TinyFont");
+		string selectionName = PlayerPawn.GetPrintableDisplayName(PlayerClasses[cm_curSelection].Type);
+		BrokenLines selectionDesc = dd_tinyfont.BreakLines(StringTable.Localize(TSP_PlayerPawn_ZSCBase(GetDefaultByType(PlayerClasses[cm_curSelection].Type)).pp_menudesc),320-4);
+		int c = selectionDesc.Count();
+		for (int g = 0; g < c; g++)
+		{
+			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 4, 120+32+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		}
+		
+		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 4, 120, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
 	}
 }

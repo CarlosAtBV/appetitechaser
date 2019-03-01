@@ -116,6 +116,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Actor pp_slingTarget;
 	
+	string pp_menuDesc;
+	Property DisplayDescription : pp_menuDesc;
+	
 	Default
 	{
 		DamageFactor "MagSlam", 0.0;

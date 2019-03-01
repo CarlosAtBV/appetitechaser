@@ -33,6 +33,8 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		+PLAYERPAWN.NOTHRUSTWHENINVUL
 		DamageFactor "Sling", 0.0;
 		//var int user_DProjTID;
+		
+		TSP_PlayerPawn_ZSCBase.DisplayDescription "$TSP_MEL_BIO";
 	}
 	
 	override void OnStandardLoadout()

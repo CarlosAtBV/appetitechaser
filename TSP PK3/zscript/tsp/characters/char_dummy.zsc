@@ -3,5 +3,6 @@ Class TSP_DummyPlayer : SpacePirate
 	Default
 	{
 		Player.DisplayName "Epic Mel";
+		TSP_PlayerPawn_ZSCBase.DisplayDescription "Melody Fortnite Crosswell is one mighty epic motherfucker. She has robot fingees and can make you squart across the room.";
 	}
 }
