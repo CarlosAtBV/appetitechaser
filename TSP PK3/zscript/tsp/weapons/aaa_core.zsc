@@ -103,9 +103,13 @@ Class TSP_EnemyHandler_SlamDunk : Thinker
 			}
 			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1000);
 			owner.DamageMobj(inflictor,inflictor,200,'Melee',DMG_THRUSTLESS);
-			owner.A_PlaySound("mag/fissure/hit",CHAN_5);
-			owner.A_QuakeEx(1,1,1,4,0,192);
-			Destroy();
+			if(owner!=null)
+			{
+				owner.A_PlaySound("mag/fissure/hit",CHAN_5);
+				owner.A_QuakeEx(1,1,1,4,0,192);
+				owner.A_Explode(64,64);
+				Destroy();
+			}
 		}
 		
 		oldZ = owner.pos.z;
