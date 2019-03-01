@@ -27,6 +27,8 @@ Class TSP_StatusScreen : StatusScreen
 	bool ss_missionFailed;
 	string ss_missionStatus;
 	
+	bool doEnding;
+	
 	override void initStats ()
 	{
 		int gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
