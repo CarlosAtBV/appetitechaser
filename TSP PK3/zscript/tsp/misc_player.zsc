@@ -116,6 +116,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Actor pp_slingTarget;
 	
+	Default
+	{
+		DamageFactor "MagSlam", 0.0;
+	}
+	
 	override void GiveDefaultInventory()
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
