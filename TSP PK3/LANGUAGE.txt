@@ -15,7 +15,6 @@ QUITMSG11 = "\cnThere is no \ckknowledge\cn that is not \c-power\cn.";
 QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSPGREEN]The Space Pirate\cn!";
 QUITMSG13 = "\cnIf there is the slimmest chance,\nno matter how small,\nyou have to go for it.\nNever give up hope.\nThat's what it means to be an outlaw.";
 QUITMSG14 = "\cnWhaddya doing in our mod? Get outta here.\n\n...\c-GET OUTTA HERE!";
-QUITMSG15 = "\cnGonna cry? \ckPiss\cn your pants, maybe?\n\n...\cnMaybe \cgshit \cnand \cccum?";
 DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
 TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";
 TXT_NO = "\cc[\c-\cgNo\c-\cc]\c-";
