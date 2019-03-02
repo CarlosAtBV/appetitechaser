@@ -277,10 +277,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		pp_traitMode = player.cmd.buttons & BT_USER1;
 		
-		if(!(player.oldbuttons & BT_USER1))
+		/*if(!(player.oldbuttons & BT_USER1))
 		{
 			theZoop = null;
-		}
+		}*/
+		theZoop = null;
 		
 		if(pp_traitMode)
 		{
@@ -319,11 +320,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void Tick ()
 	{
-		if(myZooper==null)
-		{
-			myZooper = new("TSP_EnemyTargeter");
-			myZooper.father = self;
-		}
 		oldVelZ = vel.z;
 		
 		Super.Tick();
@@ -382,6 +378,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		
 		searchForZoopTarget();
+		if(myZooper==null)
+		{
+			myZooper = new("TSP_EnemyTargeter");
+			myZooper.father = self;
+		}
 		
 		if(pp_sit!=null)
 		{

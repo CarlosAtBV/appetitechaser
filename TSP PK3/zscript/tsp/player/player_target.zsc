@@ -21,10 +21,11 @@ Class TSP_EnemyTargeter : Thinker
 			thefeller.Translation = defaultShit.Translation;
 			thefeller.bBRIGHT = defaultShit.bBRIGHT;
 		}
+		
 		if(newfeller!=null)
 		{
 			thefeller = newfeller;
-			thefeller.Translation = Translation.GetID('TSP_TargetYea');
+			newfeller.Translation = Translation.GetID('TSP_TargetYea');
 		}
 	}
 }
