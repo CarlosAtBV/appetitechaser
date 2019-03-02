@@ -1,0 +1,30 @@
+Class TSP_EnemyTargeter : Thinker
+{
+	TSP_PlayerPawn_ZSCBase father;
+	Actor thefeller;
+	
+	override void Tick()
+	{
+		super.Tick();
+		if(father==null) return;
+		if(thefeller!=father.thezoop)
+		{
+			SwitchTarget(father.thezoop);
+		}
+	}
+	
+	void SwitchTarget(Actor newfeller)
+	{
+		if(thefeller!=null)
+		{
+			let defaultShit = GetDefaultByType(thefeller.GetClass());
+			thefeller.Translation = defaultShit.Translation;
+			thefeller.bBRIGHT = defaultShit.bBRIGHT;
+		}
+		if(newfeller!=null)
+		{
+			thefeller = newfeller;
+			thefeller.Translation = Translation.GetID('TSP_TargetYea');
+		}
+	}
+}

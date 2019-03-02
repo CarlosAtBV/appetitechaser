@@ -271,6 +271,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	}
 	
 	Actor theZoop;
+	TSP_EnemyTargeter myZooper;
 	
 	void searchForZoopTarget()
 	{
@@ -318,6 +319,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void Tick ()
 	{
+		if(myZooper==null)
+		{
+			myZooper = new("TSP_EnemyTargeter");
+			myZooper.father = self;
+		}
 		oldVelZ = vel.z;
 		
 		Super.Tick();

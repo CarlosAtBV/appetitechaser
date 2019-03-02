@@ -10,3 +10,4 @@ server bool tsp_supersecret = false;
 // [Py] gamemode stuff
 
 server noarchive int tsp_gamemode = 0;
+server noarchive bool tsp_debug = false;

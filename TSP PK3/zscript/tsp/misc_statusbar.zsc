@@ -13,6 +13,8 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	double mTraitAlpha;
 	
+	bool isDebug;
+	
 	static const string mUpgBar[] =
 	{
 		"HUD_UPGE","HUD_UPG1","HUD_UPG2","HUD_UPGF"
@@ -46,6 +48,11 @@ Class TSP_StatusBar : BaseStatusBar
 		tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
 		
 		mTraitAlpha = mTraitAlpha + (tsp_player.pp_traitMode - mTraitAlpha)/4;
+		
+		if(level.maptime%35==0)
+		{
+			isDebug = CVar.GetCVar("tsp_debug",players[consoleplayer]).GetBool();
+		}
 	}
 	
 	const HUDLEFT_X = 7;
@@ -210,6 +217,16 @@ Class TSP_StatusBar : BaseStatusBar
 				Centering = true;
 				DrawString(mSmallFont, playerObj.pp_notification, (0,-36), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW|DI_SCREEN_CENTER_BOTTOM, Font.CR_GREEN);
 				Centering = false;
+			}
+			
+			if(isDebug)
+			{
+				string targetName = "N/A";
+				if(playerObj.theZoop!=null)
+				{
+					targetName = playerobj.theZoop.GetClassName();
+				}
+				DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
 			}
 		}
 	}
