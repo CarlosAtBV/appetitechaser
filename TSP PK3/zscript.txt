@@ -204,11 +204,19 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDamaged(WorldEvent e)
 	{
+		if(!e.Thing.CountInv("TSP_EnemyHandler_IsSupered")) return;
+		
 		switch(gamemode)
 		{
 			default:
-				int fuckdamage = e.Damage;
-				while(fuckdamage>0)
+				int fuckdamage = e.Damage/5;
+				while(fuckdamage>=5)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					fuckdamage-=5;
+				}
+				while(fuckdamage>=1)
 				{
 					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
 					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
