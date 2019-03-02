@@ -88,6 +88,7 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		
 		Font dd_tinyfont = Font.FindFont("TinyFont");
 		string selectionName = PlayerPawn.GetPrintableDisplayName(PlayerClasses[cm_curSelection].Type);
+		string selectionTitle = TSP_PlayerPawn_ZSCBase(curChar).pp_menutitle;
 		BrokenLines selectionDesc = dd_tinyfont.BreakLines(StringTable.Localize(TSP_PlayerPawn_ZSCBase(curChar).pp_menudesc),320-128);
 		int c = selectionDesc.Count();
 		for (int g = 0; g < c; g++)
@@ -95,7 +96,8 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 16, 16+BigFont.GetHeight()+8+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		}
 		
-		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 16, 16, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 16, 10, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen1"), 16, 29, selectionTitle, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 	}
 }
