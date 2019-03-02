@@ -7,6 +7,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double dbobpitch;
 	double dbobpitchreal;
 	
+	double dboboldangle;
+	
 	ui int lastTic;
 	
 	void TSPBobStuff()
@@ -36,15 +38,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		//dbobzf = clamp(dbobzf,0,666);
 		dbobz = dbobz + ( dbobzf  - dbobz )/6;
 		
-		dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 3;
+		dboboldangle = dbobangle;
+		dbobangle = DeltaAngle( angle,dbobangle );
+		/*dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 3;
 		dbobpitch = dbobpitch + DeltaAngle( dbobpitch,-pitch ) / 3;
 		dbobanglereal = dbobanglereal + DeltaAngle( dbobanglereal,dbobangle ) / 3;
-		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 3;
+		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 3;*/
 	}
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
-		
 		//return (random(0,24),random(0,24));
 		
 		Vector2 p1, p2, r;
@@ -66,14 +69,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		double BobSpeed = (weapon.BobSpeed * 128);
 		double Rangex = weapon.BobRangeX;
 		double Rangey = weapon.BobRangeY;
+			
+		double angleDiff = DeltaAngle( dboboldangle,dbobangle ) * ticfrac;//*ticfrac;
 
 		for (int i = 0; i < 2; i++)
 		{
 			// Bob the weapon based on movement speed. ([SP] And user's bob speed setting)
 			double angle = (BobSpeed * player.GetWBobSpeed() * 35 /	TICRATE*(level.time - 1 + i)) * (360. / 8192.);
 			Console.Printf(""..ticfrac);
-			
-			double angleDiff = dbobanglereal+(DeltaAngle(dbobanglereal,dbobangle)*ticfrac);
 
 			// [RH] Smooth transitions between bobbing and not-bobbing frames.
 			// This also fixes the bug where you can "stick" a weapon off-center by
