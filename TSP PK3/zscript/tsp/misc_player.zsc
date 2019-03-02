@@ -272,6 +272,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Actor theZoop;
 	TSP_EnemyTargeter myZooper;
+	Actor pp_slingStore;
 	
 	void searchForZoopTarget()
 	{
@@ -285,23 +286,16 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		if(pp_traitMode)
 		{
-			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
-			
-			Actor mo;
-			
-			while (mo = Actor(MonsterFinder.Next()))
+			FLineTraceData traceStuff;
+			//Console.Printf(""..angley);
+			LineTrace(angle, 512, pitch, 0, 41.0, 0.0, 0.0, traceStuff);
+			if(traceStuff.HitActor!=null)
 			{
-				double pitchTo = pitch-atan2(pos.z - mo.pos.z,Distance2D(mo));
-				if(mo!=self && (Distance3D(mo)-mo.radius<512) && mo.Health>0
-				&& mo.bShootable && abs(DeltaAngle(AngleTo(mo),angle))<15 && abs(pitchTo)<15)
+				let thisFucker = traceStuff.HitActor;
+				if(thisFucker.bShootable&&thisFucker.health>0)
 				{
-					if(!theZoop||Distance3D(mo)<Distance3D(theZoop))
-					{
-						if(CheckSight(mo))
-						{
-							theZoop = mo;
-						}
-					}
+					theZoop = thisFucker;
+					myZooper.SwitchTarget(thisFucker);
 				}
 			}
 		}

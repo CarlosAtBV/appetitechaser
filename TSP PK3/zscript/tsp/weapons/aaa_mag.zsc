@@ -209,12 +209,19 @@ Extend Class TSP_Weapon_Core
 	//
 	//==========================================================================
 	
+		action void A_TSP_StoreSlingTarget()
+		{
+			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingStore = TSP_PlayerPawn_ZSCBase(invoker.owner).theZoop;
+		}
+	
 		action void A_TSP_Sling(int range = 512)
 		{
-			Actor theZoop = TSP_PlayerPawn_ZSCBase(invoker.owner).theZoop;
+			Actor theZoop = TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingStore;
+			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingStore = null;
 			if(theZoop!=null)
 			{
 				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingTarget = theZoop;
+				
 				double mineAngle = invoker.owner.AngleTo(theZoop);
 				//LineTrace(AngleTo(mo), 512, -atan2(pos.z+24 - mo.pos.z,Distance2D(mo)), 0, 24.0, 0.0, 0.0, traceStuff);
 				double minePitch = atan2(invoker.owner.pos.z - theZoop.pos.z,invoker.owner.Distance2D(theZoop));
