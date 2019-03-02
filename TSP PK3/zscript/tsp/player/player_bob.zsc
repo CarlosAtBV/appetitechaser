@@ -7,6 +7,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double dbobpitch;
 	double dbobpitchreal;
 	
+	void TSPBobTime()
+	{
+	}
+	
 	override Vector2 BobWeapon (double ticfrac)
 	{
 		if(player.WeaponState & WF_WEAPONREADY)
@@ -34,10 +38,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		//dbobzf = clamp(dbobzf,0,666);
 		dbobz = dbobz + ( dbobzf  - dbobz )/6;
 		
-		dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 6;
-		dbobanglereal = dbobanglereal + DeltaAngle( dbobanglereal,dbobangle ) / 6;
-		dbobpitch = dbobpitch + DeltaAngle( dbobpitch,-pitch ) / 6;
-		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 6;
+		Console.Printf(""..ticfrac);
+		
+		dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 3;
+		dbobanglereal = dbobanglereal + DeltaAngle( dbobanglereal,dbobangle ) / 3;
+		dbobpitch = dbobpitch + DeltaAngle( dbobpitch,-pitch ) / 3;
+		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 3;
 		
 		//Console.Printf(""..dbobangle-angle);
 		

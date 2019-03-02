@@ -117,7 +117,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Actor pp_slingTarget;
 	
 	string pp_menuDesc;
+	string pp_menuTitle;
 	Property DisplayDescription : pp_menuDesc;
+	Property DisplayTitle : pp_menuTitle;
 	
 	Default
 	{

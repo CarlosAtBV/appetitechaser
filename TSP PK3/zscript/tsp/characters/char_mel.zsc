@@ -25,7 +25,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.SoundClass "Melody";
 		Player.DisplayName "$MELNAMECS";
 		Player.Face "MCW";
-		Player.Portrait "Mel_Port";
+		Player.Portrait "MCWST01";
 		Player.WeaponSlot 1, "MelMelee";
 		Player.WeaponSlot 2, "MelPistol", "MelPistolA";
 		Species "Player";
@@ -34,6 +34,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		DamageFactor "Sling", 0.0;
 		//var int user_DProjTID;
 		
+		TSP_PlayerPawn_ZSCBase.DisplayTitle "Space Pirate";
 		TSP_PlayerPawn_ZSCBase.DisplayDescription "$TSP_MEL_BIO";
 	}
 	
