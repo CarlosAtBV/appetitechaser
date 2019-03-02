@@ -628,7 +628,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 3 A_PlaySound("*strongmelee")
     ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
     MK3F ABCD 1
-    MK3F E 1 A_TSP_Melee(18+2+2+2,90,"StrongMeleePuff")/*A_CustomPunch(18,0,0,"StrongMeleePuff",90)
+    MK3F E 3 A_TSP_Melee(18+2+2+2,90,"StrongMeleePuff")/*A_CustomPunch(18,0,0,"StrongMeleePuff",90)
     MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
     MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
     MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)*/
@@ -641,7 +641,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
     TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
     TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
-    TNT1 A 5 A_WeaponReady
+    TNT1 A 5
     Goto AfterMelee
 
 // MELEE COOLDOWN
