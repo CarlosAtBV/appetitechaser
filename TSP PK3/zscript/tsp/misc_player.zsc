@@ -121,6 +121,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Property DisplayDescription : pp_menuDesc;
 	Property DisplayTitle : pp_menuTitle;
 	
+	int pp_freezeMe;
+	
 	Default
 	{
 		DamageFactor "MagSlam", 0.0;
@@ -316,12 +318,21 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		oldVelZ = vel.z;
 		
-		Super.Tick();
-		
 		if (!player || !player.mo || player.mo != self)
 		{
+			Super.Tick();
 			return;
 		}
+		
+		if(pp_freezeMe>0)
+		{
+			pp_freezeMe--;
+			bNoGravity = true;
+		}
+		bNoDamage = (pp_freezeMe>0);
+		bDontThrust = (pp_freezeMe>0);
+		
+		Super.Tick();
 		
 		if(health>0)
 		{
@@ -366,6 +377,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 			else if(Distance3D(pp_slingTarget)-pp_slingTarget.radius<64)
 			{
+				if(pp_SlingTarget.CountInv("TSP_EnemyHandler_IsSupered"))
+				{
+					pp_freezeMe = pp_SlingTarget.CountInv("TSP_EnemyHandler_IsSupered")/2;
+				}
 				pp_slingTarget=null;
 				A_Stop();
 			}
