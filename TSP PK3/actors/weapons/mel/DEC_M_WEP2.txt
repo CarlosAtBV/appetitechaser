@@ -50,7 +50,7 @@ ACTOR MelPistol : TSPMelLightWeapon
     TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121)
     TNT1 A 0 A_PlaySound("919m/select", 5)
     TNT1 A 0 SetPlayerProperty(0,1,2)
-	121U AABBCDEFGHI 1
+	121U ABCDEFGHIJK 1
     121G A 1
   SelectLoop:
     121G A 0 A_Raise
@@ -61,7 +61,7 @@ ACTOR MelPistol : TSPMelLightWeapon
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 0 A_PlaySound("919m/deselect", 5)
 	121G A 1
-    121U JDCBBAA 1
+	121U IHGFEDC 1
   DeselectLoop:
     TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
     TNT1 A 1 A_Lower
