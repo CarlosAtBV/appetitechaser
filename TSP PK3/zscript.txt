@@ -202,6 +202,24 @@ Class TSP_EventHandler : EventHandler
 		}
 	}
 	
+	override void WorldThingDamaged(WorldEvent e)
+	{
+		switch(gamemode)
+		{
+			default:
+				int fuckdamage = e.Damage;
+				while(fuckdamage>0)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					fuckdamage--;
+				}
+				break;
+			case TSP_GM_HUNTERS:
+				break;
+		}
+	}
+	
 	override void WorldThingDied(WorldEvent e)
 	{
 		switch(gamemode)
