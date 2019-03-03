@@ -7,7 +7,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double dbobpitch;
 	double dbobpitchreal;
 	
-	double dboboldangle;
+	double dbobangle_old;
+	
+	double d_swayAngle;
 	
 	ui int lastTic;
 	
@@ -38,11 +40,26 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		//dbobzf = clamp(dbobzf,0,666);
 		dbobz = dbobz + ( dbobzf  - dbobz )/6;
 		
-		dbobangle = dbobangle + DeltaAngle( dbobangle,angle ) / 3;
-		dbobpitch = dbobpitch + DeltaAngle( dbobpitch,-pitch ) / 3;
-		dbobanglereal = dbobanglereal + DeltaAngle( dbobanglereal,dbobangle ) / 3;
-		dbobpitchreal = dbobpitchreal + DeltaAngle( dbobpitchreal,dbobpitch ) / 3;
+		dbobangle_old = dbobangle;
+		dbobangle = angle;
+		
+		dbobangle = angle + DeltaAngle( dbobangle,angle ) / 6;
 	}
+	
+	//lerp function
+	double lerp(double start,double finish,double progress)
+	{
+		//progress 0.0 is start, 1.0 is finish.
+		return start + (finish - start) * progress;
+
+	}
+
+	double curx; //current coords
+	double cury;
+	double desx; //desired coords
+	double desy;
+
+	//ticprog is like.. how far it is throug hthe tic
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
@@ -65,6 +82,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		double BobSpeed = (weapon.BobSpeed * 128);
 		double Rangex = weapon.BobRangeX;
 		double Rangey = weapon.BobRangeY;
+		
+		//if we're fully through the tic, update coordinates
+		
+		//the final position to set is
+		//lerped between last and updated coordinates
+		double swayX = lerp(dbobangle_old,dbobangle,ticfrac);
+		//int finaly = lerp(curx,desx,ticfrac);
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -137,7 +161,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			}
 			r.Y += dbobz;
 			
-			//r.X = r.X;
+			r.X = r.X+swayX;
 			//r.Y = r.Y;
 			if (i == 0) p1 = r; else p2 = r;
 		}
