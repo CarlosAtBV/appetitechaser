@@ -46,20 +46,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		dbobangle = angle + DeltaAngle( dbobangle,angle ) / 6;
 	}
 	
-	//lerp function
+	//lerp function by my homie JetPlane the epic one
 	double lerp(double start,double finish,double progress)
 	{
 		//progress 0.0 is start, 1.0 is finish.
 		return start + (finish - start) * progress;
 
 	}
-
-	double curx; //current coords
-	double cury;
-	double desx; //desired coords
-	double desy;
-
-	//ticprog is like.. how far it is throug hthe tic
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
