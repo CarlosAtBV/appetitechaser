@@ -59,6 +59,8 @@ nikki/firea2 121AFR2
 nikki/firea3 121AFR3
 $volume nikki/firea 0.9
 
+nikki/fireb "sounds/placeholder/tranq_fire1.wav"
+
 //MA919m Pistol, 919m Gold, 917 Pistol
 $random 919m/fire { 919m/fire1 919m/fire2 919m/fire3 }
 919m/fire1 PSTFR1

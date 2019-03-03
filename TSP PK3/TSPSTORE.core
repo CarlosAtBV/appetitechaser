@@ -52,7 +52,7 @@ page
 		{
 			price 50;
 			mod_take "MelPistol";
-			mod_give "BFG9000";
+			mod_give "MelPistolB";
 			desc "$TSP_SHOP_DNMODB";
 		}
 	}
