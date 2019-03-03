@@ -180,8 +180,8 @@ MelPistolBTag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \cuWHISPER\c-\cc]\c-";
 
 //SUZUKA
 
-MelSMGPickup = "\cc[\c-\ctOS06 Suzuka\c-\cc]\c- \cc[\c-\cjClass:\c- \ctMulti-Purpose SMG\c-\cj,\c- \cjSlot\c- \ct3\c-\cc]\c-";
-MelSMGTag = "\cc[\c-\ctOS06 Suzuka\c-\cc]\c-";
+MelSMGPickup = "\cc[\c-\cxOS06 Suzuka\c-\cc]\c- \cc[\c-\cjClass:\c- \cxMulti-Purpose SMG\c-\cj,\c- \cjSlot\c- \ct3\c-\cc]\c-";
+MelSMGTag = "\cc[\c-\cxOS06 Suzuka\c-\cc]\c-";
 
 RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";

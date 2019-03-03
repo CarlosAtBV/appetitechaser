@@ -1,6 +1,6 @@
 //===========================================================================
 //
-// 0S06 Multi-Purpose SMG "Suzuka"
+// OS06 Multi-Purpose SMG "Suzuka"
 //
 // by Cardboard Marty
 // Sprites by Cardboard Marty

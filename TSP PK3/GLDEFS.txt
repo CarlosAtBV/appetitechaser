@@ -4,7 +4,6 @@
 // TRAIT
 
 // DARLING NIKKI
-
 BrightMap Sprite 121FA0
 {
   map "brightmaps/weapons/Mel/Darling Nikki/bm121FA.png"
@@ -14,6 +13,13 @@ BrightMap Sprite 121FA0
 BrightMap Sprite 121FB0
 {
   map "brightmaps/weapons/Mel/Darling Nikki/bm121FB.png"
+  DisableFullBright
+}
+
+// SUZUKA
+BrightMap Sprite 131GA0
+{
+  map "brightmaps/weapons/Mel/Suzuka/bm131GA.png"
   DisableFullBright
 }
 
