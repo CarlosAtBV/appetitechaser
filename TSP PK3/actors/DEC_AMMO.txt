@@ -51,3 +51,26 @@ ACTOR TSP_ChexClipBoxReplacer : RandomSpawner replaces MiniZorchPack
 {
 	DropItem "TSPPistolAmmoBig"
 }
+
+//============
+// SMG Ammo
+//============
+ACTOR TSPSMGAmmo : Ammo
+{
+	+IGNORESKILL
+	Inventory.Amount 16
+	Inventory.MaxAmount 128
+	Ammo.BackpackAmount 32
+	Ammo.BackpackMaxAmount 256
+	Ammo.DropAmount 16
+	//Inventory.Icon "919AA0"
+	Inventory.PickupMessage "Picked up an SMG magazine. [\ct+16 SMG Ammo\c-]"
+	Inventory.PickupSound "919m/magout"
+	Tag "SMG Ammo"
+	States
+	{
+		Spawn:
+		919F A -1
+		Stop
+	}
+}

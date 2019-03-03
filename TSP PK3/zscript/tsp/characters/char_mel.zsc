@@ -28,6 +28,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.Portrait "MCWST01";
 		Player.WeaponSlot 1, "MelMelee";
 		Player.WeaponSlot 2, "MelPistol", "MelPistolA";
+		Player.WeaponSlot 3, "MelSMG";
 		Species "Player";
 		+THRUSPECIES
 		+PLAYERPAWN.NOTHRUSTWHENINVUL

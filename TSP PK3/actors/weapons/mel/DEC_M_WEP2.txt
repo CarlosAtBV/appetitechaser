@@ -5,6 +5,7 @@
 // by Cardboard Marty
 // Sprites by Cardboard Marty
 // Additional sprites by Jetplane (Flashes)
+// Equip animations by DrPyspy
 // Model Bases:
 // - 2019 Detective Special: ported by Programmer Network
 //   * Model by Toasty Fresh 

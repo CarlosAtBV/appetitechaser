@@ -174,10 +174,14 @@ MelMeleeTag = "\cc[\c-\c[Mel]Bare Knuckle\c-\cc]\c-";
 MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 MelPistolTag = "\cc[\c-\cyDarling Nikki\c-\cc]\c-";
 
-//DARLING NIKKI (SPITFIRE)
+//DARLING NIKKI (MODS)
 MelPistolATag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \ciSPITFIRE\c-\cc]\c-";
 MelPistolBTag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \cuWHISPER\c-\cc]\c-";
 
+//SUZUKA
+
+MelSMGPickup = "\cc[\c-\ctOS06 Suzuka\c-\cc]\c- \cc[\c-\cjClass:\c- \ctMulti-Purpose SMG\c-\cj,\c- \cjSlot\c- \ct3\c-\cc]\c-";
+MelSMGTag = "\cc[\c-\ctOS06 Suzuka\c-\cc]\c-";
 
 RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
 GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
