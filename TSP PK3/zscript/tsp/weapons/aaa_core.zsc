@@ -140,9 +140,23 @@ Class TSP_EnemyHandler_OnHit : Thinker
 	{
 		if(level.frozen) return;
 		
+		if(owner==null)
+		{
+			if(fx)
+			{
+				fx.Destroy();
+			}
+			Destroy();
+			return;
+		}
+		
 		if(owner.health<1)
 		{
-			owner.bNoGravity = false;
+			if(owner!=null)
+			{
+				let defaultFucker = GetDefaultByType(owner.GetClass());
+				owner.bNoGravity = defaultFucker.bNoGravity;
+			}
 			if(fx)
 			{
 				fx.Destroy();
@@ -165,11 +179,12 @@ Class TSP_EnemyHandler_OnHit : Thinker
 		}
 		else
 		{
-			owner.bNoGravity = false;
 			owner.bNoPain = false;
 			if(fx) fx.Destroy();
 			if(owner.vel.z==oldZ)
 			{
+				let defaultFucker = GetDefaultByType(owner.GetClass());
+				owner.bNoGravity = defaultFucker.bNoGravity;
 				owner.SetStateLabel("See");
 				Destroy();
 				return;
