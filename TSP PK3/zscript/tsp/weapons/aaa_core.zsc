@@ -396,7 +396,7 @@ Class TSP_Weapon_Core : DoomWeapon
 				 case 2: fbDamage *= (invoker.tspw_powermult2); break;
 				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
 			}
-			Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
+			//Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
 			if(invoker.tspw_clipsize>0 && invoker.tspw_curclip > 0)
 			{
 				invoker.tspw_curclip--;
