@@ -1,7 +1,7 @@
 Extend Class TSP_PlayerPawn_ZSCBase
 {
-	double dbobfactor;
-	double dbobz;
+	double d_bobFactor;
+	double d_curBobZ;
 	
 	double d_xOff;
 	double d_yOff;
@@ -17,16 +17,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	{
 		if(player.WeaponState & WF_WEAPONREADY)
 		{
-			if(dbobfactor<1.0)
+			if(d_bobFactor<1.0)
 			{
-				dbobfactor += 0.01;
+				d_bobFactor += 0.01;
 			}
 		}
 		else
 		{
-			if(dbobfactor>0.0)
+			if(d_bobFactor>0.0)
 			{
-				dbobfactor -= 0.01;
+				d_bobFactor -= 0.01;
 			}
 		}
 		
@@ -35,9 +35,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			dlandz = player.jumptics;
 		}
-		
-		double dbobzf = ((pos.z-prev.z)+dlandz);
-		dbobz = dbobz + ( dbobzf  - dbobz )/6;
+		double dbobzf = ((pos.z-prev.z)+dlandz*4);
+		d_curBobZ = d_curBobZ + ( dbobzf  - d_curBobZ )/6;
 		
 		d_lastAngle = d_curAngle;
 		d_curAngle = d_curAngle + DeltaAngle( d_curAngle,angle )/6;
@@ -45,7 +44,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		d_curPitch = d_curPitch + DeltaAngle( d_curPitch,pitch )/6;
 		
 		d_xOff = d_xOff + ((-GetPlayerInput(MODINPUT_YAW)/128)-d_xOff)/6;
-		d_yOff = d_yOff + ((GetPlayerInput(MODINPUT_PITCH)/128)-d_yOff)/6;
+		d_yOff = d_yOff + ((-GetPlayerInput(MODINPUT_PITCH)/128)-d_yOff)/6;
 	}
 	
 	//lerp function by my homie JetPlane the epic one
@@ -85,7 +84,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		//the final position to set is
 		//lerped between last and updated coordinates
 		swayX = lerp(swayX,d_xOff,ticfrac);
-		swayY = lerp(swayY,d_yOff,ticfrac);
+		swayY = lerp(swayY,d_yOff+d_curBobZ,ticfrac);
 		//int finaly = lerp(curx,desx,ticfrac);
 
 		for (int i = 0; i < 2; i++)
@@ -119,8 +118,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if (curbob != 0)
 			{
 				//[SP] Added in decorate player.viewbob checks
-				double bobx = (player.bob * Rangex * ViewBob)*dbobfactor;
-				double boby = (player.bob * Rangey * ViewBob)*dbobfactor;
+				double bobx = (player.bob * Rangex * ViewBob)*d_bobFactor;
+				double boby = (player.bob * Rangey * ViewBob)*d_bobFactor;
 				switch (bobstyle)
 				{
 				case Bob_Normal:
@@ -157,10 +156,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			{
 				r = (0, 0);
 			}
-			r.Y += dbobz;
 			
 			r.X = r.X+swayX;
-			r.Y = r.Y-swayY;
+			r.Y = r.Y+clamp(swayY,-4,44);
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		return p1 * (1. - ticfrac) + p2 * ticfrac;
