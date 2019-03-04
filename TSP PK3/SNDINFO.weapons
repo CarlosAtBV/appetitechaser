@@ -106,6 +106,43 @@ $random 917/fire { 917/fire1 917/fire2 917/fire3 }
 917/jam    7psjam
 917/clear  7psclear
 
+// Slot 3: OS06 SUZUKA
+// SOUND CREDITS/SOURCES: 
+// [FIRING]
+// - Left 4 Dead
+// - DOOM (2016)
+// - Alien vs Predator 2
+// [FIRING (GRENADE)]
+// - The Chronicles of Riddick: Assault on Dark Athena
+// - Left 4 Dead
+// - DOOM (2016)
+// - Alien vs Predator 2
+// [FIRING (SHOTGUN)]
+// - Left 4 Dead
+// - DOOM (2016)
+// - Dying Light: Enhanced Edition
+// [RELOADING, COCKING]
+// - Super Monday Night Combat
+// - Left 4 Dead
+// - Dying Light: Enhanced Edition
+// - Halo Reach
+// - The Chronicles of Riddick: Assault on Dark Athena
+
+$random suzuka/fire { suzuka/fire1 suzuka/fire2 suzuka/fire3 }
+suzuka/fire1 131FR1
+suzuka/fire2 131FR2
+suzuka/fire3 131FR3
+$random suzuka/firea { suzuka/firea1 suzuka/firea2 }
+suzuka/firea1 131SFR1
+suzuka/firea2 131SFR2
+suzuka/scock 131SCOCK
+
+suzuka/grenade 131GFR
+suzuka/eject 131RLD1
+suzuka/load 131RLD2
+suzuka/rcock 131RCOCK
+suzuka/empty 131EMPTY
+
 //The Toolbox
 toolbox/equip RLNGUP2
 toolbox/deequip RLNGDWN2
