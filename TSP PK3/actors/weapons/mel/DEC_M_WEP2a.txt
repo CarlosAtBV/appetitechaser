@@ -3,15 +3,7 @@
 // Darling Nikki (Spitfire)
 //
 // by Cardboard Marty
-// Sprites by Cardboard Marty
-// Additional sprites by Jetplane (Flashes)
-// Model Bases:
-// - 2019 Detective Special: ported by Programmer Network
-//   * Model by Toasty Fresh 
-// - Atlas 45 (Custom) and Atlas 45 (Default): ported by Kalash
-//   * From "Call of Duty: Advanced Warfare"
-// - AE4 HMG Short: ported by Kalash
-//   * From "Call of Duty: Advanced Warfare"
+// See DEC_M_WEP2.txt for full credits
 //
 //===========================================================================
 

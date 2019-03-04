@@ -59,9 +59,9 @@ ACTOR TSPSMGAmmo : Ammo
 {
 	+IGNORESKILL
 	Inventory.Amount 16
-	Inventory.MaxAmount 192
+	Inventory.MaxAmount 200
 	Ammo.BackpackAmount 32
-	Ammo.BackpackMaxAmount 384
+	Ammo.BackpackMaxAmount 400
 	Ammo.DropAmount 16
 	//Inventory.Icon "919AA0"
 	Inventory.PickupMessage "Picked up an SMG magazine. [\ct+16 SMG Ammo\c-]"

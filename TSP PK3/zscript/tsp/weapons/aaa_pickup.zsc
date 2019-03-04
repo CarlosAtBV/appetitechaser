@@ -117,3 +117,33 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 			Stop;
 	}
 }
+
+Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'SpacePirate':
+				thingGiven = GiveTSPWeapon(toucher,"MelSMG",16);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		SpacePirate:
+			121P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}

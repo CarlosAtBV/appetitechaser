@@ -40,7 +40,6 @@ ACTOR MelSMG : TSPMelLightWeapon
   +AMMO_OPTIONAL
   +NOEXTREMEDEATH
   +WEAPON.NoAlert
-  +WEAPON.CHEATNOTWEAPON
   States
   {
   Spawn:
@@ -70,5 +69,29 @@ ACTOR MelSMG : TSPMelLightWeapon
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     131G A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
     LOOP
+  Fire:
+	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+    TNT1 A 0 A_PlaySound("suzuka/fire", 5)
+	TNT1 A 0 A_SetPitch(pitch - 0.3)
+	TNT1 A 0 A_SetAngle(angle + (frandom(-0.1,0.1)))
+	131G A 1 BRIGHT A_Light2
+	131G A 1
+	TNT1 A 0 A_TSP_FireBullets(2,2,-1,9,"BulletPuff",1)
+	TNT1 A 0 A_Refire("Fire")
+	Goto Ready
+  Empty:
+    131G A 10 A_PlaySound("suzuka/empty", 6)
+	"----" A 0 A_TSP_CheckReload()
+    Goto Ready
+  Reload:
+    131G A 10
+	TNT1 A 0 A_PlaySound("suzuka/eject", 5)
+	131G A 25
+   	TNT1 A 0 A_TSP_ReloadAmmo
+	TNT1 A 0 A_PlaySound("suzuka/load", 5)
+	131G A 15
+	TNT1 A 0 A_PlaySound("suzuka/rcock", 6)
+	131G A 5
+	Goto Ready
   }
 }

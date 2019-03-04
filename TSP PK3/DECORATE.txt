@@ -2,7 +2,6 @@
 // GET THESE NON-CANON WEAPONS OUTTA HERE
 
 ACTOR Nothing0 replaces Chainsaw {}
-ACTOR Nothing1 replaces Shotgun {}
 ACTOR Nothing2 replaces SuperShotgun {}
 ACTOR Nothing3 replaces Chaingun {}
 ACTOR Nothing4 replaces RocketLauncher {}
