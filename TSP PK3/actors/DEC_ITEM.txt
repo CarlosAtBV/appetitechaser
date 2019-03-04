@@ -234,7 +234,7 @@ ACTOR TSPMegasphere : Megasphere replaces Megasphere
     SPOT ABCDCB 3 Bright
     Loop
   Pickup:
-    TNT1 A 0 A_GiveInventory("TSPMegaSphereBlueArmor", 1)
+	TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 50)
     TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
     //TNT1 A 0 A_GiveInventory("TSPBlueArmorDamage")
     //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
