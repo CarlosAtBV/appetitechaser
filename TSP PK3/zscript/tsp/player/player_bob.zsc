@@ -9,9 +9,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	double dbobangle_old;
 	
-	double d_swayAngle;
 	double d_curAngle;
 	double d_lastAngle;
+	double d_curPitch;
+	double d_lastPitch;
 	
 	ui int lastTic;
 	
@@ -39,14 +40,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		
 		double dbobzf = ((pos.z-prev.z)+dlandz);
-		//dbobzf = clamp(dbobzf,0,666);
 		dbobz = dbobz + ( dbobzf  - dbobz )/6;
-		
-		dbobangle_old = dbobangle;
-		dbobangle = angle + DeltaAngle( angle,dbobangle ) / 300;
 		
 		d_lastAngle = d_curAngle;
 		d_curAngle = d_curAngle + DeltaAngle( d_curAngle,angle )/6;
+		d_lastPitch = d_curPitch;
+		d_curPitch = d_curPitch + DeltaAngle( d_curPitch,pitch )/6;
 	}
 	
 	//lerp function by my homie JetPlane the epic one
@@ -57,7 +56,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 
 	}
 	
-	double swayX;
+	double swayX, swayY;
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
@@ -85,8 +84,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		//the final position to set is
 		//lerped between last and updated coordinates
-		Console.Printf(""..DeltaAngle(d_lastAngle,d_curAngle));
 		swayX = lerp(swayX,DeltaAngle(d_lastAngle,d_curAngle),ticfrac);
+		swayY = lerp(swayY,DeltaAngle(d_lastPitch,d_curPitch),ticfrac);
 		//int finaly = lerp(curx,desx,ticfrac);
 
 		for (int i = 0; i < 2; i++)
@@ -161,7 +160,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			r.Y += dbobz;
 			
 			r.X = r.X+swayX;
-			//r.Y = r.Y;
+			r.Y = r.Y-swayY;
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		return p1 * (1. - ticfrac) + p2 * ticfrac;
