@@ -10,6 +10,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double dbobangle_old;
 	
 	double d_swayAngle;
+	double d_curAngle;
 	
 	ui int lastTic;
 	
@@ -44,6 +45,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		dbobangle = angle;
 		
 		dbobangle = angle + DeltaAngle( dbobangle,angle ) / 6;
+		d_curAngle = d_curAngle + DeltaAngle( angle,d_curAngle ) / 6;
 	}
 	
 	//lerp function by my homie JetPlane the epic one
@@ -80,7 +82,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		//the final position to set is
 		//lerped between last and updated coordinates
-		double swayX = lerp(dbobangle_old,dbobangle,ticfrac);
+		double swayX = lerp(DeltaAngle(dbobangle_old,d_curAngle),DeltaAngle(dbobangle,d_curAngle),ticfrac);
 		//int finaly = lerp(curx,desx,ticfrac);
 
 		for (int i = 0; i < 2; i++)
