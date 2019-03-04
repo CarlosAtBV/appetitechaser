@@ -8,7 +8,7 @@ ACTOR TSPGreenArmorPickup : CustomInventory Replaces GreenArmor
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\cp+100 Armor\c-]"
+  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\c[Orange]+25 Shield\c-]"
   Inventory.PickupSound "armor/lightarmor"
   Inventory.Icon "FLRMA0"
   States
@@ -36,7 +36,7 @@ ACTOR TSPBlueArmorPickup : CustomInventory Replaces BlueArmor
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+200 Armor\c-]"
+  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+50 Shield\c-]"
   Inventory.PickupSound "armor/heavyarmor"
   Inventory.Icon "PSRMA0"
   States
@@ -172,7 +172,7 @@ ACTOR TSPArmorBonus : CustomInventory
 {
 	Radius 20
 	Height 16
-	Inventory.PickupMessage "Found a nano-shield. [\cp+1 Armor\c-]"
+	Inventory.PickupMessage "Found a nano-shield. [\c[Orange]+1 Shield\c-]"
 	Inventory.PickupSound "armor/armorshard"
 	Inventory.Icon "ARSDD0"
 	+COUNTITEM
@@ -192,7 +192,7 @@ ACTOR TSPRedArmorBonus : CustomInventory
 {
 	Radius 20
 	Height 16
-	Inventory.PickupMessage "Found a nano-shield duo. [\cp+2 Armor\c-]"
+	Inventory.PickupMessage "Found a nano-shield duo. [\c[Orange]+2 Shield\c-]"
 	Inventory.PickupSound "armor/armorshard"
 	Inventory.Icon "ARSED0"
 	+COUNTITEM
@@ -224,7 +224,7 @@ ACTOR TSPMegaSphereBlueArmor : TSPBlueArmor
 
 ACTOR TSPMegasphere : Megasphere replaces Megasphere
 {
-  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\cp+250 Armor\c-][\cn+200 Health\c-]"
+  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\c[Orange]+50 Armor\c-][\cn+200 Health\c-]"
   Inventory.PickupSound "health/supercharge"
   +INVENTORY.BIGPOWERUP
   +FLOATBOB
