@@ -224,7 +224,7 @@ ACTOR TSPMegaSphereBlueArmor : TSPBlueArmor
 
 ACTOR TSPMegasphere : Megasphere replaces Megasphere
 {
-  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\c[Orange]+50 Armor\c-][\cn+200 Health\c-]"
+  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\c[Orange]+50 Shield\c-][\cn+200 Health\c-]"
   Inventory.PickupSound "health/supercharge"
   +INVENTORY.BIGPOWERUP
   +FLOATBOB
