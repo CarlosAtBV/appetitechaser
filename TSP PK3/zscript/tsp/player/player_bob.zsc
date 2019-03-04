@@ -42,10 +42,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		dbobz = dbobz + ( dbobzf  - dbobz )/6;
 		
 		dbobangle_old = dbobangle;
-		dbobangle = angle;
+		dbobangle = angle + DeltaAngle( dbobangle,angle ) / 300;
 		
-		dbobangle = angle + DeltaAngle( dbobangle,angle ) / 6;
-		d_curAngle = angle;
+		d_curAngle = d_curAngle + DeltaAngle( angle,d_curAngle ) / 6;
 	}
 	
 	//lerp function by my homie JetPlane the epic one
@@ -55,6 +54,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		return start + (finish - start) * progress;
 
 	}
+	
+	double swayX;
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
@@ -82,7 +83,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		//the final position to set is
 		//lerped between last and updated coordinates
-		double swayX = lerp(DeltaAngle(dbobangle_old,dbobangle),DeltaAngle(dbobangle,d_curAngle),ticfrac);
+		swayX = lerp(swayX,DeltaAngle(dbobangle_old,dbobangle),ticfrac);
 		//int finaly = lerp(curx,desx,ticfrac);
 
 		for (int i = 0; i < 2; i++)
