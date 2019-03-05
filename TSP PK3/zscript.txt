@@ -482,16 +482,18 @@ Class TSP_EventHandler : EventHandler
 	}
 }
 
-Class TSP_ShipProp0 : Actor
+Class TSP_Ship_FridgeNoise : Actor
 {
 	Default
 	{
 		Radius 4;
-		Translation "Ice";
+		RenderStyle "None";
 	}
 	States
 	{
 		Spawn:
+			ISP0 A 0;
+			ISP0 A 0 A_PlaySound("ambience/fridge/loop",CHAN_BODY,1.0,true);
 			ISP0 A -1;
 			Stop;
 	}

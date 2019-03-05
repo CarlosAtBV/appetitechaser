@@ -130,7 +130,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 		TSP_PlayerPawn_ZSCBase player = TSP_PlayerPawn_ZSCBase(players[0].mo);
 		for(int i = 0;i<musthave.Size();i++)
 		{
-			if(!player.FindInventory(musthave[i]))
+			if(!player.FindInventory(musthave[i],true))
 			{
 				return false;
 			}
@@ -149,7 +149,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 		
 		for(int i = 0;i<musthave.Size();i++)
 		{
-			if(!player.FindInventory(musthave[i]))
+			if(!player.FindInventory(musthave[i],true))
 			{
 				return false, StringTable.Localize("$TSP_SHOP_NOTYET");
 			}
