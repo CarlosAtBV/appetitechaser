@@ -18,7 +18,7 @@ page
 		header "Darling Nikki";
 		item "$TSP_SHOP_BULLNAME1", "$TSP_SHOP_BULLNAME2", "$TSP_SHOP_BULLNAME3"
 		{
-			icons "BRS3K0","BRS3J0","BRS3I0";
+			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
 			price 450;
 			price_increment 300;
 			upgrade "MelPistol";
@@ -27,6 +27,7 @@ page
 		}
 		item "Expanded Magazine", "$TSP_SHOP_MAGNAME2", "$TSP_SHOP_MAGNAME3"
 		{
+			icons "graphics/store/items/store_item_mag1.png","graphics/store/items/store_item_mag2.png","graphics/store/items/store_item_mag3.png";
 			price 300;
 			price_increment 200;
 			upgrade "MelPistol";
@@ -35,6 +36,7 @@ page
 		}
 		item "$TSP_SHOP_NIKKI_RLDNAME1", "$TSP_SHOP_NIKKI_RLDNAME2", "$TSP_SHOP_NIKKI_RLDNAME3"
 		{
+			icons "graphics/store/items/store_item_rld1.png","graphics/store/items/store_item_rld2.png","graphics/store/items/store_item_rld3.png";
 			price 275;
 			price_increment 250;
 			descs "$TSP_SHOP_NIKKI_RLDDESC1","$TSP_SHOP_NIKKI_RLDDESC2","$TSP_SHOP_NIKKI_RLDDESC3";
@@ -43,6 +45,7 @@ page
 		}
 		item "Mod - Spitfire"
 		{
+			icons "graphics/store/items/store_item_spit.png";
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolA";
@@ -50,6 +53,7 @@ page
 		}
 		item "Mod - Whisper"
 		{
+			icons "graphics/store/items/store_item_sneak.png";
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolB";
