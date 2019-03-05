@@ -76,6 +76,7 @@ Class TSP_WeaponPickup : CustomInventory
 			else
 			{
 				given = fucker.GiveInventory(tspweapon,1);
+				fucker.A_SelectWeapon(tspweapon.GetClassName());
 			}
 			PrintPickupMessage(true,GetDefaultByType(tspweapon).PickupMessage());
 		}
