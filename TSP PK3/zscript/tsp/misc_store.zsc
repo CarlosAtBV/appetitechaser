@@ -1,5 +1,9 @@
 Class TSP_ShopListItem
 {
+	virtual bool isVisible()
+	{
+		return true;
+	}
 }
 
 Class TSP_ShopItem : TSP_ShopListItem
@@ -119,6 +123,19 @@ Class TSP_ShopItem : TSP_ShopListItem
 			return true;
 		}
 		return false;
+	}
+	
+	override bool isVisible()
+	{
+		TSP_PlayerPawn_ZSCBase player = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		for(int i = 0;i<musthave.Size();i++)
+		{
+			if(!player.FindInventory(musthave[i]))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	bool, string canBuy()
@@ -382,6 +399,8 @@ Class TSP_ShopMenu : GenericMenu
 			{
 				
 				TSP_ShopListItem dd_queryItem = dd_curTab.itemlist[i];
+				
+				if(!dd_queryItem.isVisible()) continue;
 				
 				if(dd_queryItem is "TSP_ShopItem")
 				{

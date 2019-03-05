@@ -60,6 +60,8 @@ Extend Class TSP_ShopMenu
 		
 		for(int i = 0;i<curTab.itemlist.Size();i++)
 		{
+			if(!curTab.itemlist[i].isVisible()) continue;
+			
 			int px = SHOP_SHOPLISTX;
 			int py = sy;
 			if(virtualMpos.x>px
@@ -225,11 +227,11 @@ Extend Class TSP_ShopMenu
 				else if(sm_itemSelected>0)
 				{
 					sm_itemSelected--;
-					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected>0)
+					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader"||!me_curTab.itemlist[sm_itemSelected].isVisible()) && sm_itemSelected>0)
 					{
 						sm_itemSelected--;
 					}
-					if((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected==0)
+					if((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader"||!me_curTab.itemlist[sm_itemSelected].isVisible()) && sm_itemSelected==0)
 					{
 						sm_itemSelected++;
 						sm_moveMode--;
@@ -246,13 +248,21 @@ Extend Class TSP_ShopMenu
 				}
 				else if(sm_itemSelected < me_curTab.itemlist.Size()-1)
 				{
+					int oldsel = sm_itemSelected;
 					sm_itemSelected++;
-					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader") && sm_itemSelected<me_curTab.itemlist.Size()-1)
+					while((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader"||!me_curTab.itemlist[sm_itemSelected].isVisible()) && sm_itemSelected<me_curTab.itemlist.Size()-1)
 					{
 						sm_itemSelected++;
 					}
+					if((me_curTab.itemlist[sm_itemSelected] is "TSP_ShopHeader"||!me_curTab.itemlist[sm_itemSelected].isVisible()) && sm_itemSelected==me_curTab.itemlist.Size()-1)
+					{
+						sm_itemSelected = oldsel;
+					}
 					sm_itemHovered = sm_itemSelected;
-					S_Sound("menu/cursor",CHAN_UI);
+					if(sm_itemSelected!=oldsel)
+					{
+						S_Sound("menu/cursor",CHAN_UI);
+					}
 				}
 				return true;
 				
