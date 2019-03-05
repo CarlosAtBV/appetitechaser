@@ -59,6 +59,17 @@ page
 			mod_give "MelPistolB";
 			desc "$TSP_SHOP_DNMODB";
 		}
+		
+		header "Suzuka";
+		item "suzuka damage 1", "suzuka damage 2", "suzuka damage 3"
+		{
+			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
+			price 450;
+			price_increment 300;
+			upgrade "MelSMG";
+			upgradeType 0;
+			descs "$TSP_SHOP_BULLDESC1", "$TSP_SHOP_BULLDESC2", "$TSP_SHOP_BULLDESC3";
+		}
 	}
 	tab "Vitality"
 	{

@@ -12,7 +12,7 @@ Class TSP_ShopItem : TSP_ShopListItem
 	int price_increment;
 	BrokenLines brokendesc;
 	Array<Inventory > canthave;
-	Array<Inventory > musthave;
+	Array<Class<Inventory> > musthave;
 	string icon;
 	
 	Class<Inventory > inv_class;
@@ -129,6 +129,14 @@ Class TSP_ShopItem : TSP_ShopListItem
 		}
 		
 		TSP_PlayerPawn_ZSCBase player = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		
+		for(int i = 0;i<musthave.Size();i++)
+		{
+			if(!player.FindInventory(musthave[i]))
+			{
+				return false, StringTable.Localize("$TSP_SHOP_NOTYET");
+			}
+		}
 		
 		updateLevels();
 		

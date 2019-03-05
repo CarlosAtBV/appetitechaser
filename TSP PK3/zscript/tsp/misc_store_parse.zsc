@@ -171,6 +171,8 @@ Extend Class TSP_ShopMenu
 										{
 											tokenboy = tokenitup.GoThru();
 											curItem.upgrade = tokenboy.value;
+											Class<Inventory > cls = tokenboy.value;
+											curItem.musthave.Push(cls);
 										}
 										if(tokenboy.value == "upgradeType")
 										{
