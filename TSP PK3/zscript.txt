@@ -196,7 +196,7 @@ Class TSP_EventHandler : EventHandler
 		{
 			e.Thing.Destroy();
 		}
-		if(gamemode == TSP_GM_HUNTERS && e.Thing is "TSP_WeaponPickup")
+		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && e.Thing is "TSP_WeaponPickup")
 		{
 			e.Thing.Destroy();
 		}
