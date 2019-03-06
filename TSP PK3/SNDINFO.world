@@ -1,3 +1,5 @@
+// Fridge sounds from Stachekip
+
 ambience/fridge/open "sounds/ambience/fridge_open.ogg"
 ambience/fridge/close "sounds/ambience/fridge_close.ogg"
 ambience/fridge/loop "sounds/ambience/fridge_loop.ogg"
