@@ -63,12 +63,12 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		GiveInventory("MelMelee",1);
 		if(!pp_meleestart)
 		{
+			GiveInventory("MelSMG",1);
+			GiveInventory("TSPSMGAmmo",120);
 			GiveInventory("MelPistolA",1);
 			GiveInventory("TSPPistolAmmo",75);
-			GiveInventory("TSPSMGAmmo",80);
 		}
 		//SUZUKA (SHOTGUN MOD)
-		//MACHINE GUN AMMO (x150)
 		//HEAL ITEM (x1)
 		
 		//MAG GRAPPLE (LV 2)
