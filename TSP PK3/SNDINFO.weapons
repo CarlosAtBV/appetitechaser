@@ -1,4 +1,7 @@
-//Universal Melee Sounds
+// Universal Melee Sounds
+// SOUND CREDITS/SOURCES: 
+// - Mortal Kombat X
+
 $random basicmelee/miss { basicmelee/miss1 basicmelee/miss2 basicmelee/miss3 basicmelee/miss4 basicmelee/miss5 }
 basicmelee/miss1 bmlmiss1
 basicmelee/miss2 bmlmiss2
