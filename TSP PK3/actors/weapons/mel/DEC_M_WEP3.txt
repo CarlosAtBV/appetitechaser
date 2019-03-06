@@ -73,9 +73,10 @@ ACTOR MelSMG : TSPMelLightWeapon
     TNT1 A 0 A_JumpIfInventory("TSPTopFired", 1, "BottomFire")
 	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
     TNT1 A 0 A_PlaySound("suzuka/fire", 5)
+    TNT1 A 0 A_AlertMonsters
 	TNT1 A 0 A_SetPitch(pitch - 0.4)
-	TNT1 A 0 A_SetAngle(angle + (frandom(-0.1,0.2)))
-	TNT1 A 0 A_TSP_FireBullets(2,4,-1,8,"BulletPuff",1)
+	TNT1 A 0 A_SetAngle(angle + (frandom(-0.1,0.3)))
+	TNT1 A 0 A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1)
 	131F A 1 BRIGHT A_Light2
 	131F B 1 A_GiveInventory("TSPTopFired", 1)
 	131G A 1
@@ -84,9 +85,10 @@ ACTOR MelSMG : TSPMelLightWeapon
   BottomFire:
 	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
     TNT1 A 0 A_PlaySound("suzuka/fire", 6)
+    TNT1 A 0 A_AlertMonsters
 	TNT1 A 0 A_SetPitch(pitch - 0.3)
-	TNT1 A 0 A_SetAngle(angle + (frandom(-0.2,0.1)))
-	TNT1 A 0 A_TSP_FireBullets(2,4,-1,8,"BulletPuff",1)
+	TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.1)))
+	TNT1 A 0 A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1)
 	131F C 1 BRIGHT A_Light2
 	131F D 1 A_TakeInventory("TSPTopFired", 1)
 	131G A 1
