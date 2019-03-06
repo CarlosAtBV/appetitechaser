@@ -200,6 +200,10 @@ Class TSP_EventHandler : EventHandler
 		{
 			e.Thing.Destroy();
 		}
+		if(e.Thing is "LostSoul")
+		{
+			e.Thing.DamageFactor = 4.0;
+		}
 	}
 	
 	override void WorldThingDamaged(WorldEvent e)
