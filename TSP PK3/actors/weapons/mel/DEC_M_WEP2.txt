@@ -107,12 +107,3 @@ ACTOR MelPistol : TSPMelLightWeapon
 	Goto Ready
   }
 }
-
-///////////////////////
-// PISTOL SHENANIGANS
-///////////////////////
-ACTOR MelPistolMagDefault : Ammo
-{
-  +IGNORESKILL
-  Inventory.MaxAmount 15
-}
