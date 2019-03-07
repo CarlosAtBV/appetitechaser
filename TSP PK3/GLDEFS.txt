@@ -49,3 +49,13 @@ TSPS_W
 TSPS_T
 TSPS_B
 }
+
+skybox GRAVE
+{
+GRAV_N
+GRAV_E
+GRAV_S
+GRAV_W
+GRAV_T
+GRAV_B
+}
