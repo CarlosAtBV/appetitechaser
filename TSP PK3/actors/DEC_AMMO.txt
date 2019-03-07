@@ -59,6 +59,14 @@ ACTOR TSP_ChexClipBoxReplacer : RandomSpawner replaces MiniZorchPack
 {
 	DropItem "TSPPistolAmmoBig"
 }
+ACTOR TSP_ChexShellReplacer : RandomSpawner replaces LargeZorchRecharge
+{
+	DropItem "TSPSMGAmmo"
+}
+ACTOR TSP_ChexShellBoxReplacer : RandomSpawner replaces LargeZorchPack
+{
+	DropItem "TSPSMGAmmoBig"
+}
 
 //============
 // SMG Ammo
@@ -78,7 +86,7 @@ ACTOR TSPSMGAmmo : Ammo
 	States
 	{
 		Spawn:
-		919F A -1
+		SHEL A -1
 		Stop
 	}
 }
@@ -90,7 +98,7 @@ ACTOR TSPSMGAmmoBig : TSPSMGAmmo
 	States
 	{
 		Spawn:
-			919F A -1
+			SBOX A -1
 			Stop
 	}
 }
