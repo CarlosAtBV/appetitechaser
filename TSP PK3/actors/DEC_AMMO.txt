@@ -48,7 +48,7 @@ ACTOR TSP_DoomShellReplacer : RandomSpawner replaces Shell
 }
 ACTOR TSP_DoomShellBoxReplacer : RandomSpawner replaces ShellBox
 {
-	DropItem "TSPPistolAmmoBig"
+	DropItem "TSPSMGAmmoBig"
 }
 
 ACTOR TSP_ChexClipReplacer : RandomSpawner replaces MiniZorchRecharge
