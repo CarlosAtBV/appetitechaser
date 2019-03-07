@@ -75,7 +75,11 @@ ACTOR MelSMG : TSPMelLightWeapon
 	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
     TNT1 A 0 A_PlaySound("suzuka/fire", 5)
     TNT1 A 0 A_AlertMonsters
-	TNT1 A 0 A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1)
+	TNT1 A 0
+	{
+		A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1);
+		A_TSP_TakeClip(1);
+	}
 	TNT1 A 0 A_SetPitch(pitch - 0.4)
 	TNT1 A 0 A_SetAngle(angle + (frandom(-0.1,0.3)))
 	131F A 1 BRIGHT A_Light2
@@ -87,7 +91,11 @@ ACTOR MelSMG : TSPMelLightWeapon
 	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
     TNT1 A 0 A_PlaySound("suzuka/fire", 6)
     TNT1 A 0 A_AlertMonsters
-	TNT1 A 0 A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1)
+	TNT1 A 0
+	{
+		A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1);
+		A_TSP_TakeClip(1);
+	}
 	TNT1 A 0 A_SetPitch(pitch - 0.3)
 	TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.1)))
 	131F C 1 BRIGHT A_Light2
@@ -96,11 +104,15 @@ ACTOR MelSMG : TSPMelLightWeapon
 	TNT1 A 0 A_Refire("Fire")
 	Goto Ready
   ModFire:
-  	TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+  	TNT1 A 0 A_TSP_JumpIfClipLower(6,"Empty")
     TNT1 A 0 A_PlaySound("suzuka/firea", 6)
     TNT1 A 0 A_AlertMonsters
 	TNT1 A 0 A_Quake(2,3,0,5,"")
-	TNT1 A 0 A_TSP_FireBullets(6,0,8,7,"BulletPuff",1)
+	TNT1 A 0
+	{
+		A_TSP_FireBullets(6,0,8,7,"BulletPuff",1);
+		A_TSP_TakeClip(6);
+	}
 	TNT1 A 0 A_SetPitch(pitch - 2.5)
 	TNT1 A 0 A_SetAngle(angle + (frandom(-0.5,0.5)))
 	131F C 1 BRIGHT A_Light2

@@ -341,6 +341,15 @@ Class TSP_Weapon_Core : DoomWeapon
 		return resolveState(null);
 	}
 	
+	action state A_TSP_JumpIfClipLower(int lower,StateLabel state)
+	{
+		if(invoker.tspw_curclip<lower)
+		{
+			return resolveState(state);
+		}
+		return resolveState(null);
+	}
+	
 	action state A_TSP_CheckReload()
 	{
 		if(invoker.tspw_curclip==0)
@@ -397,10 +406,19 @@ Class TSP_Weapon_Core : DoomWeapon
 				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
 			}
 			//Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
-			if(invoker.tspw_clipsize>0 && invoker.tspw_curclip > 0)
+			/*if(invoker.tspw_clipsize>0 && invoker.tspw_curclip > 0)
 			{
 				invoker.tspw_curclip--;
-			}
+			}*/
 			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,missile,spawnheight,spawnofs_xy);
+		}
+		
+		action void A_TSP_TakeClip(int amt)
+		{
+			while(amt>0 && invoker.tspw_curclip > 0)
+			{
+				invoker.tspw_curclip--;
+				amt--;
+			}
 		}
 }
