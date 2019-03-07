@@ -42,6 +42,14 @@ ACTOR TSP_DoomClipBoxReplacer : RandomSpawner replaces ClipBox
 {
 	DropItem "TSPPistolAmmoBig"
 }
+ACTOR TSP_DoomShellReplacer : RandomSpawner replaces Shell
+{
+	DropItem "TSPSMGAmmo"
+}
+ACTOR TSP_DoomShellBoxReplacer : RandomSpawner replaces ShellBox
+{
+	DropItem "TSPPistolAmmoBig"
+}
 
 ACTOR TSP_ChexClipReplacer : RandomSpawner replaces MiniZorchRecharge
 {
@@ -72,5 +80,17 @@ ACTOR TSPSMGAmmo : Ammo
 		Spawn:
 		919F A -1
 		Stop
+	}
+}
+
+ACTOR TSPSMGAmmoBig : TSPSMGAmmo
+{
+	Inventory.PickupMessage "Picked up an SMG ammo box of teh epicness X3 [\ct+48 SMG Ammo\c-]"
+	Inventory.Amount 48
+	States
+	{
+		Spawn:
+			919F A -1
+			Stop
 	}
 }
