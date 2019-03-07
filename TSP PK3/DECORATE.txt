@@ -130,8 +130,8 @@ Actor MeleeButtonActor : CustomInventory
     TNT1 A 0 A_SelectWeapon("MelMelee")
     Fail
   MelMeleeSwitch:
-    TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
     TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
+    TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
     Goto MelPistolSwitch
   MelPistolSwitch:
     TNT1 A 0 A_SelectWeapon("MelPistol")
