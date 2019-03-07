@@ -106,7 +106,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 	TNT1 A 0 A_Refire("Fire")
 	Goto Ready
   ModFire:
-  	TNT1 A 0 A_TSP_JumpIfClipLower(6,"Empty")
+  	TNT1 A 0 A_TSP_JumpIfClipLower(7,"Empty")
     TNT1 A 0 A_PlaySound("suzuka/firea", 6)
     TNT1 A 0 A_AlertMonsters
 	TNT1 A 0 A_Quake(2,3,0,5,"")
