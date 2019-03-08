@@ -98,7 +98,7 @@ Class TSP_EpisodeMenu : GenericMenu
 			}
 		}
 		
-		int sx = 20;
+		int sx = 20-3;
 		int sy = 17;
 		for(int i = 0;i<episodes.Size();i++)
 		{
@@ -149,7 +149,7 @@ Class TSP_EpisodeMenu : GenericMenu
 				}
 				screen.DrawText(BigFont, em_itemSelected == iterator ? Font.FindFontColor("TSPYeller") : Font.FindFontColor("TSPGreen1"), sx, sy, bTitle, DTA_Clean, true);
 				sy += BigFont.GetHeight()+3;
-				screen.DrawText(SmallFont, Font.CR_WHITE, sx, sy, bSub, DTA_Clean, true);
+				screen.DrawText(SmallFont, Font.CR_WHITE, sx+2, sy, bSub, DTA_Clean, true);
 				sy += SmallFont.GetHeight()+1;
 				iterator++;
 				if(iterator>=episodes.Size())
