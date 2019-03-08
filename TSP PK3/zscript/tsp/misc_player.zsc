@@ -164,6 +164,14 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	virtual void OnBountyHunterLoadout()
 	{
 		ClearInventory();
+		for (int i = 0; i < AllActorClasses.Size(); i++)
+		{
+			let fucker = (Class<Inventory>)(AllActorClasses[i]);
+			if(fucker is "Key")
+			{
+				GiveInventory(fucker,1);
+			}
+		}
 		Console.Printf("\c[TSPGreen]APPLYING BOUNTY HUNTER LOADOUT TEST");
 	}
 	
