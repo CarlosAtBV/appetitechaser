@@ -10,6 +10,8 @@ Class TSP_UpgradeBase : Inventory
 	}
 }
 
+Class TSP_Upgrade_MagSling : TSP_UpgradeBase {}
+
 Class TSP_Upgrade_Shield : TSP_UpgradeBase
 {
 	Default

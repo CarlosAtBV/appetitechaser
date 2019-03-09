@@ -121,6 +121,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     Goto AfterMelee
   MagSling:
 	TraitAltFire:
+	"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"Ready")
 	"----" A 0 A_TSP_StoreSlingTarget
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)

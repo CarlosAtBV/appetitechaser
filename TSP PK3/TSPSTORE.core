@@ -110,6 +110,14 @@ page
 	}
 	tab "Traits"
 	{
+		header "Epic Shit";
+		item "Mag Sling"
+		{
+			desc "YAHOO YAYAYAYAYAYAYAYAHOO";
+			inv_class "TSP_Upgrade_MagSling";
+			inv_amount 100;
+			price 100;
+		}
 		header "Good Shit";
 		item "Weed"
 		{
