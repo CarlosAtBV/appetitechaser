@@ -29,7 +29,8 @@ ACTOR MelSMG : TSPMelLightWeapon
   Weapon.BobRangeX 0.5
   Weapon.AmmoType "TSPSMGAmmo"
   Weapon.AmmoGive 0//0
-  Weapon.AmmoUse 1
+  Weapon.AmmoUse1 1
+  Weapon.AmmoUse2 8
   Inventory.Icon "121PA0"
   
   TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0

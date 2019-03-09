@@ -230,6 +230,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	TSP_PlayerPawn_ZSCBase tspw_owner;
 	
+	int tspw_lastfire;
+	
 	Default
 	{
 		TSP_Weapon_Core.MaxLevels 3, 3, 3;
@@ -254,6 +256,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	override State GetAtkState (bool hold)
 	{
 		State s = null;
+		tspw_lastfire = 0;
 		if(tspw_traitmode)
 		{
 			if (hold) s = FindState('TraitHold');
@@ -274,6 +277,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	override State GetAltAtkState (bool hold)
 	{
 		State s = null;
+		tspw_lastfire = 1;
 		if(tspw_traitmode)
 		{
 			if (hold) s = FindState('TraitAltHold');
@@ -352,7 +356,14 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	action state A_TSP_CheckReload()
 	{
-		if(invoker.tspw_curclip==0)
+		if(invoker.tspw_altmode && invoker.tspw_curclip<invoker.ammouse2)
+		{
+			if(invoker.owner.CountInv(invoker.ammo1.GetClass())>0)
+			{
+				return resolveState("Reload");
+			}
+		}
+		else if (invoker.tspw_curclip<invoker.ammouse1)
 		{
 			if(invoker.owner.CountInv(invoker.ammo1.GetClass())>0)
 			{
