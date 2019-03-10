@@ -61,23 +61,23 @@ page
 		}
 		
 		header "Suzuka";
-		item "suzuka damage 1", "suzuka damage 2", "suzuka damage 3"
+		item "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "suzuka damage 3"
 		{
 			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
 			price 450;
 			price_increment 300;
 			upgrade "MelSMG";
 			upgradeType 0;
-			descs "$TSP_SHOP_BULLDESC1", "$TSP_SHOP_BULLDESC2", "$TSP_SHOP_BULLDESC3";
+			descs "$TSP_SHOP_SUZUKA_DAMDESC1", "$TSP_SHOP_SUZUKA_DAMDESC2", "$TSP_SHOP_BULLDESC3";
 		}
-		item "suzuka epic clip", "suzuka epicer clip", "suzuka epicest clip"
+		item "$TSP_SHOP_SUZUKA_MAGNAME1", "suzuka epicer clip", "suzuka epicest clip"
 		{
 			icons "graphics/store/items/store_item_mag1.png","graphics/store/items/store_item_mag2.png","graphics/store/items/store_item_mag3.png";
 			price 300;
 			price_increment 300;
 			upgrade "MelSMG";
 			upgradeType 1;
-			descs "big clip", "bigger clip", "biggest clip";
+			descs "$TSP_SHOP_SUZUKA_MAGDESC1", "bigger clip", "biggest clip";
 		}
 	}
 	tab "Vitality"
