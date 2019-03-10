@@ -206,7 +206,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	int tspw_weaponflags;
 	flagdef ModFireMode: tspw_weaponflags, 0;
-	flagdef HoldDownForMod: tspw_weaponflags, 0;
+	flagdef HoldDownForMod: tspw_weaponflags, 1;
+	flagdef ModFireZooms: tspw_weaponflags, 2;
 	property ModTag : tspw_altname;
 
 	int tspw_powerlevel;
@@ -315,7 +316,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
-			FOVScale = 1.0+sin(level.maptime*8)*0.25;
+			FOVScale = 1.0-0.5*(tspw_altmode&&bModFireZooms);
 		}
 	}
 	
@@ -333,7 +334,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			flags |= WRF_ALLOWRELOAD;
 		}
 		
-		if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
+		if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && (!invoker.bHoldDownForMod && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))||(invoker.owner.player.oldbuttons & BT_ALTATTACK) )
 		{
 			invoker.tspw_altmode = !invoker.tspw_altmode;
 			string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
