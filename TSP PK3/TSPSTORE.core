@@ -61,14 +61,14 @@ page
 		}
 		
 		header "Suzuka";
-		item "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "suzuka damage 3"
+		item "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "$TSP_SHOP_SUZUKA_DAMNAME3"
 		{
 			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
 			price 450;
 			price_increment 300;
 			upgrade "MelSMG";
 			upgradeType 0;
-			descs "$TSP_SHOP_SUZUKA_DAMDESC1", "$TSP_SHOP_SUZUKA_DAMDESC2", "$TSP_SHOP_BULLDESC3";
+			descs "$TSP_SHOP_SUZUKA_DAMDESC1", "$TSP_SHOP_SUZUKA_DAMDESC2", "$TSP_SHOP_SUZUKA_DAMDESC3";
 		}
 		item "$TSP_SHOP_SUZUKA_MAGNAME1", "suzuka epicer clip", "suzuka epicest clip"
 		{

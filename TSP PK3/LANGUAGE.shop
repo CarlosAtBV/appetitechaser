@@ -31,7 +31,9 @@ TSP_SHOP_NIKKI_RLDDESC3 = "\cc(\ct%sx faster reload\cc)\c-\nManaging your ammuni
 	TSP_SHOP_DNMODA = "\cc(\ctFire Mode\cc)\c-\nAdds an alternative firing mode to Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";
 	TSP_SHOP_DNMODB = "\cc(\ctFire Mode\cc)\c-\nAdds a silencer to Nikki, allowing you to take out targets silently. Alt-fire lets you aim down the sights.";
 	
-TSP_SHOP_SUZUKA_DAMNAME1 = "Hybrid Bullets";
-TSP_SHOP_SUZUKA_DAMDESC1 = "\cc(\ct%sx base damage\cc)\c-\nThese bullets are a combination between standard bullets and shotgun shells, ripping through skin like paper.";
-TSP_SHOP_SUZUKA_DAMNAME2 = "Payload Bullets";
-TSP_SHOP_SUZUKA_DAMDESC2 = "\cc(\ct%sx base damage\cc)\c-\nNew from SpiteTech! These bullets contain a payload of 8 smaller bullets, shooting them out upon impact.";
+TSP_SHOP_SUZUKA_DAMNAME1 = "Payload Bullets";
+TSP_SHOP_SUZUKA_DAMDESC1 = "\cc(\ct%sx base damage\cc)\c-\nNew from SpiteTech! These bullets contain a payload of 8 smaller bullets, shooting them out upon impact.";
+TSP_SHOP_SUZUKA_DAMNAME2 = "Hybrid Bullets";
+TSP_SHOP_SUZUKA_DAMDESC2 = "\cc(\ct%sx base damage\cc)\c-\nThese bullets are a combination between standard bullets and shotgun shells, ripping through skin like paper.";
+TSP_SHOP_SUZUKA_DAMNAME3 = "Kalseru Shells";
+TSP_SHOP_SUZUKA_DAMDESC3 = "\cc(\ct%sx base damage\cc)\c-\nThese heavy-caliber shells can be used in a OS06 Suzuka magazine without issue! Discretion advised.";
