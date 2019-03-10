@@ -9,9 +9,10 @@
 ACTOR MelPistolB : MelPistol
 {
 	Tag "$MELPISTOLBTAG"
-	+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
+	+TSP_Weapon_Core.MODFIREMODE
 	+TSP_Weapon_Core.MODFIREZOOMS
 	+TSP_Weapon_Core.HOLDDOWNFORMOD
+	TSP_Weapon_Core.ModTag "i eat carrots num num num good eyes"
 	
 	States
 	{

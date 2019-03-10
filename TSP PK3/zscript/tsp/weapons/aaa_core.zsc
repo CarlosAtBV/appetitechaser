@@ -353,6 +353,8 @@ Class TSP_Weapon_Core : DoomWeapon
 						if(!invoker.tspw_altmode)
 						{
 							A_PlaySound("weapon/mod/on", CHAN_5);
+							string onoff = "\c[TSPGreen]On";
+							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 						}
 						invoker.tspw_altmode = true;
 					}
@@ -361,6 +363,8 @@ Class TSP_Weapon_Core : DoomWeapon
 						if(invoker.tspw_altmode)
 						{
 							A_PlaySound("weapon/mod/off", CHAN_5);
+							string onoff = "\c[TSPRed]Off";
+							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 						}
 						invoker.tspw_altmode = false;
 					}
