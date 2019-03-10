@@ -334,15 +334,38 @@ Class TSP_Weapon_Core : DoomWeapon
 			flags |= WRF_ALLOWRELOAD;
 		}
 		
-		if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && (!invoker.bHoldDownForMod && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))||(invoker.owner.player.oldbuttons & BT_ALTATTACK) )
+		if(invoker.bModFireMode)
+		{
+			switch(invoker.bHoldDownForMod)
+			{
+				case false:
+					if(!invoker.tspw_traitmode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
+					{
+						invoker.tspw_altmode = !invoker.tspw_altmode;
+					}
+					break;
+				case true:
+					if(!invoker.tspw_traitmode && invoker.owner.player.cmd.buttons & BT_ALTATTACK)
+					{
+						invoker.tspw_altmode = true;
+					}
+					else
+					{
+						invoker.tspw_altmode = false;
+					}
+					break;
+			}
+		}
+		
+		/*if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
 		{
 			invoker.tspw_altmode = !invoker.tspw_altmode;
 			string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
 			A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
 			TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
-		}
+		}*/
 		
-		A_WeaponReady(flags);
+		A_WeaponReady(flags|WRF_NOSECONDARY);
 	}
 	
 	action state A_TSP_GotoReadyState()
