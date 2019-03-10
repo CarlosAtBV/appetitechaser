@@ -585,22 +585,19 @@ ACTOR MelMelee : TSPMelBaseWeapon
 // P-P-P-K DEFAULT
   AzureKnee:
     TNT1 A 2
-    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-    MK2F ABC 1
-    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"AzureKneeBerserk")
-    MK2F D 3 A_TSP_Melee(12,70,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
-    Goto AzureKneeA
-  AzureKneeBerserk:
-    MK2F D 3 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+	TNT1 A 0 A_Recoil(-5)
+    111N ABC 1
+    111N D 4 A_TSP_Melee(16,70,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
     Goto AzureKneeA
 
 // P-P-P-K END
   AzureKneeA:
-    MK2F CB 1
+    111N CB 1
     TNT1 A 0 A_GiveInventory("MelAlternateCombo", 4)
     TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    MK2F A 1 A_WeaponReady
+    111N A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
