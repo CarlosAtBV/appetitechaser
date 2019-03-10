@@ -206,6 +206,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	int tspw_weaponflags;
 	flagdef ModFireMode: tspw_weaponflags, 0;
+	flagdef HoldDownForMod: tspw_weaponflags, 0;
 	property ModTag : tspw_altname;
 
 	int tspw_powerlevel;
@@ -253,10 +254,17 @@ Class TSP_Weapon_Core : DoomWeapon
 		return clipcap;
 	}
 	
+	override State GetReadyState ()
+	{
+		if(tspw_altmode)
+		{
+			return FindState('ModReady');
+		}
+		return FindState('Ready');
+	}
 	override State GetAtkState (bool hold)
 	{
 		State s = null;
-		tspw_lastfire = 0;
 		if(tspw_traitmode)
 		{
 			if (hold) s = FindState('TraitHold');
@@ -277,7 +285,6 @@ Class TSP_Weapon_Core : DoomWeapon
 	override State GetAltAtkState (bool hold)
 	{
 		State s = null;
-		tspw_lastfire = 1;
 		if(tspw_traitmode)
 		{
 			if (hold) s = FindState('TraitAltHold');
@@ -334,6 +341,11 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 		
 		A_WeaponReady(flags);
+	}
+	
+	action state A_TSP_GotoReadyState()
+	{
+		return invoker.GetReadyState();
 	}
 	
 	action state A_TSP_JumpIfClipEmpty(StateLabel state)
