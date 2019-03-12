@@ -87,19 +87,13 @@ mel/strongmeleeyell6 melsha6
 // Mel's Mag Manuevers
 //////////////////////
 // SOUND CREDITS/SOURCES: 
-// - Mortal Kombat (2011)
-// - Mortal Kombat X
-// - Super Monday Night Combat
 // - Jedi Knight II: Jedi Outcast
 // - Quake III Arena
 // - Chronicles of Riddick: Assault on Dark Athena
 magpull magpull
-$volume magpull 0.8
 magpush magpush
-$volume magpush 0.8
 magphit magphit
 magsling magsling
-$volume magsling 0.8
 maghit maghit
 magloop magloop
 
