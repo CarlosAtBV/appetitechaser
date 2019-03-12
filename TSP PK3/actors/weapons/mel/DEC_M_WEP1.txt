@@ -3,7 +3,8 @@
 // Mel's Melee Style
 //
 // by Cardboard Marty
-// Sprites by Cardboard Marty, Blox, Scuba Steve, Banjo Entertainment, PrettyFist
+// Sprites by Cardboard Marty
+// Bases by Blox, Scuba Steve, Banjo Entertainment, PrettyFist
 // 
 //
 //===========================================================================
@@ -62,11 +63,11 @@ ACTOR MelMelee : TSPMelBaseWeapon
   Fire:
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MelMachCombo",4,"AfterMelee") //made so you can't knifehand again after the Rapid Fire Finish
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",4,"AfterMelee") //made so you can't Melbow again after the Rapid Fire Finish
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",3,"RapidFireFinish")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",2,"CrossDuo")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",1,"CrossPunch")
-    TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",2,"KnifeHand")
+    TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",2,"Melbow")
     TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",3,"ScorpionTailFinisher")
     TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",2,"LeftOverhead")
     TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",1,"RightHook")
@@ -307,22 +308,23 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		Goto AfterMelee
 
 // K-K-P DEFAULT
-  KnifeHand:
-    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-    ML5F ABC 1 
-    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"KnifeHandBerserk")
-    ML5F D 1 A_CustomPunch(14,0,0,"StrongMeleePuff",70)
-	Goto KnifeHandA
+  Melbow:
+    TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    111S ABC 1
+    111S D 1 A_CustomPunch(18,0,0,"StrongMeleePuff",70)
+	Goto MelbowA
 
 // K-K-P END
-  KnifeHandA:
-    ML5F EFG 1
+  MelbowA:
+    111S EEEF 1
     TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
     TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    ML5F H 1 A_WeaponReady
+    111S G 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    ML5F I 1 A_WeaponReady
+    111S H 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    111S I 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
@@ -434,10 +436,11 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-P-P-P-P DEFAULT
   RapidFireFinish:
-    TNT1 A 1 A_PlaySound("*strongmelee")
+    TNT1 A 2 A_PlaySound("*strongmelee")
     TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+	TNT1 A 0 A_Recoil(-3)
     111Q ABC 1 
-    111Q D 8 A_TSP_Melee(22,90,"StrongMeleePuff")//A_CustomPunch(16,0,0,"StrongMeleePuff",90)
+    111Q D 9 A_TSP_Melee(22,90,"StrongMeleePuff")//A_CustomPunch(16,0,0,"StrongMeleePuff",90)
     Goto RapidFireFinishA
 	
 // K-K-P-P-P-P END
@@ -500,7 +503,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K
   UpperKick:
-    TNT1 A 3
+    TNT1 A 2
     TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
     TNT1 A 0 A_PlaySound("*melee")
     111L ABC 1
