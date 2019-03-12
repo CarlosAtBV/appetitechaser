@@ -77,7 +77,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 	MagPull:
 	TraitFire:
 		TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
-		"----" A 0 A_TSP_JumpIfInAir("Hornet")
+		"----" A 0 A_TSP_JumpIfInAir("MagSpear")
 		MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
 		//MLGF ABCDEFGH 1
 		MLGF ABCDEFGH 1
@@ -100,8 +100,8 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
-    TNT1 A 0 A_JumpIf (momZ > 0, "Hornet")
-    TNT1 A 0 A_JumpIf (momZ < 0, "Hornet")
+    TNT1 A 0 A_JumpIf (momZ > 0, "MagSpear")
+    TNT1 A 0 A_JumpIf (momZ < 0, "MagSpear")
     MLGF A 0 A_PlaySoundEX("magpush", "SoundSlot6")
     MLGF ABCDEFGH 1
     TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15)
@@ -142,7 +142,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 	TNT1 A 0 A_Jump(256, "AfterMelee")
     Goto AfterMelee
 //DIVEKICK!
-  Hornet:
+  MagSpear:
     TNT1 A 3 A_TSP_ThrustForwardsButLikeVeryForwards(10)/*Thrustthingz(0,10,0,0)
     TNT1 A 0 Thrustthingz(0,15,1,0)
     TNT1 A 0 Thrustthing(angle*256/360,5, 0, 0)*/
@@ -150,18 +150,17 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
     TNT1 A 0 A_Recoil(-10)
 	MLGC ABC 1
-    TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"HornetBerserk")
     MLGC D 1 A_TSP_Melee(60+1+1+1,90,"MagDivePuff")/*A_CustomPunch(60,0,0,"MagDivePuff",90)
     TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
     TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
     TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)*/
-  HornetA:
+  MagSpearA:
     TNT1 A 0 Thrustthingz(0,15,1,0)
 	MLGC EF 1
 	MK1F GHI 1
     TNT1 A 8 A_WeaponReady(WRF_NOFIRE)
-	Goto HornetFinish
-  HornetFinish:
+	Goto MagSpearFinish
+  MagSpearFinish:
     TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
 	TNT1 A 0 A_Jump(256, "AfterMelee")
@@ -215,7 +214,7 @@ ACTOR TSPMelHeavyWeapon : TSPMelBaseWeapon
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
     TNT1 AAAAAAAAAAAAA 1 A_WeaponReady(WRF_NOFIRE)
     Goto AfterMelee
-  HornetFinish:
+  MagSpearFinish:
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
     Goto AfterMelee
 	}
