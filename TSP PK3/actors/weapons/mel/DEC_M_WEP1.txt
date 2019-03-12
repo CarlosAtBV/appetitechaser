@@ -91,9 +91,9 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     1111 G 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1111 J 1 A_WeaponReady
+    1111 H 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1111 K 1 A_WeaponReady
+    TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
 	TNT1 A 0 A_Refire("ChargeUppercut")
@@ -327,6 +327,9 @@ ACTOR MelMelee : TSPMelBaseWeapon
     111S H 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     111S I 1 A_WeaponReady
+	TNT1 A 0 A_Refire("OneInchFist")
+  MelbowEnder:
+	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
@@ -442,7 +445,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 	TNT1 A 0 A_Recoil(-3)
     111Q ABC 1 
-    111Q D 9 A_TSP_Melee(22,90,"StrongMeleePuff")//A_CustomPunch(16,0,0,"StrongMeleePuff",90)
+    111Q D 11 A_TSP_Melee(22,90,"StrongMeleePuff")//A_CustomPunch(16,0,0,"StrongMeleePuff",90)
     Goto RapidFireFinishA
 	
 // K-K-P-P-P-P END
@@ -455,7 +458,44 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
     TNT1 A 6
     Goto AfterMelee
-	
+
+// One-Inch Fist (After Melbow)
+	OneInchFist:
+		TNT1 A 1 A_PlaySound("magpunch/charge", 6)
+		TNT1 A 1 A_Quake(3,2,0,5,"")
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
+		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 10)
+	OIFChargeLvl1:
+		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 20, "OIFChargeComplete")
+	    TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_Refire("OIFChargeLvl1")
+		Goto MelbowEnder
+	OIFChargeComplete:
+		TNT1 A 0 A_ZoomFactor(1.05)
+		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+		TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
+		TNT1 A 1 A_Quake(10,5,0,5,"")
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Refire("OIFChargeHold")
+		Goto OneInchFistLaunch
+	OIFChargeHold:
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_Refire("OIFChargeHold")
+	OneInchFistLaunch:
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+	    TNT1 A 0 A_Recoil(-5)
+		TNT1 A 5 A_PlaySound("*strongmelee", 5)
+		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
+		1111 ABCD 1
+		TNT1 A 0 A_Quake(2,3,0,5,"")
+		1111 E 12 A_TSP_Melee(150,90,"MagDivePuff",0,30,3)
+		1111 EEEEFGH 1
+		TNT1 AAAAAA 1
+		Goto AfterMelee
+		
 //Kicks
   AltFire:
     TNT1 A 0 A_JumpIfInventory("MagSlingToken", 1,"MagSling")
@@ -542,7 +582,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-K DEFAULT
   ViperFinisher:
-    TNT1 A 7 A_PlaySound("*strongmelee")
+    TNT1 A 5 A_PlaySound("*strongmelee")
 	TNT1 A 0 Thrustthing(angle*256/360,9, 0, 0)
     TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 	TNT1 A 0 A_SetPitch(pitch - 0.5)
@@ -554,7 +594,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 // K-K-K END
   ViperFinisherA:
     111R EFG 1
-    TNT1 A 6
+    TNT1 A 7
     Goto AfterMelee
 	
 // P-P-K DEFAULT
