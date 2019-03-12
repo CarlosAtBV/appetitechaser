@@ -63,8 +63,10 @@ ACTOR MelMelee : TSPMelBaseWeapon
   Fire:
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MelMachCombo",4,"AfterMelee") //made so you can't Melbow again after the Rapid Fire Finish
-    TNT1 A 0 A_JumpIfInventory("MelMachCombo",3,"RapidFireFinish")
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",6,"AfterMelee") //made so you can't Melbow again after the Rapid Fire Finish
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",5,"RapidFireFinish")
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",4,"CrossDuo")
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",3,"CrossPunch")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",2,"CrossDuo")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",1,"CrossPunch")
     TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",2,"Melbow")
