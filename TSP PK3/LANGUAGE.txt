@@ -169,6 +169,7 @@ NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more 
 
 //WEAPON PICKUPS
 MelMeleeTag = "\cc[\c-\c[Mel]Bare Knuckle\c-\cc]\c-";
+MelChargeTag = "\cc[\c-\ctCharge Style\c-\cc]\c-";
 
 //DARLING NIKKI
 MelPistolPickup = "\cc[\c-\cyDarling Nikki\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";

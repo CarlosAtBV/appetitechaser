@@ -109,6 +109,7 @@ ACTOR WeaponSelectMemory : Inventory
 {
   // Mel Weapons
   // 111 = Bare Knuckle
+  // 112 = Charge Style
   // 121 = Darling Nikki
   // 131 = OS06 Suzuka
   Inventory.MaxAmount 999
@@ -180,6 +181,7 @@ Actor MeleeSelected : Boolean {}
 ////////////////////////////
 
 #include "Actors/Weapons/Mel/DEC_M_WEP1.txt" // BARE KNUCKLE
+#include "Actors/Weapons/Mel/DEC_M_WEP1a.txt" // CHARGE STYLE
 #include "Actors/Weapons/Mel/DEC_M_WEP2.txt" // DARLING NIKKI
 #include "Actors/Weapons/Mel/DEC_M_WEP2a.txt" // DARLING NIKKI (Spitfire)
 #include "Actors/Weapons/Mel/DEC_M_WEP2b.txt"
