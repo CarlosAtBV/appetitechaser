@@ -53,9 +53,12 @@ melland1 melland1
 melland2 melland2
 melland3 melland3
 
-$random mel/unf { melunf1 melunf2 }
+$random mel/unf { melunf1 melunf2 melunfvo1 melunfvo2 melunfvo3 }
 melunf1 melunf1
 melunf2 melunf2
+melunfvo1 "sounds/mel/vo_mel_usefailvc1.ogg"
+melunfvo2 "sounds/mel/vo_mel_usefailvc2.ogg"
+melunfvo3 "sounds/mel/vo_mel_usefailvc3.ogg"
 
 $random mel/jump { meljump1 meljump2 meljump3 }
 meljump1 meljump1
