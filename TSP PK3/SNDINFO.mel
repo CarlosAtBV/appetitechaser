@@ -50,7 +50,7 @@ $random mel/xdeath { melxdth1 melxdth2 }
 melxdth1 melxdth1
 melxdth2 melxdth2
 
-$random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null null null null null null }
+$random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null }
 meljump01 "sounds/mel/vo_mel_jump01.ogg"
 meljump02 "sounds/mel/vo_mel_jump02.ogg"
 meljump03 "sounds/mel/vo_mel_jump03.ogg"
@@ -58,7 +58,7 @@ meljump04 "sounds/mel/vo_mel_jump04.ogg"
 meljump05 "sounds/mel/vo_mel_jump05.ogg"
 meljump06 "sounds/mel/vo_mel_jump06.ogg"
 meljump07 "sounds/mel/vo_mel_jump07.ogg"
-meljump08 "sounds/mel/vo_mel_jump08.ogg"
+// meljump08 "sounds/mel/vo_mel_jump08.ogg"
 meljump09 "sounds/mel/vo_mel_jump09.ogg"
 meljump10 "sounds/mel/vo_mel_jump10.ogg"
 meljump11 "sounds/mel/vo_mel_jump11.ogg"
@@ -84,7 +84,7 @@ melunfvo3 "sounds/mel/vo_mel_usefailvc3.ogg"
 // Mel's Melee
 //////////////////
 
-$random mel/smallmelee  { mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5 mel/smallmelee6 mel/smallmelee7 null null null null null null null null null null null null null null null null }
+$random mel/smallmelee  { mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5 mel/smallmelee6 mel/smallmelee7 null null null null null null null null null null null null null }
 mel/smallmelee1 "sounds/mel/melee/vo_mel_melee_sm01.ogg"
 mel/smallmelee2 "sounds/mel/melee/vo_mel_melee_sm02.ogg"
 mel/smallmelee3 "sounds/mel/melee/vo_mel_melee_sm03.ogg"
