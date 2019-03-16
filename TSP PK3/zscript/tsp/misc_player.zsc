@@ -469,7 +469,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		{
 			if(!ptp_wallJumpReadySound)
 			{
-				A_PlaySound("*land",CHAN_BODY);
+				A_PlaySound("mantle",CHAN_BODY);
 				ptp_wallJumpReadySound = true;
 			}
 			if(player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))

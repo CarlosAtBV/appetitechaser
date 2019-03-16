@@ -2,43 +2,43 @@
 // Mel Player Sounds
 //////////////////////
 
-$playeralias	Melody      male  	*pain100	mel/pain100
-$playeralias	Melody      male  	*pain75		mel/pain75
-$playeralias	Melody      male  	*pain50		mel/pain50
-$playeralias	Melody      male  	*pain25		mel/pain25
-$playeralias	Melody	    male  	*death		mel/death
-$playeralias	Melody      male  	*xdeath		mel/xdeath
-$playeralias	Melody      male  	*gibbed		mel/xdeath
-$playeralias	Melody      male  	*grunt		mel/land
-$playeralias	Melody	    male  	*jump		mel/jump
-$playersound    Melody	    male      *land       melland
-$playeralias    Melody	    male      *usefail    mel/unf
-$playeralias	Melody   	male  	*melee      mel/meleeyell
-$playeralias	Melody   	male  	*strongmelee       mel/strongmeleeyell
+$playeralias	Melody      male  	*pain100			mel/pain100
+$playeralias	Melody      male  	*pain75				mel/pain75
+$playeralias	Melody      male  	*pain50				mel/pain50
+$playeralias	Melody      male  	*pain25				mel/pain25
+$playeralias	Melody	    male  	*death				mel/death
+$playeralias	Melody      male  	*xdeath				mel/xdeath
+$playeralias	Melody      male  	*gibbed				mel/xdeath
+$playeralias	Melody      male  	*grunt				mel/land
+$playeralias	Melody	    male  	*jump				mel/jump
+$playersound    Melody	    male    *land				melland
+$playeralias    Melody	    male    *usefail			mel/usefail
+$playeralias	Melody   	male  	*melee				mel/meleeyell
+$playeralias	Melody   	male  	*strongmelee        mel/strongmeleeyell
 
-$random mel/pain25 { melpn251 melpn252 melpn253 melpn254 }
-melpn251 melpn251
-melpn252 melpn252
-melpn253 melpn253
-melpn254 melpn254
+$random mel/pain100 { melpain1001 melpain1002 melpain1003 melpain1004 }
+melpain1001 "sounds/mel/vo_mel_pain100-1.ogg"
+melpain1002 "sounds/mel/vo_mel_pain100-2.ogg"
+melpain1003 "sounds/mel/vo_mel_pain100-3.ogg"
+melpain1004 "sounds/mel/vo_mel_pain100-4.ogg"
 
-$random mel/pain50 { melpn501 melpn502 melpn503 melpn504 }
-melpn501 melpn501
-melpn502 melpn502
-melpn503 melpn503
-melpn504 melpn504
+$random mel/pain75 { melpain751 melpain752 melpain753 melpain754 }
+melpain751 "sounds/mel/vo_mel_pain75-1.ogg"
+melpain752 "sounds/mel/vo_mel_pain75-2.ogg"
+melpain753 "sounds/mel/vo_mel_pain75-3.ogg"
+melpain754 "sounds/mel/vo_mel_pain75-4.ogg"
 
-$random mel/pain75 { melpn751 melpn752 melpn753 melpn754 }
-melpn751 melpn751
-melpn752 melpn752
-melpn753 melpn753
-melpn754 melpn754
+$random mel/pain50 { melpain501 melpain502 melpain503 melpain504 }
+melpain501 "sounds/mel/vo_mel_pain50-1.ogg"
+melpain502 "sounds/mel/vo_mel_pain50-2.ogg"
+melpain503 "sounds/mel/vo_mel_pain50-3.ogg"
+melpain504 "sounds/mel/vo_mel_pain50-4.ogg"
 
-$random mel/pain100 { melpn101 melpn102 melpn103 melpn104 }
-melpn101 melpn101
-melpn102 melpn102
-melpn103 melpn103
-melpn104 melpn104
+$random mel/pain25 { melpain251 melpain252 melpain253 melpain254 }
+melpain251 "sounds/mel/vo_mel_pain25-1.ogg"
+melpain252 "sounds/mel/vo_mel_pain25-2.ogg"
+melpain253 "sounds/mel/vo_mel_pain25-3.ogg"
+melpain254 "sounds/mel/vo_mel_pain25-4.ogg"
 
 $random mel/death { meldth1 meldth2 }
 meldth1 meldth1
@@ -48,22 +48,29 @@ $random mel/xdeath { melxdth1 melxdth2 }
 melxdth1 melxdth1
 melxdth2 melxdth2
 
-$random mel/land { melland1 melland2 melland3 }
-melland1 melland1
-melland2 melland2
-melland3 melland3
+$random mel/jump { meljump1 meljump2 meljump3 meljump4 meljump5 }
+meljump1 "sounds/mel/vo_mel_jump1.ogg"
+meljump2 "sounds/mel/vo_mel_jump2.ogg"
+meljump3 "sounds/mel/vo_mel_jump3.ogg"
+meljump4 "sounds/mel/vo_mel_jump4.ogg"
+meljump5 "sounds/mel/vo_mel_jump5.ogg"
 
-$random mel/unf { melunf1 melunf2 melunfvo1 melunfvo2 melunfvo3 }
+$random mel/land { melland1 melland2 melland3 melland4 melland5 melland6 melland7 melland8 }
+melland1 "sounds/mel/vo_mel_land1.ogg"
+melland2 "sounds/mel/vo_mel_land2.ogg"
+melland3 "sounds/mel/vo_mel_land3.ogg"
+melland4 "sounds/mel/vo_mel_land4.ogg"
+melland5 "sounds/mel/vo_mel_land5.ogg"
+melland6 "sounds/mel/vo_mel_land6.ogg"
+melland7 "sounds/mel/vo_mel_land7.ogg"
+melland8 "sounds/mel/vo_mel_land8.ogg"
+
+$random mel/usefail { melunf1 melunf2 melunfvo1 melunfvo2 melunfvo3 }
 melunf1 melunf1
 melunf2 melunf2
 melunfvo1 "sounds/mel/vo_mel_usefailvc1.ogg"
 melunfvo2 "sounds/mel/vo_mel_usefailvc2.ogg"
 melunfvo3 "sounds/mel/vo_mel_usefailvc3.ogg"
-
-$random mel/jump { meljump1 meljump2 meljump3 }
-meljump1 meljump1
-meljump2 meljump2
-meljump3 meljump3
 
 //////////////////
 //Mel's Melee

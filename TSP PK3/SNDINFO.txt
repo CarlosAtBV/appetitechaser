@@ -62,8 +62,15 @@ bounty/finish           BOUNTFIN
 
 //Shield
 
-shield/hit "sounds/placeholder/player/shield_hit.ogg" // From Halo: Combat Evolved
+$random shield/hit { shieldhit1 shieldhit2 shieldhit3 } // From Mortal Kombat X
+shieldhit1 "sounds/general/player/sfx_general_shieldhit1.ogg"
+shieldhit2 "sounds/general/player/sfx_general_shieldhit2.ogg"
+shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
+
 shield/depleted "sounds/placeholder/player/shield_depleted.ogg" // From Halo: Combat Evolved
+
+//General
+mantle "sounds/general/player/sfx_general_mantle.ogg" // From Devil May Cry 4: Special Edition, Chornicles of Riddick: Assault on Dark Athena
 
 //shop
 
