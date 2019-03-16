@@ -50,16 +50,16 @@ $random mel/xdeath { melxdth1 melxdth2 }
 melxdth1 melxdth1
 melxdth2 melxdth2
 
-$random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 }
-meljump01 "sounds/mel/vo_mel_jump1.ogg"
-meljump02 "sounds/mel/vo_mel_jump2.ogg"
-meljump03 "sounds/mel/vo_mel_jump3.ogg"
-meljump04 "sounds/mel/vo_mel_jump4.ogg"
-meljump05 "sounds/mel/vo_mel_jump5.ogg"
-meljump06 "sounds/mel/vo_mel_jump6.ogg"
-meljump07 "sounds/mel/vo_mel_jump7.ogg"
-meljump08 "sounds/mel/vo_mel_jump8.ogg"
-meljump09 "sounds/mel/vo_mel_jump9.ogg"
+$random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null null null null null null }
+meljump01 "sounds/mel/vo_mel_jump01.ogg"
+meljump02 "sounds/mel/vo_mel_jump02.ogg"
+meljump03 "sounds/mel/vo_mel_jump03.ogg"
+meljump04 "sounds/mel/vo_mel_jump04.ogg"
+meljump05 "sounds/mel/vo_mel_jump05.ogg"
+meljump06 "sounds/mel/vo_mel_jump06.ogg"
+meljump07 "sounds/mel/vo_mel_jump07.ogg"
+meljump08 "sounds/mel/vo_mel_jump08.ogg"
+meljump09 "sounds/mel/vo_mel_jump09.ogg"
 meljump10 "sounds/mel/vo_mel_jump10.ogg"
 meljump11 "sounds/mel/vo_mel_jump11.ogg"
 meljump12 "sounds/mel/vo_mel_jump12.ogg"
