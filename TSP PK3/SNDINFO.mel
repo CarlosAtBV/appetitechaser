@@ -63,7 +63,6 @@ melland4 "sounds/mel/vo_mel_land4.ogg"
 melland5 "sounds/mel/vo_mel_land5.ogg"
 melland6 "sounds/mel/vo_mel_land6.ogg"
 melland7 "sounds/mel/vo_mel_land7.ogg"
-melland8 "sounds/mel/vo_mel_land8.ogg"
 
 $random mel/usefail { melunf1 melunf2 melunfvo1 melunfvo2 melunfvo3 }
 melunf1 melunf1
