@@ -16,6 +16,12 @@ ACTOR MelMachCombo : Inventory
   Inventory.Icon TNT1A0
 }
 
+ACTOR MelIdle : Inventory
+{
+  Inventory.MaxAmount 999
+  Inventory.Icon TNT1A0
+}
+
 ACTOR MelPistolCombo : Inventory
 {
   Inventory.MaxAmount 99

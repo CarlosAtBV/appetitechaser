@@ -62,6 +62,8 @@ nikki/firea2 121AFR2
 nikki/firea3 121AFR3
 $volume nikki/firea 0.9
 
+nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_mel_nikki_idle01.ogg"
+
 nikki/fireb "sounds/placeholder/tranq_fire1.wav"
 
 //MA919m Pistol, 919m Gold, 917 Pistol

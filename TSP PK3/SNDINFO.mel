@@ -124,6 +124,13 @@ mel/xlmelee2 "sounds/mel/melee/vo_mel_melee_xl02.ogg"
 mel/xlmelee3 "sounds/mel/melee/vo_mel_melee_xl03.ogg"
 mel/xlmelee4 "sounds/mel/melee/vo_mel_melee_xl04.ogg"
 
+$random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 null null null null null null }
+meltemp1 "sounds/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
+meltemp2 "sounds/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+meltemp3 "sounds/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+meltemp4 "sounds/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+meltemp5 "sounds/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+melidle "sounds/mel/misc/sfx_mel_idle01.ogg"
 
 //////////////////////
 // Mel's Mag Manuevers
