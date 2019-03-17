@@ -215,8 +215,8 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	VenomFinisher:
 		TNT1 A 5 A_PlaySound("*largemelee")
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		ML4F ABC 1
-		ML4F D 1 A_TSP_Melee(14,90,"UppercutMeleePuff",0,8,16,45,45)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+		111T ABC 1
+		111T D 8 A_TSP_Melee(28,90,"UppercutMeleePuff",0,8,16,45,45)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
 		// [Py] replace later
 		/*ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
 		ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
@@ -226,8 +226,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 // P-P-P-P END
 	VenomFinisherA:
-		ML4F E 2
-		ML4F DCBA 1
+		111T EFGA 1
 		TNT1 A 8
 		Goto AfterMelee
 	
@@ -265,41 +264,36 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 5 A_PlaySound("*xlmelee", 5)
 		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,50,0,1)
-		ML4F ABC 1
-		ML4F D 1 A_TSP_Melee(14,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		111T ABC 1
+		111T D 8 A_TSP_Melee(14,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,1,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 3)
-		TNT1 A 0 A_WeaponOffset(frandom(-2,2),frandom(-2,2))
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-		ML4F D 0 A_WeaponOffset(0,32)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
 		Goto FloatyBoy
 	SuperUppercutAir: //When in air, the uppercut doesn't carry you upwards that much
 	    TNT1 A 0 A_Recoil(-5)
 		TNT1 A 5 A_PlaySound("*xlmelee", 5)
 		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,15,0,1)
-		ML4F ABC 1
-		ML4F D 1 A_TSP_Melee(14,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		111T ABC 1
+		111T D 1 A_TSP_Melee(14,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,1,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 3)
-		TNT1 A 0 A_WeaponOffset(frandom(-2,2),frandom(-2,2))
-	    TNT1 A 0 A_WeaponOffset(0,32)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-	    ML4F D 1 ThrustThingZ(0,1,0,1)
-		ML4F D 0 A_WeaponOffset(0,32)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
+	    111T D 1 ThrustThingZ(0,1,0,1)
 		Goto FloatyBoy
 	FloatyBoy:
-		ML4F E 1 ThrustThingZ(0,1,0,1)
-		ML4F E 1 ThrustThingZ(0,1,0,1)
-		ML4F D 1 ThrustThingZ(0,1,0,1)
-		ML4F C 1 ThrustThingZ(0,1,0,1)
-		ML4F B 1 ThrustThingZ(0,1,0,1)
-		ML4F A 1 ThrustThingZ(0,1,0,1)
+		111T E 1 ThrustThingZ(0,1,0,1)
+		111T F 1 ThrustThingZ(0,1,0,1)
+		111T G 1 ThrustThingZ(0,1,0,1)
+		111T A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
         TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
         TNT1 A 1 ThrustThingZ(0,1,0,1)
