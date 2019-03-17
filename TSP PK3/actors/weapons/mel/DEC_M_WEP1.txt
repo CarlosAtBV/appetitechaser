@@ -213,10 +213,10 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // P-P-P-P DEFAULT
 	VenomFinisher:
-		TNT1 A 5 A_PlaySound("*largemelee")
+		TNT1 A 8 A_PlaySound("*largemelee")
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111T ABC 1
-		111T D 8 A_TSP_Melee(28,90,"UppercutMeleePuff",0,8,16,45,45)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+		111T D 7 A_TSP_Melee(26,90,"UppercutMeleePuff",0,8,16,45,45)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
 		// [Py] replace later
 		/*ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
 		ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
@@ -226,7 +226,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 // P-P-P-P END
 	VenomFinisherA:
-		111T EFGA 1
+		111T EFGH 1
 		TNT1 A 8
 		Goto AfterMelee
 	
@@ -291,7 +291,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		111T E 1 ThrustThingZ(0,1,0,1)
 		111T F 1 ThrustThingZ(0,1,0,1)
 		111T G 1 ThrustThingZ(0,1,0,1)
-		111T A 1 ThrustThingZ(0,1,0,1)
+		111T H 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
         TNT1 A 1 ThrustThingZ(0,1,0,1)
