@@ -26,10 +26,12 @@ TSP_SHOP_NIKKI_RLDNAME2 = "MegaTon Mag-Clip";
 TSP_SHOP_NIKKI_RLDDESC2 = "\cc(\ct%sx faster reload\cc)\c-\nBehold; the latest in magnetized clip technology! Just hold it near the slot and let science do the rest.";
 TSP_SHOP_NIKKI_RLDNAME3 = "SisKorp Replicator";
 TSP_SHOP_NIKKI_RLDDESC3 = "\cc(\ct%sx faster reload\cc)\c-\nManaging your ammunition is history with SisKorp's new automatic bullet replicator. Never load a bullet again!";
+
 // Darling Nikki
 
 	TSP_SHOP_DNMODA = "\cc(\ctFire Mode\cc)\c-\nAdds an alternative firing mode to Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";
 	TSP_SHOP_DNMODB = "\cc(\ctFire Mode\cc)\c-\nAdds a silencer to Nikki, allowing you to take out targets silently. Alt-fire lets you aim down the sights.";
+	TSP_SHOP_DNMODC = "\cc(\ctCustom Mode\cc)\c-\nAdds gold-plating to Darling Nikki, transforming it into Treasured Nikki. Also somehow has infinite ammo, huh.";
 	
 TSP_SHOP_SUZUKA_DAMNAME1 = "Payload Bullets";
 TSP_SHOP_SUZUKA_DAMDESC1 = "\cc(\ct%sx base damage\cc)\c-\nNew from SpiteTech! These bullets contain a payload of 8 smaller bullets, shooting them out upon impact.";

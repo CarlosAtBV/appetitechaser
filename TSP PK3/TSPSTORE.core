@@ -59,6 +59,15 @@ page
 			mod_give "MelPistolB";
 			desc "$TSP_SHOP_DNMODB";
 		}
+		item "Mod - Gold"
+		{
+			icons "graphics/store/items/store_item_gold.png";
+			price 50;
+			mod_take "MelPistol";
+			mod_give "MelPistolB";
+			desc "$TSP_SHOP_DNMODC";
+		}
+		
 		
 		header "Suzuka";
 		item "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "$TSP_SHOP_SUZUKA_DAMNAME3"
