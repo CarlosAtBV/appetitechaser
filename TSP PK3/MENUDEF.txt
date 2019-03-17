@@ -159,6 +159,8 @@ OptionMenu "OtherModOptions"
 	StaticText ""
 	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
 	Submenu "Champion Options", "mk_ChampionMenu"
+	Submenu "Bratwurst Settings", "BratwurstSettings"
+	SubMenu "CH Settings",		"Colourful Hell"
 }
 
 //=======================
