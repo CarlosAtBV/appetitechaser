@@ -55,16 +55,34 @@ uppercutmelee/contact2 umlhit2
 // - The Chronicles of Riddick: Assault on Dark Athena
 // - PlanetSide 2
 // - Sniper Elite 3
+// - Devil May Cry 4: Special Edition
+// [IDLE 1]
+// - Mortal Kombat X
+// - Super Monday Night Combat
+// - PlanetSide 2
+// - Devil May Cry 4: Special Edition
 
-$random nikki/firea { nikki/firea1 nikki/firea2 nikki/firea3 }
-nikki/firea1 121AFR1
-nikki/firea2 121AFR2
-nikki/firea3 121AFR3
+$random nikki/fire { nikki/fire01 nikki/fire02 nikki/fire03 }
+nikki/fire01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire01.ogg"
+nikki/fire02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire02.ogg"
+nikki/fire03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire03.ogg"
+$volume nikki/fire 0.9
+
+$random nikki/firea { nikki/firea01 nikki/firea02 nikki/firea03 }
+nikki/firea01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea01.ogg"
+nikki/firea02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea02.ogg"
+nikki/firea03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea03.ogg"
 $volume nikki/firea 0.9
 
-nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_mel_nikki_idle01.ogg"
-
 nikki/fireb "sounds/placeholder/tranq_fire1.wav"
+
+nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
+nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
+nikki/reloadin1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload02.ogg"
+nikki/reloadin2 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload03.ogg"
+
+nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
+
 
 //MA919m Pistol, 919m Gold, 917 Pistol
 $random 919m/fire { 919m/fire1 919m/fire2 919m/fire3 }

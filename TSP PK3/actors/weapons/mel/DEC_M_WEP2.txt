@@ -94,7 +94,7 @@ ACTOR MelPistol : TSPMelLightWeapon
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_AlertMonsters
     121F A 1 A_GunFlash
-    TNT1 A 0 A_PlaySound("nikki/firea", 6)
+    TNT1 A 0 A_PlaySound("nikki/fire", 6)
     TNT1 A 0 A_Light2
     121F B 1 BRIGHT
 	{
@@ -110,21 +110,21 @@ ACTOR MelPistol : TSPMelLightWeapon
     Goto Ready
 	
   Empty:
-    121G A 5 A_PlaySound("919m/dry", 5)
+    121G A 5 A_PlaySound("nikki/empty", 5)
 	"----" A 0 A_TSP_CheckReload()
     Goto Ready
   Reload:
     121R ABCCDDEEFFGGH 1
 	TNT1 A 0 A_FireCustomMissile("SpentClip1",3,0,5,0)
-	121R I 1 A_PlaySound("919m/magout", 6)
+	121R I 1 A_PlaySound("nikki/reloadout", 6)
 	121R JKLLMNO 1
 	121R P 22 A_TSP_ReloadSpeed(22)
 	//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
 	121R QRS 1
-	TNT1 A 0 A_PlaySound("919m/magin1", 5)
+	TNT1 A 0 A_PlaySound("nikki/reloadin1", 5)
 	121R TUUUVWXYZ 1
 	TNT1 A 0 A_TSP_ReloadAmmo
-	121R Z 1 A_PlaySound("919m/magin2", 6)
+	121R Z 1 A_PlaySound("nikki/reloadin2", 6)
 	121S AAABCD 1
 	121G A 3
 	Goto Ready
