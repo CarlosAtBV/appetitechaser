@@ -32,7 +32,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A -1
     Loop
   Deselect:
-    TNT1 A 0 A_TakeInventory("MelIdle", 999)
+    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
     TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
     TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
     TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
@@ -57,13 +57,13 @@ ACTOR MelMelee : TSPMelBaseWeapon
     Loop
   Ready:
 	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-    TNT1 A 0 A_JumpIfInventory("MelIdle", 800, "Idle")
+    TNT1 A 0 A_JumpIfInventory("MelIdle", 2500, "Idle")
 	TNT1 A 0 A_GiveInventory("MelIdle", 1)
     111G A 1 A_WeaponReady
     Loop
    
    Idle:
-    TNT1 A 0 A_TakeInventory("MelIdle", 999)
+    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
    Idle1:
 	TNT1 A 0 A_PlaySound("meltemp", 5)
 	111V ABCDEE 1 A_WeaponReady
@@ -78,7 +78,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 //Punch!
   Fire:
-    TNT1 A 0 A_TakeInventory("MelIdle", 999)
+    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",6,"AfterMelee") //made so you can't Melbow again after the Rapid Fire Finish
