@@ -502,3 +502,18 @@ Class TSP_Ship_FridgeNoise : Actor
 			Stop;
 	}
 }
+
+Class TSP_Prop_ShipMonitors : Actor
+{
+	Default
+	{
+		+NOGRAVITY
+		Height 4;
+	}
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+}

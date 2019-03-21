@@ -1,0 +1,8 @@
+Model TSP_Prop_ShipMonitors
+{
+	Path "models/tsp/props/" 
+	SKIN 0 "tex_monitor.png"
+	MODEL 0 "monitors.md3"
+	
+	FrameIndex POSS A 0 0
+}

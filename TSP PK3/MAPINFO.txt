@@ -277,3 +277,8 @@ skill TSPSurvivor
   Key = "6"
 }
 */
+
+DoomEdNums
+{
+	24700 = TSP_Prop_ShipMonitors
+}
