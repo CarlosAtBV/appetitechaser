@@ -6,3 +6,12 @@ Model TSP_Prop_ShipMonitors
 	
 	FrameIndex POSS A 0 0
 }
+
+Model TSP_Prop_PlanetSphere
+{
+	Path "models/tsp/props/space/" 
+	SKIN 0 "tex_planet.png"
+	MODEL 0 "planet.md3"
+	
+	FrameIndex POSS A 0 0
+}

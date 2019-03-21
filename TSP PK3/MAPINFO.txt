@@ -281,4 +281,5 @@ skill TSPSurvivor
 DoomEdNums
 {
 	24700 = TSP_Prop_ShipMonitors
+	24701 = TSP_Prop_PlanetSphere
 }
