@@ -141,7 +141,7 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 	States
 	{
 		SpacePirate:
-			121P A -1;
+			131P A -1;
 			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;

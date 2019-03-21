@@ -31,7 +31,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 	Weapon.AmmoGive 0//0
 	Weapon.AmmoUse1 1
 	Weapon.AmmoUse2 8
-	Inventory.Icon "121PA0"
+	Inventory.Icon "131PA0"
 
 	TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0
 	TSP_Weapon_Core.ClipSize 40 //Initial starting size of clip
@@ -45,7 +45,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 	States
 	{
 		Spawn:
-			121P A -1
+			131P A -1
 			Stop
 		Select:
 			TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
