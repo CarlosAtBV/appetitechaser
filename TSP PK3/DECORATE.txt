@@ -108,6 +108,7 @@ Actor StopTrait : CustomInventory
 ACTOR WeaponSelectMemory : Inventory
 {
   // Mel Weapons
+  // 110 = Trait
   // 111 = Bare Knuckle
   // 112 = Charge Style
   // 121 = Darling Nikki
