@@ -210,10 +210,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void FireWeaponAlt (State stat)
 	{
-		if (player.Bot == null && bot_observer)
+		/*if (player.Bot == null && bot_observer)
 		{
 			return;
-		}
+		}*/
 
 		let weapn = player.ReadyWeapon;
 		//[Py] added this epic shit
