@@ -350,8 +350,9 @@ Class TSP_ShopMenu : GenericMenu
 	void DrawButton(string name, Vector2 center, Vector2 size, bool active = false, bool outline = false)
 	{
 		DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, "#000000");
-		DrawBG(center.x-size.x/2,center.y+(size.y/2)-4,size.x,4, active ? "#00FF00" : "#000000");
+		DrawBG(center.x-size.x/2,center.y+(size.y/2)-4,size.x,4, active ? "#00FF00" : "#303030");
 		screen.DrawText(SmallFont, active ? Font.CR_GREEN : Font.CR_WHITE, center.x-SmallFont.StringWidth(name)/2, center.y-SmallFont.GetHeight()/2, name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+
 		if(outline)
 		{
 			DrawBG(center.x-size.x/2,center.y-size.y/2,size.x,size.y, "#FFFF00");
