@@ -327,7 +327,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	TNT1 A 0 A_PlaySound("*mediummelee")
     TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
     111S ABC 1
-    111S D 1 A_CustomPunch(18,0,0,"StrongMeleePuff",70)
+    111S D 1 A_TSP_Melee(18,70,"BasicMeleePuff")
 	Goto MelbowA
 
 // K-K-P END
