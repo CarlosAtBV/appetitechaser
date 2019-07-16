@@ -430,7 +430,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		searchForZoopTarget();
 		if(myZooper==null)
 		{
-			myZooper = new("TSP_EnemyTargeter");
+			myZooper = TSP_EnemyTargeter(Spawn("TSP_EnemyTargeter"));
 			myZooper.father = self;
 		}
 		
