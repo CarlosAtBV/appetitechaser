@@ -52,9 +52,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 			TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999)
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 131)
 			TNT1 A 0 A_PlaySound("919m/select", 5)
-			TNT1 A 0 SetPlayerProperty(0,1,2)
-		SelectLoop:
-			131G A 0 A_Raise
+			TNT1 A 0 A_WeaponOffset(0,32)
 			131G A 1 A_Raise
 			Loop
 		Deselect:
