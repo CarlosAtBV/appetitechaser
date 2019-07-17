@@ -109,6 +109,11 @@ ACTOR WeaponSelectMemory : Inventory
 {
   // Mel Weapons
   // 110 = Trait
+  //    A= Mag Grapple
+  //    B= Mag Sling
+  //    C= Mag Drive
+  //    D= Mag Upper
+  //    E= Mag Spear
   // 111 = Bare Knuckle
   // 112 = Charge Style
   // 121 = Darling Nikki
