@@ -162,6 +162,18 @@ magpunch/miss1 magphm1
 magpunch/miss2 magphm2
 magpunch/miss3 magphm3
 
+//////////////////////
+// Mel's Style Change
+//////////////////////
+
+melstylevocs   "sounds/mel/weaponpickups/vo_mel_style_cs.ogg"
+melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
+melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
+
+melstylevobk   "sounds/mel/weaponpickups/vo_mel_style_bk.ogg"
+melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
+melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
+
 
 ////////////////////
 //Mel's Pickup Lines

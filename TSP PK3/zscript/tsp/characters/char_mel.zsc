@@ -26,7 +26,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.DisplayName "$MELNAMECS";
 		Player.Face "MCW";
 		Player.Portrait "MCWST01";
-		Player.WeaponSlot 1, "MelMelee"/*, "MelChargeStyle"*/;
+		Player.WeaponSlot 1, "MelMelee";
 		Player.WeaponSlot 2, "MelPistol", "MelPistolA", "MelPistolB";
 		Player.WeaponSlot 3, "MelSMG";
 		Species "Player";
@@ -43,8 +43,8 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 	{
 		super.OnStandardLoadout();
 		
-		GiveInventory("MelMelee",1);
 		GiveInventory("MelChargeStyle",1);
+		GiveInventory("MelMelee",1);
 		if(!pp_meleestart)
 		{
 			GiveInventory("MelPistol",1);
