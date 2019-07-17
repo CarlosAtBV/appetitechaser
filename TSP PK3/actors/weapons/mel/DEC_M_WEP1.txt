@@ -37,6 +37,8 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
     TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
     TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "StyleDeselect")
+	TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "ComboDeselect")
     TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
     TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
@@ -47,20 +49,22 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
     TNT1 A 1 A_Lower
     Loop
+  StyleDeselect:
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+    TNT1 A 1 A_Lower
+    Loop
   ComboDeselect:
     TNT1 A 0 A_Lower
     Loop
   Select:
     TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
 	TNT1 A 0 A_TakeInventory("MelChargeStyle", 1)
-    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "Instaswitch")
+	TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "SwitchAttack") // Switching mid-attack while using Charge Style goes here
+    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "Instaswitch") // Activating Style Switch allows a seamless transition between styles
     TNT1 A 0 A_WeaponOffset(0,32)
     111U ABC 1
     111G A 1 A_Raise
     Loop
-  /*SelectChargeStyle:
-	TNT1 A 0 A_SelectWeapon("MelChargeStyle")
-	Loop*/
   Instaswitch:
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
   Ready:
@@ -70,30 +74,33 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	TNT1 A 0 A_GiveInventory("MelIdle", 1)
     111G A 1 A_WeaponReady
     Loop
-   
+
+// Idle Animations   
    Idle:
     TNT1 A 0 A_TakeInventory("MelIdle", 99999)
    Idle1:
 	TNT1 A 0 A_PlaySound("meltemp", 5)
 	111V ABCDEE 1 A_WeaponReady
 	TNT1 A 0 A_PlaySound("melidle", 6)
-	TNT1 A 0 A_SetBlend("39 99 0", 0.4, 50)
+	TNT1 A 0 A_SetBlend("0 191 64", 0.4, 50)
 	111V F 5 A_WeaponReady
 	TNT1 A 0 A_Quake(1,40,0,5,"")
 	111V GHIFGHIFGHIFGHIFGHIFGHIFGHIFGHIFGHI 1 A_WeaponReady
-	TNT1 A 0 A_SetBlend("39 99 0", 0.01, 2)
+	TNT1 A 0 A_SetBlend("0 191 64", 0.01, 2)
 	111V FEEDDCBA 1 A_WeaponReady
 	Goto Ready
-	
+
+// Activates Charge Style
    StyleSwitch:
     TNT1 A 0 A_TakeInventory("MelIdle", 99999)
    ChargeStyleActivate:
+    TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch")
 	111V ABCDEE 1 A_WeaponReady
 	TNT1 A 0 A_PlaySound("melstylecssfx1", 6)
 	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 50)
-	111V F 5 A_WeaponReady
+	111V F 5
 	TNT1 A 0 A_Quake(1,25,0,5,"")
-	110G ABCDEFGHIJ 1 BRIGHT A_WeaponReady
+	110G ABCDEFGHIJ 1 BRIGHT
 	TNT1 A 0 A_SetBlend("144 0 191", 0.01, 2)
 	TNT1 A 0 A_PlaySound("melstylevocs", 5)
 	111V FEEDDCBA 1
@@ -101,12 +108,34 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	TNT1 A 0 A_GiveInventory("MelChargeToken", 1)
 	TNT1 A 0 A_GiveInventory("MelChargeStyle", 1)
 	111V A 1 A_SelectWeapon("MelChargeStyle")
-	Goto Ready
-	
-	
+	Goto Deselect
+
+// Switching to Charge Style mid-attack	
+   QuickStyleSwitch:
+	TNT1 A 4 A_PlaySound("melstylecssfx2", 6)
+	TNT1 A 0 A_SetBlend("144 0 191", 0.01, 2)
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+	TNT1 A 0 A_GiveInventory("MelChargeToken", 1)
+	TNT1 A 0 A_GiveInventory("MelChargeStyle", 1)
+	TNT1 A 1 A_SelectWeapon("MelChargeStyle")
+	Goto Deselect
+
+// Switching styles mid-attack (from Charge Style)
+  SwitchAttack:
+    TNT1 A 1 A_Raise
+    TNT1 A 0 A_WeaponOffset(0,32)
+    TNT1 A 6 A_PlaySound("*smallmelee")
+    TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    111M ABCDE 1
+    111M F 1 A_TSP_Melee(30+2+2+2,90,"StrongMeleePuff",10,0)
+    Goto CrescentFangFinisherA
+
 //Punch!
   Fire:
     TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+    TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
     TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 0 A_JumpIfInventory("MelMachCombo",6,"AfterMelee") //made so you can't Melbow again after the Rapid Fire Finish
@@ -134,39 +163,55 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
     TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 F 2 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 G 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 H 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
 	TNT1 A 0 A_Refire("ChargeUppercut")
  ComboP1Ender: //You'll return to this state if you don't continue with the uppercut!
     TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     Goto AfterMelee
 	
@@ -282,17 +327,17 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 1 A_PlaySound("magpunch/charge", 5)
 		TNT1 A 1 A_Quake(3,2,0,5,"")
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 10)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.4, 10)
 	ChargeLvl1:
 		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 9, "ChargeComplete")
 	    TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
 		TNT1 A 1 A_Quake(1,2,0,5,"")
-		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.05, 3)
 		TNT1 A 0 A_Refire("ChargeLvl1")
 		Goto ComboP1Ender
 	ChargeComplete:
 		TNT1 A 0 A_ZoomFactor(1.05)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.4, 15)
 		TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
 		TNT1 A 1 A_Quake(10,5,0,5,"")
 		TNT1 A 0 A_ZoomFactor(1.0)
@@ -300,7 +345,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		Goto SuperUppercut
 	ChargeHold:
 		TNT1 A 1 A_Quake(1,2,0,5,"")
-		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.05, 3)
 		TNT1 A 0 A_Refire("ChargeHold")
 	SuperUppercut:
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
@@ -310,7 +355,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 8 A_PlaySound("*xlmelee", 5)
 		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,53,0,1)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.2, 5)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.2, 5)
 		110D ABC 1 BRIGHT
 		110D D 1 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
@@ -325,7 +370,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 8 A_PlaySound("*xlmelee", 5)
 		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,25,0,1)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.2, 5)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.2, 5)
 		110D ABC 1 BRIGHT
 		110D D 1 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
@@ -508,17 +553,17 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 1 A_PlaySound("magpunch/charge", 6)
 		TNT1 A 1 A_Quake(3,2,0,5,"")
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 10)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.4, 10)
 	OIFChargeLvl1:
 		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 20, "OIFChargeComplete")
 	    TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
 		TNT1 A 1 A_Quake(1,2,0,5,"")
-		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.05, 3)
 		TNT1 A 0 A_Refire("OIFChargeLvl1")
 		Goto MelbowEnder
 	OIFChargeComplete:
 		TNT1 A 0 A_ZoomFactor(1.05)
-		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.4, 15)
 		TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
 		TNT1 A 1 A_Quake(10,5,0,5,"")
 		TNT1 A 0 A_ZoomFactor(1.0)
@@ -526,7 +571,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		Goto OneInchFistLaunch
 	OIFChargeHold:
 		TNT1 A 1 A_Quake(1,2,0,5,"")
-		TNT1 A 0 A_SetBlend("39 99 0", 0.05, 3)
+		TNT1 A 0 A_SetBlend("0 191 64", 0.05, 3)
 		TNT1 A 0 A_Refire("OIFChargeHold")
 	OneInchFistLaunch:
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
@@ -725,6 +770,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
     TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+    TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
     111U ABC 1
     111G A 1

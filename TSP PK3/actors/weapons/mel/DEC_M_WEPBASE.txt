@@ -52,6 +52,12 @@ ACTOR MelChargeToken: Inventory
   Inventory.Icon TNT1A0
 }
 
+ACTOR StyleComboToken: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
 /////////////////////////////////////////////////////
 // Allows for both combo-able trait and melee attacks
 //
