@@ -139,30 +139,30 @@ melidle "sounds/mel/misc/sfx_mel_idle01.ogg"
 // - Jedi Knight II: Jedi Outcast
 // - Quake III Arena
 // - Chronicles of Riddick: Assault on Dark Athena
-magpull magpull
-magpush magpush
-magphit magphit
-magsling magsling
-maghit maghit
-magloop magloop
+// - Mortal Kombat 9
+// - Mortal Kombat X
+magpull "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
+magsling "sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
+magpush "sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
+magphit "sounds/weapons/Mel/MagTrait/sfx_mag_driveimpact01.ogg"
+maghit "sounds/weapons/Mel/MagTrait/sfx_mag_impactbeta01.ogg"
+magloop "sounds/weapons/Mel/MagTrait/sfx_mag_ambloop01.ogg"
 
-magpunch/charge magphc1
-magpunch/chargefin magphcf1
-magpunch/chargeloop magphcl
-$random magpunch/contact { magpunch/contact1 magpunch/contact2 }
-magpunch/contact1 magphe1
-magpunch/contact2 magphe2
-$random magpunch/wall { magpunch/wall1 magpunch/wall2 magpunch/wall3 }
-magpunch/wall1 magphw1
-magpunch/wall2 magphw2
-magpunch/wall3 magphw3
+magpunch/charge    "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge01.ogg"
+magpunch/chargefin "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge02.ogg"
+maguppercut "sounds/weapons/Mel/MagTrait/sfx_mag_uppercut01.ogg"
 
 $random magpunch/miss { magpunch/miss1 magpunch/miss2 magpunch/miss3 }
-magpunch/miss1 magphm1
-magpunch/miss2 magphm2
-magpunch/miss3 magphm3
-
-maguppercut "sounds/weapons/MeleeGrapple/sfx_mag_uppercut01.ogg"
+magpunch/miss1 "sounds/weapons/Mel/MagTrait/sfx_mag_miss01.ogg"
+magpunch/miss2 "sounds/weapons/Mel/MagTrait/sfx_mag_miss02.ogg"
+magpunch/miss3 "sounds/weapons/Mel/MagTrait/sfx_mag_miss03.ogg"
+$random magpunch/contact { magpunch/contact1 magpunch/contact2 }
+magpunch/contact1 "sounds/weapons/Mel/MagTrait/sfx_mag_physimpact01.ogg"
+magpunch/contact2 "sounds/weapons/Mel/MagTrait/sfx_mag_physimpact02.ogg"
+$random magpunch/wall { magpunch/wall1 magpunch/wall2 magpunch/wall3 }
+magpunch/wall1 "sounds/weapons/Mel/MagTrait/sfx_mag_wall01.ogg"
+magpunch/wall2 "sounds/weapons/Mel/MagTrait/sfx_mag_wall02.ogg"
+magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
 
 //////////////////////
 // Mel's Style Change
