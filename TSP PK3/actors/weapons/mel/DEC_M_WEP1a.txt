@@ -27,7 +27,7 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
   +NOEXTREMEDEATH
   +INVENTORY.UNDROPPABLE
   States
-   {
+  {
   Spawn:
     TNT1 A -1
     Loop

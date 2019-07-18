@@ -7,6 +7,7 @@ $playeralias	Melody      male  	*pain75				mel/pain75
 $playeralias	Melody      male  	*pain50				mel/pain50
 $playeralias	Melody      male  	*pain25				mel/pain25
 $playeralias	Melody	    male  	*death				mel/death
+//$playeralias	Melody	    male  	*wimpydeath			mel/wimpydeath <- These happen way more than I thought they would
 $playeralias	Melody      male  	*xdeath				mel/xdeath
 $playeralias	Melody      male  	*gibbed				mel/xdeath
 $playeralias	Melody      male  	*grunt				mel/land
@@ -43,8 +44,14 @@ melpain253 "sounds/mel/vo_mel_pain25-3.ogg"
 melpain254 "sounds/mel/vo_mel_pain25-4.ogg"
 
 $random mel/death { meldth1 meldth2 }
-meldth1 meldth1
-meldth2 meldth2
+meldth1 "sounds/mel/vo_mel_death_normal01.ogg"
+meldth2 "sounds/mel/vo_mel_death_normal02.ogg"
+
+$random mel/wimpydeath { melwimpydth1 melwimpydth2 melwimpydth3 melwimpydth4 }
+melwimpydth1 "sounds/mel/vo_mel_death_wimpy01.ogg"
+melwimpydth2 "sounds/mel/vo_mel_death_wimpy02.ogg"
+melwimpydth3 "sounds/mel/vo_mel_death_wimpy03.ogg"
+melwimpydth4 "sounds/mel/vo_mel_death_wimpy04.ogg"
 
 $random mel/xdeath { melxdth1 melxdth2 }
 melxdth1 melxdth1
@@ -73,9 +80,11 @@ melland5 "sounds/mel/vo_mel_land5.ogg"
 melland6 "sounds/mel/vo_mel_land6.ogg"
 melland7 "sounds/mel/vo_mel_land7.ogg"
 
-$random mel/usefail { melunf1 melunf2 melunfvo1 melunfvo2 melunfvo3 }
-melunf1 melunf1
-melunf2 melunf2
+$random mel/usefail { melunf1 melunf2 melunf3 melunf4 melunfvo1 melunfvo2 melunfvo3 }
+melunf1 "sounds/mel/vo_mel_usefail1.ogg"
+melunf2 "sounds/mel/vo_mel_usefail2.ogg"
+melunf3 "sounds/mel/vo_mel_usefail3.ogg"
+melunf4 "sounds/mel/vo_mel_usefail4.ogg"
 melunfvo1 "sounds/mel/vo_mel_usefailvc1.ogg"
 melunfvo2 "sounds/mel/vo_mel_usefailvc2.ogg"
 melunfvo3 "sounds/mel/vo_mel_usefailvc3.ogg"
