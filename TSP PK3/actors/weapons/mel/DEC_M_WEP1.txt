@@ -68,12 +68,20 @@ ACTOR MelMelee : TSPMelBaseWeapon
   Instaswitch:
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
   Ready:
+	TNT1 A 0 A_JumpIfInventory("TSP_Upgrade_ChargeStyle", 1, "CompleteReady")
+	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
+    TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
+	TNT1 A 0 A_GiveInventory("MelIdle", 1)
+    111G A 1 A_WeaponReady
+    Loop
+  CompleteReady:
 	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch")
     TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
 	TNT1 A 0 A_GiveInventory("MelIdle", 1)
     111G A 1 A_WeaponReady
     Loop
+
 
 // Idle Animations   
    Idle:
@@ -93,6 +101,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 // Activates Charge Style
    StyleSwitch:
     TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+    "----" A 0 A_JumpIf(CountInv("TSP_Upgrade_ChargeStyle")<1,"Nope") // Charge Style not purchased yet
    ChargeStyleActivate:
     TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch")
 	111V ABCDEE 1 A_WeaponReady
@@ -109,6 +118,13 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	TNT1 A 0 A_GiveInventory("MelChargeStyle", 1)
 	111V A 1 A_SelectWeapon("MelChargeStyle")
 	Goto Deselect
+   Nope:
+    TNT1 A 0 A_JumpIfInventory("MelMachCombo",99,"AfterMelee")
+    TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",99,"AfterMelee")
+    TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",99,"AfterMelee")
+	111G A 1
+	Goto Ready
+	
 
 // Switching to Charge Style mid-attack	
    QuickStyleSwitch:
@@ -150,7 +166,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",1,"RightHook")
 	
   // P DEFAULT
-  DefaultPunch:
+  Punch:
 	TNT1 A 0 A_PlaySound("*smallmelee")
 	TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
     1111 ABCD 1
@@ -163,55 +179,40 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
     TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 F 2 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 G 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     1111 H 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
 	TNT1 A 0 A_Refire("ChargeUppercut")
  ComboP1Ender: //You'll return to this state if you don't continue with the uppercut!
     TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
+
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
     TNT1 A 1 A_WeaponReady
     Goto AfterMelee
 	

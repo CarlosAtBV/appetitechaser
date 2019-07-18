@@ -119,13 +119,28 @@ page
 	}
 	tab "Traits"
 	{
-		header "Epic Shit";
+		header "Melee Moves";
+		item "Charge Style"
+		{
+			desc "$TSP_SHOP_MEL_CHARGEDESC";
+			inv_class "TSP_Upgrade_ChargeStyle";
+			inv_amount 1;
+			price 10;
+		}
+		header "Trait Moves";
+		item "Mag Spear"
+		{
+			desc "$TSP_SHOP_MEL_MAGSPEARDESC";
+			inv_class "TSP_Upgrade_MagSpear";
+			inv_amount 1;
+			price 10;
+		}
 		item "Mag Sling"
 		{
-			desc "YAHOO YAYAYAYAYAYAYAYAHOO";
+			desc "$TSP_SHOP_MEL_MAGSLINGDESC";
 			inv_class "TSP_Upgrade_MagSling";
-			inv_amount 100;
-			price 100;
+			inv_amount 1;
+			price 10;
 		}
 		header "Good Shit";
 		item "Weed"

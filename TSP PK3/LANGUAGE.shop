@@ -27,6 +27,12 @@ TSP_SHOP_NIKKI_RLDDESC2 = "\cc(\ct%sx faster reload\cc)\c-\nBehold; the latest i
 TSP_SHOP_NIKKI_RLDNAME3 = "SisKorp Replicator";
 TSP_SHOP_NIKKI_RLDDESC3 = "\cc(\ct%sx faster reload\cc)\c-\nManaging your ammunition is history with SisKorp's new automatic bullet replicator. Never load a bullet again!";
 
+// Special Moves (Traits, Melee)
+	TSP_SHOP_MEL_CHARGEDESC = "\cc(\c[Mel]Fighting Style\cc)\c-\nGain access to \ctCharge Style\c-! Unlocks a whole new set of melee moves!\n\cu(Press \ckMelee Key\c- \cuto activate)";
+	TSP_SHOP_MEL_MAGSPEARDESC = "\cc(\c[Mel]Trait\cc)\c-\nA powerful dive kick that does massive damage!\n\cu(Hold \c[mel]Trait\c-\cu -> \ckPrimary Fire\c-\cu in air to activate) ";
+	TSP_SHOP_MEL_MAGSLINGDESC = "\cc(\c[Mel]Trait\cc)\c-\nUse an enemy as an anchor point to catapult yourself over to!\n\cu(Hold \c[mel]Trait\c-\cu -> \ckAlternate Fire\c-\cu to activate) ";
+
+
 // Darling Nikki
 
 	TSP_SHOP_DNMODA = "\cc(\ctFire Mode\cc)\c-\nAdds an alternative firing mode to Nikki, allowing you to unleash a flurry of bullets until the clip runs out.";
