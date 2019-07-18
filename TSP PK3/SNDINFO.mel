@@ -162,6 +162,8 @@ magpunch/miss1 magphm1
 magpunch/miss2 magphm2
 magpunch/miss3 magphm3
 
+maguppercut "sounds/weapons/MeleeGrapple/sfx_mag_uppercut01.ogg"
+
 //////////////////////
 // Mel's Style Change
 //////////////////////
