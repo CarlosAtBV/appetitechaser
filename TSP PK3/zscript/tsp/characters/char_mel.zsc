@@ -43,7 +43,6 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 	{
 		super.OnStandardLoadout();
 		
-		GiveInventory("MelChargeStyle",1);
 		GiveInventory("MelMelee",1);
 		if(!pp_meleestart)
 		{
