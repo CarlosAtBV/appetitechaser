@@ -38,7 +38,7 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
     TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
     TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
     TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "StyleDeselect")
-	TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "ComboDeselect")
+	TNT1 A 0 A_JumpIfInventory("StyleChangeToken", 1, "ComboDeselect")
     TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
     TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
@@ -148,13 +148,13 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
   ChargedPunch1:
 	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 	TNT1 A 0 A_Recoil(-5)
-	TNT1 A 6 A_PlaySound("*lgmelee", 5)
+	TNT1 A 6 A_PlaySound("*largemelee", 5)
 	TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
 	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
 	1121 ABC 1
 	TNT1 A 0 A_Quake(10,5,0,5,"")
 	1121 I 2 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,45)
-	1121 JKLM 1
+	1121 JKLMDDD 1
 	Goto Punch1End
   Punch1:
 	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
