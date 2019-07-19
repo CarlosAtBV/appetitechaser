@@ -194,7 +194,6 @@ ACTOR MelMelee : TSPMelBaseWeapon
  ComboP1Ender: //You'll return to this state if you don't continue with the uppercut!
     TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
