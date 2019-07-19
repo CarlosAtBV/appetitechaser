@@ -161,6 +161,10 @@ magpunch/charge    "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge01.ogg"
 magpunch/chargefin "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge02.ogg"
 maguppercut "sounds/weapons/Mel/MagTrait/sfx_mag_uppercut01.ogg"
 
+chargestyle/charge01 "sounds/weapons/Melee/Charge/sfx_mel_charge_start01.ogg"
+chargestyle/charge02 "sounds/weapons/Melee/Charge/sfx_mel_charge_start02.ogg"
+chargestyle/charge03 "sounds/weapons/Melee/Charge/sfx_mel_charge_start03.ogg"
+
 $random magpunch/miss { magpunch/miss1 magpunch/miss2 magpunch/miss3 }
 magpunch/miss1 "sounds/weapons/Mel/MagTrait/sfx_mag_miss01.ogg"
 magpunch/miss2 "sounds/weapons/Mel/MagTrait/sfx_mag_miss02.ogg"

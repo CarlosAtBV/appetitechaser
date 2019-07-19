@@ -52,6 +52,12 @@ ACTOR MelChargeToken: Inventory
   Inventory.Icon TNT1A0
 }
 
+ACTOR StyleChangeToken: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
 ACTOR StyleComboToken: Inventory
 {
   Inventory.MaxAmount 99
@@ -202,7 +208,7 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
     TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)  
     TNT1 A 0 A_TakeInventory("MagPushToken", 99)
     TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
-	Goto Select // If I change it to "Goto Ready" it disappears, so..."
+	Goto Select // If I change it to "Goto Ready" it disappears, so...
 	}
 }
 
