@@ -30,7 +30,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mHUDFont = HUDFont.Create(fnt,1,false);
 		fnt = "SmallFont";
 		mSmallFont = HUDFont.Create(fnt);
-		mTinyFont = HUDFont.Create("TINYFONT");
+		mTinyFont = HUDFont.Create("TINYFONT",0,Mono_off,1,1);
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -221,7 +221,8 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			for(int i = 0;i<playerObj.tsp_logs.Size();i++)
 			{
-				DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+16, HUDLEFT_Y-16-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_WHITE);
+				//DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+17, HUDLEFT_Y-15-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED);
+				DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED);
 			}
 			
 			if(isDebug)
