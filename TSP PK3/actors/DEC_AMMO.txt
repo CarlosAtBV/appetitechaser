@@ -11,7 +11,7 @@ ACTOR TSPPistolAmmo : Ammo
 	Ammo.BackpackMaxAmount 300
 	Ammo.DropAmount 5
 	//Inventory.Icon "919AA0"
-	Inventory.PickupMessage "Picked up a pistol magazine. [\cj+5 Pistol Ammo\c-]"
+	Inventory.PickupMessage "$PISTOLAMMOPICKUP"
 	Inventory.PickupSound "919m/magout"
 	Tag "Pistol Ammo"
 	States
@@ -24,7 +24,7 @@ ACTOR TSPPistolAmmo : Ammo
 
 ACTOR TSPPistolAmmoBig : TSPPistolAmmo
 {
-	Inventory.PickupMessage "Picked up a box of ammo. [\cj+50 Pistol Ammo\c-]"
+	Inventory.PickupMessage "$PISTOLAMMOPICKUP"
 	Inventory.Amount 50
 	States
 	{
@@ -80,7 +80,7 @@ ACTOR TSPSMGAmmo : Ammo
 	Ammo.BackpackMaxAmount 400
 	Ammo.DropAmount 16
 	//Inventory.Icon "919AA0"
-	Inventory.PickupMessage "Picked up an SMG magazine. [\ct+16 SMG Ammo\c-]"
+	Inventory.PickupMessage "$SMGAMMOPICKUP"
 	Inventory.PickupSound "919m/magout"
 	Tag "SMG Ammo"
 	States
@@ -93,7 +93,7 @@ ACTOR TSPSMGAmmo : Ammo
 
 ACTOR TSPSMGAmmoBig : TSPSMGAmmo
 {
-	Inventory.PickupMessage "Picked up an SMG ammo box of teh epicness X3 [\ct+48 SMG Ammo\c-]"
+	Inventory.PickupMessage "$SMGAMMOPICKUP"
 	Inventory.Amount 48
 	States
 	{

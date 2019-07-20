@@ -218,7 +218,7 @@ ACTOR TSPMegaSphereBlueArmor : TSPBlueArmor
 
 ACTOR TSPMegasphere : Megasphere replaces Megasphere
 {
-  Inventory.PickupMessage "[\c[Orange]+50 SHIELD\c-][\cnMAX HEALTH\c-]"
+  Inventory.PickupMessage "\cc[\cnMAX HEALTH\cc] + [\c[Orange]+50 SHIELD\c-\cc]"
   Inventory.PickupSound "health/supercharge"
   +INVENTORY.BIGPOWERUP
   +FLOATBOB
@@ -411,41 +411,6 @@ ACTOR TSPInvisDamage : PowerupGiver
 //===========================================================================
 // Miscellaneous
 //===========================================================================
-
-ACTOR BackpackSpawner replaces Backpack
-{
-  DropItem PoisonShellThrown 150
-  DropItem PoisonShellThrown 150
-  DropItem HellFireShellThrown 150
-  DropItem HellFireShellThrown 150
-  DropItem HellFireShellThrown 150
-  DropItem HellFireShellThrown 150
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem ElectricShellThrown 250
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  DropItem BuckshotShellThrown 255
-  States
-  {
-  Spawn:
-    TNT1 A 0
-    TNT1 A 1
-    TNT1 A 0 A_SpawnItemEx("BackPack2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    TNT1 A 1 A_NoBlocking
-    Stop
-  }
-}
 
 ACTOR BackPack2 : BackPack {}
 
