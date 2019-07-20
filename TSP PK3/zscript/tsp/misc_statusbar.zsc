@@ -222,7 +222,18 @@ Class TSP_StatusBar : BaseStatusBar
 			for(int i = 0;i<playerObj.tsp_logs.Size();i++)
 			{
 				//DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+17, HUDLEFT_Y-15-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED);
-				DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED);
+				let thisone  = playerObj.tsp_logs[i];
+				int yoff = 0;
+				double alpher = 1.0;
+				if(thisone.timeleft>138)
+				{
+					yoff = thisone.timeleft-138;
+				}
+				else if (thisone.timeleft<12)
+				{
+					alpher = thisone.timeleft/12.;
+				}
+				DrawString(mTinyFont, thisone.whatugot, (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 			}
 			
 			if(isDebug)
