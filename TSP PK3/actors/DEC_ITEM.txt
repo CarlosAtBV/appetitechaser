@@ -154,7 +154,7 @@ ACTOR TSPArmorBonusDrop Replaces ArmorBonus
   }
 }
 
-ACTOR TSPArmorBonus : CustomInventory
+ACTOR TSPArmorBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16
@@ -163,6 +163,7 @@ ACTOR TSPArmorBonus : CustomInventory
 	Inventory.Icon "ARSDD0"
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	TSP_CustomInventory.AmountGiven 1
 	States
 	{
 		Spawn:
@@ -174,7 +175,7 @@ ACTOR TSPArmorBonus : CustomInventory
 	}
 }
 
-ACTOR TSPRedArmorBonus : CustomInventory
+ACTOR TSPRedArmorBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16
@@ -183,6 +184,7 @@ ACTOR TSPRedArmorBonus : CustomInventory
 	Inventory.Icon "ARSED0"
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
+	TSP_CustomInventory.AmountGiven 2
 	States
 	{
 		Spawn:
