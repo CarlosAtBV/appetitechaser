@@ -235,6 +235,8 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
+		if(e.Thing is "TSP_PlayerPawn_ZSCBase") return;
+		
 		switch(gamemode)
 		{
 			default:
