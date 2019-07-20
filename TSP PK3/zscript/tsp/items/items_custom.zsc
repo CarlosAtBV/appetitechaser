@@ -1,0 +1,19 @@
+Class TSP_CustomInventory : CustomInventory
+{
+	int amountGiven;
+	Property AmountGiven : amountGiven;
+	
+	override bool TryPickup (in out Actor other)
+	{
+		if(super.TryPickup(other))
+		{
+			TSP_PlayerPawn_ZSCBase(other).AddLogMessage(PickupMsg,amountGiven);
+			return true;
+		}
+		return false;
+	}
+	override String PickupMessage ()
+	{
+		return "";
+	}
+}

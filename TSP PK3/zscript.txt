@@ -12,6 +12,7 @@ enum ETSPGamemodes
 #include "zscript/tsp/misc/misc_tokenizer.zsc"
 
 #include "zscript/tsp/items_gbd.zsc"
+#include "zscript/tsp/items/items_custom.zsc"
 
 #include "zscript/tsp/menus/menu_episodes.zsc"
 #include "zscript/tsp/menus/menu_characters_bh.zsc"

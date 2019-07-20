@@ -4,59 +4,51 @@
 // Sprites by Sangelothi, BloodyAcid, Infirnex, and Cardboard Marty
 //===========================================================================
 
-ACTOR TSPGreenArmorPickup : CustomInventory Replaces GreenArmor
+ACTOR TSPGreenArmorPickup : TSP_CustomInventory Replaces GreenArmor
 {
-  Radius 20
-  Height 16
-  Inventory.PickupMessage "$SHIELDPICKUP"
-  Inventory.PickupSound "armor/lightarmor"
-  Inventory.Icon "FLRMA0"
-  States
-  {
-  Spawn:
-    FLRM A 13
-    FLRM B 7 Bright
-    Loop
-  Pickup:
-    //TNT1 A 0 A_JumpIfInventory("BasicArmor", 100, "PickupFail")
-    //TNT1 A 0 A_TakeInventory("TSPBlueDamageReduction",9)
-    //TNT1 A 0 A_TakeInventory("TSPBlueArmorDamage",9)
-    TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 25)
-    //TNT1 A 0 A_GiveInventory("TSPGreenArmorDamage")
-    //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
-    Stop
-  PickupFail:
-    FLRM A 1
-    Fail
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$SHIELDPICKUP"
+	Inventory.PickupSound "armor/lightarmor"
+	Inventory.Icon "FLRMA0"
+	TSP_CustomInventory.AmountGiven 25 //Used for the pickup message
+	States
+	{
+	Spawn:
+		FLRM A 13
+		FLRM B 7 Bright
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 25)
+		Stop
+	PickupFail:
+		FLRM A 1
+		Fail
+	}
 }
 
 
-ACTOR TSPBlueArmorPickup : CustomInventory Replaces BlueArmor
+ACTOR TSPBlueArmorPickup : TSP_CustomInventory Replaces BlueArmor
 {
-  Radius 20
-  Height 16
-  Inventory.PickupMessage "$SHIELDPICKUP"
-  Inventory.PickupSound "armor/heavyarmor"
-  Inventory.Icon "PSRMA0"
-  States
-  {
-  Spawn:
-    PSRM A 13
-    PSRM B 7 Bright
-    Loop
-  Pickup:
-    //TNT1 A 0 A_JumpIfInventory("BasicArmor", 200, "PickupFail")
-    //TNT1 A 0 A_TakeInventory("TSPGreenDamageReduction",9)
-    //TNT1 A 0 A_TakeInventory("TSPGreenArmorDamage",9)
-    TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 50)
-    //TNT1 A 0 A_GiveInventory("TSPBlueArmorDamage")
-    //TNT1 A 1 ACS_NamedExecuteAlways("TSPArmorScript")
-    Stop
-  PickupFail:
-    FLRM A 1
-    Fail
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$SHIELDPICKUP"
+	Inventory.PickupSound "armor/heavyarmor"
+	Inventory.Icon "PSRMA0"
+	TSP_CustomInventory.AmountGiven 50
+	States
+	{
+	Spawn:
+		PSRM A 13
+		PSRM B 7 Bright
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 50)
+		Stop
+	PickupFail:
+		FLRM A 1
+		Fail
+	}
 }
 
 ACTOR TSPGreenArmor : BasicArmorPickup
