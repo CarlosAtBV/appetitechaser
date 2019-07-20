@@ -80,7 +80,8 @@ Class TSP_WeaponPickup : CustomInventory
 			}
 			if(given)
 			{
-				PrintPickupMessage(true,GetDefaultByType(tspweapon).PickupMessage());
+				TSP_PlayerPawn_ZSCBase(fucker).AddLogMessage(GetDefaultByType(tspweapon).PickupMessage(),ammoamt);
+				//PrintPickupMessage(true,GetDefaultByType(tspweapon).PickupMessage());
 			}
 		}
 		return given;

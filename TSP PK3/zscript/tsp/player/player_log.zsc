@@ -1,0 +1,43 @@
+Class TSP_PlayerPawn_LogMessage
+{
+	string whatugot;
+	int howmany;
+	int timeleft;
+}
+
+Extend Class TSP_PlayerPawn_ZSCBase
+{
+	Array<TSP_PlayerPawn_LogMessage > tsp_logs;
+	
+	void TickLogMessages()
+	{
+		for(int i = 0;i < tsp_logs.Size();i++)
+		{
+			tsp_logs[i].timeleft--;
+			if(tsp_logs[i].timeleft<1)
+			{
+				tsp_logs.Delete(i);
+				i--;
+			}
+		}
+	}
+	
+	void AddLogMessage(string whatugot, int howmany)
+	{
+		TSP_PlayerPawn_LogMessage newlog = new("TSP_PlayerPawn_LogMessage");
+		newlog.whatugot = StringTable.Localize(whatugot);
+		newlog.howmany = howmany;
+		newlog.timeleft = 4*35;
+		int new = tsp_logs.Size()-1;
+		if(tsp_logs.Size()>0 && tsp_logs[new].whatugot==newlog.whatugot)
+		{
+			newlog.Destroy();
+			tsp_logs[new].howmany += howmany;
+			tsp_logs[new].timeleft = 4*35;
+		}
+		else
+		{
+			tsp_logs.Push(newlog);
+		}
+	}
+}
