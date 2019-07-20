@@ -45,6 +45,20 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 			GBL1 ABCDEFGH 2;
 			Loop;
 	}
+	
+	override bool TryPickup (in out Actor other)
+	{
+		if(super.TryPickup(other))
+		{
+			TSP_PlayerPawn_ZSCBase(other).AddLogMessage(PickupMsg,69);
+			return true;
+		}
+		return false;
+	}
+	override String PickupMessage ()
+	{
+		return "";
+	}
 }
 
 Class TSP_GlobalDollarPickup_1 : TSP_GlobalDollarPickup_Base
