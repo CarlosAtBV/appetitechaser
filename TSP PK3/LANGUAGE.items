@@ -1,0 +1,28 @@
+[enu default]
+
+//ITEMS
+ShieldPickup = "[\c[Orange]%i \ccShield]";
+HealthPickup = "[\cn%i \ccHealth]";
+
+////////////////
+//WEAPON PICKUPS
+////////////////
+
+////////////////
+// MEL
+////////////////
+MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
+MelChargeTag = "\cc[\ctCharge Style\cc]";
+
+//DARLING NIKKI
+MelPistolPickup = "\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
+MelPistolTag = "\cc[\cyDarling Nikki\cc]";
+
+//DARLING NIKKI (MODS)
+MelPistolATag = "\cc[\cyDarling Nikki \cc- \ciSPITFIRE\cc]";
+MelPistolBTag = "\cc[\cyDarling Nikki \cc- \cuWHISPER\cc]";
+MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
+
+//SUZUKA
+MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
+MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";

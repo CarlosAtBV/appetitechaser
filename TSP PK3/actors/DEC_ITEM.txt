@@ -8,7 +8,7 @@ ACTOR TSPGreenArmorPickup : CustomInventory Replaces GreenArmor
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\c[Orange]+25 Shield\c-]"
+  Inventory.PickupMessage "$SHIELDPICKUP"
   Inventory.PickupSound "armor/lightarmor"
   Inventory.Icon "FLRMA0"
   States
@@ -36,7 +36,7 @@ ACTOR TSPBlueArmorPickup : CustomInventory Replaces BlueArmor
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+50 Shield\c-]"
+  Inventory.PickupMessage "$SHIELDPICKUP"
   Inventory.PickupSound "armor/heavyarmor"
   Inventory.Icon "PSRMA0"
   States
@@ -63,7 +63,7 @@ ACTOR TSPGreenArmor : BasicArmorPickup
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a ballistic armor vest. [\cp+100 Armor\c-]"
+  Inventory.PickupMessage "$SHIELDPICKUP"
   Inventory.PickupSound "armor/lightarmor"
   Inventory.Icon "FLRMA0"
   Armor.SavePercent 34
@@ -77,17 +77,11 @@ ACTOR TSPGreenArmor : BasicArmorPickup
   }
 }
 
-ACTOR TSPSurvivorArmor : TSPGreenArmor
-{
-  Armor.SavePercent 50
-  Armor.SaveAmount 50
-}
-
 ACTOR TSPBlueArmor : BasicArmorPickup
 {
   Radius 20
   Height 16
-  Inventory.PickupMessage "Equipped yourself with a palladium-alloy armor. [\cp+200 Armor\c-]"
+  Inventory.PickupMessage "$SHIELDPICKUP"
   Inventory.PickupSound "armor/heavyarmor"
   Inventory.Icon "PSRMA0"
   Armor.SavePercent 50
@@ -172,7 +166,7 @@ ACTOR TSPArmorBonus : CustomInventory
 {
 	Radius 20
 	Height 16
-	Inventory.PickupMessage "Found a nano-shield. [\c[Orange]+1 Shield\c-]"
+	Inventory.PickupMessage "$SHIELDPICKUP"
 	Inventory.PickupSound "armor/armorshard"
 	Inventory.Icon "ARSDD0"
 	+COUNTITEM
@@ -192,7 +186,7 @@ ACTOR TSPRedArmorBonus : CustomInventory
 {
 	Radius 20
 	Height 16
-	Inventory.PickupMessage "Found a nano-shield duo. [\c[Orange]+2 Shield\c-]"
+	Inventory.PickupMessage "$SHIELDPICKUP"
 	Inventory.PickupSound "armor/armorshard"
 	Inventory.Icon "ARSED0"
 	+COUNTITEM
@@ -224,7 +218,7 @@ ACTOR TSPMegaSphereBlueArmor : TSPBlueArmor
 
 ACTOR TSPMegasphere : Megasphere replaces Megasphere
 {
-  Inventory.PickupMessage "\cfPicked up the \ciMiracle Sphere!\c- [\c[Orange]+50 Shield\c-][\cn+200 Health\c-]"
+  Inventory.PickupMessage "[\c[Orange]+50 SHIELD\c-][\cnMAX HEALTH\c-]"
   Inventory.PickupSound "health/supercharge"
   +INVENTORY.BIGPOWERUP
   +FLOATBOB
@@ -244,7 +238,7 @@ ACTOR TSPMegasphere : Megasphere replaces Megasphere
 
 ACTOR TSPSoulsphere : Soulsphere replaces Soulsphere
 {
-  Inventory.PickupMessage "\cfPicked up the \cnVitality Sphere!\c- [\cn+100 Health\c-]"
+  Inventory.PickupMessage "$HEALTHPICKUP"
   Inventory.PickupSound "health/vitalitysphere"
   +INVENTORY.BIGPOWERUP
   +FLOATBOB
@@ -259,8 +253,8 @@ ACTOR TSPSoulsphere : Soulsphere replaces Soulsphere
 
 ACTOR TSPMedikit : Medikit Replaces Medikit
 {
-  Inventory.PickupMessage "Picked up a field-grade medikit. [\cn+25 Health\c-]"
-  Health.LowMessage 25, "Picked up a MUCH needed medikit. [\cn+25 Health\c-]"
+  Inventory.PickupMessage "$HEALTHPICKUP"
+  Health.LowMessage 25, "$HEALTHPICKUP"
   Inventory.PickupSound "health/medkit"
   Inventory.Icon "MDK1A0"
   States
@@ -275,8 +269,8 @@ ACTOR TSPMedikit : Medikit Replaces Medikit
 //Sangelothi and amv2k9
 ACTOR TSPStimpack : Stimpack Replaces Stimpack
 {
-  Inventory.PickupMessage "Picked up a quick-fix medikit. [\cn+10 Health\c-]"
-  Health.LowMessage 25, "Picked up a MUCH needed quick-fix medikit. [\cn+10 Health\c-]"
+  Inventory.PickupMessage "$HEALTHPICKUP"
+  Health.LowMessage 25, "$HEALTHPICKUP"
   Inventory.PickupSound "health/stimpack"
   States
   {
@@ -328,8 +322,8 @@ ACTOR TSPHealthBonusDrop Replaces HealthBonus
 
 ACTOR TSPHealthBonus : HealthBonus
 {
-  Inventory.PickupMessage "Picked up a vial of veti-gel. [\cn+1 Health\c-]"
-  Health.LowMessage 25, "Picked up a vial of veti-gel. Better find some more. [\cn+1 Health\c-]"
+  Inventory.PickupMessage "$HEALTHPICKUP"
+  Health.LowMessage 25, "$HEALTHPICKUP"
   Inventory.PickupSound "health/healthbonus"
   States
   {
@@ -341,8 +335,8 @@ ACTOR TSPHealthBonus : HealthBonus
 
 ACTOR TSPRedHealthBonus : HealthBonus
 {
-  Inventory.PickupMessage "Picked up a vial of red veti-gel. [\cn+2 Health\c-]"
-  Health.LowMessage 25, "Picked up a vial of red veti-gel. Better find some more. [\cn+2 Health\c-]"
+  Inventory.PickupMessage "$HEALTHPICKUP"
+  Health.LowMessage 25, "$HEALTHPICKUP"
   Inventory.PickupSound "health/healthbonus"
   Inventory.Amount 2
   Inventory.MaxAmount 250
