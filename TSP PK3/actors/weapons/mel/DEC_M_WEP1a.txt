@@ -186,9 +186,9 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     1121 F 1 A_Refire("PrimaryFire")
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 G 1 A_WeaponReady
+    1121 G 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 H 1 A_WeaponReady
+    1121 H 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
     TNT1 A 1 A_WeaponReady
     TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
