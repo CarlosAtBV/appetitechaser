@@ -113,51 +113,49 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawTexture(GetMugShot(5), (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
-			Color hpColor;
-			if(health>100)
-			{
-				hpColor = Font.CR_GOLD;
-			}
-			else if(health>75)
-			{
-				hpColor = Font.CR_LIGHTBLUE;
-			}
-			else if(health>50)
-			{
-				hpColor = Font.CR_CYAN;
-			}
-			else
-			{
-				hpColor = Font.CR_RED;
-			}
-			DrawString(mSmallFont, ""..health, (HUDLEFT_X+75, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
+			//================
+			// Health
+			//================
 			
-			// sheld number stats
-			DrawString(mSmallFont, ""..shield, (HUDLEFT_X+75, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
-			
-			// kiz
-			
-			//Vector2 keypos = (HUDRIGHT_X+25, HUDRIGHT_Y+21);
-			Vector2 keypos = (HUDRIGHT_X+22, HUDRIGHT_Y+21);
-			int rowc = 0;
-			double roww = 0;
-			for(let i = CPlayer.mo.Inv; i != null; i = i.Inv)
-			{
-				if (i is "Key" && i.Icon.IsValid())
+				Color hpColor;
+				if(health>100)
 				{
-					DrawTexture(i.Icon, keypos, DI_ITEM_LEFT_BOTTOM);
-					Vector2 size = TexMan.GetScaledSize(i.Icon);
-					keypos.X += size.X + 2;
-					roww = max(roww, size.X);
-					/*if (++rowc == 3)
-					{
-						keypos.Y = 2;
-						keypos.X -= roww + 2;
-						roww = 0;
-						rowc = 0;
-					}*/
+					hpColor = Font.CR_GOLD;
 				}
-			}
+				else if(health>75)
+				{
+					hpColor = Font.CR_LIGHTBLUE;
+				}
+				else if(health>50)
+				{
+					hpColor = Font.CR_CYAN;
+				}
+				else
+				{
+					hpColor = Font.CR_RED;
+				}
+				DrawString(mSmallFont, ""..health, (HUDLEFT_X+75, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
+				
+				// sheld number stats
+				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+75, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
+			
+			//================
+			// Keys
+			//================
+			
+				Vector2 keypos = (HUDRIGHT_X+22, HUDRIGHT_Y+21);
+				int rowc = 0;
+				double roww = 0;
+				for(let i = CPlayer.mo.Inv; i != null; i = i.Inv) //go thru the player's inventory to find some epic keys
+				{
+					if (i is "Key" && i.Icon.IsValid())
+					{
+						DrawTexture(i.Icon, keypos, DI_ITEM_LEFT_BOTTOM);
+						Vector2 size = TexMan.GetScaledSize(i.Icon);
+						keypos.X += size.X + 2;
+						roww = max(roww, size.X);
+					}
+				}
 			
 			// rIGHT HAND SIDE
 			
@@ -211,40 +209,51 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 			}
 			
-			TSP_PlayerPawn_ZSCBase playerObj = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
-			if(playerObj.pp_notificationTime>0)
-			{
-				Centering = true;
-				DrawString(mSmallFont, playerObj.pp_notification, (0,-36), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW|DI_SCREEN_CENTER_BOTTOM, Font.CR_GREEN);
-				Centering = false;
-			}
+			//================
+			// Weapon Mod
+			//================
 			
-			for(int i = 0;i<playerObj.tsp_logs.Size();i++)
-			{
-				//DrawString(mTinyFont, playerObj.tsp_logs[i].whatugot, (HUDLEFT_X+17, HUDLEFT_Y-15-(8*i)), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED);
-				let thisone  = playerObj.tsp_logs[i];
-				int yoff = 0;
-				double alpher = 1.0;
-				if(thisone.timeleft>138)
+				TSP_PlayerPawn_ZSCBase playerObj = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
+				if(playerObj.pp_notificationTime>0)
 				{
-					yoff = thisone.timeleft-138;
+					Centering = true;
+					DrawString(mSmallFont, playerObj.pp_notification, (0,-36), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW|DI_SCREEN_CENTER_BOTTOM, Font.CR_GREEN);
+					Centering = false;
 				}
-				else if (thisone.timeleft<12)
-				{
-					alpher = thisone.timeleft/12.;
-				}
-				DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
-			}
 			
-			if(isDebug)
-			{
-				string targetName = "N/A";
-				if(playerObj.theZoop!=null)
+			//================
+			// Pickup Log
+			//================
+			
+				for(int i = 0;i<playerObj.tsp_logs.Size();i++)
 				{
-					targetName = playerobj.theZoop.GetClassName();
+					let thisone  = playerObj.tsp_logs[i];
+					int yoff = 0;
+					double alpher = 1.0;
+					if(thisone.timeleft>138)
+					{
+						yoff = thisone.timeleft-138; //thunk
+					}
+					else if (thisone.timeleft<12)
+					{
+						alpher = thisone.timeleft/12.; //whoosh
+					}
+					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
-				DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
-			}
+			
+			//================
+			// Debug Shit
+			//================
+			
+				if(isDebug)
+				{
+					string targetName = "N/A";
+					if(playerObj.theZoop!=null)
+					{
+						targetName = playerobj.theZoop.GetClassName();
+					}
+					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
+				}
 		}
 	}
 }
