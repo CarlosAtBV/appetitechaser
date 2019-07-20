@@ -181,7 +181,7 @@ MelPistolBTag = "\cc[\c-\cyDarling Nikki\c- \cc-\c- \cuWHISPER\c-\cc]\c-";
 
 //SUZUKA
 
-MelSMGPickup = "\cc[\c-\cxOS06 Suzuka\c-\cc - \cuMulti-Purpose SMG\c-\cj\c-\cc]\c-";
+MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
 MelSMGPickupOld = "\cc[\c-\cxOS06 Suzuka\c-\cc]\c- \cc[\c-\cjClass:\c- \cxMulti-Purpose SMG\c-\cj,\c- \cjSlot\c- \ct3\c-\cc]\c-";
 MelSMGTag = "\cc[\c-\cxOS06 Suzuka\c-\cc]\c-";
 
