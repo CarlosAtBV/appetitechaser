@@ -1,11 +1,13 @@
-// From Dota 2 (custom game lines)
+//AILENE ANNOUNCER
+$random announcer/hunters/ailene/gameover { ailene/gameover1 ailene/gameover2 ailene/gameover3 }
+ailene/gameover1 "sounds/announcer/ailene/vo_bh_ailene_gameover01.ogg"
+ailene/gameover2 "sounds/announcer/ailene/vo_bh_ailene_gameover02.ogg"
+ailene/gameover3 "sounds/announcer/ailene/vo_bh_ailene_gameover03.ogg"
 
-announcer/hunters/gameover "sounds/placeholder/hunters/Ann_custom_end_08.ogg"
-
-announcer/hunters/30secs "sounds/placeholder/hunters/Ann_custom_timer_sec_30.ogg"
-announcer/hunters/10secs "sounds/placeholder/hunters/Ann_custom_timer_sec_10.ogg"
-announcer/hunters/5secs "sounds/placeholder/hunters/Ann_custom_countdown_05.ogg"
-announcer/hunters/4secs "sounds/placeholder/hunters/Ann_custom_countdown_04.ogg"
-announcer/hunters/3secs "sounds/placeholder/hunters/Ann_custom_countdown_03.ogg"
-announcer/hunters/2secs "sounds/placeholder/hunters/Ann_custom_countdown_02.ogg"
-announcer/hunters/1secs "sounds/placeholder/hunters/Ann_custom_countdown_01.ogg"
+announcer/hunters/ailene/30secs "sounds/announcer/ailene/vo_bh_ailene_30sec.ogg"
+announcer/hunters/ailene/10secs "sounds/announcer/ailene/vo_bh_ailene_10sec.ogg"
+announcer/hunters/ailene/5secs "sounds/announcer/ailene/vo_bh_ailene_countdown5.ogg"
+announcer/hunters/ailene/4secs "sounds/announcer/ailene/vo_bh_ailene_countdown4.ogg"
+announcer/hunters/ailene/3secs "sounds/announcer/ailene/vo_bh_ailene_countdown3.ogg"
+announcer/hunters/ailene/2secs "sounds/announcer/ailene/vo_bh_ailene_countdown2.ogg"
+announcer/hunters/ailene/1secs "sounds/announcer/ailene/vo_bh_ailene_countdown1.ogg"

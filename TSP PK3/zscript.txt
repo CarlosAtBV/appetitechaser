@@ -319,20 +319,20 @@ Class TSP_EventHandler : EventHandler
 						}
 						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
 						gameover = true;
-						S_Sound("announcer/hunters/gameover",CHAN_VOICE);
+						S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
 					}
 					else
 					{
 						hunters_time--;
 						switch(hunters_time)
 						{
-							case 30: S_Sound("announcer/hunters/30secs",CHAN_VOICE); break;
-							case 10: S_Sound("announcer/hunters/10secs",CHAN_VOICE); break;
-							case 5: S_Sound("announcer/hunters/5secs",CHAN_VOICE); break;
-							case 4: S_Sound("announcer/hunters/4secs",CHAN_VOICE); break;
-							case 3: S_Sound("announcer/hunters/3secs",CHAN_VOICE); break;
-							case 2: S_Sound("announcer/hunters/2secs",CHAN_VOICE); break;
-							case 1: S_Sound("announcer/hunters/1secs",CHAN_VOICE); break;
+							case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
+							case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
+							case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
+							case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
+							case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
+							case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
+							case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
 						}
 					}
 				}
