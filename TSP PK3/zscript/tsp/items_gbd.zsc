@@ -1,7 +1,12 @@
 Class TSP_GlobalDollarPickup_Base : CustomInventory
 {
+	int amountGiven;
+	
+	Property AmountGiven : amountGiven;
+	
 	Default
 	{
+		Inventory.PickupMessage "\cc[Picked up \ck$%i\cc GBD]";
 		Inventory.PickupSound "money/pickup";
 		+BRIGHT
 		Scale 0.75;
@@ -50,7 +55,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 	{
 		if(super.TryPickup(other))
 		{
-			TSP_PlayerPawn_ZSCBase(other).AddLogMessage(PickupMsg,69);
+			TSP_PlayerPawn_ZSCBase(other).AddLogMessage(PickupMsg,amountGiven);
 			return true;
 		}
 		return false;
@@ -65,7 +70,8 @@ Class TSP_GlobalDollarPickup_1 : TSP_GlobalDollarPickup_Base
 {
 	Default
 	{
-		Inventory.PickupMessage "\ccPicked up a Global Dollar [\cq$1\cc]";
+		//Inventory.PickupMessage "\ccPicked up a Global Dollar [\cq$1\cc]";
+		TSP_GlobalDollarPickup_Base.AmountGiven 1;
 	}
 	States
 	{
@@ -78,8 +84,9 @@ Class TSP_GlobalDollarPickup_5 : TSP_GlobalDollarPickup_Base
 {
 	Default
 	{
-		Inventory.PickupMessage "\ccPicked up a Global Dollar [\ck$5\cc]";
+		//Inventory.PickupMessage "\ccPicked up a Global Dollar [\ck$5\cc]";
 		Translation "0:255=%[0.72,0.28,0.16]:[1.90,1.25,0.54]";
+		TSP_GlobalDollarPickup_Base.AmountGiven 5;
 	}
 	States
 	{
