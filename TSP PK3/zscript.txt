@@ -17,9 +17,9 @@ enum ETSPGamemodes
 #include "zscript/tsp/menus/menu_characters_bh.zsc"
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
-#include "zscript/tsp/misc_store.zsc"
-#include "zscript/tsp/misc_store_input.zsc"
-#include "zscript/tsp/misc_store_parse.zsc"
+#include "zscript/tsp/store/store_core.zsc"
+#include "zscript/tsp/store/store_input.zsc"
+#include "zscript/tsp/store/store_parse.zsc"
 #include "zscript/tsp/misc_statusbar.zsc"
 
 #include "zscript/tsp/gm_hunters.zsc"
