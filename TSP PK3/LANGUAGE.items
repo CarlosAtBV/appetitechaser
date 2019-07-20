@@ -1,8 +1,8 @@
 [enu default]
 
 //ITEMS
-ShieldPickup = "[\c[Orange]%i \ccShield]";
-HealthPickup = "[\cn%i \ccHealth]";
+ShieldPickup = "\cc[\c[Orange]%i \ccShield]";
+HealthPickup = "\cc[\cn%i \ccHealth]";
 
 ////////////////
 //WEAPON PICKUPS
