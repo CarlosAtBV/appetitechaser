@@ -6,7 +6,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 	
 	Default
 	{
-		Inventory.PickupMessage "\cc[\c[TSPLimeGreen]$%i\cc GBD]";
+		Inventory.PickupMessage "\cc[+\c[TSPLimeGreen]%i GBD\cc]";
 		Inventory.PickupSound "money/pickup";
 		+BRIGHT
 		Scale 0.75;

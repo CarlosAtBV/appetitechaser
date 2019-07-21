@@ -1,12 +1,12 @@
 [enu default]
 
 //ITEMS
-ShieldPickup = "\cc[+\c[Orange]%i \ccShield]";
-HealthPickup = "\cc[+\cn%i \ccHealth]";
+ShieldPickup = "\cc[+\c[Orange]%i Shield\cc]";
+HealthPickup = "\cc[+\cn%i Health\cc]";
 
 //AMMO
-PISTOLAMMOPICKUP = "\cc[+\cj%i Pistol Ammo\cc]";
-SMGAMMOPICKUP = "\cc[+\ct%i SMG Ammo\cc]";
+PISTOLAMMOPICKUP = "\cc[+\cj%i Pistol \ccAmmo]";
+SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
 
 ////////////////
 //WEAPON PICKUPS

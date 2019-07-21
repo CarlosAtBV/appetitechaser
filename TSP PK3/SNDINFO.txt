@@ -38,7 +38,7 @@ misc/startupdone         GAMELOAD
 
 item/pickupls            PCKUPLS
 
-general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg"
+general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Super Monday Night Combat, Mortal Kombat X, Resident Evil 4
 
 //Armor Pickups
 
