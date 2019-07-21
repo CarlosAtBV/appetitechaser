@@ -9,7 +9,7 @@ Class TSP_WeaponPickup : CustomInventory
 	
 	Default
 	{
-		Inventory.PickupSound "misc/w_pkup";
+		Inventory.PickupSound "general/weaponpickup";
 	}
 	
 	virtual bool FunnyWeaponToGive(Actor toucher)
