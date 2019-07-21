@@ -17,6 +17,8 @@ SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
 ////////////////
 // Trait Purchase Messages
 ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
+MagSpearPickup = "\cc[\c[Mel]Mag Spear\cc Acquired!]";
+MagSlingPickup = "\cc[\c[Mel]Mag Sling\cc Acquired!]";
 
 MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
 MelChargeTag = "\cc[\ctCharge Style\cc]";
