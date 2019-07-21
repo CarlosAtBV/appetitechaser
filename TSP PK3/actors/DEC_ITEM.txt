@@ -127,7 +127,7 @@ ACTOR TSPRedArmorBonus : TSP_CustomInventory
 // Captain Toenail, and Cardboard Marty
 //===========================================================================
 
-ACTOR TSPMegasphere : Megasphere replaces Megasphere
+ACTOR TSPMegasphere : TSP_CustomInventory replaces Megasphere
 {
   Inventory.PickupMessage "\cc[\cnMAX HEALTH\cc] + [\c[Orange]+50 SHIELD\c-\cc]"
   Inventory.PickupSound "health/supercharge"
