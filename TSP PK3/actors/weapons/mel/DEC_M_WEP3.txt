@@ -37,6 +37,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 	TSP_Weapon_Core.ClipSize 40 //Initial starting size of clip
 	+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
 	TSP_Weapon_Core.ModTag "Shotgun" 
+	TSP_Weapon_Core.FirstPickupLine "mel/suzukapickup"
 	Tag "$MELSMGTAG"
 	+NOAUTOFIRE
 	+AMMO_OPTIONAL

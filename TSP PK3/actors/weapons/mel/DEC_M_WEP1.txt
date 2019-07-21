@@ -26,7 +26,6 @@ ACTOR MelMelee : TSPMelBaseWeapon
   +WEAPON.NOAUTOFIRE
   +NOEXTREMEDEATH
   +INVENTORY.UNDROPPABLE
-  TSP_Weapon_Core.FirstPickupLine "mel/suzukapickup"
   States
   {
   Spawn:
@@ -112,7 +111,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	TNT1 A 0 A_Quake(1,18,0,5,"")
 	110G ABCDEFGHIJ 1 BRIGHT
 	TNT1 A 0 A_SetBlend("144 0 191", 0.01, 2)
-	TNT1 A 0 A_PlaySound("melstylevocs", 5)
+	TNT1 A 0 A_PlaySound("melstylevocs", CHAN_VOICE)
 	111V FEEDDCBA 1
     TNT1 A 0 A_GiveInventory("StyleChangeToken", 1)
 	TNT1 A 0 A_GiveInventory("MelChargeToken", 1)

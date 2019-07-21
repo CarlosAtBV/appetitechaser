@@ -85,7 +85,7 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
 	TNT1 A 0 A_Quake(1,18,0,5,"")
 	110F ABCDEFGHIJ 1 BRIGHT
 	TNT1 A 0 A_SetBlend("124 252 0", 0.01, 2)
-	TNT1 A 0 A_PlaySound("melstylevobk", 5)
+	TNT1 A 0 A_PlaySound("melstylevobk", CHAN_VOICE)
 	111V FEEDDCBA 1
     TNT1 A 0 A_GiveInventory("StyleChangeToken", 1)
 	TNT1 A 0 A_TakeInventory("MelChargeToken", 1)
