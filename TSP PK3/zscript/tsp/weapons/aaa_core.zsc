@@ -2,9 +2,9 @@ Class TSP_ThinkerFreezer : Thinker
 {
 	int timeleft;
 	
-	override void PostBeginPlay(void)
+	override void PostBeginPlay()
 	{
-		level.frozen = true;
+		level.frozen = false;
 	}
 	
 	override void Tick(void)
