@@ -321,7 +321,7 @@ ACTOR TSPHealthBonusDrop Replaces HealthBonus
   }
 }
 
-ACTOR TSPHealthBonus : TSP_CustomInventory replaces HealthBonus
+ACTOR TSPHealthBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16
@@ -339,7 +339,7 @@ ACTOR TSPHealthBonus : TSP_CustomInventory replaces HealthBonus
 	}
 }
 
-ACTOR TSPRedHealthBonus : TSP_CustomInventory replaces HealthBonus
+ACTOR TSPRedHealthBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16
