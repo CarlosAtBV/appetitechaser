@@ -194,6 +194,56 @@ melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
 //Mel's Pickup Lines
 ////////////////////
 
+//DARLING NIKKI
+$random mel/nikkipickup { mel/nikkipickup1 mel/nikkipickup2 mel/nikkipickup3 }
+mel/nikkipickup1 "sounds/mel/weaponpickups/vo_mel_pickup_nikki1.ogg"
+mel/nikkipickup2 "sounds/mel/weaponpickups/vo_mel_pickup_nikki2.ogg"
+mel/nikkipickup3 "sounds/mel/weaponpickups/vo_mel_pickup_nikki3.ogg"
+
+$random mel/goldnikkipickup { mel/goldnikkipickup1 mel/goldnikkipickup2 }
+mel/goldnikkipickup1 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki1.ogg"
+mel/goldnikkipickup2 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki2.ogg"
+
+//SUZUKA
+$random mel/suzukapickup { mel/suzukapickup1 mel/suzukapickup2 mel/suzukapickup3 }
+mel/suzukapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka1.ogg"
+mel/suzukapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka2.ogg"
+mel/suzukapickup3 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka3.ogg"
+
+//SHOTGUN
+mel/shotgunpickup "sounds/mel/weaponpickups/vo_mel_pickup_shotgun1.ogg"
+
+//PUNCHY GAUNTLETS
+$random mel/shivapickup { mel/shivapickup1 mel/shivapickup2 }
+mel/shivapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_shiva1.ogg"
+mel/shivapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_shiva2.ogg"
+
+//MEDUSA
+$random mel/medusapickup { mel/medusapickup1 mel/medusapickup2 mel/medusapickup3 }
+mel/medusapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_medusa1.ogg"
+mel/medusapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_medusa2.ogg"
+mel/medusapickup3 "sounds/mel/weaponpickups/vo_mel_pickup_medusa3.ogg"
+
+//CASTER
+$random mel/casterpickup { mel/casterpickup1 mel/casterpickup2 mel/casterpickup3 }
+mel/casterpickup1 "sounds/mel/weaponpickups/vo_mel_pickup_caster1.ogg"
+mel/casterpickup2 "sounds/mel/weaponpickups/vo_mel_pickup_caster2.ogg"
+mel/casterpickup3 "sounds/mel/weaponpickups/vo_mel_pickup_caster3.ogg"
+
+//GENERIC
+$random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10}
+mel/genericpickup1 "sounds/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
+mel/genericpickup2 "sounds/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
+mel/genericpickup3 "sounds/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
+mel/genericpickup4 "sounds/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+mel/genericpickup5 "sounds/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+mel/genericpickup6 "sounds/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
+mel/genericpickup7 "sounds/mel/weaponpickups/vo_mel_pickup_generic07.ogg"
+mel/genericpickup8 "sounds/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+mel/genericpickup9 "sounds/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
+mel/genericpickup10 "sounds/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+
+
 melflavpickup/Kushiel					MELPGLV
 $random melflavpickup/persephone { melflavpickup/persphone1 melflavpickup/persphone2 melflavpickup/persphone3 melflavpickup/persphone4 }
 melflavpickup/persphone1               MELPBZK1
