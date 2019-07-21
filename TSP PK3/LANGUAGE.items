@@ -15,6 +15,9 @@ SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
 ////////////////
 // MEL
 ////////////////
+// Trait Purchase Messages
+ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
+
 MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
 MelChargeTag = "\cc[\ctCharge Style\cc]";
 

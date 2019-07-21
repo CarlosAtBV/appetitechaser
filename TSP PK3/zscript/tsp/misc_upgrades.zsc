@@ -3,7 +3,7 @@ Class TSP_UpgradeBase : Inventory
 	Default
 	{
 		Inventory.Amount 1;
-		Inventory.PickupMessage "shit my self";
+		Inventory.PickupMessage "NOPE!";
 	}
 	
 	virtual void UpgradeEffect(Actor victim)
@@ -29,11 +29,24 @@ Class TSP_Upgrade_ChargeStyle : TSP_UpgradeBase
 {
 	Default
 	{
-		Inventory.PickupMessage "charge my self";
+		Inventory.PickupMessage "$ChargeStylePickup";
 	}
 }
-Class TSP_Upgrade_MagSpear : TSP_UpgradeBase {}
-Class TSP_Upgrade_MagSling : TSP_UpgradeBase {}
+Class TSP_Upgrade_MagSpear : TSP_UpgradeBase
+
+{
+	Default
+	{
+		Inventory.PickupMessage "$MagSpearPickup";
+	}
+}
+Class TSP_Upgrade_MagSling : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$MagSlingPickup";
+	}
+}
 
 Class TSP_Upgrade_Shield : TSP_UpgradeBase
 {
