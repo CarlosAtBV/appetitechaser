@@ -238,7 +238,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						alpher = thisone.timeleft/12.; //whoosh
 					}
-					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+12, HUDLEFT_Y-12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+60, HUDLEFT_Y+12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================

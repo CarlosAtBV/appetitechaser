@@ -263,36 +263,25 @@ ACTOR TSPMedikit : TSP_CustomInventory replaces Medikit
 	}
 }
 
-/*ACTOR TSPMedikit : Medikit Replaces Medikit
+ACTOR TSPStimpack : TSP_CustomInventory replaces Stimpack
 {
-  Inventory.PickupMessage "$HEALTHPICKUP"
-  Health.LowMessage 25, "$HEALTHPICKUP"
-  Inventory.PickupSound "health/medkit"
-  Inventory.Icon "MDK1A0"
-  States
-  {
-  Spawn:
-    MDK1 ABCDEFG 5
-    Loop
-  }
-}*/
-
-
-//Sangelothi and amv2k9
-ACTOR TSPStimpack : Stimpack Replaces Stimpack
-{
-  Inventory.PickupMessage "$HEALTHPICKUP"
-  Health.LowMessage 25, "$HEALTHPICKUP"
-  Inventory.PickupSound "health/stimpack"
-  States
-  {
-  Spawn:
-    STPK A 20
-    STPK ABC 2
-    STPK DDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEE 1
-    STPK CBA 2
-    Loop
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$HEALTHPICKUP"
+	Inventory.PickupSound "health/stimpack"
+	TSP_CustomInventory.AmountGiven 10
+	States
+	{
+		Spawn:
+			STPK A 20
+			STPK ABC 2
+			STPK DDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEE 1
+			STPK CBA 2
+			Loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("Health",10)
+			Stop
+	}
 }
 
 ///////////////
@@ -332,32 +321,40 @@ ACTOR TSPHealthBonusDrop Replaces HealthBonus
   }
 }
 
-ACTOR TSPHealthBonus : HealthBonus
+ACTOR TSPHealthBonus : TSP_CustomInventory replaces HealthBonus
 {
-  Inventory.PickupMessage "$HEALTHPICKUP"
-  Health.LowMessage 25, "$HEALTHPICKUP"
-  Inventory.PickupSound "health/healthbonus"
-  States
-  {
-  Spawn:
-    ASRM ABCDEFG 7
-    Loop
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$HEALTHPICKUP"
+	Inventory.PickupSound "health/healthbonus"
+	TSP_CustomInventory.AmountGiven 1
+	States
+	{
+		Spawn:
+			ASRM ABCDEFG 7
+			Loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("Health",1)
+			Stop
+	}
 }
 
-ACTOR TSPRedHealthBonus : HealthBonus
+ACTOR TSPRedHealthBonus : TSP_CustomInventory replaces HealthBonus
 {
-  Inventory.PickupMessage "$HEALTHPICKUP"
-  Health.LowMessage 25, "$HEALTHPICKUP"
-  Inventory.PickupSound "health/healthbonus"
-  Inventory.Amount 2
-  Inventory.MaxAmount 250
-  States
-  {
-  Spawn:
-    ASRN ABCDEFG 7
-    Loop
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$HEALTHPICKUP"
+	Inventory.PickupSound "health/healthbonus"
+	TSP_CustomInventory.AmountGiven 2
+	States
+	{
+		Spawn:
+			ASRN ABCDEFG 7
+			Loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("Health",2)
+			Stop
+	}
 }
 
 ACTOR Over100Health : Inventory
