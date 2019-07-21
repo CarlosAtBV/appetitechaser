@@ -244,8 +244,26 @@ ACTOR TSPSoulsphere : Soulsphere replaces Soulsphere
   }
 }
 
+ACTOR TSPMedikit : TSP_CustomInventory replaces Medikit
+{
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$HEALTHPICKUP"
+	Inventory.PickupSound "health/medkit"
+	Inventory.Icon "MDK1A0"
+	TSP_CustomInventory.AmountGiven 25
+	States
+	{
+		Spawn:
+			MDK1 ABCDEFG 5
+			Loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("Health",25)
+			Stop
+	}
+}
 
-ACTOR TSPMedikit : Medikit Replaces Medikit
+/*ACTOR TSPMedikit : Medikit Replaces Medikit
 {
   Inventory.PickupMessage "$HEALTHPICKUP"
   Health.LowMessage 25, "$HEALTHPICKUP"
@@ -257,7 +275,7 @@ ACTOR TSPMedikit : Medikit Replaces Medikit
     MDK1 ABCDEFG 5
     Loop
   }
-}
+}*/
 
 
 //Sangelothi and amv2k9
