@@ -234,6 +234,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	int tspw_lastfire;
 	
+	string tspw_firstpickupline;
+	property FirstPickupLine : tspw_firstpickupline;
+	
 	Default
 	{
 		TSP_Weapon_Core.MaxLevels 3, 3, 3;
