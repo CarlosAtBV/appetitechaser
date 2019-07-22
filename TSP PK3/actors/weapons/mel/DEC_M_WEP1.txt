@@ -143,9 +143,14 @@ ACTOR MelMelee : TSPMelBaseWeapon
     TNT1 A 1
     TNT1 A 1 A_Raise
     TNT1 A 0 A_WeaponOffset(0,32)
+	TNT1 A 0 A_JumpIfInventory("StyleComboEnderToken", 1, "SwitchAttackFinisher")
     TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
 	TNT1 A 0 A_GiveInventory("MelAlternateCombo", 2)
-    Goto Melbow
+	Goto Melbow
+  SwitchAttackFinisher:
+    TNT1 A 0 A_TakeInventory("StyleComboToken", 99) 
+    TNT1 A 0 A_TakeInventory("StyleComboEnderToken", 99) 
+    Goto SuperUppercut
 
 //Punch!
   Fire:

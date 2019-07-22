@@ -58,6 +58,13 @@ ACTOR StyleChangeToken: Inventory
   Inventory.Icon TNT1A0
 }
 
+ACTOR StyleComboEnderToken: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+
 ACTOR StyleComboToken: Inventory
 {
   Inventory.MaxAmount 99
