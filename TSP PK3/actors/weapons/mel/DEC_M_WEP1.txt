@@ -395,7 +395,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		Goto AfterMelee
+		Goto AfterMeleeCont
 
 // K-K-P DEFAULT
   Melbow:
