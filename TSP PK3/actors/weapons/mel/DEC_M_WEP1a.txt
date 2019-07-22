@@ -282,7 +282,7 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
     TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
 	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "TripleKick") // P-P-K
 	//TNT1 A 0 A_Refire("KickCharge")
-	Goto AfterMelee
+	Goto Ready
 	
 // Charge State (Punches/Primary Fire)
   KickCharge:
@@ -326,24 +326,24 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
 	TNT1 A 6 A_PlaySound("*smallmelee", 5)
 	TNT1 A 0 A_PlaySoundEX("chargestyle/kick01", "SoundSlot6") // KICK 1
 	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
-	111R ABC 1
+	1123 ABC 1
 	TNT1 A 0 A_Quake(10,5,0,5,"")
-	111R D 2 BRIGHT A_TSP_Melee(120,90,"MagDivePuff",0,10,5)
-	111R EFG 1
+	1123 D 2 BRIGHT A_TSP_Melee(120,90,"MagDivePuff",0,10,5)
+	1123 EFG 1 BRIGHT
 	TNT1 A 0 A_Recoil(-2)
 	TNT1 A 2 A_PlaySoundEX("chargestyle/kick02", "SoundSlot5") // KICK 2
-	MLGC ABC 1
+	1124 ABC 1 BRIGHT
 	TNT1 A 0 A_Quake(10,5,0,5,"")
-    MLGC D 1 BRIGHT A_TSP_Melee(100,90,"MagDivePuff",0,10,5)
-	MLGC EF 1
-	MK1F GHI 1
-	TNT1 A 0 A_Recoil(-10)
+    1124 D 1 BRIGHT A_TSP_Melee(100,90,"MagDivePuff",0,10,5)
+	1124 EFGHIJ 1 BRIGHT
+	TNT1 A 5 A_Recoil(-10)
 	TNT1 A 6 A_PlaySound("*largemelee", 5)
-	TNT1 A 8 A_PlaySoundEX("maguppercut", "SoundSlot6") // KICK 3
+	TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6") // KICK 3
 	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
 	111R ABC 1 // Kick 1
 	TNT1 A 0 A_Quake(10,5,0,5,"")
-	111R D 5 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
+	1125 A 1 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
+	1125 BCDE 1 BRIGHT
 	TNT1 A 0 A_GiveInventory("StyleComboEnderToken", 1)
 	Goto TripleKickEnd
 	
