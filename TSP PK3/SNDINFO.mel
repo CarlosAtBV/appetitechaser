@@ -208,7 +208,7 @@ mel/goldnikkipickup1 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki1.ogg"
 mel/goldnikkipickup2 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki2.ogg"
 
 //SUZUKA
-$random mel/suzukapickup { mel/suzukapickup1 mel/suzukapickup2 mel/suzukapickup3 }
+$random mel/suzukapickup { mel/suzukapickup1 mel/suzukapickup2 mel/suzukapickup3 mel/shotgunpickup }
 mel/suzukapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka1.ogg"
 mel/suzukapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka2.ogg"
 mel/suzukapickup3 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka3.ogg"
