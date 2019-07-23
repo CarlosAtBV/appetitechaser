@@ -109,7 +109,7 @@ OptionMenu "TSP_ConfigMenu"
 //==================
 OptionMenu "TSP_VideoMenu"
 {
-    Title "Video"
+    Title "Video Options"
 	StaticText "Adjust video settings"
 	StaticText ""
 	ScaleSlider "$HUDMNU_UISCALE",				"uiscale", 0.0, 8.0, 1.0, "$SCALEMNU_ADAPT"
