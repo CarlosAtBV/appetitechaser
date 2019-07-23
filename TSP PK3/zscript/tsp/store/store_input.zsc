@@ -271,7 +271,7 @@ Extend Class TSP_ShopMenu
 				{
 					if(me_curTab.employ!=null)
 					{
-						EventHandler.SendNetworkEvent("employer:"..me_curTab.employ.employer);
+						EventHandler.SendNetworkEvent(consoleplayer..":employer:"..me_curTab.employ.employer);
 						S_Sound("shop/hired",CHAN_UI);
 						updateShopPages(me_curTab.employ.employer,1);
 					}
@@ -279,7 +279,7 @@ Extend Class TSP_ShopMenu
 					{
 						if(me_curItem.canBuy()&&(!(me_curItem.inv_class is "TSP_UpgradeBase")||(me_curItem.level<GetDefaultByType(me_curItem.inv_class).MaxAmount))&&players[0].mo.CountInv("TSP_GlobalDollars")>=me_curItem.price)
 						{
-							string givestuff = me_curItem.itemString();
+							string givestuff = consoleplayer..":"..me_curItem.itemString();
 							if(me_curItem.inv_class is "TSP_UpgradeBase"||me_curItem.upgrade)
 							{
 								me_curItem.level++;

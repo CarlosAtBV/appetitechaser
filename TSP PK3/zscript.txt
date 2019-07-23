@@ -443,37 +443,38 @@ Class TSP_EventHandler : EventHandler
 			}
 			array<string> shopitem;
 			e.Name.Split(shopitem, ":");
-			if(shopitem[0] ~== "shopmod")
+			int pNumber = shopitem[0].ToInt();
+			if(shopitem[1] ~== "shopmod")
 			{
-				int price = shopitem[3].ToInt();
-				TSP_Weapon_Core oldWepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1],true));
+				int price = shopitem[4].ToInt();
+				TSP_Weapon_Core oldWepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[2],true));
 				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
-				players[0].mo.GiveInventory(shopitem[2],1);
-				TSP_Weapon_Core newWepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[2],true));
+				players[0].mo.GiveInventory(shopitem[3],1);
+				TSP_Weapon_Core newWepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[3],true));
 				newWepon.tspw_powerlevel = oldWepon.tspw_powerlevel;
 				newWepon.tspw_ammolevel = oldWepon.tspw_ammolevel;
 				newWepon.tspw_reloadlevel = oldWepon.tspw_reloadlevel;
 				//newWepon.tspw_curclip = oldWepon.tspw_curclip;
-				players[0].mo.A_SelectWeapon(shopitem[2]);
-				players[0].mo.TakeInventory(shopitem[1],1);
+				players[0].mo.A_SelectWeapon(shopitem[3]);
+				players[0].mo.TakeInventory(shopitem[2],1);
 			}
-			else if(shopitem[0] ~== "buyitem")
+			else if(shopitem[1] ~== "buyitem")
 			{
-				int price = shopitem[3].ToInt();
+				int price = shopitem[4].ToInt();
 				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
-				Class<Actor > cls = shopitem[1];
-				if(players[0].mo.GiveInventory(shopitem[1],shopitem[2].ToInt())&& cls is "TSP_UpgradeBase")
+				Class<Actor > cls = shopitem[2];
+				if(players[0].mo.GiveInventory(shopitem[2],shopitem[3].ToInt())&& cls is "TSP_UpgradeBase")
 				{
-					TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[1])).UpgradeEffect(players[0].mo);
+					TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[2])).UpgradeEffect(players[pNumber].mo);
 				}
 			}
-			else if(shopitem[0] ~== "upgrade")
+			else if(shopitem[1] ~== "upgrade")
 			{
-				int price = shopitem[3].ToInt();
-				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[0].mo.FindInventory(shopitem[1],true));
+				int price = shopitem[4].ToInt();
+				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[2],true));
 				if(wepon!=null)
 				{
-					switch(shopitem[2].ToInt())
+					switch(shopitem[3].ToInt())
 					{
 						case 0: wepon.tspw_powerlevel++; break;
 						case 1: wepon.tspw_ammolevel++; break;
@@ -482,9 +483,9 @@ Class TSP_EventHandler : EventHandler
 				}
 				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
 			}
-			else if(shopitem[0] ~== "employer")
+			else if(shopitem[1] ~== "employer")
 			{
-				TSP_PlayerPawn_ZSCBase(players[0].mo).gvars.tsp_employer = shopitem[1].ToInt();
+				TSP_PlayerPawn_ZSCBase(players[pNumber].mo).gvars.tsp_employer = shopitem[1].ToInt();
 			}
 		}
 	}
