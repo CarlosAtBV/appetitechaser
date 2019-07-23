@@ -13,7 +13,7 @@ LISTMENU "MainMenu"
 	Linespacing 29
 		
 	TSP_MenuItem_PatchItem "SPMENU1",  "n",	"TSP_GameModeMenu"
-	TSP_MenuItem_PatchItem "SPMENU2",	     "o",	"OptionsMenu2"
+	TSP_MenuItem_PatchItem "SPMENU2",	     "o",	"TSP_OptionsMenu"
 	TSP_MenuItem_PatchItem "SPMENU3",         "h",   "ReadThisMenu"
 	TSP_MenuItem_PatchItem "SPMENU4",         "l",	"LoadGameMenu"
 	TSP_MenuItem_PatchItem "SPMENU5",         "s",	"SaveGameMenu"
@@ -28,7 +28,21 @@ ListMenu "TSP_GameModeMenu"
 	TSP_MenuItem_GamemodeItem "SPMODE1", "D", "PlayerclassMenu", 0
 	TSP_MenuItem_GamemodeItem "SPMODE2", "B", "TSP_CharacterMenu_BH", 1
 	TSP_MenuItem_GamemodeItem "SPMODET", "T", "PlayerclassMenu", 2
-	TSP_MenuItem_PatchItem "SPMODEM", "M", "TSPCustomOptions", 0
+	TSP_MenuItem_PatchItem "SPMODEM", "M", "TSP_Modifiers", 0
+}
+
+LISTMENU "TSP_OptionsMenu"
+{
+	StaticPatch 103, 39, "SPOPTION"
+	Position 16, 15
+	Linespacing 29
+		
+	TSP_MenuItem_PatchItem "SPOPT1",  "C",	"TSP_ConfigMenu"
+	TSP_MenuItem_PatchItem "SPMODEM",	     "M",	"TSP_Modifiers"
+	TSP_MenuItem_PatchItem "SPOPT2",         "v",   "TSP_VideoMenu"
+	TSP_MenuItem_PatchItem "SPOPT3",         "a",	"SoundOptions"
+	TSP_MenuItem_PatchItem "SPOPT4",         "o",	"OtherModOptions"
+	TSP_MenuItem_PatchItem "SPOPT5",	 "G",	"OptionsMenu"
 }
 
 ListMenu "SkillMenu"
@@ -77,55 +91,48 @@ ListMenu "SaveGameMenu"
 
 
 //=============
-// Options Menu
+// Config Menu
 //=============
-OptionMenu "OptionsMenu2"
+OptionMenu "TSP_ConfigMenu"
 {
     Title "$CONFIGHEADER"
 	StaticText " "
 	StaticText "Bindings and Controls", 1
-    Submenu "Customize Controls",                   "CustomizeControls2"
+    Submenu "Customize Controls",                   "TSP_AbridgedControls"
     Submenu "Mouse Options",                        "MouseOptions"
     Submenu "Controller Options",                     "JoystickOptions"
-    StaticText " "
-	StaticText "Character and Gameplay Customization", 1
-    Submenu "The Space Pirate Modifiers",           "TSPCustomOptions"
-    Submenu "Character Setup",                      "PlayerMenu"
-    Submenu "Other Mod Options",                   "OtherModOptions"
-	StaticText " "
-	StaticText "Other Gameplay Options", 1
-    Submenu "Doom Gameplay Options",                "GameplayOptions"
-    Submenu "Compatibility Options",                "CompatibilityOptions"
-    Submenu "Automap Options",                      "AutomapOptions"
-    Submenu "HUD Options",                          "HUDOptions"
-    Submenu "Miscellaneous Options",                "MiscOptions"
-    Submenu "Sound Options",                        "SoundOptions"
-    Submenu "Display Options",                      "VideoOptions"
-    Submenu "Set video mode",                       "VideoModeMenu"
-    StaticText " "
-	StaticText "Reset Settings", 1
-    SafeCommand "Reset to defaults",                "reset2defaults"
-    SafeCommand "Reset to last saved",              "reset2saved"
-    StaticText " "
+    Submenu "Character Setup",                      "TSPPlayerMenu"
+}
+
+//==================
+// Video Menu
+//==================
+OptionMenu "TSP_VideoMenu"
+{
+    Title "Video"
+	StaticText "Adjust video settings"
+	StaticText ""
+	ScaleSlider "$HUDMNU_UISCALE",				"uiscale", 0.0, 8.0, 1.0, "$SCALEMNU_ADAPT"
+	Submenu "Display Options",                      "VideoOptions"
+    Submenu "Set Video Mode",                       "VideoModeMenu"
 	SubMenu "Font Debug Menu",						"TSP_DebugFontMenu"
-    Submenu "GZDoom Options Menu",                  "OptionsMenu"
-    Command "Go to console",                        "menuconsole"
 }
 
 //==================
 //TSP CUSTOM OPTIONS
 //==================
-OptionMenu "TSPCustomOptions"
+OptionMenu "TSP_Modifiers"
 {
     Title "$TSPMENU2"
     StaticText      ""
     StaticText      "$TSPGAMEPLAY1"
 	StaticText      "$TSPGAMEPLAY2"
+	Option "$GMPLYMNU_ALLOWJUMP",				"sv_jump", "JumpCrouchFreeLook"
+	Option "$GMPLYMNU_ALLOWCROUCH",				"sv_crouch", "JumpCrouchFreeLook"
+	Option "$GMPLYMNU_ALLOWFREELOOK",			"sv_freelook", "JumpCrouchFreeLook"
 	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
 	Option "Start with Melee Only",          "tsp_fistsstart", "OnOff"
 	Option "Melee Supreme!",                 "tsp_meleesupreme", "TSPMeleeSupremeOnOff", "tsp_fistsstart"
-	//Option "Melee Sounds",                   "tsp_meleesounds", "TSPMeleeSounds"
-	//StaticText      ""
     StaticText      ""
     StaticText      "$TSPCHEATS1"
 	StaticText      "$TSPCHEATS2"
@@ -166,7 +173,7 @@ OptionMenu "OtherModOptions"
 //=======================
 //Customize Controls Menu
 //=======================
-OptionMenu "CustomizeControls2"
+OptionMenu "TSP_AbridgedControls"
 {
 	Title "$CUSTOMERCONTROLS1"
 	ScrollTop 2
@@ -179,8 +186,10 @@ OptionMenu "CustomizeControls2"
 	Control 	"Strafe right",			"+moveright"
 	Control 	"Use / Open",			"+use"
 	Control 	"Jump",				"+jump"
+	Control 	"Run",					"+speed"
 	Control 	"Crouch",			"+crouch"
-	StaticText 	""
+	Control 	"Crouch Toggle",		"crouch"
+    StaticText  ""	
 	StaticText "$WEAPON1CONTROL"
 	StaticText "$WEAPON2CONTROL"
 	Control 	"Fire",				"+attack"
@@ -212,7 +221,6 @@ OptionMenu "CustomizeControls2"
 	Control 	"Next item",			"invnext"
 	Control 	"Previous item",		"invprev"
 	Control 	"Drop item",			"invdrop"
-	Control		"Query item",			"invquery"
 	StaticText 	""
 	StaticText 	"$CHATCONTROL"
 	Control 	"Say",					"messagemode"
@@ -228,7 +236,6 @@ OptionMenu "CustomizeControls2"
 	StaticText 	"$OTHERMOVEMENTCONTROL"
 	Control 	"Turn left",			"+left"
 	Control 	"Turn right",			"+right"
-	Control 	"Crouch Toggle",		"crouch"
 	Control 	"Swim up",				"+moveup"
 	Control 	"Swim down",			"+movedown"
 	Control 	"Stop flying",			"land"
@@ -237,13 +244,8 @@ OptionMenu "CustomizeControls2"
 	Control 	"Look up",				"+lookup"
 	Control 	"Look down",			"+lookdown"
 	Control 	"Center view",			"centerview"
-	Control 	"Run",					"+speed"
 	Control 	"Strafe",				"+strafe"
 	Control 	"Show Scoreboard",		"+showscores"
-	/*StaticText 	""
-	StaticText 	"Strife Popup Screens", 1
-	Control 	"Mission objectives",	"showpop 1"
-	Control 	"Weapons/ammo/stats",	"showpop 3"*/
 }
 
 /*
@@ -259,7 +261,7 @@ OptionValue "Gender"
 }
 */
 
-ListMenu "PlayerMenu"
+ListMenu "TSPPlayerMenu"
 {
     Font "DBIGFONT", "TSPBLUE"
 	StaticTextCentered 160, 6, "Character Setup"
@@ -269,7 +271,7 @@ ListMenu "PlayerMenu"
 	
 	PlayerNameBox "$CSName", 0, "Playerbox"
 	ValueText "$CSCharacter", "Class"
-	ValueText "$CSSkin", "Skin"
+	//ValueText "$CSSkin", "Skin"
 	ValueText "$CSGender", "Gender", "Gender"
 	Selector "-", -16, -1
 	MouseWindow 0, 220
