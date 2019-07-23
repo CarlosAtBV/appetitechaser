@@ -11,7 +11,7 @@ ACTOR TSPPistolAmmo : Ammo
 	Ammo.BackpackMaxAmount 300
 	Ammo.DropAmount 5
 	//Inventory.Icon "919AA0"
-	Inventory.PickupMessage "$PISTOLAMMOPICKUP"
+	//Inventory.PickupMessage "$PISTOLAMMOPICKUP"
 	Inventory.PickupSound "919m/magout"
 	Tag "Pistol Ammo"
 	States
@@ -34,38 +34,54 @@ ACTOR TSPPistolAmmoBig : TSPPistolAmmo
 	}
 }
 
+ACTOR TSPPistolAmmoPickup : TSP_CustomInventory
+{
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$PISTOLAMMOPICKUP"
+	Inventory.PickupSound "919m/magout"
+	TSP_CustomInventory.AmountGiven 5
+	States
+	{
+		Spawn:
+			919F A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPPistolAmmo",5)
+			Stop
+	}
+}
+
+ACTOR TSPPistolAmmoPickupBig : TSPPistolAmmoPickup
+{
+	TSP_CustomInventory.AmountGiven 50
+	States
+	{
+		Spawn:
+			AMMO A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPPistolAmmo",50)
+			Stop
+	}
+}
+
 ACTOR TSP_DoomClipReplacer : RandomSpawner replaces Clip
 {
-	DropItem "TSPPistolAmmo"
+	DropItem "TSPPistolAmmoPickup"
 }
 ACTOR TSP_DoomClipBoxReplacer : RandomSpawner replaces ClipBox
 {
-	DropItem "TSPPistolAmmoBig"
-}
-ACTOR TSP_DoomShellReplacer : RandomSpawner replaces Shell
-{
-	DropItem "TSPSMGAmmo"
-}
-ACTOR TSP_DoomShellBoxReplacer : RandomSpawner replaces ShellBox
-{
-	DropItem "TSPSMGAmmoBig"
+	DropItem "TSPPistolAmmoPickupBig"
 }
 
 ACTOR TSP_ChexClipReplacer : RandomSpawner replaces MiniZorchRecharge
 {
-	DropItem "TSPPistolAmmo"
+	DropItem "TSPPistolAmmoPickup"
 }
 ACTOR TSP_ChexClipBoxReplacer : RandomSpawner replaces MiniZorchPack
 {
-	DropItem "TSPPistolAmmoBig"
-}
-ACTOR TSP_ChexShellReplacer : RandomSpawner replaces LargeZorchRecharge
-{
-	DropItem "TSPSMGAmmo"
-}
-ACTOR TSP_ChexShellBoxReplacer : RandomSpawner replaces LargeZorchPack
-{
-	DropItem "TSPSMGAmmoBig"
+	DropItem "TSPPistolAmmoPickupBig"
 }
 
 //============
@@ -102,3 +118,134 @@ ACTOR TSPSMGAmmoBig : TSPSMGAmmo
 			Stop
 	}
 }
+
+ACTOR TSPSMGAmmoPickup : TSP_CustomInventory
+{
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "$SMGAMMOPICKUP"
+	Inventory.PickupSound "919m/magout"
+	TSP_CustomInventory.AmountGiven 16
+	States
+	{
+		Spawn:
+			SHEL A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPSMGAmmo",16)
+			Stop
+	}
+}
+
+ACTOR TSPSMGAmmoPickupBig : TSPSMGAmmoPickup
+{
+	TSP_CustomInventory.AmountGiven 48
+	States
+	{
+		Spawn:
+			SBOX A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPSMGAmmo",48)
+			Stop
+	}
+}
+
+ACTOR TSP_DoomShellReplacer : RandomSpawner replaces Shell
+{
+	DropItem "TSPSMGAmmoPickup"
+}
+ACTOR TSP_DoomShellBoxReplacer : RandomSpawner replaces ShellBox
+{
+	DropItem "TSPSMGAmmoPickupBig"
+}
+
+ACTOR TSP_ChexShellReplacer : RandomSpawner replaces LargeZorchRecharge
+{
+	DropItem "TSPSMGAmmoPickup"
+}
+ACTOR TSP_ChexShellBoxReplacer : RandomSpawner replaces LargeZorchPack
+{
+	DropItem "TSPSMGAmmoPickupBig"
+}
+
+//===========
+// BACKPACK
+//===========
+
+/*
+ACTOR TSPBackpackPickup : CustomInventory replaces Backpack
+{
+	Inventory.PickupSound "upgrade/normal"
+	+IGNORESKILL
+	Radius 20
+	Height 16
+	States
+	{
+		Spawn:
+			TNT1 A 0
+			TNT1 A 0 A_SpawnItemEx("TSPBackpack")
+			TNT1 A 0 A_SpawnItemEx("TSPFakePistolAmmo")
+			TNT1 A 0 A_SpawnItemEx("TSPFakeSMGAmmo")
+			BPAK A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIfInventory("TSPBackpack", 1, "Pickup2")
+			TNT1 A 0 A_GiveInventory("TSPBackpack")
+			Stop
+		Pickup2:
+			TNT1 A 0
+			Stop
+	}
+}
+
+ACTOR TSPBackpack : TSP_CustomInventory
+{
+	Inventory.PickupSound "upgrade/normal"
+	Inventory.PickupMessage "$BACKPACKPickup"
+	TSP_CustomInventory.AmountGiven 1
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_JumpIfInventory("Backpack", 1, "Nothing")
+			TNT1 A 0 A_GiveInventory("Backpack", 1)
+			Stop
+		Nothing:
+			TNT1 A 0
+			Stop
+	}
+}			
+
+ACTOR TSPFakePistolAmmo : TSPPistolAmmoPickup
+{
+	+INVENTORY.QUIET
+	TSP_CustomInventory.AmountGiven 15
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPPistolAmmo", 15)
+			Stop
+	}
+}
+
+
+ACTOR TSPFakeSMGAmmo : TSPSMGAmmoPickup
+{
+	+INVENTORY.QUIET
+	TSP_CustomInventory.AmountGiven 32
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			Stop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("TSPSMGAmmo",32)
+			Stop
+	}
+}*/

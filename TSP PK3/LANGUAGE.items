@@ -5,8 +5,9 @@ ShieldPickup = "\cc[+\c[Orange]%i Shield\cc]";
 HealthPickup = "\cc[+\cn%i Health\cc]";
 
 //AMMO
-PISTOLAMMOPICKUP = "\cc[+\cj%i Pistol \ccAmmo]";
+PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";
 SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
+BACKPACKPICKUP = "\cc[\cfExpanded Ammo Capacity!\cc]";
 
 ////////////////
 //WEAPON PICKUPS
