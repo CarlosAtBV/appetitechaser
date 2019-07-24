@@ -9,6 +9,12 @@ PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";
 SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
 BACKPACKPICKUP = "\cc[\cfExpanded Ammo Capacity!\cc]";
 
+//UPGRADES (General)
+ShieldUpgradeA = "\cc[\cfShield Upgrade!\cc +\c[Orange]25 Max Shield\cc]";
+
+//UPGRADES (ARC*STAR)
+TankUpgrade = "\cc[\cfShield Upgrade!\cc +\c[Orange]25 Max Shield\cc]";
+
 ////////////////
 //WEAPON PICKUPS
 ////////////////
@@ -29,8 +35,8 @@ MelPistolPickup = "\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
 MelPistolTag = "\cc[\cyDarling Nikki\cc]";
 
 //DARLING NIKKI (MODS)
-MelPistolATag = "\cc[\cyDarling Nikki \cc- \ciSPITFIRE\cc]";
-MelPistolBTag = "\cc[\cyDarling Nikki \cc- \cuWHISPER\cc]";
+MelPistolATag = "\cc[\cyDarling Nikki\cc](\ciS\cc)";
+MelPistolBTag = "\cc[\cyDarling Nikki\cc](\cuS\cc)";
 MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
 
 //SUZUKA

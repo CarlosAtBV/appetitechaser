@@ -52,6 +52,7 @@ Class TSP_Upgrade_Shield : TSP_UpgradeBase
 {
 	Default
 	{
+		Inventory.PickupMessage "$ShieldUpgradeA";
 		Inventory.MaxAmount 3;
 	}
 	
