@@ -3,16 +3,6 @@ page
 	name "Retail";
 	tab "Weapons"
 	{
-		header "General";
-		item "Gooder Bullets"
-		{
-			desc "Makes your guns gooder.";
-			price 200;
-		}
-		item "Gooder Fast"
-		{
-			price 200;
-		}
 		header "Darling Nikki";
 		item "$TSP_SHOP_BULLNAME1", "$TSP_SHOP_BULLNAME2", "$TSP_SHOP_BULLNAME3"
 		{
