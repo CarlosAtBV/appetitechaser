@@ -66,9 +66,9 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 			GiveInventory("TSP_Upgrade_Shield",1);
 			GiveInventory("TSP_Upgrade_MagSpear",1);
 			GiveInventory("MelSMG",1);
-			GiveInventory("TSPSMGAmmo",120);
+			GiveInventory("TSPSMGAmmo",40);
 			GiveInventory("MelPistolA",1);
-			GiveInventory("TSPPistolAmmo",75);
+			GiveInventory("TSPPistolAmmo",45);
 		}
 		//SUZUKA (SHOTGUN MOD)
 		//HEAL ITEM (x1)
