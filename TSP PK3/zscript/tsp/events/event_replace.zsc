@@ -1,0 +1,8 @@
+Class TSP_ReplaceHandler : EventHandler
+{
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		if(e.Replacee is "PlayerPawn") return;
+		e.Replacement = "DoomImp";
+	}
+}
