@@ -4,10 +4,10 @@ Class TSP_ReplaceHandler : EventHandler
 	{
 		switch(e.Replacee.GetClassName())
 		{
-			case 'NewPistol':
+			case 'PistolPickup':
 				e.Replacement = "TSP_Pickup_Pistol";
 				break;
-			case 'NewShotgun':
+			case 'ShotgunPickup':
 				e.Replacement = "TSP_Pickup_Shotgun";
 				break;
 		}
