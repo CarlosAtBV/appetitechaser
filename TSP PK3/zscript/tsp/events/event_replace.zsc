@@ -2,7 +2,14 @@ Class TSP_ReplaceHandler : EventHandler
 {
 	override void CheckReplacement(ReplaceEvent e)
 	{
-		if(e.Replacee is "PlayerPawn") return;
-		e.Replacement = "DoomImp";
+		switch(e.Replacee)
+		{
+			case 'NewPistol':
+				e.Replacement = "TSP_Pickup_Pistol";
+				break;
+			case 'NewShotgun':
+				e.Replacement = "TSP_Pickup_Shotgun";
+				break;
+		}
 	}
 }
