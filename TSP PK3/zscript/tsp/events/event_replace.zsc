@@ -2,7 +2,7 @@ Class TSP_ReplaceHandler : EventHandler
 {
 	override void CheckReplacement(ReplaceEvent e)
 	{
-		switch(e.Replacee)
+		switch(e.Replacee.GetClassName())
 		{
 			case 'NewPistol':
 				e.Replacement = "TSP_Pickup_Pistol";
