@@ -12,3 +12,8 @@ TSP_HUDFONT
 	9 TSPHF9
 	- TSPHF-
 }
+
+SMALLFONT
+{
+	Template STCFN%03d
+}
