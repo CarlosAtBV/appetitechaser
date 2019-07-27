@@ -94,6 +94,12 @@ Class TSP_EnemyHandler_SlamDunk : Thinker
 	
 	override void Tick()
 	{
+		if(owner==null)
+		{
+			Destroy();
+			return;
+		}
+		
 		if(oldZ==owner.pos.z)
 		{
 			if(!owner.bNoPain&&owner.resolveState("Pain")!=null&&owner.Health>0)
@@ -110,6 +116,12 @@ Class TSP_EnemyHandler_SlamDunk : Thinker
 				owner.A_Explode(128,128,0,false,0,0,0,"","MagSlam");
 				Destroy();
 			}
+		}
+		
+		if(owner==null)
+		{
+			Destroy();
+			return;
 		}
 		
 		oldZ = owner.pos.z;
