@@ -162,7 +162,7 @@ Class TSP_Enemy_TestFella : Actor
 		target = oldtarget;
 		
 		bool yesGood = (target != null && traceRes.HitActor == target);
-		Console.Printf((yesGood ? "\ck" : "\ct") .. (target ? target.GetTag() : "Null") .. " vs. " .. (traceRes.HitActor ? traceRes.HitActor.GetTag() : "Null"));
+		//Console.Printf((yesGood ? "\ck" : "\ct") .. (target ? target.GetTag() : "Null") .. " vs. " .. (traceRes.HitActor ? traceRes.HitActor.GetTag() : "Null"));
 		
 		return yesGood;
 	}
