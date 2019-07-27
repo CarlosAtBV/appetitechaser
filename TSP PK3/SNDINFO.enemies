@@ -1,0 +1,17 @@
+$random vo/test/fella/targeted { vo/test/fella/targeted1 vo/test/fella/targeted2 }
+vo/test/fella/targeted1 "sounds/enemies/testfella/vo_test_targeted1.wav"
+vo/test/fella/targeted2 "sounds/enemies/testfella/vo_test_targeted2.wav"
+
+$random vo/test/fella/hey { vo/test/fella/hey1 vo/test/fella/hey2 }
+vo/test/fella/hey1 "sounds/enemies/testfella/vo_test_hey1.wav"
+vo/test/fella/hey2 "sounds/enemies/testfella/vo_test_hey2.wav"
+
+$random vo/test/fella/letsgo { vo/test/fella/letsgo1 vo/test/fella/alright1 vo/test/fella/uhoh1 vo/test/fella/ohboy1 }
+vo/test/fella/letsgo1 "sounds/enemies/testfella/vo_test_letsgo.wav"
+vo/test/fella/alright1 "sounds/enemies/testfella/vo_test_alright.wav"
+vo/test/fella/uhoh1 "sounds/enemies/testfella/vo_test_uhoh.wav"
+vo/test/fella/ohboy1 "sounds/enemies/testfella/vo_test_ohboy.wav"
+
+$random vo/test/fella/heard { vo/test/fella/heard1 vo/test/fella/heard2 }
+vo/test/fella/heard1 "sounds/enemies/testfella/vo_test_heard1.wav"
+vo/test/fella/heard2 "sounds/enemies/testfella/vo_test_heard2.wav"

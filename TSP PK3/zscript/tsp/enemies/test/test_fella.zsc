@@ -1,0 +1,283 @@
+Class TSP_EnemySound_SuppressSeeSound : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+}
+
+Class TSP_EnemySound_FollowMyLead : Inventory
+{
+	int tspes_delay;
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+	override void DoEffect()
+	{
+		tspes_delay++;
+		if(tspes_delay>=35)
+		{
+			if(owner!=null)
+			{
+				owner.A_PlaySound("vo/test/fella/letsgo",CHAN_VOICE);
+			}
+			Destroy();
+		}
+	}
+}
+
+Class TSP_Enemy_TestFella : Actor
+{
+	Default
+	{
+		Health 40;
+		Monster;
+		Speed 8;
+		Radius 20;
+		Height 56;
+		MinMissileChance 128;
+		
+		Species "ARCSTAR";
+		+SLIDESONWALLS
+		+NOINFIGHTSPECIES
+	}
+	
+	Vector3 tspe_lastSeenTargetPos;
+	
+	bool tspe_followLastSeenPos;
+	
+	bool tspe_hasSeen;
+	
+	bool CheckSightAndAngle(Actor mo)
+	{
+		Console.Printf(""..abs(DeltaAngle(AngleTo(mo),angle)));
+		if(CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),angle))<15)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	override int DamageMobj(Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+	{
+		if(!(source is "PlayerPawn"))
+		{
+			damage*2;
+			if(source.FindState("See"))
+			{
+				source.SetStateLabel("See");
+			}
+		}
+		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
+	
+	action state A_TSP_Chase()
+	{
+		if(invoker.target == null) return ResolveState('Spawn');
+		
+		if(!invoker.tspe_hasSeen)
+		{
+			invoker.tspe_hasSeen = true;
+			if(!CountInv("TSP_EnemySound_SuppressSeeSound"))
+			{
+				if(CheckSight(target))
+				{
+					if(Distance2D(target)<256)
+					{
+						A_PlaySound("vo/test/fella/hey",CHAN_VOICE);
+					}
+					else
+					{
+						A_PlaySound("vo/test/fella/targeted",CHAN_VOICE);
+						A_RadiusGive("TSP_EnemySound_FollowMyLead",256,RGF_MONSTERS,1,"TSP_Enemy_TestFella","",0,1);
+					}
+				}
+				else
+				{
+					A_PlaySound("vo/test/fella/heard",CHAN_VOICE);
+				}
+				A_RadiusGive("TSP_EnemySound_SuppressSeeSound",256,RGF_MONSTERS,1,"TSP_Enemy_TestFella");
+			}
+		}
+		
+		Vector3 oldPos = pos;
+		A_Chase();
+		angle += frandom(-2,2);
+		
+		if(target!=null && CheckSight(target) && Distance3D(target)<1024
+		&& CheckMove( pos.xy+(cos(AngleTo(target))*radius,sin(AngleTo(target))*radius) ))
+		{
+			A_FaceTarget();
+		}
+		
+		invoker.SetOrigin(oldPos,false);
+		invoker.Thrust((speed/1.5)/CurState.tics, bFrightened ? angle+180 : angle);
+		
+		return ResolveState(null);
+		/*if(invoker.target == null) return;
+		
+		int distToTarget = Distance3D(target);
+		
+		if(CheckSight(target) && distToTarget<256 && distToTarget>128)
+		{
+			A_FaceTarget();
+		}
+		
+		if(velz == 0)
+		{
+			int angleWeMovinIn = angle;
+			
+			int enemyAngle = abs(DeltaAngle(target.angle,target.AngleTo(invoker)));
+			Console.Printf(target.GetTag().." ~ "..enemyAngle);
+			if(enemyAngle < 5)
+			{
+				angleWeMovinIn = target.angle+90;
+			}
+			
+			if(distToTarget<128)
+			{
+				angleWeMovinIn = target.angle;
+				angle = angle+180;
+			}
+			
+			invoker.Thrust((speed/1.5)/CurState.tics,angleWeMovinIn);
+		}*/
+	}
+	
+	bool DirectSightToTarget()
+	{
+		Actor oldtarget = target;
+		FLineTraceData traceRes;
+		LineTrace(angle, 2048, pitch, 0, 32, 0.0, 0.0, traceRes);
+		target = oldtarget;
+		
+		bool yesGood = (target != null && traceRes.HitActor == target);
+		Console.Printf((yesGood ? "\ck" : "\ct") .. (target ? target.GetTag() : "Null") .. " vs. " .. (traceRes.HitActor ? traceRes.HitActor.GetTag() : "Null"));
+		
+		return yesGood;
+	}
+	
+	States
+	{
+		Pain:
+			TSAT G 4;
+			Goto See;
+		Spawn:
+			TSAT A 4 A_Look();
+			Loop;
+		See:
+			TSAT ABCD 4 A_TSP_Chase();
+			/*{
+				if(target!=null)
+				{
+					if(CheckSightAndAngle(target)||!tspe_followLastSeenPos)
+					{
+						A_Chase();
+						A_FaceTarget();
+					}
+					else if (tspe_followLastSeenPos)
+					{
+						int gotoAngle = atan2(pos.y - tspe_lastSeenTargetPos.y,pos.x - tspe_lastSeenTargetPos.x)+180+sin(level.maptime)*5;
+						bool hasMoved = TryMove(pos.xy+(cos(gotoAngle)*speed,sin(gotoAngle)*speed),0);
+						angle = gotoAngle;
+						tspe_followLastSeenPos = hasMoved;
+						Console.Printf("LOOK FOR U");
+					}
+				}
+			}*/
+			Loop;
+		Missile:
+			TSAT E 4 A_FaceTarget();
+			TSAT E 4 A_FaceTarget(10,10);
+			"----" E 0
+			{
+				if(!DirectSightToTarget())
+				{
+					if(CheckSight(target)) return ResolveState('FindWayAround');
+					else return ResolveState('BackUpAndWait_0');
+				}
+				return ResolveState(null);
+			}
+			TSAT F 4
+			{
+				A_FaceTarget(10,10);
+				A_PlaySound("nikki/fire",CHAN_WEAPON);
+				A_CustomBulletAttack(5,5,1,2,"BulletPuff",2048,CBAF_AIMFACING|CBAF_NORANDOM);
+			}
+			"----" A 0
+			{
+				if(target!=null && !CheckSight(target))
+				{
+					return ResolveState('BackUpAndWait_0');
+				}
+				return ResolveState(null);
+			}
+			Goto Missile+1;
+		BackUpAndWait_0:
+			TSAT DCBADCBA 4 A_Recoil(0.5);
+			BackUpAndWait_1:
+			TSAT E 4
+			{
+				if (target==null)
+				{
+					return ResolveState('Spawn');
+				}
+				else if (bFrightened)
+				{
+					return ResolveState('See');
+				}
+				else if(CheckSight(target))
+				{
+					return ResolveState('Missile');
+				}
+				return ResolveState(null);
+			}
+			Loop;
+		FindWayAround:
+			"----" A 0
+			{
+				angle = angle + randompick(-90,90);
+			}
+			TSAT ABCD 4 Thrust(1);
+			"----" A 0
+			{
+				int oldangle = angle;
+				A_FaceTarget();
+				if(target!=null)
+				{
+					if(DirectSightToTarget()) return ResolveState('Missile');
+					else if(CheckSight(target)) return ResolveState('See');
+				}
+				angle = oldangle;
+				return ResolveState(null);
+			}
+			Goto FindWayAround+1;
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		FLineTraceData myFunnyFella;
+		if( target!=null && CheckSight(target) )
+		{
+			/*LineTrace(AngleTo(target), 2048.0, 0, 0, 41, 0, 0, myFunnyFella);
+		
+			if(	myFunnyFella.HitActor != null )
+			{
+				tspe_lastSeenTargetPos = target.pos;
+				tspe_followLastSeenPos = true;
+			}*/
+			
+			if( Distance3D(target)<128 )
+			{
+				bFrightened = true;
+			}
+			else
+			{
+				bFrightened = false;
+			}
+		}
+	}
+}

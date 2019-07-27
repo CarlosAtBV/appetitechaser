@@ -1,9 +1,19 @@
 Class TSP_ReplaceHandler : EventHandler
 {
+	override void OnRegister()
+	{
+	}
 	override void CheckReplacement(ReplaceEvent e)
 	{
 		switch(e.Replacee.GetClassName())
 		{
+			case 'ZombieMan':
+				if(tsp_enemies_arcstar)
+				{
+					e.Replacement = "TSP_Enemy_TestFella";
+				}
+				break;
+		
 			case 'PistolPickup':
 				e.Replacement = "TSP_Pickup_Pistol";
 				break;

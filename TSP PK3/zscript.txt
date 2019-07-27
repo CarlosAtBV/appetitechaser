@@ -44,6 +44,8 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 
 #include "zscript/tsp/events/event_replace.zsc"
 
+#include "zscript/tsp/enemies/test/test_fella.zsc"
+
 Class TSP_GlobalVariables : Thinker
 {
 	int tsp_employer;
