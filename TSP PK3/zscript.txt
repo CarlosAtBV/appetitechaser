@@ -301,7 +301,7 @@ Class TSP_EventHandler : EventHandler
 						spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
 					}
 					
-					Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos);
+					Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos,ALLOW_REPLACE);
 					Actor.Spawn("TeleportFog",spawnpos);
 					enemy.angle = spawnangle;
 					hunters_wave++;
