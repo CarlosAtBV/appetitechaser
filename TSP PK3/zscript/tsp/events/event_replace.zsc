@@ -3,6 +3,7 @@ Class TSP_ReplaceHandler : EventHandler
 	override void OnRegister()
 	{
 	}
+	
 	override void CheckReplacement(ReplaceEvent e)
 	{
 		switch(e.Replacee.GetClassName())

@@ -126,6 +126,8 @@ OptionMenu "TSP_Modifiers"
 {
     Title "$TSPMENU2"
     StaticText      ""
+	SubMenu "Enemies Menu (WIP)",						"TSP_EnemiesMenu"
+    StaticText      ""
     StaticText      "$TSPGAMEPLAY1"
 	StaticText      "$TSPGAMEPLAY2"
 	Option "$GMPLYMNU_ALLOWJUMP",				"sv_jump", "JumpCrouchFreeLook"
@@ -154,6 +156,17 @@ OptionValue TSPMeleeSounds
 	1, "$CPS1MELEESND"
 	2, "$MKMELEESND"
 	3, "$SMASHMELEESND"
+}
+
+//==================
+//TSP ENEMAS
+//==================
+
+OptionMenu "TSP_EnemiesMenu"
+{
+    Title "Enemies Menu"
+	StaticText ""
+	Option "ARC*STAR Enemies", "tsp_enemies_arcstar", "OnOff"
 }
     
 //==================

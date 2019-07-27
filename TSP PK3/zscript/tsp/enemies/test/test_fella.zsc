@@ -37,6 +37,7 @@ Class TSP_Enemy_TestFella : Actor
 		Radius 20;
 		Height 56;
 		MinMissileChance 128;
+		PainChance 256;
 		
 		Species "ARCSTAR";
 		+SLIDESONWALLS
