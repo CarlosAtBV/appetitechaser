@@ -15,3 +15,8 @@ vo/test/fella/ohboy1 "sounds/enemies/testfella/vo_test_ohboy.wav"
 $random vo/test/fella/heard { vo/test/fella/heard1 vo/test/fella/heard2 }
 vo/test/fella/heard1 "sounds/enemies/testfella/vo_test_heard1.wav"
 vo/test/fella/heard2 "sounds/enemies/testfella/vo_test_heard2.wav"
+
+$random vo/test/fella/pain { vo/test/fella/pain1 vo/test/fella/pain2 vo/test/fella/pain3 }
+vo/test/fella/pain1 "sounds/enemies/testfella/vo_test_pain1.wav"
+vo/test/fella/pain2 "sounds/enemies/testfella/vo_test_pain2.wav"
+vo/test/fella/pain3 "sounds/enemies/testfella/vo_test_pain3.wav"

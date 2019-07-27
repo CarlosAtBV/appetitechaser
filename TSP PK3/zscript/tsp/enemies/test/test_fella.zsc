@@ -48,6 +48,7 @@ Class TSP_Enemy_TestFella : Actor
 	bool tspe_followLastSeenPos;
 	
 	bool tspe_hasSeen;
+	bool tspe_hasHeard;
 	
 	bool CheckSightAndAngle(Actor mo)
 	{
@@ -78,25 +79,33 @@ Class TSP_Enemy_TestFella : Actor
 		
 		if(!invoker.tspe_hasSeen)
 		{
-			invoker.tspe_hasSeen = true;
-			if(!CountInv("TSP_EnemySound_SuppressSeeSound"))
+			if(CheckSight(target))
 			{
-				if(CheckSight(target))
+				invoker.tspe_hasSeen = true;
+				invoker.tspe_hasHeard = true;
+				if(!CountInv("TSP_EnemySound_SuppressSeeSound"))
 				{
 					if(Distance2D(target)<256)
 					{
 						A_PlaySound("vo/test/fella/hey",CHAN_VOICE);
+						A_AlertMonsters(256,0);
 					}
 					else
 					{
 						A_PlaySound("vo/test/fella/targeted",CHAN_VOICE);
 						A_RadiusGive("TSP_EnemySound_FollowMyLead",256,RGF_MONSTERS,1,"TSP_Enemy_TestFella","",0,1);
 					}
+					A_RadiusGive("TSP_EnemySound_SuppressSeeSound",256,RGF_MONSTERS,1,"TSP_Enemy_TestFella");
 				}
-				else
-				{
-					A_PlaySound("vo/test/fella/heard",CHAN_VOICE);
-				}
+			}
+		}
+		
+		if(!invoker.tspe_hasHeard)
+		{
+			invoker.tspe_hasHeard = true;
+			if(!CountInv("TSP_EnemySound_SuppressSeeSound"))
+			{
+				A_PlaySound("vo/test/fella/heard",CHAN_VOICE);
 				A_RadiusGive("TSP_EnemySound_SuppressSeeSound",256,RGF_MONSTERS,1,"TSP_Enemy_TestFella");
 			}
 		}
@@ -161,7 +170,7 @@ Class TSP_Enemy_TestFella : Actor
 	States
 	{
 		Pain:
-			TSAT G 4;
+			TSAT G 4 A_PlaySound("vo/test/fella/pain",CHAN_VOICE);
 			Goto See;
 		Spawn:
 			TSAT A 4 A_Look();
