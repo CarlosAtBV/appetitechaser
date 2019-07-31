@@ -155,7 +155,7 @@ $random suzuka/fire { suzuka/fire1 suzuka/fire2 suzuka/fire3 }
 suzuka/fire1 131FR1
 suzuka/fire2 131FR2
 suzuka/fire3 131FR3
-$volume suzuka/fire 0.7
+$volume suzuka/fire 0.6
 $random suzuka/firea { suzuka/firea1 suzuka/firea2 }
 suzuka/firea1 131SFR1
 suzuka/firea2 131SFR2
