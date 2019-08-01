@@ -331,7 +331,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
-			FOVScale = 1.0-0.5*(tspw_altmode&&bModFireZooms);
+			FOVScale = 1.0-0.4*(tspw_altmode&&bModFireZooms);
 		}
 	}
 	
