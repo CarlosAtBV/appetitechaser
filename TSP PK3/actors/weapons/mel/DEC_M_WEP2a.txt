@@ -12,6 +12,8 @@ ACTOR MelPistolA : MelPistol
   Tag "$MELPISTOLATAG"
   +TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
   TSP_Weapon_Core.ModTag "Spitfire" //Used for "---- On/Off" message when switching mod fire on or off
+	-TSP_Weapon_Core.MODFIREZOOMS
+	-TSP_Weapon_Core.HOLDDOWNFORMOD
   States
   {
   Fire:
