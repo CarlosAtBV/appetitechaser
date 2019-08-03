@@ -317,3 +317,31 @@ ACTOR TSPExplosiveBarrel : ExplosiveBarrel Replaces ExplosiveBarrel
     Goto Spawn
   }
 }
+
+// Sprite Base: All Kamen Rider: Rider Generation 2
+
+ACTOR TSPGrapplePoint 20001
+{
+  Health 1
+  Radius 64
+  Height 30
+  Mass 99999
+  DamageFactor "Sling", 0.0
+  +FORCEPAIN
+  +FLOAT
+  +NOGRAVITY
+  +SHOOTABLE
+  +NOBLOOD
+  +BUDDHA
+  -PUSHABLE
+  States
+  {
+  Spawn:
+    GRAP ABCD 4 BRIGHT
+	Loop
+  Pain.Sling:
+    TNT1 A 0 A_FaceTarget
+    TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
+    Goto Spawn
+  }
+}
