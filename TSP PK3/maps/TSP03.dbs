@@ -20,7 +20,7 @@ maps
 				notfortesting = 0;
 			}
 		}
-		defaultfloortexture = "G300M800";
+		defaultfloortexture = "FLOOR0_1";
 		defaultceiltexture = "F_SKY1";
 		defaulttoptexture = "STARTAN2";
 		defaultwalltexture = "STARTAN2";
@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = -114.0938f;
-		viewpositiony = -1069.307f;
-		viewscale = 0.8449982f;
+		viewpositionx = 280.3014f;
+		viewpositiony = -2669.685f;
+		viewscale = 0.3846138f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -62,26 +62,13 @@ maps
 			
 			sidedef
 			{
-				offsetx_mid = 1;
 				offsetx_bottom = 1;
 			}
 			
 			sector
 			{
-				lightcolor = 0;
-				desaturation = 1;
 				rotationfloor = 1;
 				xpanningfloor = 1;
-				ceilingglowcolor = 0;
-				floorglowcolor = 0;
-				xpanningceiling = 1;
-				ypanningceiling = 1;
-				rotationceiling = 17;
-				xscaleceiling = 1;
-				yscaleceiling = 1;
-				ypanningfloor = 1;
-				xscalefloor = 1;
-				yscalefloor = 1;
 			}
 		}
 	}
