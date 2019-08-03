@@ -1,0 +1,220 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	TSP02
+	{
+		defaultceiltexture = "F_SKY1";
+		overridefloorheight = false;
+		customfloorheight = 0;
+		uselongtexturenames = false;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "E:\\Temp Doom Stuff\\TSP\\appetitechaser\\TSP PK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+		}
+		overrideceiltexture = false;
+		viewpositionx = -3459.046f;
+		defaulttoptexture = "CYBA";
+		overrideceilheight = false;
+		useresourcesinreadonlymode = false;
+		overridebrightness = false;
+		overridefloortexture = true;
+		
+		grid
+		{
+			backoffsetx = 0;
+			backsource = 0;
+			gridoriginy = 0f;
+			backscaley = 100;
+			gridrotate = 0f;
+			backscalex = 100;
+			gridoriginx = 0f;
+			gridsize = 32f;
+			background = "";
+			backoffsety = 0;
+		}
+		overridetoptexture = true;
+		overridebottomtexture = true;
+		defaultbottomtexture = "CYBA";
+		defaultfloortexture = "CYBA";
+		viewpositiony = -975.4531f;
+		defaultwalltexture = "CYBA";
+		customceilheight = 128;
+		overridemiddletexture = true;
+		custombrightness = 196;
+		viewscale = 0.06274818f;
+		
+		fieldtypes
+		{
+			
+			sidedef
+			{
+				offsetx_mid = 1;
+				offsety_mid = 1;
+				offsetx_bottom = 1;
+				offsetx_top = 1;
+				offsety_bottom = 1;
+			}
+			
+			sector
+			{
+				xpanningfloor = 1;
+				floorglowcolor = 0;
+				ceilingglowcolor = 0;
+				rotationceiling = 1;
+				ypanningfloor = 1;
+				xpanningceiling = 1;
+				ypanningceiling = 1;
+				floorglowheight = 1;
+				rotationfloor = 17;
+				xscaleceiling = 1;
+				yscaleceiling = 1;
+				xscalefloor = 1;
+				yscalefloor = 1;
+			}
+		}
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 242;
+				activetab = true;
+			}
+		}
+	}
+	
+	TSP_BH01
+	{
+		defaultceiltexture = "F_SKY1";
+		overridefloorheight = false;
+		customfloorheight = 0;
+		uselongtexturenames = false;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "E:\\Temp Doom Stuff\\TSP\\appetitechaser\\TSP PK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+		}
+		overrideceiltexture = false;
+		viewpositionx = -701.7156f;
+		defaulttoptexture = "CYBA";
+		overrideceilheight = false;
+		useresourcesinreadonlymode = false;
+		overridebrightness = false;
+		overridefloortexture = true;
+		
+		grid
+		{
+			backoffsetx = 0;
+			backsource = 0;
+			gridoriginy = 0f;
+			backscaley = 100;
+			gridrotate = 0f;
+			backscalex = 100;
+			gridoriginx = 0f;
+			gridsize = 32f;
+			background = "";
+			backoffsety = 0;
+		}
+		overridetoptexture = true;
+		overridebottomtexture = true;
+		defaultbottomtexture = "CYBA";
+		defaultfloortexture = "CYBA";
+		viewpositiony = 5364.443f;
+		defaultwalltexture = "CYBA";
+		customceilheight = 128;
+		overridemiddletexture = true;
+		custombrightness = 196;
+		viewscale = 0.1792147f;
+		
+		fieldtypes
+		{
+			
+			sidedef
+			{
+				offsetx_mid = 1;
+				offsety_mid = 1;
+				offsetx_bottom = 1;
+				offsetx_top = 1;
+				offsety_bottom = 1;
+			}
+			
+			sector
+			{
+				floorglowcolor = 0;
+				ceilingglowcolor = 0;
+				rotationceiling = 1;
+				xpanningfloor = 1;
+				ypanningfloor = 1;
+				xpanningceiling = 1;
+				ypanningceiling = 1;
+				floorglowheight = 1;
+				rotationfloor = 1;
+				xscaleceiling = 1;
+				yscaleceiling = 1;
+				xscalefloor = 1;
+				yscalefloor = 1;
+			}
+		}
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				activetab = true;
+			}
+		}
+	}
+}

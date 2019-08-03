@@ -40,7 +40,7 @@ map TSPTRIAL "Digital Training Grounds"
 	music = "TSPTITLE"
 }
 
-map TEST "The Cum Zone"
+map TEST "Neoscape - Test Sector"
 {
     sky1 = "SPACE", -0.1
 	music = "TSP_READ"
@@ -60,9 +60,16 @@ map TSP02 "Neoscape - Obstacle Course"
 	lightmode = 0
 }
 
-map TSP03 "Neoscape - Grave of the Dragon"
+map TSP03 "Tian Zhu - Grave of the Dragon"
 {
 	sky1 = "Grave", -0.01
+}
+
+map TSP_BH01 "Neoscape - Brawl Zone"
+{
+    //sky1 = "SPACE", -0.1
+	music = "TSP_OBST"
+	lightmode = 0
 }
 
 episode MAP32
