@@ -72,6 +72,11 @@ map TSP_BH01 "Neoscape - Brawl Zone"
 	lightmode = 0
 }
 
+episode TSP_BH01
+{
+	name = "TSPBH:Neoscape - Brawl Zone"
+	noskillmenu
+}
 episode MAP32
 {
 	name = "TSPBH:Grosse"
