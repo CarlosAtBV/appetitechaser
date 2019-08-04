@@ -83,7 +83,7 @@ Extend Class TSP_Weapon_Core
 			while (mo = Actor(MonsterFinder.Next()))
 			{
 				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
-				&& mo.bShootable && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)
+				&& mo.bShootable && !mo.bNoDamage && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)//s
 				{
 					Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
 					
@@ -171,7 +171,7 @@ Extend Class TSP_Weapon_Core
 			while (mo = Actor(MonsterFinder.Next()))
 			{
 				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
-				&& mo.bShootable && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
+				&& mo.bShootable && !mo.bDontThrust && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
 				{
 					int myMaxHealth = mo.GetSpawnHealth();
 					double stuntime;

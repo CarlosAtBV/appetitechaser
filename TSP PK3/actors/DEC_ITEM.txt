@@ -334,6 +334,8 @@ ACTOR TSPGrapplePoint 20001
   +NOBLOOD
   +BUDDHA
   -PUSHABLE
+  +DONTTHRUST
+  +NODAMAGE
   States
   {
   Spawn:
