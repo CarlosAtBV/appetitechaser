@@ -15,6 +15,7 @@ TSPMAP_BATTLEZONE_NAME = "\cyBattle Zone";
 TSPMAP_BATTLEZONE_DESC = "Neoscape";
 TSPMAP_TRAINING_NAME = "The Indigo Skyline";
 TSPMAP_TRAINING_DESC = "Mel's home among the stars.";
+TSPMAP_BRAWLZONE_NAME = "Neoscape - Brawl Zone";
 
 TSP_EMPLOYER_MODS = "Mods";
 
