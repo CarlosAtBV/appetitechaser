@@ -11,6 +11,8 @@ TSP_SHOP_MODSEL = "Weapon Already Modded";
 
 TSPMAP_GROSSE_NAME = "Grosse";
 TSPMAP_GROSSE_DESC = "The Ultimate Challenge";
+TSPMAP_BATTLEZONE_NAME = "\cyBattle Zone";
+TSPMAP_BATTLEZONE_DESC = "Neoscape";
 TSPMAP_TRAINING_NAME = "The Indigo Skyline";
 TSPMAP_TRAINING_DESC = "Mel's home among the stars.";
 
