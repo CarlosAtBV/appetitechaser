@@ -34,10 +34,45 @@ map TITLEMAP "Into Burning Space"
 	music = "TSPTITLE"
 }
 
-map TSPTRIAL "Digital Training Grounds"
+/////////////////
+// TRAINING MAPS
+/////////////////
+
+map TSP_SHIP "The Indigo Skyline"
 {
     sky1 = "SPACE", -0.1
-	music = "TSPTITLE"
+	music = "TSP_SHIP"
+	lightmode = 0
+}
+
+episode TSP_SHIP
+{
+	name = "TSPT:Training"
+	noskillmenu
+}
+
+map TSP02 "Tian Zhu - Grave of the Dragon"
+{
+	sky1 = "Grave", -0.01
+}
+
+episode TSP02
+{
+	name = "TSPT:Grave"
+	noskillmenu
+}
+
+map TSP03 "Neoscape - Obstacle Course"
+{
+    //sky1 = "SPACE", -0.1
+	music = "TSP_OBST"
+	lightmode = 0
+}
+
+episode TSP03
+{
+	name = "TSPT:Obstacle"
+	noskillmenu
 }
 
 map TEST "Neoscape - Test Sector"
@@ -46,24 +81,16 @@ map TEST "Neoscape - Test Sector"
 	music = "TSP_READ"
 	lightmode = 0
 }
-map TSP_SHIP "The Indigo Skyline"
+
+episode TEST
 {
-    sky1 = "SPACE", -0.1
-	music = "TSP_SHIP"
-	lightmode = 0
+	name = "TSPT:Test"
+	noskillmenu
 }
 
-map TSP02 "Neoscape - Obstacle Course"
-{
-    //sky1 = "SPACE", -0.1
-	music = "TSP_OBST"
-	lightmode = 0
-}
-
-map TSP03 "Tian Zhu - Grave of the Dragon"
-{
-	sky1 = "Grave", -0.01
-}
+/////////////////
+// BOUNTY HUNTERS
+/////////////////
 
 map TSP_BH01 "Neoscape - Brawl Zone"
 {
@@ -80,12 +107,6 @@ episode TSP_BH01
 episode MAP32
 {
 	name = "TSPBH:Grosse"
-	noskillmenu
-}
-
-episode TSP_SHIP
-{
-	name = "TSPT:Training"
 	noskillmenu
 }
 /*episode MAP02

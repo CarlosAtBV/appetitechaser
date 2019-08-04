@@ -9,13 +9,24 @@ TSP_SHOP_NOMONEY = "Insufficient Funds";
 TSP_SHOP_MAXAMT = "Maximum Tier Reached";
 TSP_SHOP_MODSEL = "Weapon Already Modded";
 
-TSPMAP_GROSSE_NAME = "Grosse";
-TSPMAP_GROSSE_DESC = "The Ultimate Challenge";
-TSPMAP_BATTLEZONE_NAME = "\cyBattle Zone";
-TSPMAP_BATTLEZONE_DESC = "Neoscape";
+////////////
+// MAP NAMES
+////////////
+
 TSPMAP_TRAINING_NAME = "The Indigo Skyline";
 TSPMAP_TRAINING_DESC = "Mel's home among the stars.";
-TSPMAP_BRAWLZONE_NAME = "Neoscape - Brawl Zone";
+TSPMAP_GRAVE_NAME = "Tian Zhu";
+TSPMAP_GRAVE_DESC = "Grave of the Dragon";
+TSPMAP_OBSTACLE_NAME = "Crash Course";
+TSPMAP_OBSTACLE_DESC = "Master movement and combat mechanics!";
+TSPMAP_TEST_NAME = "Test Sector";
+TSPMAP_TEST_DESC = "Digital Testing Grounds";
+
+
+TSPMAP_BRAWLZONE_NAME = "Battle Zone";
+TSPMAP_BRAWLZONE_DESC = "Neoscape";
+TSPMAP_GROSSE_NAME = "Grosse";
+TSPMAP_GROSSE_DESC = "The Ultimate Challenge";
 
 TSP_EMPLOYER_MODS = "Mods";
 
