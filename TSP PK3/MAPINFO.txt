@@ -62,7 +62,7 @@ episode TSP02
 	noskillmenu
 }
 
-map TSP03 "Neoscape - Obstacle Course"
+map TSP03 "Neoscape - Crash Course"
 {
     //sky1 = "SPACE", -0.1
 	music = "TSP_OBST"
