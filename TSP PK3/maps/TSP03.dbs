@@ -186,7 +186,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -1531.068f;
+		viewpositionx = -3747.585f;
 		defaulttoptexture = "STARTAN2";
 		
 		fieldtypes
@@ -240,11 +240,11 @@ maps
 		overridebottomtexture = false;
 		defaultbottomtexture = "STARTAN2";
 		defaultfloortexture = "CYBF00";
-		viewpositiony = 5601.201f;
+		viewpositiony = 4336.167f;
 		defaultwalltexture = "STARTAN2";
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.3766412f;
+		viewscale = 0.4896336f;
 	}
 }
