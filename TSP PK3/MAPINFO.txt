@@ -104,6 +104,20 @@ episode TSP_BH01
 	name = "TSPBH:BrawlZone"
 	noskillmenu
 }
+
+map TSP_BH02 "Elegia - Red Hot Research"
+{
+    //sky1 = "SPACE", -0.1
+	music = "TSP_OBST"
+	lightmode = 0
+}
+
+episode TSP_BH02
+{
+	name = "TSPBH:Elegia"
+	noskillmenu
+}
+
 episode MAP32
 {
 	name = "TSPBH:Grosse"

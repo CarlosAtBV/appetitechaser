@@ -1,0 +1,76 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	TSPBH02
+	{
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "E:\\Temp Doom Stuff\\TSP\\appetitechaser\\TSP PK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+		}
+		defaultfloortexture = "DEV_GREY";
+		defaultceiltexture = "F_SKY1";
+		defaulttoptexture = "-";
+		defaultwalltexture = "-";
+		defaultbottomtexture = "DEV_64F";
+		custombrightness = 196;
+		customfloorheight = 0;
+		customceilheight = 128;
+		overridefloortexture = true;
+		overrideceiltexture = false;
+		overridetoptexture = true;
+		overridemiddletexture = true;
+		overridebottomtexture = true;
+		overridefloorheight = false;
+		overrideceilheight = false;
+		overridebrightness = false;
+		uselongtexturenames = false;
+		useresourcesinreadonlymode = false;
+		viewpositionx = 75.98885f;
+		viewpositiony = 1258.574f;
+		viewscale = 0.8650347f;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		grid
+		{
+			background = "";
+			backsource = 0;
+			backoffsetx = 0;
+			backoffsety = 0;
+			backscalex = 100;
+			backscaley = 100;
+			gridsize = 32f;
+			gridrotate = 0f;
+			gridoriginx = 0f;
+			gridoriginy = 0f;
+		}
+		
+		fieldtypes
+		{
+			
+			sidedef
+			{
+				offsetx_mid = 1;
+				offsetx_bottom = 1;
+			}
+			
+			sector
+			{
+				rotationfloor = 1;
+				xpanningfloor = 1;
+			}
+		}
+	}
+}

@@ -25,6 +25,8 @@ TSPMAP_TEST_DESC = "Digital Testing Grounds";
 
 TSPMAP_BRAWLZONE_NAME = "Battle Zone";
 TSPMAP_BRAWLZONE_DESC = "Neoscape";
+TSPMAP_ELEGIA_NAME = "Red Hot Rumble";
+TSPMAP_ELEGIA_DESC = "Elegia";
 TSPMAP_GROSSE_NAME = "Grosse";
 TSPMAP_GROSSE_DESC = "The Ultimate Challenge";
 
