@@ -50,6 +50,16 @@ TSPS_T
 TSPS_B
 }
 
+skybox HELL
+{
+HELL_N
+HELL_E
+HELL_S
+HELL_W
+HELL_T
+HELL_B
+}
+
 skybox GRAVE
 {
 GRAV_N

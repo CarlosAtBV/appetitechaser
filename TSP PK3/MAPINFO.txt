@@ -107,7 +107,7 @@ episode TSP_BH01
 
 map TSP_BH02 "Elegia - Red Hot Research"
 {
-    //sky1 = "SPACE", -0.1
+    sky1 = "HELL"
 	music = "TSP_OBST"
 	lightmode = 0
 }
