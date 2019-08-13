@@ -159,9 +159,8 @@ OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 //Startup
 STARTUP1 = "\ccWelcome to\c- \c[TSPGREEN]The Space Pirate!";
 STARTUP2 = "\cpVersion: 0.1 - \c[Mel]Into Obscura";
-STARTUP3 = "Chat with us at \cdhttps://discord.gg/gRZNVGn";
-STARTUP4 = "Or check out the public plan doc at \cdtinyurl.com/tspmanual";
-STARTUP5 = "\cuLOOK TO LA LUNA";
+STARTUP3 = "Chat with us at \cdhttps://discord.gg/discord.gg/wDDCWT9";
+STARTUP4 = "\cuLOOK TO LA LUNA";
 
 //Difficult
 SKILLNONFINISH = "\ccThis mode is currently unfinished!\n\nMaybe it'll be done by\c- \cg2099\c-\cc?\c-";
