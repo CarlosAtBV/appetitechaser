@@ -1,10 +1,10 @@
 @echo off
 color F
 
-set NAME=TSP-Git
+set NAME=bv-tsp-dev
 set /p TYPE="Would you like to build a pk3 or pk7? (default pk3): " % = %
 
-cd "tsp pk3"
+cd TSP PK3
 
 if (%TYPE%) == (pk7) (goto PK7) else (goto PK3)
 
