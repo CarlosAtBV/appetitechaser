@@ -18,6 +18,9 @@ LISTMENU "MainMenu"
 	TSP_MenuItem_PatchItem "SPMENU4",         "l",	"LoadGameMenu"
 	TSP_MenuItem_PatchItem "SPMENU5",         "s",	"SaveGameMenu"
 	TSP_MenuItem_PatchItem "SPMENU6",	 "q",	"QuitMenu"
+	
+	Font "TinyFont"
+	StaticText 98, 202, "$VERSION"
 }
 
 ListMenu "TSP_GameModeMenu"
