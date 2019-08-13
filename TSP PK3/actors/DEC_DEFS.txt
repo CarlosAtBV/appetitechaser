@@ -1,9 +1,3 @@
-Actor Boolean : Inventory
-{
-    Inventory.MaxAmount 1
-    +UNDROPPABLE
-    -INVBAR
-}
 
 Actor Counter: Inventory { Inventory.MaxAmount 0x7FFFFFFF }
 

@@ -8,6 +8,13 @@ ACTOR Nothing4 replaces RocketLauncher {}
 ACTOR Nothing5 replaces PlasmaRifle {}
 ACTOR Nothing6 replaces BFG9000 {}
 
+Actor Boolean : Inventory
+{
+    Inventory.MaxAmount 1
+    +UNDROPPABLE
+    -INVBAR
+}
+
 // DEFINITIONS
 #include "Actors/DEC_DEFS.txt"
 
