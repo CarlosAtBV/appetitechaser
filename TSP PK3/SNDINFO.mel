@@ -20,126 +20,126 @@ $playeralias	Melody   	male  	*largemelee         mel/largemelee
 $playeralias	Melody   	male  	*xlmelee			mel/xlmelee
 
 $random mel/pain100 { melpain1001 melpain1002 melpain1003 melpain1004 }
-melpain1001 "sounds/mel/vo_mel_pain100-1.ogg"
-melpain1002 "sounds/mel/vo_mel_pain100-2.ogg"
-melpain1003 "sounds/mel/vo_mel_pain100-3.ogg"
-melpain1004 "sounds/mel/vo_mel_pain100-4.ogg"
+melpain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"
+melpain1002 "sounds/characters/mel/vo_mel_pain100-2.ogg"
+melpain1003 "sounds/characters/mel/vo_mel_pain100-3.ogg"
+melpain1004 "sounds/characters/mel/vo_mel_pain100-4.ogg"
 
 $random mel/pain75 { melpain751 melpain752 melpain753 melpain754 }
-melpain751 "sounds/mel/vo_mel_pain75-1.ogg"
-melpain752 "sounds/mel/vo_mel_pain75-2.ogg"
-melpain753 "sounds/mel/vo_mel_pain75-3.ogg"
-melpain754 "sounds/mel/vo_mel_pain75-4.ogg"
+melpain751 "sounds/characters/mel/vo_mel_pain75-1.ogg"
+melpain752 "sounds/characters/mel/vo_mel_pain75-2.ogg"
+melpain753 "sounds/characters/mel/vo_mel_pain75-3.ogg"
+melpain754 "sounds/characters/mel/vo_mel_pain75-4.ogg"
 
 $random mel/pain50 { melpain501 melpain502 melpain503 melpain504 }
-melpain501 "sounds/mel/vo_mel_pain50-1.ogg"
-melpain502 "sounds/mel/vo_mel_pain50-2.ogg"
-melpain503 "sounds/mel/vo_mel_pain50-3.ogg"
-melpain504 "sounds/mel/vo_mel_pain50-4.ogg"
+melpain501 "sounds/characters/mel/vo_mel_pain50-1.ogg"
+melpain502 "sounds/characters/mel/vo_mel_pain50-2.ogg"
+melpain503 "sounds/characters/mel/vo_mel_pain50-3.ogg"
+melpain504 "sounds/characters/mel/vo_mel_pain50-4.ogg"
 
 $random mel/pain25 { melpain251 melpain252 melpain253 melpain254 }
-melpain251 "sounds/mel/vo_mel_pain25-1.ogg"
-melpain252 "sounds/mel/vo_mel_pain25-2.ogg"
-melpain253 "sounds/mel/vo_mel_pain25-3.ogg"
-melpain254 "sounds/mel/vo_mel_pain25-4.ogg"
+melpain251 "sounds/characters/mel/vo_mel_pain25-1.ogg"
+melpain252 "sounds/characters/mel/vo_mel_pain25-2.ogg"
+melpain253 "sounds/characters/mel/vo_mel_pain25-3.ogg"
+melpain254 "sounds/characters/mel/vo_mel_pain25-4.ogg"
 
 $random mel/death { meldth1 meldth2 }
-meldth1 "sounds/mel/vo_mel_death_normal01.ogg"
-meldth2 "sounds/mel/vo_mel_death_normal02.ogg"
+meldth1 "sounds/characters/mel/vo_mel_death_normal01.ogg"
+meldth2 "sounds/characters/mel/vo_mel_death_normal02.ogg"
 
 $random mel/wimpydeath { melwimpydth1 melwimpydth2 melwimpydth3 melwimpydth4 }
-melwimpydth1 "sounds/mel/vo_mel_death_wimpy01.ogg"
-melwimpydth2 "sounds/mel/vo_mel_death_wimpy02.ogg"
-melwimpydth3 "sounds/mel/vo_mel_death_wimpy03.ogg"
-melwimpydth4 "sounds/mel/vo_mel_death_wimpy04.ogg"
+melwimpydth1 "sounds/characters/mel/vo_mel_death_wimpy01.ogg"
+melwimpydth2 "sounds/characters/mel/vo_mel_death_wimpy02.ogg"
+melwimpydth3 "sounds/characters/mel/vo_mel_death_wimpy03.ogg"
+melwimpydth4 "sounds/characters/mel/vo_mel_death_wimpy04.ogg"
 
 $random mel/xdeath { melxdth1 melxdth2 }
 melxdth1 melxdth1
 melxdth2 melxdth2
 
 $random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null }
-meljump01 "sounds/mel/vo_mel_jump01.ogg"
-meljump02 "sounds/mel/vo_mel_jump02.ogg"
-meljump03 "sounds/mel/vo_mel_jump03.ogg"
-meljump04 "sounds/mel/vo_mel_jump04.ogg"
-meljump05 "sounds/mel/vo_mel_jump05.ogg"
-meljump06 "sounds/mel/vo_mel_jump06.ogg"
-meljump07 "sounds/mel/vo_mel_jump07.ogg"
-// meljump08 "sounds/mel/vo_mel_jump08.ogg"
-meljump09 "sounds/mel/vo_mel_jump09.ogg"
-meljump10 "sounds/mel/vo_mel_jump10.ogg"
-meljump11 "sounds/mel/vo_mel_jump11.ogg"
-meljump12 "sounds/mel/vo_mel_jump12.ogg"
+meljump01 "sounds/characters/mel/vo_mel_jump01.ogg"
+meljump02 "sounds/characters/mel/vo_mel_jump02.ogg"
+meljump03 "sounds/characters/mel/vo_mel_jump03.ogg"
+meljump04 "sounds/characters/mel/vo_mel_jump04.ogg"
+meljump05 "sounds/characters/mel/vo_mel_jump05.ogg"
+meljump06 "sounds/characters/mel/vo_mel_jump06.ogg"
+meljump07 "sounds/characters/mel/vo_mel_jump07.ogg"
+// meljump08 "sounds/characters/mel/vo_mel_jump08.ogg"
+meljump09 "sounds/characters/mel/vo_mel_jump09.ogg"
+meljump10 "sounds/characters/mel/vo_mel_jump10.ogg"
+meljump11 "sounds/characters/mel/vo_mel_jump11.ogg"
+meljump12 "sounds/characters/mel/vo_mel_jump12.ogg"
 
 $random mel/land { melland1 melland2 melland3 melland4 melland5 melland6 melland7 melland8 }
-melland1 "sounds/mel/vo_mel_land1.ogg"
-melland2 "sounds/mel/vo_mel_land2.ogg"
-melland3 "sounds/mel/vo_mel_land3.ogg"
-melland4 "sounds/mel/vo_mel_land4.ogg"
-melland5 "sounds/mel/vo_mel_land5.ogg"
-melland6 "sounds/mel/vo_mel_land6.ogg"
-melland7 "sounds/mel/vo_mel_land7.ogg"
+melland1 "sounds/characters/mel/vo_mel_land1.ogg"
+melland2 "sounds/characters/mel/vo_mel_land2.ogg"
+melland3 "sounds/characters/mel/vo_mel_land3.ogg"
+melland4 "sounds/characters/mel/vo_mel_land4.ogg"
+melland5 "sounds/characters/mel/vo_mel_land5.ogg"
+melland6 "sounds/characters/mel/vo_mel_land6.ogg"
+melland7 "sounds/characters/mel/vo_mel_land7.ogg"
 
 $random mel/usefail { melunf1 melunf2 melunf3 melunf4 melunfvo1 melunfvo2 melunfvo3 }
-melunf1 "sounds/mel/vo_mel_usefail1.ogg"
-melunf2 "sounds/mel/vo_mel_usefail2.ogg"
-melunf3 "sounds/mel/vo_mel_usefail3.ogg"
-melunf4 "sounds/mel/vo_mel_usefail4.ogg"
-melunfvo1 "sounds/mel/vo_mel_usefailvc1.ogg"
-melunfvo2 "sounds/mel/vo_mel_usefailvc2.ogg"
-melunfvo3 "sounds/mel/vo_mel_usefailvc3.ogg"
+melunf1 "sounds/characters/mel/vo_mel_usefail1.ogg"
+melunf2 "sounds/characters/mel/vo_mel_usefail2.ogg"
+melunf3 "sounds/characters/mel/vo_mel_usefail3.ogg"
+melunf4 "sounds/characters/mel/vo_mel_usefail4.ogg"
+melunfvo1 "sounds/characters/mel/vo_mel_usefailvc1.ogg"
+melunfvo2 "sounds/characters/mel/vo_mel_usefailvc2.ogg"
+melunfvo3 "sounds/characters/mel/vo_mel_usefailvc3.ogg"
 
 //////////////////
 // Mel's Melee
 //////////////////
 
 $random mel/smallmelee  { mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5 mel/smallmelee6 mel/smallmelee7 null null null null null null null null null null null null null }
-mel/smallmelee1 "sounds/mel/melee/vo_mel_melee_sm01.ogg"
-mel/smallmelee2 "sounds/mel/melee/vo_mel_melee_sm02.ogg"
-mel/smallmelee3 "sounds/mel/melee/vo_mel_melee_sm03.ogg"
-mel/smallmelee4 "sounds/mel/melee/vo_mel_melee_sm04.ogg"
-mel/smallmelee5 "sounds/mel/melee/vo_mel_melee_sm05.ogg"
-mel/smallmelee6 "sounds/mel/melee/vo_mel_melee_sm06.ogg"
-mel/smallmelee7 "sounds/mel/melee/vo_mel_melee_sm07.ogg"
+mel/smallmelee1 "sounds/characters/mel/melee/vo_mel_melee_sm01.ogg"
+mel/smallmelee2 "sounds/characters/mel/melee/vo_mel_melee_sm02.ogg"
+mel/smallmelee3 "sounds/characters/mel/melee/vo_mel_melee_sm03.ogg"
+mel/smallmelee4 "sounds/characters/mel/melee/vo_mel_melee_sm04.ogg"
+mel/smallmelee5 "sounds/characters/mel/melee/vo_mel_melee_sm05.ogg"
+mel/smallmelee6 "sounds/characters/mel/melee/vo_mel_melee_sm06.ogg"
+mel/smallmelee7 "sounds/characters/mel/melee/vo_mel_melee_sm07.ogg"
 
 $random mel/mediummelee  { mel/mediummelee1 mel/mediummelee2 mel/mediummelee3 mel/mediummelee4 mel/mediummelee5 mel/mediummelee6 mel/mediummelee7 mel/mediummelee8 mel/mediummelee9 mel/mediummelee10 mel/mediummelee11 mel/mediummelee12 null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null }
-mel/mediummelee1 "sounds/mel/melee/vo_mel_melee_md01.ogg"
-mel/mediummelee2 "sounds/mel/melee/vo_mel_melee_md02.ogg"
-mel/mediummelee3 "sounds/mel/melee/vo_mel_melee_md03.ogg"
-mel/mediummelee4 "sounds/mel/melee/vo_mel_melee_md04.ogg"
-mel/mediummelee5 "sounds/mel/melee/vo_mel_melee_md05.ogg"
-mel/mediummelee6 "sounds/mel/melee/vo_mel_melee_md06.ogg"
-mel/mediummelee7 "sounds/mel/melee/vo_mel_melee_md07.ogg"
-mel/mediummelee8 "sounds/mel/melee/vo_mel_melee_md08.ogg"
-mel/mediummelee9 "sounds/mel/melee/vo_mel_melee_md09.ogg"
-mel/mediummelee10 "sounds/mel/melee/vo_mel_melee_md10.ogg"
-mel/mediummelee11 "sounds/mel/melee/vo_mel_melee_md11.ogg"
-mel/mediummelee12 "sounds/mel/melee/vo_mel_melee_md12.ogg"
+mel/mediummelee1 "sounds/characters/mel/melee/vo_mel_melee_md01.ogg"
+mel/mediummelee2 "sounds/characters/mel/melee/vo_mel_melee_md02.ogg"
+mel/mediummelee3 "sounds/characters/mel/melee/vo_mel_melee_md03.ogg"
+mel/mediummelee4 "sounds/characters/mel/melee/vo_mel_melee_md04.ogg"
+mel/mediummelee5 "sounds/characters/mel/melee/vo_mel_melee_md05.ogg"
+mel/mediummelee6 "sounds/characters/mel/melee/vo_mel_melee_md06.ogg"
+mel/mediummelee7 "sounds/characters/mel/melee/vo_mel_melee_md07.ogg"
+mel/mediummelee8 "sounds/characters/mel/melee/vo_mel_melee_md08.ogg"
+mel/mediummelee9 "sounds/characters/mel/melee/vo_mel_melee_md09.ogg"
+mel/mediummelee10 "sounds/characters/mel/melee/vo_mel_melee_md10.ogg"
+mel/mediummelee11 "sounds/characters/mel/melee/vo_mel_melee_md11.ogg"
+mel/mediummelee12 "sounds/characters/mel/melee/vo_mel_melee_md12.ogg"
 
 $random mel/largemelee { mel/largemelee1 mel/largemelee2 mel/largemelee3 mel/largemelee4 mel/largemelee5 mel/largemelee6 mel/largemelee7 mel/largemelee8 mel/largemelee9 null null null null null null null null null null }
-mel/largemelee1 "sounds/mel/melee/vo_mel_melee_lg01.ogg"
-mel/largemelee2 "sounds/mel/melee/vo_mel_melee_lg02.ogg"
-mel/largemelee3 "sounds/mel/melee/vo_mel_melee_lg03.ogg"
-mel/largemelee4 "sounds/mel/melee/vo_mel_melee_lg04.ogg"
-mel/largemelee5 "sounds/mel/melee/vo_mel_melee_lg05.ogg"
-mel/largemelee6 "sounds/mel/melee/vo_mel_melee_lg06.ogg"
-mel/largemelee7 "sounds/mel/melee/vo_mel_melee_lg07.ogg"
-mel/largemelee8 "sounds/mel/melee/vo_mel_melee_lg08.ogg"
-mel/largemelee9 "sounds/mel/melee/vo_mel_melee_lg09.ogg"
+mel/largemelee1 "sounds/characters/mel/melee/vo_mel_melee_lg01.ogg"
+mel/largemelee2 "sounds/characters/mel/melee/vo_mel_melee_lg02.ogg"
+mel/largemelee3 "sounds/characters/mel/melee/vo_mel_melee_lg03.ogg"
+mel/largemelee4 "sounds/characters/mel/melee/vo_mel_melee_lg04.ogg"
+mel/largemelee5 "sounds/characters/mel/melee/vo_mel_melee_lg05.ogg"
+mel/largemelee6 "sounds/characters/mel/melee/vo_mel_melee_lg06.ogg"
+mel/largemelee7 "sounds/characters/mel/melee/vo_mel_melee_lg07.ogg"
+mel/largemelee8 "sounds/characters/mel/melee/vo_mel_melee_lg08.ogg"
+mel/largemelee9 "sounds/characters/mel/melee/vo_mel_melee_lg09.ogg"
 
 $random mel/xlmelee { mel/xlmelee1 mel/xlmelee2 mel/xlmelee3 mel/xlmelee4 null null null null null null null null null null null null null null null null null null null }
-mel/xlmelee1 "sounds/mel/melee/vo_mel_melee_xl01.ogg"
-mel/xlmelee2 "sounds/mel/melee/vo_mel_melee_xl02.ogg"
-mel/xlmelee3 "sounds/mel/melee/vo_mel_melee_xl03.ogg"
-mel/xlmelee4 "sounds/mel/melee/vo_mel_melee_xl04.ogg"
+mel/xlmelee1 "sounds/characters/mel/melee/vo_mel_melee_xl01.ogg"
+mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02.ogg"
+mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03.ogg"
+mel/xlmelee4 "sounds/characters/mel/melee/vo_mel_melee_xl04.ogg"
 
 $random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 null null null null null null }
-meltemp1 "sounds/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
-meltemp2 "sounds/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
-meltemp3 "sounds/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
-meltemp4 "sounds/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
-meltemp5 "sounds/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
-melidle "sounds/mel/misc/sfx_mel_idle01.ogg"
+meltemp1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
+meltemp2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+meltemp3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+meltemp4 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+meltemp5 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+melidle "sounds/characters/mel/misc/sfx_mel_idle01.ogg"
 
 //////////////////////
 // Mel's Mag Manuevers
@@ -184,11 +184,11 @@ magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
 // Mel's Style Change
 //////////////////////
 
-melstylevocs   "sounds/mel/weaponpickups/vo_mel_style_cs.ogg"
+melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
 melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
 melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
 
-melstylevobk   "sounds/mel/weaponpickups/vo_mel_style_bk.ogg"
+melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
 melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
 melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
 
@@ -199,49 +199,49 @@ melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
 
 //DARLING NIKKI
 $random mel/nikkipickup { mel/nikkipickup1 mel/nikkipickup2 mel/nikkipickup3 }
-mel/nikkipickup1 "sounds/mel/weaponpickups/vo_mel_pickup_nikki1.ogg"
-mel/nikkipickup2 "sounds/mel/weaponpickups/vo_mel_pickup_nikki2.ogg"
-mel/nikkipickup3 "sounds/mel/weaponpickups/vo_mel_pickup_nikki3.ogg"
+mel/nikkipickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_nikki1.ogg"
+mel/nikkipickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_nikki2.ogg"
+mel/nikkipickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_nikki3.ogg"
 
 $random mel/goldnikkipickup { mel/goldnikkipickup1 mel/goldnikkipickup2 }
-mel/goldnikkipickup1 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki1.ogg"
-mel/goldnikkipickup2 "sounds/mel/weaponpickups/vo_mel_pickup_goldnikki2.ogg"
+mel/goldnikkipickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_goldnikki1.ogg"
+mel/goldnikkipickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_goldnikki2.ogg"
 
 //SUZUKA
 $random mel/suzukapickup { mel/suzukapickup1 mel/suzukapickup2 mel/suzukapickup3 mel/shotgunpickup }
-mel/suzukapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka1.ogg"
-mel/suzukapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka2.ogg"
-mel/suzukapickup3 "sounds/mel/weaponpickups/vo_mel_pickup_suzuka3.ogg"
+mel/suzukapickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_suzuka1.ogg"
+mel/suzukapickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_suzuka2.ogg"
+mel/suzukapickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_suzuka3.ogg"
 
 //SHOTGUN
-mel/shotgunpickup "sounds/mel/weaponpickups/vo_mel_pickup_shotgun1.ogg"
+mel/shotgunpickup "sounds/characters/mel/weaponpickups/vo_mel_pickup_shotgun1.ogg"
 
 //PUNCHY GAUNTLETS
 $random mel/shivapickup { mel/shivapickup1 mel/shivapickup2 }
-mel/shivapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_shiva1.ogg"
-mel/shivapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_shiva2.ogg"
+mel/shivapickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_shiva1.ogg"
+mel/shivapickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_shiva2.ogg"
 
 //MEDUSA
 $random mel/medusapickup { mel/medusapickup1 mel/medusapickup2 mel/medusapickup3 }
-mel/medusapickup1 "sounds/mel/weaponpickups/vo_mel_pickup_medusa1.ogg"
-mel/medusapickup2 "sounds/mel/weaponpickups/vo_mel_pickup_medusa2.ogg"
-mel/medusapickup3 "sounds/mel/weaponpickups/vo_mel_pickup_medusa3.ogg"
+mel/medusapickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_medusa1.ogg"
+mel/medusapickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_medusa2.ogg"
+mel/medusapickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_medusa3.ogg"
 
 //CASTER
 $random mel/casterpickup { mel/casterpickup1 mel/casterpickup2 mel/casterpickup3 }
-mel/casterpickup1 "sounds/mel/weaponpickups/vo_mel_pickup_caster1.ogg"
-mel/casterpickup2 "sounds/mel/weaponpickups/vo_mel_pickup_caster2.ogg"
-mel/casterpickup3 "sounds/mel/weaponpickups/vo_mel_pickup_caster3.ogg"
+mel/casterpickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster1.ogg"
+mel/casterpickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster2.ogg"
+mel/casterpickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster3.ogg"
 
 //GENERIC
 $random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10}
-mel/genericpickup1 "sounds/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
-mel/genericpickup2 "sounds/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
-mel/genericpickup3 "sounds/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
-mel/genericpickup4 "sounds/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
-mel/genericpickup5 "sounds/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
-mel/genericpickup6 "sounds/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
-mel/genericpickup7 "sounds/mel/weaponpickups/vo_mel_pickup_generic07.ogg"
-mel/genericpickup8 "sounds/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
-mel/genericpickup9 "sounds/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
-mel/genericpickup10 "sounds/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+mel/genericpickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
+mel/genericpickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
+mel/genericpickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
+mel/genericpickup4 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
+mel/genericpickup5 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
+mel/genericpickup6 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
+mel/genericpickup7 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic07.ogg"
+mel/genericpickup8 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+mel/genericpickup9 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
+mel/genericpickup10 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
