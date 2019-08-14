@@ -2,10 +2,10 @@
 // Diaz Player Sounds
 //////////////////////
 
-$playeralias	Diaz    male  	*pain100			"sounds/characters/diaz/vo_diaz_pain100-1.ogg"
-$playeralias	Diaz    male  	*pain75				"sounds/characters/diaz/vo_diaz_pain75-1.ogg"
-$playeralias	Diaz    male  	*pain50				"sounds/characters/diaz/vo_diaz_pain50-1.ogg"
-$playeralias	Diaz    male  	*pain25				"sounds/characters/diaz/vo_diaz_pain25-1.ogg"
+$playersound	Diaz    male  	*pain100			"sounds/characters/diaz/vo_diaz_pain100-1.ogg"
+$playersound	Diaz    male  	*pain75				"sounds/characters/diaz/vo_diaz_pain75-1.ogg"
+$playersound	Diaz    male  	*pain50				"sounds/characters/diaz/vo_diaz_pain50-1.ogg"
+$playersound	Diaz    male  	*pain25				"sounds/characters/diaz/vo_diaz_pain25-1.ogg"
 $playeralias	Diaz	male  	*death				diaz/death
 $playeralias	Diaz    male  	*xdeath				diaz/xdeath
 $playeralias	Diaz    male  	*gibbed				diaz/xdeath
