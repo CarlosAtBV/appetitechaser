@@ -40,6 +40,8 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 #include "zscript/tsp/player/player_log.zsc"
 
 #include "zscript/tsp/characters/char_mel.zsc"
+#include "zscript/tsp/characters/char_shen.zsc"
+#include "zscript/tsp/characters/char_diaz.zsc"
 #include "zscript/tsp/characters/char_dummy.zsc"
 
 #include "zscript/tsp/events/event_replace.zsc"

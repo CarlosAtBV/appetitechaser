@@ -1,0 +1,11 @@
+Class TSP_DiazPlayer : SpacePirate
+{
+	Default
+	{
+		Player.DisplayName "Olivia Diaz";
+		Player.Portrait "AODST01";
+		Player.SoundClass "Diaz";
+		TSP_PlayerPawn_ZSCBase.DisplayTitle "RCPA Special Agent";
+		TSP_PlayerPawn_ZSCBase.DisplayDescription "[DESCRIPTION NOT YET ENTERED]";
+	}
+}
