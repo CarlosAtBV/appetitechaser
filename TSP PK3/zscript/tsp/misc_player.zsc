@@ -126,6 +126,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	int pp_freezeMe;
 	
+	bool pp_hasCrouchSlid;
+	
 	Default
 	{
 		DamageFactor "MagSlam", 0.0;
@@ -457,10 +459,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		//Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
 		
-		if(player.crouchfactor<1.0&&pos.z==floorz&&vel.z!=oldVelZ)
+		if(player.crouchfactor<1.0)
 		{
-			vel.x*=4;
-			vel.y*=4;
+			if(pos.z==floorz&&vel.z!=oldVelZ&&!pp_hasCrouchSlid)
+			{
+				vel.x*=4;
+				vel.y*=4;
+				pp_hasCrouchSlid = true;
+			}
+		}
+		else
+		{
+			pp_hasCrouchSlid = false;
 		}
 		
 		FLineTraceData traceStuff;
