@@ -61,7 +61,6 @@ Class TSP_Seat : Actor
 	}
 	override bool Used(Actor user)
 	{
-		Console.Printf("nut");
 		if(user is "TSP_PlayerPawn_ZSCBase")
 		{
 			TSP_PlayerPawn_ZSCBase usie = TSP_PlayerPawn_ZSCBase(user);
@@ -482,7 +481,17 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			{
 				vel = (0,0,0);
 				Line bouncedOffLine = traceStuff.HitLine;
-				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90;
+				int bouncedSide = traceStuff.LineSide;
+				int bounceDir;
+				Console.Printf(""..traceStuff.LineSide);
+				
+				switch(bouncedSide)
+				{
+					case 0: bounceDir = 1; break;
+					case 1: bounceDir = -1; break;
+				}
+				
+				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90*bounceDir;
 				Thrust(14,bounceAngle/*angle+(25*sidedir)*/);
 				A_PlaySound("*jump",CHAN_VOICE);
 				vel.z = clamp(12-(ptp_wallJumps/*/1.25*/),0,12);
