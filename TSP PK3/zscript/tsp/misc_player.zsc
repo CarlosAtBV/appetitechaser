@@ -220,7 +220,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}*/
 
 		let weapn = player.ReadyWeapon;
-		//[Py] added this epic shit
+		//[Py] added this shit
 		if (weapn == null)
 		{
 			return;
@@ -481,9 +481,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			if(player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))
 			{
 				vel = (0,0,0);
-				Thrust(14,angle+(25*sidedir));
+				Line bouncedOffLine = traceStuff.HitLine;
+				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90;
+				Thrust(14,bounceAngle/*angle+(25*sidedir)*/);
 				A_PlaySound("*jump",CHAN_VOICE);
-				vel.z = clamp(12-(ptp_wallJumps/1.25),0,12);
+				vel.z = clamp(12-(ptp_wallJumps/*/1.25*/),0,12);
 				ptp_wallJumps++;
 			}
 		}

@@ -72,7 +72,7 @@ Class TSP_GlobalVariables : Thinker
 
 Class TSP_DebugFontMenu : GenericMenu
 {
-	static const string epicFonts[] =
+	static const string debugFonts[] =
 	{
 		"BigFont",
 		"SmallFont",
@@ -83,9 +83,9 @@ Class TSP_DebugFontMenu : GenericMenu
 		super.Drawer();
 		screen.Dim("6F0E76", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
 		int y = 0;
-		for(int i = 0;i<epicFonts.Size();i++)
+		for(int i = 0;i<debugFonts.Size();i++)
 		{
-			Font disFont = Font.FindFont(epicFonts[i]);
+			Font disFont = Font.FindFont(debugFonts[i]);
 			screen.DrawText(disFont, Font.CR_UNTRANSLATED, 64, 64+y, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
 			y += disFont.GetHeight()+4;
 		}

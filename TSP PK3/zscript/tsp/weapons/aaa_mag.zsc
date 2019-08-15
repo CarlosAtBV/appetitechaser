@@ -77,8 +77,8 @@ Extend Class TSP_Weapon_Core
 			
 			int mMaxHealth = 0;
 			
-			Class<Actor > epicPuffy = mPuff;
-			string epicPuffy_sound = GetDefaultByType(epicPuffy).seeSound;
+			Class<Actor > bulletPuffToSpawn = mPuff;
+			string bulletPuffToSpawn_sound = GetDefaultByType(bulletPuffToSpawn).seeSound;
 			
 			while (mo = Actor(MonsterFinder.Next()))
 			{
@@ -132,7 +132,7 @@ Extend Class TSP_Weapon_Core
 							blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
 						}
 					}
-					mo.A_PlaySound(epicPuffy_sound,CHAN_BODY);
+					mo.A_PlaySound(bulletPuffToSpawn_sound,CHAN_BODY);
 					
 					/*if(myMaxHealth > mMaxHealth)
 					{

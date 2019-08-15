@@ -105,7 +105,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.mo is "TSP_DummyPlayer")
 			{
-				DrawImage("EPICMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("MELOBYPP", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
 			}
 			else
@@ -146,7 +146,7 @@ Class TSP_StatusBar : BaseStatusBar
 				Vector2 keypos = (HUDRIGHT_X+22, HUDRIGHT_Y+21);
 				int rowc = 0;
 				double roww = 0;
-				for(let i = CPlayer.mo.Inv; i != null; i = i.Inv) //go thru the player's inventory to find some epic keys
+				for(let i = CPlayer.mo.Inv; i != null; i = i.Inv) //go thru the player's inventory to find some keys
 				{
 					if (i is "Key" && i.Icon.IsValid())
 					{

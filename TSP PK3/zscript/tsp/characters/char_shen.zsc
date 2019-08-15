@@ -7,5 +7,7 @@ Class TSP_ShenMiPlayer : SpacePirate
 		Player.SoundClass "Melody";
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Formidable Assassin";
 		TSP_PlayerPawn_ZSCBase.DisplayDescription "[DESCRIPTION NOT YET ENTERED]";
+		
+		+TSP_PlayerPawn_ZSCBASE.BOUNTYHUNTERSONLY
 	}
 }

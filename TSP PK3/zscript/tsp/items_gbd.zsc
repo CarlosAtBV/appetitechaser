@@ -14,7 +14,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 	
 	int grabRadius;
 	int mineSpeeden;
-	bool epicMovin;
+	bool movingToMeet;
 	
 	override void Tick()
 	{
@@ -25,7 +25,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 			Destroy();
 			return;
 		}
-		if(epicMovin)
+		if(movingToMeet)
 		{
 			if(mineSpeeden<32)
 			{
@@ -35,7 +35,7 @@ Class TSP_GlobalDollarPickup_Base : CustomInventory
 		}
 		if(players[0].mo!=null&&players[0].mo.health>0&&Distance3D(players[0].mo)<grabradius)
 		{
-			epicMovin = true;
+			movingToMeet = true;
 			bNoClip = true;
 		}
 		if(grabradius<1024)

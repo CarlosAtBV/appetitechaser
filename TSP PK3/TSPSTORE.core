@@ -88,13 +88,6 @@ page
 			inv_amount 1;
 			price 5;
 		}
-		item "Epic Heal"
-		{
-			desc "become very healthy >:)";
-			inv_class "HealthBonus";
-			inv_amount 1;
-			price 90000;
-		}
 		header "Shield";
 		item "$TSP_SHOP_SHIELDNAME1", "$TSP_SHOP_SHIELDNAME2", "$TSP_SHOP_SHIELDNAME3"
 		{
@@ -131,7 +124,7 @@ page
 			price 10;
 		}
 		header "Good Shit";
-		item "Weed"
+		item "Full Heal"
 		{
 			desc "lmao";
 			inv_class "HealthBonus";
