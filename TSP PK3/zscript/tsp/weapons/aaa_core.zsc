@@ -145,6 +145,7 @@ Class TSP_EnemyHandler_OnHit : Thinker
 			fx = Actor.Spawn("TSP_MagFX",owner.pos);
 			fx.target = owner;
 			owner.GiveInventory("TSP_EnemyHandler_IsSupered",superFreeze);
+			owner.A_SetTics(-1);
 		}
 	}
 	
@@ -167,7 +168,8 @@ Class TSP_EnemyHandler_OnHit : Thinker
 			if(owner!=null)
 			{
 				let defaultFucker = GetDefaultByType(owner.GetClass());
-				owner.bNoGravity = defaultFucker.bNoGravity;
+				//owner.bNoGravity = defaultFucker.bNoGravity;
+				owner.A_SetTics(1);
 			}
 			if(fx)
 			{
@@ -179,24 +181,29 @@ Class TSP_EnemyHandler_OnHit : Thinker
 		
 		if(owner.CountInv("TSP_EnemyHandler_IsSupered")>0)
 		{
-			owner.bNoGravity = true;
+			//owner.bNoGravity = true;
 			owner.bNoPain = true;
 			owner.vel.x *= 0.85;
 			owner.vel.y *= 0.85;
+			owner.A_SetTics(-1);
+			if(owner.vel.z<0)
+			{
+				owner.vel.z = 0;
+			}
 			if(owner.vel.z>0)
 			{
-				owner.vel.z *= 0.85;
+				owner.vel.z *= 0.95;//0.85;
 			}
 			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1);
 		}
 		else
 		{
-			owner.bNoPain = false;
 			if(fx) fx.Destroy();
 			if(owner.vel.z==oldZ)
 			{
 				let defaultFucker = GetDefaultByType(owner.GetClass());
-				owner.bNoGravity = defaultFucker.bNoGravity;
+				owner.bNoPain = defaultFucker.bNoPain;
+				//owner.bNoGravity = defaultFucker.bNoGravity;
 				owner.SetStateLabel("See");
 				Destroy();
 				return;

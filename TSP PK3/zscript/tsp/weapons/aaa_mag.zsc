@@ -122,7 +122,7 @@ Extend Class TSP_Weapon_Core
 					if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
 					{
 						mo.SetStateLabel("Pain");
-						mo.A_SetTics(stuntime);
+						mo.A_SetTics(stuntime); //keep an eye on this conflicting with the freeze code
 					}
 					if(!mo.bNoBlood)
 					{
