@@ -483,7 +483,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				Line bouncedOffLine = traceStuff.HitLine;
 				int bouncedSide = traceStuff.LineSide;
 				int bounceDir;
-				Console.Printf(""..traceStuff.LineSide);
+				//Console.Printf(""..traceStuff.LineSide);
 				
 				switch(bouncedSide)
 				{
@@ -493,7 +493,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				
 				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90*bounceDir;
 				int bounceOffAngle = bounceAngle+clamp(DeltaAngle(Normalize180(bounceAngle),angle),-68,68);
-				Console.Printf(""..bounceOffAngle);
+				//Console.Printf(""..bounceOffAngle);
 				Thrust(14,bounceOffAngle/*angle+(25*sidedir)*/);
 				A_PlaySound("*jump",CHAN_VOICE);
 				vel.z = clamp(12-(ptp_wallJumps/*/1.25*/),0,12);
