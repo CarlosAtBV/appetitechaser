@@ -120,7 +120,10 @@ Class TSP_EventHandler : EventHandler
 		}
 		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && (e.Thing is "TSP_WeaponPickup" || e.Thing is "TSP_Nothing"))
 		{
-			e.Thing.Spawn("TSP_BountyHunters_TimeExtCrystal",e.Thing.pos);
+			if(level.maptime==0)
+			{
+				e.Thing.Spawn("TSP_BountyHunters_TimeExtCrystal",e.Thing.pos);
+			}
 			e.Thing.Destroy();
 		}
 		if(e.Thing is "LostSoul")
