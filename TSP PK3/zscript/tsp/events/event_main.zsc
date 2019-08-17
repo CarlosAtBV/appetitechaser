@@ -1,0 +1,406 @@
+
+
+Class TSP_EventHandler : EventHandler
+{
+	ui bool tsp_shopmusic;
+	
+	bool gameover;
+	int spawndelay;
+	int hunters_wave;
+	int hunters_monsterMax;
+	
+	int hunters_score;
+	
+	int hunters_time;
+	
+	int hunters_endtimer;
+	
+	int hunters_combo;
+	int hunters_combotime;
+	
+	bool tsp_meleeonly;
+	
+	static const string hunters_demonSpawns[] =
+	{
+		"Zombieman",
+		"DoomImp",
+		"ShotgunGuy",
+		"Demon",
+		"ChaingunGuy",
+		"LostSoul",
+		"Spectre",
+		"Cacodemon",
+		"HellKnight"
+	};
+	
+	TSP_Gamemode_Hunters hunterThinker;
+	
+	int gamemode;
+	
+	int hunters_maxCombo;
+	
+	array<TSP_Hunters_SpawnPoint > hunters_demonSpawnPoints;
+	
+	override void OnRegister()
+	{
+		tsp_meleeonly = CVar.GetCVar("tsp_meleesupreme",players[0]).GetBool();
+	}
+	
+	override void WorldLoaded(WorldEvent e)
+	{
+		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		
+		if(gamemode==1)
+		{
+			ThinkerIterator SecretFinder = ThinkerIterator.Create("Actor");
+			Actor mo;
+			while (mo = Actor(SecretFinder.Next()))
+			{
+				if(mo!=null)
+				{
+					if(mo.bIsMonster)
+					{
+						TSP_Hunters_SpawnPoint spawn = new("TSP_Hunters_SpawnPoint");
+						spawn.pos = mo.pos;
+						hunters_demonSpawnPoints.Push(spawn);
+						mo.A_Die();
+						mo.Destroy();
+					}
+					else if (mo is "Inventory")
+					{
+						Inventory itemActor = Inventory(mo);
+						itemActor.bAlwaysRespawn = true;
+						itemActor.bDropped = false;
+					}
+				}
+			}
+			
+			/*let player = players[0].mo;
+			if(player!=null)
+			{
+				player.score = 0;
+				player.ClearInventory();
+				player.GiveDefaultInventory();
+				if(player.health>0)
+				{
+					player.health = player.player.health = player.SpawnHealth();
+				}
+			}*/
+			
+			hunters_time = 120;
+		}
+	}
+	
+	/*override void WorldUnloaded(WorldEvent e)
+	{
+		let player = players[0].mo;
+		if(player!=null)
+		{
+			player.score = 0;
+			player.ClearInventory();
+			player.GiveDefaultInventory();
+			if(player.health>0)
+			{
+				player.health = player.player.health = player.SpawnHealth();
+			}
+		}
+	}*/
+	
+	override void WorldThingSpawned(WorldEvent e)
+	{
+		if(tsp_meleeonly && e.Thing is "Ammo")
+		{
+			e.Thing.Destroy();
+		}
+		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && e.Thing is "TSP_WeaponPickup")
+		{
+			e.Thing.Destroy();
+		}
+		if(e.Thing is "LostSoul")
+		{
+			e.Thing.DamageFactor = 4.0;
+		}
+	}
+	
+	override void WorldThingDamaged(WorldEvent e)
+	{
+		if(!e.Thing.CountInv("TSP_EnemyHandler_IsSupered")) return;
+		
+		switch(gamemode)
+		{
+			default:
+				int fuckdamage = e.Damage/5;
+				while(fuckdamage>=5)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					fuckdamage-=5;
+				}
+				while(fuckdamage>=1)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					fuckdamage--;
+				}
+				break;
+			case TSP_GM_HUNTERS:
+				break;
+		}
+	}
+	
+	override void WorldThingDied(WorldEvent e)
+	{
+		if(e.Thing is "TSP_PlayerPawn_ZSCBase" && !deathmatch) return;
+		
+		switch(gamemode)
+		{
+			default:
+				int myHealth = e.Thing.SpawnHealth()/5;
+				while(myHealth>=5)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					myHealth-=5;
+				}
+				while(myHealth>=1)
+				{
+					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
+					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+					myHealth-=1;
+				}
+				break;
+			case TSP_GM_HUNTERS:
+				if(!gameover && e.Thing.target == players[0].mo)
+				{
+					players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
+					players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
+					hunters_combo++;
+					hunters_combotime = 10*35;
+				}
+				break;
+		}
+	}
+	
+	override void WorldTick()
+	{
+		if(gamemode==TSP_GM_HUNTERS)
+		{
+			if(!gameover)
+			{
+				if(hunters_combotime>0)
+				{
+					hunters_combotime--;
+				}
+				else if(hunters_combo>0)
+				{
+					if(hunters_combo>hunters_maxCombo)
+					{
+						hunters_maxCombo = hunters_combo;
+					}
+					hunters_combo = 0;
+				}
+				
+				if(spawndelay<1)
+				{
+					Vector3 spawnpos;
+					int spawnangle;
+					[spawnpos, spawnangle] = G_PickDeathmatchStart();
+					
+					if(random(1,2)==2&&hunters_demonSpawnPoints.Size()!=0)
+					{
+						spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
+					}
+					
+					Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos,ALLOW_REPLACE);
+					Actor.Spawn("TeleportFog",spawnpos);
+					enemy.angle = spawnangle;
+					hunters_wave++;
+					players[0].mo.SoundAlert(players[0].mo);
+					spawndelay = 35*2;
+					if(hunters_wave%6==0)
+					{
+						hunters_monsterMax++;
+					}
+				}
+				else
+				{
+					spawndelay--;
+				}
+				
+				if(level.maptime%35==0)
+				{
+					if(hunters_time==0||players[0].mo.health<1)
+					{
+						if(hunters_combo>hunters_maxCombo)
+						{
+							hunters_maxCombo = hunters_combo;
+						}
+						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
+						gameover = true;
+						S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+					}
+					else
+					{
+						hunters_time--;
+						switch(hunters_time)
+						{
+							case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
+							case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
+							case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
+							case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
+							case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
+							case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
+							case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+						}
+					}
+				}
+			}
+			else
+			{
+				hunters_endtimer++;
+				if(hunters_endtimer>=(35*5))
+				{
+					players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
+				}
+			}
+		}
+	}
+	
+	override void RenderOverlay(RenderEvent e)
+	{
+		if(menuactive)
+		{
+			if(Menu.GetCurrentMenu() is "OptionMenu")
+			{
+				OptionMenu sins = OptionMenu(Menu.GetCurrentMenu());
+				int it = 0;
+				if(sins.mDesc.mTitle == "$MNU_EPISODE")
+				{
+					OptionMenu sin = sins;
+					Menu father = sin.mParentMenu;
+					Array<TSP_EpisodeMenu_Item > episodes;
+					episodes.Clear();
+					for(int i = 0;i < sin.mDesc.mItems.Size();i++)
+					{
+						TSP_EpisodeMenu_Item newOption = new("TSP_EpisodeMenu_Item");
+						if(sin.mDesc.mItems[i] is "OptionMenuItem")
+						{
+							newOption.name = OptionMenuItem(sin.mDesc.mItems[i]).mLabel;
+						}
+						newOption.id = it;
+						it++;
+						episodes.Push(newOption);
+					}
+					sin.SetMenu("TSP_EpisodeMenu",0);
+					TSP_EpisodeMenu(sin.GetCurrentMenu()).episodes.Copy(episodes);
+					sin.GetCurrentMenu().mParentMenu = father;
+					TSP_EpisodeMenu(sin.GetCurrentMenu()).updateShit();
+				}
+			}
+		}
+		
+		if(Menu.GetCurrentMenu() is "TSP_ShopMenu" && !tsp_shopmusic)
+		{
+			S_ChangeMusic("music/TSP_INT.ogg");
+			tsp_shopmusic = true;
+		}
+		else if(!(Menu.GetCurrentMenu() is "TSP_ShopMenu") && tsp_shopmusic)
+		{
+			S_ChangeMusic("*");
+			tsp_shopmusic = false;
+		}
+		
+		if(players[0].mo == null) return;
+		
+		TextureID combobar_bg = TexMan.CheckForTexture("HUD_ABR2",TexMan.Type_MiscPatch);
+		TextureID combobar_fg = TexMan.CheckForTexture("HUD_ABR1",TexMan.Type_MiscPatch);
+		
+		if(gamemode == 1)
+		{
+			double thingwidth = 61*(hunters_combotime/double(35*10));
+			screen.DrawTexture (combobar_bg, true, 160-31, 32, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawTexture (combobar_fg, true, 160-31, 32, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_WindowRightF, 0+thingwidth);
+			
+			int time = hunters_time;
+			int minutes = time/60;
+			time -= minutes*60;
+			string seconds = ""..time;
+			if(time<10)
+			{
+				seconds = "0"..seconds;
+			}
+			string timer = minutes..":"..seconds;
+			string scoredisplay = ""..players[0].mo.score;
+			
+			if(hunters_combo>1)
+			{
+				scoredisplay = scoredisplay.." x"..hunters_combo;
+			}
+			
+			screen.DrawText(BigFont, Font.CR_YELLOW, 160-BigFont.StringWidth(timer)/2, 4, timer, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		}
+		
+		if(gameover)
+		{
+			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
+		}
+	}
+	
+	override void NetworkProcess(ConsoleEvent e)
+	{
+		if (!e.IsManual)
+		{
+			if(!players[0].mo)
+			{
+				return;
+			}
+			array<string> shopitem;
+			e.Name.Split(shopitem, ":");
+			int pNumber = shopitem[0].ToInt();
+			if(shopitem[1] ~== "shopmod")
+			{
+				int price = shopitem[4].ToInt();
+				TSP_Weapon_Core oldWepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[2],true));
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
+				players[0].mo.GiveInventory(shopitem[3],1);
+				TSP_Weapon_Core newWepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[3],true));
+				newWepon.tspw_powerlevel = oldWepon.tspw_powerlevel;
+				newWepon.tspw_ammolevel = oldWepon.tspw_ammolevel;
+				newWepon.tspw_reloadlevel = oldWepon.tspw_reloadlevel;
+				//newWepon.tspw_curclip = oldWepon.tspw_curclip;
+				players[0].mo.A_SelectWeapon(shopitem[3]);
+				players[0].mo.TakeInventory(shopitem[2],1);
+			}
+			else if(shopitem[1] ~== "buyitem")
+			{
+				int price = shopitem[4].ToInt();
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
+				Class<Actor > cls = shopitem[2];
+				if(players[0].mo.GiveInventory(shopitem[2],shopitem[3].ToInt())&& cls is "TSP_UpgradeBase")
+				{
+					TSP_UpgradeBase(players[0].mo.FindInventory(shopitem[2])).UpgradeEffect(players[pNumber].mo);
+				}
+			}
+			else if(shopitem[1] ~== "upgrade")
+			{
+				int price = shopitem[4].ToInt();
+				TSP_Weapon_Core wepon = TSP_Weapon_Core(players[pNumber].mo.FindInventory(shopitem[2],true));
+				if(wepon!=null)
+				{
+					switch(shopitem[3].ToInt())
+					{
+						case 0: wepon.tspw_powerlevel++; break;
+						case 1: wepon.tspw_ammolevel++; break;
+						case 2: wepon.tspw_reloadlevel++; break;
+					}
+				}
+				players[0].mo.TakeInventory("TSP_GlobalDollars",price);
+			}
+			else if(shopitem[1] ~== "employer")
+			{
+				TSP_PlayerPawn_ZSCBase(players[pNumber].mo).gvars.tsp_employer = shopitem[1].ToInt();
+			}
+		}
+	}
+}
