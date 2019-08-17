@@ -11,3 +11,7 @@ announcer/hunters/ailene/4secs "sounds/announcer/ailene/vo_bh_ailene_countdown4.
 announcer/hunters/ailene/3secs "sounds/announcer/ailene/vo_bh_ailene_countdown3.ogg"
 announcer/hunters/ailene/2secs "sounds/announcer/ailene/vo_bh_ailene_countdown2.ogg"
 announcer/hunters/ailene/1secs "sounds/announcer/ailene/vo_bh_ailene_countdown1.ogg"
+
+$random announcer/hunters/ailene/timeext { announcer/hunters/ailene/timeext01 announcer/hunters/ailene/timeext02 }
+announcer/hunters/ailene/timeext01 "sounds/announcer/ailene/vo_bh_ailene_timeext01.ogg"
+announcer/hunters/ailene/timeext02 "sounds/announcer/ailene/vo_bh_ailene_timeext02.ogg"

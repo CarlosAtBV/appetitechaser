@@ -106,14 +106,21 @@ Class TSP_EventHandler : EventHandler
 		}
 	}*/
 	
+	void TSPBH_AddTime(int amt)
+	{
+		hunters_time += amt;
+		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
+	}
+	
 	override void WorldThingSpawned(WorldEvent e)
 	{
 		if(tsp_meleeonly && e.Thing is "Ammo")
 		{
 			e.Thing.Destroy();
 		}
-		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && e.Thing is "TSP_WeaponPickup")
+		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && (e.Thing is "TSP_WeaponPickup" || e.Thing is "TSP_Nothing"))
 		{
+			e.Thing.Spawn("TSP_BountyHunters_TimeExtCrystal",e.Thing.pos);
 			e.Thing.Destroy();
 		}
 		if(e.Thing is "LostSoul")
@@ -402,5 +409,57 @@ Class TSP_EventHandler : EventHandler
 				TSP_PlayerPawn_ZSCBase(players[pNumber].mo).gvars.tsp_employer = shopitem[1].ToInt();
 			}
 		}
+	}
+}
+
+Class TSP_BountyHunters_TimeExtCrystal : Actor
+{
+	Default
+	{
+		+SHOOTABLE
+		+NOBLOOD
+		Health 25;
+		Height 56;
+		+FLOATBOB
+		+ROLLSPRITE
+		+ROLLCENTER
+		+BRIGHT
+	}
+	
+	States
+	{
+		Spawn:
+			BHTC A -1;
+			Loop;
+		Death:
+			BHTC A 0
+			{
+				if(target==null)
+				{
+					return;
+				}
+				let event = TSP_EventHandler(EventHandler.Find("TSP_EventHandler"));
+				if(event)
+				{
+					event.TSPBH_AddTime(30);
+				}
+			}
+			Stop;
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		A_SetRoll(BobSin(level.maptime),SPF_INTERPOLATE);
+	}
+	
+	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+	{
+		if(mod!='Melee')
+		{
+			return 0;
+		}
+		
+		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
 	}
 }
