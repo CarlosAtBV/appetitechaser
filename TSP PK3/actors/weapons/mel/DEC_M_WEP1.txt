@@ -70,6 +70,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
   Ready:
 	TNT1 A 0 A_JumpIfInventory("TSP_Upgrade_ChargeStyle", 1, "CompleteReady")
 	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
+	TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt")
     TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
 	TNT1 A 0 A_GiveInventory("MelIdle", 1)
     111G A 1 A_WeaponReady
@@ -77,6 +78,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
   CompleteReady:
 	TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch")
+	TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt")
     TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
 	TNT1 A 0 A_GiveInventory("MelIdle", 1)
     111G A 1 A_WeaponReady
@@ -84,6 +86,8 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 
 // Idle Animations   
+   Taunt:
+    TNT1 A 0 A_AlertMonsters
    Idle:
     TNT1 A 0 A_TakeInventory("MelIdle", 99999)
    Idle1:

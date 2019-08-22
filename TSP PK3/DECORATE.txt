@@ -35,15 +35,13 @@ ACTOR TSP_BulletPuff : BulletPuff replaces BulletPuff
 //Melee Button Press
 Actor MeleePressed : Boolean {}
 Actor TraitPressed : Boolean {}
+Actor TauntPressed : Boolean {}
 Actor PlayingPickupSound : Boolean {}
 
 ACTOR TSP_GlobalDollars : Inventory
 {
 	Inventory.MaxAmount 9999999
 }
-
-// [Py] poo poo pee pee
-// [MK] you fool
 
 Actor StartMelee : CustomInventory
 {

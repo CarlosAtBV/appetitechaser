@@ -127,9 +127,9 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
 	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 10)
   PunchCharging: // Where are you at in the combo?
 	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "PunchCharging1") // P-P
-	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 8, "ChargeComplete")
-  PunchCharging1: // P-P
 	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 6, "ChargeComplete")
+  PunchCharging1: // P-P
+	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 5, "ChargeComplete")
   PunchChargingCont:
 	TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
 	TNT1 A 1 A_Quake(1,2,0,5,"")
