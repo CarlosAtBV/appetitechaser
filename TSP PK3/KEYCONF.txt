@@ -1,11 +1,15 @@
-defaultbind q +BV_Melee
-alias +BV_Melee "use StartMelee" //"give Melee"
-alias -BV_Melee "use StopMelee" //"give Melee"
+defaultbind KP1 BV_OpenShop
+alias BV_OpenShop "openmenu TSP_ShopMenu"
+
+
+defaultbind q BV_Melee
+alias BV_Melee "give meleepressed; wait 20; take meleepressed"
+//alias +BV_Melee "use StartMelee" //"give Melee"
+//alias -BV_Melee "use StopMelee" //"give Melee"
 
 alias BV_MSwitch "use MeleeButtonActor" 
 
-defaultbind , BV_OpenShop
-alias BV_OpenShop "openmenu TSP_ShopMenu"
-
 addkeysection "The Space Pirate Binds" "TSPB"
 addmenukey "Shop Menu" "BV_OpenShop"
+addmenukey "Melee" "BV_Melee"
+addmenukey "Quick Switch Melee" "BV_MSwitch"
