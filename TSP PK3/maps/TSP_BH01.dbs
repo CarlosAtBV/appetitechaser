@@ -126,14 +126,14 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "E:\\Temp Doom Stuff\\TSP\\appetitechaser\\TSP PK3";
+				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -4928.097f;
+		viewpositionx = -1891.328f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -157,7 +157,7 @@ maps
 		overridebottomtexture = true;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 4123.827f;
+		viewpositiony = 5585.575f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
 		overridemiddletexture = true;
