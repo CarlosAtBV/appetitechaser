@@ -1,8 +1,8 @@
 	mugshot "Normal", health2
 	{
-	ST01 80;
+	ST01 100;
 	ST02 1;
-	ST03 1;
+	ST03 2;
 	ST02 1;
 	}
 	
