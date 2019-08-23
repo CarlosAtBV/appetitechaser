@@ -61,6 +61,9 @@ uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_con
 // - Super Monday Night Combat
 // - PlanetSide 2
 // - Devil May Cry 4: Special Edition
+// [UPGRADE EQUIP]
+// - GDC 2018 Audio Bundle
+// - The Chronicles of Riddick: Assault on Dark Athena
 
 $random nikki/fire { nikki/fire01 nikki/fire02 nikki/fire03 }
 nikki/fire01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire01.ogg"
@@ -74,7 +77,10 @@ nikki/firea02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea02.ogg"
 nikki/firea03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea03.ogg"
 $volume nikki/firea 0.9
 
-nikki/fireb "sounds/placeholder/tranq_fire1.wav"
+$random nikki/fireb { nikki/fireb01 nikki/fireb02 nikki/fireb03 }
+nikki/fireb01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb01.ogg"
+nikki/fireb02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb02.ogg"
+nikki/fireb03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb03.ogg"
 
 nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
 nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
@@ -82,6 +88,9 @@ nikki/reloadin1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload02.ogg"
 nikki/reloadin2 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload03.ogg"
 
 nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
+
+nikki/upgraderemove "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_remove.ogg"
+nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfire.ogg"
 
 
 //MA919m Pistol, 919m Gold, 917 Pistol
