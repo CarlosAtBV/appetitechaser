@@ -68,8 +68,8 @@ uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_con
 // - GDC 2018 Audio Bundle
 // - Mortal Kombat 2011
 
-nikki/equip		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
-nikki/equipgold "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
+nikki/draw		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
+nikki/drawgold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
 nikki/holster	"sounds/weapons/Mel/Darling Nikki/sfx_nikki_holster.ogg"
 nikki/holsterc  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_holsterc.ogg"
 
