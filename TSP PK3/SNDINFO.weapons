@@ -64,6 +64,14 @@ uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_con
 // [UPGRADE EQUIP]
 // - GDC 2018 Audio Bundle
 // - The Chronicles of Riddick: Assault on Dark Athena
+// [SELECT/DESELECT]
+// - GDC 2018 Audio Bundle
+// - Mortal Kombat 2011
+
+nikki/equip		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
+nikki/equipgold "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
+nikki/holster	"sounds/weapons/Mel/Darling Nikki/sfx_nikki_holster.ogg"
+nikki/holsterc  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_holsterc.ogg"
 
 $random nikki/fire { nikki/fire01 nikki/fire02 nikki/fire03 }
 nikki/fire01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire01.ogg"
@@ -91,52 +99,6 @@ nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg"
 
 nikki/upgraderemove "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_remove.ogg"
 nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfire.ogg"
-
-
-//MA919m Pistol, 919m Gold, 917 Pistol
-$random 919m/fire { 919m/fire1 919m/fire2 919m/fire3 }
-919m/fire1 PSTFR1
-919m/fire2 PSTFR2
-919m/fire3 PSTFR3
-
-$random 919m/goldfire { 919m/goldfire1 919m/goldfire2 919m/goldfire3 }
-919m/goldfire1 GPSFR1
-919m/goldfire2 GPSFR2
-919m/goldfire3 GPSFR3
-
-$random 917/fire { 917/fire1 917/fire2 917/fire3 }
-917/fire1 7PSFR1
-917/fire2 7PSFR2
-917/fire3 7PSFR3
-
-919m/magout pstmgout
-919m/magin1 pstmgin1
-919m/magin2 pstmgin2
-919m/slide pstsld
-919m/cock pstcock
-919m/dry pstempty
-919m/autoselect pstfas
-919m/autodeselect pstfau
-
-919m/select pstsel
-919m/deselect pstdsel
-919m/magflip pstflip
-
-919m/goldmagout gpsmgout
-919m/goldmagin1 gpsmgin1
-919m/goldmagin2 gpsmgin2
-919m/goldcock gpscock
-919m/goldselect gpssel
-919m/golddeselect gpsdsel
-
-917/magout 7psmgout
-917/magin1 7psmgin1
-917/magin2 7psmgin2
-917/cock   7pscock
-917/select 7pssel
-917/deselect 7psdsel
-917/jam    7psjam
-917/clear  7psclear
 
 // Slot 3: OS06 SUZUKA
 // SOUND CREDITS/SOURCES: 
