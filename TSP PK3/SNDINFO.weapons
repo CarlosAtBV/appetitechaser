@@ -66,7 +66,7 @@ uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_con
 // - The Chronicles of Riddick: Assault on Dark Athena
 // [SELECT/DESELECT]
 // - GDC 2018 Audio Bundle
-// - Mortal Kombat 2011
+// - Mortal Kombat (2011)
 
 nikki/draw		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
 nikki/drawgold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
@@ -123,65 +123,20 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // - The Chronicles of Riddick: Assault on Dark Athena
 
 $random suzuka/fire { suzuka/fire1 suzuka/fire2 suzuka/fire3 }
-suzuka/fire1 131FR1
-suzuka/fire2 131FR2
-suzuka/fire3 131FR3
+suzuka/fire1 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
+suzuka/fire2 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire02.ogg"
+suzuka/fire3 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire03.ogg"
 $volume suzuka/fire 0.6
 $random suzuka/firea { suzuka/firea1 suzuka/firea2 }
-suzuka/firea1 131SFR1
-suzuka/firea2 131SFR2
-suzuka/scock 131SCOCK
+suzuka/firea1 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea01.ogg"
+suzuka/firea2 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea02.ogg"
+suzuka/scock "sounds/weapons/Mel/Suzuka/sfx_suzuka_pump.ogg"
 
-suzuka/grenade 131GFR
-suzuka/eject 131RLD1
-suzuka/load 131RLD2
-suzuka/rcock 131RCOCK
-suzuka/empty 131EMPTY
-
-//The Toolbox
-toolbox/equip RLNGUP2
-toolbox/deequip RLNGDWN2
-toolbox/on RLNGUP
-toolbox/off RLNGDOWN
-toolbox/prime RLNGSTC
-toolbox/rocket RLNGRLST
-toolbox/grind RLNGRND
-toolbox/nailgun RLNGNGST
-toolbox/empty RLNGNO
-toolbox/reload1 RLNGLD1
-toolbox/reload2 RLNGLD2
-
-toolbox/ammo1 RLNGAM1
-toolbox/ammo2 RLNGAM2
-
-$limit toolbox/nailgunimpact 0
-$random toolbox/nailgunimpact { toolbox/nailgunimpact1 toolbox/nailgunimpact2 toolbox/nailgunimpact3 toolbox/nailgunimpact4 toolbox/nailgunimpact5 toolbox/nailgunimpact6 toolbox/nailgunimpact6 toolbox/nailgunimpact7 toolbox/nailgunimpact8 }
-toolbox/nailgunimpact1 RLNGIMW1
-toolbox/nailgunimpact2 RLNGIMW2
-toolbox/nailgunimpact3 RLNGIMW3
-toolbox/nailgunimpact4 RLNGIMW4
-toolbox/nailgunimpact5 RLNGIMW5
-toolbox/nailgunimpact6 RLNGIMW6
-toolbox/nailgunimpact7 RLNGIMW7
-toolbox/nailgunimpact8 RLNGIMW8
-
-$limit toolbox/nailgunflesh 0
-$random toolbox/nailgunflesh { toolbox/nailgunflesh1 toolbox/nailgunflesh2 toolbox/nailgunflesh3 }
-toolbox/nailgunflesh1 RLNGIMF1
-toolbox/nailgunflesh2 RLNGIMF2
-toolbox/nailgunflesh3 RLNGIMF3
-
-$limit toolbox/rocketimpact 0
-$random toolbox/rocketimpact { toolbox/rocketimpact1 toolbox/rocketimpact2 toolbox/rocketimpact3 }
-toolbox/rocketimpact1 RLNGEXP1
-toolbox/rocketimpact2 RLNGEXP2
-toolbox/rocketimpact3 RLNGEXP3
-
-$limit toolbox/rocketfly 0
-$random toolbox/rocketfly { toolbox/rocketfly1 toolbox/rocketfly2 toolbox/rocketfly3 }
-toolbox/rocketfly1 RLNGFLY1
-toolbox/rocketfly2 RLNGFLY2
-toolbox/rocketfly3 RLNGFLY3
+suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb01.ogg"
+suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
+suzuka/load "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload02.ogg"
+suzuka/rcock "sounds/weapons/Mel/Suzuka/sfx_suzuka_cock.ogg"
+suzuka/empty "sounds/weapons/Mel/Suzuka/sfx_suzuka_empty.ogg"
 
 //Weapon Junk
 $random weapons/casing  { weapons/casing1 weapons/casing2 weapons/casing3 }

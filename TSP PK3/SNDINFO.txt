@@ -87,6 +87,7 @@ money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age o
 // - GDC 2018 Audio Bundle
 // - No Heroes Allowed VR
 // - Kamen Rider Battride War
+
 shop/unlock					"sounds/shop/ui_unlock.ogg"
 shop/characterupgrade 		"sounds/shop/ui_shop_buy_characterupgrade.ogg"
 shop/weaponupgrade			"sounds/shop/ui_shop_buy_weaponupgrade.ogg"

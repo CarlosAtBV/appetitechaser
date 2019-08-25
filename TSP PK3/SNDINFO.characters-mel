@@ -148,8 +148,10 @@ melidle "sounds/characters/mel/misc/sfx_mel_idle01.ogg"
 // - Jedi Knight II: Jedi Outcast
 // - Quake III Arena
 // - Chronicles of Riddick: Assault on Dark Athena
-// - Mortal Kombat 9
+// - Mortal Kombat (2011)
 // - Mortal Kombat X
+// - GDC 2018 Audio Bundle
+
 magpull "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
 magsling "sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
 magpush "sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
