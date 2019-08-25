@@ -57,25 +57,25 @@ ACTOR TSPBlueArmorPickup : TSP_CustomInventory Replaces BlueArmor
 
 ACTOR TSPArmorBonusDrop Replaces ArmorBonus
 {
-  States
-  {
-  Spawn:
-    TNT1 A 0
-    TNT1 A 0
-    TNT1 A 0
-    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
-    TNT1 A 0 A_Jump(60, "SpawnRedBonus")
-    TNT1 A 0 A_SpawnItemEx("TSPArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  EasySpawn:
-    TNT1 A 0
-    TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  SpawnRedBonus:
-    TNT1 A 0
-    TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  }
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
+		TNT1 A 0 A_Jump(60, "SpawnRedBonus")
+		TNT1 A 0 A_SpawnItemEx("TSPArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	EasySpawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	SpawnRedBonus:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	}
 }
 
 ACTOR TSPArmorBonus : TSP_CustomInventory
@@ -90,12 +90,12 @@ ACTOR TSPArmorBonus : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 1
 	States
 	{
-		Spawn:
-			ARSD ABCDCB 6
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield",1)
-			Stop
+	Spawn:
+		ARSD ABCDCB 6
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield",1)
+		Stop
 	}
 }
 
@@ -111,12 +111,12 @@ ACTOR TSPRedArmorBonus : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 2
 	States
 	{
-		Spawn:
-			ARSE ABCDCB 6
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield",2)
-			Stop
+	Spawn:
+		ARSE ABCDCB 6
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield",2)
+		Stop
 	}
 }
 
@@ -129,22 +129,22 @@ ACTOR TSPRedArmorBonus : TSP_CustomInventory
 
 ACTOR TSPMegasphere : TSP_CustomInventory replaces Megasphere
 {
-  Radius 20
-  Height 16
-  Inventory.PickupMessage "\cc[\cnMAX HEALTH\cc] + [\c[Orange]+50 SHIELD\c-\cc]"
-  Inventory.PickupSound "health/supercharge"
-  +INVENTORY.BIGPOWERUP
-  +FLOATBOB
-  States
-  {
-  Spawn:
-    SPOT ABCDCB 3 Bright
-    Loop
-  Pickup:
-	TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 50)
-    TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
-    Stop
-  }
+	Radius 20
+	Height 16
+	Inventory.PickupMessage "\cc[\cnMAX HEALTH\cc] + [\c[Orange]+50 SHIELD\c-\cc]"
+	Inventory.PickupSound "health/supercharge"
+	+INVENTORY.BIGPOWERUP
+	+FLOATBOB
+	States
+	{
+	Spawn:
+		SPOT ABCDCB 3 Bright
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSP_PlayerPawn_Shield", 50)
+		TNT1 A 0 A_GiveInventory("MegasphereHealth", 1)
+		Stop
+	}
 }
 
 ACTOR TSPSoulsphere : TSP_CustomInventory replaces Soulsphere
@@ -164,7 +164,7 @@ ACTOR TSPSoulsphere : TSP_CustomInventory replaces Soulsphere
 	Pickup:
 		TNT1 A 0 A_GiveInventory("HealthBonus",100)
 		Stop
-  }
+	}
 }
 
 ACTOR TSPMedikit : TSP_CustomInventory replaces Medikit
@@ -176,12 +176,12 @@ ACTOR TSPMedikit : TSP_CustomInventory replaces Medikit
 	TSP_CustomInventory.AmountGiven 25
 	States
 	{
-		Spawn:
-			MDK1 ABCDEFG 5
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("Health",25)
-			Stop
+	Spawn:
+		MDK1 ABCDEFG 5
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Health",25)
+		Stop
 	}
 }
 
@@ -194,15 +194,15 @@ ACTOR TSPStimpack : TSP_CustomInventory replaces Stimpack
 	TSP_CustomInventory.AmountGiven 10
 	States
 	{
-		Spawn:
-			STPK A 20
-			STPK ABC 2
-			STPK DDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEE 1
-			STPK CBA 2
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("Health",10)
-			Stop
+	Spawn:
+		STPK A 20
+		STPK ABC 2
+		STPK DDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEEDDDEEEFFFGGGHHHGGGFFFEEE 1
+		STPK CBA 2
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("Health",10)
+		Stop
 	}
 }
 
@@ -212,25 +212,25 @@ ACTOR TSPStimpack : TSP_CustomInventory replaces Stimpack
 
 ACTOR TSPHealthBonusDrop Replaces HealthBonus
 {
-  States
-  {
-  Spawn:
-    TNT1 A 0
-    TNT1 A 0
-    TNT1 A 0
-    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
-    TNT1 A 0 A_Jump(60, "SpawnRedHealth")
-    TNT1 A 0 A_SpawnItemEx("TSPHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  EasySpawn:
-    TNT1 A 0
-    TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  SpawnRedHealth:
-    TNT1 A 0
-    TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
-    Stop
-  }
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("TSPGetGameSkill") == 0,"EasySpawn")
+		TNT1 A 0 A_Jump(60, "SpawnRedHealth")
+		TNT1 A 0 A_SpawnItemEx("TSPHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	EasySpawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	SpawnRedHealth:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	}
 }
 
 ACTOR TSPHealthBonus : TSP_CustomInventory
@@ -242,12 +242,12 @@ ACTOR TSPHealthBonus : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 1
 	States
 	{
-		Spawn:
-			ASRM ABCDEFG 7
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("HealthBonus",1)
-			Stop
+	Spawn:
+		ASRM ABCDEFG 7
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("HealthBonus",1)
+		Stop
 	}
 }
 
@@ -260,12 +260,12 @@ ACTOR TSPRedHealthBonus : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 2
 	States
 	{
-		Spawn:
-			ASRN ABCDEFG 7
-			Loop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("HealthBonus",2)
-			Stop
+	Spawn:
+		ASRN ABCDEFG 7
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("HealthBonus",2)
+		Stop
 	}
 }
 
@@ -277,14 +277,14 @@ ACTOR Over100Health : Inventory
 
 ACTOR TSPBerserk : Berserk Replaces Berserk
 {
-  States
-  {
-  Pickup:
-    TNT1 A 0 A_GiveInventory("PowerStrength")
-    TNT1 A 0 HealThing(100, 0)
-    TNT1 A 0 A_SelectWeapon("MelMelee")
-    Stop
-  }
+	States
+	{
+	Pickup:
+		TNT1 A 0 A_GiveInventory("PowerStrength")
+		TNT1 A 0 HealThing(100, 0)
+		TNT1 A 0 A_SelectWeapon("MelMelee")
+		Stop
+	}
 }
 
 //===========================================================================
@@ -295,55 +295,55 @@ ACTOR TSPBerserk : Berserk Replaces Berserk
 
 ACTOR TSPExplosiveBarrel : ExplosiveBarrel Replaces ExplosiveBarrel
 {
-  DamageFactor "MagDive", 0.0
-  DamageFactor "StrongMelee", 0.0
-  DamageFactor "Melee", 0.0
-  DamageFactor "Uppercut", 0.0
-  DamageFactor "Sling", 0.0
-  +PUSHABLE
-  +SLIDESONWALLS
-  +FORCEPAIN
-  Obituary "%o went KABOOM! Nice going %o!"
-  States
-  {
-  Pain.Sling:
-    TNT1 A 0 A_FaceTarget
-    TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
-    Goto Spawn
-  Pain.Uppercut:
-    TNT1 A 0 A_FaceTarget
-	TNT1 A 0 Thrustthing(angle*256/360+192, random(3,4), 0, 0)
-	TNT1 A 0 Thrustthingz(0,27,0,1)
-    Goto Spawn
-  }
+	DamageFactor "MagDive", 0.0
+	DamageFactor "StrongMelee", 0.0
+	DamageFactor "Melee", 0.0
+	DamageFactor "Uppercut", 0.0
+	DamageFactor "Sling", 0.0
+	+PUSHABLE
+	+SLIDESONWALLS
+	+FORCEPAIN
+	Obituary "%o went KABOOM! Nice going !"
+	States
+	{
+	Pain.Sling:
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
+		Goto Spawn
+	Pain.Uppercut:
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 Thrustthing(angle*256/360+192, random(3,4), 0, 0)
+		TNT1 A 0 Thrustthingz(0,27,0,1)
+		Goto Spawn
+	}
 }
 
-// Sprite Base: All Kamen Rider: Rider Generation 2
 
-ACTOR TSPGrapplePoint 20001
+
+ACTOR TSPGrapplePoint 20001 // Sprite Base: All Kamen Rider: Rider Generation 2
 {
-  Health 1
-  Radius 64
-  Height 30
-  Mass 99999
-  DamageFactor "Sling", 0.0
-  +FORCEPAIN
-  +FLOAT
-  +NOGRAVITY
-  +SHOOTABLE
-  +NOBLOOD
-  +BUDDHA
-  -PUSHABLE
-  +DONTTHRUST
-  +NODAMAGE
-  States
-  {
-  Spawn:
-    GRAP ABCD 4 BRIGHT
-	Loop
-  Pain.Sling:
-    TNT1 A 0 A_FaceTarget
-    TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
-    Goto Spawn
-  }
+	Health 1
+	Radius 64
+	Height 30
+	Mass 99999
+	DamageFactor "Sling", 0.0
+	+FORCEPAIN
+	+FLOAT
+	+NOGRAVITY
+	+SHOOTABLE
+	+NOBLOOD
+	+BUDDHA
+	-PUSHABLE
+	+DONTTHRUST
+	+NODAMAGE
+	States
+	{
+	Spawn:
+		GRAP ABCD 4 BRIGHT
+		Loop
+	Pain.Sling:
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_CustomMissile("MagSlingShot", 32, 0)
+		Goto Spawn
+	}
 }

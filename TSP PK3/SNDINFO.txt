@@ -1,4 +1,4 @@
-//Menu Sounds
+//Menu Sounds - From Pokken
 menu/activate activate
 menu/backup backup
 menu/prompt prompt
@@ -71,14 +71,28 @@ shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
 
 shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Super Monday Night Combat, Mortal Kombat X, Devil May Cry 4: Special Edition
 
-//General
+// GENERAL
 mantle "sounds/general/player/sfx_general_mantle.ogg" // From Devil May Cry 4: Special Edition, Chornicles of Riddick: Assault on Dark Athena
 
-//shop
+// SHOP (Placeholder)
 
 shop/purchase "sounds/placeholder/shop/PASSGO.wav" // From Monopoly (1995)
 shop/hired "sounds/placeholder/shop/victory.ogg" // From Roblox
 money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age of Kings
+
+
+// SHOP
+// SOUND CREDITS/SOURCES: 
+// - Resident Evil 4
+// - GDC 2018 Audio Bundle
+// - No Heroes Allowed VR
+// - Kamen Rider Battride War
+shop/unlock					"sounds/shop/ui_unlock.ogg"
+shop/characterupgrade 		"sounds/shop/ui_shop_buy_characterupgrade.ogg"
+shop/weaponupgrade			"sounds/shop/ui_shop_buy_weaponupgrade.ogg"
+shop/weaponmod				"sounds/shop/ui_shop_buy_weaponmod.ogg"
+shop/misc					"sounds/shop/ui_shop_buy_misc.ogg"
+
 
 world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
 

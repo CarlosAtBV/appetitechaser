@@ -1,7 +1,7 @@
 ACTOR ComboCooldown: Inventory
 {
-  Inventory.MaxAmount 99
-  Inventory.Icon TNT1A0
+	Inventory.MaxAmount 99
+	Inventory.Icon TNT1A0
 }
 
 /////////////////////
@@ -10,43 +10,43 @@ ACTOR ComboCooldown: Inventory
 
 ACTOR BasicMeleePuff
 { 
-  ActiveSound ""
-  AttackSound "basicmelee/wall"
-  SeeSound "basicmelee/contact"
-  DamageType Melee
-  +NOGRAVITY
-  +NOEXTREMEDEATH
-  +PUFFONACTORS
-  Decal "none"
-  States
-  {
-  Spawn:
-    TNT1 A 0
-    TNT1 A 1
-    Stop
-  Crash:
-    TNT1 A 0
-    TNT1 A 1
-    Stop
-  Melee:
-    TNT1 A 0
-    TNT1 A 1
-    Stop
-  }
+	ActiveSound ""
+	AttackSound "basicmelee/wall"
+	SeeSound "basicmelee/contact"
+	DamageType Melee
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	Decal "none"
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		Stop
+	Crash:
+		TNT1 A 0
+		TNT1 A 1
+		Stop
+	Melee:
+		TNT1 A 0
+		TNT1 A 1
+		Stop
+	}
 }
 
 ACTOR StrongMeleePuff : BasicMeleePuff
 { 
-  AttackSound "strongmelee/wall"
-  SeeSound "strongmelee/contact"
-  DamageType Melee
-  DamageType StrongMelee
+	AttackSound "strongmelee/wall"
+	SeeSound "strongmelee/contact"
+	DamageType Melee
+	DamageType StrongMelee
 }
 
 ACTOR UppercutMeleePuff : StrongMeleePuff
 { 
-  SeeSound "uppercutmelee/contact"
-  DamageType Uppercut
+	SeeSound "uppercutmelee/contact"
+	DamageType Uppercut
 }
 
 ///////////////////
@@ -55,14 +55,14 @@ ACTOR UppercutMeleePuff : StrongMeleePuff
 
 ACTOR BlankMeleePuff : BasicMeleePuff
 { 
-  ActiveSound ""
-  AttackSound ""
-  SeeSound ""
-  +NOGRAVITY
-  +NOEXTREMEDEATH
-  +PUFFONACTORS
-  -BLOODSPLATTER
-  Decal "none"
+	ActiveSound ""
+	AttackSound ""
+	SeeSound ""
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	-BLOODSPLATTER
+	Decal "none"
 }
 
 ////////////////
@@ -71,20 +71,20 @@ ACTOR BlankMeleePuff : BasicMeleePuff
 
 ACTOR SFBasicMeleePuff : BasicMeleePuff
 { 
-  AttackSound "sfmelee/wall"
-  SeeSound "sfbasicmelee/contact"
+	AttackSound "sfmelee/wall"
+	SeeSound "sfbasicmelee/contact"
 }
 
 ACTOR SFStrongMeleePuff : StrongMeleePuff
 { 
-  AttackSound "sfstrongmelee/wall"
-  SeeSound "sfstrongmelee/contact"
+	AttackSound "sfstrongmelee/wall"
+	SeeSound "sfstrongmelee/contact"
 }
 
 ACTOR SFUppercutMeleePuff : UppercutMeleePuff
 { 
-  AttackSound "sfstrongmelee/wall"
-  SeeSound "sfuppercutmelee/contact"
+	AttackSound "sfstrongmelee/wall"
+	SeeSound "sfuppercutmelee/contact"
 }
 
 ////////////////
@@ -93,20 +93,20 @@ ACTOR SFUppercutMeleePuff : UppercutMeleePuff
 
 ACTOR MKBasicMeleePuff : BasicMeleePuff
 { 
-  AttackSound "mkmelee/wall"
-  SeeSound "mkbasicmelee/contact"
+	AttackSound "mkmelee/wall"
+	SeeSound "mkbasicmelee/contact"
 }
 
 ACTOR MKStrongMeleePuff : StrongMeleePuff
 { 
-  AttackSound "mkstrongmelee/wall"
-  SeeSound "mkstrongmelee/contact"
+	AttackSound "mkstrongmelee/wall"
+	SeeSound "mkstrongmelee/contact"
 }
 
 ACTOR MKUppercutMeleePuff : UppercutMeleePuff
 { 
-  AttackSound "mkstrongmelee/wall"
-  SeeSound "mkuppercutmelee/contact"
+	AttackSound "mkstrongmelee/wall"
+	SeeSound "mkuppercutmelee/contact"
 }
 
 ////////////////
@@ -115,18 +115,18 @@ ACTOR MKUppercutMeleePuff : UppercutMeleePuff
 
 ACTOR 64BasicMeleePuff : BasicMeleePuff
 { 
-  AttackSound "64melee/wall"
-  SeeSound "64basicmelee/contact"
+	AttackSound "64melee/wall"
+	SeeSound "64basicmelee/contact"
 }
 
 ACTOR 64StrongMeleePuff : StrongMeleePuff
 { 
-  AttackSound "64melee/wall"
-  SeeSound "64strongmelee/contact"
+	AttackSound "64melee/wall"
+	SeeSound "64strongmelee/contact"
 }
 
 ACTOR 64UppercutMeleePuff : UppercutMeleePuff
 { 
-  AttackSound "64melee/wall"
-  SeeSound "64uppercutmelee/contact"
+	AttackSound "64melee/wall"
+	SeeSound "64uppercutmelee/contact"
 }

@@ -9,28 +9,25 @@ ACTOR Nothing4 : TSP_Nothing replaces RocketLauncher {}
 ACTOR Nothing5 : TSP_Nothing replaces PlasmaRifle {}
 ACTOR Nothing6 : TSP_Nothing replaces BFG9000 {}
 
+///////////////////////////////////////////////////////
+
 Actor Boolean : Inventory
 {
-    Inventory.MaxAmount 1
-    +UNDROPPABLE
-    -INVBAR
+	Inventory.MaxAmount 1
+	+UNDROPPABLE
+	-INVBAR
 }
-
-// DEFINITIONS
-#include "Actors/DEC_DEFS.txt"
 
 ACTOR TSP_BulletPuff : BulletPuff replaces BulletPuff
 {
 	+PUFFONACTORS
 	States
 	{
-		XDeath:
-			TNT1 A 0 A_PlaySound("hit/flesh")
-			Stop
+	XDeath:
+		TNT1 A 0 A_PlaySound("hit/flesh")
+		Stop
 	}
 }
-
-// Well this is decorative. :P
 
 //Melee Button Press
 Actor MeleePressed : Boolean {}
@@ -43,60 +40,10 @@ ACTOR TSP_GlobalDollars : Inventory
 	Inventory.MaxAmount 9999999
 }
 
-Actor StartMelee : CustomInventory
-{
-  -INVBAR
-  +UNDROPPABLE
-  Inventory.Amount 1
-  Inventory.MaxAmount 1
-  States
-  {
-  Use:
-    TNT1 A 0 A_GiveInventory("MeleePressed", 1)
-    Fail
-  }
-}
 
-Actor StopMelee : CustomInventory
+ACTOR IsMel : Inventory
 {
-  -INVBAR
-  +UNDROPPABLE
-  Inventory.Amount 1
-  Inventory.MaxAmount 1
-  States
-  {
-  Use:
-    TNT1 A 0 A_TakeInventory("MeleePressed", 1)
-    Fail
-  }
-}
-
-Actor StartTrait : CustomInventory
-{
-  -INVBAR
-  +UNDROPPABLE
-  Inventory.Amount 1
-  Inventory.MaxAmount 1
-  States
-  {
-  Use:
-    TNT1 A 0 A_GiveInventory("TraitPressed", 1)
-    Fail
-  }
-}
-
-Actor StopTrait : CustomInventory
-{
-  -INVBAR
-  +UNDROPPABLE
-  Inventory.Amount 1
-  Inventory.MaxAmount 1
-  States
-  {
-  Use:
-    TNT1 A 0 A_TakeInventory("TraitPressed", 1)
-    Fail
-  }
+	Inventory.MaxAmount 1
 }
 
 // This will get rewritten soon!
@@ -113,63 +60,59 @@ Actor StopTrait : CustomInventory
 
 ACTOR WeaponSelectMemory : Inventory
 {
-  // Mel Weapons
-  // 110 = Trait
-  //    A= Mag Grapple
-  //    B= Mag Sling
-  //    C= Mag Drive
-  //    D= Mag Upper
-  //    E= Mag Spear
-  //    F= Style Change (Bare Knuckle)
-  //    G= Style Change (Charge Style)
-  // 111 = Bare Knuckle
-  // 112 = Charge Style
-  // 121 = Darling Nikki
-  // 131 = OS06 Suzuka
-  Inventory.MaxAmount 999
+	// Mel Weapons
+	// 110 = Trait
+	//    A= Mag Grapple
+	//    B= Mag Sling
+	//    C= Mag Drive
+	//    D= Mag Upper
+	//    E= Mag Spear
+	//    F= Style Change (Bare Knuckle)
+	//    G= Style Change (Charge Style)
+	// 111 = Bare Knuckle
+	// 112 = Charge Style
+	// 121 = Darling Nikki
+	// 131 = OS06 Suzuka
+	Inventory.MaxAmount 999
 }
 
 Actor MeleeButtonActor : CustomInventory
 {
-  -INVBAR
-  +UNDROPPABLE
-  Inventory.Amount 1
-  Inventory.MaxAmount 1
-  States
-  {
-  Use:
-    TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelMeleeButton")
-    Fail
-  MelMeleeButton:
-    TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
-	TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "MelChargeSwitch")
-    TNT1 A 0 A_SelectWeapon("MelMelee")
-    Fail
-  MelChargeSwitch:
-    TNT1 A 0 A_SelectWeapon("MelChargeStyle")
-    Fail
-  MelMeleeSwitch:
-    TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
-    TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
-    Goto MelPistolSwitch
-  MelPistolSwitch:
-    TNT1 A 0 A_SelectWeapon("MelPistol")
-    TNT1 A 0 A_SelectWeapon("MelPistolA")
-    TNT1 A 0 A_SelectWeapon("MelPistolB")
-    Fail
-  MelSMGSwitch:
-    TNT1 A 0 A_SelectWeapon("MelSMG")
-//    TNT1 A 0 A_SelectWeapon("MelSMGA")
-//    TNT1 A 0 A_SelectWeapon("MelSMGB")
-    Fail  
-  }
+	-INVBAR
+	+UNDROPPABLE
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	States
+	{
+	Use:
+		TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelMeleeButton")
+		Fail
+	MelMeleeButton:
+		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
+		TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "MelChargeSwitch")
+		TNT1 A 0 A_SelectWeapon("MelMelee")
+		Fail
+	MelChargeSwitch:
+		TNT1 A 0 A_SelectWeapon("MelChargeStyle")
+		Fail
+	MelMeleeSwitch:
+		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
+		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelPistolSwitch")
+		Goto MelPistolSwitch
+	MelPistolSwitch:
+		TNT1 A 0 A_SelectWeapon("MelPistol")
+		TNT1 A 0 A_SelectWeapon("MelPistolA")
+		TNT1 A 0 A_SelectWeapon("MelPistolB")
+		Fail
+	MelSMGSwitch:
+		TNT1 A 0 A_SelectWeapon("MelSMG")
+	//  TNT1 A 0 A_SelectWeapon("MelSMGA")
+	//  TNT1 A 0 A_SelectWeapon("MelSMGB")
+		Fail  
+	}
 }
 
 Actor MeleeSelected : Boolean {}
-
-//Characters
-#include "Actors/Characters/DEC_LOAD.txt" //Character Loadout Stuff
-#include "Actors/Characters/DEC_MEL.txt" // Mel's Player Stuff
 
 //Enemies
 #include "Actors/Enemies/DEC_H_DUMMY.txt" // Training Dummy
@@ -180,12 +123,8 @@ Actor MeleeSelected : Boolean {}
 //Items
 #include "Actors/DEC_ITEM.txt"
 
-//Lone Survivor
-#include "Actors/DEC_LSITEMS.txt" // Lone Survivor Specific Items
-
 //The rest
 #include "Actors/DEC_SFX.txt" //Special Effects (Casings, Smoke, Etc.)
-#include "Actors/DEC_WEP_PICKUPS.txt" //Weapon pickups and such
 
 ///////////////////////////////////////////////////////
 // Weapons

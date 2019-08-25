@@ -18,149 +18,149 @@
 
 ACTOR MelPistol : TSPMelLightWeapon
 {
-  Inventory.PickupMessage "$MELPISTOLPICKUP"
-  Obituary "%o learned why %k is the king of the iron fist."
-  Weapon.Kickback 110
-  Weapon.BobStyle Alpha
-  Weapon.BobStyle InverseSmooth
-  Weapon.BobSpeed 2.2
-  Weapon.BobRangeY 0.5
-  Weapon.BobRangeX 0.7
-  Weapon.AmmoType "TSPPistolAmmo"
-  Weapon.AmmoGive 0//0
-  Weapon.AmmoUse 1
-  Inventory.Icon "121PA0"
-  
-  TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0
-  TSP_Weapon_Core.ClipSize 15 //Initial starting size of clip
-  TSP_Weapon_Core.FirstPickupLine "mel/nikkipickup" //AAAAGH
-	+TSP_Weapon_Core.MODFIREMODE
-	+TSP_Weapon_Core.MODFIREZOOMS
-	+TSP_Weapon_Core.HOLDDOWNFORMOD
-  
-  Tag "$MELPISTOLTAG"
-  +NOAUTOFIRE
-  +AMMO_OPTIONAL
-  +NOEXTREMEDEATH
-  +WEAPON.NoAlert
-  +WEAPON.CHEATNOTWEAPON
-  States
-  {
-  Spawn:
-    121P A -1
-    Stop
-  Select:
-    TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
-    TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999)
-    TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121)
-    TNT1 A 0 A_PlaySound("nikki/draw", 5)
-    TNT1 A 0 A_WeaponOffset(0,32)
-	121U ABCDEFGHIJKLM 1
-    121G A 1
-    121G A 1 A_Raise
-    Loop
-  Deselect:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-    TNT1 A 0 A_TakeInventory("MagPushToken", 99)
-    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
-    TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
-    TNT1 A 0 A_TakeInventory("ComboCooldown", 99)
-    TNT1 A 0 A_PlaySound("nikki/holster", 5)
-	121G A 1
-	121U IHGFEDC 1
-	TNT1 A 5
-  DeselectLoop:
-    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
-    TNT1 A 1 A_Lower
-    Loop
-  Ready:
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
-	TNT1 A 0 A_GiveInventory("MelIdle", 1)
-	TNT1 A 0 A_SetCrosshair(0)
-    121G A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
-	"----" A 0 A_TSP_GotoReadyState
-    LOOP
+	Inventory.PickupMessage "$MELPISTOLPICKUP"
+	Obituary "%o learned why %k is the king of the iron fist."
+	Weapon.Kickback 110
+	Weapon.BobStyle Alpha
+	Weapon.BobStyle InverseSmooth
+	Weapon.BobSpeed 2.2
+	Weapon.BobRangeY 0.5
+	Weapon.BobRangeX 0.7
+	Weapon.AmmoType "TSPPistolAmmo"
+	Weapon.AmmoGive 0//0
+	Weapon.AmmoUse 1
+	Inventory.Icon "121PA0"
 
-   Idle:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-   Idle1:
-	TNT1 A 0 A_PlaySound("nikki/idle1", 5)
-	121G A 4 A_WeaponReady
-	121U MLKK 1 A_WeaponReady
-	121T AAABBCDEFGGAABCDEFGGHIJKKKKKKKKKL 1 A_WeaponReady
-	121U KLM 1 A_WeaponReady
-	121G A 2 A_WeaponReady
-	Goto Ready
+		TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0
+		TSP_Weapon_Core.ClipSize 15 //Initial starting size of clip
+		TSP_Weapon_Core.FirstPickupLine "mel/nikkipickup" //AAAAGH
+		+TSP_Weapon_Core.MODFIREMODE
+		+TSP_Weapon_Core.MODFIREZOOMS
+		+TSP_Weapon_Core.HOLDDOWNFORMOD
 
-  Fire:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-    TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-    TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
-    TNT1 A 0 A_AlertMonsters
-    121F A 1 A_GunFlash
-    TNT1 A 0 A_PlaySound("nikki/fire", 6)
-    TNT1 A 0 A_Light2
-    121F B 1 BRIGHT
+	Tag "$MELPISTOLTAG"
+	+NOAUTOFIRE
+	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+	+WEAPON.NoAlert
+	+WEAPON.CHEATNOTWEAPON
+	States
 	{
-		A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
-		A_TSP_TakeClip(1);
-	}
-    121F C 1 BRIGHT A_Light1
-    121F D 1 A_Light0
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-    121F E 1
-	121F EF 1 A_TSP_WeaponReady(WRF_NOBOB)
-	"----" A 0 A_TSP_GotoReadyState
-    Goto Ready
+	Spawn:
+		121P A -1
+		Stop
+	Select:
+		TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+		TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999)
+		TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121)
+		TNT1 A 0 A_PlaySound("nikki/draw", 5)
+		TNT1 A 0 A_WeaponOffset(0,32)
+		121U ABCDEFGHIJKLM 1
+		121G A 1
+		121G A 1 A_Raise
+		Loop
+	Deselect:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+		TNT1 A 0 A_TakeInventory("MagPushToken", 99)
+		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+		TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
+		TNT1 A 0 A_TakeInventory("ComboCooldown", 99)
+		TNT1 A 0 A_PlaySound("nikki/holster", 5)
+		121G A 1
+		121U IHGFEDC 1
+		TNT1 A 5
+	DeselectLoop:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+		TNT1 A 1 A_Lower
+		Loop
+	Ready:
+		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
+		TNT1 A 0 A_GiveInventory("MelIdle", 1)
+		TNT1 A 0 A_SetCrosshair(0)
+		121G A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
+		"----" A 0 A_TSP_GotoReadyState
+		LOOP
+
+	Idle:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+	Idle1:
+		TNT1 A 0 A_PlaySound("nikki/idle1", 5)
+		121G A 4 A_WeaponReady
+		121U MLKK 1 A_WeaponReady
+		121T AAABBCDEFGGAABCDEFGGHIJKKKKKKKKKL 1 A_WeaponReady
+		121U KLM 1 A_WeaponReady
+		121G A 2 A_WeaponReady
+		Goto Ready
+
+	Fire:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
+		TNT1 A 0 A_AlertMonsters
+		121F A 1 A_GunFlash
+		TNT1 A 0 A_PlaySound("nikki/fire", 6)
+		TNT1 A 0 A_Light2
+		121F B 1 BRIGHT
+		{
+			A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
+			A_TSP_TakeClip(1);
+		}
+		121F C 1 BRIGHT A_Light1
+		121F D 1 A_Light0
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+		121F E 1
+		121F EF 1 A_TSP_WeaponReady(WRF_NOBOB)
+		"----" A 0 A_TSP_GotoReadyState
+		Goto Ready
 	
-  ModReady:
-    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-	121I A 0 A_SetCrosshair(99)
-    121I A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
-    "----" A 0 A_TSP_GotoReadyState
-    Loop
-  ModFire:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-    TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-    TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
-    TNT1 A 0 A_AlertMonsters
-    121I A 1 A_GunFlash
-    TNT1 A 0 A_PlaySound("nikki/fire", 6)
-    TNT1 A 0 A_Light2
-    121I A 1 BRIGHT
-	{
-		A_TSP_FireBullets(1,1,-1,8,"BulletPuff",1);
-		A_TSP_TakeClip(1);
-	}
-    121I B 1 BRIGHT A_Light1
-    121I C 1 A_Light0
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-    121I D 1
-	121I DE 1 A_TSP_WeaponReady(WRF_NOBOB)
-	"----" A 0 A_TSP_GotoReadyState
-    Goto Ready
+	ModReady:
+		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		121I A 0 A_SetCrosshair(99)
+		121I A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
+		"----" A 0 A_TSP_GotoReadyState
+		Loop
+	ModFire:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
+		TNT1 A 0 A_AlertMonsters
+		121I A 1 A_GunFlash
+		TNT1 A 0 A_PlaySound("nikki/fire", 6)
+		TNT1 A 0 A_Light2
+		121I A 1 BRIGHT
+		{
+			A_TSP_FireBullets(1,1,-1,8,"BulletPuff",1);
+			A_TSP_TakeClip(1);
+		}
+		121I B 1 BRIGHT A_Light1
+		121I C 1 A_Light0
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+		121I D 1
+		121I DE 1 A_TSP_WeaponReady(WRF_NOBOB)
+		"----" A 0 A_TSP_GotoReadyState
+		Goto Ready
 	
-  Empty:
-    121G A 5 A_PlaySound("nikki/empty", 5)
-	"----" A 0 A_TSP_CheckReload()
-    Goto Ready
-  Reload:
-    121R ABCCDDEEFFGGH 1
-	TNT1 A 0 A_FireCustomMissile("SpentClip1",3,0,5,0)
-	121R I 1 A_PlaySound("nikki/reloadout", 6)
-	121R JKLLMNO 1
-	121R P 22 A_TSP_ReloadSpeed(22)
-	//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
-	121R QRS 1
-	TNT1 A 0 A_PlaySound("nikki/reloadin1", 5)
-	121R TUUUVWXYZ 1
-	TNT1 A 0 A_TSP_ReloadAmmo
-	121R Z 1 A_PlaySound("nikki/reloadin2", 6)
-	121S AAABCD 1
-	121G A 3
-	Goto Ready
+	Empty:
+		121G A 5 A_PlaySound("nikki/empty", 5)
+		"----" A 0 A_TSP_CheckReload()
+		Goto Ready
+	Reload:
+		121R ABCCDDEEFFGGH 1
+		TNT1 A 0 A_FireCustomMissile("SpentClip1",3,0,5,0)
+		121R I 1 A_PlaySound("nikki/reloadout", 6)
+		121R JKLLMNO 1
+		121R P 22 A_TSP_ReloadSpeed(22)
+		//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
+		121R QRS 1
+		TNT1 A 0 A_PlaySound("nikki/reloadin1", 5)
+		121R TUUUVWXYZ 1
+		TNT1 A 0 A_TSP_ReloadAmmo
+		121R Z 1 A_PlaySound("nikki/reloadin2", 6)
+		121S AAABCD 1
+		121G A 3
+		Goto Ready
   }
 }

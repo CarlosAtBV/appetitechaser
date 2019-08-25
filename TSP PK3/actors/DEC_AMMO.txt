@@ -16,7 +16,7 @@ ACTOR TSPPistolAmmo : Ammo
 	Tag "Pistol Ammo"
 	States
 	{
-		Spawn:
+	Spawn:
 		919F A -1
 		Stop
 	}
@@ -28,9 +28,9 @@ ACTOR TSPPistolAmmoBig : TSPPistolAmmo
 	Inventory.Amount 50
 	States
 	{
-		Spawn:
-			AMMO A -1
-			Stop
+	Spawn:
+		AMMO A -1
+		Stop
 	}
 }
 
@@ -43,12 +43,12 @@ ACTOR TSPPistolAmmoPickup : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 5
 	States
 	{
-		Spawn:
-			919F A -1
-			Stop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSPPistolAmmo",5)
-			Stop
+	Spawn:
+		919F A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSPPistolAmmo",5)
+		Stop
 	}
 }
 
@@ -57,12 +57,12 @@ ACTOR TSPPistolAmmoPickupBig : TSPPistolAmmoPickup
 	TSP_CustomInventory.AmountGiven 50
 	States
 	{
-		Spawn:
-			AMMO A -1
-			Stop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSPPistolAmmo",50)
-			Stop
+	Spawn:
+		AMMO A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSPPistolAmmo",50)
+		Stop
 	}
 }
 
@@ -101,7 +101,7 @@ ACTOR TSPSMGAmmo : Ammo
 	Tag "SMG Ammo"
 	States
 	{
-		Spawn:
+	Spawn:
 		SHEL A -1
 		Stop
 	}
@@ -113,9 +113,9 @@ ACTOR TSPSMGAmmoBig : TSPSMGAmmo
 	Inventory.Amount 48
 	States
 	{
-		Spawn:
-			SBOX A -1
-			Stop
+	Spawn:
+		SBOX A -1
+		Stop
 	}
 }
 
@@ -128,12 +128,12 @@ ACTOR TSPSMGAmmoPickup : TSP_CustomInventory
 	TSP_CustomInventory.AmountGiven 16
 	States
 	{
-		Spawn:
-			SHEL A -1
-			Stop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSPSMGAmmo",16)
-			Stop
+	Spawn:
+		SHEL A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSPSMGAmmo",16)
+		Stop
 	}
 }
 
@@ -142,12 +142,12 @@ ACTOR TSPSMGAmmoPickupBig : TSPSMGAmmoPickup
 	TSP_CustomInventory.AmountGiven 48
 	States
 	{
-		Spawn:
-			SBOX A -1
-			Stop
-		Pickup:
-			TNT1 A 0 A_GiveInventory("TSPSMGAmmo",48)
-			Stop
+	Spawn:
+		SBOX A -1
+		Stop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("TSPSMGAmmo",48)
+		Stop
 	}
 }
 

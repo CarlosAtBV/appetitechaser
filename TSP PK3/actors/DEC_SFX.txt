@@ -8,14 +8,14 @@ ACTOR TSP_HitSpark_Small
 	RenderStyle "Add"
 	States
 	{
-		Spawn:
-			THS0 A 0
-			THS0 A 0
-			{
-				A_SetRoll(random(0,360));
-			}
-			THS0 CDEFGHIJK 1
-			Stop
+	Spawn:
+		THS0 A 0
+		THS0 A 0
+		{
+			A_SetRoll(random(0,360));
+		}
+		THS0 CDEFGHIJK 1
+		Stop
 	}
 }
 

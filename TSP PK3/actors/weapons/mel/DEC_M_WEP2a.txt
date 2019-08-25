@@ -9,75 +9,76 @@
 
 ACTOR MelPistolA : MelPistol
 {
-  Tag "$MELPISTOLATAG"
-  +TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
-  TSP_Weapon_Core.ModTag "Spitfire" //Used for "---- On/Off" message when switching mod fire on or off
+	Tag "$MELPISTOLATAG"
+	+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
+	TSP_Weapon_Core.ModTag "Spitfire" //Used for "---- On/Off" message when switching mod fire on or off
 	-TSP_Weapon_Core.MODFIREZOOMS
 	-TSP_Weapon_Core.HOLDDOWNFORMOD
-  States
-  {
-  Fire:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-    TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-    TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
-    TNT1 A 0 A_AlertMonsters
-    121F A 1 A_GunFlash
-    TNT1 A 0 A_PlaySound("nikki/firea", 6)
-    TNT1 A 0 A_Light2
-    121F B 1 BRIGHT
+	
+	States
 	{
-		A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
-		A_TSP_TakeClip(1);
-	}
-    121F C 1 BRIGHT A_Light1
-    121F D 1 A_Light0
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-    121F E 1
-	121F EF 1 A_TSP_WeaponReady(WRF_NOBOB)
-	"----" A 0 A_TSP_GotoReadyState
-    Goto Ready
+	Fire:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
+		TNT1 A 0 A_AlertMonsters
+		121F A 1 A_GunFlash
+		TNT1 A 0 A_PlaySound("nikki/firea", 6)
+		TNT1 A 0 A_Light2
+		121F B 1 BRIGHT
+		{
+			A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
+			A_TSP_TakeClip(1);
+		}
+		121F C 1 BRIGHT A_Light1
+		121F D 1 A_Light0
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+		121F E 1
+		121F EF 1 A_TSP_WeaponReady(WRF_NOBOB)
+		"----" A 0 A_TSP_GotoReadyState
+		Goto Ready
 	
 	ModReady:
 		Goto Ready
 	
-  ModFire:  
-    TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-    121G A 1 BRIGHT
-    TNT1 A 0 A_GunFlash
-    TNT1 A 0 A_AlertMonsters
-    TNT1 A 0 A_SetPitch(pitch - 0.8)
-    TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
-    TNT1 A 0 A_PlaySound("nikki/firea", 6)
-		AFire0:
-    TNT1 A 0 BRIGHT
-    {
-    	A_TSP_FireBullets(6,6,-1,9,"BulletPuff",1);
-    	A_TSP_TakeClip(1);
-    }
-    TNT1 A 0 A_Jump(64,"AFire3")
-    TNT1 A 0 A_Jump(88,"Afire2")
-  AFire1:
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-4,0,0,0)
-    TNT1 A 0 A_Light2
-    121F A 1 BRIGHT A_Light1
-    TNT1 A 0 A_Light0
-    TNT1 A 0 A_Refire
-    Goto FireEnd
-  AFire2:
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-    TNT1 A 0 A_Light2
-    121F B 1 BRIGHT A_Light1
-    TNT1 A 0 A_Light0
-    TNT1 A 0 A_Refire
-    Goto FireEnd
-  AFire3:
-    TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
-    TNT1 A 0 A_Light2
-    121F A 1 BRIGHT A_Light1
-    TNT1 A 0 A_Light0
-    TNT1 A 0 A_Refire
-  FireEnd:
-    121F CDEEF 1
-    Goto Ready
+	ModFire:  
+		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
+		121G A 1 BRIGHT
+		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_SetPitch(pitch - 0.8)
+		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
+		TNT1 A 0 A_PlaySound("nikki/firea", 6)
+	AFire0:
+		TNT1 A 0 BRIGHT
+		{
+			A_TSP_FireBullets(6,6,-1,9,"BulletPuff",1);
+			A_TSP_TakeClip(1);
+		}
+		TNT1 A 0 A_Jump(64,"AFire3")
+		TNT1 A 0 A_Jump(88,"Afire2")
+	AFire1:
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-4,0,0,0)
+		TNT1 A 0 A_Light2
+		121F A 1 BRIGHT A_Light1
+		TNT1 A 0 A_Light0
+		TNT1 A 0 A_Refire
+		Goto FireEnd
+	AFire2:
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+		TNT1 A 0 A_Light2
+		121F B 1 BRIGHT A_Light1
+		TNT1 A 0 A_Light0
+		TNT1 A 0 A_Refire
+		Goto FireEnd
+	AFire3:
+		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
+		TNT1 A 0 A_Light2
+		121F A 1 BRIGHT A_Light1
+		TNT1 A 0 A_Light0
+		TNT1 A 0 A_Refire
+	FireEnd:
+		121F CDEEF 1
+		Goto Ready
 	}
 }

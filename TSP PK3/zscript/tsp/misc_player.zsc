@@ -153,8 +153,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		GiveInventory("TSP_GlobalDollars",TSP_STARTINGMONEY);
 		GiveInventory("MeleeButtonActor",1);
-		GiveInventory("StartMelee",1);
-		GiveInventory("StopMelee",1);
 		
 		PickWeapon(pp_meleestart,true);
 		

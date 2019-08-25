@@ -11,379 +11,378 @@
 
 ACTOR MelChargeStyle : TSPMelBaseWeapon
 {
-  Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
-  Obituary "%o learned why %k is the king of the iron fist."
-  Weapon.Kickback 100
-  Weapon.BobStyle Alpha
-  Weapon.BobSpeed 1.5
-  Weapon.BobRangeY 1.0
-  Weapon.BobRangeX 0.5
-  Tag "$MelChargeTag"
-  +WEAPON.WIMPY_WEAPON
-  +WEAPON.MELEEWEAPON
-  +WEAPON.NOALERT
-  +WEAPON.NOAUTOAIM
-  +WEAPON.NOAUTOFIRE
-  +NOEXTREMEDEATH
-  +INVENTORY.UNDROPPABLE
-  States
-  {
-  Spawn:
-    TNT1 A -1
-    Loop
-  Deselect:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-    TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
-    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
-    TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "StyleDeselect")
-	TNT1 A 0 A_JumpIfInventory("StyleChangeToken", 1, "ComboDeselect")
-    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
-    TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
-    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
-    TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
-    111D ABC 1
-    TNT1 A 3
-  DeselectLoop:
-    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
-    TNT1 A 1 A_Lower
-    Loop
-  StyleDeselect:
-    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
-    TNT1 A 1 A_Lower
-    Loop
-  ComboDeselect:
-    TNT1 A 0 A_Lower
-    Loop
-  Select:
-    TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
-	TNT1 A 0 A_TakeInventory("MelMelee", 1)
-	TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "SwitchAttack") // Switching mid-attack while using Charge Style goes here
-    TNT1 A 0 A_JumpIfInventory("StyleChangeToken", 1, "Instaswitch") // Activating Style Switch allows a seamless transition between styles
-    TNT1 A 4 A_WeaponOffset(0,32)
-    111U ABC 1
-    111G A 1 A_Raise
-    Loop
-  Instaswitch:
-    TNT1 A 0 A_TakeInventory("StyleChangeToken", 99)
-  Ready:
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch")
-    111G A 1 A_WeaponReady
-    Loop
+	Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
+	Obituary "%o learned why %k is the king of the iron fist."
+	Weapon.Kickback 100
+	Weapon.BobStyle Alpha
+	Weapon.BobSpeed 1.5
+	Weapon.BobRangeY 1.0
+	Weapon.BobRangeX 0.5
+	Tag "$MelChargeTag"
+	+WEAPON.WIMPY_WEAPON
+	+WEAPON.MELEEWEAPON
+	+WEAPON.NOALERT
+	+WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	+NOEXTREMEDEATH
+	+INVENTORY.UNDROPPABLE
+	States
+	{
+	Spawn:
+		TNT1 A -1
+		Loop
+	Deselect:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+		TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+		TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "StyleDeselect")
+		TNT1 A 0 A_JumpIfInventory("StyleChangeToken", 1, "ComboDeselect")
+		TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
+		TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
+		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
+		111D ABC 1
+		TNT1 A 3
+	DeselectLoop:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+		TNT1 A 1 A_Lower
+		Loop
+	StyleDeselect:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+		TNT1 A 1 A_Lower
+		Loop
+	ComboDeselect:
+		TNT1 A 0 A_Lower
+		Loop
+	Select:
+		TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
+		TNT1 A 0 A_TakeInventory("MelMelee", 1)
+		TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "SwitchAttack") // Switching mid-attack while using Charge Style goes here
+		TNT1 A 0 A_JumpIfInventory("StyleChangeToken", 1, "Instaswitch") // Activating Style Switch allows a seamless transition between styles
+		TNT1 A 4 A_WeaponOffset(0,32)
+		111U ABC 1
+		111G A 1 A_Raise
+		Loop
+	Instaswitch:
+		TNT1 A 0 A_TakeInventory("StyleChangeToken", 99)
+	Ready:
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
+		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch")
+		111G A 1 A_WeaponReady
+		Loop
 
 // Activates Bare Knuckle
-   StyleSwitch:
-    TNT1 A 0 A_TakeInventory("MelIdle", 99999)
-   BareKnuckleActivate:
-    TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch")
-	111V ABCDEE 1 A_WeaponReady
-	TNT1 A 0 A_PlaySound("melstylebksfx1", 6)
-	TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50)
-	111V F 5
-	TNT1 A 0 A_Quake(1,18,0,5,"")
-	110F ABCDEFGHIJ 1 BRIGHT
-	TNT1 A 0 A_SetBlend("124 252 0", 0.01, 2)
-	TNT1 A 0 A_PlaySound("melstylevobk", CHAN_VOICE)
-	111V FEEDDCBA 1
-    TNT1 A 0 A_GiveInventory("StyleChangeToken", 1)
-	TNT1 A 0 A_TakeInventory("MelChargeToken", 1)
-	TNT1 A 0 A_GiveInventory("MelMelee", 1)
-	111V A 1 A_SelectWeapon("MelMelee")
-	Goto Deselect
+	StyleSwitch:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+	BareKnuckleActivate:
+		TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch")
+		111V ABCDEE 1 A_WeaponReady
+		TNT1 A 0 A_PlaySound("melstylebksfx1", 6)
+		TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50)
+		111V F 5
+		TNT1 A 0 A_Quake(1,18,0,5,"")
+		110F ABCDEFGHIJ 1 BRIGHT
+		TNT1 A 0 A_SetBlend("124 252 0", 0.01, 2)
+		TNT1 A 0 A_PlaySound("melstylevobk", CHAN_VOICE)
+		111V FEEDDCBA 1
+		TNT1 A 0 A_GiveInventory("StyleChangeToken", 1)
+		TNT1 A 0 A_TakeInventory("MelChargeToken", 1)
+		TNT1 A 0 A_GiveInventory("MelMelee", 1)
+		111V A 1 A_SelectWeapon("MelMelee")
+		Goto Deselect
 	
 // Switching to Bare Knuckle mid-attack	
-   QuickStyleSwitch:
-	TNT1 A 4 A_PlaySound("melstylebksfx2", 6)
-	TNT1 A 0 A_SetBlend("144 0 191", 0.01, 2)
-    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
-	TNT1 A 0 A_TakeInventory("MelChargeToken", 1)
-	TNT1 A 0 A_GiveInventory("MelMelee", 1)
-	TNT1 A 1 A_SelectWeapon("MelMelee")
-	Goto Deselect
+	QuickStyleSwitch:
+		TNT1 A 4 A_PlaySound("melstylebksfx2", 6)
+		TNT1 A 0 A_SetBlend("144 0 191", 0.01, 2)
+		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelChargeToken", 1)
+		TNT1 A 0 A_GiveInventory("MelMelee", 1)
+		TNT1 A 1 A_SelectWeapon("MelMelee")
+		Goto Deselect
 	
 // Punch!
-  Fire:
-    TNT1 A 0 A_JumpIfInventory("StartingComboToken", 1, "PrimaryFire")
-    TNT1 A 0 A_GiveInventory("StartingComboToken", 1)
-    111G A 1
-	111U CBA 1
-	TNT1 A 5
-  PrimaryFire:
-    TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
-	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "AfterMelee") // P-P
-	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "Punch2") // P-P
-	TNT1 A 0 A_Refire("PunchCharge")
-	Goto Punch1
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("StartingComboToken", 1, "PrimaryFire")
+		TNT1 A 0 A_GiveInventory("StartingComboToken", 1)
+		111G A 1
+		111U CBA 1
+		TNT1 A 5
+	PrimaryFire:
+		TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "AfterMelee") // P-P
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "Punch2") // P-P
+		TNT1 A 0 A_Refire("PunchCharge")
+		Goto Punch1
 
 // Charge State (Punches/Primary Fire)
-  PunchCharge:
-	TNT1 A 1 A_PlaySound("chargestyle/charge01", 5)
-	TNT1 A 1 A_Quake(3,2,0,5,"")
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 10)
-  PunchCharging: // Where are you at in the combo?
-	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "PunchCharging1") // P-P
-	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 6, "ChargeComplete")
-  PunchCharging1: // P-P
-	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 5, "ChargeComplete")
-  PunchChargingCont:
-	TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
-	TNT1 A 1 A_Quake(1,2,0,5,"")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
-	TNT1 A 0 A_Refire("PunchCharging")
-	Goto PrimaryFire
-  ChargeComplete:
-	TNT1 A 0 A_ZoomFactor(1.05)
-	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 15)
-	TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
-	TNT1 A 1 A_Quake(10,5,0,5,"")
-	TNT1 A 0 A_ZoomFactor(1.0)
-	TNT1 A 0 A_Refire("ChargeHold")
-	Goto ChargeUnleashed
-  ChargeHold:
-	TNT1 A 1 A_Quake(1,2,0,5,"")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
-	TNT1 A 0 A_Refire("ChargeHold")
-	Goto ChargeUnleashed
-  ChargeUnleashed:
-    TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "ChargedPunch2")
-	Goto ChargedPunch1
+	PunchCharge:
+		TNT1 A 1 A_PlaySound("chargestyle/charge01", 5)
+		TNT1 A 1 A_Quake(3,2,0,5,"")
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
+		TNT1 A 0 A_SetBlend("144 0 191", 0.4, 10)
+	PunchCharging: // Where are you at in the combo?
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "PunchCharging1") // P-P
+		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 6, "ChargeComplete")
+	PunchCharging1: // P-P
+		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 5, "ChargeComplete")
+	PunchChargingCont:
+		TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
+		TNT1 A 0 A_Refire("PunchCharging")
+		Goto PrimaryFire
+	ChargeComplete:
+		TNT1 A 0 A_ZoomFactor(1.05)
+		TNT1 A 0 A_SetBlend("144 0 191", 0.4, 15)
+		TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
+		TNT1 A 1 A_Quake(10,5,0,5,"")
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Refire("ChargeHold")
+		Goto ChargeUnleashed
+	ChargeHold:
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
+		TNT1 A 0 A_Refire("ChargeHold")
+		Goto ChargeUnleashed
+	ChargeUnleashed:
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 1, "ChargedPunch2")
+		Goto ChargedPunch1
 	
 // P - (Charged Punch 1)
-  SwitchAttack:
-    TNT1 A 3
-    TNT1 A 1 A_Raise
-    TNT1 A 0 A_WeaponOffset(0,32)
-  ChargedPunch1:
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-	TNT1 A 0 A_Recoil(-5)
-	TNT1 A 6 A_PlaySound("*largemelee", 5)
-	TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
-	1121 ABC 1
-	TNT1 A 0 A_Quake(10,5,0,5,"")
-	1121 I 2 BRIGHT A_TSP_Melee(130,90,"MagDivePuff",0,10)
-	1121 JKLMDDD 1
-	Goto Punch1End
+	SwitchAttack:
+		TNT1 A 3
+		TNT1 A 1 A_Raise
+		TNT1 A 0 A_WeaponOffset(0,32)
+	ChargedPunch1:
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_Recoil(-5)
+		TNT1 A 6 A_PlaySound("*largemelee", 5)
+		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
+		1121 ABC 1
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1121 I 2 BRIGHT A_TSP_Melee(130,90,"MagDivePuff",0,10)
+		1121 JKLMDDD 1
+		Goto Punch1End
 // P - (Uncharged)
-  Punch1:
-	TNT1 A 0 A_Refire("PunchCharge")
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-	TNT1 A 0 A_PlaySound("*smallmelee")
-	TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-    1121 AB 1
-    1121 D 1 A_TSP_Melee(20,70,"BasicMeleePuff")//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
-    Goto Punch1End
+	Punch1:
+		TNT1 A 0 A_Refire("PunchCharge")
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_PlaySound("*smallmelee")
+		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+		1121 AB 1
+		1121 D 1 A_TSP_Melee(20,70,"BasicMeleePuff")//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
+		Goto Punch1End
 // P END
-  Punch1End:
-    TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
-    TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
-    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-	1121 E 1
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1121 F 1 A_Refire("PrimaryFire")
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1121 G 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1121 H 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady
-    Goto AfterMelee
+	Punch1End:
+		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
+		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+		1121 E 1
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1121 F 1 A_Refire("PrimaryFire")
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1121 G 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1121 H 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady
+		Goto AfterMelee
 	
 // P-P - (Charged Punch 2)
-  ChargedPunch2:
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-	TNT1 A 0 A_Recoil(-5)
-	TNT1 A 6 A_PlaySound("*largemelee", 5)
-	TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
-	1122 AB 1
-	TNT1 A 0 A_Quake(10,5,0,5,"")
-	1122 G 2 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
-	1122 HIJKCCC 1
-	Goto Punch2End
+	ChargedPunch2:
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_Recoil(-5)
+		TNT1 A 6 A_PlaySound("*largemelee", 5)
+		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
+		1122 AB 1
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1122 G 2 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
+		1122 HIJKCCC 1
+		Goto Punch2End
 // P-P - (Uncharged)
-  Punch2:
-	TNT1 A 7
-	TNT1 A 0 A_Refire("PunchCharge")
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-	TNT1 A 0 A_PlaySound("*smallmelee")
-	TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-    1122 AB 1
-    1122 D 1 A_TSP_Melee(30,70,"BasicMeleePuff")//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
-	1122 D 4
-    Goto Punch2End
+	Punch2:
+		TNT1 A 7
+		TNT1 A 0 A_Refire("PunchCharge")
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_PlaySound("*smallmelee")
+		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+		1122 AB 1
+		1122 D 1 A_TSP_Melee(30,70,"BasicMeleePuff")//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
+		1122 D 4
+		Goto Punch2End
 // P-P END	
-  Punch2End:
-    TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
-    TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
-    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-	1122 C 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1122 E 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1122 F 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    1122 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-    TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
-	Goto AfterMelee
+	Punch2End:
+		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
+		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+		1122 C 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1122 E 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1122 F 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		1122 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY)
+		Goto AfterMelee
 	
 // Kicks
-  AltFire:
-    TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
-	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "TripleKick") // P-P-K
-	//TNT1 A 0 A_Refire("KickCharge")
-	Goto Ready
+	AltFire:
+		TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "TripleKick") // P-P-K
+		//TNT1 A 0 A_Refire("KickCharge")
+		Goto Ready
 	
 // Charge State (Punches/AltFire)
-  KickCharge:
-	TNT1 A 1 A_PlaySound("chargestyle/charge02", 5)
-	TNT1 A 1 A_Quake(3,2,0,5,"")
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
-	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 10)
-	Goto KickCharging
-  KickCharging: // Where are you at in the combo?
-	TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "KickPunchCharging1") // P-P-K
-	//TNT1 A 0 A_JumpIfInventory("ChargedAttack", 8, "KickChargeComplete")
-  KickCharging1: // P-P
-	TNT1 A 0 A_JumpIfInventory("ChargedAttack", 8, "KickChargeComplete")
-  KickChargingCont:
-	TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
-	TNT1 A 1 A_Quake(1,2,0,5,"")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
-	TNT1 A 0 A_Refire("KickCharging")
-	Goto AltFire
-  KickChargeComplete:
-	TNT1 A 0 A_ZoomFactor(1.05)
-	TNT1 A 0 A_SetBlend("144 0 191", 0.4, 15)
-	TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
-	TNT1 A 1 A_Quake(10,5,0,5,"")
-	TNT1 A 0 A_ZoomFactor(1.0)
-	TNT1 A 0 A_Refire("KickChargeHold")
-	Goto ChargeUnleashed
-  KickChargeHold:
-	TNT1 A 1 A_Quake(1,2,0,5,"")
-	TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
-	TNT1 A 0 A_Refire("KickChargeHold")
-	Goto KickChargeUnleashed
-  KickChargeUnleashed:
-    TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "TripleKickCharged")
-	Goto TripleKickCharged
+	KickCharge:
+		TNT1 A 1 A_PlaySound("chargestyle/charge02", 5)
+		TNT1 A 1 A_Quake(3,2,0,5,"")
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0)
+		TNT1 A 0 A_SetBlend("144 0 191", 0.4, 10)
+		Goto KickCharging
+	KickCharging: // Where are you at in the combo?
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "KickPunchCharging1") // P-P-K
+		//TNT1 A 0 A_JumpIfInventory("ChargedAttack", 8, "KickChargeComplete")
+	KickCharging1: // P-P
+		TNT1 A 0 A_JumpIfInventory("ChargedAttack", 8, "KickChargeComplete")
+	KickChargingCont:
+		TNT1 A 3 A_GiveInventory("ChargedAttack", 1)
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
+		TNT1 A 0 A_Refire("KickCharging")
+		Goto AltFire
+	KickChargeComplete:
+		TNT1 A 0 A_ZoomFactor(1.05)
+		TNT1 A 0 A_SetBlend("144 0 191", 0.4, 15)
+		TNT1 A 4 A_PlaySound("magpunch/chargefin", 6)
+		TNT1 A 1 A_Quake(10,5,0,5,"")
+		TNT1 A 0 A_ZoomFactor(1.0)
+		TNT1 A 0 A_Refire("KickChargeHold")
+		Goto ChargeUnleashed
+	KickChargeHold:
+		TNT1 A 1 A_Quake(1,2,0,5,"")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.05, 3)
+		TNT1 A 0 A_Refire("KickChargeHold")
+		Goto KickChargeUnleashed
+	KickChargeUnleashed:
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo", 2, "TripleKickCharged")
+		Goto TripleKickCharged
 
 // P-P-K (Charged)
-  TripleKickCharged:
-	TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-	TNT1 A 0 A_Recoil(-2)
-	TNT1 A 6 A_PlaySound("*smallmelee", 5)
-	TNT1 A 0 A_PlaySoundEX("chargestyle/kick01", "SoundSlot6") // KICK 1
-	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
-	1123 ABC 1
-	TNT1 A 0 A_Quake(10,5,0,5,"")
-	1123 D 2 BRIGHT A_TSP_Melee(120,90,"MagDivePuff",0,10,5)
-	1123 EFG 1 BRIGHT
-	TNT1 A 0 A_Recoil(-2)
-	TNT1 A 2 A_PlaySoundEX("chargestyle/kick02", "SoundSlot5") // KICK 2
-	1124 ABC 1 BRIGHT
-	TNT1 A 0 A_Quake(10,5,0,5,"")
-    1124 D 1 BRIGHT A_TSP_Melee(100,90,"MagDivePuff",0,10,5)
-	1124 EFGHIJ 1 BRIGHT
-	TNT1 A 5 A_Recoil(-10)
-	TNT1 A 6 A_PlaySound("*largemelee", 5)
-	TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6") // KICK 3
-	TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
-	111R ABC 1 // Kick 1
-	TNT1 A 0 A_Quake(10,5,0,5,"")
-	1125 A 1 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
-	1125 BCDE 1 BRIGHT
-	TNT1 A 0 A_GiveInventory("StyleComboEnderToken", 1)
-	Goto TripleKickEnd
+	TripleKickCharged:
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_Recoil(-2)
+		TNT1 A 6 A_PlaySound("*smallmelee", 5)
+		TNT1 A 0 A_PlaySoundEX("chargestyle/kick01", "SoundSlot6") // KICK 1
+		TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
+		1123 ABC 1
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1123 D 2 BRIGHT A_TSP_Melee(120,90,"MagDivePuff",0,10,5)
+		1123 EFG 1 BRIGHT
+		TNT1 A 0 A_Recoil(-2)
+		TNT1 A 2 A_PlaySoundEX("chargestyle/kick02", "SoundSlot5") // KICK 2
+		1124 ABC 1 BRIGHT
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1124 D 1 BRIGHT A_TSP_Melee(100,90,"MagDivePuff",0,10,5)
+		1124 EFGHIJ 1 BRIGHT
+		TNT1 A 5 A_Recoil(-10)
+		TNT1 A 6 A_PlaySound("*largemelee", 5)
+		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6") // KICK 3
+		TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
+		111R ABC 1 // Kick 1
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1125 A 1 BRIGHT A_TSP_Melee(150,90,"MagDivePuff",0,10,5)
+		1125 BCDE 1 BRIGHT
+		TNT1 A 0 A_GiveInventory("StyleComboEnderToken", 1)
+		Goto TripleKickEnd
 	
 // P-P-K
-  TripleKick:
-	TNT1 A 7
-	TNT1 A 0 A_Refire("KickCharge")
-    TNT1 A 5 A_PlaySound("*largemelee")
-	TNT1 A 0 Thrustthing(angle*256/360,9, 0, 0)
-    TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-	TNT1 A 0 A_SetPitch(pitch - 0.5)
-	TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
-    111R ABC 1
-    111R D 3 A_TSP_Melee(30+2+2+12,90,"StrongMeleePuff",0,16,8)
-    Goto TripleKickEnd
+	TripleKick:
+		TNT1 A 7
+		TNT1 A 0 A_Refire("KickCharge")
+		TNT1 A 5 A_PlaySound("*largemelee")
+		TNT1 A 0 Thrustthing(angle*256/360,9, 0, 0)
+		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+		TNT1 A 0 A_SetPitch(pitch - 0.5)
+		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
+		111R ABC 1
+		111R D 3 A_TSP_Melee(30+2+2+12,90,"StrongMeleePuff",0,16,8)
+		Goto TripleKickEnd
 	
 // P-P-K END
-  TripleKickEnd:
-    111R EFG 1
-    TNT1 A 10
-    Goto AfterMelee
+	TripleKickEnd:
+		111R EFG 1
+		TNT1 A 10
+		Goto AfterMelee
 
 		
 // MELEE COOLDOWN
-  AfterMelee:
-	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
-  AfterMeleeCont:
-	TNT1 A 0 A_TakeInventory("StartingComboToken", 99)
-    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
-    TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
-    TNT1 A 0 A_TakeInventory("MagPushToken", 99)
-    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
-    TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
-    TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
-    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
-    111U ABC 1
-    111G A 1
-    Goto Ready
+	AfterMelee:
+		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch")
+	AfterMeleeCont:
+		TNT1 A 0 A_TakeInventory("StartingComboToken", 99)
+		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
+		TNT1 A 0 A_TakeInventory("MagPushToken", 99)
+		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+		TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
+		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+		111U ABC 1
+		111G A 1
+		Goto Ready
 	}
 }
-	
