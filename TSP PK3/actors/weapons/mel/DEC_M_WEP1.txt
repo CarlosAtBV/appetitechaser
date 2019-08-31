@@ -91,7 +91,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	Idle:
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 	Idle1:
-		TNT1 A 0 A_PlaySound("meltemp", 5)
+		TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE)
 		111V ABCDEE 1 A_WeaponReady
 		TNT1 A 0 A_PlaySound("melidle", 6)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50)
@@ -175,7 +175,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // P DEFAULT
 	Punch1:
-		TNT1 A 0 A_PlaySound("*smallmelee")
+		TNT1 A 0 A_PlaySound("*smallmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		1111 ABCD 1
 		1111 E 1 A_TSP_Melee(10,70,"BasicMeleePuff")//A_CustomPunch(10,0,0,"BasicMeleePuff",70)
@@ -267,7 +267,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 // P-P-P DEFAULT
 	LeftOverhead:
 		ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot6")
-		ML2F A 0 A_PlaySound("*mediummelee")
+		ML2F A 0 A_PlaySound("*mediummelee", CHAN_VOICE)
 		ML3F ABC 1 
 		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"LeftOverheadBerserk")
 		ML3F E 1 A_TSP_Melee(12,70,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
@@ -307,7 +307,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // P-P-P-P DEFAULT
 	VenomFinisher:
-		TNT1 A 6 A_PlaySound("*largemelee")
+		TNT1 A 6 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		1114 ABC 1
 		1114 D 7 A_TSP_Melee(26,90,"UppercutMeleePuff",0,8,16,45,45)//A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
@@ -355,7 +355,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 0 A_JumpIf (momZ > 0, "SuperUppercutAir")
         TNT1 A 0 A_JumpIf (momZ < 0, "SuperUppercutAir")
 	    TNT1 A 0 A_Recoil(-10)
-		TNT1 A 8 A_PlaySound("*xlmelee", 5)
+		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,53,0,1)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
@@ -370,7 +370,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		Goto FloatyBoy
 	SuperUppercutAir: //When in air, the uppercut doesn't carry you upwards that much
 	    TNT1 A 0 A_Recoil(-5)
-		TNT1 A 8 A_PlaySound("*xlmelee", 5)
+		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,25,0,1)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
@@ -402,7 +402,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 // K-K-P DEFAULT
 	Melbow:
-		TNT1 A 0 A_PlaySound("*mediummelee")
+		TNT1 A 0 A_PlaySound("*mediummelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111S ABC 1
 		111S D 1 A_TSP_Melee(20,70,"BasicMeleePuff")
@@ -438,7 +438,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-P-P DEFAULT
 	CrossPunch:
-		TNT1 A 2 A_PlaySound("*smallmelee")
+		TNT1 A 2 A_PlaySound("*smallmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		111O AB 1 
 		111O C 1 A_TSP_Melee(12,70,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
@@ -484,7 +484,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-P-P-P
 	CrossDuo:
-		TNT1 A 1 A_PlaySound("*smallmelee")
+		TNT1 A 1 A_PlaySound("*smallmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		111P AB 1
 		111P C 1 A_TSP_Melee(12,70,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",70)
@@ -530,7 +530,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-P-P-P-P DEFAULT
 	RapidFireFinish:
-		TNT1 A 2 A_PlaySound("*largemelee")
+		TNT1 A 2 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		TNT1 A 0 A_Recoil(-3)
 		111Q ABC 1 
@@ -561,7 +561,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K DEFAULT
 	DefaultKick:
-		TNT1 A 0 A_PlaySound("*smallmelee")
+		TNT1 A 0 A_PlaySound("*smallmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		111K ABC 1
 		111K D 1 A_TSP_Melee(12,90,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",90)
@@ -602,7 +602,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	UpperKick:
 		TNT1 A 2
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		TNT1 A 0 A_PlaySound("*mediummelee")
+		TNT1 A 0 A_PlaySound("*mediummelee", CHAN_VOICE)
 		111L ABC 1
 		111L D 2 A_TSP_Melee(12,90,"BasicMeleePuff")//A_CustomPunch(12,0,0,"BasicMeleePuff",90)
 		Goto UpperKickEnd
@@ -637,7 +637,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // K-K-K DEFAULT
 	ViperFinisher:
-		TNT1 A 5 A_PlaySound("*largemelee")
+		TNT1 A 5 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 Thrustthing(angle*256/360,9, 0, 0)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		TNT1 A 0 A_SetPitch(pitch - 0.5)
@@ -654,7 +654,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 	
 // P-P-K DEFAULT
 	StreetSweeperFinisher:
-		TNT1 A 5 A_PlaySound("*largemelee")
+		TNT1 A 5 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111J ABC 1
 		111J D 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherBerserk")
@@ -707,7 +707,7 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 // P-P-P-K-K DEFAULT
 	CrescentFangFinisher:
-		TNT1 A 6 A_PlaySound("*largemelee")
+		TNT1 A 6 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111M ABCDE 1
 		111M F 1 A_TSP_Melee(30+2+2+2,90,"StrongMeleePuff",10,0)/*A_CustomPunch(18,0,0,"StrongMeleePuff",90)
