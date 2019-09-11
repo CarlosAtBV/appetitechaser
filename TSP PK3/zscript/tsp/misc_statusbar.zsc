@@ -1,3 +1,9 @@
+Class TSP_NotificationLogger
+{
+	string message;
+	int time;
+}
+
 Class TSP_StatusBar : BaseStatusBar
 {
 	HUDFont mHUDFont;
@@ -15,10 +21,30 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	bool isDebug;
 	
+	Array<TSP_NotificationLogger> tsp_notifs;
+	
 	static const string mUpgBar[] =
 	{
 		"HUD_UPGE","HUD_UPG1","HUD_UPG2","HUD_UPGF"
 	};
+	
+	override bool ProcessNotify(EPrintLevel printlevel, String outline)
+	{
+		if(level.maptime==0) return true;
+		if(printlevel == PRINT_MEDIUM||printlevel == PRINT_HIGH)
+		{
+			TSP_NotificationLogger notif = new("TSP_NotificationLogger");
+			notif.message = outline;
+			notif.time = 4*35;
+			tsp_notifs.Insert(0,notif);
+			
+			if(tsp_notifs.Size()>4)
+			{
+				tsp_notifs.Delete(tsp_notifs.Size()-1);
+			}
+		}
+		return true;
+	}
 
 	override void Init()
 	{
@@ -52,6 +78,15 @@ Class TSP_StatusBar : BaseStatusBar
 		if(level.maptime%35==0)
 		{
 			isDebug = CVar.GetCVar("tsp_debug",players[consoleplayer]).GetBool();
+		}
+		
+		for(int i = 0;i<tsp_notifs.Size();i++)
+		{
+			tsp_notifs[i].time--;
+			if(tsp_notifs[i].time<=0)
+			{
+				tsp_notifs.Delete(i);
+			}
 		}
 	}
 	
@@ -239,6 +274,25 @@ Class TSP_StatusBar : BaseStatusBar
 						alpher = thisone.timeleft/12.; //whoosh
 					}
 					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+60, HUDLEFT_Y+12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+				}
+			
+			//================
+			// Notification Log
+			//================
+			
+				for(int i = 0;i<tsp_notifs.Size();i++)
+				{
+					let thisone  = tsp_notifs[i];
+					double alpher = 1.0;
+					if(thisone.time>136)
+					{
+						alpher = (140.-thisone.time)/(140.-136.); //thunk
+					}
+					else if (thisone.time<35)
+					{
+						alpher = thisone.time/35.; //whoosh
+					}
+					DrawString(mSmallFont, thisone.message, (0, 4+9*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================
