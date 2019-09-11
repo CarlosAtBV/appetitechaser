@@ -427,7 +427,9 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		+FLOATBOB
 		+ROLLSPRITE
 		+ROLLCENTER
+		+DONTTHRUST
 		+BRIGHT
+		+SOLID
 	}
 	
 	States
@@ -449,6 +451,15 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				}
 			}
 			Stop;
+	}
+	
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if(other.player)
+		{
+			return true;
+		}
+		return false;
 	}
 	
 	override void Tick()
