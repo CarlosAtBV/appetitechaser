@@ -1,0 +1,18 @@
+Class TSP_HitscanTracer : FastProjectile
+{
+	Default
+	{
+		Radius 1;
+		Height 2;
+		Speed 120;
+		RenderStyle "Add";
+		+BRIGHT
+	}
+	
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+}

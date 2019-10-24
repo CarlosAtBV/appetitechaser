@@ -87,12 +87,13 @@ ACTOR MelSMG : TSPMelLightWeapon
 		{
 			A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1);
 			A_TSP_TakeClip(1);
+			A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 		}
 		TNT1 A 0 A_SetPitch(pitch - 0.4)
 		TNT1 A 0 A_SetAngle(angle + (frandom(-0.1,0.3)))
 		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-		131F A 1 BRIGHT A_Light2
-		131F B 1 A_GiveInventory("TSPTopFired", 1)
+		131G A 1 BRIGHT A_Light2
+		131G B 1 A_GiveInventory("TSPTopFired", 1)
 		131G A 1
 		TNT1 A 0 A_Refire("Fire")
 		"----" A 0 A_TSP_GotoReadyState
@@ -105,12 +106,13 @@ ACTOR MelSMG : TSPMelLightWeapon
 		{
 			A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1);
 			A_TSP_TakeClip(1);
+			A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 		}
 		TNT1 A 0 A_SetPitch(pitch - 0.3)
 		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.1)))
 		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-		131F C 1 BRIGHT A_Light2
-		131F D 1 A_TakeInventory("TSPTopFired", 1)
+		131G B 1 BRIGHT A_Light2
+		131G B 1 A_TakeInventory("TSPTopFired", 1)
 		131G A 1
 		TNT1 A 0 A_Refire("Fire")
 		"----" A 0 A_TSP_GotoReadyState

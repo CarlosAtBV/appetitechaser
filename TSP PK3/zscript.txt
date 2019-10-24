@@ -28,6 +28,7 @@ enum ETSPGamemodes
 #include "zscript/tsp/weapons/aaa_core.zsc"
 #include "zscript/tsp/weapons/aaa_mag.zsc"
 #include "zscript/tsp/weapons/aaa_pickup.zsc"
+#include "zscript/tsp/weapons/aaa_fx.zsc"
 
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
 Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.

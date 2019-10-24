@@ -157,8 +157,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				r = (0, 0);
 			}
 			
-			r.X = r.X+swayX;
-			r.Y = r.Y+clamp(swayY,-4,44);
+			r.X = r.X+swayX+pp_weaponRecoil.x;
+			r.Y = r.Y+clamp(swayY,-4,44)+pp_weaponRecoil.y;
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		return p1 * (1. - ticfrac) + p2 * ticfrac;

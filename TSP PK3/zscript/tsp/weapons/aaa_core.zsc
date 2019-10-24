@@ -347,6 +347,22 @@ Class TSP_Weapon_Core : DoomWeapon
 		return (owner.CountInv(ammo1.GetClass())>0);
 	}
 	
+	action void A_TSP_WeaponRecoil(double x, double y)
+	{
+		if(invoker.owner!=null)
+		{
+			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (x,y);
+		}
+	}
+	
+	action void A_TSP_WeaponRecoilDir(int angle, double dist)
+	{
+		if(invoker.owner!=null)
+		{
+			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (cos(angle)*dist,sin(angle)*dist);
+		}
+	}
+	
 	action void A_TSP_WeaponReady(int flags = 0)
 	{	
 		int oldFlags = flags;
@@ -495,7 +511,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				invoker.tspw_curclip--;
 			}*/
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,missile,spawnheight,spawnofs_xy);
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,"TSP_HitscanTracer",0,4);
 		}
 		
 		action void A_TSP_TakeClip(int amt)

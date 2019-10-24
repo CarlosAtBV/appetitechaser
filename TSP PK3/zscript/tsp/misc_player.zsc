@@ -128,10 +128,15 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	bool pp_hasCrouchSlid;
 	
+	bool ppc_mental;
+	
 	Default
 	{
 		DamageFactor "MagSlam", 0.0;
 	}
+	
+	// Weapon Recoil
+	Vector2 pp_weaponRecoil;
 	
 	override void GiveDefaultInventory()
 	{
@@ -395,6 +400,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			pp_notificationTime--;
 		}
 		
+		pp_weaponRecoil.x /= 1.5;
+		pp_weaponRecoil.y /= 1.5;
+		
 		/*if(pp_enemyTargeter==null)
 		{
 			pp_enemyTargeter = TSP_EnemyTargeter(Spawn("TSP_EnemyTargeter",pos));
@@ -446,10 +454,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TSPBobStuff();
 		
 		TickLogMessages();
+		
+		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}
 	
 	override void CheckJump()
-	{
+	{ 
 		if(oldVelZ==vel.z)
 		{
 			ptp_wallJumps = 0;
