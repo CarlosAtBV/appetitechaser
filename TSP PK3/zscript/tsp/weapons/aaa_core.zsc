@@ -497,7 +497,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	//
 	//==========================================================================
 	
-		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "BulletPuff", int flags = 1, double range = 0, class<Actor> missile = null, double Spawnheight = 32, double Spawnofs_xy = 0)
+		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "BulletPuff", int flags = 1, double range = 0, class<Actor> missile = "", double Spawnheight = 0, double Spawnofs_xy = 0)
 		{
 			int fbDamage = damageperbullet;
 			switch(invoker.tspw_powerlevel)
@@ -511,7 +511,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				invoker.tspw_curclip--;
 			}*/
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,"TSP_HitscanTracer",0,4);
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,"TSP_HitscanTracer",Spawnheight,4);
 		}
 		
 		action void A_TSP_TakeClip(int amt)
