@@ -47,10 +47,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		DamageFactor "MagSlam", 0.0;
 	}
 	
-	// Weapon Recoil
-	Vector2 pp_weaponRecoil;
-	Vector2 pp_weaponRecoilSlow;
-	
 	override void GiveDefaultInventory()
 	{
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
@@ -276,6 +272,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	Vector3 pp_sit_oldPos;
 	
+	// Weapon Recoil
+	Vector2 pp_weaponRecoil;
+	Vector2 pp_weaponRecoilSlow;
+	Vector2 pp_combinedRecoil;
+	Vector2 pp_lastRecoil;
+	
 	override void Tick ()
 	{
 		oldVelZ = vel.z;
@@ -317,6 +319,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		pp_weaponRecoil.y /= 1.5;
 		pp_weaponRecoilSlow.x /= 1.25;
 		pp_weaponRecoilSlow.y /= 1.25;
+		
+		pp_lastRecoil = pp_combinedRecoil;
+		pp_combinedRecoil = pp_weaponRecoil+pp_weaponRecoilSlow;
 		
 		/*if(pp_enemyTargeter==null)
 		{
