@@ -347,19 +347,33 @@ Class TSP_Weapon_Core : DoomWeapon
 		return (owner.CountInv(ammo1.GetClass())>0);
 	}
 	
-	action void A_TSP_WeaponRecoil(double x, double y)
+	action void A_TSP_WeaponRecoil(double x, double y, int type = 0)
 	{
 		if(invoker.owner!=null)
 		{
-			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (x,y);
+			if(type==0)
+			{
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (x,y);
+			}
+			else
+			{
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoilSlow += (x,y);
+			}
 		}
 	}
 	
-	action void A_TSP_WeaponRecoilDir(int angle, double dist)
+	action void A_TSP_WeaponRecoilDir(int angle, double dist, int type = 0)
 	{
 		if(invoker.owner!=null)
 		{
-			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (cos(angle)*dist,sin(angle)*dist);
+			if(type==0)
+			{
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoil += (cos(angle)*dist,sin(angle)*dist);
+			}
+			else
+			{
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_weaponRecoilSlow += (cos(angle)*dist,sin(angle)*dist);
+			}
 		}
 	}
 	

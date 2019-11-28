@@ -136,7 +136,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		}
 		131G D 1
 		{
-			A_TSP_WeaponRecoilDir(random(35,55),frandom(40,48));
+			A_TSP_WeaponRecoilDir(random(35,55),frandom(40,48),1);
 		}
 		131G D 4
 		131G C 8

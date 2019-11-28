@@ -49,6 +49,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	// Weapon Recoil
 	Vector2 pp_weaponRecoil;
+	Vector2 pp_weaponRecoilSlow;
 	
 	override void GiveDefaultInventory()
 	{
@@ -314,6 +315,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		pp_weaponRecoil.x /= 1.5;
 		pp_weaponRecoil.y /= 1.5;
+		pp_weaponRecoilSlow.x /= 1.25;
+		pp_weaponRecoilSlow.y /= 1.25;
 		
 		/*if(pp_enemyTargeter==null)
 		{
