@@ -530,6 +530,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		
 		action void A_TSP_TakeClip(int amt)
 		{
+			if(tsp_unlimitedclip) return;
 			while(amt>0 && invoker.tspw_curclip > 0)
 			{
 				invoker.tspw_curclip--;

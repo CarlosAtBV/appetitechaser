@@ -16,3 +16,5 @@ server bool tsp_enemies_doom = false;
 server bool tsp_enemies_arcstar = true;
 
 server bool tsp_enemyshuffle = false;
+
+server noarchive cheat bool tsp_unlimitedclip = false;
