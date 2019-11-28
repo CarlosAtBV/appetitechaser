@@ -141,14 +141,14 @@ ACTOR MelSMG : TSPMelLightWeapon
 		131G D 4
 		131G E 2
 		131G C 3
-		131G CCF 1 A_TSP_WeaponRecoilDir(45,-3,1)
+		131G CFG 1 A_TSP_WeaponRecoilDir(45,-2,1)
 		//cocking anim
 		"----" A 0
 		{
 			A_PlaySound("suzuka/scock", 5);
-			A_TSP_WeaponRecoilDir(45,18,1);
+			A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
 		}
-		131G GGGF 2
+		131G GGGF 2 A_TSP_WeaponRecoilDir(35,4,1)
 		//ok done
 		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
