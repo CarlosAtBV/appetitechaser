@@ -106,7 +106,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 			A_OverlayFlags(PSP_FLASH,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderstyle(PSP_FLASH,STYLE_Add);
 		}
-		131F A 1
+		131F A 1 BRIGHT
 		Stop
 	BottomFire:
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
