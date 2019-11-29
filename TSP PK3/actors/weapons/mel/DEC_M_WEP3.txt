@@ -178,7 +178,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 	Reload:
 		131G A 1 A_TSP_WeaponRecoilDir(-45,6,1)
 		131G A 1 A_TSP_WeaponRecoilDir(-90,12,1)
-		131R AA 1 A_TSP_WeaponRecoilDir(135,12,1)
+		131R LL 1 A_TSP_WeaponRecoilDir(135,12,1)
 		"----" A 0 A_PlaySound("suzuka/eject", 6)
 		131R B 2 A_TSP_WeaponRecoilDir(135-15,64,1)
 		131R CDEE 1
