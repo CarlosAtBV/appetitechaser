@@ -89,6 +89,14 @@ Class TSP_EventHandler : EventHandler
 			
 			hunters_time = 120;
 		}
+		
+		/*String clsname = "GSPlayer";
+		Class<Actor> cls = clsname;
+		if(cls!=null)
+		{
+			players[0].mo.JumpZ = 15;
+			Console.Printf("golden mode");
+		}*/
 	}
 	
 	/*override void WorldUnloaded(WorldEvent e)
