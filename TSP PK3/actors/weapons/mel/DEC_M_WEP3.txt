@@ -2,18 +2,8 @@
 //
 // OS06 Multi-Purpose SMG "Suzuka"
 //
-// by Cardboard Marty
-// Sprites by Cardboard Marty
-// Model Bases:
-// - AE4 HMG Short: ported by Kalash
-//   * From "Call of Duty: Advanced Warfare"
-// - D13 Sector: ported by saltpowered
-//   * From "Call of Duty: Black Ops 3"
-// - CPS Sight by ProgrammerNetwork
-// - RIS Grip by ProgrammerNetwork
-// - Cobra Aimpoint by ProgrammerNetwork
-// - NcStar Sight by ProgrammerNetwork
-// - FNC Stock by ProgrammerNetwork
+// by DrPyspy and Cardboard Marty
+// Sprites by DrPyspy
 //
 //===========================================================================
 
@@ -233,7 +223,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		//cocking anim
 		"----" A 0
 		{
-			A_PlaySound("suzuka/rcock", 5);
+			A_PlaySound("suzuka/scock", 5);
 			A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
 		}
 		131R NNNN 1 A_TSP_WeaponRecoilDir(35,6,1)
