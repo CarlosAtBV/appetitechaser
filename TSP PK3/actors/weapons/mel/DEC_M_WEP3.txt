@@ -182,6 +182,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		"----" A 0 A_PlaySound("suzuka/eject", 6)
 		131R B 2 A_TSP_WeaponRecoilDir(135-15,64,1)
 		131R CDEEEE 1
+		131R EE 1 //buffer
 		//TNT1 A 0 A_PlaySound("suzuka/eject", 6)
 		//25 //12
 		131R E 1
@@ -216,15 +217,27 @@ ACTOR MelSMG : TSPMelLightWeapon
 		//131R HH 1 A_TSP_WeaponRecoilDir(45+15,6,1)
 		131R H 8 A_TSP_WeaponRecoilDir(45+15,64,1)
 		131R H 3 A_TSP_WeaponRecoilDir(180,8,1)
-		131R K 7
+		131R K 5
 		{
 			A_TSP_WeaponRecoilDir(15,16,1);
 			A_PlaySound("nikki/reloadin2", 5);
 		}
-		131R J 2// A_TSP_WeaponRecoilDir(45,16,1)
-		131R L 2
-		TNT1 A 0 A_PlaySound("suzuka/rcock", 6)
-		131G A 5
+		131R JJJ 2// A_TSP_WeaponRecoilDir(45,16,1)
+		//131R L 2 A_TSP_WeaponRecoilDir(90,16,1)
+		131R LL 1 A_TSP_WeaponRecoilDir(90+15,16,1)
+		131R A 2
+		131G A 2
+		//TNT1 A 0 A_PlaySound("suzuka/rcock", 6)
+		131R MN 1 A_TSP_WeaponRecoilDir(45,-2,1)
+		//cocking anim
+		"----" A 0
+		{
+			A_PlaySound("suzuka/rcock", 5);
+			A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
+		}
+		131R NNNN 1 A_TSP_WeaponRecoilDir(35,6,1)
+		131R NM 2
+		//131G A 5
 		Goto Ready
 	ReloadHand:
 		131R Z 1 A_OverlayOffset(10,-61.6,164.8,WOF_INTERPOLATE)
@@ -245,6 +258,26 @@ ACTOR MelSMG : TSPMelLightWeapon
 		
 		131R Z 1 A_OverlayOffset(10,-2.3,24.9,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,0,32,WOF_INTERPOLATE)//,WOF_INTERPOLATE)
+		
+		TNT1 A 11 A_OverlayFlags(10,PSPF_ADDBOB,true)
+		
+		131R Y 5 A_OverlayOffset(10,20,-6,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-2,2,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-4,4,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-8,8,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-4,16,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-2,16,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-1,8,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,0,4,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,0,2,WOF_ADD|WOF_INTERPOLATE)
+		/*"----" A 1 A_OverlayOffset(10,-2,2,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-4,4,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-8,8,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-4,16,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-2,16,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,0,8,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,2,4,WOF_ADD|WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,4,2,WOF_ADD|WOF_INTERPOLATE)*/
 		Stop
 	/*Reload:
 		131G A 10
