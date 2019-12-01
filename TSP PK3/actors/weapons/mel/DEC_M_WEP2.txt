@@ -145,7 +145,7 @@ ACTOR MelPistol : TSPMelLightWeapon
 	
 	Empty:
 		121G A 5 A_PlaySound("nikki/empty", 5)
-		"----" A 0 A_TSP_CheckReload()
+		121G A 0 A_TSP_CheckReload()
 		Goto Ready
 	Reload:
 		121R ABCCDDEEFFGGH 1

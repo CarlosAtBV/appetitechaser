@@ -17,6 +17,32 @@ ACTOR MelPistolA : MelPistol
 	
 	States
 	{
+	Select:
+		TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+		TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999)
+		TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121)
+		TNT1 A 0 A_JumpIfInventory("UpgradeAniSpitfire", 1,"SelectCont")
+	UpgradeSwap:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		121G AA 1
+		122U AABBCDEFFGH 1
+		122U I 1 A_PlaySound("nikki/upgraderemove", 6)
+		122U JKKLMNOP 1
+		122U Q 9
+		122U RSTUV 1
+		122U W 1 A_PlaySound("nikki/upgradespitfire", 5)
+		122U XYYYYZ 1
+		122V ABCDDD 1
+		TNT1 A 0 A_GiveInventory("UpgradeAniSpitfire", 1)
+		121G A 1 A_Raise
+		Loop
+	SelectCont:
+		TNT1 A 0 A_PlaySound("nikki/draw", 5)
+		TNT1 A 0 A_WeaponOffset(0,32)
+		121U ABCDEFGHIJKLM 1
+		121G A 1
+		121G A 1 A_Raise
+		Loop
 	Fire:
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
@@ -81,4 +107,10 @@ ACTOR MelPistolA : MelPistol
 		121F CDEEF 1
 		Goto Ready
 	}
+}
+
+ACTOR UpgradeAniSpitfire: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
 }

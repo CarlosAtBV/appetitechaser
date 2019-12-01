@@ -72,6 +72,7 @@ ACTOR WeaponSelectMemory : Inventory
 	// 111 = Bare Knuckle
 	// 112 = Charge Style
 	// 121 = Darling Nikki
+	// 122 = Darling Nikki (Spitfire)
 	// 131 = OS06 Suzuka
 	Inventory.MaxAmount 999
 }
