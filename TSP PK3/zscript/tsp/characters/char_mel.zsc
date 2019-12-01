@@ -56,6 +56,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		{
 			GiveInventory("TSP_Upgrade_Shield",1);
 			GiveInventory("TSP_Upgrade_MagSpear",1);
+			GiveInventory("UpgradeAniSpitfire", 1);
 			GiveInventory("MelSMG",1);
 			GiveInventory("TSPSMGAmmo",80);
 			GiveInventory("MelPistolA",1);
