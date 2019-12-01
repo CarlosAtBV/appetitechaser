@@ -24,16 +24,19 @@ ACTOR MelPistolA : MelPistol
 		TNT1 A 0 A_JumpIfInventory("UpgradeAniSpitfire", 1,"SelectCont")
 	UpgradeSwap:
 		TNT1 A 0 A_WeaponOffset(0,32)
-		121G AA 1
-		122U AABBCDEFFGH 1
+		121G A 1
+		122V E 1
+		122U AABBCCDDEEFFGGHH 1
 		122U I 1 A_PlaySound("nikki/upgraderemove", 6)
 		122U JKKLMNOP 1
-		122U Q 9
+		122U Q 10
 		122U RSTUV 1
 		122U W 1 A_PlaySound("nikki/upgradespitfire", 5)
 		122U XYYYYZ 1
 		122V ABCDDD 1
 		TNT1 A 0 A_GiveInventory("UpgradeAniSpitfire", 1)
+		122V E 1
+		122U A 1
 		121G A 1 A_Raise
 		Loop
 	SelectCont:
@@ -46,21 +49,20 @@ ACTOR MelPistolA : MelPistol
 	Fire:
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
 		TNT1 A 0 A_AlertMonsters
 		121G B 1 A_GunFlash//A 1 A_GunFlash
 		TNT1 A 0 A_PlaySound("nikki/firea", 6)
 		TNT1 A 0 A_Light2
-		121G B 1 BRIGHT
+		121F B 1 BRIGHT
 		{
 			A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
 			A_TSP_TakeClip(1);
 		}
-		121G B 1 BRIGHT A_Light1
-		121G A 1 A_Light0
+		121F C 1 BRIGHT A_Light1
+		121F D 1 A_Light0
 		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-		121G A 1
-		121G AA 1 A_TSP_WeaponReady(WRF_NOBOB)
+		121F E 1
+		121F EF 1 A_TSP_WeaponReady(WRF_NOBOB)
 		"----" A 0 A_TSP_GotoReadyState
 		Goto Ready
 	
