@@ -139,7 +139,6 @@ meltemp2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
 meltemp3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
 meltemp4 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
 meltemp5 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
-melidle "sounds/characters/mel/misc/sfx_mel_idle01.ogg"
 
 //////////////////////
 // Mel's Mag Manuevers
@@ -185,15 +184,16 @@ magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
 //////////////////////
 // Mel's Style Change
 //////////////////////
-
-melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
-melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
-melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
-
 melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
+melidlebk "sounds/weapons/Mel/sfx_mel_idlebk.ogg"
 melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
 melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
 
+
+melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
+melidlecs "sounds/weapons/Mel/sfx_mel_idlecs.ogg"
+melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
+melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
 
 ////////////////////
 //Mel's Pickup Lines
