@@ -94,6 +94,7 @@ $random nikki/firec { nikki/firegold01 nikki/firegold02 nikki/firegold03 }
 nikki/firegold01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold01.ogg"
 nikki/firegold02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold02.ogg"
 nikki/firegold03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold03.ogg"
+$volume nikki/firec 0.9
 
 nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
 nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
