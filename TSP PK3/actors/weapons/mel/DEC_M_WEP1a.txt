@@ -70,8 +70,28 @@ ACTOR MelChargeStyle : TSPMelBaseWeapon
 	Ready:
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch")
+		TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle")
+		TNT1 A 0 A_GiveInventory("MelIdle", 1)
 		111G A 1 A_WeaponReady
 		Loop
+
+// Idle Animations   
+	Taunt:
+		TNT1 A 0 A_AlertMonsters
+	Idle:
+		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
+	Idle1:
+		TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE)
+		111V ABCDEE 1 A_WeaponReady
+		TNT1 A 0 A_PlaySound("melidle", 6)
+		TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50)
+		111V F 5 A_WeaponReady
+		TNT1 A 0 A_Quake(1,40,0,5,"")
+		110G ABCDEABCDEABCDEABCDEABCDEABCDEFGHIJ 1 BRIGHT A_WeaponReady	     
+		TNT1 A 0 A_SetBlend("124 252 0", 0.01, 2)
+		111V FEEDDCBA 1 A_WeaponReady
+		Goto Ready
 
 // Activates Bare Knuckle
 	StyleSwitch:
