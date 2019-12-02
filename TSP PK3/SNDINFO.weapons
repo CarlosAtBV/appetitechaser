@@ -71,7 +71,7 @@ uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_con
 nikki/draw		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
 nikki/drawgold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
 nikki/holster	"sounds/weapons/Mel/Darling Nikki/sfx_nikki_holster.ogg"
-nikki/holsterc  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_holsterc.ogg"
+nikki/holstergold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_holsterc.ogg"
 
 $random nikki/fire { nikki/fire01 nikki/fire02 nikki/fire03 }
 nikki/fire01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire01.ogg"
@@ -89,6 +89,11 @@ $random nikki/fireb { nikki/fireb01 nikki/fireb02 nikki/fireb03 }
 nikki/fireb01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb01.ogg"
 nikki/fireb02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb02.ogg"
 nikki/fireb03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb03.ogg"
+
+$random nikki/firec { nikki/firegold01 nikki/firegold02 nikki/firegold03 }
+nikki/firegold01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold01.ogg"
+nikki/firegold02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold02.ogg"
+nikki/firegold03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold03.ogg"
 
 nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
 nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"

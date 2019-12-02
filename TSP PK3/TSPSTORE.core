@@ -52,7 +52,7 @@ page
 			icons "graphics/store/items/store_item_gold.png";
 			price 50;
 			mod_take "MelPistol";
-			mod_give "MelPistolB";
+			mod_give "MelPistolC";
 			desc "$TSP_SHOP_DNMODC";
 		}
 		
