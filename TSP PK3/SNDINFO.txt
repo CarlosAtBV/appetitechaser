@@ -73,12 +73,12 @@ shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Su
 
 // GENERAL
 mantle "sounds/general/player/sfx_general_mantle.ogg" // From Devil May Cry 4: Special Edition, Chornicles of Riddick: Assault on Dark Athena
-
+money/pickup "sounds/shop/ui_gbd_sm.ogg"
 // SHOP (Placeholder)
 
 shop/purchase "sounds/placeholder/shop/PASSGO.wav" // From Monopoly (1995)
 shop/hired "sounds/placeholder/shop/victory.ogg" // From Roblox
-money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age of Kings
+//money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age of Kings
 
 
 // SHOP
