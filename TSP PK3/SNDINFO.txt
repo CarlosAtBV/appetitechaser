@@ -74,6 +74,7 @@ shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Su
 // GENERAL
 mantle "sounds/general/player/sfx_general_mantle.ogg" // From Devil May Cry 4: Special Edition, Chornicles of Riddick: Assault on Dark Athena
 money/pickup "sounds/shop/ui_gbd_sm.ogg"
+$volume money/pickup 0.5
 
 // SHOP (Placeholder)
 shop/purchase "sounds/placeholder/shop/PASSGO.wav" // From Monopoly (1995)
