@@ -74,7 +74,7 @@ Class TSP_CharacterMenu_BH : GenericMenu
 				}
 				else
 				{
-					charslot = TexMan.CheckForTexture("MCWDEAD0",TexMan.Type_MiscPatch);
+					charslot = TexMan.CheckForTexture("unk_port",TexMan.Type_MiscPatch);
 				}
 				
 				screen.DrawTexture (dd_slotBG, true, xpos, ypos, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
