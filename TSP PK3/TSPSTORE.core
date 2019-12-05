@@ -4,8 +4,9 @@ page
 	tab "Weapons"
 	{
 		header "Darling Nikki";
-		item "$TSP_SHOP_BULLNAME1", "$TSP_SHOP_BULLNAME2", "$TSP_SHOP_BULLNAME3"
+		item "Nd#"
 		{
+			name "$TSP_SHOP_BULLNAME1", "$TSP_SHOP_BULLNAME2", "$TSP_SHOP_BULLNAME3";
 			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
 			price 450;
 			price_increment 300;
@@ -13,8 +14,9 @@ page
 			upgradeType 0;
 			descs "$TSP_SHOP_BULLDESC1", "$TSP_SHOP_BULLDESC2", "$TSP_SHOP_BULLDESC3";
 		}
-		item "Expanded Magazine", "$TSP_SHOP_MAGNAME2", "$TSP_SHOP_MAGNAME3"
+		item "Nc#"
 		{
+			name "Expanded Magazine", "$TSP_SHOP_MAGNAME2", "$TSP_SHOP_MAGNAME3";
 			icons "graphics/store/items/store_item_mag1.png","graphics/store/items/store_item_mag2.png","graphics/store/items/store_item_mag3.png";
 			price 300;
 			price_increment 200;
@@ -22,8 +24,9 @@ page
 			upgradeType 1;
 			descs "$TSP_SHOP_MAGDESC1", "$TSP_SHOP_MAGDESC2", "$TSP_SHOP_MAGDESC3";
 		}
-		item "$TSP_SHOP_NIKKI_RLDNAME1", "$TSP_SHOP_NIKKI_RLDNAME2", "$TSP_SHOP_NIKKI_RLDNAME3"
+		item "Nr#"
 		{
+			name "$TSP_SHOP_NIKKI_RLDNAME1", "$TSP_SHOP_NIKKI_RLDNAME2", "$TSP_SHOP_NIKKI_RLDNAME3";
 			icons "graphics/store/items/store_item_rld1.png","graphics/store/items/store_item_rld2.png","graphics/store/items/store_item_rld3.png";
 			price 275;
 			price_increment 250;
@@ -31,24 +34,27 @@ page
 			upgrade "MelPistol";
 			upgradeType 2;
 		}
-		item "Mod - Spitfire"
+		item "Nm0"
 		{
+			name "Mod - Spitfire";
 			icons "graphics/store/items/store_item_spit.png";
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolA";
 			desc "$TSP_SHOP_DNMODA";
 		}
-		item "Mod - Whisper"
+		item "Nm1"
 		{
+			name "Mod - Whisper"
 			icons "graphics/store/items/store_item_sneak.png";
 			price 50;
 			mod_take "MelPistol";
 			mod_give "MelPistolB";
 			desc "$TSP_SHOP_DNMODB";
 		}
-		item "Mod - Gold"
+		item "Nm2"
 		{
+			name "Mod - Gold"
 			icons "graphics/store/items/store_item_gold.png";
 			price 50;
 			mod_take "MelPistol";
@@ -58,8 +64,9 @@ page
 		
 		
 		header "Suzuka";
-		item "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "$TSP_SHOP_SUZUKA_DAMNAME3"
+		item "Sd0"
 		{
+			name "$TSP_SHOP_SUZUKA_DAMNAME1", "$TSP_SHOP_SUZUKA_DAMNAME2", "$TSP_SHOP_SUZUKA_DAMNAME3";
 			icons "graphics/store/items/store_item_dmg1.png","graphics/store/items/store_item_dmg2.png","graphics/store/items/store_item_dmg3.png";
 			price 450;
 			price_increment 300;
@@ -67,8 +74,9 @@ page
 			upgradeType 0;
 			descs "$TSP_SHOP_SUZUKA_DAMDESC1", "$TSP_SHOP_SUZUKA_DAMDESC2", "$TSP_SHOP_SUZUKA_DAMDESC3";
 		}
-		item "$TSP_SHOP_SUZUKA_MAGNAME1", "suzuka epicer clip", "suzuka epicest clip"
+		item "Sc0"
 		{
+			name "$TSP_SHOP_SUZUKA_MAGNAME1", "suzuka epicer clip", "suzuka epicest clip";
 			icons "graphics/store/items/store_item_mag1.png","graphics/store/items/store_item_mag2.png","graphics/store/items/store_item_mag3.png";
 			price 300;
 			price_increment 300;
@@ -80,8 +88,9 @@ page
 	tab "Vitality"
 	{
 		header "Health";
-		item "Cheebos"
+		item
 		{
+			name "Cheebos"
 			icon "graphics/store/items/store_item_cheebos.png";
 			desc "Bite upon a single (one) Cheebo";
 			inv_class "HealthBonus";
@@ -89,8 +98,9 @@ page
 			price 5;
 		}
 		header "Shield";
-		item "$TSP_SHOP_SHIELDNAME1", "$TSP_SHOP_SHIELDNAME2", "$TSP_SHOP_SHIELDNAME3"
+		item "SU#"
 		{
+			name "$TSP_SHOP_SHIELDNAME1", "$TSP_SHOP_SHIELDNAME2", "$TSP_SHOP_SHIELDNAME3";
 			descs "$TSP_SHOP_SHIELDDESC1", "$TSP_SHOP_SHIELDDESC2", "$TSP_SHOP_SHIELDDESC3";
 			price 500;
 			price_increment 500;
@@ -101,31 +111,35 @@ page
 	tab "Traits"
 	{
 		header "Melee Moves";
-		item "Charge Style"
+		item "Mt0"
 		{
+			name "Charge Style";
 			desc "$TSP_SHOP_MEL_CHARGEDESC";
 			inv_class "TSP_Upgrade_ChargeStyle";
 			inv_amount 1;
 			price 10;
 		}
 		header "Trait Moves";
-		item "Mag Spear"
+		item "Mt1"
 		{
+			name "Mag Spear";
 			desc "$TSP_SHOP_MEL_MAGSPEARDESC";
 			inv_class "TSP_Upgrade_MagSpear";
 			inv_amount 1;
 			price 10;
 		}
-		item "Mag Sling"
+		item "Mt2"
 		{
+			name "Mag Sling";
 			desc "$TSP_SHOP_MEL_MAGSLINGDESC";
 			inv_class "TSP_Upgrade_MagSling";
 			inv_amount 1;
 			price 10;
 		}
 		header "Good Shit";
-		item "Full Heal"
+		item
 		{
+			name "Full Heal";
 			desc "lmao";
 			inv_class "HealthBonus";
 			inv_amount 100;
