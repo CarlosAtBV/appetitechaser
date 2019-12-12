@@ -8,6 +8,7 @@ Class TSP_ShopListItem
 
 Class TSP_ShopItem : TSP_ShopListItem
 {
+	string saveID;
 	Array<string > names;
 	Array<string > descs;
 	Array<string > icons;

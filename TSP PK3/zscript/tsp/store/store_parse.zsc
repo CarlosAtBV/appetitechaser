@@ -95,13 +95,15 @@ Extend Class TSP_ShopMenu
 									Array<String > descs;
 									names.Clear();
 									descs.Clear();
-									names.Push(tokenitup.GoThru().value);
-									while(tokenitup.GoThru().type == TSPT_Comma)
+									//names.Push(tokenitup.GoThru().value);
+									/*while(tokenitup.GoThru().type == TSPT_Comma)
 									{
 										names.Push(tokenitup.GoThru().value);
-									}
+									}*/
 									TSP_ShopItem curItem = new("TSP_ShopItem");
-									curItem.names.Copy(names);
+									curItem.saveID = tokenitup.GoThru().value;
+									curItem.names.Clear();
+									//curItem.names.Copy(names);
 									curItem.inv_class = null;//"HealthBonus";
 									curItem.inv_amount = 1;//25;
 									curItem.price = 0;
@@ -112,6 +114,14 @@ Extend Class TSP_ShopMenu
 									
 									for(i = 0; parse_stayIn(tokenboy,safetyNet); tokenboy = tokenitup.GoThru())
 									{
+										if(tokenboy.value == "name")
+										{
+											curItem.names.Push(tokenitup.GoThru().value);
+											while(tokenitup.GoThru().type == TSPT_Comma)
+											{
+												curItem.names.Push(tokenitup.GoThru().value);
+											}
+										}
 										if(tokenboy.value == "price")
 										{
 											tokenboy = tokenitup.GoThru();
