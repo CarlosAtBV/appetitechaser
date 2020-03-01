@@ -14,3 +14,81 @@ Class TSP_Gamemode_Hunters : Thinker
 	{
 	}
 }
+
+Class TSP_BountyHunters_TimeExtCrystal : Actor
+{
+	Default
+	{
+		//+SHOOTABLE
+		-COUNTKILL
+		+NOBLOOD
+		Health 15;
+		Height 56;
+		+FLOATBOB
+		+ROLLSPRITE
+		+ROLLCENTER
+		+DONTTHRUST
+		+BRIGHT
+		+SOLID
+	}
+	
+	int dmgDone;
+	
+	States
+	{
+		Spawn:
+			BHTC A -1;
+			Loop;
+		Death:
+			BHTC A 0
+			{
+				if(target==null)
+				{
+					return;
+				}
+				let event = TSP_EventHandler(EventHandler.Find("TSP_EventHandler"));
+				if(event)
+				{
+					event.TSPBH_AddTime(30);
+				}
+			}
+			Stop;
+	}
+	
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if(other.player)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		A_SetRoll(BobSin(level.maptime),SPF_INTERPOLATE);
+	}
+	
+	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
+	{
+		/*if(mod!='Melee')
+		{
+			return 0;
+		}*/
+		
+		if(dmgDone<15)
+		{
+			dmgDone += damage;
+			if(dmgDone>=15)
+			{
+				target = source;
+				SetStateLabel("Death");
+			}
+		}
+		return 0;
+		//Console.Printf("FUCK");
+		
+		//return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
+}

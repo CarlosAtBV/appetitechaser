@@ -24,7 +24,7 @@ Extend Class TSP_Weapon_Core
 			{
 				mo = Actor(MonsterFinder.thing);
 				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
-				&& mo.bShootable && !mo.bNoDamage && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)//s
+				&& (mo.bShootable || mo is "TSP_BountyHunters_TimeExtCrystal") && !mo.bNoDamage && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)//s
 				{
 					Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
 					
