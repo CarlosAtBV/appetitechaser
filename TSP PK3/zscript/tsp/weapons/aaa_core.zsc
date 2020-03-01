@@ -386,6 +386,9 @@ Class TSP_Weapon_Core : DoomWeapon
 			flags |= WRF_ALLOWRELOAD;
 		}
 		
+		Weapon curWeapon = player.ReadyWeapon;
+		bool continueWithReady = true;
+		
 		if(invoker.bModFireMode)
 		{
 			switch(invoker.bHoldDownForMod)
@@ -397,6 +400,14 @@ Class TSP_Weapon_Core : DoomWeapon
 						string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
 						A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
 						TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
+						if(invoker.tspw_altmode)
+						{
+							player.SetPSprite(PSP_WEAPON,curWeapon.FindState("Switch"));
+						}
+						else
+						{
+							player.SetPSprite(PSP_WEAPON,curWeapon.FindState("ModSwitch"));
+						}
 					}
 					break;
 				case true:
@@ -431,8 +442,10 @@ Class TSP_Weapon_Core : DoomWeapon
 			A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
 			TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 		}*/
-		
-		A_WeaponReady(flags|WRF_NOSECONDARY);
+		if(continueWithReady)
+		{
+			A_WeaponReady(flags|WRF_NOSECONDARY);
+		}
 	}
 	
 	action state A_TSP_GotoReadyState()

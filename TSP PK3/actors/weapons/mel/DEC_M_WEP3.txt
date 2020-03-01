@@ -68,6 +68,16 @@ ACTOR MelSMG : TSPMelLightWeapon
 		131G C 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
 		"----" A 0 A_TSP_GotoReadyState
 		Loop
+		
+	Switch:
+		131S A 1
+		131S B 2
+		Goto ModReady
+	ModSwitch:
+		131S B 1
+		131S A 2
+		Goto Ready
+	
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("TSPTopFired", 1, "BottomFire")
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
