@@ -402,11 +402,11 @@ Class TSP_Weapon_Core : DoomWeapon
 						TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 						if(invoker.tspw_altmode)
 						{
-							player.SetPSprite(PSP_WEAPON,curWeapon.FindState("Switch"));
+							if(curWeapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("Switch"));
 						}
 						else
 						{
-							player.SetPSprite(PSP_WEAPON,curWeapon.FindState("ModSwitch"));
+							if(curWeapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("ModSwitch"));
 						}
 					}
 					break;
