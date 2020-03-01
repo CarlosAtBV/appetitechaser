@@ -26,6 +26,7 @@ enum ETSPGamemodes
 #include "zscript/tsp/gm_hunters.zsc"
 
 #include "zscript/tsp/weapons/aaa_core.zsc"
+#include "zscript/tsp/weapons/aaa_melee.zsc"
 #include "zscript/tsp/weapons/aaa_mag.zsc"
 #include "zscript/tsp/weapons/aaa_pickup.zsc"
 #include "zscript/tsp/weapons/aaa_fx.zsc"
