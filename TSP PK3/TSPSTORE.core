@@ -97,6 +97,14 @@ page
 			inv_amount 1;
 			price 5;
 		}
+		item
+		{
+			name "Healing Syringe";
+			desc "Using this item will heal you for 25 health points, up to your max health.";
+			inv_class "TSP_HealingSyringe";
+			inv_amount 1;
+			price 50;
+		}
 		header "Shield";
 		item "SU#"
 		{

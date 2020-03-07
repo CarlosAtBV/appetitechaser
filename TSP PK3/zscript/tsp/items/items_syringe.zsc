@@ -11,6 +11,11 @@ Class TSP_HealingSyringe : Inventory
 	
 	override bool Use (bool pickup)
 	{
+		if(Owner.health>=Owner.GetMaxHealth())
+		{
+			Owner.A_Log("You are at max health already dumas",true);
+			return false;
+		}
 		if(activated) return false;
 		activated = true;
 		return false;
