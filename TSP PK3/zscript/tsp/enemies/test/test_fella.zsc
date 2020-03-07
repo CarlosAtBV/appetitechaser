@@ -27,7 +27,7 @@ Class TSP_EnemySound_FollowMyLead : Inventory
 	}
 }
 
-Class TSP_Enemy_TestFella : Actor
+Class TSP_Enemy_TestFella : TSP_EnemyBase
 {
 	Default
 	{
@@ -162,7 +162,7 @@ Class TSP_Enemy_TestFella : Actor
 		LineTrace(angle, 2048, pitch, 0, 32, 0.0, 0.0, traceRes);
 		target = oldtarget;
 		
-		bool yesGood = (target != null && traceRes.HitActor == target);
+		bool yesGood = (target != null && (traceRes.HitActor == target || traceRes.HitActor == null));
 		//Console.Printf((yesGood ? "\ck" : "\ct") .. (target ? target.GetTag() : "Null") .. " vs. " .. (traceRes.HitActor ? traceRes.HitActor.GetTag() : "Null"));
 		
 		return yesGood;
@@ -213,7 +213,7 @@ Class TSP_Enemy_TestFella : Actor
 			{
 				A_FaceTarget(10,10);
 				A_PlaySound("nikki/fire",CHAN_WEAPON);
-				A_CustomBulletAttack(5,5,1,2,"BulletPuff",2048,CBAF_AIMFACING|CBAF_NORANDOM);
+				A_TSP_BulletAttack(5,5,1,2,"BulletPuff",2048,CBAF_AIMFACING|CBAF_NORANDOM);
 			}
 			"----" A 0
 			{

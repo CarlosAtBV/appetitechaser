@@ -1,0 +1,23 @@
+Class TSP_EnemyBase : Actor
+{
+	Default
+	{
+		Monster;
+	}
+	
+	action void A_TSP_BulletAttack(int hspread, int vspread, int numBullets, int bulletDamage, Class<Actor > tracerType = "TSP_HitscanTracer_Enemy", int dist = 2048, int flags = 0)
+	{
+		if(target==null) return;
+		for(int i = 0;i<numBullets;i++)
+		{
+			int tracerAngle = invoker.angle+frandom(-hspread,hspread);
+			int tracerPitch = invoker.pitch+frandom(-vspread,vspread);
+			let tracer = Spawn("TSP_HitscanTracer_Enemy",(invoker.x,invoker.y,invoker.z+32));
+			tracer.SetDamage(bulletDamage);
+			tracer.target = invoker;
+			tracer.angle = tracerAngle;
+			tracer.pitch = -tracerPitch;
+			tracer.vel = ((cos(tracerAngle)*cos(tracerPitch))*TSP_TRACERSPEED, (sin(tracerAngle)*cos(tracerPitch))*TSP_TRACERSPEED, (sin(tracerPitch))*TSP_TRACERSPEED);
+		}
+	}
+}
