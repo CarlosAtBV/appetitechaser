@@ -189,6 +189,12 @@ Extend Class TSP_ShopMenu
 											tokenboy = tokenitup.GoThru();
 											curItem.upgradeType = tokenboy.value.ToInt();
 										}
+										
+										if(tokenboy.value == "consumable")
+										{
+											tokenboy = tokenitup.GoThru();
+											curItem.consumable = true;
+										}
 									}
 									
 									curItem.brokendesc = sm_tinyFont.BreakLines(curItem.desc, 140);

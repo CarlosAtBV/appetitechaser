@@ -33,6 +33,8 @@ Class TSP_ShopItem : TSP_ShopListItem
 	int level;
 	int maxlevel;
 	
+	bool consumable;
+	
 	void updateLevels()
 	{
 		if(upgrade!=null)
@@ -119,6 +121,10 @@ Class TSP_ShopItem : TSP_ShopListItem
 	
 	bool isMax()
 	{
+		if(consumable)
+		{
+			return players[consoleplayer].mo.CountInv(inv_class)==GetDefaultByType(inv_class).MaxAmount;
+		}
 		if(level>=maxlevel&&maxlevel!=-1)
 		{
 			return true;
@@ -160,7 +166,14 @@ Class TSP_ShopItem : TSP_ShopListItem
 		
 		if(isMax())
 		{
-			return false, StringTable.Localize("$TSP_SHOP_MAXAMT");
+			if(consumable)
+			{
+				return false, StringTable.Localize("$TSP_SHOP_MAXCONSUME");
+			}
+			else
+			{
+				return false, StringTable.Localize("$TSP_SHOP_MAXAMT");
+			}
 		}
 		
 		if(player.CountInv("TSP_GlobalDollars")<price+(price_increment*level))
@@ -414,7 +427,12 @@ Class TSP_ShopMenu : GenericMenu
 					}
 					bool dd_canBuy = dd_curItem.canBuy();
 					string dd_name;
-					if(!dd_curItem.isMax()&&dd_curItem.level<dd_curItem.names.Size())
+					
+					if(!dd_curItem.isMax()&&dd_curItem.names.Size()==1)
+					{
+						dd_name = dd_curItem.names[0];
+					}
+					else if(!dd_curItem.isMax()&&dd_curItem.level<dd_curItem.names.Size())
 					{
 						dd_name = dd_curItem.names[dd_curItem.level];
 					}

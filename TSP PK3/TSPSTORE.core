@@ -99,7 +99,9 @@ page
 		}
 		item
 		{
+			consumable;
 			name "Healing Syringe";
+			icon "graphics/store/items/store_item_cheebos.png";
 			desc "Using this item will heal you for 25 health points, up to your max health.";
 			inv_class "TSP_HealingSyringe";
 			inv_amount 1;
