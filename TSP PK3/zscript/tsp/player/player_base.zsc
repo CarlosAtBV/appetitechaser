@@ -191,9 +191,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
-		string damageGiver = (inflictor!=null ? inflictor.GetClassName() : 'N/A');
+		/*string damageGiver = (inflictor!=null ? inflictor.GetClassName() : 'N/A');
 		string damageSource = (source!=null ? source.GetClassName() : 'N/A');
-		Console.Printf(damageSource.."'s "..damageGiver.." dealt "..damage.." damage.");
+		Console.Printf(damageSource.."'s "..damageGiver.." dealt "..damage.." damage.");*/
+		
 		if(FindInventory("TSP_Upgrade_ARC_Tank"))
 		{
 			Console.Printf("hell yea");

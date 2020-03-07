@@ -24,7 +24,7 @@ Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
 	
 	override int SpecialMissileHit (Actor victim)
 	{
-		victim.DamageMobj(self,target,tracerDamage,'Hitscan');
+		if(victim!=target) victim.DamageMobj(self,target,tracerDamage,'Hitscan');
 		return -1;
 	}
 	
