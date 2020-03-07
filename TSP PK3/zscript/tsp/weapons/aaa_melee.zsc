@@ -33,9 +33,8 @@ Extend Class TSP_Weapon_Core
 					double stuntime;
 					// zombieman stun longer
 					// baron stun shorter
-					//stuntime = 24*(40.0/myMaxHealth);
-					//stuntime = max(4,stuntime);
-					stuntime = 0;//4;
+					stuntime = 24*(40.0/myMaxHealth);
+					stuntime = max(4,stuntime);
 					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
@@ -88,7 +87,7 @@ Extend Class TSP_Weapon_Core
 			{
 				//A_PlaySound("flesh/hit",CHAN_WEAPON);
 				//SoundAlert(invoker.owner);
-				A_SetTics(max(2,mMaxHealth/300));
+				A_SetTics(max(2);//,mMaxHealth/300));
 				TSP_ThinkerFreezer freeza = new("TSP_ThinkerFreezer");
 				freeza.timeleft = max(2,mMaxHealth/300)-1;
 			}
