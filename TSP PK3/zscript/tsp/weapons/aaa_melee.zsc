@@ -33,8 +33,9 @@ Extend Class TSP_Weapon_Core
 					double stuntime;
 					// zombieman stun longer
 					// baron stun shorter
-					stuntime = 24*(40.0/myMaxHealth);
-					stuntime = max(4,stuntime);
+					//stuntime = 24*(40.0/myMaxHealth);
+					//stuntime = max(4,stuntime);
+					stuntime = 4;
 					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
