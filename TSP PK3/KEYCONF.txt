@@ -6,6 +6,9 @@ alias BV_Melee "give meleepressed; wait 15; take meleepressed"
 //alias +BV_Melee "use StartMelee" //"give Melee"
 //alias -BV_Melee "use StopMelee" //"give Melee"
 
+defaultbind h BV_SwitchMod
+alias BV_SwitchMod "netevent tsp_switchmod"
+
 defaultbind f BV_Taunt
 alias BV_Taunt "give tauntpressed; wait 15; take tauntpressed"
 
@@ -15,3 +18,4 @@ addkeysection "The Space Pirate Binds" "TSPB"
 addmenukey "Melee" "BV_Melee"
 addmenukey "Quick Switch Melee" "BV_MSwitch"
 addmenukey "Shop Menu" "BV_OpenShop"
+addmenukey "Switch Weapon Mod" "BV_SwitchMod"

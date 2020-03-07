@@ -240,6 +240,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	double tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	double tspw_reloadmult1, tspw_reloadmult2, tspw_reloadmult3;
 	
+	Class<Weapon > tspw_weaponmods[3];
+	
 	property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
 	property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	property AmmoMult : tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
@@ -255,6 +257,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	string tspw_firstpickupline;
 	property FirstPickupLine : tspw_firstpickupline;
+	
+	//Inventory tspw_nextmod; Inventory tspw_prevmod;
 	
 	Default
 	{

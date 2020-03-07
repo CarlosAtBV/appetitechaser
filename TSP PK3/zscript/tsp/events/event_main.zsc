@@ -420,5 +420,41 @@ Class TSP_EventHandler : EventHandler
 				TSP_PlayerPawn_ZSCBase(players[pNumber].mo).gvars.tsp_employer = shopitem[1].ToInt();
 			}
 		}
+		else
+		{
+			if(e.Name == "tsp_switchmod")
+			{
+				PlayerInfo curPlayer = players[e.Player];
+				TSP_Weapon_Core currentWep = TSP_Weapon_Core(curPlayer.ReadyWeapon);
+				if(currentWep == null) return;
+				
+				bool found;
+				int slot;
+				int index;
+				[found, slot, index] = curPlayer.weapons.LocateWeapon(currentWep.GetClass());
+				
+				int indexSearch = index+1;
+				int slotsSearched = 0;
+				if(indexSearch>=curPlayer.weapons.SlotSize(slot))
+				{
+					indexSearch=0;
+				}
+				
+				if(indexSearch == index) return;
+				
+				let potentialWep = curPlayer.weapons.GetWeapon(slot, indexSearch);
+				curPlayer.mo.GiveInventory(potentialWep,1);
+				
+				TSP_Weapon_Core newWep = TSP_Weapon_Core(curPlayer.mo.FindInventory(potentialWep));
+				
+				if(newWep == null) return;
+				
+				newWep.tspw_powerlevel = currentWep.tspw_powerlevel;
+				newWep.tspw_ammolevel = currentWep.tspw_ammolevel;
+				newWep.tspw_reloadlevel = currentWep.tspw_reloadlevel;
+				curPlayer.mo.A_SelectWeapon(potentialWep);
+				curPlayer.mo.TakeInventory(currentWep.GetClass(),1);
+			}
+		}
 	}
 }
