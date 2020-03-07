@@ -16,3 +16,14 @@ Class TSP_HitscanTracer : FastProjectile
 			Stop;
 	}
 }
+
+
+Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
+{
+	States
+	{
+		XDeath:
+			TNT1 A 15 A_PlaySound("hit/flesh");
+			Stop;
+	}
+}

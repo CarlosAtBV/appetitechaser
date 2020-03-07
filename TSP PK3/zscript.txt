@@ -9,6 +9,63 @@ enum ETSPGamemodes
 	TSP_GM_TRAINING = 2,
 };
 
+Class TSP_BulletPuff : BulletPuff// replaces BulletPuff
+{
+	Default
+	{
+		+PUFFONACTORS
+	}
+	States
+	{
+		XDeath:
+			TNT1 A 0 A_PlaySound("hit/flesh");
+			Stop;
+	}
+}
+
+Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
+{
+	const TSP_TRACERSPEED = 40;
+	Default
+	{
+		DamageType "TSP_NoDamage";
+		+ALWAYSPUFF
+		+PUFFONACTORS
+		+THRUACTORS
+		+PUFFGETSOWNER
+		+ALLOWTHRUFLAGS
+	}
+	States
+	{
+		Spawn:
+		Melee:
+		Death:
+		XDeath:	
+		Death.Sky:
+		Bounce.Wall:
+			TNT1 A 0;
+			TNT1 A 0
+			{
+				int srcx = target.x;//+(cos(target.angle));
+				int srcy = target.y;//+(sin(target.angle));
+				int srcz = target.z+32;
+				int dist = Vec2To(target).Length();
+				
+				int angler = atan2(y-srcy,x-srcx);
+				int pitcher = atan2(z-srcz,dist);
+				
+				let tracer = Spawn("TSP_HitscanTracer_Enemy",(srcx,srcy,srcz));
+				//tracer.A_SetSize(4,8);
+				tracer.SetDamage(4*random(1,3));
+				tracer.target = target;
+				tracer.angle = angler;
+				tracer.pitch = -pitcher;
+				tracer.vel = ((cos(angler)*cos(pitcher))*TSP_TRACERSPEED, (sin(angler)*cos(pitcher))*TSP_TRACERSPEED, (sin(pitcher))*TSP_TRACERSPEED);
+			}
+			Stop;
+	}
+}
+
 #include "zscript/tsp/misc/misc_tokenizer.zsc"
 
 #include "zscript/tsp/items_gbd.zsc"

@@ -108,7 +108,7 @@ ACTOR MelPistol : TSPMelLightWeapon
 		TNT1 A 0 A_Light2
 		121F B 1 BRIGHT
 		{
-			A_TSP_FireBullets(3,2,-1,8,"BulletPuff",1);
+			A_TSP_FireBullets(3,2,-1,8,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
 		}
 		121F C 1 BRIGHT A_Light1
@@ -136,7 +136,7 @@ ACTOR MelPistol : TSPMelLightWeapon
 		TNT1 A 0 A_Light2
 		121I A 1 BRIGHT
 		{
-			A_TSP_FireBullets(1,1,-1,8,"BulletPuff",1);
+			A_TSP_FireBullets(1,1,-1,8,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
 		}
 		121I B 1 BRIGHT A_Light1

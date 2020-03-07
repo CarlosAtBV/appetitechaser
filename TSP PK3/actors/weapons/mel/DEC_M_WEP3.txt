@@ -85,7 +85,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0
 		{
-			A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1);
+			A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
 			A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 			A_GunFlash("Flash");
@@ -128,7 +128,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TNT1 A 0 A_AlertMonsters
 		TNT1 A 0
 		{
-			A_TSP_FireBullets(2,4,-1,7,"BulletPuff",1,0,"TSP_HitscanTracer",-4);
+			A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1,0,"TSP_HitscanTracer",-4);
 			A_TSP_TakeClip(1);
 			A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 			A_GunFlash("AltFlash");
@@ -149,7 +149,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 			A_PlaySound("suzuka/firea", 6);
 			A_AlertMonsters;
 			A_Quake(2,3,0,5,"");
-			A_TSP_FireBullets(6,0,8,7,"BulletPuff",1,0,"",-2);
+			A_TSP_FireBullets(6,0,8,7,"TSP_BulletPuff",1,0,"",-2);
 			A_TSP_TakeClip(8);
 			A_SetPitch(pitch - 2.5);
 			A_SetAngle(angle + (frandom(-0.5,0.5)));

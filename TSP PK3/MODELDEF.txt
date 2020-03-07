@@ -26,3 +26,14 @@ Model TSP_HitscanTracer
 	
 	FrameIndex POSS A 0 0
 }
+
+Model TSP_HitscanTracer_Enemy
+{
+	Path "models/tsp/" 
+	MODEL 0 "tracer.obj"
+	USEACTORPITCH
+	AngleOffset -90
+	Scale 4.0 1.0 1.0
+	
+	FrameIndex POSS A 0 0
+}

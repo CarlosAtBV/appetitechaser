@@ -330,3 +330,8 @@ DoomEdNums
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
 }
+
+DamageType TSP_NoDamage
+{
+	factor = 0
+}
