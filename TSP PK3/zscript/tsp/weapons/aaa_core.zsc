@@ -227,6 +227,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	flagdef ModFireMode: tspw_weaponflags, 0;
 	flagdef HoldDownForMod: tspw_weaponflags, 1;
 	flagdef ModFireZooms: tspw_weaponflags, 2;
+	flagdef NoModSwitch: tspw_weaponflags, 4;
 	property ModTag : tspw_altname;
 
 	int tspw_powerlevel;

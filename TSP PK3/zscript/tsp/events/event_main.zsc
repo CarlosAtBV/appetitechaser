@@ -427,6 +427,7 @@ Class TSP_EventHandler : EventHandler
 				PlayerInfo curPlayer = players[e.Player];
 				TSP_Weapon_Core currentWep = TSP_Weapon_Core(curPlayer.ReadyWeapon);
 				if(currentWep == null) return;
+				if(currentWep.bNoModSwitch) return;
 				
 				bool found;
 				int slot;
