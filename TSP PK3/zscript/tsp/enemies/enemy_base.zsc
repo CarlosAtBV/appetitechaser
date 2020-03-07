@@ -11,7 +11,7 @@ Class TSP_EnemyBase : Actor
 		for(int i = 0;i<numBullets;i++)
 		{
 			int tracerAngle = invoker.angle+frandom(-hspread,hspread);
-			int tracerPitch = invoker.pitch+frandom(-vspread,vspread);
+			int tracerPitch = -invoker.pitch+frandom(-vspread,vspread);
 			let tracer = Spawn("TSP_HitscanTracer_Enemy",(invoker.x,invoker.y,invoker.z+32));
 			tracer.SetDamage(bulletDamage);
 			tracer.target = invoker;
