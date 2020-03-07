@@ -92,7 +92,7 @@ episode TEST
 // BOUNTY HUNTERS
 /////////////////
 
-map TSP_BH01 "Neoscape - Brawl Zone"
+map TSP_BH01 "Neoscape - Battle Zone"
 {
     //sky1 = "SPACE", -0.1
 	music = "TSPBH_01"
@@ -101,7 +101,7 @@ map TSP_BH01 "Neoscape - Brawl Zone"
 
 episode TSP_BH01
 {
-	name = "TSPBH:BrawlZone"
+	name = "TSPBH:BattleZone"
 	noskillmenu
 }
 
