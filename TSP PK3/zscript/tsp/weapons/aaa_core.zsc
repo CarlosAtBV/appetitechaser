@@ -4,7 +4,7 @@ Class TSP_ThinkerFreezer : Thinker
 	
 	override void PostBeginPlay()
 	{
-		level.frozen = true;
+		//level.frozen = true;
 	}
 	
 	override void Tick(void)
@@ -15,7 +15,7 @@ Class TSP_ThinkerFreezer : Thinker
 		}
 		else
 		{
-			level.frozen = false;
+			//level.frozen = false;
 			Destroy();
 		}
 
