@@ -297,7 +297,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		{
 			return FindState('ModOff');
 		}
-		return FindState('Select');
+		return FindState('Deselect');
 	}
 	
 	override State GetReadyState ()

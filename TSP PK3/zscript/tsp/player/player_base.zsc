@@ -289,6 +289,22 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Vector2 pp_combinedRecoil;
 	Vector2 pp_lastRecoil;
 	
+	override Weapon PickNextWeapon()
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickNextWeapon();
+	}
+	override Weapon PickPrevWeapon()
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickPrevWeapon();
+	}
+	override Weapon PickWeapon(int slot, bool checkammo)
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickWeapon(slot,checkammo);
+	}
+	
 	override void Tick ()
 	{
 		oldVelZ = vel.z;
