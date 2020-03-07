@@ -20,6 +20,14 @@ Class TSP_HitscanTracer : FastProjectile
 
 Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
 {
+	int tracerDamage;
+	
+	override int SpecialMissileHit (Actor victim)
+	{
+		victim.DamageMobj(self,target,tracerDamage,'Hitscan');
+		return -1;
+	}
+	
 	States
 	{
 		XDeath:

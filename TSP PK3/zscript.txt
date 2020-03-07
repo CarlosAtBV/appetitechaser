@@ -55,9 +55,10 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 				int angler = atan2(y-srcy,x-srcx);
 				int pitcher = atan2(z-srcz,dist);
 				
-				let tracer = Spawn("TSP_HitscanTracer_Enemy",(srcx,srcy,srcz));
+				let tracer = TSP_HitscanTracer_Enemy(Spawn("TSP_HitscanTracer_Enemy",(srcx,srcy,srcz)));
 				//tracer.A_SetSize(4,8);
-				tracer.SetDamage(4*random(1,3));
+				//tracer.SetDamage(4*random(1,3));
+				tracer.tracerDamage = 4*random(1,3);
 				tracer.target = target;
 				tracer.angle = angler;
 				tracer.pitch = -pitcher;
