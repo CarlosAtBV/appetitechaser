@@ -1,0 +1,37 @@
+Class TSP_HealingSyringe : Inventory
+{
+	bool activated;
+	int usedUpHealth;
+	
+	Default
+	{
+		Inventory.MaxAmount 5;
+		+Inventory.INVBAR
+	}
+	
+	override bool Use (bool pickup)
+	{
+		if(activated) return false;
+		activated = true;
+		return false;
+	}
+	override void DoEffect ()
+	{
+		if (Owner == NULL || Owner.player == NULL)
+		{
+			return;
+		}
+
+		if(activated && level.maptime%2==0)
+		{
+			Owner.GiveInventory("HealthBonus",1);
+			usedUpHealth++;
+			if(usedUpHealth>=25)
+			{
+				activated = false;
+				usedUpHealth = 0;
+				Owner.TakeInventory("TSP_HealingSyringe",1);
+			}
+		}
+	}
+}
