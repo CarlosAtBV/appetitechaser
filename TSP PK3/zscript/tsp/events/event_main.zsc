@@ -454,7 +454,9 @@ Class TSP_EventHandler : EventHandler
 				newWep.tspw_ammolevel = currentWep.tspw_ammolevel;
 				newWep.tspw_reloadlevel = currentWep.tspw_reloadlevel;
 				curPlayer.mo.A_SelectWeapon(potentialWep);
-				curPlayer.mo.TakeInventory(currentWep.GetClass(),1);
+				Console.Printf("Switching to "..newWep.GetClassName());
+				//curPlayer.mo.TakeInventory(currentWep.GetClass(),1);
+				TSP_PlayerPawn_ZSCBase(curPlayer.mo).pp_switchingmod = true;
 			}
 		}
 	}

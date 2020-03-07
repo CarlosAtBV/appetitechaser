@@ -282,6 +282,24 @@ Class TSP_Weapon_Core : DoomWeapon
 		return clipcap;
 	}
 	
+	override State GetUpState ()
+	{
+		if(TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod && FindState('ModOn'))
+		{
+			TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod = false;
+			return FindState('ModOn');
+		}
+		return FindState('Select');
+	}
+	override State GetDownState ()
+	{
+		if(TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod && FindState('ModOff'))
+		{
+			return FindState('ModOff');
+		}
+		return FindState('Select');
+	}
+	
 	override State GetReadyState ()
 	{
 		if(tspw_altmode)
@@ -290,6 +308,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 		return FindState('Ready');
 	}
+	
 	override State GetAtkState (bool hold)
 	{
 		State s = null;

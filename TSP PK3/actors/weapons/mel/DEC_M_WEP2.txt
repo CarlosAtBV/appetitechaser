@@ -59,6 +59,25 @@ ACTOR MelPistol : TSPMelLightWeapon
 		121G A 1
 		121G A 1 A_Raise
 		Loop
+	ModOff:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		121G A 1
+		122V E 1
+		122U ABCDDEEFFGGHH 1
+		122U III 1 A_PlaySound("nikki/upgraderemove", 6)
+		122U JKKLLLMNOP 1
+		122U Q 10
+		"----" A 0 A_Lower(128)
+		Stop
+	ModOn:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		122U PONML 1
+		122U K 1 A_PlaySound("nikki/upgradespitfire", 5)
+		122U JIIIIHH 1
+		122U GFEDDD 1
+		122U CB 1
+		122G A 1 A_Raise
+		Goto Ready
 	Deselect:
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 		TNT1 A 0 A_TakeInventory("MagPushToken", 99)

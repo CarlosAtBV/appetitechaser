@@ -32,6 +32,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Property DisplayDescription : pp_menuDesc;
 	Property DisplayTitle : pp_menuTitle;
 	
+	bool pp_switchingmod;
+	
 	int pp_playerpresflags;
 	//flagdef ModFireMode: pp_playerpresflags, 0;
 	flagdef BountyHuntersOnly: pp_playerpresflags, 1;

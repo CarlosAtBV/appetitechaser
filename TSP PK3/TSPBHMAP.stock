@@ -1,0 +1,17 @@
+addmap TSP_BH01
+{
+	name = "Neoscape - Brawl Zone";
+	desc = "This is the map";
+}
+
+addmap TSP_BH02
+{
+	name = "Elegia - Red Hot Research";
+	desc = "This is the lava";
+}
+
+addmap MAP32
+{
+	name = "Elegia - Red Hot Research";
+	desc = "GUTEN TAG";
+}
