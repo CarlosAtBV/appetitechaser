@@ -259,6 +259,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	string tspw_firstpickupline;
 	property FirstPickupLine : tspw_firstpickupline;
 	
+	Weapon tsp_desiredModSwitch;
+	
 	//Inventory tspw_nextmod; Inventory tspw_prevmod;
 	
 	Default
@@ -583,4 +585,22 @@ Class TSP_Weapon_Core : DoomWeapon
 				amt--;
 			}
 		}
+
+	States
+	{
+		WaitForModSwitch:
+			"----" A 1
+			{
+				let pOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
+				if(pOwner.pp_moddelay>0)
+				{
+					pOwner.pp_moddelay--;
+				}
+				else
+				{
+					A_Lower(200);
+				}
+			}
+			Loop;
+	}
 }

@@ -1,0 +1,66 @@
+Extend Class TSP_PlayerPawn_ZSCBase
+{
+	bool pp_switchingmod;
+	TSP_Weapon_Core pp_nextModSwitch;
+	int pp_moddelay;
+	
+	override Weapon PickNextWeapon()
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickNextWeapon();
+	}
+	override Weapon PickPrevWeapon()
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickPrevWeapon();
+	}
+	override Weapon PickWeapon(int slot, bool checkammo)
+	{
+		if(pp_switchingmod) return player.ReadyWeapon;
+		return super.PickWeapon(slot,checkammo);
+	}
+	
+	void TSP_CycleModNext()
+	{
+		TSP_Weapon_Core currentWep = TSP_Weapon_Core(player.ReadyWeapon);
+		if(currentWep == null) return;
+		if(currentWep.bNoModSwitch) return;
+		
+		bool found;
+		int slot;
+		int index;
+		if(pp_nextModSwitch!=null)
+		{
+			[found, slot, index] = player.weapons.LocateWeapon(pp_nextModSwitch.GetClass());
+		}
+		else
+		{
+			[found, slot, index] = player.weapons.LocateWeapon(currentWep.GetClass());
+		}
+		
+		int indexSearch = index+1;
+		int slotsSearched = 0;
+		if(indexSearch>=player.weapons.SlotSize(slot))
+		{
+			indexSearch=0;
+		}
+		
+		if(indexSearch == index) return;
+		
+		let potentialWep = player.weapons.GetWeapon(slot, indexSearch);
+		GiveInventory(potentialWep,1);
+		
+		pp_nextModSwitch = TSP_Weapon_Core(FindInventory(potentialWep));
+		
+		pp_moddelay = 12;
+		
+		//if(pp_nextModSwitch == null) return;
+		
+		pp_nextModSwitch.tspw_powerlevel = currentWep.tspw_powerlevel;
+		pp_nextModSwitch.tspw_ammolevel = currentWep.tspw_ammolevel;
+		pp_nextModSwitch.tspw_reloadlevel = currentWep.tspw_reloadlevel;
+		A_SelectWeapon(potentialWep);
+		Console.Printf("Switching to "..pp_nextModSwitch.GetTag());
+		pp_switchingmod = true;
+	}
+}
