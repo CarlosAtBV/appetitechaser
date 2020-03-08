@@ -42,7 +42,7 @@ Extend Class TSP_Weapon_Core
 					//stuntime = max(4,stuntime);
 					stuntime = baseHitlag;//mDamage * HITLAG_MULT + HITLAG_BASE;
 					
-					if(!(flags & TSPM_SUPERFREEZE))
+					if(!(flags & TSPM_SUPERFREEZE) && mo.CountInv("TSP_EnemyHandler_IsSupered")==0)
 					{
 						TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
 						handlerFreezer.owner = mo;
