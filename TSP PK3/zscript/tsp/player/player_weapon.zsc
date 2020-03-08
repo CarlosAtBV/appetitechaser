@@ -4,6 +4,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	TSP_Weapon_Core pp_nextModSwitch;
 	int pp_moddelay;
 	
+	double pp_punchWarp;
+	
 	override Weapon PickNextWeapon()
 	{
 		if(pp_switchingmod) return player.ReadyWeapon;
@@ -62,5 +64,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		A_SelectWeapon(potentialWep);
 		Console.Printf("Switching to "..pp_nextModSwitch.GetTag());
 		pp_switchingmod = true;
+	}
+	
+	override void CheckFOV()
+	{
+		super.CheckFOV();
+		
+		player.FOV = player.FOV + pp_punchWarp;
+		pp_punchWarp = pp_punchWarp + (0 - pp_punchWarp)/5;
 	}
 }

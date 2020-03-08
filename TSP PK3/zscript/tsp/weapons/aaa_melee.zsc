@@ -88,6 +88,7 @@ Extend Class TSP_Weapon_Core
 				//A_PlaySound("flesh/hit",CHAN_WEAPON);
 				//SoundAlert(invoker.owner);
 				A_SetTics(max(2,mMaxHealth/300));
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp = mDamage/10.0;
 				TSP_ThinkerFreezer freeza = new("TSP_ThinkerFreezer");
 				freeza.timeleft = max(2,mMaxHealth/300)-1;
 			}
