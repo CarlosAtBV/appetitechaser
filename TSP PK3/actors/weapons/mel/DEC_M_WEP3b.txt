@@ -57,8 +57,8 @@ ACTOR MelSMGB : MelSMG
 				A_TSP_TakeClip(2);
 				//A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 				A_GunFlash("Flash");
-				A_SetPitch(pitch - 0.8);//0.6, SPF_INTERPOLATE);
-				A_SetAngle(angle + (frandom(-0.1,0.3)));
+				//A_SetPitch(pitch - 0.8);//0.6, SPF_INTERPOLATE);
+				//A_SetAngle(angle + (frandom(-0.1,0.3)));
 				A_TSP_WeaponRecoilDir(45+random(-5,5),frandom(12,16));
 			}
 			133G E 1 BRIGHT A_Light2
@@ -81,6 +81,8 @@ ACTOR TSP_Projectile_Nail
 	Speed 45
 	Radius 4
 	Height 8
+	/*-NOGRAVITY
+	Gravity 0.5*/
 	States
 	{
 		Spawn:
