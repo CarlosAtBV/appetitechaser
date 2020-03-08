@@ -150,7 +150,7 @@ suzuka/fireb02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb02.ogg"
 suzuka/fireb03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb03.ogg"
 $volume suzuka/fireb 0.6
 
-suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb01.ogg"
+suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec01.ogg"
 suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
 suzuka/load "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload02.ogg"
 suzuka/rcock "sounds/weapons/Mel/Suzuka/sfx_suzuka_cock.ogg"
