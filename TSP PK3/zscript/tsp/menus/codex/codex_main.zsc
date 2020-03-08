@@ -1,0 +1,87 @@
+Class TSP_CodexEntry
+{
+	string title;
+	string id;
+	string text;
+}
+
+Class TSP_CodexMenu : GenericMenu
+{
+	void parseCodexLumps ()
+	{	
+		for(int file = -1; (file = Wads.FindLump("TSPCODEX", file + 1)) != -1;)
+		{
+			parseThisLump(file);
+		}
+	}
+	
+	const MAXITERATIONS = 9001;
+	
+	Array<TSP_CodexEntry > codexEntries;
+	
+	bool parse_stayIn(TSP_Token token,int net)
+	{
+		return (token.type!=TSPT_EOF && token.type!=TSPT_BraceC && net<MAXITERATIONS);
+	}
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		
+		parseCodexLumps();
+	}
+	
+	void parseThisLump(int file)
+	{
+		Console.Printf("Processing new store lump");
+		let lumpy = Wads.ReadLump(file);
+		
+		//Console.Printf(""..lumpy);
+		TSP_Tokenizer tokenitup = TSP_Tokenizer.Create(lumpy);
+		TSP_Token tokenboy = tokenitup.GoThru();
+		TSP_CodexEntry curPage;
+		
+		int safetyNet = 0;
+		int i;
+		while(tokenboy.type!=TSPT_EOF&&safetyNet<MAXITERATIONS)
+		{
+			if(tokenboy.type == TSPT_BraceC)
+			{
+				if(curPage!=null)
+				{
+					codexEntries.Push(curPage);
+					curPage = null;
+				}
+			}
+			if(tokenboy.type == TSPT_Identifier)
+			{
+				if(curPage!=null)
+				{
+					if(tokenboy.value == "title")
+					{
+						tokenboy = tokenitup.GoThru();
+						curPage.title = tokenboy.value;
+					}
+				}
+				else if(tokenboy.value == "entry")
+				{
+					curPage = new("TSP_CodexEntry");
+					curPage.title = "???";
+					curPage.text = "N/A";
+				}
+			}
+			tokenboy = tokenitup.GoThru();
+			safetyNet++;
+		}
+	}
+	
+	override void Drawer () 
+	{
+		super.Drawer();
+		
+		for(int i = 0;i<codexEntries.Size();i++)
+		{
+			screen.DrawText(SmallFont, Font.CR_WHITE, 4, 4*i, codexEntries[i].title, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		}
+	}
+}

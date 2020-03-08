@@ -14,7 +14,7 @@ LISTMENU "MainMenu"
 		
 	TSP_MenuItem_PatchItem "SPMENU1",  "n",	"TSP_GameModeMenu"
 	TSP_MenuItem_PatchItem "SPMENU2",	     "o",	"TSP_OptionsMenu"
-	TSP_MenuItem_PatchItem "SPMENU3",         "h",   "ReadThisMenu"
+	TSP_MenuItem_PatchItem "SPMENU3",         "h",   "TSP_CodexMenu"
 	TSP_MenuItem_PatchItem "SPMENU4",         "l",	"LoadGameMenu"
 	TSP_MenuItem_PatchItem "SPMENU5",         "s",	"SaveGameMenu"
 	TSP_MenuItem_PatchItem "SPMENU6",	 "q",	"QuitMenu"

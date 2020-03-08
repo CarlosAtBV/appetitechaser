@@ -317,12 +317,20 @@ Class TSP_EventHandler : EventHandler
 			}
 		}
 		
-		if(Menu.GetCurrentMenu() is "TSP_ShopMenu" && !tsp_shopmusic)
+		if(Menu.GetCurrentMenu()!=null && !tsp_shopmusic)
 		{
-			S_ChangeMusic("music/TSP_INT.ogg");
-			tsp_shopmusic = true;
+			if(Menu.GetCurrentMenu() is "TSP_ShopMenu")
+			{
+				S_ChangeMusic("music/TSP_INT.ogg");
+				tsp_shopmusic = true;
+			}
+			else if (Menu.GetCurrentMenu() is "TSP_CodexMenu")
+			{
+				S_ChangeMusic("music/TSP_CDEX.ogg");
+				tsp_shopmusic = true;
+			}
 		}
-		else if(!(Menu.GetCurrentMenu() is "TSP_ShopMenu") && tsp_shopmusic)
+		else if(Menu.GetCurrentMenu()==null && tsp_shopmusic)
 		{
 			S_ChangeMusic("*");
 			tsp_shopmusic = false;
