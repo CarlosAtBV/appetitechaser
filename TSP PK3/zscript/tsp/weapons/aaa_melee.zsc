@@ -16,7 +16,7 @@ Extend Class TSP_Weapon_Core
 			int baseHitlag = HITLAG_BASE+baseAddon;
 			//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
 			//ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
-			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self,256,0);
+			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self,512,0);
 			
 			Actor mo;
 			
@@ -42,9 +42,12 @@ Extend Class TSP_Weapon_Core
 					//stuntime = max(4,stuntime);
 					stuntime = baseHitlag;//mDamage * HITLAG_MULT + HITLAG_BASE;
 					
-					TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
-					handlerFreezer.owner = mo;
-					handlerFreezer.timeleft = stuntime+2;
+					if(!(flags & TSPM_SUPERFREEZE))
+					{
+						TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
+						handlerFreezer.owner = mo;
+						handlerFreezer.timeleft = stuntime+2;
+					}
 					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
@@ -91,6 +94,12 @@ Extend Class TSP_Weapon_Core
 					}*/
 					mMaxHealth += mo.GetSpawnHealth();
 					hashit=true;
+				}
+				else if (mo!=invoker.owner && mo.bIsMonster && mo.Health>0)
+				{
+					TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
+					handlerFreezer.owner = mo;
+					handlerFreezer.timeleft = baseHitlag+2;
 				}
 			}
 			if(hashit)
