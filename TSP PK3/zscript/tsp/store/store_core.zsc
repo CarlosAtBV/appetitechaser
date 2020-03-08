@@ -187,6 +187,10 @@ Class TSP_ShopItem : TSP_ShopListItem
 			{
 				return false, StringTable.Localize("$TSP_SHOP_CANTINV");
 			}
+			else if(player.pp_haveTheseWeapons.Find(mod_take)==player.pp_haveTheseWeapons.Size())
+			{
+				return false, StringTable.Localize("$TSP_SHOP_NEEDWEP");
+			}
 		}
 		
 		return true, "";

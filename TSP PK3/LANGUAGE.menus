@@ -9,6 +9,7 @@ TSP_SHOP_NOMONEY = "Insufficient Funds";
 TSP_SHOP_MAXAMT = "Maximum Tier Reached";
 TSP_SHOP_MODSEL = "Weapon Already Modded";
 TSP_SHOP_MAXCONSUME = "Maximum Limit Reached";
+TSP_SHOP_NEEDWEP = "Weapon Unavailable";
 
 ////////////
 // MAP NAMES
