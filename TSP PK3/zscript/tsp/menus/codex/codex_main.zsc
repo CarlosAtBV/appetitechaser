@@ -62,6 +62,11 @@ Class TSP_CodexMenu : GenericMenu
 						tokenboy = tokenitup.GoThru();
 						curPage.title = tokenboy.value;
 					}
+					else if(tokenboy.value == "text")
+					{
+						tokenboy = tokenitup.GoThru();
+						curPage.text = tokenboy.value;
+					}
 				}
 				else if(tokenboy.value == "entry")
 				{
@@ -79,9 +84,13 @@ Class TSP_CodexMenu : GenericMenu
 	{
 		super.Drawer();
 		
+		int yPos = 4;
 		for(int i = 0;i<codexEntries.Size();i++)
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, 4, 4*i, codexEntries[i].title, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			screen.DrawText(SmallFont, Font.CR_WHITE, 4, yPos, codexEntries[i].title, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			yPos += 8;
+			screen.DrawText(SmallFont, Font.CR_WHITE, 4, yPos, codexEntries[i].text, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			yPos += 8;
 		}
 	}
 }

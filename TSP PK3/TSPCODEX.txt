@@ -15,12 +15,12 @@ entry
 	title "GRAVE OF THE DRAGON";
 	text "[RECOVERED LOG - ED 02/14/2245]
 I was in love with you once.
- 
+
 Maybe that makes what happened between us bittersweet. When you asked me for help, I didn’t see another client, I saw a dear friend, someone who I had come to admire. That teary desperation in your eyes...I couldn’t say no to you, even though I really should have.
- 
+
 All those years sailing with you was like a dream. It was obvious that we were extremely compatible partners, and you know me. I don’t like to work with anyone. Somewhere in the middle of all this, it became clear to me that it was less about the work and more about spending time with you. We stopped taking those shady jobs, we started to take more time to visit places we had never been before, and thanks to you, I got a glimpse of the life I could’ve had if things were different.
- 
+
 It wasn’t the life for me.
- 
+
 After our last job, the bounty from the guild doubled, I’m sure you knew. It wasn’t just about the money Mel. It was about going back to the way things should have always been for me. I know that when our paths cross again, it’ll be as enemies. Don’t hesitate to pull the trigger. I won’t.";
 }
