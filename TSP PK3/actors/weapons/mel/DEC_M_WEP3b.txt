@@ -4,6 +4,7 @@ ACTOR MelSMGB : MelSMG
 {
 	TSP_Weapon_Core.ModTag "Nailgun" 
 	+WEAPON.CHEATNOTWEAPON
+	Weapon.AmmoUse2 2
 	
 	States
 	{
@@ -28,15 +29,17 @@ ACTOR MelSMGB : MelSMG
 		ModReady:
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait")
-			133G A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
+			133G C 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD)
 			"####" A 0 A_TSP_GotoReadyState
 			Loop
 			
 		Switch:
-			"----" A 5
+			133S A 1
+			133S B 2
 			Goto ModReady
 		ModSwitch:
-			"----" A 5
+			133S B 1
+			133S A 2
 			Goto Ready
 		
 		Fire:
@@ -59,15 +62,20 @@ ACTOR MelSMGB : MelSMG
 					A_TSP_FireBullets(0,0,-1,7,"TSP_BulletPuff",1,2048,"TSP_Projectile_Nail",0,-1);
 					A_GiveInventory("TSP_SMGNailSwitch",1);
 				}
-				A_TSP_TakeClip(1);
-				A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
+				A_TSP_TakeClip(2);
+				//A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 				A_GunFlash("Flash");
-				A_SetPitch(pitch - 0.4);
+				A_SetPitch(pitch - 0.6, SPF_INTERPOLATE);
 				A_SetAngle(angle + (frandom(-0.1,0.3)));
+				A_TSP_WeaponRecoilDir(45+random(-5,5),frandom(12,16));
 			}
-			133G B 1 BRIGHT A_Light2
-			133G B 1
-			133G A 3
+			133G E 1 BRIGHT A_Light2
+			133G E 1
+			{
+				A_TSP_WeaponRecoilDir(45,frandom(12,16));
+				A_SetPitch(pitch - 0.4, SPF_INTERPOLATE);
+			}
+			133G C 3
 			TNT1 A 0 A_Refire("ModFire")
 			"----" A 0 A_TSP_GotoReadyState
 			Goto Ready
