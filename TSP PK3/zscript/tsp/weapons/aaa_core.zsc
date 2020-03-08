@@ -292,7 +292,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.PowerMult 1.5, 1.75, 2.0;
 		TSP_Weapon_Core.AmmoMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
-		+INVENTORY.UNTOSSABLE
+		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
+		TSP_Weapon_Core.ModTag "Default";
 	}
 	
 	int GetClipCapacity()
