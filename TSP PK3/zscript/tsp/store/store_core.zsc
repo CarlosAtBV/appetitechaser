@@ -183,9 +183,9 @@ Class TSP_ShopItem : TSP_ShopListItem
 		
 		if(mod_take!=null&&mod_give!=null)
 		{
-			if(player.CountInv(mod_give)!=0||player.CountInv(mod_take)!=1)
+			if(player.CountInv(mod_give)!=0)
 			{
-				return false, StringTable.Localize("$TSP_SHOP_MODSEL");
+				return false, StringTable.Localize("$TSP_SHOP_CANTINV");
 			}
 		}
 		
