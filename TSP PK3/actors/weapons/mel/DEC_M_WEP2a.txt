@@ -36,6 +36,17 @@ ACTOR MelPistolA : MelPistol
 		122V FG 1
 		122G A 1 A_Raise
 		Goto Ready
+	ModOff:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		121G A 1
+		122V G 1
+		122V GFEDDCCBBAA 1
+		122U ZZ 1
+		122U YYY 1 A_PlaySound("nikki/upgraderemove", 6)
+		122U XWWVVVUTSR 1
+		122U Q 0//122U Q 10
+		"----" A 0 A_Jump(256,"WaitForModSwitch") //has 2 be a jump :pensive:
+		Stop
 	/*UpgradeSwap:
 		TNT1 A 0 A_WeaponOffset(0,32)
 		121G A 1

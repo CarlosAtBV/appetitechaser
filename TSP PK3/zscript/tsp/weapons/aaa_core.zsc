@@ -647,7 +647,14 @@ Class TSP_Weapon_Core : DoomWeapon
 				}
 				else
 				{
-					A_Lower(200);
+					let oldWeapon = invoker.owner.player.ReadyWeapon;
+					//Console.Printf("Switching to "..invoker.owner.player.PendingWeapon.GetTag());
+					player.mo.BringUpWeapon();
+					//Console.Printf("Switched to "..invoker.owner.player.ReadyWeapon.GetTag());
+					if(oldWeapon!=null && oldWeapon!=player.ReadyWeapon)
+					{
+						player.mo.A_TakeInventory(oldWeapon.GetClass(),1);
+					}
 				}
 			}
 			Loop;
