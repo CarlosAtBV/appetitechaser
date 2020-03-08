@@ -57,6 +57,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	double swayX, swayY;
 	Vector2 tsp_bobRecoil;
+	Vector2 tsp_shakeashakeashakea;
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
@@ -163,6 +164,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			r.Y = r.Y+clamp(swayY,-4,44)+tsp_bobRecoil.y;
 			if (i == 0) p1 = r; else p2 = r;
 		}
-		return p1 * (1. - ticfrac) + p2 * ticfrac;
+		
+		if(pp_hitFreeze>0)
+		{
+			tsp_shakeashakeashakea.x = 1.0-2.0*(ticFrac>=0.5);
+		}
+		return p1 * (1. - ticfrac) + p2 * ticfrac + tsp_shakeashakeashakea;
 	}
 }

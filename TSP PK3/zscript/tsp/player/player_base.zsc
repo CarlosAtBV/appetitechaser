@@ -1,5 +1,7 @@
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
+	int pp_hitFreeze;
+	
 	bool ptp_wallJump;
 	bool ptp_wallJumpReadySound;
 	
@@ -280,6 +282,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	}
 	
 	Vector3 pp_sit_oldPos;
+	Vector3 pp_hitVel;
 	
 	// Weapon Recoil
 	Vector2 pp_weaponRecoil;
@@ -297,13 +300,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			return;
 		}
 		
-		if(pp_freezeMe>0)
+		if(pp_hitFreeze>0)
 		{
-			pp_freezeMe--;
-			bNoGravity = true;
+			pp_hitFreeze--;// pp_freezeMe--;
+			vel = (0,0,0);
+			if(pp_hitFreeze==0)
+			{
+				vel = pp_hitVel;
+			}
 		}
 		bNoDamage = (pp_freezeMe>0);
 		bDontThrust = (pp_freezeMe>0);
+		bNoGravity = (pp_freezeMe>0);
 		
 		Super.Tick();
 		
