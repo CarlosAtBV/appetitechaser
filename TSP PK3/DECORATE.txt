@@ -11,6 +11,13 @@ ACTOR Nothing6 : TSP_Nothing replaces BFG9000 {}
 
 ///////////////////////////////////////////////////////
 
+ACTOR TSP_Boolean : Inventory
+{
+	Inventory.MaxAmount 1
+	+UNDROPPABLE
+	-INVBAR
+}
+
 Actor Boolean : Inventory
 {
 	Inventory.MaxAmount 1

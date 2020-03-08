@@ -1,5 +1,26 @@
 Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
+	Array<Class<TSP_Weapon_Core > > pp_haveTheseWeapons;
+	
+	override void AddInventory (Inventory item)
+	{
+		if(item is "TSP_Weapon_Core")
+		{
+			for(int i = 0;i<pp_haveTheseWeapons.Size();i++)
+			{
+				if(pp_haveTheseWeapons[i] == item.GetClass())
+				{
+					super.AddInventory(item);
+					return;
+				}
+			}
+			Console.Printf("Adding "..item.GetClassName().." to weapon history");
+			pp_haveTheseWeapons.Push(item.GetClass());
+		}
+		super.AddInventory(item);
+		return;
+	}
+	
 	int pp_hitFreeze;
 	
 	bool ptp_wallJump;
@@ -51,6 +72,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void GiveDefaultInventory()
 	{
+		pp_haveTheseWeapons.Clear();
+		
 		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
 		pp_meleestart = CVar.GetCVar("tsp_fistsstart").GetBool()||CVar.GetCVar("tsp_meleesupreme").GetBool();
 		super.GiveDefaultInventory();

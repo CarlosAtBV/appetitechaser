@@ -42,10 +42,27 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		int indexSearch = index+1;
 		int slotsSearched = 0;
-		if(indexSearch>=player.weapons.SlotSize(slot))
+		bool searchDone;
+		while(slotsSearched<player.weapons.SlotSize(slot))
 		{
-			indexSearch=0;
+			if(indexSearch>=player.weapons.SlotSize(slot))
+			{
+				indexSearch=0;
+			}
+			for(int i = 0;i<pp_haveTheseWeapons.Size();i++)
+			{
+				if(pp_haveTheseWeapons[i] == player.weapons.GetWeapon(slot, indexSearch))
+				{
+					searchDone = true;
+					break;
+				}
+			}
+			if(searchDone) break;
+			indexSearch++;
+			slotsSearched++;
 		}
+		
+		if(!searchDone) return;
 		
 		if(indexSearch == index) return;
 		
