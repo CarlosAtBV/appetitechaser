@@ -54,7 +54,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		pp_nextModSwitch = TSP_Weapon_Core(FindInventory(potentialWep));
 		
-		pp_moddelay = 12;
+		pp_moddelay = 25;
 		
 		//if(pp_nextModSwitch == null) return;
 		
