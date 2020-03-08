@@ -135,15 +135,20 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // - Halo Reach
 // - The Chronicles of Riddick: Assault on Dark Athena
 
-$random suzuka/fire { suzuka/fire1 suzuka/fire2 suzuka/fire3 }
-suzuka/fire1 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
-suzuka/fire2 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire02.ogg"
-suzuka/fire3 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire03.ogg"
+$random suzuka/fire { suzuka/fire01 suzuka/fire02 suzuka/fire03 }
+suzuka/fire01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
+suzuka/fire02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire02.ogg"
+suzuka/fire03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire03.ogg"
 $volume suzuka/fire 0.6
-$random suzuka/firea { suzuka/firea1 suzuka/firea2 }
-suzuka/firea1 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea01.ogg"
-suzuka/firea2 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea02.ogg"
+$random suzuka/firea { suzuka/firea01 suzuka/firea02 }
+suzuka/firea01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea01.ogg"
+suzuka/firea02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea02.ogg"
 suzuka/scock "sounds/weapons/Mel/Suzuka/sfx_suzuka_pump.ogg"
+$random suzuka/fireb { suzuka/fireb01 suzuka/fireb02 suzuka/fireb03 }
+suzuka/fireb01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb01.ogg"
+suzuka/fireb02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb02.ogg"
+suzuka/fireb03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb03.ogg"
+$volume suzuka/fireb 0.6
 
 suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb01.ogg"
 suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
