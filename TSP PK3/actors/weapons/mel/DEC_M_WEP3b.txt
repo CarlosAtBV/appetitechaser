@@ -45,8 +45,8 @@ ACTOR MelSMGB : MelSMG
 		Fire:
 			Goto "Super::Fire"
 		ModFire:
-			TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-			TNT1 A 0
+			133G C 0 A_TSP_JumpIfClipEmpty("Empty")
+			133G A 0
 			{
 				//A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
 				A_PlaySound("suzuka/fireb", 5+CountInv("TSP_SMGNailSwitch"));
