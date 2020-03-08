@@ -52,16 +52,8 @@ ACTOR MelSMGB : MelSMG
 				A_PlaySound("suzuka/fireb", 5+CountInv("TSP_SMGNailSwitch"));
 				A_AlertMonsters;
 				//A_FireProjectile("TSP_Projectile_Nail",0,0);
-				if(CountInv("TSP_SMGNailSwitch"))
-				{
-					A_TSP_FireBullets(0,0,-1,7,"TSP_BulletPuff",1,2048,"TSP_Projectile_Nail",0,1);
-					A_TakeInventory("TSP_SMGNailSwitch",1);
-				}
-				else
-				{
-					A_TSP_FireBullets(0,0,-1,7,"TSP_BulletPuff",1,2048,"TSP_Projectile_Nail",0,-1);
-					A_GiveInventory("TSP_SMGNailSwitch",1);
-				}
+				A_TSP_FireBullets(frandom(2,8),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,-2);
+				A_TSP_FireBullets(frandom(-8,-2),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,2);
 				A_TSP_TakeClip(2);
 				//A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 				A_GunFlash("Flash");
@@ -85,8 +77,10 @@ ACTOR MelSMGB : MelSMG
 ACTOR TSP_Projectile_Nail
 {
 	Projectile
-	Damage (12)
+	Damage (14)
 	Speed 45
+	Radius 4
+	Height 8
 	States
 	{
 		Spawn:

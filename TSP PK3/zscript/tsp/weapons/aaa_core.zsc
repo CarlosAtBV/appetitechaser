@@ -596,7 +596,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				invoker.tspw_curclip--;
 			}*/
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags^FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy+4);
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags & ~FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy+4);
 		}
 		
 		action void A_TSP_TakeClip(int amt)
