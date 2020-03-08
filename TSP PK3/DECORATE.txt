@@ -141,6 +141,7 @@ Actor MeleeSelected : Boolean {}
 #include "Actors/Weapons/Mel/DEC_M_WEP2b.txt" // DARLING NIKKI (Whisper)
 #include "Actors/Weapons/Mel/DEC_M_WEP2c.txt" // TREASURED NIKKI
 #include "Actors/Weapons/Mel/DEC_M_WEP3.txt" // SUZUKA
+#include "Actors/Weapons/Mel/DEC_M_WEP3b.txt" // SUZUKA
 
 // THE TOOLBOX
 //#include "Actors/Weapons/Mel/DEC_M_WEP5a.txt" // MEL

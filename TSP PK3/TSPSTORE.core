@@ -84,6 +84,13 @@ page
 			upgradeType 1;
 			descs "$TSP_SHOP_SUZUKA_MAGDESC1", "bigger clip", "biggest clip";
 		}
+		item
+		{
+			name "Mod - nail moment";
+			price 50;
+			mod_take "MelSMGB";
+			mod_give "MelSMGB";
+		}
 	}
 	tab "Vitality"
 	{
