@@ -602,7 +602,7 @@ Class TSP_Weapon_Core : DoomWeapon
 				 case 2: fbDamage *= (invoker.tspw_powermult2); break;
 				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
 			}
-			int totalDamage = damageperbullet*numbullets;
+			double totalDamage = damageperbullet*abs(numbullets);
 			if(totalDamage<=0 && missile!=null)
 			{
 				totalDamage = GetDefaultByType(missile).damage*numbullets;
