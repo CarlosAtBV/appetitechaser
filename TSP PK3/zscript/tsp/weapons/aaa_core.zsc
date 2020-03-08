@@ -312,13 +312,24 @@ Class TSP_Weapon_Core : DoomWeapon
 		if(TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod && FindState('ModOn'))
 		{
 			TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod = false;
+			TSP_PlayerPawn_ZSCBase(owner).pp_nextModSwitch = null;
 			return FindState('ModOn');
 		}
 		return FindState('Select');
 	}
 	override State GetDownState ()
 	{
-		if(TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod && FindState('ModOff'))
+		let playerMo = TSP_PlayerPawn_ZSCBase(owner);
+		let player = TSP_PlayerPawn_ZSCBase(owner).player;
+		int slot;
+		int slot2;
+		if(playerMo.pp_nextModSwitch!=null)
+		{
+			bool found;
+			[found, slot] = player.weapons.LocateWeapon(playerMo.pp_nextModSwitch.GetClass());
+			[found, slot2] = player.weapons.LocateWeapon(player.ReadyWeapon.GetClass());
+		}
+		if(TSP_PlayerPawn_ZSCBase(owner).pp_switchingmod && playerMo.pp_nextModSwitch != null && slot == slot2 && FindState('ModOff'))
 		{
 			return FindState('ModOff');
 		}
