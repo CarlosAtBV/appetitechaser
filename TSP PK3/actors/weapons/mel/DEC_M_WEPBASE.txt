@@ -216,6 +216,14 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 		TNT1 A 0 A_TakeInventory("MagPushToken", 99)
 		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
 		Goto Select // If I change it to "Goto Ready" it disappears, so...
+	ModOff:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		"----" A 0 A_Jump(256,"WaitForModSwitch") //has 2 be a jump :pensive:
+		Stop
+	ModOn:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		TNT1 A 0 A_Raise
+		Goto Ready
 	}
 }
 

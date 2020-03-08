@@ -88,7 +88,7 @@ page
 		{
 			name "Mod - nail moment";
 			price 50;
-			mod_take "MelSMGB";
+			mod_take "MelSMG";
 			mod_give "MelSMGB";
 		}
 	}
