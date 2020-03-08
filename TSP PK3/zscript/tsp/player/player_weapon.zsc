@@ -49,6 +49,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			{
 				indexSearch=0;
 			}
+			if(indexSearch==index) return;
 			if(pp_haveTheseWeapons.Find(player.weapons.GetWeapon(slot, indexSearch)) != pp_haveTheseWeapons.Size())
 			{
 				searchDone = true;
