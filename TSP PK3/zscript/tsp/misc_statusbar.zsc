@@ -312,6 +312,13 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
 				}
+				
+				if(playerobj.pp_nextModSwitch != null)
+				{
+					//Centering = true;
+					DrawString(mSmallFont, "\cj[\cd"..playerobj.pp_nextModSwitch.tspw_altname.."\cj]", (0, -32), DI_TEXT_ALIGN_CENTER|DI_SCREEN_CENTER_BOTTOM, Font.CR_UNTRANSLATED, 1.0);
+					//Centering = false;
+				}
 		}
 	}
 }
