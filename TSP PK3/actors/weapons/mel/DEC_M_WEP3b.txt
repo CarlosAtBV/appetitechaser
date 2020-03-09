@@ -4,6 +4,7 @@ ACTOR MelSMGB : MelSMG
 {
 	TSP_Weapon_Core.ModTag "Nailgun" 
 	+WEAPON.CHEATNOTWEAPON
+	Tag "$MELSMGBTAG"
 	Weapon.AmmoUse2 2
 	
 	States

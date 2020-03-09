@@ -29,7 +29,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TSP_Weapon_Core.ModTag "Shotgun" 
 		TSP_Weapon_Core.FirstPickupLine "mel/suzukapickup"
 		
-	Tag "$MELSMGTAG"
+	Tag "$MELSMGATAG"
 	+NOAUTOFIRE
 	+AMMO_OPTIONAL
 	+NOEXTREMEDEATH

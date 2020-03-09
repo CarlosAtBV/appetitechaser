@@ -42,3 +42,7 @@ MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
 //SUZUKA
 MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
 MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
+
+//SUZUKA (MODS)
+MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
+MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
