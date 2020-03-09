@@ -82,6 +82,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			pp_nextModSwitch.tspw_ammolevel = currentWep.tspw_ammolevel;
 			pp_nextModSwitch.tspw_reloadlevel = currentWep.tspw_reloadlevel;
 			pp_nextModSwitch.tspw_curclip = currentWep.tspw_curclip;
+			pp_nextModSwitch.tspw_clipsize = currentWep.tspw_clipsize;
 		}
 		player.PendingWeapon = pp_nextModSwitch;
 		Console.Printf("");
