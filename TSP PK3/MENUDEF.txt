@@ -184,9 +184,10 @@ OptionMenu "OtherModOptions"
 	//Submenu "WV Monsters Settings", "WVMSettings"
 	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
 	SubMenu "Rampancy Options",	"Rampancy"
+	SubMenu "Legion of Bones Settings",		"Legion of Bones"
 	SubMenu "Champion Options", "mk_ChampionMenu"
-	SubMenu "Bratwurst Settings", "BratwurstSettings"
-	SubMenu "CH Settings",		"Colourful Hell"
+	SubMenu "Bratwurst Options", "BratwurstSettings"
+	SubMenu "CH Options",		"Colourful Hell"
 }
 
 //=======================
