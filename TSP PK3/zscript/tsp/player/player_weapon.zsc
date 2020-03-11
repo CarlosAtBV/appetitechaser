@@ -24,6 +24,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	void TSP_CycleModNext()
 	{
+		if(!(player.WeaponState & WF_WEAPONREADY)) return;
+		
 		TSP_Weapon_Core currentWep = TSP_Weapon_Core(player.ReadyWeapon);
 		if(currentWep == null) return;
 		if(currentWep.bNoModSwitch) return;
