@@ -50,7 +50,7 @@ ACTOR MelSMGB : MelSMG
 			133G A 0
 			{
 				//A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
-				A_PlaySound("suzuka/fireb", 5+CountInv("TSP_SMGNailSwitch"));
+				A_PlaySound("suzuka/firebng", 5+CountInv("TSP_SMGNailSwitch"));
 				A_AlertMonsters;
 				//A_FireProjectile("TSP_Projectile_Nail",0,0);
 				A_TSP_FireBullets(frandom(2,8),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,-2);
