@@ -1,4 +1,4 @@
-ACTOR TSP_SMGNailSwitch : TSP_Boolean {}
+ACTOR TSP_SMGNailSwitch : Boolean {}
 
 ACTOR MelSMGB : MelSMG
 {

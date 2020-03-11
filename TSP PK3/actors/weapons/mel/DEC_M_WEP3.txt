@@ -26,7 +26,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0
 		TSP_Weapon_Core.ClipSize 40 //Initial starting size of clip
 		+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
-		TSP_Weapon_Core.ModTag "Shotgun" 
+		TSP_Weapon_Core.ModTag "Scope" 
 		TSP_Weapon_Core.FirstPickupLine "mel/suzukapickup"
 		
 	Tag "$MELSMGATAG"
@@ -79,11 +79,12 @@ ACTOR MelSMG : TSPMelLightWeapon
 		Goto Ready
 	
 	Fire:
+	ModFire:
 		"####" A 0 A_JumpIfInventory("TSPTopFired", 1, "BottomFire")
 		"####" A 0 A_TSP_JumpIfClipEmpty("Empty")
 		"####" A 0
 		{
-			A_PlaySound("suzuka/firea", 5);
+			A_PlaySound("suzuka/fire", 5);
 			A_AlertMonsters;
 			A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
@@ -103,7 +104,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		"####" A 0 A_TSP_JumpIfClipEmpty("Empty")
 		"####" A 0
 		{
-			A_PlaySound("suzuka/firea", 6);
+			A_PlaySound("suzuka/fire", 6);
 			A_AlertMonsters;
 			A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
@@ -170,51 +171,6 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TNT1 A 0 A_Refire("Fire")
 		"----" A 0 A_TSP_GotoReadyState
 		Goto Ready*/
-	ModFire:
-		131G C 0 A_TSP_JumpIfClipLower(8,"Empty")
-		TNT1 A 0
-		{
-			A_GunFlash("ModFlash");
-			A_PlaySound("suzuka/fireasg", 6);
-			A_AlertMonsters;
-			A_Quake(2,3,0,5,"");
-			A_TSP_FireBullets(6,0,8,7,"TSP_BulletPuff",1,0,"TSP_HitscanTracer",-2);
-			A_TSP_TakeClip(8);
-			A_SetPitch(pitch - 2.5);
-			A_SetAngle(angle + (frandom(-0.5,0.5)));
-		}
-		131G D 1 BRIGHT
-		{
-			A_Light2();
-			A_TSP_WeaponRecoilDir(45,frandom(24,32));
-		}
-		131G D 1
-		{
-			A_TSP_WeaponRecoilDir(random(35,55),frandom(40,48),1);
-		}
-		131G D 4
-		131G E 2
-		131G C 3
-		131G CFG 1 A_TSP_WeaponRecoilDir(45,-2,1)
-		//cocking anim
-		"----" A 0
-		{
-			A_PlaySound("suzuka/scock", 5);
-			A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
-		}
-		131G GGGG 1 A_TSP_WeaponRecoilDir(35,6,1)
-		131G GF 2
-		//ok done
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-4,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-7,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-10,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-11,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-4,0,0,0)
-		TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-6,0,0,0)
-		"----" A 0 A_TSP_GotoReadyState
-		Goto Ready
 	Empty:
 		"----" A 10 A_PlaySound("suzuka/empty", 5)
 		"----" A 0 A_TSP_CheckReload()
