@@ -315,9 +315,20 @@ Class TSP_StatusBar : BaseStatusBar
 				
 				if(playerobj.pp_nextModSwitch != null)
 				{
-					//Centering = true;
+					bool foundIt;
+					int slot; int alsoSlot; int index;
+					int iconWidth = 32;
+					[foundIt, slot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
+					[foundIt, alsoSlot, index] = CPlayer.weapons.LocateWeapon(playerobj.pp_nextModSwitch.GetClass());
+					int slotMax = CPlayer.weapons.SlotSize(slot);
+					for(int i = 0;i<slotMax;i++)
+					{
+						//let fucker = GetDefaultByType(CPlayer.weapons.GetWeapon(slot,i));
+						bool hasIt = playerobj.pp_haveTheseWeapons.Find(CPlayer.weapons.GetWeapon(slot,i))!=playerobj.pp_haveTheseWeapons.Size();
+						DrawImage("graphics/HUD2.0/weapons/weapon_mod_ph.png", (( ((-iconWidth*slotMax)/2)+iconWidth*i)+iconWidth/2 , -58), DI_SCREEN_CENTER_BOTTOM|DI_ITEM_CENTER, hasIt ? 1.0 : 0.5, (-1,-1), index==i ? (0.75,0.75) : (0.5,0.5));
+							//DTA_DestWidth, 32, DTA_DestHeight, 32, DTA_TranslationIndex, hasIt ? -1 : Translation.GetID('TSP_Shop_Darken'));
+					}
 					DrawString(mSmallFont, "\cj[\cd"..playerobj.pp_nextModSwitch.tspw_altname.."\cj]", (0, -32), DI_TEXT_ALIGN_CENTER|DI_SCREEN_CENTER_BOTTOM, Font.CR_UNTRANSLATED, 1.0);
-					//Centering = false;
 				}
 		}
 	}
