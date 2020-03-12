@@ -4,7 +4,7 @@ ACTOR MelSMGA : MelSMG
 {
 	TSP_Weapon_Core.ModTag "Shotgun" 
 	+WEAPON.CHEATNOTWEAPON
-	Tag "$MELSMGBTAG"
+	Tag "$MELSMGATAG"
 	Weapon.AmmoUse2 2
 		-TSP_Weapon_Core.HOLDDOWNFORMOD
 		-TSP_Weapon_Core.MODFIREZOOMS
