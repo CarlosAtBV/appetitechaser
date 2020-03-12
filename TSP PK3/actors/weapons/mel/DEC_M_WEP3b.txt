@@ -6,6 +6,8 @@ ACTOR MelSMGB : MelSMG
 	+WEAPON.CHEATNOTWEAPON
 	Tag "$MELSMGBTAG"
 	Weapon.AmmoUse2 2
+		-TSP_Weapon_Core.HOLDDOWNFORMOD
+		-TSP_Weapon_Core.MODFIREZOOMS
 	
 	States
 	{

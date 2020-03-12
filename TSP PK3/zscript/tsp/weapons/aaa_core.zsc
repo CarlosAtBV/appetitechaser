@@ -476,6 +476,7 @@ Class TSP_Weapon_Core : DoomWeapon
 					{
 						if(!invoker.tspw_altmode)
 						{
+							if(curWeapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("Switch"));
 							A_PlaySound("weapon/mod/on", CHAN_5);
 							/*string onoff = "\c[TSPGreen]On";
 							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);*/
@@ -486,6 +487,7 @@ Class TSP_Weapon_Core : DoomWeapon
 					{
 						if(invoker.tspw_altmode)
 						{
+							if(curWeapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("ModSwitch"));
 							A_PlaySound("weapon/mod/off", CHAN_5);
 							/*string onoff = "\c[TSPRed]Off";
 							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);*/
