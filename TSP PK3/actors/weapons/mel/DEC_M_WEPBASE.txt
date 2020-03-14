@@ -193,18 +193,18 @@ ACTOR TSPMelBaseWeapon : TSP_Weapon_Core
 		TNT1 A 0 Thrustthing(angle*256/360,5, 0, 0)*/
 		TNT1 A 0 A_PlaySound("*mediummelee")
 		TNT1 A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot5")
-		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 20)
 		TNT1 A 0 A_Recoil(-10)
-		MLGC ABC 1
-		MLGC D 1 A_TSP_Melee(60+1+1+1,90,"MagDivePuff")/*A_CustomPunch(60,0,0,"MagDivePuff",90)
+		1104 ABC 1 BRIGHT
+		1104 D 1 BRIGHT A_TSP_Melee(60+1+1+1,90,"MagDivePuff")/*A_CustomPunch(60,0,0,"MagDivePuff",90)
 		TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
 		TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
 		TNT1 A 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)*/
 	MagSpearA:
 		TNT1 A 0 Thrustthingz(0,15,1,0)
-		MLGC EF 1
-		MK1F GHI 1
-		TNT1 A 8 A_WeaponReady(WRF_NOFIRE)
+		1104 EFG 1 BRIGHT
+		1104 HIJK 1
+		TNT1 A 6 A_WeaponReady(WRF_NOFIRE)
 		Goto MagSpearFinish
 	MagSpearFinish:
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart")
