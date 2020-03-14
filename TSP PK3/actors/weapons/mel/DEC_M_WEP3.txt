@@ -31,7 +31,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		+TSP_Weapon_Core.MODFIREZOOMS
 		+TSP_Weapon_Core.HOLDDOWNFORMOD
 		
-	Tag "$MELSMGTAG"
+	Tag "$MELSMGATAG"
 	+NOAUTOFIRE
 	+AMMO_OPTIONAL
 	+NOEXTREMEDEATH
@@ -308,6 +308,86 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TNT1 A 0 A_PlaySound("suzuka/rcock", 6)
 		131G A 5
 		Goto Ready*/
+
+	ModOff:
+		TNT1 A 0 A_WeaponOffset(0,32)
+		131M A 5
+		131M A 0 A_Overlay(-10,"ModOffHand")
+		130M AA 2 A_TSP_WeaponRecoilDir(-135,8)
+		130M A 4
+		{
+			A_TSP_WeaponRecoilDir(-135,16);
+		}
+		"----" A 0 A_Jump(256,"WaitForModSwitch") //has 2 be a jump :pensive:
+		Stop
+	ModOn:
+		131M A 0 A_Overlay(-10,"ModOnHand")
+		TNT1 A 0 A_WeaponOffset(0,32)
+		130M A 15
+		130M A 2 A_TSP_WeaponRecoilDir(45,8)
+		130M A 4
+		{
+			A_PlaySound("nikki/upgradespitfire", 5);
+			A_TSP_WeaponRecoilDir(45,24);
+		}
+		131M A 4
+		131M A 1 A_Raise
+		Goto Ready
+		
+	ModOffHand:
+		131M B 1
+		"----" A 1 A_OverlayOffset(-10,-1,0,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-1,0,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)
+		"----" A 0 A_PlaySound("nikki/upgraderemove", 6)
+		
+		"----" A 1 A_OverlayOffset(-10,-3.46,-3.44,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-13.42,-12.44,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-25.77,-21.44,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-35.27,-24.88,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-41.92,-24.84,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-47.51,-24.45,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-52.43,-23.26,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-57.43,-20.98,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-63.07,-17.71,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-69.37,-11.46,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-76.19,0.1,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-83.37,16.7,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-90.67,37.06,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-97.73,58.99,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-104.2,80.05,WOF_INTERPOLATE)
+		Stop
+		
+	ModOnHand:
+		131M B 0
+		"----" A 1 A_OverlayOffset(-10,-55.2,119.3,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-56.35,109.1,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-59.61,79.74,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-63.79,40.74,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-67.05,7.86,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-68.2,-8.36,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-67.67,-14.64,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-65.92,-19.71,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-62.78,-23.35,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-58.30,-25.54,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-52.84,-26.57,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-46.88,-26.89,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-40.80,-26.93,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-32.84,-24.51,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-21.83,-17.79,WOF_INTERPOLATE)
+		/*"----" A 1 A_OverlayOffset(-10,-10.54,-9.13,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,-2.65,-2.39,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)*/
+		
+		"----" A 1 A_OverlayOffset(-10,1,0,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)
+		
+		"----" A 4
+		Stop
+		
+	/*ModOffHand:
+		"----" A 1 A_OverlayOffset(10,0,2,WOF_ADD|WOF_INTERPOLATE)*/
 	}
 }
 
