@@ -86,7 +86,14 @@ page
 		}
 		item
 		{
-			name "Mod - nail moment";
+			name "Mod - Shotgun";
+			price 50;
+			mod_take "MelSMG";
+			mod_give "MelSMGA";
+		}
+		item
+		{
+			name "Mod - Nail";
 			price 50;
 			mod_take "MelSMG";
 			mod_give "MelSMGB";
