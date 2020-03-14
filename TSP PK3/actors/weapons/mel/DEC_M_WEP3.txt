@@ -327,7 +327,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		130M A 2 A_TSP_WeaponRecoilDir(45,8)
 		130M A 4
 		{
-			A_PlaySound("nikki/upgradespitfire", 5);
+			A_PlaySound("suzuka/upgradedefault", 5);
 			A_TSP_WeaponRecoilDir(45,24);
 		}
 		131M A 4
@@ -340,7 +340,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(-10,-1,0,WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE)
-		"----" A 0 A_PlaySound("nikki/upgraderemove", 6)
+		"----" A 0 A_PlaySound("suzuka/upgraderemove", 6)
 		
 		"----" A 1 A_OverlayOffset(-10,-3.46,-3.44,WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(-10,-13.42,-12.44,WOF_INTERPOLATE)

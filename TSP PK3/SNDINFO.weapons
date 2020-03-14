@@ -131,12 +131,13 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // - Left 4 Dead
 // - DOOM (2016)
 // - Alien vs Predator 2
-// [RELOADING, COCKING]
+// [RELOADING, COCKING, UPGRADE EQUIP]
 // - Super Monday Night Combat
 // - Left 4 Dead
 // - Dying Light: Enhanced Edition
 // - Halo Reach
 // - The Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
 
 $random suzuka/fire { suzuka/fire01 suzuka/fire02 suzuka/fire03 }
 suzuka/fire01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
@@ -164,6 +165,11 @@ suzuka/firebng01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng01.ogg"
 suzuka/firebng02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng02.ogg"
 suzuka/firebng03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng03.ogg"
 $volume suzuka/firebng 0.6
+
+suzuka/upgraderemove "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_remove.ogg"
+suzuka/upgradedefault "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_default.ogg"
+suzuka/upgradeshotgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_shotgun.ogg"
+suzuka/upgradenailgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_nailgun.ogg"
 
 suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec01.ogg"
 suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
