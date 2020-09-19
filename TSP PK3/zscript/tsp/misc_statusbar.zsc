@@ -154,24 +154,24 @@ Class TSP_StatusBar : BaseStatusBar
 				Color hpColor;
 				if(health>100)
 				{
-					hpColor = Font.CR_GOLD;
+					hpColor = Font.FindFontColor("TSPHealthGold");
 				}
 				else if(health>75)
 				{
-					hpColor = Font.CR_LIGHTBLUE;
+					hpColor = Font.FindFontColor("TSPHealthBlue");
 				}
 				else if(health>50)
 				{
-					hpColor = Font.CR_CYAN;
+					hpColor = Font.FindFontColor("TSPYeller");
 				}
 				else
 				{
-					hpColor = Font.CR_RED;
+					hpColor = Font.FindFontColor("TSPRed");
 				}
 				DrawString(mSmallFont, ""..health, (HUDLEFT_X+84, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
 				
 				// sheld number stats
-				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+84, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
+				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+84, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.FindFontColor("TSPShieldOrange"));
 			
 			//================
 			// Keys
@@ -229,11 +229,11 @@ Class TSP_StatusBar : BaseStatusBar
 						}
 						else
 						{
-							ammoColor = Font.FindFontColor("TSPLimeGreen");
+							ammoColor = Font.FindFontColor("TSPWhite");
 						}
 						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+38, HUDRIGHT_Y+38), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
 						alpha = 0.6;
-						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+45), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPYeller"));
+						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+45), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPGold"));
 					}
 				}
 			}

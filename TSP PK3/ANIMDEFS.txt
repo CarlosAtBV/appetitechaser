@@ -15,16 +15,15 @@ texture M_SPSEL
     pic MSPSEL12 tics 2
 
 // Mel Hud BG
-texture HUD_MELB
-    pic HUD_MELB tics 60
-    pic HUD_MEL1 tics 2
-    pic HUD_MEL2 tics 2
-    pic HUD_MEL3 tics 2
-    pic HUD_MEL4 tics 2
-	pic HUD_MEL5 tics 2
-    pic HUD_MEL6 tics 2
-	pic HUD_MEL7 tics 2
-    pic HUD_MEL8 tics 2
+texture MEL_HBG1
+    pic MEL_HBG1 tics 80
+    pic MEL_HBG2 tics 2
+    pic MEL_HBG3 tics 2
+    pic MEL_HBG4 tics 2
+	pic MEL_HBG5 tics 2
+    pic MEL_HBG6 tics 2
+	pic MEL_HBG7 tics 2
+    pic MEL_HBG8 tics 2
 
 //////////////////////
 // TEXTURES

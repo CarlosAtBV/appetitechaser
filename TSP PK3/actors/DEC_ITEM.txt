@@ -131,7 +131,7 @@ ACTOR TSPMegasphere : TSP_CustomInventory replaces Megasphere
 {
 	Radius 20
 	Height 16
-	Inventory.PickupMessage "\cc[\cnMAX HEALTH\cc] + [\c[Orange]+50 SHIELD\c-\cc]"
+	Inventory.PickupMessage "$MEGASPHEREPICKUP"
 	Inventory.PickupSound "health/supercharge"
 	+INVENTORY.BIGPOWERUP
 	+FLOATBOB

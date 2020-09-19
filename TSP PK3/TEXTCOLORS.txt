@@ -33,10 +33,18 @@ Console:
 Flat:
 	#CCCCCC
 }
+TSPWhite
+{
+	#000000  #000000    0  1
+	#5f5f5f  #d9d9d9    2  127  // DARKEST PART OF THE GRADIENT
+	#f8f8f8  #ffffff  128  256
+}
+
 
 TSPRed
 {
-	#460b0b  #c72424
+	#000000  #000000    0  1
+	#3F0000  #FF0000    2  256
 }
 TSPBlue // OUTLINE
 {
@@ -44,11 +52,17 @@ TSPBlue // OUTLINE
 	#1e3b69  #1e3b69    2  127
 	#244273  #5d8ede  128  256
 }
+TSPHealthBlue // OUTLINE
+{
+	#000000  #000000    0  1
+	#004c5e  #007490    2  127
+	#007f9d  #53cfed  128  256
+}
 TSPVantaBlack
 {
 	#000000  #000000
 }
-TSPLimeGreen // OULINE
+TSPLimeGreen // OUTLINE
 {
 	#172702  #B9DE7F
 }
@@ -62,9 +76,25 @@ TSPYeller // OUTLINE
 {
 	#000000  #000000    0  1
 	#68431e  #68431e    2  127
-	#735024  #ddd05c  128  256
+	#735024  #e6c77a  128  256
+}
+TSPGold // OUTLINE
+{
+	#000000  #000000    0  1
+	#ab8016  #cea02d    2  127
+	#d5a93b  #e2bf69  128  256
+}
+TSPHealthGold // OUTLINE
+{
+	#000000  #000000    0  1
+	#732B00  #FFFF73    2  256
 }
 
+TSPShieldOrange // OUTLINE
+{
+	#000000  #000000    0  1
+	#b25f04  #ffd381    2  256
+}
 
 Mel
 {
