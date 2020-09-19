@@ -44,6 +44,11 @@ TSPWhite
 TSPRed
 {
 	#000000  #000000    0  1
+	#460b0b  #c72424	2  256
+}
+TSPHudRed
+{
+	#000000  #000000    0  1
 	#3F0000  #FF0000    2  256
 }
 TSPBlue // OUTLINE
@@ -66,18 +71,27 @@ TSPLimeGreen // OUTLINE
 {
 	#172702  #B9DE7F
 }
-TSPLimeGreen1 // OULINE
+TSPLimeGreen1 // OUTLINE
 {
 	#000000  #000000    0  1
 	#172702  #172702    2  127
 	#719638  #B9DE7F  128  256
 }
+
 TSPYeller // OUTLINE
+{
+	#000000  #000000    0  1
+	#68431e  #68431e    2  127
+	#735024  #ddd05c  128  256
+}
+
+TSPHudYeller // OUTLINE
 {
 	#000000  #000000    0  1
 	#68431e  #68431e    2  127
 	#735024  #e6c77a  128  256
 }
+
 TSPGold // OUTLINE
 {
 	#000000  #000000    0  1

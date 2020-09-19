@@ -162,11 +162,11 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 				else if(health>50)
 				{
-					hpColor = Font.FindFontColor("TSPYeller");
+					hpColor = Font.FindFontColor("TSPHudYeller");
 				}
 				else
 				{
-					hpColor = Font.FindFontColor("TSPRed");
+					hpColor = Font.FindFontColor("TSPHudRed");
 				}
 				DrawString(mSmallFont, ""..health, (HUDLEFT_X+84, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
 				
@@ -225,7 +225,7 @@ Class TSP_StatusBar : BaseStatusBar
 						Color ammoColor;
 						if(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip<ammoRed)
 						{
-							ammoColor = Font.FindFontColor("TSPRed");
+							ammoColor = Font.FindFontColor("TSPHudRed");
 						}
 						else
 						{
