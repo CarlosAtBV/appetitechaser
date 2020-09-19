@@ -23,6 +23,11 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	Array<TSP_NotificationLogger> tsp_notifs;
 	
+	static const string mUpgBar[] =
+	{
+		"HUD_UPGE","HUD_UPG1","HUD_UPG2","HUD_UPGF"
+	};
+	
 	override bool ProcessNotify(EPrintLevel printlevel, String outline)
 	{
 		if(level.maptime==0) return true;
@@ -85,10 +90,10 @@ Class TSP_StatusBar : BaseStatusBar
 		}
 	}
 	
-	const HUDLEFT_X = 0;
-	const HUDLEFT_Y = -70;
-	const HUDRIGHT_X = -135;
-	const HUDRIGHT_Y = -70;
+	const HUDLEFT_X = 7;
+	const HUDLEFT_Y = -71;
+	const HUDRIGHT_X = -148;
+	const HUDRIGHT_Y = -60;
 
 	override void Draw (int state, double TicFrac)
 	{
@@ -104,35 +109,35 @@ Class TSP_StatusBar : BaseStatusBar
 			int shield = mShieldInterpolator.GetValue();
 			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
-            //DrawImage("H_GUIDER", (-135, -70), DI_ITEM_OFFSETS);
-			
 			
 			// Monet
-			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+120, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
+			DrawImage("HUD_GBD1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+113, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
 			if(CPlayer.mo.InvSel)
 			{
 				DrawString(mSmallFont, CPlayer.mo.InvSel.GetTag().." ("..CPlayer.mo.InvSel.Amount..")", (HUDLEFT_X, HUDLEFT_Y-40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
 			}
 			
-			// Main Stats
-			DrawBar("HUD_LSDF", "HUD_LSDE", shield, maxShield, (HUDLEFT_X+70, HUDLEFT_Y+46), 0, 0, DI_ITEM_OFFSETS);
-			DrawBar("HUD_LHPF", "HUD_LHPE", health, 100, (HUDLEFT_X+70, HUDLEFT_Y+35), 0, 0, DI_ITEM_OFFSETS);
+			DrawImage("HUD_MELE", (HUDLEFT_X+115, HUDLEFT_Y+25), DI_ITEM_OFFSETS);
+			DrawImage("HUD_MELF", (HUDLEFT_X+115, HUDLEFT_Y+25), DI_ITEM_OFFSETS, mTraitAlpha);
 			
-			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-
-		
+			// Main Stats
+			DrawBar("HUD_SHDF", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+61, HUDLEFT_Y+46), 0, 0, DI_ITEM_OFFSETS);
+			DrawBar("HUD_HLTF", "HUD_HLTE", health, 100, (HUDLEFT_X+61, HUDLEFT_Y+35), 0, 0, DI_ITEM_OFFSETS);
+			
+			DrawImage("HUD_BAS1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 0: DrawImage("MEL_SHDE", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 1: DrawImage("MEL_SHD1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 2: DrawImage("MEL_SHD2", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 3: DrawImage("MEL_SHD3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 0: DrawImage("HUD_SHUE", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 1: DrawImage("HUD_SHU1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 2: DrawImage("HUD_SHU2", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 3: DrawImage("HUD_SHU3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
 			if(CPlayer.mo is "SpacePirate")
 			{
-				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			//Melody Crosswell
@@ -144,7 +149,7 @@ Class TSP_StatusBar : BaseStatusBar
 			}
 			else
 			{
-				DrawTexture(GetMugShot(5), (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+				DrawTexture(GetMugShot(5), (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			//================
@@ -168,10 +173,10 @@ Class TSP_StatusBar : BaseStatusBar
 				{
 					hpColor = Font.CR_RED;
 				}
-				DrawString(mSmallFont, ""..health, (HUDLEFT_X+84, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
+				DrawString(mSmallFont, ""..health, (HUDLEFT_X+75, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
 				
 				// sheld number stats
-				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+84, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
+				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+75, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREEN);
 			
 			//================
 			// Keys
@@ -196,22 +201,22 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
 			
-			//================
-			// TRAIT
-			//================
-			
-			DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS, mTraitAlpha);
-			
-			
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			//DrawImage("HUD_MLN1", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("HUD_MELC", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("HUD_MLN1", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			Inventory a1 = GetCurrentAmmo();
 			if(CPlayer.ReadyWeapon)
 			{
-				//DrawInventoryIcon(CPlayer.ReadyWeapon,(HUDRIGHT_X+22, HUDRIGHT_Y+42),DI_ITEM_LEFT,0.5);
-				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (HUDRIGHT_X+63, HUDRIGHT_Y+58), DI_TEXT_ALIGN_RIGHT);
+				DrawInventoryIcon(CPlayer.ReadyWeapon,(HUDRIGHT_X+22, HUDRIGHT_Y+42),DI_ITEM_LEFT,0.5);
+				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (HUDRIGHT_X+105, HUDRIGHT_Y+48), DI_TEXT_ALIGN_RIGHT);
+			}
+			
+			for(int i = 0;i<10;i++)
+			{
+				if(CPlayer.HasWeaponsInSlot(i+1))
+				{
+					DrawString(mTinyFont, ""..i+1, (HUDRIGHT_X+99+6*i, HUDRIGHT_Y+15), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_GREY);
+				}
 			}
 			
 			if (a1 != null)
@@ -219,6 +224,11 @@ Class TSP_StatusBar : BaseStatusBar
 				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core")
 				{
 					TSP_Weapon_Core wepon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
+					DrawImage("HUD_UPGT", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					
+					DrawImage(mUpgBar[wepon.tspw_reloadlevel], (HUDRIGHT_X+51, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
+					DrawImage(mUpgBar[wepon.tspw_ammolevel], (HUDRIGHT_X+51+13, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
+					DrawImage(mUpgBar[wepon.tspw_powerlevel], (HUDRIGHT_X+51+26, HUDRIGHT_Y+28), DI_ITEM_OFFSETS);
 					if(wepon.tspw_clipsize>0)
 					{
 						int ammoRed = wepon.tspw_clipsize*0.4;
@@ -231,9 +241,9 @@ Class TSP_StatusBar : BaseStatusBar
 						{
 							ammoColor = Font.FindFontColor("TSPLimeGreen");
 						}
-						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+38, HUDRIGHT_Y+38), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
+						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+133, HUDRIGHT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
 						alpha = 0.6;
-						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+45), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPYeller"));
+						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+132, HUDRIGHT_Y+41), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPYeller"));
 					}
 				}
 			}
@@ -267,7 +277,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						alpher = thisone.timeleft/12.; //whoosh
 					}
-					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+67, HUDLEFT_Y+15-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+60, HUDLEFT_Y+12-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================
@@ -323,3 +333,47 @@ Class TSP_StatusBar : BaseStatusBar
 		}
 	}
 }
+
+/*LowerHealthCap false;
+statusbar fullscreen, fullscreenoffsets
+{
+    //main stats
+    drawimage "HUDBASE", 5, -69;
+    drawbar "HUD_ABR1", "HUD_ABR2", TSP_PlayerPawn_Shield, horizontal, interpolate(5), 61, -15;
+	drawbar "HUD_HBR1", "HUD_HBR2", Health, horizontal, interpolate(5), 61, -61;
+	//
+	
+	InInventory IsMel
+	{
+    drawimage "HUD_MEL1", 5, -69;
+	drawmugshot 5, 5, -69;
+	}
+	
+    // helf number stats
+    InInventory not Over100Health
+    {
+	drawnumber 3, TSP_HUDFONT, Gold, health, alignment(right), interpolate(6), 121, -52, 1, Red, 50, LightBlue, 75;
+	}
+	
+	InInventory Over100Health
+    {
+	drawnumber 3, TSP_HUDFONT, Cyan, health, alignment(right), interpolate(6), 121, -52, 1;
+	}
+	// armer number stats
+	drawnumber 3, TSP_HUDFONT, Green, TSP_PlayerPawn_Shield, alignment(right), interpolate(6), whennotzero, 121, -34, 1, Green, 50, Orange, 101;
+    // kiz
+    drawkeybar 6, vertical, reverserows, auto, -10, 2, 0, 3, auto;
+	
+	// ammo number stats
+	
+   usesammo
+    {
+	      Alpha 0.3
+	      drawimage "HUD_AMOE", -102, -72;
+		  Alpha 0.5
+		  drawimage "HUD_AMOD", -64, -70;
+    }
+	drawnumber 3, TSP_HUDFont, Blue, ammo1, alignment(right), drawshadow(0,1), -68, -70, 1;
+    Alpha 0.6
+    drawnumber 3, TSP_HUDFont, Green, ammo2, alignment(right), drawshadow(0,1), -8, -70, 1;
+}*/
