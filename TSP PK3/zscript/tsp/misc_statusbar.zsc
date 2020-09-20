@@ -193,7 +193,6 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// rIGHT HAND SIDE
 			
-			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
 			
 			//================
@@ -203,9 +202,8 @@ Class TSP_StatusBar : BaseStatusBar
 			DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS, mTraitAlpha);
 			
-			
+			// RIGHTSIDE BASE
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			//DrawImage("HUD_MLN1", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			Inventory a1 = GetCurrentAmmo();
 			if(CPlayer.ReadyWeapon)
