@@ -91,7 +91,9 @@ SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
 
 //Character
 MELNAME = "\c[Mel]Mel\c-";
-MELNAMECS = "\c[Mel1]Mel\c-";
+MELNAMECS = "\c[Mel2]Mel\c-";
+SHENNAME = "\c[Shen]Shen Mi\c-";
+SHENNAMECS = "\c[Shen2]Shen Mi\c-";
 ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
 
 MELRUBY = "\cgRuby\c-";
@@ -158,12 +160,12 @@ OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 
 //Startup
 STARTUP1 = "\ccWelcome to\c- \c[TSPGREEN]The Space Pirate!";
-STARTUP2 = "\cpVersion 0.1 - \c[Mel]Into Obscura";
+STARTUP2 = "\cpVersion 0.1 - \c[Sapphire]First Hunt Demo";
 STARTUP3 = "Chat with us at \cdhttps://discord.gg/discord.gg/wDDCWT9";
 STARTUP4 = "\cuLOOK TO LA LUNA";
 
 //VERSION
-VERSION = "\cuv0.1 - \c[Mel]Into Obscura";
+VERSION = "\cuv0.1 - \c[Sapphire]First Hunt Demo";
 
 //Difficult
 SKILLNONFINISH = "\ccThis mode is currently unfinished!\n\nMaybe it'll be done by\c- \cg2099\c-\cc?\c-";
