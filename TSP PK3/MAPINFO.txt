@@ -300,24 +300,12 @@ skill TSPnightmare
 }
 */
 
-skill TSPdante
-{
-  damagefactor = 255
-  monsterhealth = 0.001
-  spawnfilter = Hard
-  PicName = "SPSKILLD"
-  name = "Death to Pirates"
-  mustconfirm = "$SKILLNONFINISH"
-  ACSReturn = 4
-  Key = "5"
-}
-
 skill TSPNotFinished
 {
   damagefactor = 2.0
   monsterhealth = 2.0
   spawnfilter = Hard
-  PicName = "SPSKILLN"
+  PicName = "SPSKILLX"
   mustconfirm = "$SKILLNONFINISH"
   ACSReturn = 999
   Key = "0"
@@ -334,7 +322,21 @@ skill TSPSurvivor
   ACSReturn = 5
   Key = "6"
 }
+
+skill TSPdante
+{
+  damagefactor = 255
+  monsterhealth = 0.001
+  spawnfilter = Hard
+  PicName = "SPSKILLD"
+  name = "Death to Pirates"
+  mustconfirm = "$SKILLNONFINISH"
+  ACSReturn = 4
+  Key = "5"
+}
 */
+
+
 
 DoomEdNums
 {
