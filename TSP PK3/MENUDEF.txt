@@ -20,7 +20,7 @@ LISTMENU "MainMenu"
 	TSP_MenuItem_PatchItem "SPMENU6",	 "q",	"QuitMenu"
 	
 	Font "TinyFont"
-	StaticText 98, 202, "$VERSION"
+	StaticText 90, 195, "$VERSION"
 }
 
 ListMenu "TSP_GameModeMenu"
