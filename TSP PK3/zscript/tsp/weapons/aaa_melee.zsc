@@ -2,6 +2,9 @@ Extend Class TSP_Weapon_Core
 {	
 	const HITLAG_BASE = 2;//1;
 	const HITLAG_MULT = 0;//0.2;
+	
+	// add thing to disable hitstun
+	
 	//==========================================================================
 	//
 	// A_TSP_Melee(damage, range, puff, thrustHorz, thrustVert, thrustUp, angle)
