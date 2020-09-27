@@ -45,22 +45,22 @@ map TSP_SHIP "The Indigo Skyline"
 	lightmode = 0
 }
 
-episode TSP_SHIP
+/*episode TSP_SHIP
 {
 	name = "TSPT:Training"
 	noskillmenu
-}
+}*/
 
 map TSP02 "Tian Zhu - Grave of the Dragon"
 {
 	sky1 = "Grave", -0.01
 }
 
-episode TSP02
+/*episode TSP02
 {
 	name = "TSPT:Grave"
 	noskillmenu
-}
+}*/
 
 map TSP03 "Neoscape - Crash Course"
 {
@@ -69,11 +69,11 @@ map TSP03 "Neoscape - Crash Course"
 	lightmode = 0
 }
 
-episode TSP03
+/*episode TSP03
 {
 	name = "TSPT:Obstacle"
 	noskillmenu
-}
+}*/
 
 map TEST "Neoscape - Test Sector"
 {
@@ -82,10 +82,21 @@ map TEST "Neoscape - Test Sector"
 	lightmode = 0
 }
 
-episode TEST
+/*episode TEST
 {
 	name = "TSPT:Test"
 	noskillmenu
+}*/
+
+episode TSP_BH
+{
+	name = "TSPBountyHunters"
+	noskillmenu
+}
+
+map TSP_BH "FUUUCKKK! FUUUUUCKKKK!!!"
+{
+	EventHandlers = "TSP_EventHandler_GotoBHMap"
 }
 
 /////////////////
@@ -99,11 +110,11 @@ map TSP_BH01 "Neoscape - Battle Zone"
 	lightmode = 0
 }
 
-episode TSP_BH01
+/*episode TSP_BH01
 {
 	name = "TSPBH:BattleZone"
 	noskillmenu
-}
+}*/
 
 map TSP_BH02 "Elegia - Red Hot Research"
 {
@@ -112,17 +123,17 @@ map TSP_BH02 "Elegia - Red Hot Research"
 	lightmode = 0
 }
 
-episode TSP_BH02
+/*episode TSP_BH02
 {
 	name = "TSPBH:Elegia"
 	noskillmenu
-}
+}*/
 
-episode MAP32
+/*episode MAP32
 {
 	name = "TSPBH:Grosse"
 	noskillmenu
-}
+}*/
 /*episode MAP02
 {
 	name = "Cum"

@@ -13,6 +13,14 @@ Script "TSPGetGameSkill" (void)
 	SetResultValue(GameSkill());
 }
 
+Script "TSP_GotoThisMap" (int levelName)
+{
+	Log(s:"Going to ",s:GetCVarString("tsp_internal_bhmap"));
+	Delay(35);
+	Log(s:"REALLY Going to ",s:GetCVarString("tsp_internal_bhmap"));
+	ChangeLevel(GetCVarString("tsp_internal_bhmap"),0,CHANGELEVEL_NOINTERMISSION,-1);
+}
+
 //By DoomRater
 Script "PlayerSpeed"(int movespeed)
 {

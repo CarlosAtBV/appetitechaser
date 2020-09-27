@@ -1,0 +1,7 @@
+Class TSP_EventHandler_GotoBHMap : EventHandler
+{
+	override void WorldLoaded(WorldEvent e)
+	{
+		CallACS("TSP_GotoThisMap");
+	}
+}
