@@ -90,7 +90,7 @@ map TEST "Neoscape - Test Sector"
 
 episode TSP_BH
 {
-	name = "TSPBountyHunters"
+	name = "TSPSpecialMapWarp"
 	noskillmenu
 }
 
@@ -127,68 +127,6 @@ map TSP_BH02 "Elegia - Red Hot Research"
 {
 	name = "TSPBH:Elegia"
 	noskillmenu
-}*/
-
-/*episode MAP32
-{
-	name = "TSPBH:Grosse"
-	noskillmenu
-}*/
-/*episode MAP02
-{
-	name = "Cum"
-}
-episode MAP03
-{
-	name = "Shite"
-}
-episode MAP04
-{
-	name = "Blerp"
-}
-episode MAP05
-{
-	name = "Boop"
-}
-episode MAP06
-{
-	name = "Yarp"
-}
-episode MAP07
-{
-	name = "TSP: Training Mode"
-}
-episode MAP08
-{
-	name = "TSP: Training Mode"
-}
-episode MAP09
-{
-	name = "TSP: Training Mode"
-}
-episode MAP10
-{
-	name = "TSP: Training Mode"
-}
-episode MAP11
-{
-	name = "TSP: Training Mode"
-}
-episode MAP12
-{
-	name = "TSP: Training Mode"
-}
-episode MAP13
-{
-	name = "TSP: Training Mode"
-}
-episode MAP14
-{
-	name = "TSP: Training Mode"
-}
-episode MAP15
-{
-	name = "TSP: Training Mode"
 }*/
 
 clearskills
