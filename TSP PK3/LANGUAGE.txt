@@ -168,7 +168,7 @@ STARTUP4 = "\cuLOOK TO LA LUNA";
 VERSION = "\cuv0.1 - \c[Sapphire]First Hunt Demo";
 
 //Difficult
-SKILLNONFINISH = "\ccThis mode is currently unfinished!\n\nMaybe it'll be done by\c- \cg2099\c-\cc?\c-";
+SKILLNONFINISH = "\ccThis mode is currently unfinished!";
 NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more often\nammo drops are \caless frequent\c-,\nand monsters do \camore damage\c- to you.\n\nYou sure you're ready for this?";
 
 
