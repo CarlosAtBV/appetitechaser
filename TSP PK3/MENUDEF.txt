@@ -68,14 +68,14 @@ ListMenu "PlayerclassMenu"
 		Selector "M_SPSEL", -22, -2
 }
 
-/*ListMenu "EpisodeMenu"
+ListMenu "EpisodeMenu"
 {
 	Class "TSP_EpisodeMenuButFake"
 	NetgameMessage "$NEWGAME"
     StaticPatch 103, 39, "SP_EPIS"	
 	Font "DBIGFONT", "Red"
 	Position 25, 43
-}*/
+}
 
 ListMenu "LoadGameMenu"
 {

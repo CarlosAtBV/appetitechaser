@@ -16,7 +16,7 @@ Script "TSPGetGameSkill" (void)
 Script "TSP_GotoThisMap" (int levelName)
 {
 	Log(s:"Going to ",s:GetCVarString("tsp_internal_bhmap"));
-	Delay(35);
+	Delay(1);
 	Log(s:"REALLY Going to ",s:GetCVarString("tsp_internal_bhmap"));
 	ChangeLevel(GetCVarString("tsp_internal_bhmap"),0,CHANGELEVEL_NOINTERMISSION,-1);
 }

@@ -53,61 +53,20 @@ Class TSP_EpisodeMenu : GenericMenu
 		maxSize = episodes.Size();
 		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		int selHeight = BigFont.GetHeight()+3+SmallFont.GetHeight()+1;
+		
+		if(gamemode == 1)
+		{
+			SetMenu("SkillMenu",episodes[episodes.Size()-1].id);
+		}
+		
 		for(int i = 0;i<episodes.Size();i++)
 		{
 			Console.Printf(""..episodes[i].name);
-			/*switch(gamemode)
-			{
-				case 0:
-					if(episodes[i].name.Left(3)=="TSP")
-					{
-						episodes.Delete(i);
-						i--;
-					}
-					break;
-				case 1:
-					if(episodes[i].name!="TSPBountyHunters")
-					{
-						episodes.Delete(i);
-						i--;
-					}
-					else
-					{
-						array<string > fucker;
-						fucker.Clear();
-						episodes[i].name.Split(fucker,":");
-						episodes[i].name = StringTable.Localize("$TSPMAP_"..fucker[1].."_NAME");
-						episodes[i].sub = StringTable.Localize("$TSPMAP_"..fucker[1].."_DESC");
-					}
-					break;
-				case 2:
-					if(episodes[i].name.Left(4)!="TSPT")
-					{
-						episodes.Delete(i);
-						i--;
-					}
-					else
-					{
-						array<string > fucker;
-						fucker.Clear();
-						episodes[i].name.Split(fucker,":");
-						episodes[i].name = StringTable.Localize("$TSPMAP_"..fucker[1].."_NAME");
-						episodes[i].sub = StringTable.Localize("$TSPMAP_"..fucker[1].."_DESC");
-					}
-					break;
-			}*/
-			if(episodes[i].name!="TSPBountyHunters")
+			
+			if(episodes[i].name=="TSPSpecialMapWarp")
 			{
 				episodes.Delete(i);
 				i--;
-			}
-			else
-			{
-				array<string > fucker;
-				fucker.Clear();
-				episodes[i].name.Split(fucker,":");
-				episodes[i].name = StringTable.Localize("$TSPMAP_"..fucker[1].."_NAME");
-				episodes[i].sub = StringTable.Localize("$TSPMAP_"..fucker[1].."_DESC");
 			}
 		}
 		
