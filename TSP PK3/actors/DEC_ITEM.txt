@@ -318,7 +318,12 @@ ACTOR TSPExplosiveBarrel : ExplosiveBarrel Replaces ExplosiveBarrel
 	}
 }
 
+ACTOR TSP_TimeCrystalMessage : TSP_CustomInventory
+{
 
+	Inventory.PickupMessage "$TimeCrystal"
+	TSP_CustomInventory.AmountGiven 30
+}
 
 ACTOR TSPGrapplePoint 20001 // Sprite Base: All Kamen Rider: Rider Generation 2
 {

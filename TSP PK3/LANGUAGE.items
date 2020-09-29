@@ -5,6 +5,9 @@ ShieldPickup = "\cc[+\c[TSPShieldOrange]%i Shield\cc]";
 HealthPickup = "\cc[+\c[TSPHealthBlue]%i HP\cc]";
 MegaspherePickup = "\cc[\c[TSPHealthBlue]MAX HEALTH\cc] + [\c[TSPShieldOrange]+50 SHIELD\c-\cc]";
 
+//BH
+TimeCrystal = "\cc[\c[TSPGold]Time Extension!\cc +\c[TSPYeller]%i Seconds\cc]";
+
 //AMMO
 PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";
 SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";

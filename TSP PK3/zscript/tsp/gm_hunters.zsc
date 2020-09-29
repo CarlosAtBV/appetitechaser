@@ -50,6 +50,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				if(event)
 				{
 					event.TSPBH_AddTime(30);
+					target.A_Log("$TimeCrystal");
 				}
 			}
 			Stop;
