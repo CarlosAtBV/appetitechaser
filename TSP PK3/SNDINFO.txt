@@ -96,6 +96,10 @@ shop/weaponmod				"sounds/shop/ui_shop_buy_weaponmod.ogg"
 shop/misc					"sounds/shop/ui_shop_buy_misc.ogg"
 
 
+bountyhunters/timecrystal		"sounds/general/items/sfx_bountyhunters_timecrystal_hit.ogg"
+bountyhunters/combocrystal		"sounds/general/items/sfx_bountyhunters_combocrystal_hit.ogg"
+bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrystal_timeup.ogg"
+
 world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
 
 weapon/mod/on "sounds/placeholder/modon.wav" // From Fortress Forever
