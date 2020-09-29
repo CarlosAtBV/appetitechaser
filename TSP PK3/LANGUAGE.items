@@ -6,7 +6,9 @@ HealthPickup = "\cc[+\c[TSPHealthBlue]%i HP\cc]";
 MegaspherePickup = "\cc[\c[TSPHealthBlue]MAX HEALTH\cc] + [\c[TSPShieldOrange]+50 SHIELD\c-\cc]";
 
 //BH
-TimeCrystal = "\cc[\c[TSPGold]Time Extension!\cc +\c[TSPYeller]%i Seconds\cc]";
+TimeCrystal = "\cc[\cfTime Extension!\cc +\c[TSPYeller]%i Seconds\cc]";
+ComboCrystal = "\cc[\c[TSPLimeGreen]Combo Time!\cc]";
+ComboCrystalEnd = "\cc[\c[DarkRed]Combo Time Over!\cc]";
 
 //AMMO
 PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";

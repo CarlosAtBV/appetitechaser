@@ -50,7 +50,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				if(event)
 				{
 					event.TSPBH_AddTime(30);
-					players[0].mo.GiveInventory("TSP_TimeCrystalMessage",1);
+					TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",0);
 
 				}
 			}
@@ -95,6 +95,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	}
 }
 
+/*
 Class TSP_TimeCrystalMessage : TSP_UpgradeBase
 {
 	Default
@@ -103,3 +104,4 @@ Class TSP_TimeCrystalMessage : TSP_UpgradeBase
 		Inventory.PickupMessage "$TimeCrystal";
 	}
 }
+*/
