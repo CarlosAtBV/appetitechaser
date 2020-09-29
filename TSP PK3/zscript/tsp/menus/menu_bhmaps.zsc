@@ -1,0 +1,70 @@
+Class TSP_BountyHuntersMapMenu_Item
+{
+	TextureID patch;
+	string name;
+}
+
+Class TSP_BountyHuntersMapMenu : GenericMenu
+{
+	static const string hardcoded_maps[] =
+	{
+		"TSP_BH01",
+		"TSP_BH02",
+		"MAP32"
+	};
+	
+	int curSelection;
+	int episodeID;
+	
+	Array<TSP_EpisodeMenu_Item > maps;
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Left:
+				if(curSelection>0)
+				{
+					curSelection--;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+			case MKEY_Right:
+				if(curSelection<hardcoded_maps.Size()-1)
+				{
+					curSelection++;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+				
+			case MKEY_Enter:
+				S_Sound("menu/choose",CHAN_UI);
+				CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(hardcoded_maps[curSelection]);
+				SetMenu("SkillMenu",episodeID);
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override void Drawer()
+	{
+		//TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
+		
+		//screen.DrawTexture (bg, true, 103, 39, DTA_Clean, true);
+		
+		TextureID bg = TexMan.CheckForTexture("graphics/placeholder/sickomode.png",TexMan.Type_MiscPatch);
+		
+		string curName = hardcoded_maps[curSelection];
+		Font fnt = "SmallFont";
+		screen.DrawText(SmallFont, Font.CR_WHITE, 160-fnt.StringWidth(curName)/2, 180, curName, DTA_Clean, true);
+		
+		for(int i = 0;i<hardcoded_maps.Size();i++)
+		{
+			for(int v = 0;v<6;v++)
+			{
+				int sX = (80+160*i)-160*curSelection;
+				screen.DrawTexture (bg, true, sX, 39, DTA_Clean, true);
+			}
+		}
+	}
+}
