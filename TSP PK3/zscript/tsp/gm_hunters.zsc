@@ -50,7 +50,8 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				if(event)
 				{
 					event.TSPBH_AddTime(30);
-					target.A_Log("$TimeCrystal");
+					players[0].mo.GiveInventory("TSP_TimeCrystalMessage",1);
+
 				}
 			}
 			Stop;
@@ -91,5 +92,14 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		//Console.Printf("FUCK");
 		
 		//return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
+}
+
+Class TSP_TimeCrystalMessage : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.Amount 99;
+		Inventory.PickupMessage "$TimeCrystal";
 	}
 }
