@@ -82,6 +82,13 @@ map TEST "Neoscape - Test Sector"
 	lightmode = 0
 }
 
+map TSP_DHUB "Demoscape - Unknown Sector"
+{
+    sky1 = "SPACE", -0.1
+	music = "TSP_SHIP"
+	lightmode = 0
+}
+
 /*episode TEST
 {
 	name = "TSPT:Test"
