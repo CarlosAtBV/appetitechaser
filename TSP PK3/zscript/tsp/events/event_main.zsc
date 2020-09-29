@@ -117,6 +117,7 @@ Class TSP_EventHandler : EventHandler
 	void TSPBH_AddTime(int amt)
 	{
 		hunters_time += amt;
+		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
 		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
 	}
 	
