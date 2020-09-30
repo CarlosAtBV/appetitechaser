@@ -21,6 +21,12 @@ Flat:
 	#5da590
 }
 
+TSPMenuGreen //Outlined
+{
+	#000000  #000000    0  1    // BLACK OUTLINE
+	#1b485b  #1b485b  2  127
+	#205563  #34c597  128  255
+}
 
 TSPGray // OUTLINE
 {
@@ -67,15 +73,14 @@ TSPVantaBlack
 {
 	#000000  #000000
 }
-TSPLimeGreen // OUTLINE
+TSPLimeGreen 
 {
 	#172702  #B9DE7F
 }
 TSPLimeGreen1 // OUTLINE
 {
 	#000000  #000000    0  1
-	#172702  #172702    2  127
-	#719638  #B9DE7F  128  256
+	#172702  #B9DE7F   2  256
 }
 
 TSPYeller // OUTLINE

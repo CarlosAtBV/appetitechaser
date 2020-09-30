@@ -24,6 +24,10 @@ TSPMAP_OBSTACLE_DESC = "Master movement and combat mechanics!";
 TSPMAP_TEST_NAME = "Test Sector";
 TSPMAP_TEST_DESC = "Digital Testing Grounds";
 
+TSPMAP_DEMOHUB_NAME = "Demoscape";
+TSPMAP_DEMOHUB_DESC = "First Hunt Demo Hub";
+TSPMAP_DEMOHUB_NAME2 = "\c[TSPYeller]Welcome to \c[TSPMenuGreen]Demoscape\c[TSPYeller]!";
+TSPMAP_DEMOHUB_DESC2 = "\ccEnjoy your stay!";
 
 TSPMAP_BATTLEZONE_NAME = "Battle Zone";
 TSPMAP_BATTLEZONE_DESC = "Neoscape";
