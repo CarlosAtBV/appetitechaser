@@ -28,6 +28,12 @@ TSPMenuGreen //Outlined
 	#205563  #34c597  128  255
 }
 
+TSPMenuGreen1
+{
+	#1b485b  #1b485b  0  127
+	#205563  #34c597  128  255
+}
+
 TSPGray // OUTLINE
 {
 	#000000  #000000    0  1    // BLACK OUTLINE
