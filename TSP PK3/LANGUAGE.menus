@@ -28,7 +28,7 @@ TSPMAP_DEMOHUB_NAME = "Demoscape";
 TSPMAP_DEMOHUB_DESC = "First Hunt Demo Hub";
 TSPMAP_DEMOHUB_NAME2 = "\c[TSPYeller]Welcome to \c[TSPMenuGreen]Demoscape\c[TSPYeller]!";
 TSPMAP_DEMOHUB_DESC2 = "\ccEnjoy your stay!";
-TSPMAP_DEMOHUB_DESC3 = "\c[TSPMenuGreen1]TIP\cc: Be on the lookout for \c[Gold]secrets\cc!";
+TSPMAP_DEMOHUB_DESC3 = "\c[TSPGreen]TIP\cc: Be on the lookout for \c[Gold]secrets\cc!";
 
 
 TSPMAP_BATTLEZONE_NAME = "Battle Zone";
