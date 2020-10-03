@@ -14,7 +14,7 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "C:\\Users\\legow\\Desktop\\Mods\\TheSpacePirate\\Git\\TSP PK3";
+				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = true;
 		useresourcesinreadonlymode = false;
-		viewpositionx = -53.0442f;
-		viewpositiony = -213.2977f;
-		viewscale = 1.461915f;
+		viewpositionx = 905.5875f;
+		viewpositiony = -1008.41f;
+		viewscale = 0.1792158f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -51,7 +51,10 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 8f;
+			gridsize = 8;
+			gridrotate = 0;
+			gridoriginx = 0;
+			gridoriginy = 0;
 		}
 		
 		fieldtypes
@@ -83,10 +86,10 @@ maps
 				ypanningfloor = 1;
 				xpanningceiling = 1;
 				ypanningceiling = 1;
-				rotationceiling = 17;
+				rotationceiling = 1;
 				xscaleceiling = 1;
 				yscaleceiling = 1;
-				rotationfloor = 17;
+				rotationfloor = 1;
 				xscalefloor = 1;
 				yscalefloor = 1;
 				desaturation = 1;
@@ -115,7 +118,7 @@ maps
 				tabtype = 0;
 				scripttype = 1;
 				caretposition = 352;
-				firstvisibleline = 1;
+				firstvisibleline = 14;
 				activetab = true;
 			}
 		}
