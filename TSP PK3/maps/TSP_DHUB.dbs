@@ -36,11 +36,11 @@ maps
 		overridefloorheight = false;
 		overrideceilheight = false;
 		overridebrightness = false;
-		uselongtexturenames = false;
+		uselongtexturenames = true;
 		useresourcesinreadonlymode = false;
-		viewpositionx = -710.0432f;
-		viewpositiony = -1069.384f;
-		viewscale = 0.4735583f;
+		viewpositionx = 2358.347f;
+		viewpositiony = -1817.158f;
+		viewscale = 0.2802088f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -51,7 +51,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 64;
+			gridsize = 0.5;
 			gridrotate = 0;
 			gridoriginx = 0;
 			gridoriginy = 0;
@@ -72,6 +72,48 @@ maps
 					outerbottom = 0;
 				}
 			}
+			
+			stairsectorbuilder
+			{
+				
+				prefabs
+				{
+					
+					prefab1
+					{
+						name = "[Previous]";
+						numberofsectors = 7;
+						outervertexmultiplier = 1;
+						innervertexmultiplier = 1;
+						stairtype = 0;
+						sectordepth = 32;
+						spacing = 0;
+						frontside = false;
+						singlesectors = true;
+						distinctsectors = false;
+						singledirection = true;
+						distinctbaseheights = true;
+						flipping = 0;
+						numberofcontrolpoints = 1;
+						applyfloormod = true;
+						floormod = 8;
+						applyceilingmod = true;
+						ceilingmod = 0;
+						applyfloortexture = false;
+						floortexture = "";
+						applyceilingtexture = false;
+						ceilingtexture = "";
+						applyuppertexture = true;
+						uppertexture = "-";
+						upperunpegged = true;
+						applymiddletexture = false;
+						middletexture = "-";
+						applylowertexture = true;
+						lowertexture = "textures/dex/CYBB.png";
+						lowerunpegged = true;
+					}
+				}
+			}
 		}
 		
 		fieldtypes
@@ -88,7 +130,7 @@ maps
 			
 			sector
 			{
-				rotationceiling = 1;
+				rotationceiling = 17;
 				xpanningceiling = 1;
 				ypanningceiling = 1;
 				xscaleceiling = 1;
@@ -103,6 +145,9 @@ maps
 				xscalefloor = 1;
 				yscalefloor = 1;
 				fogdensity = 0;
+				ceilingglowcolor = 0;
+				lightcolor = 0;
+				ceiling_reflect = 1;
 			}
 		}
 		
