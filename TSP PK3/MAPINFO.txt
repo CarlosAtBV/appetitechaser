@@ -84,6 +84,7 @@ map TEST "Neoscape - Test Sector"
 
 map TSP_DHUB "Demoscape - Unknown Sector"
 {
+	UsePlayerStartZ
     sky1 = "SPACE", -0.1
 	music = "TSP_SHIP"
 	lightmode = 0
