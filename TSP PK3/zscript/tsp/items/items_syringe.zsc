@@ -6,6 +6,7 @@ Class TSP_HealingSyringe : Inventory
 	Default
 	{
 		Inventory.MaxAmount 5;
+		Inventory.Icon "HUD_HSYN";
 		+Inventory.INVBAR
 	}
 	

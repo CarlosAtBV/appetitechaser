@@ -112,7 +112,9 @@ Class TSP_StatusBar : BaseStatusBar
 			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+120, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
 			if(CPlayer.mo.InvSel)
 			{
-				DrawString(mSmallFont, CPlayer.mo.InvSel.GetTag().." ("..CPlayer.mo.InvSel.Amount..")", (HUDLEFT_X, HUDLEFT_Y-40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
+				DrawImage("HUD_IBOX", (0, -16), DI_ITEM_CENTER|DI_SCREEN_CENTER_BOTTOM);
+				DrawInventoryIcon(CPlayer.mo.InvSel,(0, -16),DI_ITEM_CENTER|DI_SCREEN_CENTER_BOTTOM,0.5);
+				//DrawString(mSmallFont, CPlayer.mo.InvSel.GetTag().." ("..CPlayer.mo.InvSel.Amount..")", (HUDLEFT_X, HUDLEFT_Y-40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
 			}
 			
 			// Main Stats
