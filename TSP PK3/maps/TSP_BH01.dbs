@@ -133,7 +133,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -2085.768f;
+		viewpositionx = -2687.241f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -157,12 +157,12 @@ maps
 		overridebottomtexture = true;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 5021.998f;
+		viewpositiony = 5687.372f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
 		overridemiddletexture = true;
 		custombrightness = 196;
-		viewscale = 0.5118538f;
+		viewscale = 1.124543f;
 		
 		fieldtypes
 		{
