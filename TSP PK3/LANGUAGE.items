@@ -52,3 +52,11 @@ MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
 //SUZUKA (MODS)
 MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
 MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
+
+////////////////
+// SHEN MI
+////////////////
+
+//SUZUKA CUSTOM
+ShenMiSMGPickup = "\cc[\cxOS06 Suzuka\cc - \c[Shen]Custom Model\cc]";
+ShenMiSMGTag = "\cc[\cxOS06 Suzuka\cc](\c[Shen]Custom\cc)";
