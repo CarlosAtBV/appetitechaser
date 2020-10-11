@@ -135,7 +135,7 @@ Class TSP_StatusBar : BaseStatusBar
 				case 3: DrawImage("HUD_SHU3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
-			if(CPlayer.mo is "SpacePirate")
+			if(CPlayer.mo is "TSP_MelPlayer")
 			{
 				DrawImage("HUD_MELB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}

@@ -2,25 +2,25 @@
 // Mel Player Sounds
 //////////////////////
 
-$playeralias	Melody      male  	*pain100			mel/pain100
-$playeralias	Melody      male  	*pain75				mel/pain75
-$playeralias	Melody      male  	*pain50				mel/pain50
-$playeralias	Melody      male  	*pain25				mel/pain25
-$playeralias	Melody	    male  	*death				mel/death
-$playeralias	Melody	    male  	*death-electric		mel/electricdeath
-$playeralias	Melody	    male  	*death-fire			mel/firedeath
-$playeralias	Melody	    male  	*death-poison		mel/poisondeath
-//$playeralias	Melody	    male  	*wimpydeath			mel/wimpydeath <- These happen way more than I thought they would
-$playeralias	Melody      male  	*xdeath				mel/xdeath
-$playeralias	Melody      male  	*gibbed				mel/xdeath
-$playeralias	Melody      male  	*grunt				mel/land
-$playeralias	Melody	    male  	*jump				mel/jump
-$playersound    Melody	    male    *land				melland
-$playeralias    Melody	    male    *usefail			mel/usefail
-$playeralias	Melody   	male  	*smallmelee			mel/smallmelee
-$playeralias	Melody   	male  	*mediummelee		mel/mediummelee
-$playeralias	Melody   	male  	*largemelee         mel/largemelee
-$playeralias	Melody   	male  	*xlmelee			mel/xlmelee
+$playeralias	Mel      male  	*pain100			mel/pain100
+$playeralias	Mel      male  	*pain75				mel/pain75
+$playeralias	Mel      male  	*pain50				mel/pain50
+$playeralias	Mel      male  	*pain25				mel/pain25
+$playeralias	Mel	     male  	*death				mel/death
+$playeralias	Mel	     male  	*death-electric		mel/electricdeath
+$playeralias	Mel	     male  	*death-fire			mel/firedeath
+$playeralias	Mel	     male  	*death-poison		mel/poisondeath
+//$playeralias	Mel	     male  	*wimpydeath			mel/wimpydeath <- These happen way more than I thought they would
+$playeralias	Mel      male  	*xdeath				mel/xdeath
+$playeralias	Mel      male  	*gibbed				mel/xdeath
+$playeralias	Mel      male  	*grunt				mel/land
+$playeralias	Mel	     male  	*jump				mel/jump
+$playersound    Mel	     male    *land				melland
+$playeralias    Mel	     male    *usefail			mel/usefail
+$playeralias	Mel   	 male  	*smallmelee			mel/smallmelee
+$playeralias	Mel   	 male  	*mediummelee		mel/mediummelee
+$playeralias	Mel    	 male  	*largemelee         mel/largemelee
+$playeralias	Mel   	 male  	*xlmelee			mel/xlmelee
 
 $random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
 mel/pain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"

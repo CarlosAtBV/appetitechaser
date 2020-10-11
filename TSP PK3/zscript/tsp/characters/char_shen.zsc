@@ -4,7 +4,7 @@ Class TSP_ShenMiPlayer : TSP_MelPlayer
 	{
 		Player.DisplayName "$SHENNAMECS";
 		Player.Portrait "SHBST01";
-		Player.SoundClass "Melody";
+		Player.SoundClass "Mel";
 		Player.WeaponSlot 1, "MelChargeStyle";
 		Player.WeaponSlot 2, "ShenMiPistol";
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Formidable Assassin";

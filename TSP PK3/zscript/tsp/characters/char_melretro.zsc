@@ -1,25 +1,18 @@
-// Melody Croswel
-// Master space pirate of space piracy
-// There be a finite amount of people who work under this impression
-// you may even say that this amount is limited to a single person working under the profession
-// A single person under the profession of performing smuggling in outer space
-
-Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
+Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 {
 	Default
 	{
 		Player.ViewHeight 47;
 		Player.AttackZOffset 20;
-		Player.JumpZ 9.0;
 		Player.StartItem "MeleeButtonActor", 1;
-		Player.StartItem "IsMel", 1;		
-		Player.SoundClass "Mel";
-		Player.DisplayName "$MELNAMECS";
+		Player.StartItem "IsMelRetro", 1;		
+		Player.SoundClass "MelRetro";
+		Player.DisplayName "Mel (Retro)";
 		Player.Face "MCW";
 		Player.Portrait "MCWST01";
-		Player.WeaponSlot 1, "MelChargeStyle", "MelMelee";
-		Player.WeaponSlot 2, "MelPistol", "MelPistolA", "MelPistolB", "MelPistolC";
-		Player.WeaponSlot 3, "MelSMG", "MelSMGA", "MelSMGB";
+		Player.WeaponSlot 1, "MelMeleeRetro";
+		Player.WeaponSlot 2, "MelPistol";
+		Player.WeaponSlot 3, "MelSMG";
 		Species "Player";
 		+THRUSPECIES
 		+PLAYERPAWN.NOTHRUSTWHENINVUL
@@ -27,14 +20,14 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		//var int user_DProjTID;
 		
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Space Pirate";
-		TSP_PlayerPawn_ZSCBase.DisplayDescription "$TSP_MEL_BIO";
+		TSP_PlayerPawn_ZSCBase.DisplayDescription "[DESCRIPTION NOT YET ENTERED]";
 	}
 	
 	override void OnStandardLoadout()
 	{
 		super.OnStandardLoadout();
 		
-		GiveInventory("MelMelee",1);
+		GiveInventory("MelMeleeRetro",1);
 		if(!pp_meleestart)
 		{
 			GiveInventory("MelPistol",1);
@@ -42,16 +35,16 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 			GiveInventory("TSPSMGAmmo",40);
 		}
 		
-		pp_initShield = 25;
+		pp_initShield = 0;
 		
-		GiveInventory("IsMel",1);
+		GiveInventory("IsMelRetro",1);
 	}
 	
 	override void OnBountyHunterLoadout()
 	{
 		super.OnBountyHunterLoadout();
 		
-		GiveInventory("MelMelee",1);
+		GiveInventory("MelMeleeRetro",1);
 		GiveInventory("TSP_Upgrade_Shield",1);
 		GiveInventory("TSP_Upgrade_MagSpear",1);
 		GiveInventory("TSP_HealingSyringe",1);
@@ -66,7 +59,7 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		
 		//MAG GRAPPLE (LV 2)
 		
-		pp_initShield = 50;
+		pp_initShield = 0;
 		
 		GiveInventory("IsMel",1);
 	}

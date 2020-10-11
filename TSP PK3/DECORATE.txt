@@ -42,6 +42,12 @@ ACTOR IsMel : Inventory
 	Inventory.MaxAmount 1
 }
 
+ACTOR IsMelRetro : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+
 ACTOR IsShenMi : Inventory
 {
 	Inventory.MaxAmount 1
