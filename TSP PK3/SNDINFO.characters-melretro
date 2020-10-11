@@ -69,17 +69,51 @@ melretrounf2 "sounds/characters/melretro/vo_mel_retro_usefail2.ogg"
 //////////////////
 
 $random melretro/smallmelee  { melretro/smallmelee1 melretro/smallmelee2 melretro/smallmelee3 melretro/smallmelee4 melretro/smallmelee5 melretro/smallmelee6 null null null null null null null null null null null null null }
-melretro/smallmelee1 "sounds/characters/melretro/melee/vo_mel_melee_sm01.ogg"
-melretro/smallmelee2 "sounds/characters/melretro/melee/vo_mel_melee_sm02.ogg"
-melretro/smallmelee3 "sounds/characters/melretro/melee/vo_mel_melee_sm03.ogg"
-melretro/smallmelee4 "sounds/characters/melretro/melee/vo_mel_melee_sm04.ogg"
-melretro/smallmelee5 "sounds/characters/melretro/melee/vo_mel_melee_sm05.ogg"
-melretro/smallmelee6 "sounds/characters/melretro/melee/vo_mel_melee_sm06.ogg"
+melretro/smallmelee1 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm01.ogg"
+melretro/smallmelee2 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm02.ogg"
+melretro/smallmelee3 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm03.ogg"
+melretro/smallmelee4 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm04.ogg"
+melretro/smallmelee5 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm05.ogg"
+melretro/smallmelee6 "sounds/characters/melretro/melee/vo_mel_retro_melee_sm06.ogg"
 
 $random melretro/largemelee { melretro/largemelee1 melretro/largemelee2 melretro/largemelee3 melretro/largemelee4 melretro/largemelee5 melretro/largemelee6 null null null null null null null null null null }
-melretro/largemelee1 "sounds/characters/melretro/melee/vo_mel_melee_lg01.ogg"
-melretro/largemelee2 "sounds/characters/melretro/melee/vo_mel_melee_lg02.ogg"
-melretro/largemelee3 "sounds/characters/melretro/melee/vo_mel_melee_lg03.ogg"
-melretro/largemelee4 "sounds/characters/melretro/melee/vo_mel_melee_lg04.ogg"
-melretro/largemelee5 "sounds/characters/melretro/melee/vo_mel_melee_lg05.ogg"
-melretro/largemelee6 "sounds/characters/melretro/melee/vo_mel_melee_lg06.ogg"
+melretro/largemelee1 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg01.ogg"
+melretro/largemelee2 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg02.ogg"
+melretro/largemelee3 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg03.ogg"
+melretro/largemelee4 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg04.ogg"
+melretro/largemelee5 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg05.ogg"
+melretro/largemelee6 "sounds/characters/melretro/melee/vo_mel_retro_melee_lg06.ogg"
+
+// PERSEPHONE
+$random melretro/persephonepickup { melretro/persephonepickup01 melretro/persephonepickup02 melretro/persephonepickup03 melretro/persephonepickup04 }
+melretro/persephonepickup01 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_persephone01.ogg"
+melretro/persephonepickup02 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_persephone02.ogg"
+melretro/persephonepickup03 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_persephone03.ogg"
+melretro/persephonepickup04 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_persephone04.ogg"
+
+// 919M
+melretro/919mpickup "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_919m.ogg"
+
+// SHOTGUN
+melretro/shotgunpickup "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_shotgun.ogg"
+
+// DAHLIA
+melretro/dahliapickup "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_dahlia.ogg"
+
+// AB50
+melretro/ab50pickup "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_ab50.ogg"
+
+// TOOLBOX
+$random melretro/toolboxpickup { melretro/toolboxpickup01 melretro/toolboxpickup02 }
+melretro/toolboxpickup01 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_toolbox01.ogg"
+melretro/toolboxpickup02 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_toolbox02.ogg"
+
+// ADRANOS
+$random melretro/adranospickup { melretro/adranospickup01 melretro/adranospickup02 }
+melretro/adranospickup01 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_adranos01.ogg"
+melretro/adranospickup02 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_adranos02.ogg"
+
+// ADRANOS
+$random melretro/adranospickup { melretro/adranospickup01 melretro/adranospickup02 }
+melretro/adranospickup01 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_adranos01.ogg"
+melretro/adranospickup02 "sounds/characters/melretro/weaponpickups/vo_mel_retro_pickup_adranos02.ogg"
