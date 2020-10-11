@@ -90,10 +90,6 @@ PD_ALLKEYS = "You need all the keys";
 SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
 
 //Character
-MELNAME = "\c[Mel]Mel\c-";
-MELNAMECS = "\c[Mel2]Mel\c-";
-MELRETRONAME = "\c[Mel]Mel \cc(\cfRetro\cc)";
-MELRETRONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPGold]Retro\c[TSPGray])";
 SHENNAME = "\c[Shen]Shen Mi\c-";
 SHENNAMECS = "\c[Shen2]Shen Mi\c-";
 ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
