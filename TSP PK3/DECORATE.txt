@@ -151,5 +151,7 @@ Actor MeleeSelected : Boolean {}
 #include "Actors/Weapons/Mel/DEC_M_WEP3a.txt" // SUZUKA
 #include "Actors/Weapons/Mel/DEC_M_WEP3b.txt" // SUZUKA
 
+#include "Actors/Weapons/Mel/DEC_M_WEP1RETRO.txt" // BARE KNUCKLE (2014)
+
 // THE TOOLBOX
 //#include "Actors/Weapons/Mel/DEC_M_WEP5a.txt" // MEL

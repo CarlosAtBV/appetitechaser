@@ -1,0 +1,985 @@
+//===========================================================================
+//
+// Mel's Melee Style
+//
+// by Marty Kirra
+// Sprites by Marty Kirra, Blox, Scuba Steve, Banjo Entertainment
+// 
+//
+//===========================================================================
+
+ACTOR MelMeleeRetro : Weapon
+{
+  Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
+  Obituary "%o learned why %k is the king of the iron fist."
+  Weapon.Kickback 100
+  Weapon.BobStyle Alpha
+  Weapon.BobSpeed 1.5
+  Weapon.BobRangeY 1.0
+  Weapon.BobRangeX 0.5
+  Tag "Melee"
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  +WEAPON.NOALERT
+  +WEAPON.NOAUTOAIM
+  +WEAPON.NOAUTOFIRE
+  +NOEXTREMEDEATH
+  +INVENTORY.UNDROPPABLE
+  States
+  {
+  Spawn:
+    TNT1 A -1
+    Loop
+  Deselect:
+    TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
+    TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "PistolComboDeselect")
+    MLED ABCDE 1
+    TNT1 A 3
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+  DeselectLoop:
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+    TNT1 A 1 A_Lower
+    Loop
+  PistolComboDeselect:
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+    TNT1 A 1 A_Lower
+    Loop
+  ComboDeselect:
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
+    TNT1 A 1 A_Lower
+    Loop
+  Select:
+    TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
+    TNT1 A 4 SetPlayerProperty(0,1,2)
+    MLEU ABCDE 1
+  SelectLoop:
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Raise
+    MLEG A 1 A_Raise
+    Loop
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MLEG A 1 A_WeaponReady
+    Loop
+//Punch!
+  Fire:
+    TNT1 A 0 A_JumpIfInventory("MagPunchToken", 1,"MagPunch")
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML1F A 0 A_JumpIfInventory("MelMachCombo",4,"AfterMelee") //made so you can't knifehand again after the Rapid Fire Finish
+    ML1F A 0 A_JumpIfInventory("MelMachCombo",3,"RapidFireFinish")
+    ML1F A 0 A_JumpIfInventory("MelMachCombo",2,"CrossDuo")
+    ML1F A 0 A_JumpIfInventory("MelMachCombo",1,"CrossPunch")
+    ML1F A 0 A_JumpIfInventory("MelAlternateCombo",2,"KnifeHand")
+    ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",3,"ScorpionTailFinisher")
+    ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",2,"LeftOverhead")
+    ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",1,"RightHook")
+    ML1F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML1F ABCD 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"FireBerserk")
+    ML1F E 1 A_CustomPunch(10,0,0,"BasicMeleePuff",70)
+    Goto FireA
+  FireBerserk:
+    ML1F E 1 A_CustomPunch(15,0,0,"BasicMeleePuff",70)
+    Goto FireA
+  FireA:
+    TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML1F F 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML1F G 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML1F J 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML1F K 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+//P-P
+  RightHook:
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML2F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RightHookBerserk")
+    ML2F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto RightHookA
+  RightHookBerserk:
+    ML2F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto RightHookA
+  RightHookA:
+    ML2F E 1
+    TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML2F H 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+//P-P-P
+  LeftOverhead:
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML2F A 0 A_PlaySound("*melee")
+    ML3F ABC 1 
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"LeftOverheadBerserk")
+    ML3F E 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto LeftOverheadA
+  LeftOverheadBerserk:
+    ML3F E 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto LeftOverheadA
+  LeftOverheadA:
+    ML3F F 1
+    TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 G 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 J 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+//P-P-P-P
+  ScorpionTailFinisher:
+    TNT1 A 5 A_PlaySound("*strongmelee")
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    ML4F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherBerserk")
+    ML4F D 1 A_CustomPunch(14,0,0,"UppercutMeleePuff",90)
+    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    Goto ScorpionTailFinisherA
+  ScorpionTailFinisherBerserk:
+    ML4F D 1 A_CustomPunch(28,0,0,"UppercutMeleePuff",90)
+    ML4F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    ML4F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    Goto ScorpionTailFinisherA
+  ScorpionTailFinisherA:
+    ML4F E 2
+    ML4F DCBA 1
+    TNT1 A 8
+    Goto AfterMelee
+//K-K-P
+  KnifeHand:
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    ML5F ABC 1 
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"KnifeHandBerserk")
+    ML5F D 1 A_CustomPunch(14,0,0,"StrongMeleePuff",70)
+	Goto KnifeHandA
+  KnifeHandBerserk:
+    ML5F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto KnifeHandA
+  KnifeHandA:
+    ML5F EFG 1
+    TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML5F H 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML5F I 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 5
+    Goto AfterMelee
+//K-K-P-P
+  CrossPunch:
+    TNT1 A 2 A_PlaySound("*melee")
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML6F AB 1 
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"CrossPunchBerserk")
+    ML6F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto CrossPunchA
+  CrossPunchBerserk:
+    ML6F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto CrossPunchA
+  CrossPunchA:
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML6F C 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML6F B 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML6F A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+//K-K-P-P-P
+  CrossDuo:
+    TNT1 A 1
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML7F AB 1 
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"CrossDuoBerserk")
+    ML7F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto CrossDuoA
+  CrossDuoBerserk:
+    ML7F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto CrossDuoA
+  CrossDuoA:
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+	TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML7F C 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML7F B 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    ML7F A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+//K-K-P-P-P-P
+  RapidFireFinish:
+    TNT1 A 1 A_PlaySound("*strongmelee")
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    ML8F ABD 1 
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RapidFireFinishBerserk")
+    ML8F E 5 A_CustomPunch(16,0,0,"StrongMeleePuff",90)
+    Goto RapidFireFinishA
+  RapidFireFinishBerserk:
+    ML8F E 5 A_CustomPunch(32,0,0,"StrongMeleePuff",90)
+    Goto RapidFireFinishA
+  RapidFireFinishA:
+    ML8F DCBA 1
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 AAAAAA 1 A_WeaponReady
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 6
+    Goto AfterMelee
+//Kicks
+  AltFire:
+    TNT1 A 0 A_JumpIfInventory("MagSlingToken", 1,"MagSling")
+    ML1F A 0 A_JumpIfInventory("MelAlternateCombo",4,"StingrayFinisher")
+    ML1F A 0 A_JumpIfInventory("MelAlternateCombo",2,"ViperFinisher")
+    ML1F A 0 A_JumpIfInventory("MelAlternateCombo",1,"UpperKick")
+    ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",3,"AzureKnee")
+    ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",2,"StreetSweeperFinisher")
+    ML1F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    MK4F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"AltFireBerserk")
+    MK4F D 1 A_CustomPunch(12,0,0,"BasicMeleePuff",90)
+    Goto AltFireA
+  AltFireBerserk:
+    MK4F D 1 A_CustomPunch(24,0,0,"BasicMeleePuff",90)
+    Goto AltFireA
+  AltFireA:
+    MK4F E 1
+    TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MK4F F 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MK4F G 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MK4F H 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    Goto AfterMelee
+//K-K
+  UpperKick:
+    TNT1 A 3
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    ML2F A 0 A_PlaySound("*melee")
+    MK5F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"UpperKickBerserk")
+    MK5F D 2 A_CustomPunch(12,0,0,"BasicMeleePuff",90)
+    Goto UpperKickA
+  UpperKickBerserk:
+    MK5F D 2 A_CustomPunch(24,0,0,"BasicMeleePuff",90)
+    Goto UpperKickA
+  UpperKickA:
+    MK5F E 1
+    TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MK5F F 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 G 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 3
+    Goto AfterMelee
+//K-K-K
+  ViperFinisher:
+    TNT1 A 3 A_PlaySound("*strongmelee")
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    MK6F AB 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ViperFinisherBerserk")
+    MK6F C 2 A_CustomPunch(18,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(12,0,0,"BlankMeleePuff",90)
+    Goto ViperFinisherA
+  ViperFinisherBerserk:
+    MK6F C 2 A_CustomPunch(36,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    Goto ViperFinisherA
+  ViperFinisherA:
+    MK6F DEF 1
+    TNT1 A 6
+    Goto AfterMelee
+//P-P-K
+  StreetSweeperFinisher:
+    TNT1 A 4 A_PlaySound("*strongmelee")
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    MK1F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherBerserk")
+    MK1F D 1 A_CustomPunch(18,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    Goto StreetSweeperFinisherA
+  StreetSweeperFinisherBerserk:
+    MK1F D 1 A_CustomPunch(36,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    Goto StreetSweeperFinisherA
+  StreetSweeperFinisherA:
+    MK1F EFGHI 1
+    TNT1 A 5
+    Goto AfterMelee
+//P-P-P-K
+  AzureKnee:
+    TNT1 A 2
+    ML2F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+    MK2F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"AzureKneeBerserk")
+    MK2F D 3 A_CustomPunch(12,0,0,"BasicMeleePuff",70)
+    Goto AzureKneeA
+  AzureKneeBerserk:
+    MK2F D 3 A_CustomPunch(24,0,0,"BasicMeleePuff",70)
+    Goto AzureKneeA
+  AzureKneeA:
+    MK2F CB 1
+    TNT1 A 0 A_GiveInventory("MelAlternateCombo", 4)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    MK2F A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 1 A_WeaponReady
+    TNT1 A 6
+    Goto AfterMelee
+//P-P-P-K-K
+  StingRayFinisher:
+    TNT1 A 3 A_PlaySound("*strongmelee")
+    ML2F A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
+    MK3F ABCD 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"StingRayFinisherBerserk")
+    MK3F E 1 A_CustomPunch(18,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    Goto StingRayFinisherA
+  StingRayFinisherBerserk:
+    MK3F E 1 A_CustomPunch(36,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(4,0,0,"BlankMeleePuff",90)
+    Goto StingRayFinisherA
+  StingRayFinisherA:
+    MK3F FGHI 1
+    TNT1 A 0 A_GiveInventory("MelPistolCombo", 1)//allows you to do the pistol combo
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 A 5 A_WeaponReady
+    Goto AfterMelee
+  AfterMelee:
+    TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
+    TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
+    TNT1 A 0 A_TakeInventory("MagPunchToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+    MLED EDCBA 1
+    MLEG A 1
+    Goto Ready
+//Special Moves!
+  SPMelee:
+    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "MagPull")
+    TNT1 A 0 A_GiveInventory("MagPunchToken", 1)
+    TNT1 A 0 A_GiveInventory("MagSlingToken", 1)
+    MLED ABCDE 1 
+    TNT1 A 5 A_WeaponReady
+  MagPull:
+    TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+    MLGF A 0 A_PlaySoundEX("magpull", "SoundSlot6")
+    MLGF ABCDEFGH 1
+    TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+    MLGF I 1 A_FireCustomMissile("MagPullProjectile", 0, 0, 0, 0)
+    MLGF JKLM 1
+    TNT1 A 0 A_TakeInventory("MagPunchToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 4
+    TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
+    Goto AfterMelee
+  MagPunch:
+    TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+    TNT1 A 0 A_JumpIf (momZ > 0, "Hornet")
+    TNT1 A 0 A_JumpIf (momZ < 0, "Hornet")
+    TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("GetMagPushCVAR") == true,"MagPush")
+    MLGF A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot6")
+    MLGF A 0 A_PlaySound("*strongmelee")
+    MLGC UVWX 1
+    TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15)
+    TNT1 A 0 A_Recoil(-15)
+    MLGC X 2 A_CustomPunch(20,0,0,"MagPunchPuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MLGC WVU 1
+    TNT1 A 0 A_TakeInventory("MagPunchToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 7
+    TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
+    Goto AfterMelee
+  MagPush:
+    TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+    TNT1 A 0 A_JumpIf (momZ > 0, "Hornet")
+    TNT1 A 0 A_JumpIf (momZ < 0, "Hornet")
+    MLGF A 0 A_PlaySoundEX("magpush", "SoundSlot6")
+    MLGF ABCDEFGH 1
+    TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15)
+    MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION) 
+    MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION)
+    MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,-15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION) 
+    MLGF I 1 A_SpawnItemEx ("MagPushProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION)
+    MLGF HGFEDCBA 1
+    TNT1 A 0 A_TakeInventory("MagPunchToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 4
+    TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
+    Goto AfterMelee
+  MagSling:
+    TNT1 A 2 A_TakeInventory("ComboCoolDown", 99)
+    MLGF A 0 A_PlaySoundEX("magsling", "SoundSlot6")
+    MLGF ABCDEFGH 1
+    TNT1 A 0 A_SetBlend("45 55 20", 0.4, 15)
+    MLGF I 0 A_FireCustomMissile("MagSlingActivate", 0, 0, 0, 0)
+    MLGF JKLM 1
+    TNT1 A 0 A_TakeInventory("MagPunchToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
+    TNT1 A 6
+    TNT1 AAAAAAAAAAAAA 1 A_WeaponReady
+    Goto AfterMelee
+//DIVEKICK!
+  Hornet:
+    TNT1 A 3 Thrustthingz(0,10,0,0)
+    TNT1 A 0 Thrustthingz(0,15,1,0)
+     TNT1 A 0 Thrustthing(angle*256/360,5, 0, 0)
+    ML2F A 0 A_PlaySoundEX("magpunch/miss", "SoundSlot5")
+    TNT1 A 0 A_Recoil(-15)
+    MK1F ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"HornetBerserk")
+    MK1F D 1 A_CustomPunch(40,0,0,"MagPunchPuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(1,0,0,"BlankMeleePuff",90)
+    Goto HornetA
+  HornetBerserk:
+    MK1F D 1 A_CustomPunch(80,0,0,"StrongMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    MK3F E 0 A_CustomPunch(2,0,0,"BlankMeleePuff",90)
+    Goto HornetA
+  HornetA:
+    MK1F EFGHI 1
+    TNT1 A 5 A_WeaponReady
+    Goto AfterMelee
+  }
+}
+
+ACTOR MagPullProjectile : LoreShot
+{
+  Speed 140
+  Damage 1
+  Height 20
+  Radius 20
+  SeeSound "magloop"
+  DeathSound "maghit"
+  DamageType Melee
+  Obituary "%o was allured by %k's magnetic personality."
+  Projectile
+  States
+  {
+  Spawn:
+    TNT1 AAAAAAAAAAA 2
+    Stop
+  Death:
+    TNT1 A 1 A_Scream
+    Stop 
+  } 
+}
+
+ACTOR MagPushProjectileReflective //this is a completely new actor
+{
+  Height 30
+  Radius 15
+  Scale 4.0
+  Monster
+  +REFLECTIVE
+  +DEFLECT
+  +NOBLOOD
+  +INVULNERABLE
+  +NOGRAVITY
+  +THRUSPECIES
+  Species "Player"
+  States
+  {
+  Spawn:
+    TNT1 AA 1
+    Stop
+  Death:
+    TNT1 A 1 A_Scream
+    Stop 
+  } 
+}
+
+ACTOR MagPushProjectile : FastProjectile  //this replaces the same-named actor
+{
+  Damage 1
+  Height 30
+  Radius 30
+  Scale 6.0
+  SeeSound ""
+  DeathSound "magphit"
+  DamageType Melee
+  Obituary "%k was rejected by %o magnetic punch."
+  ProjectileKickback 70000
+  Projectile
+  +STRIFEDAMAGE
+  +THRUSPECIES
+  Species "Player"
+  States
+  {
+  Spawn:
+    TNT1 AA 1
+    Stop
+  Death:
+    TNT1 A 1 A_Scream
+    Stop 
+  } 
+}
+
+ACTOR MagSlingActivate : FastProjectile
+{
+  Speed 200
+  Damage 0
+  Height 20
+  Radius 20
+  SeeSound ""
+  DeathSound "maghit"
+  DamageType Sling
+  Obituary "%k was rejected by %o magnetic push."
+  Projectile
+  -NOBLOCKMAP
+  +NOBLOOD
+  +FORCEPAIN
+  States
+  {
+  Spawn:
+   TNT1 AAAA 1
+   Stop
+  Death:
+   TNT1 A 1 A_Scream
+   Stop 
+  } 
+}
+
+ACTOR MagSlingShot : LoreShot
+{
+  Speed 160
+  Height 20
+  Radius 20
+  Damage (1)
+  SeeSound ""
+  DeathSound "maghit"
+  //DamageFactor 0.001
+  DamageType Sling
+  Obituary "%o was allured by %k's magnetic personality."
+  Projectile
+  +FORCEPAIN
+  States
+  {
+  Spawn:
+    TNT1 AAAAAAAA 2
+    Stop
+  Death:
+    TNT1 A 1 A_Scream
+    Stop 
+  } 
+}
+
+
+ACTOR MelPrimaryCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR MelAlternateCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR MelMachCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR MelPistolCombo : Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR MagPunchToken: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR MagSlingToken: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR ChargedAttack: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+//This is used to switch weapons without weird graphic stuff happening.
+ACTOR ComboCooldown: Inventory
+{
+  Inventory.MaxAmount 99
+  Inventory.Icon TNT1A0
+}
+
+ACTOR BasicMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound "basicmelee/wall"
+  SeeSound "basicmelee/contact"
+  DamageType Melee
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR StrongMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound "strongmelee/wall"
+  SeeSound "strongmelee/contact"
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR UppercutMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound "strongmelee/wall"
+  SeeSound "uppercutmelee/contact"
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  DamageType Melee
+  DamageType Uppercut
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR MagPunchPuff
+{ 
+  ActiveSound ""
+  AttackSound "magpunch/wall"
+  SeeSound "magpunch/contact"
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal BFGscorch
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
+
+ACTOR BlankMeleePuff
+{ 
+  ActiveSound ""
+  AttackSound ""
+  SeeSound ""
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  Decal "none"
+  States
+  {
+  Spawn:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Crash:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  Melee:
+    TNT1 A 0
+    TNT1 A 1
+    Stop
+  }
+}
