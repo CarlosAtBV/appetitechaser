@@ -7,6 +7,9 @@ $playeralias	Melody      male  	*pain75				mel/pain75
 $playeralias	Melody      male  	*pain50				mel/pain50
 $playeralias	Melody      male  	*pain25				mel/pain25
 $playeralias	Melody	    male  	*death				mel/death
+$playeralias	Melody	    male  	*death-electric		mel/electricdeath
+$playeralias	Melody	    male  	*death-fire			mel/firedeath
+$playeralias	Melody	    male  	*death-poison		mel/poisondeath
 //$playeralias	Melody	    male  	*wimpydeath			mel/wimpydeath <- These happen way more than I thought they would
 $playeralias	Melody      male  	*xdeath				mel/xdeath
 $playeralias	Melody      male  	*gibbed				mel/xdeath
@@ -19,43 +22,47 @@ $playeralias	Melody   	male  	*mediummelee		mel/mediummelee
 $playeralias	Melody   	male  	*largemelee         mel/largemelee
 $playeralias	Melody   	male  	*xlmelee			mel/xlmelee
 
-$random mel/pain100 { melpain1001 melpain1002 melpain1003 melpain1004 }
-melpain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"
-melpain1002 "sounds/characters/mel/vo_mel_pain100-2.ogg"
-melpain1003 "sounds/characters/mel/vo_mel_pain100-3.ogg"
-melpain1004 "sounds/characters/mel/vo_mel_pain100-4.ogg"
+$random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
+mel/pain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"
+mel/pain1002 "sounds/characters/mel/vo_mel_pain100-2.ogg"
+mel/pain1003 "sounds/characters/mel/vo_mel_pain100-3.ogg"
+mel/pain1004 "sounds/characters/mel/vo_mel_pain100-4.ogg"
 
-$random mel/pain75 { melpain751 melpain752 melpain753 melpain754 }
-melpain751 "sounds/characters/mel/vo_mel_pain75-1.ogg"
-melpain752 "sounds/characters/mel/vo_mel_pain75-2.ogg"
-melpain753 "sounds/characters/mel/vo_mel_pain75-3.ogg"
-melpain754 "sounds/characters/mel/vo_mel_pain75-4.ogg"
+$random mel/pain75 { mel/pain751 mel/pain752 mel/pain753 mel/pain754 }
+mel/pain751 "sounds/characters/mel/vo_mel_pain75-1.ogg"
+mel/pain752 "sounds/characters/mel/vo_mel_pain75-2.ogg"
+mel/pain753 "sounds/characters/mel/vo_mel_pain75-3.ogg"
+mel/pain754 "sounds/characters/mel/vo_mel_pain75-4.ogg"
 
-$random mel/pain50 { melpain501 melpain502 melpain503 melpain504 }
-melpain501 "sounds/characters/mel/vo_mel_pain50-1.ogg"
-melpain502 "sounds/characters/mel/vo_mel_pain50-2.ogg"
-melpain503 "sounds/characters/mel/vo_mel_pain50-3.ogg"
-melpain504 "sounds/characters/mel/vo_mel_pain50-4.ogg"
+$random mel/pain50 { mel/pain501 mel/pain502 mel/pain503 mel/pain504 }
+mel/pain501 "sounds/characters/mel/vo_mel_pain50-1.ogg"
+mel/pain502 "sounds/characters/mel/vo_mel_pain50-2.ogg"
+mel/pain503 "sounds/characters/mel/vo_mel_pain50-3.ogg"
+mel/pain504 "sounds/characters/mel/vo_mel_pain50-4.ogg"
 
-$random mel/pain25 { melpain251 melpain252 melpain253 melpain254 }
-melpain251 "sounds/characters/mel/vo_mel_pain25-1.ogg"
-melpain252 "sounds/characters/mel/vo_mel_pain25-2.ogg"
-melpain253 "sounds/characters/mel/vo_mel_pain25-3.ogg"
-melpain254 "sounds/characters/mel/vo_mel_pain25-4.ogg"
+$random mel/pain25 { mel/pain251 mel/pain252 mel/pain253 mel/pain254 }
+mel/pain251 "sounds/characters/mel/vo_mel_pain25-1.ogg"
+mel/pain252 "sounds/characters/mel/vo_mel_pain25-2.ogg"
+mel/pain253 "sounds/characters/mel/vo_mel_pain25-3.ogg"
+mel/pain254 "sounds/characters/mel/vo_mel_pain25-4.ogg"
 
-$random mel/death { meldth1 meldth2 }
-meldth1 "sounds/characters/mel/vo_mel_death_normal01.ogg"
-meldth2 "sounds/characters/mel/vo_mel_death_normal02.ogg"
+$random mel/death { mel/death01 mel/death02 }
+mel/death01 "sounds/characters/mel/vo_mel_death_normal01.ogg"
+mel/death02 "sounds/characters/mel/vo_mel_death_normal02.ogg"
 
-$random mel/wimpydeath { melwimpydth1 melwimpydth2 melwimpydth3 melwimpydth4 }
-melwimpydth1 "sounds/characters/mel/vo_mel_death_wimpy01.ogg"
-melwimpydth2 "sounds/characters/mel/vo_mel_death_wimpy02.ogg"
-melwimpydth3 "sounds/characters/mel/vo_mel_death_wimpy03.ogg"
-melwimpydth4 "sounds/characters/mel/vo_mel_death_wimpy04.ogg"
+mel/electricdeath "sounds/characters/mel/vo_mel_death_electric01.ogg"
+mel/firedeath     "sounds/characters/mel/vo_mel_death_fire01.ogg"
+mel/poisondeath   "sounds/characters/mel/vo_mel_death_poison01.ogg"
 
-$random mel/xdeath { melxdth1 melxdth2 }
-melxdth1 melxdth1
-melxdth2 melxdth2
+$random mel/wimpydeath { mel/wimpydeath01 mel/wimpydeath02 mel/wimpydeath03 mel/wimpydeath04 }
+mel/wimpydeath01 "sounds/characters/mel/vo_mel_death_wimpy01.ogg"
+mel/wimpydeath02 "sounds/characters/mel/vo_mel_death_wimpy02.ogg"
+mel/wimpydeath03 "sounds/characters/mel/vo_mel_death_wimpy03.ogg"
+mel/wimpydeath04 "sounds/characters/mel/vo_mel_death_wimpy04.ogg"
+
+$random mel/xdeath { mel/xdeath01 mel/xdeath02 }
+mel/xdeath01 "sounds/characters/mel/vo_mel_death_xdeath01.ogg"
+mel/xdeath02 "sounds/characters/mel/vo_mel_death_xdeath02.ogg"
 
 $random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null }
 meljump01 "sounds/characters/mel/vo_mel_jump01.ogg"
@@ -185,15 +192,24 @@ magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
 // Mel's Style Change
 //////////////////////
 melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
-melidlebk "sounds/weapons/Mel/sfx_mel_idlebk.ogg"
+melidlebk      "sounds/weapons/Mel/sfx_mel_idlebk.ogg"
 melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
 melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
 
 
 melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
-melidlecs "sounds/weapons/Mel/sfx_mel_idlecs.ogg"
+melidlecs      "sounds/weapons/Mel/sfx_mel_idlecs.ogg"
 melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
 melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
+
+//////////////////////
+// Mel's Trait Change
+//////////////////////
+meltraitvodrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
+meltraitvograpple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
+meltraitvosling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"
+meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change01.ogg"
+meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 
 ////////////////////
 //Mel's Pickup Lines

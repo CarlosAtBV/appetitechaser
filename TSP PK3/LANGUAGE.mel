@@ -1,0 +1,46 @@
+// MEL + MEL (RETRO)
+
+////////////////
+//WEAPON PICKUPS
+////////////////
+
+////////////////
+// MEL
+////////////////
+// Trait Purchase Messages
+ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
+MagSpearPickup = "\cc[\c[Mel]Mag Spear\cc Acquired!]";
+MagSlingPickup = "\cc[\c[Mel]Mag Sling\cc Acquired!]";
+MagPushPickup = "\cc[\c[Mel]Mag Drive\cc Acquired!]";
+
+MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
+MelChargeTag = "\cc[\ctCharge Style\cc]";
+
+//DARLING NIKKI
+MelPistolPickup = "\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
+MelPistolTag = "\cc[\cyDarling Nikki\cc]";
+
+//DARLING NIKKI (MODS)
+MelPistolATag = "\cc[\cyDarling Nikki\cc](\ciS\cc)";
+MelPistolBTag = "\cc[\cyDarling Nikki\cc](\cuW\cc)";
+MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
+
+//SUZUKA
+MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
+MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
+
+//SUZUKA (MODS)
+MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
+MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
+
+////////////////
+// RETRO MEL
+////////////////
+
+RetroMelMeleeTag = "\cc[\c[Mel]Melee\cc]";
+
+//919M
+RetroMelPistolPickup = "\cc[\cy919m.0\cc - \cuPistol\cc]";
+RetroMelPistolTag = "\cc[\cy919m.0\cc]";
+
+//

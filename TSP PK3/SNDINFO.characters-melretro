@@ -1,0 +1,85 @@
+////////////////////////////
+// Mel (Retro) Player Sounds
+////////////////////////////
+
+$playeralias	MelRetro      male  	*pain100			melretro/pain100
+$playeralias	MelRetro      male  	*pain75				melretro/pain75
+$playeralias	MelRetro      male  	*pain50				melretro/pain50
+$playeralias	MelRetro      male  	*pain25				melretro/pain25
+$playeralias	MelRetro	  male  	*death				melretro/death
+$playeralias	MelRetro      male  	*xdeath				melretro/xdeath
+$playeralias	MelRetro      male  	*gibbed				melretro/xdeath
+$playeralias	MelRetro      male  	*grunt				melretro/land
+$playeralias	MelRetro	  male  	*jump				melretro/jump
+$playersound    MelRetro	  male      *land				melland
+$playeralias    MelRetro	  male      *usefail			melretro/usefail
+$playeralias	MelRetro   	  male  	*smallmelee			melretro/smallmelee
+$playeralias	MelRetro      male  	*mediummelee		melretro/smallmelee
+$playeralias	MelRetro   	  male  	*largemelee         melretro/largemelee
+$playeralias	MelRetro   	  male  	*xlmelee			melretro/largemelee
+
+$random melretro/pain100 { melretropain1001 melretropain1002 melretropain1003 melretropain1004 }
+melretropain1001 "sounds/characters/melretro/vo_mel_retro_pain100-1.ogg"
+melretropain1002 "sounds/characters/melretro/vo_mel_retro_pain100-2.ogg"
+melretropain1003 "sounds/characters/melretro/vo_mel_retro_pain100-3.ogg"
+melretropain1004 "sounds/characters/melretro/vo_mel_retro_pain100-4.ogg"
+
+$random melretro/pain75 { melretropain751 melretropain752 melretropain753 melretropain754 }
+melretropain751 "sounds/characters/melretro/vo_mel_retro_pain75-1.ogg"
+melretropain752 "sounds/characters/melretro/vo_mel_retro_pain75-2.ogg"
+melretropain753 "sounds/characters/melretro/vo_mel_retro_pain75-3.ogg"
+melretropain754 "sounds/characters/melretro/vo_mel_retro_pain75-4.ogg"
+
+$random melretro/pain50 { melretropain501 melretropain502 melretropain503 melretropain504 }
+melretropain501 "sounds/characters/melretro/vo_mel_retro_pain50-1.ogg"
+melretropain502 "sounds/characters/melretro/vo_mel_retro_pain50-2.ogg"
+melretropain503 "sounds/characters/melretro/vo_mel_retro_pain50-3.ogg"
+melretropain504 "sounds/characters/melretro/vo_mel_retro_pain50-4.ogg"
+
+$random melretro/pain25 { melretropain251 melretropain252 melretropain253 melretropain254 }
+melretropain251 "sounds/characters/melretro/vo_mel_retro_pain25-1.ogg"
+melretropain252 "sounds/characters/melretro/vo_mel_retro_pain25-2.ogg"
+melretropain253 "sounds/characters/melretro/vo_mel_retro_pain25-3.ogg"
+melretropain254 "sounds/characters/melretro/vo_mel_retro_pain25-4.ogg"
+
+$random melretro/death { melretrodth1 melretrodth2 }
+melretrodth1 "sounds/characters/melretro/vo_mel_retro_death_normal01.ogg"
+melretrodth2 "sounds/characters/melretro/vo_mel_retro_death_normal02.ogg"
+
+$random melretro/xdeath { melretroxdth1 melretroxdth2 }
+melretroxdth1 "sounds/characters/melretro/vo_mel_retro_death_xdeath01.ogg"
+melretroxdth2 "sounds/characters/melretro/vo_mel_retro_death_xdeath01.ogg"
+
+$random melretro/jump { melretrojump01 melretrojump02 null null null null null null null null null null null }
+melretrojump01 "sounds/characters/melretro/vo_mel_retro_jump01.ogg"
+melretrojump02 "sounds/characters/melretro/vo_mel_retro_jump02.ogg"
+
+
+$random melretro/land { melretroland1 melretroland2 melretroland3 }
+melretroland1 "sounds/characters/melretro/vo_mel_retro_land1.ogg"
+melretroland2 "sounds/characters/melretro/vo_mel_retro_land2.ogg"
+melretroland3 "sounds/characters/melretro/vo_mel_retro_land3.ogg"
+
+$random mel/usefail { melretrounf1 melretrounf2 }
+melretrounf1 "sounds/characters/melretro/vo_mel_retro_usefail1.ogg"
+melretrounf2 "sounds/characters/melretro/vo_mel_retro_usefail2.ogg"
+
+//////////////////
+// Mel's Melee
+//////////////////
+
+$random melretro/smallmelee  { melretro/smallmelee1 melretro/smallmelee2 melretro/smallmelee3 melretro/smallmelee4 melretro/smallmelee5 melretro/smallmelee6 null null null null null null null null null null null null null }
+melretro/smallmelee1 "sounds/characters/melretro/melee/vo_mel_melee_sm01.ogg"
+melretro/smallmelee2 "sounds/characters/melretro/melee/vo_mel_melee_sm02.ogg"
+melretro/smallmelee3 "sounds/characters/melretro/melee/vo_mel_melee_sm03.ogg"
+melretro/smallmelee4 "sounds/characters/melretro/melee/vo_mel_melee_sm04.ogg"
+melretro/smallmelee5 "sounds/characters/melretro/melee/vo_mel_melee_sm05.ogg"
+melretro/smallmelee6 "sounds/characters/melretro/melee/vo_mel_melee_sm06.ogg"
+
+$random melretro/largemelee { melretro/largemelee1 melretro/largemelee2 melretro/largemelee3 melretro/largemelee4 melretro/largemelee5 melretro/largemelee6 null null null null null null null null null null }
+melretro/largemelee1 "sounds/characters/melretro/melee/vo_mel_melee_lg01.ogg"
+melretro/largemelee2 "sounds/characters/melretro/melee/vo_mel_melee_lg02.ogg"
+melretro/largemelee3 "sounds/characters/melretro/melee/vo_mel_melee_lg03.ogg"
+melretro/largemelee4 "sounds/characters/melretro/melee/vo_mel_melee_lg04.ogg"
+melretro/largemelee5 "sounds/characters/melretro/melee/vo_mel_melee_lg05.ogg"
+melretro/largemelee6 "sounds/characters/melretro/melee/vo_mel_melee_lg06.ogg"
