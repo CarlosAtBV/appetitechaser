@@ -1,4 +1,4 @@
-Class TSP_DiazPlayer : SpacePirate
+Class TSP_DiazPlayer : TSP_MelPlayer
 {
 	Default
 	{

@@ -1,11 +1,11 @@
-Class TSP_DummyPlayer : SpacePirate
+Class TSP_DummyPlayer : TSP_MelPlayer
 {
 	Default
 	{
 		Player.DisplayName "Meloby";
 		Player.Portrait "MELOBYPP";
 		Player.SoundClass "MelRetro";
-		Player.WeaponSlot 1, "MelChargeStyle", "MelMelee";
+		Player.WeaponSlot 1, "MelChargeStyle", "MelMeleeRetro";
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Funny Fella";
 		TSP_PlayerPawn_ZSCBase.DisplayDescription "No";
 	}

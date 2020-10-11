@@ -4,7 +4,7 @@
 // you may even say that this amount is limited to a single person working under the profession
 // A single person under the profession of performing smuggling in outer space
 
-Class SpacePirate : TSP_PlayerPawn_ZSCBase
+Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 {
 	Default
 	{

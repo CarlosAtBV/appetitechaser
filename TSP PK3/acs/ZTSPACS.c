@@ -89,7 +89,7 @@ script "CheckClass" (int which)
   int result;
   switch (which){
     case 1:
-      if(CheckActorClass(0,"SpacePirate")){ result = 1; }
+      if(CheckActorClass(0,"TSP_MelPlayer")){ result = 1; }
       break;
     case 2:
       if(CheckActorClass(0,"RoboMel")){ result = 1; }
@@ -186,7 +186,7 @@ script "TSPPickupSounds" (int which)
   else{
     GiveInventory("PlayingPickupSound", 1);
 	
-    if(CheckActorClass(0,"SpacePirate") && GetPlayerInfo(PlayerNumber(),PLAYERINFO_GENDER) == 2){ //Mel (with Robo Voice)
+    if(CheckActorClass(0,"TSP_MelPlayer") && GetPlayerInfo(PlayerNumber(),PLAYERINFO_GENDER) == 2){ //Mel (with Robo Voice)
       switch (which){
         case 1:
           LocalAmbientSound("melflavpickuprobo/Pistol",127);
@@ -226,7 +226,7 @@ script "TSPPickupSounds" (int which)
           TakeInventory("PlayingPickupSound",0x7FFFFFFF);
           terminate; }}
 		  
-    else if(CheckActorClass(0,"SpacePirate")){ // Mel (Default)
+    else if(CheckActorClass(0,"TSP_MelPlayer")){ // Mel (Default)
       switch (which){
         case 1:
           LocalAmbientSound("melflavpickup/Pistol",127);    

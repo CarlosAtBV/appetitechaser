@@ -1,4 +1,4 @@
-Class TSP_ShenMiPlayer : SpacePirate
+Class TSP_ShenMiPlayer : TSP_MelPlayer
 {
 	Default
 	{

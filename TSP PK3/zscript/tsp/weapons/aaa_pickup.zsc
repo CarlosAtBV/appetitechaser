@@ -18,7 +18,7 @@ Class TSP_WeaponPickup : CustomInventory
 		
 		switch(toucher.GetClassName())
 		{
-			case 'SpacePirate':
+			case 'TSP_MelPlayer':
 				Console.Printf("u r mel");
 				break;
 			case 'TSP_DummyPlayer':
@@ -33,8 +33,8 @@ Class TSP_WeaponPickup : CustomInventory
 	{
 		switch(PlayerClasses[players[consoleplayer].CurrentPlayerClass].Type.GetClassName())
 		{
-			case 'SpacePirate':
-				SetStateLabel("SpacePirate");
+			case 'TSP_MelPlayer':
+				SetStateLabel("TSP_MelPlayer");
 				break;
 			case 'TSP_DummyPlayer':
 				SetStateLabel("TSP_DummyPlayer");
@@ -102,7 +102,7 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 		
 		switch(toucher.GetClassName())
 		{
-			case 'SpacePirate':
+			case 'TSP_MelPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"MelPistol",15);
 				break;
 			case 'TSP_DummyPlayer':
@@ -115,7 +115,7 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	
 	States
 	{
-		SpacePirate:
+		TSP_MelPlayer:
 			121P A -1;
 			Stop;
 		TSP_DummyPlayer:
@@ -132,7 +132,7 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 		
 		switch(toucher.GetClassName())
 		{
-			case 'SpacePirate':
+			case 'TSP_MelPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"MelSMG",16);
 				break;
 			case 'TSP_DummyPlayer':
@@ -145,7 +145,7 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 	
 	States
 	{
-		SpacePirate:
+		TSP_MelPlayer:
 			131P A -1;
 			Stop;
 		TSP_DummyPlayer:
