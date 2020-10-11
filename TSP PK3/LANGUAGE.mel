@@ -41,10 +41,10 @@ MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
 // RETRO MEL
 ////////////////
 
-RetroMelMeleeTag = "\cc[\c[Mel]Melee\cc]";
+MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
 
 //919M
-RetroMelPistolPickup = "\cc[\cy919m.0\cc - \cuPistol\cc]";
-RetroMelPistolTag = "\cc[\cy919m.0\cc]";
+MelRetroPistolPickup = "\cc[\cy919m.0\cc - \cuPistol\cc]";
+MelRetroPistolTag = "\cc[\cy919m.0\cc]";
 
 //
