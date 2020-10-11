@@ -22,38 +22,6 @@ ShieldUpgradeA = "\cc[\cfShield Upgrade!\cc +\c[TSPShieldOrange]25 Max Shield\cc
 TankUpgrade = "\cc[\cfShield Upgrade!\cc +\c[TSPShieldOrange]25 Max Shield\cc]";
 
 ////////////////
-//WEAPON PICKUPS
-////////////////
-
-////////////////
-// MEL
-////////////////
-// Trait Purchase Messages
-ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
-MagSpearPickup = "\cc[\c[Mel]Mag Spear\cc Acquired!]";
-MagSlingPickup = "\cc[\c[Mel]Mag Sling\cc Acquired!]";
-
-MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
-MelChargeTag = "\cc[\ctCharge Style\cc]";
-
-//DARLING NIKKI
-MelPistolPickup = "\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
-MelPistolTag = "\cc[\cyDarling Nikki\cc]";
-
-//DARLING NIKKI (MODS)
-MelPistolATag = "\cc[\cyDarling Nikki\cc](\ciS\cc)";
-MelPistolBTag = "\cc[\cyDarling Nikki\cc](\cuW\cc)";
-MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
-
-//SUZUKA
-MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
-MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
-
-//SUZUKA (MODS)
-MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
-MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
-
-////////////////
 // SHEN MI
 ////////////////
 
