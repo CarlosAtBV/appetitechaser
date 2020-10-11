@@ -17,7 +17,7 @@ Class SpacePirate : TSP_PlayerPawn_ZSCBase
 		Player.DisplayName "$MELNAMECS";
 		Player.Face "MCW";
 		Player.Portrait "MCWST01";
-		Player.WeaponSlot 1, "MelChargeStyle", "MelMelee";
+		Player.WeaponSlot 1, "MelChargeStyle", "MelMelee", "MelMeleeMetal";
 		Player.WeaponSlot 2, "MelPistol", "MelPistolA", "MelPistolB", "MelPistolC";
 		Player.WeaponSlot 3, "MelSMG", "MelSMGA", "MelSMGB";
 		Species "Player";

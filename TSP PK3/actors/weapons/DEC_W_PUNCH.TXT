@@ -50,6 +50,28 @@ ACTOR UppercutMeleePuff : StrongMeleePuff
 }
 
 ///////////////////
+//METAL MELEE PUFFS
+///////////////////
+
+ACTOR MetalBasicMeleePuff : BasicMeleePuff
+{ 
+	AttackSound "metalbasicmelee/wall"
+	SeeSound "metalbasicmelee/contact"
+}
+
+ACTOR MetalStrongMeleePuff : StrongMeleePuff
+{ 
+	AttackSound "metalstrongmelee/wall"
+	SeeSound "metalstrongmelee/contact"
+}
+
+ACTOR MetalUppercutMeleePuff : UppercutMeleePuff
+{ 
+	AttackSound "metalstrongmelee/wall"
+	SeeSound "metaluppercutmelee/contact"
+}
+
+///////////////////
 //DUMMY MELEE PUFFS
 ///////////////////
 
@@ -63,70 +85,4 @@ ACTOR BlankMeleePuff : BasicMeleePuff
 	+PUFFONACTORS
 	-BLOODSPLATTER
 	Decal "none"
-}
-
-////////////////
-//SF MELEE PUFFS
-////////////////
-
-ACTOR SFBasicMeleePuff : BasicMeleePuff
-{ 
-	AttackSound "sfmelee/wall"
-	SeeSound "sfbasicmelee/contact"
-}
-
-ACTOR SFStrongMeleePuff : StrongMeleePuff
-{ 
-	AttackSound "sfstrongmelee/wall"
-	SeeSound "sfstrongmelee/contact"
-}
-
-ACTOR SFUppercutMeleePuff : UppercutMeleePuff
-{ 
-	AttackSound "sfstrongmelee/wall"
-	SeeSound "sfuppercutmelee/contact"
-}
-
-////////////////
-//MK MELEE PUFFS
-////////////////
-
-ACTOR MKBasicMeleePuff : BasicMeleePuff
-{ 
-	AttackSound "mkmelee/wall"
-	SeeSound "mkbasicmelee/contact"
-}
-
-ACTOR MKStrongMeleePuff : StrongMeleePuff
-{ 
-	AttackSound "mkstrongmelee/wall"
-	SeeSound "mkstrongmelee/contact"
-}
-
-ACTOR MKUppercutMeleePuff : UppercutMeleePuff
-{ 
-	AttackSound "mkstrongmelee/wall"
-	SeeSound "mkuppercutmelee/contact"
-}
-
-////////////////
-//64 MELEE PUFFS
-////////////////
-
-ACTOR 64BasicMeleePuff : BasicMeleePuff
-{ 
-	AttackSound "64melee/wall"
-	SeeSound "64basicmelee/contact"
-}
-
-ACTOR 64StrongMeleePuff : StrongMeleePuff
-{ 
-	AttackSound "64melee/wall"
-	SeeSound "64strongmelee/contact"
-}
-
-ACTOR 64UppercutMeleePuff : UppercutMeleePuff
-{ 
-	AttackSound "64melee/wall"
-	SeeSound "64uppercutmelee/contact"
 }
