@@ -42,6 +42,12 @@ ACTOR IsMel : Inventory
 	Inventory.MaxAmount 1
 }
 
+ACTOR IsShenMi : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+
 // This will get rewritten soon!
 
 // Weapon sprites are like such!

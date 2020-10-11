@@ -57,6 +57,13 @@ MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
 // SHEN MI
 ////////////////
 
+//CHARGE STYLE
+ShenMiChargeTag = "\cc[\c[Shen]Charge Style\cc]";
+
+//SELENA
+ShenMiPistolPickup = "\cc[\c[TSPLimeGreen]Selena\cc - \cuPistol\cc]";
+ShenMiPistolTag = "\cc[\c[TSPLimeGreen]Selena\cc]";
+
 //SUZUKA CUSTOM
 ShenMiSMGPickup = "\cc[\cxOS06 Suzuka\cc - \c[Shen]Custom Model\cc]";
 ShenMiSMGTag = "\cc[\cxOS06 Suzuka\cc](\c[Shen]Custom\cc)";

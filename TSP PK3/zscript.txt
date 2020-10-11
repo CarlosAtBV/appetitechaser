@@ -93,6 +93,9 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/aaa_pickup.zsc"
 #include "zscript/tsp/weapons/aaa_fx.zsc"
 
+// SHEN MI
+#include "zscript/tsp/weapons/shenmi/ZS_SHEN_WEP2.txt"
+
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
 Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.
 

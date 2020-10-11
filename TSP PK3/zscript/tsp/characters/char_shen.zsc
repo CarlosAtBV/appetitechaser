@@ -5,9 +5,49 @@ Class TSP_ShenMiPlayer : SpacePirate
 		Player.DisplayName "$SHENNAMECS";
 		Player.Portrait "SHBST01";
 		Player.SoundClass "Melody";
+		Player.WeaponSlot 1, "MelChargeStyle";
+		Player.WeaponSlot 2, "ShenMiPistol";
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Formidable Assassin";
 		TSP_PlayerPawn_ZSCBase.DisplayDescription "[DESCRIPTION NOT YET ENTERED]";
 		
 		+TSP_PlayerPawn_ZSCBASE.BOUNTYHUNTERSONLY
 	}
+	
+	override void OnStandardLoadout()
+	{
+		super.OnStandardLoadout();
+		
+		GiveInventory("MelChargeStyle",1);
+		if(!pp_meleestart)
+		{
+			GiveInventory("ShenMiPistol",1);
+			GiveInventory("TSPPistolAmmo",65);
+			GiveInventory("TSPSMGAmmo",40);
+		}
+		
+		pp_initShield = 25;
+		
+		GiveInventory("IsShenMi",1);
+	}
+	
+	override void OnBountyHunterLoadout()
+	{
+		super.OnBountyHunterLoadout();
+		
+		GiveInventory("MelChargeStyle",1);
+		if(!pp_meleestart)
+		{
+			GiveInventory("MelSMGA",1);
+			GiveInventory("TSPSMGAmmo",80);
+			GiveInventory("ShenMiPistol",1);
+			GiveInventory("TSPPistolAmmo",90);
+		}
+		
+		//MAG GRAPPLE (LV 2)
+		
+		pp_initShield = 25;
+		
+		GiveInventory("IsShenMi",1);
+	}
+
 }
