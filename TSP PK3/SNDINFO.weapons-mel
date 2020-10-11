@@ -126,6 +126,10 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // - DOOM (2016)
 // - Alien vs Predator 2
 // - Dying Light: Enhanced Edition
+// [FIRING (CUSTOM)]
+// - Wolfenstein (2009)
+// - DOOM (2016)
+// - Alien vs Predator 2
 // [FIRING (GRENADE)]
 // - The Chronicles of Riddick: Assault on Dark Athena
 // - Left 4 Dead
@@ -165,13 +169,6 @@ suzuka/firebng01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng01.ogg"
 suzuka/firebng02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng02.ogg"
 suzuka/firebng03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng03.ogg"
 $volume suzuka/firebng 0.6
-
-//Shen Mi's Custom Suzuka
-$random suzuka/fired { suzuka/fired01 suzuka/fired02 suzuka/fired03 }
-suzuka/fired01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg01.ogg"
-suzuka/fired02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg02.ogg"
-suzuka/fired03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg03.ogg"
-$volume suzuka/fired 0.6
 
 suzuka/upgraderemove "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_remove.ogg"
 suzuka/upgradedefault "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_default.ogg"
