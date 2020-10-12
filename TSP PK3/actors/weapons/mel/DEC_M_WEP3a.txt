@@ -1,5 +1,3 @@
-ACTOR TSP_SMGNailSwitch : TSP_Boolean {}
-
 ACTOR MelSMGA : MelSMG
 {
 	TSP_Weapon_Core.ModTag "Shotgun" 

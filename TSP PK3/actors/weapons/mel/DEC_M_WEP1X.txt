@@ -749,10 +749,3 @@ ACTOR MelMeleeMetal : TSPMelBaseWeapon
 		Goto SPTrait
 	}
 }
-
-
-ACTOR ChargedAttack: Inventory
-{
-  Inventory.MaxAmount 99
-  Inventory.Icon TNT1A0
-}

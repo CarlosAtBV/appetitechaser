@@ -23,7 +23,7 @@ class ShenMiPistol : TSP_Weapon_Core
 	Weapon.AmmoType "TSPPistolAmmo";
 	Weapon.AmmoGive 0;//0
 	Weapon.AmmoUse 1;
-	Inventory.Icon "122PA0";
+	Inventory.Icon "121PA0";
 	TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0;
 	TSP_Weapon_Core.ClipSize 15; //Initial starting size of clip
 	TSP_Weapon_Core.FirstPickupLine "mel/nikkipickup";
