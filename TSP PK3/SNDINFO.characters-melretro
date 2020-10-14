@@ -49,6 +49,7 @@ melretro/death02 "sounds/characters/melretro/default/vo_mel_retro_death_normal02
 $random melretro/xdeath { melretro/xdeath01 melretro/xdeath02 }
 melretro/xdeath01 "sounds/characters/melretro/default/vo_mel_retro_death_xdeath01.ogg"
 melretro/xdeath02 "sounds/characters/melretro/default/vo_mel_retro_death_xdeath01.ogg"
+$volume melretro/xdeath 0.8
 
 
 $random melretro/jump { melretro/jump01 melretro/jump02 null null null null }

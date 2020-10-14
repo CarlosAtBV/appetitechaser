@@ -63,6 +63,7 @@ mel/wimpydeath04 "sounds/characters/mel/vo_mel_death_wimpy04.ogg"
 $random mel/xdeath { mel/xdeath01 mel/xdeath02 }
 mel/xdeath01 "sounds/characters/mel/vo_mel_death_xdeath01.ogg"
 mel/xdeath02 "sounds/characters/mel/vo_mel_death_xdeath02.ogg"
+$volume mel/xdeath 0.8
 
 
 $random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump08 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
