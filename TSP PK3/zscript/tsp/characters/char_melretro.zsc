@@ -20,7 +20,7 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		//var int user_DProjTID;
 		
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Space Pirate";
-		TSP_PlayerPawn_ZSCBase.DisplayDescription "[DESCRIPTION NOT YET ENTERED]";
+		TSP_PlayerPawn_ZSCBase.DisplayDescription "Just Like You Remembered";
 	}
 	
 	override void OnStandardLoadout()

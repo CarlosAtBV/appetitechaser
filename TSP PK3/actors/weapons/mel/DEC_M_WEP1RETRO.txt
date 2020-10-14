@@ -4,7 +4,7 @@
 // (Adapted from TSP0.1.2e, the unreleased TSPX, and TSP+1 by Ixcuazl)
 //
 // by Cardboard Marty
-// Sprites by Cardboard, Blox, Scuba Steve, Banjo Entertainment
+// Sprites by Cardboard Marty, Blox, Scuba Steve, Banjo Entertainment
 // 
 //
 //===========================================================================
@@ -212,15 +212,61 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	
 // P-P-P-P
 	ScorpionTailFinisher:
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherPowered")
 		TNT1 A 5 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		ML4F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherPowered")
 		ML4F D 1 A_TSP_Melee(44,90,"UppercutMeleePuff",0,8,16,45,45)
 		Goto ScorpionTailFinisherEnd
-	ScorpionTailFinisherPowered:
-		ML4F D 1 A_TSP_Melee(88,90,"UppercutMeleePuff",0,8,16,45,45)
-		Goto ScorpionTailFinisherEnd
+	ScorpionTailFinisherPowered: // STASIS UPPERCUT EX
+		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
+		TNT1 A 0 A_JumpIf (momZ > 0, "SuperUppercutAir")
+        TNT1 A 0 A_JumpIf (momZ < 0, "SuperUppercutAir")
+	    TNT1 A 0 A_Recoil(-10)
+		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
+		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
+	    TNT1 A 0 ThrustThingZ(0,53,0,1)
+		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
+		ML4F ABC 1 BRIGHT
+		ML4F D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+	    TNT1 A 0 ThrustThingZ(0,4,0,1)
+		TNT1 A 0 A_SetPitch(pitch - 3)
+	    ML4F E 2 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F D 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F C 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F B 1 ThrustThingZ(0,1,0,1)
+		Goto FloatyBoy
+	SuperUppercutAir: //When in air, the uppercut doesn't carry you upwards that much
+	    TNT1 A 0 A_Recoil(-5)
+		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
+		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
+	    TNT1 A 0 ThrustThingZ(0,25,0,1)
+		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
+		ML4F ABC 1 BRIGHT
+		ML4F D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+	    TNT1 A 0 ThrustThingZ(0,4,0,1)
+		TNT1 A 0 A_SetPitch(pitch - 3)
+	    ML4F E 2 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F D 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F C 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    ML4F B 1 ThrustThingZ(0,1,0,1)
+		Goto FloatyBoy
+	FloatyBoy:
+		ML4F A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+        TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+        TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+        TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 1 ThrustThingZ(0,1,0,1)
+		Goto AfterMelee
 		
 // P-P-P-P End
 	ScorpionTailFinisherEnd:
