@@ -15,8 +15,8 @@ $playeralias	Mel      male  	*xdeath				mel/xdeath
 $playeralias	Mel      male  	*gibbed				mel/xdeath
 $playeralias	Mel      male  	*grunt				mel/land
 $playeralias	Mel	     male  	*jump				mel/jump
-$playersound    Mel	     male    *land				melland
-$playeralias    Mel	     male    *usefail			mel/usefail
+$playeralias    Mel	     male   *land				mel/land
+$playeralias    Mel	     male   *usefail			mel/usefail
 $playeralias	Mel   	 male  	*smallmelee			mel/smallmelee
 $playeralias	Mel   	 male  	*mediummelee		mel/mediummelee
 $playeralias	Mel    	 male  	*largemelee         mel/largemelee
@@ -64,37 +64,40 @@ $random mel/xdeath { mel/xdeath01 mel/xdeath02 }
 mel/xdeath01 "sounds/characters/mel/vo_mel_death_xdeath01.ogg"
 mel/xdeath02 "sounds/characters/mel/vo_mel_death_xdeath02.ogg"
 
-$random mel/jump { meljump01 meljump02 meljump03 meljump04 meljump05 meljump06 meljump07 meljump08 meljump09 meljump10 meljump11 meljump12 null null null null null null null null null null null }
-meljump01 "sounds/characters/mel/vo_mel_jump01.ogg"
-meljump02 "sounds/characters/mel/vo_mel_jump02.ogg"
-meljump03 "sounds/characters/mel/vo_mel_jump03.ogg"
-meljump04 "sounds/characters/mel/vo_mel_jump04.ogg"
-meljump05 "sounds/characters/mel/vo_mel_jump05.ogg"
-meljump06 "sounds/characters/mel/vo_mel_jump06.ogg"
-meljump07 "sounds/characters/mel/vo_mel_jump07.ogg"
-// meljump08 "sounds/characters/mel/vo_mel_jump08.ogg"
-meljump09 "sounds/characters/mel/vo_mel_jump09.ogg"
-meljump10 "sounds/characters/mel/vo_mel_jump10.ogg"
-meljump11 "sounds/characters/mel/vo_mel_jump11.ogg"
-meljump12 "sounds/characters/mel/vo_mel_jump12.ogg"
 
-$random mel/land { melland1 melland2 melland3 melland4 melland5 melland6 melland7 melland8 }
-melland1 "sounds/characters/mel/vo_mel_land1.ogg"
-melland2 "sounds/characters/mel/vo_mel_land2.ogg"
-melland3 "sounds/characters/mel/vo_mel_land3.ogg"
-melland4 "sounds/characters/mel/vo_mel_land4.ogg"
-melland5 "sounds/characters/mel/vo_mel_land5.ogg"
-melland6 "sounds/characters/mel/vo_mel_land6.ogg"
-melland7 "sounds/characters/mel/vo_mel_land7.ogg"
+$random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump08 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
+mel/jump01 "sounds/characters/mel/vo_mel_jump01.ogg"
+mel/jump02 "sounds/characters/mel/vo_mel_jump02.ogg"
+mel/jump03 "sounds/characters/mel/vo_mel_jump03.ogg"
+mel/jump04 "sounds/characters/mel/vo_mel_jump04.ogg"
+mel/jump05 "sounds/characters/mel/vo_mel_jump05.ogg"
+mel/jump06 "sounds/characters/mel/vo_mel_jump06.ogg"
+mel/jump07 "sounds/characters/mel/vo_mel_jump07.ogg"
+// mel/jump08 "sounds/characters/mel/vo_mel_jump08.ogg" sounds kinda goofy lol
+mel/jump09 "sounds/characters/mel/vo_mel_jump09.ogg"
+mel/jump10 "sounds/characters/mel/vo_mel_jump10.ogg"
+mel/jump11 "sounds/characters/mel/vo_mel_jump11.ogg"
+mel/jump12 "sounds/characters/mel/vo_mel_jump12.ogg"
 
-$random mel/usefail { melunf1 melunf2 melunf3 melunf4 melunfvo1 melunfvo2 melunfvo3 }
-melunf1 "sounds/characters/mel/vo_mel_usefail1.ogg"
-melunf2 "sounds/characters/mel/vo_mel_usefail2.ogg"
-melunf3 "sounds/characters/mel/vo_mel_usefail3.ogg"
-melunf4 "sounds/characters/mel/vo_mel_usefail4.ogg"
-melunfvo1 "sounds/characters/mel/vo_mel_usefailvc1.ogg"
-melunfvo2 "sounds/characters/mel/vo_mel_usefailvc2.ogg"
-melunfvo3 "sounds/characters/mel/vo_mel_usefailvc3.ogg"
+$random mel/land { mel/land1 mel/land2 mel/land3 mel/land4 mel/land5 mel/land6 mel/land7 }
+mel/land1 "sounds/characters/mel/vo_mel_land1.ogg"
+mel/land2 "sounds/characters/mel/vo_mel_land2.ogg"
+mel/land3 "sounds/characters/mel/vo_mel_land3.ogg"
+mel/land4 "sounds/characters/mel/vo_mel_land4.ogg"
+mel/land5 "sounds/characters/mel/vo_mel_land5.ogg"
+mel/land6 "sounds/characters/mel/vo_mel_land6.ogg"
+mel/land7 "sounds/characters/mel/vo_mel_land7.ogg"
+
+mel/land "sounds/general/player/sfx_mel_land01.ogg"
+
+$random mel/usefail { mel/unf1 mel/unf2 mel/unf3 mel/unf4 mel/unfvo1 mel/unfvo2 mel/unfvo3 }
+mel/unf1 "sounds/characters/mel/vo_mel_usefail1.ogg"
+mel/unf2 "sounds/characters/mel/vo_mel_usefail2.ogg"
+mel/unf3 "sounds/characters/mel/vo_mel_usefail3.ogg"
+mel/unf4 "sounds/characters/mel/vo_mel_usefail4.ogg"
+mel/unfvo1 "sounds/characters/mel/vo_mel_usefailvc1.ogg"
+mel/unfvo2 "sounds/characters/mel/vo_mel_usefailvc2.ogg"
+mel/unfvo3 "sounds/characters/mel/vo_mel_usefailvc3.ogg"
 
 //////////////////
 // Mel's Melee
@@ -191,6 +194,7 @@ magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
 //////////////////////
 // Mel's Style Change
 //////////////////////
+
 melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
 melidlebk      "sounds/weapons/Mel/sfx_mel_idlebk.ogg"
 melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
@@ -205,6 +209,7 @@ melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
 //////////////////////
 // Mel's Trait Change
 //////////////////////
+
 meltraitvodrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
 meltraitvograpple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
 meltraitvosling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"

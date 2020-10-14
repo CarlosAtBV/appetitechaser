@@ -1,0 +1,141 @@
+
+/////////////////////////////////
+// Robo Mel (Retro) Player Sounds
+/////////////////////////////////
+
+$playeralias	MelRetro      Neutral  	*pain100			robomelretro/pain100
+$playeralias	MelRetro      Neutral  	*pain75				robomelretro/pain75
+$playeralias	MelRetro      Neutral  	*pain50				robomelretro/pain50
+$playeralias	MelRetro      Neutral  	*pain25				robomelretro/pain25
+$playeralias	MelRetro	  Neutral  	*death				robomelretro/death
+$playeralias	MelRetro      Neutral  	*xdeath				robomelretro/xdeath
+$playeralias	MelRetro      Neutral  	*gibbed				robomelretro/xdeath
+$playeralias	MelRetro      Neutral  	*grunt				robomelretro/land
+$playeralias	MelRetro	  Neutral  	*jump				robomelretro/jump
+$playeralias    MelRetro	  Neutral      *land				robomel/land
+$playeralias    MelRetro	  Neutral      *usefail			robomelretro/usefail
+$playeralias	MelRetro   	  Neutral  	*smallmelee			robomelretro/smallmelee
+$playeralias	MelRetro      Neutral  	*mediummelee		robomelretro/smallmelee
+$playeralias	MelRetro   	  Neutral  	*largemelee         robomelretro/largemelee
+$playeralias	MelRetro   	  Neutral  	*xlmelee			robomelretro/largemelee
+
+$random robomelretro/pain100 { robomelretro/pain1001 robomelretro/pain1002 robomelretro/pain1003 robomelretro/pain1004 }
+robomelretro/pain1001 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain100-1.ogg"
+robomelretro/pain1002 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain100-2.ogg"
+robomelretro/pain1003 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain100-3.ogg"
+robomelretro/pain1004 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain100-4.ogg"
+
+$random robomelretro/pain75 { robomelretro/pain751 robomelretro/pain752 robomelretro/pain753 robomelretro/pain754 }
+robomelretro/pain751 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain75-1.ogg"
+robomelretro/pain752 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain75-2.ogg"
+robomelretro/pain753 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain75-3.ogg"
+robomelretro/pain754 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain75-4.ogg"
+
+$random robomelretro/pain50 { robomelretro/pain501 robomelretro/pain502 robomelretro/pain503 robomelretro/pain504 }
+robomelretro/pain501 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain50-1.ogg"
+robomelretro/pain502 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain50-2.ogg"
+robomelretro/pain503 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain50-3.ogg"
+robomelretro/pain504 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain50-4.ogg"
+
+$random robomelretro/pain25 { robomelretro/pain251 robomelretro/pain252 robomelretro/pain253 robomelretro/pain254 }
+robomelretro/pain251 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain25-1.ogg"
+robomelretro/pain252 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain25-2.ogg"
+robomelretro/pain253 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain25-3.ogg"
+robomelretro/pain254 "sounds/characters/melretro/robo/vo_mel_retro_robo_pain25-4.ogg"
+
+$random robomelretro/death { robomelretro/death01 robomelretro/death02 }
+robomelretro/death01 "sounds/characters/melretro/robo/vo_mel_retro_robo_death_normal01.ogg"
+robomelretro/death02 "sounds/characters/melretro/robo/vo_mel_retro_robo_death_normal02.ogg"
+
+$random robomelretro/xdeath { robomelretro/xdeath01 robomelretro/xdeath02 }
+robomelretro/xdeath01 "sounds/characters/melretro/robo/vo_mel_retro_robo_death_xdeath01.ogg"
+robomelretro/xdeath02 "sounds/characters/melretro/robo/vo_mel_retro_robo_death_xdeath01.ogg"
+
+
+$random robomelretro/jump { robomelretro/jump01 robomelretro/jump02 null null null null }
+robomelretro/jump01 "sounds/characters/melretro/robo/vo_mel_retro_robo_jump01.ogg"
+robomelretro/jump02 "sounds/characters/melretro/robo/vo_mel_retro_robo_jump02.ogg"
+
+$random robomelretro/land { robomelretro/land1 robomelretro/land2 robomelretro/land3 }
+robomelretro/land1 "sounds/characters/melretro/robo/vo_mel_retro_robo_land1.ogg"
+robomelretro/land2 "sounds/characters/melretro/robo/vo_mel_retro_robo_land2.ogg"
+robomelretro/land3 "sounds/characters/melretro/robo/vo_mel_retro_robo_land3.ogg"
+
+robomel/land "sounds/general/player/sfx_mel_retro_robo_land01.ogg"
+
+$random robomelretro/usefail { robomelretro/unf1 robomelretro/unf2 }
+robomelretro/unf1 "sounds/characters/melretro/robo/vo_mel_retro_robo_usefail1.ogg"
+robomelretro/unf2 "sounds/characters/melretro/robo/vo_mel_retro_robo_usefail2.ogg"
+
+///////////////////
+// Robo Mel's Melee
+///////////////////
+
+$random robomelretro/smallmelee  { robomelretro/smallmelee1 robomelretro/smallmelee2 robomelretro/smallmelee3 robomelretro/smallmelee4 robomelretro/smallmelee5 robomelretro/smallmelee6 null null null null null null null null null null null null null }
+robomelretro/smallmelee1 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm01.ogg"
+robomelretro/smallmelee2 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm02.ogg"
+robomelretro/smallmelee3 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm03.ogg"
+robomelretro/smallmelee4 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm04.ogg"
+robomelretro/smallmelee5 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm05.ogg"
+robomelretro/smallmelee6 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_sm06.ogg"
+
+$random robomelretro/largemelee { robomelretro/largemelee1 robomelretro/largemelee2 robomelretro/largemelee3 robomelretro/largemelee4 robomelretro/largemelee5 robomelretro/largemelee6 null null null null null null null null null null }
+robomelretro/largemelee1 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg01.ogg"
+robomelretro/largemelee2 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg02.ogg"
+robomelretro/largemelee3 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg03.ogg"
+robomelretro/largemelee4 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg04.ogg"
+robomelretro/largemelee5 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg05.ogg"
+robomelretro/largemelee6 "sounds/characters/melretro/robo/melee/vo_mel_retro_robo_melee_lg06.ogg"
+
+////////////////////
+//Mel's Pickup Lines
+////////////////////
+
+$playeralias	MelRetro   	  Neutral  	*persephonepickup			robomelretro/persephonepickup
+$playeralias	MelRetro   	  Neutral  	*919mpickup					robomelretro/919mpickup
+$playeralias	MelRetro   	  Neutral  	*shotgunpickup				robomelretro/shotgunpickup
+$playeralias	MelRetro   	  Neutral  	*dahliapickup				robomelretro/dahliapickup
+$playeralias	MelRetro   	  Neutral  	*ab50pickup					robomelretro/ab50pickup
+$playeralias	MelRetro   	  Neutral  	*mp40pickup					robomelretro/mp40pickup
+$playeralias	MelRetro   	  Neutral  	*toolboxpickup				robomelretro/toolboxpickup
+$playeralias	MelRetro   	  Neutral  	*adranospickup				robomelretro/adranospickup
+$playeralias	MelRetro   	  Neutral  	*plasmapickup				robomelretro/919mpickup
+
+// PERSEPHONE
+$random robomelretro/persephonepickup { robomelretro/persephonepickup01 robomelretro/persephonepickup02 robomelretro/persephonepickup03 robomelretro/persephonepickup04 }
+robomelretro/persephonepickup01 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_persephone01.ogg"
+robomelretro/persephonepickup02 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_persephone02.ogg"
+robomelretro/persephonepickup03 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_persephone03.ogg"
+robomelretro/persephonepickup04 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_persephone04.ogg"
+
+// 919M
+robomelretro/919mpickup "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_919m.ogg"
+
+// SHOTGUN
+robomelretro/shotgunpickup "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_shotgun.ogg"
+
+// DAHLIA
+robomelretro/dahliapickup "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_dahlia.ogg"
+
+// AB50
+robomelretro/ab50pickup "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_ab50.ogg"
+
+// MP40
+robomelretro/mp40pickup "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_mp40.ogg"
+
+// TOOLBOX
+$random robomelretro/toolboxpickup { robomelretro/toolboxpickup01 robomelretro/toolboxpickup02 }
+robomelretro/toolboxpickup01 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_toolbox01.ogg"
+robomelretro/toolboxpickup02 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_toolbox02.ogg"
+
+// ADRANOS
+$random robomelretro/adranospickup { robomelretro/adranospickup01 robomelretro/adranospickup02 }
+robomelretro/adranospickup01 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_adranos01.ogg"
+robomelretro/adranospickup02 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_adranos02.ogg"
+
+// PLASMA
+$random robomelretro/plasmapickup { robomelretro/plasmapickup01 robomelretro/plasmapickup02 robomelretro/plasmapickup03 robomelretro/plasmapickup04 }
+robomelretro/plasmapickup01 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_plasma01.ogg"
+robomelretro/plasmapickup02 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_plasma02.ogg"
+robomelretro/plasmapickup03 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_plasma03.ogg"
+robomelretro/plasmapickup04 "sounds/characters/melretro/robo/weaponpickups/vo_mel_retro_robo_pickup_plasma04.ogg"
