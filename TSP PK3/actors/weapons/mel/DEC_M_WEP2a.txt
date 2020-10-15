@@ -128,17 +128,16 @@ ACTOR MelPistolA : MelPistol
 	ModFire:  
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
 		122G A 1 BRIGHT
-		TNT1 A 0 A_GunFlash
-		TNT1 A 0 A_AlertMonsters
-		TNT1 A 0 A_SetPitch(pitch - 0.8)
-		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
-		TNT1 A 0 A_PlaySound("nikki/firea", 6)
 	AFire0:
 		TNT1 A 0 BRIGHT
 		{
 			A_TSP_FireBullets(6,6,-1,9,"TSP_BulletPuff",1);
 			A_TSP_TakeClip(1);
 		}
+		TNT1 A 0 A_PlaySound("nikki/firea", 6)
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_SetPitch(pitch - 0.8)
+		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
 		TNT1 A 0 A_Jump(64,"AFire3")
 		TNT1 A 0 A_Jump(88,"Afire2")
 	AFire1:
