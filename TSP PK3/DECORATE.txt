@@ -82,6 +82,20 @@ ACTOR WeaponSelectMemory : Inventory
 	// 121 = Darling Nikki
 	// 122 = Darling Nikki (Spitfire)
 	// 131 = OS06 Suzuka
+	// 
+	// Mel (Retrograde) Weapons
+	// 010 = Trait
+	// 011 = Melee
+	// 021 = 919m.0
+	// 022 = 917
+	// 031 = Zeke
+	// 032 = Dahlia
+	// 041 = AB50
+	// 042 = G3
+	// 043 = MP40
+	// 051 = Toolbox
+	// 061 = Adranos
+	// 071 = Untitled Plasma Weapon
 	Inventory.MaxAmount 999
 }
 
@@ -95,6 +109,7 @@ Actor MeleeButtonActor : CustomInventory
 	{
 	Use:
 		TNT1 A 0 A_JumpIfInventory("IsMel",1,"MelMeleeButton")
+		TNT1 A 0 A_JumpIfInventory("IsMelRetro",1,"MelRetroMeleeButton")
 		Fail
 	MelMeleeButton:
 		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
@@ -115,9 +130,21 @@ Actor MeleeButtonActor : CustomInventory
 		Fail
 	MelSMGSwitch:
 		TNT1 A 0 A_SelectWeapon("MelSMG")
-	//  TNT1 A 0 A_SelectWeapon("MelSMGA")
-	//  TNT1 A 0 A_SelectWeapon("MelSMGB")
-		Fail  
+	    TNT1 A 0 A_SelectWeapon("MelSMGA")
+	    TNT1 A 0 A_SelectWeapon("MelSMGB")
+		Fail 
+	// RETRO MEL
+	MelRetroMeleeButton:
+		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelRetroMeleeSwitch")
+		TNT1 A 0 A_SelectWeapon("MelRetroMelee")
+		Fail
+	MelMeleeSwitch:
+		//TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",131,"MelSMGSwitch")
+		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",121,"MelRetroPistolSwitch")
+		Goto MelRetroPistolSwitch
+	MelRetroPistolSwitch:
+		TNT1 A 0 A_SelectWeapon("MelPistolA")
+		Fail
 	}
 }
 
@@ -158,6 +185,7 @@ Actor MeleeSelected : Boolean {}
 #include "Actors/Weapons/Mel/DEC_M_WEP3b.txt" // SUZUKA
 
 #include "Actors/Weapons/Mel/DEC_M_WEP1RETRO.txt" // BARE KNUCKLE (2014)
+#include "Actors/Weapons/Mel/DEC_M_WEP2RETRO.txt" // 919M
 
 // THE TOOLBOX
 //#include "Actors/Weapons/Mel/DEC_M_WEP5a.txt" // MEL

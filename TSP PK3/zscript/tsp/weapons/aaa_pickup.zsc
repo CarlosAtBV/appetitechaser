@@ -21,6 +21,9 @@ Class TSP_WeaponPickup : CustomInventory
 			case 'TSP_MelPlayer':
 				Console.Printf("u r mel");
 				break;
+			case 'TSP_MelRetroPlayer':
+				Console.Printf("u r mel (but classic)");
+				break;
 			case 'TSP_DummyPlayer':
 				Console.Printf("u r dummel");
 				break;
@@ -35,6 +38,9 @@ Class TSP_WeaponPickup : CustomInventory
 		{
 			case 'TSP_MelPlayer':
 				SetStateLabel("TSP_MelPlayer");
+				break;
+			case 'TSP_MelRetroPlayer':
+				SetStateLabel("TSP_MelRetroPlayer");
 				break;
 			case 'TSP_DummyPlayer':
 				SetStateLabel("TSP_DummyPlayer");
@@ -105,6 +111,9 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 			case 'TSP_MelPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"MelPistol",15);
 				break;
+			case 'TSP_MelRetroPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistol",15);
+				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
 				break;
@@ -117,6 +126,9 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	{
 		TSP_MelPlayer:
 			121P A -1;
+			Stop;
+		TSP_MelRetroPlayer:
+			919P A -1;
 			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;

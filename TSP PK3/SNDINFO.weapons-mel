@@ -54,7 +54,7 @@ nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
 nikki/reloadin1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload02.ogg"
 nikki/reloadin2 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload03.ogg"
 
-nikki/idle1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
+nikki/idle01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
 
 nikki/upgraderemove "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_remove.ogg"
 nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfire.ogg"

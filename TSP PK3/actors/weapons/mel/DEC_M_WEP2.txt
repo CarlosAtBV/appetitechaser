@@ -110,7 +110,7 @@ ACTOR MelPistol : TSPMelLightWeapon
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 	Idle1:
 		TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE)
-		TNT1 A 0 A_PlaySound("nikki/idle1", 5)
+		TNT1 A 0 A_PlaySound("nikki/idle01", 5)
 		121G A 2 A_WeaponReady
 		121U MLKK 1 A_WeaponReady
 		121T AAABBCDEFGGAABCDEFGGHIJKKKKKKKKKL 1 A_WeaponReady

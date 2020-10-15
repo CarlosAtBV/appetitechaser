@@ -10,8 +10,8 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		Player.DisplayName "$MELRETRONAMECS";
 		Player.Face "MCW";
 		Player.Portrait "MCWST01";
-		Player.WeaponSlot 1, "MelMeleeRetro";
-		Player.WeaponSlot 2, "MelPistol";
+		Player.WeaponSlot 1, "MelRetroMelee";
+		Player.WeaponSlot 2, "MelRetroPistol";
 		Player.WeaponSlot 3, "MelSMG";
 		Species "Player";
 		+THRUSPECIES
@@ -27,10 +27,10 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 	{
 		super.OnStandardLoadout();
 		
-		GiveInventory("MelMeleeRetro",1);
+		GiveInventory("MelRetroMelee",1);
 		if(!pp_meleestart)
 		{
-			GiveInventory("MelPistol",1);
+			GiveInventory("MelRetroPistol",1);
 			GiveInventory("TSPPistolAmmo",65);
 			GiveInventory("TSPSMGAmmo",40);
 		}
@@ -44,12 +44,12 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 	{
 		super.OnBountyHunterLoadout();
 		
-		GiveInventory("MelMeleeRetro",1);
+		GiveInventory("MelRetroMelee",1);
 		if(!pp_meleestart)
 		{
 			GiveInventory("MelSMGA",1);
 			GiveInventory("TSPSMGAmmo",80);
-			GiveInventory("MelPistolA",1);
+			GiveInventory("MelRetroPistol",1);
 			GiveInventory("TSPPistolAmmo",90);
 		}
 		

@@ -1,7 +1,7 @@
 //===========================================================================
 //
 // Mel's Melee Style
-// (Adapted from TSP0.1.2e, the unreleased TSPX, and TSP+1 by Ixcuazl)
+// (Adapted from TSP0.1.2e and the unreleased TSPX)
 //
 // by Cardboard Marty
 // Sprites by Cardboard Marty, Blox, Scuba Steve, Banjo Entertainment
@@ -9,7 +9,7 @@
 //
 //===========================================================================
 
-ACTOR MelMeleeRetro : TSPMelBaseWeapon
+ACTOR MelRetroMelee : TSPMelBaseWeapon
 {
 	Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
 	Obituary "%o learned why %k is the king of the iron fist."
@@ -40,7 +40,7 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
 		TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
-		MLED ABCDE 1
+		011D ABCDE 1
 		TNT1 A 3
 	DeselectLoop:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
@@ -53,12 +53,12 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
 		TNT1 A 0 A_WeaponOffset(0,32)
 		TNT1 A 4
-		MLEU ABCDE 1
-		MLEG A 1 A_Raise
+		011U ABCDE 1
+		011G A 1 A_Raise
 		Loop
 	Ready:
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MLEG A 1 A_WeaponReady
+		011G A 1 A_WeaponReady
 		Loop
 
 // Punch!
@@ -76,12 +76,12 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 // P DEFAULT		
 	Punch1:	
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		ML1F ABCD 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"PunchPowered")
-		ML1F E 1 A_TSP_Melee(20,70,"BasicMeleePuff")
+		0111 ABCD 1
+		0111 D 0 A_JumpIfInventory("PowerStrength",1,"PunchPowered")
+		0111 E 1 A_TSP_Melee(20,70,"BasicMeleePuff")
 		Goto PunchEnd
 	PunchPowered:
-		ML1F E 1 A_TSP_Melee(40,70,"BasicMeleePuff")
+		0111 E 1 A_TSP_Melee(40,70,"BasicMeleePuff")
 		Goto PunchEnd
 		
 // P END
@@ -89,13 +89,13 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML1F F 1 A_WeaponReady
+		0111 F 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML1F G 1 A_WeaponReady
+		0111 G 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML1F J 1 A_WeaponReady
+		0111 J 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML1F K 1 A_WeaponReady
+		0111 K 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -125,21 +125,21 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 // DEFAULT P-P
 	RightHook:
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		ML2F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RightHookPowered")
-		ML2F D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
+		0112 ABC 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"RightHookPowered")
+		0112 D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
 		Goto RightHookEnd
 	RightHookPowered:
-		ML2F D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
+		0112 D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
 		Goto RightHookEnd
 
 // P-P END
 	RightHookEnd:
-		ML2F E 1
+		0112 E 1
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML2F H 1 A_WeaponReady
+		0112 H 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -172,23 +172,23 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	LeftOverhead:
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		TNT1 A 0 A_PlaySound("*smallmelee", CHAN_VOICE)
-		ML3F ABC 1 
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"LeftOverheadPowered")
-		ML3F E 1 A_TSP_Melee(24,70,"BasicMeleePuff")
+		0113 ABC 1 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"LeftOverheadPowered")
+		0113 E 1 A_TSP_Melee(24,70,"BasicMeleePuff")
 		Goto LeftOverheadEnd
 	LeftOverheadPowered:
-		ML3F E 1 A_TSP_Melee(48,70,"BasicMeleePuff")
+		0113 E 1 A_TSP_Melee(48,70,"BasicMeleePuff")
 		Goto LeftOverheadEnd
 		
 // P-P-P End
 	LeftOverheadEnd:
-		ML3F F 1
+		0113 F 1
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		TNT1 G 1 A_WeaponReady
+		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		TNT1 J 1 A_WeaponReady
+		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -215,8 +215,8 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"ScorpionTailFinisherPowered")
 		TNT1 A 5 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		ML4F ABC 1
-		ML4F D 1 A_TSP_Melee(44,90,"UppercutMeleePuff",0,8,16,45,45)
+		0114 ABC 1
+		0114 D 1 A_TSP_Melee(44,90,"UppercutMeleePuff",0,8,16,45,45)
 		Goto ScorpionTailFinisherEnd
 	ScorpionTailFinisherPowered: // STASIS UPPERCUT EX
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
@@ -227,14 +227,14 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,53,0,1)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
-		ML4F ABC 1 BRIGHT
-		ML4F D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		0114 ABC 1 BRIGHT
+		0114 D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 3)
-	    ML4F E 2 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F D 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F C 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F B 1 ThrustThingZ(0,1,0,1)
+	    0114 E 2 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 D 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 C 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 B 1 ThrustThingZ(0,1,0,1)
 		Goto FloatyBoy
 	SuperUppercutAir: //When in air, the uppercut doesn't carry you upwards that much
 	    TNT1 A 0 A_Recoil(-5)
@@ -242,17 +242,17 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
 	    TNT1 A 0 ThrustThingZ(0,25,0,1)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
-		ML4F ABC 1 BRIGHT
-		ML4F D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		0114 ABC 1 BRIGHT
+		0114 D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 3)
-	    ML4F E 2 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F D 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F C 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    ML4F B 1 ThrustThingZ(0,1,0,1)
+	    0114 E 2 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 D 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 C 1 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 B 1 ThrustThingZ(0,1,0,1)
 		Goto FloatyBoy
 	FloatyBoy:
-		ML4F A 1 ThrustThingZ(0,1,0,1)
+		0114 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
 		TNT1 A 1 ThrustThingZ(0,1,0,1)
@@ -270,31 +270,31 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		
 // P-P-P-P End
 	ScorpionTailFinisherEnd:
-		ML4F E 2
-		ML4F DCBA 1
+		0114 E 2
+		0114 DCBA 1
 		TNT1 A 8
 		Goto AfterMelee
 		
 //K-K-P
 	KnifeHand:
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		ML5F ABC 1 
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"KnifeHandPowered")
-		ML5F D 1 A_TSP_Melee(28,70,"BasicMeleePuff")
+		0115 ABC 1 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"KnifeHandPowered")
+		0115 D 1 A_TSP_Melee(28,70,"BasicMeleePuff")
 		Goto KnifeHandEnd
 	KnifeHandPowered:
-		ML5F D 1 A_TSP_Melee(56,70,"BasicMeleePuff")
+		0115 D 1 A_TSP_Melee(56,70,"BasicMeleePuff")
 		Goto KnifeHandEnd
 		
 // K-K-P End
 	KnifeHandEnd:
-		ML5F EFG 1
+		0115 EFG 1
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML5F H 1 A_WeaponReady
+		0115 H 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML5F I 1 A_WeaponReady
+		0115 I 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -316,12 +316,12 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	CrossPunch:
 		TNT1 A 2 A_PlaySound("*smallmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		ML6F AB 1 
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"CrossPunchPowered")
-		ML6F D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
+		0116 AB 1 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"CrossPunchPowered")
+		0116 D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
 		Goto CrossPunchEnd
 	CrossPunchPowered:
-		ML6F D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
+		0116 D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
 		Goto CrossPunchEnd
 
 	CrossPunchEnd:
@@ -329,11 +329,11 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML6F C 1 A_WeaponReady
+		0116 C 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML6F B 1 A_WeaponReady
+		0116 B 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML6F A 1 A_WeaponReady
+		0116 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -365,12 +365,12 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	CrossDuo:
 		TNT1 A 1
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		ML7F AB 1 
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"CrossDuoPowered")
-		ML7F D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
+		0117 AB 1 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"CrossDuoPowered")
+		0117 D 1 A_TSP_Melee(24,70,"BasicMeleePuff")
 		Goto CrossDuoEnd
 	CrossDuoPowered:
-		ML7F D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
+		0117 D 1 A_TSP_Melee(48,70,"BasicMeleePuff")
 		Goto CrossDuoEnd
 		
 // K-K-P-P-P End
@@ -379,11 +379,11 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML7F C 1 A_WeaponReady
+		0117 C 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML7F B 1 A_WeaponReady
+		0117 B 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		ML7F A 1 A_WeaponReady
+		0117 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -415,17 +415,17 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	RapidFireFinish:
 		TNT1 A 1 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		ML8F ABD 1 
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"RapidFireFinishPowered")
-		ML8F E 5 A_TSP_Melee(32,90,"StrongMeleePuff")
+		0118 ABD 1 
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"RapidFireFinishPowered")
+		0118 E 5 A_TSP_Melee(32,90,"StrongMeleePuff")
 		Goto RapidFireFinishEnd
 	RapidFireFinishPowered:
-		ML8F E 5 A_TSP_Melee(64,90,"StrongMeleePuff")
+		0118 E 5 A_TSP_Melee(64,90,"StrongMeleePuff")
 		Goto RapidFireFinishEnd
 
 // K-K-P-P-P-P End
 	RapidFireFinishEnd:
-		ML8F DCBA 1
+		0118 DCBA 1
 		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
@@ -437,34 +437,34 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 // Kicks
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("MagSlingToken", 1,"MagSling")
-		ML1F A 0 A_JumpIfInventory("MelAlternateCombo",4,"StingrayFinisher")	// P-P-P-K-K
-		ML1F A 0 A_JumpIfInventory("MelAlternateCombo",2,"ViperFinisher")		// K-K-K
-		ML1F A 0 A_JumpIfInventory("MelAlternateCombo",1,"UpperKick")			// K-K
-		ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",3,"AzureKnee")             // P-P-P-K
-		ML1F A 0 A_JumpIfInventory("MelPrimaryCombo",2,"StreetSweeperFinisher") // P-P-K
+		TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",4,"StingrayFinisher")	// P-P-P-K-K
+		TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",2,"ViperFinisher")		// K-K-K
+		TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",1,"UpperKick")			// K-K
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",3,"AzureKnee")             // P-P-P-K
+		TNT1 A 0 A_JumpIfInventory("MelPrimaryCombo",2,"StreetSweeperFinisher") // P-P-K
 		
 // K DEFAULT
 	DefaultKick:
-		ML1F A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		MK4F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"DefaultKickPowered")
-		MK4F D 1 A_TSP_Melee(24,90,"BasicMeleePuff")
+		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
+		011K ABC 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"DefaultKickPowered")
+		011K D 1 A_TSP_Melee(24,90,"BasicMeleePuff")
 		Goto DefaultKickEnd
 	DefaultKickPowered:
-		MK4F D 1 A_TSP_Melee(48,90,"BasicMeleePuff")
+		011K D 1 A_TSP_Melee(48,90,"BasicMeleePuff")
 		Goto DefaultKickEnd
 		
 // K END
 	DefaultKickEnd:
-		MK4F E 1
+		011K E 1
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MK4F F 1 A_WeaponReady
+		011K F 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MK4F G 1 A_WeaponReady
+		011K G 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MK4F H 1 A_WeaponReady
+		011K H 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -490,23 +490,23 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 3
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
 		TNT1 A 0 A_PlaySound("*smallmelee", CHAN_VOICE)
-		MK5F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"UpperKickPowered")
-		MK5F D 2 A_TSP_Melee(24,90,"BasicMeleePuff")
+		011L ABC 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"UpperKickPowered")
+		011L D 2 A_TSP_Melee(24,90,"BasicMeleePuff")
 		Goto UpperKickEnd
 	UpperKickPowered:
-		MK5F D 2 A_TSP_Melee(48,90,"BasicMeleePuff")
+		011L D 2 A_TSP_Melee(48,90,"BasicMeleePuff")
 		Goto UpperKickEnd
 		
 // K-K END
 	UpperKickEnd:
-		MK5F E 1
+		011L E 1
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MK5F F 1 A_WeaponReady
+		011L F 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		TNT1 G 1 A_WeaponReady
+		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -530,18 +530,18 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	ViperFinisher:
 		TNT1 A 3 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		MK6F AB 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"ViperFinisherPowered")
-		MK6F C 2 A_TSP_Melee(48,90,"StrongMeleePuff",0,16,8)
+		011R AB 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"ViperFinisherPowered")
+		011R C 2 A_TSP_Melee(48,90,"StrongMeleePuff",0,16,8)
 		Goto ViperFinisherEnd
 		
 	ViperFinisherPowered:
-		MK6F C 2 A_TSP_Melee(96,90,"StrongMeleePuff",0,16,8)
+		011R C 2 A_TSP_Melee(96,90,"StrongMeleePuff",0,16,8)
 		Goto ViperFinisherEnd
 	
 // K-K-K END
 	ViperFinisherEnd:
-		MK6F DEF 1
+		011R DEF 1
 		TNT1 A 6
 		Goto AfterMelee
 		
@@ -549,18 +549,18 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	StreetSweeperFinisher:
 		TNT1 A 4 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		MK1F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherPowered")
-		MK1F D 1 A_TSP_Melee(48,90,"StrongMeleePuff")
+		011J ABC 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherPowered")
+		011J D 1 A_TSP_Melee(48,90,"StrongMeleePuff")
 		Goto StreetSweeperFinisherEnd
 		
 	StreetSweeperFinisherPowered:
-		MK1F D 1 A_TSP_Melee(96,90,"StrongMeleePuff")
+		011J D 1 A_TSP_Melee(96,90,"StrongMeleePuff")
 		Goto StreetSweeperFinisherEnd
 		
 // P-P-K End
 	StreetSweeperFinisherEnd:
-		MK1F EFGHI 1
+		011J EFGHI 1
 		TNT1 A 5
 		Goto AfterMelee
 	
@@ -568,21 +568,21 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	AzureKnee:
 		TNT1 A 2
 		TNT1 A 0 A_PlaySoundEX("basicmelee/miss", "SoundSlot5")
-		MK2F ABC 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"AzureKneePowered")
-		MK2F D 3 A_TSP_Melee(24,90,"StrongMeleePuff")
+		011N ABC 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"AzureKneePowered")
+		011N D 3 A_TSP_Melee(24,90,"StrongMeleePuff")
 		Goto AzureKneeEnd
 	AzureKneePowered:
-		MK2F D 3 A_TSP_Melee(48,90,"StrongMeleePuff")
+		011N D 3 A_TSP_Melee(48,90,"StrongMeleePuff")
 		Goto AzureKneeEnd
 		
 // P-P-P-K End
 	AzureKneeEnd:
-		MK2F CB 1
+		011N CB 1
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 4)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
-		MK2F A 1 A_WeaponReady
+		011N A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
 		TNT1 A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPTraitStart")
@@ -606,17 +606,17 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 	StingRayFinisher:
 		TNT1 A 3 A_PlaySound("*strongmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		MK3F ABCD 1
-		ML1F D 0 A_JumpIfInventory("PowerStrength",1,"StingRayFinisherPowered")
-		MK3F E 1 A_TSP_Melee(48,90,"StrongMeleePuff")
+		011M ABCD 1
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"StingRayFinisherPowered")
+		011M E 1 A_TSP_Melee(48,90,"StrongMeleePuff")
 		Goto StingRayFinisherEnd
 	StingRayFinisherPowered:
-		MK3F E 1 A_TSP_Melee(96,90,"StrongMeleePuff")
+		011M E 1 A_TSP_Melee(96,90,"StrongMeleePuff")
 		Goto StingRayFinisherEnd
 		
 	StingRayFinisherEnd:
-		MK3F FGHI 1
-		//TNT1 A 0 A_GiveInventory("MelPistolCombo", 1)//allows you to do the pistol combo (we'll get to this later)
+		011M FGHI 1
+		TNT1 A 0 A_GiveInventory("MelPistolCombo", 1) //allows you to do the pistol combo (we'll get to this later)
 		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
 		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
 		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
@@ -631,8 +631,8 @@ ACTOR MelMeleeRetro : TSPMelBaseWeapon
 		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
 		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
-		MLED EDCBA 1
-		MLEG A 1
+		011D EDCBA 1
+		011G A 1
 		Goto Ready
 	}
 }
