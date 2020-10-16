@@ -188,12 +188,12 @@ ACTOR MelSMG : TSPMelLightWeapon
 		131S B 1 A_PlaySound("weapon/mod/off", CHAN_5)
 		131S A 2
 		ReloadFinish:
-		131G A 1 A_TSP_WeaponRecoilDir(15,12,1)//A_TSP_WeaponRecoilDir(-45,6,1)
-		131G A 1 A_TSP_WeaponRecoilDir(25,12,1)//A_TSP_WeaponRecoilDir(-90,12,1)
-		131G A 2 A_TSP_WeaponRecoilDir(45,24,1)//131R LL 1 //A_TSP_WeaponRecoilDir(135,12,1)
+		131R A 1 A_TSP_WeaponRecoilDir(15,12,1)//A_TSP_WeaponRecoilDir(-45,6,1)
+		131R A 1 A_TSP_WeaponRecoilDir(25,12,1)//A_TSP_WeaponRecoilDir(-90,12,1)
+		131R BB 1 A_TSP_WeaponRecoilDir(45,24,1)//131R LL 1 //A_TSP_WeaponRecoilDir(135,12,1)
 		"----" A 0 A_PlaySound("suzuka/eject", 6)
-		131R B 2 A_TSP_WeaponRecoilDir(90,64,1)//A_TSP_WeaponRecoilDir(135-15,64,1)
-		131R CDEEEE 1
+		131R C 2 A_TSP_WeaponRecoilDir(90-25,48,1)//A_TSP_WeaponRecoilDir(135-15,64,1)
+		131R DEEEEE 1
 		131R EE 1 //buffer
 		//TNT1 A 0 A_PlaySound("suzuka/eject", 6)
 		//25 //12
