@@ -136,17 +136,14 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-			else if (CPlayer.mo is "TSP_MelRetroPlayer")
+
+			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
+
 			
-			if(CPlayer.mo is "TSP_DummyPlayer")
-			{
-				DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
-				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
-			}
-			else if(CPlayer.mo is "TSP_MelRetroPlayer")
+			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				if(cplayer.getgender()==2) // Are you a robot?
 				{
@@ -157,7 +154,13 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawTexture(GetMugShot(5), (HUDLEFT_X+12, HUDLEFT_Y-3), DI_ITEM_OFFSETS);
 				}
 			}
-			else
+			
+			else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
+			{
+				DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
+			}
+			else // Draw default player mugshot
 			{
 				DrawTexture(GetMugShot(5), (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
 			}
@@ -228,6 +231,7 @@ Class TSP_StatusBar : BaseStatusBar
 			// WEAPON PIP
 			//================
 			
+			// MEL
 			if(CPlayer.mo is "TSP_MelPlayer")
 			{
 				DrawImage("MEL_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
@@ -243,6 +247,29 @@ Class TSP_StatusBar : BaseStatusBar
 				{
 					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
+			}
+			
+			// RETRO MEL
+			if(CPlayer.mo is "TSP_MelRetroPlayer")
+			{
+				DrawImage("MRG_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				for(int i = 0;i<2;i++)
+				{
+					if(CPlayer.HasWeaponsInSlot(i+1))
+					{
+						DrawImage("MRG_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					}
+				}
+				
+					if(CPlayer.mo.FindInventory("SuperShotgun")) //temp for testing
+					{
+					DrawImage("MRG_WPI3", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					}
+					
+					/*if(CPlayer.mo.FindInventory("Chainsaw")) //temp for testing
+					{
+					DrawImage("MRG_WPI7", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					}*/
 			}
 
 

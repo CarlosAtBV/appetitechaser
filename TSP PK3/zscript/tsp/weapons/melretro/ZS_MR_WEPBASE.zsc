@@ -65,7 +65,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 	DeadlyAxe:
 		TNT1 A 6 Thrustthingz(0,40,0,0);
 		TNT1 A 0 A_StartSound("strongmelee/miss", 5, CHAN_OVERLAP);
-		1126 ABBCCDEEEEE 1;
+		1126 ABCDDEEEEE 1;
 	    TNT1 A 0 A_StartSound("chargestyle/kick01", 6, CHAN_OVERLAP);
 		TNT1 A 0 A_StartSound("*strongmelee", CHAN_VOICE);
 		TNT1 A 0 A_Recoil(-5);		
@@ -90,7 +90,8 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		Loop;
 	DeadlyAxeFinish:
 		TNT1 A 0 A_StartSound("magpunch/wall", 5, CHAN_OVERLAP);
-	    TNT1 A 10;
+	    TNT1 A 10 A_WeaponReady(WRF_NOFIRE);
+		TNT1 A 0 A_Jump(256, "AfterMelee");
 		Goto AfterMelee;
 	AfterMelee:
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);

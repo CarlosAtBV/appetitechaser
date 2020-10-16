@@ -69,8 +69,6 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 		1104 EFGG 1 BRIGHT;
 		1104 HIJKL 1;
 		TNT1 A 4 A_WeaponReady(WRF_NOFIRE);
-		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart");
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo");
 		TNT1 A 0 A_Jump(256, "AfterMelee");
 		Goto AfterMelee;
 	AfterMelee:
