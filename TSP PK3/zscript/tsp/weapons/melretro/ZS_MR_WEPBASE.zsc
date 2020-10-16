@@ -85,7 +85,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		TNT1 A 0 A_SetPitch(pitch + 10);
 		1126 G 1;
 		TNT1 A 0 Thrustthingz(0,-120,0,0);
-	DeadlyAxeLoop:
+	DeadlyAxeLoop: // I'm falling!
 		TNT1 A 1 A_CheckFloor("DeadlyAxeFinish");
 		Loop;
 	DeadlyAxeFinish:

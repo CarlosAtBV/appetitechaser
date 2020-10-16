@@ -136,13 +136,26 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-			
-			//Melody Crosswell
+			else if (CPlayer.mo is "TSP_MelRetroPlayer")
+			{
+				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			}
 			
 			if(CPlayer.mo is "TSP_DummyPlayer")
 			{
 				DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
 				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
+			}
+			else if(CPlayer.mo is "TSP_MelRetroPlayer")
+			{
+				if(cplayer.getgender()==2) // Are you a robot?
+				{
+				DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+12, HUDLEFT_Y-3), DI_ITEM_OFFSETS);
+				}
+				else // You are not a robot
+				{
+				DrawTexture(GetMugShot(5), (HUDLEFT_X+12, HUDLEFT_Y-3), DI_ITEM_OFFSETS);
+				}
 			}
 			else
 			{
