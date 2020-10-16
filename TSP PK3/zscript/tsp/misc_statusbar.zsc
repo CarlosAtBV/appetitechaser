@@ -228,20 +228,24 @@ Class TSP_StatusBar : BaseStatusBar
 			// WEAPON PIP
 			//================
 			
-			DrawImage("MEL_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-
-			for(int i = 0;i<7;i++)
+			if(CPlayer.mo is "TSP_MelPlayer")
 			{
-				if(CPlayer.HasWeaponsInSlot(i+1))
+				DrawImage("MEL_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				for(int i = 0;i<7;i++)
 				{
-					DrawImage("MEL_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					if(CPlayer.HasWeaponsInSlot(i+1))
+					{
+						DrawImage("MEL_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					}
+				}
+				
+				if(CPlayer.mo.FindInventory("MelChargeStyle"))
+				{
+					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
 			}
-			
-			if(CPlayer.mo.FindInventory("MelChargeStyle"))
-			{
-				DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			}
+
+
 			
 			//================
 			// WEAPON BASE
