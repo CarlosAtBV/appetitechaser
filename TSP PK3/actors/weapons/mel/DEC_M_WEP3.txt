@@ -222,13 +222,13 @@ ACTOR MelSMG : TSPMelLightWeapon
 		}
 		131R F 6
 		{
-			A_TSP_WeaponRecoilDir(45+15,8,1);
+			A_TSP_WeaponRecoilDir(45-15,8,1);
 			//A_WeaponOffset(0,32);
 		}
 		TNT1 A 0 A_TSP_ReloadAmmo
 		TNT1 A 0 A_PlaySound("suzuka/load", 5)
 		//131R HH 1 A_TSP_WeaponRecoilDir(45+15,6,1)
-		131R D 1 A_TSP_WeaponRecoilDir(45,-16,1)
+		131R D 1 A_TSP_WeaponRecoilDir(45+15,-32,1)
 		131R F 1
 		131R E 6
 		131R E 3 //A_TSP_WeaponRecoilDir(180,8,1)
