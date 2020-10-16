@@ -9,7 +9,7 @@
 //
 //===========================================================================
 
-ACTOR MelMelee : TSPMelBaseWeapon
+ACTOR MelMelee : TSP_Mel_BaseWeapon
 {
 	Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]"
 	Obituary "%o learned why %k is the king of the iron fist."
@@ -550,7 +550,6 @@ ACTOR MelMelee : TSPMelBaseWeapon
 
 // Kicks
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory("MagSlingToken", 1,"MagSling")
 		TNT1 A 0 A_GiveInventory("StyleComboToken", 1)
 		TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",4,"CrescentFangFinisher")//P-P-P-K-K
 		TNT1 A 0 A_JumpIfInventory("MelAlternateCombo",2,"ViperFinisher")		//K-K-K
@@ -734,7 +733,6 @@ ACTOR MelMelee : TSPMelBaseWeapon
 		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99)
 		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
 		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
-		TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
 		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
 		TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)

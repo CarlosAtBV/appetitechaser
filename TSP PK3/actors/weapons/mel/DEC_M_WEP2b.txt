@@ -24,7 +24,6 @@ ACTOR MelPistolB : MelPistol
 		Loop
 	Fire:
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
 		121F A 1 A_GunFlash
 		TNT1 A 0 A_PlaySound("nikki/fireb", 6)
 		TNT1 A 0 A_Light2
@@ -42,7 +41,6 @@ ACTOR MelPistolB : MelPistol
 		Goto Ready
 	ModFire:
 		TNT1 A 0 A_TSP_JumpIfClipEmpty("Empty")
-		TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
 		TNT1 A 1 A_GunFlash
 		TNT1 A 0 A_PlaySound("nikki/fireb", 6)
 		TNT1 A 0 A_Light2

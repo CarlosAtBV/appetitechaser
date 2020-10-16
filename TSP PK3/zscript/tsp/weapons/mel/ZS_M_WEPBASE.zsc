@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////
-// Allows for both combo-able trait and melee attacks
-//
-// Because Mel and Robo Mel share some weapons, you
-// might see some combined shenanigans in here!
-/////////////////////////////////////////////////////
-
-class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
+class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 {
 	DEFAULT
 	{
@@ -47,15 +40,13 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		TNT1 A 0;
 		Goto AfterMelee;
 	TraitAltFire:
-		//"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"Ready");
-		MLGF A 0 A_StartSound("magpush", 6);
+		"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"Ready");
+		"----" A 0 A_TSP_StoreSlingTarget;
+		MLGF A 0 A_StartSound("magsling", 6);
 		MLGF ABCDEFGH 1;
-		TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15);
-		MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
-		MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
-		MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,-15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
-		MLGF I 1 A_SpawnItemEx ("MagPushProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION);
-		MLGF HGFEDCBA 1;
+		TNT1 A 0 A_SetBlend("45 55 20", 0.4, 15);
+		MLGF I 0 A_TSP_Sling;
+		MLGF JKLM 1;
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 		TNT1 A 6;
 		TNT1 AAAAAAAAAAAAA 1 A_WeaponReady;
@@ -99,7 +90,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 // Like the above, but for pew-pew weapons
 /////////////////////////////////////////////////////
 
-class TSP_MelRetro_LightWeapon : TSP_MelRetro_BaseWeapon
+class TSP_Mel_LightWeapon : TSP_Mel_BaseWeapon
 {
 	States
 	{
@@ -113,7 +104,7 @@ class TSP_MelRetro_LightWeapon : TSP_MelRetro_BaseWeapon
 // For weapons that are unable to melee after doing a trait move
 /////////////////////////////////////////////////////
 
-class TSP_MelRetro_HeavyWeapon : TSP_MelRetro_BaseWeapon
+class TSP_Mel_HeavyWeapon : TSP_Mel_BaseWeapon
 {
 	States
 	{
@@ -133,3 +124,92 @@ class TSP_MelRetro_HeavyWeapon : TSP_MelRetro_BaseWeapon
 		Goto AfterMelee;
 	}
 }
+
+// TOKENS!
+class MelPrimaryCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelAlternateCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelMachCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelIdle : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 2500;
+	}
+}	
+
+class MelPistolCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelBareKnuckleToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelChargeToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleChangeToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleComboEnderToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleComboToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StartingComboToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
