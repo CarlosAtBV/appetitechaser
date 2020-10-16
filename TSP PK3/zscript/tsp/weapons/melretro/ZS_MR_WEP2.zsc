@@ -7,7 +7,7 @@
 //
 //===========================================================================
 
-class MelRetroPistol : TSP_Weapon_Core
+class MelRetroPistol : TSP_MelRetro_BaseWeapon
 {
 	DEFAULT
 	{
