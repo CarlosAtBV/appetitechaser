@@ -293,9 +293,9 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		ASTU ABCD 1;
 		Goto Ready;
 
-	/*SPTraitStart:
+	SPTraitStart:
 		MPTD ABCD 1;
-		Goto SPTrait;*/
+		Goto SPTrait;
 
 	//Melee Start
 	SPMelee:
