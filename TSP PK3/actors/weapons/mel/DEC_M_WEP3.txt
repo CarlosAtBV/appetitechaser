@@ -270,8 +270,8 @@ ACTOR MelSMG : TSPMelLightWeapon
 		"----" A 1 A_OverlayOffset(10,16.610,66.401,WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(10,16.482,62.276,WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(10,11.893,50.523,WOF_INTERPOLATE)
-		"----" A 1 A_OverlayOffset(10,2.2985,35.456,WOF_INTERPOLATE)
-		"----" A 1 A_OverlayOffset(10,-2.166,29.258,WOF_INTERPOLATE)
+		131R Y 1 A_OverlayOffset(10,2.2985,35.456,WOF_INTERPOLATE)
+		131R Y 1 A_OverlayOffset(10,-2.166,29.258,WOF_INTERPOLATE)
 		/*131R Z 1 A_OverlayOffset(10,-61.6,164.8,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,-61.6,121.8,WOF_INTERPOLATE)//,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,-58.8,98.8,WOF_INTERPOLATE)
@@ -290,6 +290,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 		
 		131R Z 1 A_OverlayOffset(10,-2.3,24.9,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,0,32,WOF_INTERPOLATE)//,WOF_INTERPOLATE)*/
+		"----" Y 1 A_OverlayOffset(10,0,32,WOF_INTERPOLATE)
 		
 		131R Y 11 A_OverlayFlags(10,PSPF_ADDBOB,true)
 		
