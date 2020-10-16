@@ -220,7 +220,7 @@ ACTOR MelSMG : TSPMelLightWeapon
 			//A_TSP_WeaponRecoilDir(45,6,1);
 			A_WeaponOffset(0,32);//
 		}
-		131R G 6
+		131R F 6
 		{
 			A_TSP_WeaponRecoilDir(45+15,8,1);
 			//A_WeaponOffset(0,32);
@@ -228,11 +228,13 @@ ACTOR MelSMG : TSPMelLightWeapon
 		TNT1 A 0 A_TSP_ReloadAmmo
 		TNT1 A 0 A_PlaySound("suzuka/load", 5)
 		//131R HH 1 A_TSP_WeaponRecoilDir(45+15,6,1)
-		131R H 8 A_TSP_WeaponRecoilDir(45+15,64,1)
-		131R H 3 A_TSP_WeaponRecoilDir(180,8,1)
-		131R K 5
+		131R D 1 A_TSP_WeaponRecoilDir(45,-16,1)
+		131R F 1
+		131R E 6
+		131R E 3 //A_TSP_WeaponRecoilDir(180,8,1)
+		131R G 5
 		{
-			A_TSP_WeaponRecoilDir(15,16,1);
+			A_TSP_WeaponRecoilDir(45,16,1);
 			A_PlaySound("nikki/reloadin2", 5);
 		}
 		131R JJ 2// A_TSP_WeaponRecoilDir(45,16,1)
@@ -257,7 +259,20 @@ ACTOR MelSMG : TSPMelLightWeapon
 		Goto ModReady
 	ReloadHand:
 		//TNT1 A 1
-		131R Z 1 A_OverlayOffset(10,-61.6,164.8,WOF_INTERPOLATE)
+		131R Z 0
+		"----" A 1 A_OverlayOffset(10,15.827,148.63,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,15.902,143.35,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.113,127.85,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.383,106.23,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.594,86.068,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.669,72.856,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.663,67.381,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.610,66.401,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,16.482,62.276,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,11.893,50.523,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,2.2985,35.456,WOF_INTERPOLATE)
+		"----" A 1 A_OverlayOffset(10,-2.166,29.258,WOF_INTERPOLATE)
+		/*131R Z 1 A_OverlayOffset(10,-61.6,164.8,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,-61.6,121.8,WOF_INTERPOLATE)//,WOF_INTERPOLATE)
 		131R Z 1 A_OverlayOffset(10,-58.8,98.8,WOF_INTERPOLATE)
 		
@@ -274,11 +289,11 @@ ACTOR MelSMG : TSPMelLightWeapon
 		131R Z 1 A_OverlayOffset(10,-8.8,9.8,WOF_INTERPOLATE)
 		
 		131R Z 1 A_OverlayOffset(10,-2.3,24.9,WOF_INTERPOLATE)
-		131R Z 1 A_OverlayOffset(10,0,32,WOF_INTERPOLATE)//,WOF_INTERPOLATE)
+		131R Z 1 A_OverlayOffset(10,0,32,WOF_INTERPOLATE)//,WOF_INTERPOLATE)*/
 		
-		TNT1 A 11 A_OverlayFlags(10,PSPF_ADDBOB,true)
+		131R Y 11 A_OverlayFlags(10,PSPF_ADDBOB,true)
 		
-		131R Y 5 A_OverlayOffset(10,20,-10,WOF_ADD|WOF_INTERPOLATE)
+		TNT1 Y 5 A_OverlayOffset(10,20,-10,WOF_ADD|WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(10,-2,2,WOF_ADD|WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(10,-4,4,WOF_ADD|WOF_INTERPOLATE)
 		"----" A 1 A_OverlayOffset(10,-8,8,WOF_ADD|WOF_INTERPOLATE)
