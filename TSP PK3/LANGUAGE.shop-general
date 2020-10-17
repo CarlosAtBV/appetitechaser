@@ -1,0 +1,14 @@
+[enu default]
+
+
+///////////////////
+// General Messages
+///////////////////
+
+TSP_SHOP_NOTYET = "Unavailable";
+TSP_SHOP_CANTINV = "Item Does Not Exist";
+TSP_SHOP_NOMONEY = "Insufficient Funds";
+TSP_SHOP_MAXAMT = "Maximum Tier Reached";
+TSP_SHOP_MODSEL = "Weapon Already Modded";
+TSP_SHOP_MAXCONSUME = "Maximum Limit Reached";
+TSP_SHOP_NEEDWEP = "Weapon Unavailable";

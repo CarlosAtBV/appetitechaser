@@ -4,13 +4,6 @@ TSP_GAMEMODE_STANDARD = "Standard Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "Training Mode";
 
-TSP_SHOP_CANTINV = "Item Does Not Exist";
-TSP_SHOP_NOMONEY = "Insufficient Funds";
-TSP_SHOP_MAXAMT = "Maximum Tier Reached";
-TSP_SHOP_MODSEL = "Weapon Already Modded";
-TSP_SHOP_MAXCONSUME = "Maximum Limit Reached";
-TSP_SHOP_NEEDWEP = "Weapon Unavailable";
-
 ////////////
 // MAP NAMES
 ////////////
