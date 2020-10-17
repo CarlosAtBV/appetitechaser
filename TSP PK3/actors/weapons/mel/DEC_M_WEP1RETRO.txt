@@ -41,7 +41,7 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect")
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
 		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
-		011D ABCDE 1
+		011D ABCD 1
 		TNT1 A 3
 	DeselectLoop:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower
@@ -54,7 +54,7 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MeleeSelected", 1)
 		TNT1 A 0 A_WeaponOffset(0,32)
 		TNT1 A 4
-		011U ABCDE 1
+		011U ABCD 1
 		011G A 1 A_Raise
 		Loop
 	Ready:

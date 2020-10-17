@@ -132,16 +132,10 @@ Class TSP_StatusBar : BaseStatusBar
 				case 3: DrawImage("MEL_SHD3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
-			if(CPlayer.mo is "TSP_MelPlayer")
+			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-
-			if(CPlayer.mo is "TSP_MelRetroPlayer")
-			{
-				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			}
-
 			
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
@@ -253,7 +247,7 @@ Class TSP_StatusBar : BaseStatusBar
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				DrawImage("MRG_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-				for(int i = 0;i<2;i++)
+				for(int i = 0;i<8;i++)
 				{
 					if(CPlayer.HasWeaponsInSlot(i+1))
 					{
