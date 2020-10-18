@@ -38,7 +38,7 @@ misc/startupdone         GAMELOAD
 
 item/pickupls            PCKUPLS
 
-general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Super Monday Night Combat, Mortal Kombat X, Resident Evil 4
+general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 
 //Armor Pickups
 
@@ -69,10 +69,10 @@ shieldhit1 "sounds/general/player/sfx_general_shieldhit1.ogg"
 shieldhit2 "sounds/general/player/sfx_general_shieldhit2.ogg"
 shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
 
-shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Super Monday Night Combat, Mortal Kombat X, Devil May Cry 4: Special Edition
+shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Devil May Cry 4: Special Edition, Mortal Kombat X, Super Monday Night Combat
 
 // GENERAL
-mantle "sounds/general/player/sfx_general_mantle.ogg" // From Devil May Cry 4: Special Edition, Chornicles of Riddick: Assault on Dark Athena
+mantle "sounds/general/player/sfx_general_mantle.ogg" // From Chornicles of Riddick: Assault on Dark Athena, Devil May Cry 4: Special Edition
 money/pickup "sounds/shop/ui_gbd_sm.ogg"
 $volume money/pickup 0.5
 
@@ -84,10 +84,10 @@ shop/hired "sounds/placeholder/shop/victory.ogg" // From Roblox
 
 // SHOP
 // SOUND CREDITS/SOURCES: 
-// - Resident Evil 4
 // - GDC 2018 Audio Bundle
-// - No Heroes Allowed VR
 // - Kamen Rider Battride War
+// - No Heroes Allowed VR
+// - Resident Evil 4
 
 shop/unlock					"sounds/shop/ui_unlock.ogg"
 shop/characterupgrade 		"sounds/shop/ui_shop_buy_characterupgrade.ogg"

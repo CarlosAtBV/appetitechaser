@@ -1,15 +1,15 @@
 // Slot 2: SELENA
 // SOUND CREDITS/SOURCES: 
 // [ALL]
-// - Wolfenstein (2009)
-// - Tribes Ascend
-// - Resident Evil 4
-// - Dying Light Enhanced Edition
-// - Red Ocean
 // - Alien Breed Evolution Impact
-// - Halo Reach
 // - Chronicles of Riddick: Assault on Dark Athena
+// - Dying Light Enhanced Edition
+// - Halo Reach
 // - PlanetSide 2
+// - Red Ocean
+// - Resident Evil 4
+// - Tribes Ascend
+// - Wolfenstein (2009)
 
 $random selena/firea { selena/firea01 selena/firea02 selena/firea03 }
 selena/firea01 "sounds/weapons/Shen Mi/Selena/sfx_selena_firea01.ogg"
@@ -34,9 +34,9 @@ selena/trifireoff "sounds/weapons/Shen Mi/Selena/sfx_selena_trifire_modeoff.ogg"
 // Slot 3: OS06 SUZUKA (CUSTOM)
 // SOUND CREDITS/SOURCES: 
 // [FIRING]
-// - Wolfenstein (2009)
-// - DOOM (2016)
 // - Alien vs Predator 2
+// - DOOM (2016)
+// - Wolfenstein (2009)
 
 // All other weapon sounds are shared with Mel's version
 $random suzuka/fired { suzuka/fired01 suzuka/fired02 suzuka/fired03 }

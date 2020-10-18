@@ -6,19 +6,30 @@
 // Mel's Mag Manuevers
 //////////////////////
 // SOUND CREDITS/SOURCES: 
-// - Jedi Knight II: Jedi Outcast
-// - Quake III Arena
 // - Chronicles of Riddick: Assault on Dark Athena
+// - GDC 2018 Audio Bundle
+// - Jedi Knight II: Jedi Outcast
 // - Mortal Kombat (2011)
 // - Mortal Kombat X
-// - GDC 2018 Audio Bundle
+// - Quake III Arena
 
-magpull "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
-magsling "sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
-magpush "sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
-magphit "sounds/weapons/Mel/MagTrait/sfx_mag_driveimpact01.ogg"
-maghit "sounds/weapons/Mel/MagTrait/sfx_mag_impactbeta01.ogg"
-magloop "sounds/weapons/Mel/MagTrait/sfx_mag_ambloop01.ogg"
+///////////////////////////////////////
+// Mel's Mag Manuevers (Modern Version)
+///////////////////////////////////////
+// SOUND CREDITS/SOURCES: 
+// - Mortal Kombat (2011)
+// - Mortal Kombat X
+// - Super Monday Night Combat
+
+maggrappleretro "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
+maggrapple 		"sounds/weapons/Mel/MagTrait/sfx_mag_grapple02.ogg"
+magslingretro 	"sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
+magsling 		"sounds/weapons/Mel/MagTrait/sfx_mag_sling02.ogg"
+magdriveretro	"sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
+magdrive 		"sounds/weapons/Mel/MagTrait/sfx_mag_drive02.ogg"
+magphit 		"sounds/weapons/Mel/MagTrait/sfx_mag_driveimpact01.ogg"
+maghit 			"sounds/weapons/Mel/MagTrait/sfx_mag_impactbeta01.ogg"
+magloop 		"sounds/weapons/Mel/MagTrait/sfx_mag_ambloop01.ogg"
 
 magpunch/charge    "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge01.ogg"
 magpunch/chargefin "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge02.ogg"
@@ -71,18 +82,18 @@ meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 // Slot 2: DARLING NIKKI
 // SOUND CREDITS/SOURCES: 
 // [FIRING]
-// - The Chronicles of Riddick: Assault on Dark Athena
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Devil May Cry 4: Special Edition
 // - PlanetSide 2
 // - Sniper Elite 3
-// - Devil May Cry 4: Special Edition
 // [IDLE 1]
-// - Mortal Kombat X
-// - Super Monday Night Combat
-// - PlanetSide 2
 // - Devil May Cry 4: Special Edition
+// - Mortal Kombat X
+// - PlanetSide 2
+// - Super Monday Night Combat
 // [UPGRADE EQUIP]
+// - Chronicles of Riddick: Assault on Dark Athena
 // - GDC 2018 Audio Bundle
-// - The Chronicles of Riddick: Assault on Dark Athena
 // [SELECT/DESELECT]
 // - GDC 2018 Audio Bundle
 // - Mortal Kombat (2011)
@@ -128,39 +139,35 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // Slot 3: OS06 SUZUKA
 // SOUND CREDITS/SOURCES: 
 // [FIRING (DEFAULT)]
-// - Left 4 Dead
-// - DOOM (2016)
 // - Alien vs Predator 2
+// - DOOM (2016)
 // - Halo Reach
+// - Left 4 Dead
 // - PlanetSide 2
 // [FIRING (NAILGUN)]
-// - The Chronicles of Riddick: Assault on Dark Athena
-// - Left 4 Dead
-// - DOOM (2016)
 // - Alien vs Predator 2
+// - Chronicles of Riddick: Assault on Dark Athena
+// - DOOM (2016)
+// - Left 4 Dead
 // - Mortal Kombat X
 // - PlanetSide 2
 // [FIRING (SHOTGUN)]
-// - Left 4 Dead
-// - DOOM (2016)
 // - Alien vs Predator 2
+// - DOOM (2016)
 // - Dying Light: Enhanced Edition
-// [FIRING (CUSTOM)]
-// - Wolfenstein (2009)
-// - DOOM (2016)
-// - Alien vs Predator 2
+// - Left 4 Dead
 // [FIRING (GRENADE)]
-// - The Chronicles of Riddick: Assault on Dark Athena
-// - Left 4 Dead
-// - DOOM (2016)
 // - Alien vs Predator 2
-// [RELOADING, COCKING, UPGRADE EQUIP]
-// - Super Monday Night Combat
+// - Chronicles of Riddick: Assault on Dark Athena
+// - DOOM (2016)
 // - Left 4 Dead
+// [RELOADING, COCKING, UPGRADE EQUIP]
+// - Chronicles of Riddick: Assault on Dark Athena
 // - Dying Light: Enhanced Edition
 // - Halo Reach
-// - The Chronicles of Riddick: Assault on Dark Athena
 // - Insurgency
+// - Left 4 Dead
+// - Super Monday Night Combat
 
 $random suzuka/fire { suzuka/fire01 suzuka/fire02 suzuka/fire03 }
 suzuka/fire01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"

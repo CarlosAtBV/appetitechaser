@@ -35,7 +35,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		Loop;
 	TraitFire:
 		"----" A 0 A_TSP_JumpIfInAir("DeadlyAxe");
-		MLGF A 0 A_StartSound("magpull", 6);
+		MLGF A 0 A_StartSound("maggrappleretro", 6);
 		MLGF ABCDEFGH 1;
 		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15);
 		MLGF I 1 A_TSP_Grapple;
@@ -48,7 +48,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		Goto AfterMelee;
 	TraitAltFire:
 		//"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"Ready");
-		MLGF A 0 A_StartSound("magpush", 6);
+		MLGF A 0 A_StartSound("magpushretro", 6);
 		MLGF ABCDEFGH 1;
 		TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15);
 		MLGF I 0 A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
