@@ -201,7 +201,7 @@ suzuka/upgradedefault "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_default.ogg"
 suzuka/upgradeshotgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_shotgun.ogg"
 suzuka/upgradenailgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_nailgun.ogg"
 
-suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec01.ogg"
+suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec_gn01.ogg"
 suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
 suzuka/load "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload02.ogg"
 suzuka/rcock "sounds/weapons/Mel/Suzuka/sfx_suzuka_cock.ogg"
