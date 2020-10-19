@@ -137,11 +137,6 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
-			if(CPlayer.mo is "TSP_MelPlayer")
-			{
-				DrawImage("MCWST00", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
-			}
-			
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				if(cplayer.getgender()==2) // Are you a robot?
@@ -163,6 +158,16 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				DrawTexture(GetMugShot(5), (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
 			}
+			
+			if(CPlayer.mo is "TSP_MelPlayer")
+			{
+				DrawImage("MCWST00", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
+				if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
+				{
+				DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+				}
+			}
+			
 			
 			//================
 			// Health
