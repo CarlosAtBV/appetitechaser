@@ -75,7 +75,7 @@ map TSP03 "Neoscape - Crash Course"
 	noskillmenu
 }*/
 
-map TEST "Neoscape - Test Sector"
+map TSP_TEST "Neoscape - Test Sector"
 {
     sky1 = "SPACE", -0.1
 	music = "TSP_READ"
