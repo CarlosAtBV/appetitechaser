@@ -1,0 +1,127 @@
+type = "Doom Builder Map Settings Configuration";
+gameconfig = "GZDoom_DoomUDMF.cfg";
+strictpatches = 0;
+
+maps
+{
+	
+	TSP_TEST
+	{
+		defaultceiltexture = "TSPFL1";
+		overridefloorheight = false;
+		customfloorheight = 0;
+		uselongtexturenames = false;
+		scriptcompiler = "zdoom_acs.cfg";
+		
+		resources
+		{
+			
+			resource0
+			{
+				type = 1;
+				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
+				option1 = 0;
+				option2 = 0;
+				notfortesting = 0;
+			}
+		}
+		overrideceiltexture = false;
+		viewpositionx = 6852.102f;
+		defaulttoptexture = "TSPCL2";
+		
+		fieldtypes
+		{
+			
+			sector
+			{
+				xscaleceiling = 1;
+				floor_reflect = 1;
+				xscalefloor = 1;
+				desaturation = 1;
+				xpanningfloor = 1;
+				yscaleceiling = 1;
+				lightcolor = 0;
+				xpanningceiling = 1;
+				yscalefloor = 1;
+				rotationfloor = 17;
+				fadecolor = 0;
+				rotationceiling = 17;
+				ypanningfloor = 1;
+				ypanningceiling = 1;
+			}
+			
+			sidedef
+			{
+				offsety_bottom = 1;
+				offsetx_top = 1;
+				scaley_mid = 1;
+				offsety_mid = 1;
+				scalex_mid = 1;
+				light = 0;
+				offsetx_bottom = 1;
+				offsetx_mid = 1;
+				offsety_top = 1;
+				lightabsolute = 3;
+			}
+			
+			linedef
+			{
+				alpha = 1;
+				renderstyle = 2;
+			}
+		}
+		overrideceilheight = false;
+		
+		scriptdocuments
+		{
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 1110;
+				firstvisibleline = 14;
+				activetab = true;
+			}
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+		}
+		useresourcesinreadonlymode = false;
+		overridebrightness = false;
+		overridefloortexture = false;
+		
+		grid
+		{
+			backoffsetx = 0;
+			backsource = 0;
+			gridoriginy = 0;
+			backscaley = 100;
+			gridrotate = 0;
+			backscalex = 100;
+			gridoriginx = 0;
+			gridsize = 4;
+			background = "";
+			backoffsety = 0;
+		}
+		overridetoptexture = false;
+		overridebottomtexture = false;
+		defaultbottomtexture = "TSPCL2";
+		defaultfloortexture = "TSPFL1";
+		viewpositiony = -12560.86f;
+		defaultwalltexture = "TSPCL2";
+		customceilheight = 128;
+		overridemiddletexture = false;
+		custombrightness = 196;
+		viewscale = 0.3028748f;
+	}
+}
