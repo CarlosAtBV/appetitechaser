@@ -107,6 +107,13 @@ map TSP_BH "FUUUCKKK! FUUUUUCKKKK!!!"
 	EventHandlers = "TSP_EventHandler_GotoBHMap"
 }
 
+map BH_SKIF "flyin lmao"
+{
+    sky1 = "SPACE", -0.1
+	lightmode = 0
+	eventhandlers = "TSP_EventHandler_Skiff"
+}
+
 /////////////////
 // BOUNTY HUNTERS
 /////////////////

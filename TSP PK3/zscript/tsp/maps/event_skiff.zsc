@@ -1,0 +1,13 @@
+Class TSP_EventHandler_Skiff : EventHandler
+{
+	override void WorldLoaded (WorldEvent e)
+	{
+		ActorIterator iterator = Level.CreateActorIterator(50);
+		Actor fella = iterator.Next();
+		if(fella != null)
+		{
+			level.sectorPortals[0].mSkybox = fella;
+			level.sectorPortals[0].mDestination = fella.CurSector;
+		}
+	}
+}
