@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 3544.302f;
-		viewpositiony = 199.9979f;
-		viewscale = 1.428042f;
+		viewpositionx = 3093.931f;
+		viewpositiony = 351.9489f;
+		viewscale = 0.3846121f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -60,9 +60,16 @@ maps
 		fieldtypes
 		{
 			
+			linedef
+			{
+				renderstyle = 2;
+				alpha = 1;
+			}
+			
 			sidedef
 			{
 				offsetx_bottom = 1;
+				offsetx_mid = 1;
 			}
 			
 			sector
