@@ -5,7 +5,7 @@
 // A general note: I was really bad at keeping credits consistent in older
 // versions of TSP, so these are to the best of my ability! Help appreciated!
 
-// Slot 2: 919m/917a
+// Slot 2: 919m/922a
 // SOUND CREDITS/SOURCES: 
 // [ALL]
 // - Chronicles of Riddick: Assault on Dark Athena
@@ -23,10 +23,10 @@ $random 919m/fire { 919m/fire01 919m/fire02 919m/fire03 }
 919m/fire02 "sounds/weapons/Mel Retro/919m/sfx_919m_fire02.ogg"
 919m/fire03 "sounds/weapons/Mel Retro/919m/sfx_919m_fire03.ogg"
 
-$random 917a/fire { 919m/firea01 919m/firea02 919m/firea03 }
-917a/firea01 "sounds/weapons/Mel Retro/919m/sfx_917a_fire01.ogg"
-917a/firea02 "sounds/weapons/Mel Retro/919m/sfx_917a_fire02.ogg"
-917a/firea03 "sounds/weapons/Mel Retro/919m/sfx_917a_fire03.ogg"
+$random 922a/fire { 922a/firea01 922a/firea02 922a/firea03 }
+922a/firea01 "sounds/weapons/Mel Retro/919m/sfx_922a_fire01.ogg"
+922a/firea02 "sounds/weapons/Mel Retro/919m/sfx_922a_fire02.ogg"
+922a/firea03 "sounds/weapons/Mel Retro/919m/sfx_922a_fire03.ogg"
 
 919m/empty "sounds/weapons/Mel Retro/919m/sfx_919m_empty.ogg"
 919m/reloadout "sounds/weapons/Mel Retro/919m/sfx_919m_reload01.ogg"

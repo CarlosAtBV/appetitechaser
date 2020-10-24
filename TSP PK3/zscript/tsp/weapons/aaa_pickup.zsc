@@ -136,6 +136,42 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	}
 }
 
+Class TSP_Pickup_MelRetroPistolA : TSP_WeaponPickup
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelPistolA",15);
+				break;
+			case 'TSP_MelRetroPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistolA",15);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		TSP_MelPlayer:
+			121P A -1;
+			Stop;
+		TSP_MelRetroPlayer:
+			221P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}
+
 Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 {
 	override bool FunnyWeaponToGive(Actor toucher)

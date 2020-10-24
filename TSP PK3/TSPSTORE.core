@@ -101,11 +101,11 @@ page
 		header "919m.0";
 		item
 		{
-			name "917a";
+			name "922a";
 			icons "graphics/store/items/store_item_spit.png";
 			price 50;
 			mod_take "MelRetroPistol";
-			mod_give "MelRetroPistolB";
+			mod_give "MelRetroPistolA";
 			desc "$TSP_SHOP_919MMODA";
 		}
 	}

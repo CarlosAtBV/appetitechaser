@@ -50,4 +50,6 @@ MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
 MelRetroPistolPickup = "\cc[\cy919m.0\cc - \cuPistol\cc]";
 MelRetroPistolTag = "\cc[\cy919m.0\cc]";
 
-//
+//922a
+MelRetroPistolAPickup = "\cc[\cy922a\cc - \cuAuto-Pistol\cc]";
+MelRetroPistolATag = "\cc[\cy922a\cc]";

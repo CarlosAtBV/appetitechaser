@@ -82,12 +82,12 @@ ACTOR WeaponSelectMemory : Inventory
 	// 121 = Darling Nikki
 	// 122 = Darling Nikki (Spitfire)
 	// 131 = OS06 Suzuka
-	// 
+	//
 	// Mel (Retrograde) Weapons
 	// 010 = Trait
 	// 011 = Melee
 	// 021 = 919m.0
-	// 022 = 917
+	// 022 = 922
 	// 031 = Zeke
 	// 032 = Dahlia
 	// 041 = AB50
@@ -143,6 +143,7 @@ Actor MeleeButtonActor : CustomInventory
 		Goto MelRetroPistolSwitch
 	MelRetroPistolSwitch:
 		TNT1 A 0 A_SelectWeapon("MelRetroPistol")
+		TNT1 A 0 A_SelectWeapon("MelRetroPistolA")
 		Fail
 	}
 }
