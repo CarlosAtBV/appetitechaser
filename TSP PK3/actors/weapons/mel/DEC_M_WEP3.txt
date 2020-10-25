@@ -127,7 +127,15 @@ ACTOR MelSMG : TSP_Mel_LightWeapon
 		Goto Ready
 		
 	Flash:
+	AltFlash:
 		"----" A 0
+		{
+			A_OverlayFlags(PSP_FLASH,PSPF_RENDERSTYLE,true);
+			A_OverlayRenderstyle(PSP_FLASH,STYLE_Add);
+		}
+		131F A 1 BRIGHT
+		Stop
+		/*"----" A 0
 		{
 			A_OverlayFlags(PSP_FLASH,PSPF_RENDERSTYLE,true);
 			A_OverlayRenderstyle(PSP_FLASH,STYLE_Add);
@@ -147,7 +155,7 @@ ACTOR MelSMG : TSP_Mel_LightWeapon
 		131F B 1 BRIGHT
 		Stop
 		131F D 1 BRIGHT
-		Stop
+		Stop*/
 	ModFlash:
 		"----" A 0
 		{
