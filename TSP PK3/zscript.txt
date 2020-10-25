@@ -9,20 +9,6 @@ enum ETSPGamemodes
 	TSP_GM_TRAINING = 2,
 };
 
-Class TSP_BulletPuff : BulletPuff// replaces BulletPuff
-{
-	Default
-	{
-		+PUFFONACTORS
-	}
-	States
-	{
-		XDeath:
-			TNT1 A 0 A_PlaySound("hit/flesh");
-			Stop;
-	}
-}
-
 const TSP_TRACERSPEED = 40;
 
 Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
