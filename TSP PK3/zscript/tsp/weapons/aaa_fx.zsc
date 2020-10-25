@@ -46,6 +46,7 @@ Class TSP_BulletPuff : Actor
 		YScale 0.05;
 		RenderStyle "Add";
 		+ROLLSPRITE
+		+PUFFGETSOWNER
 		+BRIGHT
 	}
 	
@@ -56,6 +57,28 @@ Class TSP_BulletPuff : Actor
 		super.PostBeginPlay();
 		roll = random(0,360);
 		scale *= frandom(0.8,1.2);
+		if(target == null || !(target is "PlayerPawn"))
+		{
+			return;
+		}
+		for(int i = 0; i < 3; i++)
+		{
+			Actor spark = Spawn("TSP_BulletSpark",pos);
+			double angleToBase = AngleTo(target);
+			double angleTo = angleToBase+frandom(-15,15);
+			double pitchToBase = -atan2(pos.z-(target.pos.z+PlayerPawn(target).viewheight), Distance2D(target));//+frandom(-15,15);
+			double pitchTo = pitchToBase+frandom(-15,15);//+frandom(-15,15);
+			
+			Vector3 newVec = (cos(angleTo)*cos(pitchTo), sin(angleTo)*cos(pitchTo), sin(pitchTo));//(cos(angleTo), sin(angleTo), sin(pitchTo));
+			
+			double newVecX = DeltaAngle(angleTo,angleToBase);
+			double newVecY = DeltaAngle(pitchTo,pitchToBase);
+			
+			spark.roll = atan2(newVecY, newVecX);
+			
+			spark.vel = newVec*16;//(frandom(-5,5), frandom(-5,5), frandom(1,5));
+			Console.printf(""..newVecX);
+		}
 	}
 	
 	override void Tick()
@@ -76,6 +99,45 @@ Class TSP_BulletPuff : Actor
 			Stop;
 		XDeath:
 			TNT1 A 0 A_PlaySound("hit/flesh");
+			Stop;
+	}
+}
+
+Class TSP_BulletSpark : Actor
+{
+	Default
+	{
+		XScale 1.0;
+		YScale 1.0;
+		RenderStyle "Add";
+		+BRIGHT
+		+NOINTERACTION
+		+ROLLSPRITE
+	}
+	
+	int timeLeft;
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		//scale *= frandom(0.8,1.2);
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		scale *= 0.7;
+		timeLeft += 1;
+		if(timeLeft>=8)
+		{
+			Destroy();
+		}
+	}
+	
+	States
+	{
+		Spawn:
+			SFXA B -1;
 			Stop;
 	}
 }
