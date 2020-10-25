@@ -252,10 +252,10 @@ ACTOR MelSMG : TSP_Mel_LightWeapon
 		"----" A 0 A_PlaySound("suzuka/eject", CHAN_6)
 		131R B 2
 		131R CD 1
-		131R E 26
+		131R EF 13
 		TNT1 A 0 A_TSP_ReloadAmmo
-		131R F 2
-		131R G 2 A_PlaySound("nikki/reloadin2", CHAN_5)
+		131R G 2
+		131R H 2 A_PlaySound("nikki/reloadin2", CHAN_5)
 		131G A 12
 		"----" A 0
 		{
@@ -286,21 +286,21 @@ ACTOR MelSMG : TSP_Mel_LightWeapon
 		TNT1 A 1 A_OverlayOffset(10, 56, 118, WOF_INTERPOLATE)
 		TNT1 A 1 A_OverlayOffset(10, 56, 114, WOF_INTERPOLATE)
 		TNT1 A 1 A_OverlayOffset(10, 57, 108, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 57, 98, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 58, 84, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 59, 63, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 60, 33, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 61, 18, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 61, 18, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 62, 19, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 62, 19, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 62, 20, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 64, 20, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 67, 22, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 72, 27, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 78, 38, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 83, 56, WOF_INTERPOLATE)
-		TNT1 A 1 A_OverlayOffset(10, 87, 89, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 58, 99, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 59, 86, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 61, 66, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 62, 39, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 63, 25, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 64, 25, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 65, 27, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 65, 27, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 65, 27, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 65, 27, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 66, 29, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 71, 34, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 77, 44, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 82, 61, WOF_INTERPOLATE)
+		TNT1 A 1 A_OverlayOffset(10, 87, 92, WOF_INTERPOLATE)
 		TNT1 A 1 A_OverlayOffset(10, 88, 161, WOF_INTERPOLATE)
 		Stop
 	ReloadHand:
