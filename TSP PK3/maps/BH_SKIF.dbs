@@ -20,11 +20,11 @@ maps
 				notfortesting = 0;
 			}
 		}
-		defaultfloortexture = "F_SKY1";
-		defaultceiltexture = "F_SKY1";
-		defaulttoptexture = "STARTAN2";
-		defaultwalltexture = "STARTAN2";
-		defaultbottomtexture = "STARTAN2";
+		defaultfloortexture = "DEV_64F";
+		defaultceiltexture = "DEV_64F";
+		defaulttoptexture = "TSPAL7";
+		defaultwalltexture = "TSPAL7";
+		defaultbottomtexture = "TSPAL7";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 6866.325f;
-		viewpositiony = 1263.199f;
-		viewscale = 0.1346634f;
+		viewpositionx = 4207.826f;
+		viewpositiony = 1165.249f;
+		viewscale = 0.2958544f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -51,7 +51,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 16;
+			gridsize = 32;
 			gridrotate = 0;
 			gridoriginx = 0;
 			gridoriginy = 0;
@@ -74,17 +74,17 @@ maps
 			
 			sector
 			{
-				lightcolor = 0;
 				xpanningceiling = 1;
 				ypanningceiling = 1;
-				rotationceiling = 17;
+				rotationceiling = 1;
 				xscaleceiling = 1;
 				yscaleceiling = 1;
 				xpanningfloor = 1;
 				ypanningfloor = 1;
-				rotationfloor = 17;
+				rotationfloor = 1;
 				xscalefloor = 1;
 				yscalefloor = 1;
+				lightcolor = 0;
 			}
 		}
 		
@@ -107,7 +107,7 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 463;
+				caretposition = 309;
 				activetab = true;
 			}
 		}
