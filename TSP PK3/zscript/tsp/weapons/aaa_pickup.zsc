@@ -145,10 +145,10 @@ Class TSP_Pickup_MelRetroPistolA : TSP_WeaponPickup
 		switch(toucher.GetClassName())
 		{
 			case 'TSP_MelPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelPistolA",15);
+				thingGiven = GiveTSPWeapon(toucher,"MelPistolA",30);
 				break;
 			case 'TSP_MelRetroPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistolA",15);
+				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistolA",30);
 				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
