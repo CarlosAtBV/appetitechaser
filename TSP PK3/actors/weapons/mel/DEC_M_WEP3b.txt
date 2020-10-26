@@ -55,8 +55,10 @@ ACTOR MelSMGB : MelSMG
 				A_PlaySound("suzuka/firebng", 5+CountInv("TSP_SMGNailSwitch"));
 				A_AlertMonsters;
 				//A_FireProjectile("TSP_Projectile_Nail",0,0);
-				A_TSP_FireBullets(frandom(2,8),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,-2);
-				A_TSP_FireBullets(frandom(-8,-2),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,2);
+				//A_TSP_FireBullets(frandom(2,8),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,-2);
+				//A_TSP_FireBullets(frandom(-8,-2),frandom(-2,2),-1,0,"TSP_BulletPuff",FBF_EXPLICITANGLE,2048,"TSP_Projectile_Nail",0,2);
+				A_FireProjectile("TSP_Projectile_Nail",frandom(-8,-2)+1,0,1);
+				A_FireProjectile("TSP_Projectile_Nail",frandom(2,8)+1,0,4);
 				A_TSP_TakeClip(2);
 				//A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 				A_GunFlash("Flash");
@@ -93,6 +95,9 @@ ACTOR TSP_Projectile_Nail
 			Stop
 		XDeath:
 			TNT1 A 0 A_PlaySound("hit/flesh")
+			Stop
+		Death:
+			POSS A -1
 			Stop
 	}
 }
