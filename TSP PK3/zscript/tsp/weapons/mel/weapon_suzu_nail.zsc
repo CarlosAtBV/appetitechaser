@@ -8,6 +8,7 @@ Class MelSMGB : MelSMG
 		Weapon.AmmoUse2 2;
 		-TSP_Weapon_Core.HOLDDOWNFORMOD
 		-TSP_Weapon_Core.MODFIREZOOMS
+		TSP_Weapon_Core.SpriteNameBase "133";
 	}
 	
 	States
@@ -75,6 +76,12 @@ Class MelSMGB : MelSMG
 			TNT1 A 0 A_Refire("ModFire");
 			"----" A 0 A_TSP_GotoReadyState;
 			Goto Ready;
+		
+		SpriteStore:
+			133R A 0;
+			133S A 0;
+			133M A 0;
+			Stop;
 	}
 }
 

@@ -8,7 +8,7 @@ Class MelSMGA : MelSMG
 		Weapon.AmmoUse2 2;
 		-TSP_Weapon_Core.HOLDDOWNFORMOD
 		-TSP_Weapon_Core.MODFIREZOOMS
-		TSP_Weapon_Core.SpriteNameBase "132" ;
+		TSP_Weapon_Core.SpriteNameBase "132";
 	}
 	
 	States

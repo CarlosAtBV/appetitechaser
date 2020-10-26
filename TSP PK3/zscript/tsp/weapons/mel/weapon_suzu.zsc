@@ -326,14 +326,14 @@ Class MelSMG : TSP_Mel_LightWeapon
 			TNT1 A 0 A_WeaponOffset(0,32);
 			130M A 15;
 			130M A 2 A_TSP_WeaponRecoilDir(45,8);
-			130M A 4
+			TNT1 A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "M");
+			"----" A 4
 			{
 				A_PlaySound("suzuka/upgradedefault", 5);
 				A_TSP_WeaponRecoilDir(45,24);
 			}
-			130M A 12;
-			TNT1 A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "M");
-			131M A 1 A_Raise;
+			"----" A 12;
+			"----" A 1 A_Raise;
 			Goto Ready;
 			
 		ModOffHand:
@@ -385,7 +385,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 1 A_OverlayOffset(-10,1,0,WOF_INTERPOLATE);
 			"----" A 1 A_OverlayOffset(-10,0,0,WOF_INTERPOLATE);
 			
-			"----" A 12;
+			//"----" A 12;
 			Stop;
 			
 		// Sprite Shite
