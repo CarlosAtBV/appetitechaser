@@ -92,19 +92,11 @@ Class MelSMGA : MelSMG
 			TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-6,0,0,0);
 			"----" A 0 A_TSP_GotoReadyState;
 			Goto Ready;
-			
-	ModOff:
-		132M A 0;
-		Goto ModOff_Finish;
-	ModOn_Finish:
-		132M A 1 A_Raise;
-		Goto Ready;
 		
-	ModOffHand:
-		132M B 0;
-		Goto ModOffHand_Finish;
-	ModOnHand:
-		132M B 0;
-		Goto ModOnHand_Finish;
+		SpriteStore:
+			132R A 0;
+			132S A 0;
+			132M A 0;
+			Stop;
 	}
 }
