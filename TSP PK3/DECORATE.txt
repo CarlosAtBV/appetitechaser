@@ -182,7 +182,7 @@ Actor MeleeSelected : Boolean {}
 #include "Actors/Weapons/Mel/DEC_M_WEP2c.txt" // TREASURED NIKKI
 //#include "Actors/Weapons/Mel/DEC_M_WEP3.txt" // SUZUKA
 //#include "Actors/Weapons/Mel/DEC_M_WEP3a.txt" // SUZUKA
-#include "Actors/Weapons/Mel/DEC_M_WEP3b.txt" // SUZUKA
+//#include "Actors/Weapons/Mel/DEC_M_WEP3b.txt" // SUZUKA
 
 #include "Actors/Weapons/Mel/DEC_M_WEP1RETRO.txt" // BARE KNUCKLE (2014)
 //#include "Actors/Weapons/Mel/DEC_M_WEP2RETRO.txt" // 919M
