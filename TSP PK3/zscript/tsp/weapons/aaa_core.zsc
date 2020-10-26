@@ -262,6 +262,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	int tspw_reloadlevel;
 	int tspw_maxreloadlevel;
 	
+	string tspw_spritename;
+	
 	double tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	double tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	double tspw_reloadmult1, tspw_reloadmult2, tspw_reloadmult3;
@@ -270,6 +272,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	property AmmoMult : tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	property ReloadMult : tspw_reloadmult1, tspw_reloadmult2, tspw_reloadmult3;
+	property SpriteNameBase : tspw_spritename;
 	
 	int tspw_curclip;
 	int tspw_clipsize;
@@ -294,6 +297,16 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ModTag "Default";
+	}
+	
+	action void A_TSP_SetSpriteIndex(int layer, name theSprite)
+	{
+		invoker.owner.player.GetPSprite(layer).Sprite = invoker.GetSpriteIndex(theSprite);
+	}
+	
+	action void A_TSP_SetSpriteFrame(int layer, name theSprite)
+	{
+		invoker.owner.player.GetPSprite(layer).Sprite = invoker.GetSpriteIndex(invoker.tspw_spritename..theSprite);
 	}
 	
 	int GetClipCapacity()

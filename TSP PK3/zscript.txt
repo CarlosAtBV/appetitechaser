@@ -82,6 +82,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 // MEL
 #include "zscript/tsp/weapons/mel/ZS_M_WEPBASE.zsc"
 #include "zscript/tsp/weapons/mel/weapon_suzu.zsc"
+#include "zscript/tsp/weapons/mel/weapon_suzu_shotgun.zsc"
 
 // MEL (RETROGADE)
 #include "zscript/tsp/weapons/melretro/ZS_MR_WEPBASE.zsc"
