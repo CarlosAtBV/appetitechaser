@@ -122,6 +122,10 @@ Class TSP_Projectile_Nail : Actor
 			{
 				wallhit = true;
 				bNOGRAVITY = true;
+				Actor bp = Spawn("TSP_BulletPuff",pos);
+				bp.target = target;
+				//bp.angle = angle+180;
+				//bp.pitch = -pitch;
 			}
 			Stop;
 	}
