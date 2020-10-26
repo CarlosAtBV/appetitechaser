@@ -56,9 +56,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 				A_GiveInventory("WeaponSelectMemory", 131);
 				A_PlaySound("919m/select", 5);
 				A_Raise(32);
+				A_TSP_AllowZoom(true);
 			}
 			Loop;
 		Deselect:
+			TNT1 A 0 A_TSP_AllowZoom(false);
 			TNT1 A 0 A_PlaySound("919m/deselect", 5);
 			131G A 1;
 		DeselectLoop:
@@ -216,6 +218,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			TNT1 A 1 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
 			Stop;
 		Reload:
+			"----" A 0 A_TSP_AllowZoom(false);
 			"----" A 0 A_TSP_JumpIfModInactive("ReloadFinish");
 			131S B 1 A_PlaySound("weapon/mod/off", CHAN_5);
 			131S A 2;
@@ -247,6 +250,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			}
 			"####" GGGG 1 A_TSP_WeaponRecoilDir(35,6,1);
 			"####" GF 2;
+			"----" A 0 A_TSP_AllowZoom(true);
 			"----" A 0 A_TSP_JumpIfModInactive("Ready");
 			131S A 1 A_PlaySound("weapon/mod/on", CHAN_5);
 			131S B 2;

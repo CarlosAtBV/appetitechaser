@@ -281,6 +281,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	TSP_PlayerPawn_ZSCBase tspw_owner;
 	
 	int tspw_lastfire;
+	bool tspw_canZoom;
 	
 	string tspw_firstpickupline;
 	property FirstPickupLine : tspw_firstpickupline;
@@ -297,6 +298,11 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ModTag "Default";
+	}
+	
+	action void A_TSP_AllowZoom(bool theVerdict)
+	{
+		invoker.tspw_canZoom = theVerdict;
 	}
 	
 	action void A_TSP_SetSpriteIndex(int layer, name theSprite)
@@ -412,7 +418,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
-			FOVScale = 1.0-0.4*(tspw_altmode&&bModFireZooms);
+			FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
 	}
 	
