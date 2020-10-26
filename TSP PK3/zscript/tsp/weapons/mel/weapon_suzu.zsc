@@ -43,6 +43,26 @@ Class MelSMG : TSP_Mel_LightWeapon
 		+WEAPON.NoAlert
 	}
 	
+	action void A_TSP_MelSMG_Fire()
+	{
+		A_AlertMonsters();
+		A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
+		A_TSP_TakeClip(1);
+		A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
+		if(invoker.smg_bottomFire)
+		{
+			A_GunFlash("Flash");
+		}
+		else
+		{
+			A_GunFlash("AltFlash");
+		}
+		invoker.smg_bottomFire = !invoker.smg_bottomFire;
+		A_SetPitch(pitch - 0.4);
+		A_SetAngle(angle + (frandom(-0.1,0.3)));
+		A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0);
+	}
+	
 	States
 	{
 		Spawn:
@@ -99,27 +119,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"####" A 0 A_TSP_JumpIfClipEmpty("Empty");
 			"####" A 0
 			{
-				A_PlaySound("suzuka/fire", 5);
-				A_AlertMonsters();
-				A_TSP_FireBullets(2,4,-1,7,"TSP_BulletPuff",1);
-				A_TSP_TakeClip(1);
-				A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
-				if(invoker.smg_bottomFire)
-				{
-					A_GunFlash("Flash");
-				}
-				else
-				{
-					A_GunFlash("AltFlash");
-				}
-				invoker.smg_bottomFire = !invoker.smg_bottomFire;
-				A_SetPitch(pitch - 0.4);
-				A_SetAngle(angle + (frandom(-0.1,0.3)));
-				A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0);
+				A_StartSound("suzuka/fire", CHAN_WEAPON|CHANF_OVERLAP);
+				A_TSP_MelSMG_Fire();
 			}
 			"####" A 1 A_Light2;
-			"####" B 1;// A_GiveInventory("TSPTopFired", 1);
-			"####" A 1;
+			"####" BA 1;
 			"####" A 0 A_Refire("Fire");
 			"####" A 0 A_TSP_GotoReadyState;
 			Goto Ready;
