@@ -310,6 +310,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			Goto Ready*/
 
 		ModOff:
+			"----" A 0 A_TSP_AllowZoom(false);
 			TNT1 A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "M");
 			"----" A 0 A_WeaponOffset(0,32);
 			"----" A 5;
@@ -322,6 +323,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
 			Stop;
 		ModOn:
+			"----" A 0 A_TSP_AllowZoom(true);
 			131M A 0 A_Overlay(-10,"ModOnHand");
 			TNT1 A 0 A_WeaponOffset(0,32);
 			130M A 15;
