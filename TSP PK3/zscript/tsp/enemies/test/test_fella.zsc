@@ -201,6 +201,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 			Loop;
 		Missile:
 			E0A0 E 4 A_FaceTarget();
+			E0A0 E 4 A_FaceTarget(15,15);
 			"----" E 0
 			{
 				if(!DirectSightToTarget())
@@ -212,7 +213,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 			}
 			E0A0 F 2 BRIGHT
 			{
-				A_FaceTarget(10,10);
+				A_FaceTarget(15,15);
 				A_PlaySound("nikki/fire",CHAN_WEAPON);
 				A_TSP_BulletAttack(5,5,1,2,"BulletPuff",2048,CBAF_AIMFACING|CBAF_NORANDOM);
 			}
@@ -225,7 +226,12 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 				return ResolveState(null);
 			}
 			E0A0 G 4;
-			Goto Missile+1;
+			E0A0 EEEE 1
+			{
+				A_FaceTarget(15,15);
+				A_SetTics(random(1,2));
+			}
+			Goto Missile+3;
 		BackUpAndWait_0:
 			E0A0 DCBADCBA 4 A_Recoil(0.5);
 			BackUpAndWait_1:
