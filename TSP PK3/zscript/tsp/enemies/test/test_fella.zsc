@@ -38,6 +38,8 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 		Height 56;
 		MinMissileChance 128;
 		PainChance 256;
+		XScale 0.776;
+		YScale 0.776*0.833;
 		
 		Species "ARCSTAR";
 		+SLIDESONWALLS
@@ -171,13 +173,13 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 	States
 	{
 		Pain:
-			TSAT G 4 A_PlaySound("vo/test/fella/pain",CHAN_VOICE);
+			E0A0 G 4 A_PlaySound("vo/test/fella/pain",CHAN_VOICE);
 			Goto See;
 		Spawn:
-			TSAT A 4 A_Look();
+			E0A0 A 4 A_Look();
 			Loop;
 		See:
-			TSAT ABCD 4 A_TSP_Chase();
+			E0A0 ABCD 4 A_TSP_Chase();
 			/*{
 				if(target!=null)
 				{
@@ -198,8 +200,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 			}*/
 			Loop;
 		Missile:
-			TSAT E 4 A_FaceTarget();
-			TSAT E 4 A_FaceTarget(10,10);
+			E0A0 E 4 A_FaceTarget();
 			"----" E 0
 			{
 				if(!DirectSightToTarget())
@@ -209,7 +210,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 				}
 				return ResolveState(null);
 			}
-			TSAT F 4
+			E0A0 F 2 BRIGHT
 			{
 				A_FaceTarget(10,10);
 				A_PlaySound("nikki/fire",CHAN_WEAPON);
@@ -223,11 +224,12 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 				}
 				return ResolveState(null);
 			}
+			E0A0 G 4;
 			Goto Missile+1;
 		BackUpAndWait_0:
-			TSAT DCBADCBA 4 A_Recoil(0.5);
+			E0A0 DCBADCBA 4 A_Recoil(0.5);
 			BackUpAndWait_1:
-			TSAT E 4
+			E0A0 E 4
 			{
 				if (target==null)
 				{
@@ -249,7 +251,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 			{
 				angle = angle + randompick(-90,90);
 			}
-			TSAT ABCD 4 Thrust(1);
+			E0A0 ABCD 4 Thrust(1);
 			"----" A 0
 			{
 				int oldangle = angle;
