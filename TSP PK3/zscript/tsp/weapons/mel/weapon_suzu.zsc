@@ -222,8 +222,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 			TNT1 A 1 A_WeaponOffset(0, 32, WOF_INTERPOLATE);
 			Stop;
 		Reload:
-			"----" A 0 A_TSP_AllowZoom(false);
 			"----" A 0 A_TSP_JumpIfModInactive("ReloadFinish");
+			"----" A 0
+			{
+				invoker.tspw_altmode = false;
+			}
 			131S B 1 A_PlaySound("weapon/mod/off", CHAN_5);
 			131S A 2;
 			ReloadFinish:
