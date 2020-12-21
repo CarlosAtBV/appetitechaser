@@ -642,7 +642,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				invoker.tspw_curclip--;
 			}*/
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags & ~FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy+4);
+			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags & ~FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy);
 			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp += totalDamage/10.0;
 		}
 		
