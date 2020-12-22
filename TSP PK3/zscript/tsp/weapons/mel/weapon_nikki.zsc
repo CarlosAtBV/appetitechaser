@@ -224,7 +224,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121R D 18 A_PlaySound("nikki/reloadin1", 5);
 			121R C 6 A_PlaySound("nikki/reloadin2", 6);
 			121R BA 2;
-			121G A 11;
+			121G AAAAAAAAAAA 1 A_TSP_WeaponReady(WRF_NOBOB);
 			/*121R JKLLMNO 1;
 			121R P 20 A_TSP_ReloadSpeed(20);
 			//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
