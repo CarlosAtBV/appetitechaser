@@ -1,23 +1,73 @@
 Class TSP_Weapon_Casing
 {
+	TSP_PlayerPawn_ZSCBase owner;
 	int overlay;
 	double gravity;
 	Vector2 vel;
+	Vector2 pos;
+	double scale;
+	
+	void Init()
+	{
+		scale = 1.0;
+	}
+	
+	play void Tick()
+	{
+		pos += vel;
+		vel.y += 1;
+		scale += 0.1;
+		
+		if (pos.y > 320)
+		{
+			owner.TSP_RemoveOverlay(overlay);
+			Destroy();
+		}
+	}
 }
 
 Extend Class TSP_PlayerPawn_ZSCBase
 {
 	Array<TSP_Weapon_Casing > tsp_casings;
 	
-	const CASINGBASE = -100;
+	const CASINGBASE = -500;
+	const MAXCASINGS = 20;
+	
+	int TSP_GetFreeCasingOverlay()
+	{
+		for (int i = 0; i < MAXCASINGS; i++)
+		{
+			if (player.GetPSprite(CASINGBASE+i).CurState == null)
+			{
+				return CASINGBASE+i;
+			}
+		}
+		return -1;
+	}
+	
+	void TSP_RemoveOverlay(int id)
+	{
+		//Console.Printf("removing "..id);
+		if (player.GetPSprite(id).CurState == null)
+		{
+			Console.Printf("wtf it was already null??? "..id);
+		}
+		player.SetPSprite(id, null);
+	}
 	
 	void TSP_SpawnCasing(State state, Vector2 pos, double goAngle = -25, double goSpeed = 32)
 	{
-		int casingId = CASINGBASE+tsp_casings.Size();
+		int casingId = TSP_GetFreeCasingOverlay();
+		
 		TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
+		casing.Init();
+		casing.owner = self;
+		casing.pos = pos;
 		
 		player.SetPSprite(casingId, state);
 		let newSprite = player.GetPSprite(casingId);
+		newSprite.scale = (1.0, 1.0);
+		newSprite.pivot = (0.5, 0.5);
 		newSprite.x = pos.x;
 		newSprite.y = pos.y;
 		newSprite.bAddWeapon = false;
@@ -26,31 +76,28 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		casing.overlay = casingId;
 		casing.vel = (cos(goAngle)*goSpeed, sin(goAngle)*goSpeed);
 		tsp_casings.Push(casing);
-		/*TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
-		int casingId = CASINGBASE+invoker.tsp_casings.Size();
-		casing.overlay = casingId;
-		
-		A_Overlay(casing.overlay, state);
-		A_OverlayFlags(casing.overlay, PSPF_ADDWEAPON|PSPF_ADDBOB, false);
-		A_OverlayOffset(casing.overlay, pos.x, pos.y);
-		A_OverlayPivot(casing.overlay, 0.5, 0.5);
-		
-		casing.vel = (cos(goAngle)*32, sin(goAngle)*32);
-		invoker.tsp_casings.Push(casing);*/
 	}
 	
 	void TSP_TickCasings()
 	{
 		for (int i = 0; i < tsp_casings.Size(); i++)
 		{
+			if (tsp_casings[i] == null)
+			{
+				tsp_casings.Delete(i, 1);
+				i--;
+			}
+		}
+		
+		for (int i = 0; i < tsp_casings.Size(); i++)
+		{
 			let casingData = tsp_casings[i];
-			//A_OverlayScale(casingData.overlay, 32, 32);
+			
 			let newSprite = player.GetPSprite(casingData.overlay);
-			A_OverlayOffset(casingData.overlay, casingData.vel.x, casingData.vel.y, WOF_ADD);
-			casingData.vel *= 1.1;
-			newSprite.pivot = (0.5, 0.5);
-			newSprite.scale += (0.1, 0.1);
-			casingData.vel.y += 1;
+			A_OverlayOffset(casingData.overlay, casingData.pos.x, casingData.pos.y, WOF_INTERPOLATE);
+			newSprite.scale = (casingData.scale, casingData.scale);
+			
+			casingData.Tick();
 		}
 	}
 }

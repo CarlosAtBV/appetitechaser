@@ -99,6 +99,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		Casing:
 			"----" A 0 A_Jump(256,random(0,8));
 			120C AAAABBBBCCCCDDDDEEEEFFFFGGGG 1;
+			TNT1 A -1;
 			Stop;
 			
 		Flash:
@@ -166,7 +167,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121G B 1 BRIGHT
 			{
 				A_TSP_MelPistol_Fire(4);
-				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (210, 134), frandom(-5,-25));
+				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (212, 136), frandom(-5,-25)-10, 52);
 				A_GunFlash("Flash");
 			}
 			121G C 1 A_TSP_WeaponRecoilDir(random(30,40), 32+frandom(0,2), 1);
@@ -194,7 +195,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121A A 1 BRIGHT
 			{
 				A_TSP_MelPistol_Fire(0);
-				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (150, 134), frandom(-5,-25)-10, 40);
+				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (150, 134), frandom(-5,-25)-20, 52*1.25);
 				A_GunFlash("AltFlash");
 			}
 			121A B 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 20+frandom(0,2), 1);
