@@ -1,0 +1,54 @@
+Class TSP_Weapon_Casing
+{
+	int overlay;
+	double gravity;
+	Vector2 vel;
+}
+
+Extend Class TSP_PlayerPawn_ZSCBase
+{
+	Array<TSP_Weapon_Casing > tsp_casings;
+	
+	const CASINGBASE = -100;
+	
+	void TSP_SpawnCasing(State state, Vector2 pos, double goAngle = -25)
+	{
+		int casingId = CASINGBASE+tsp_casings.Size();
+		TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
+		
+		player.SetPSprite(casingId, state);
+		let newSprite = player.GetPSprite(casingId);
+		newSprite.x = pos.x;
+		newSprite.y = pos.y;
+		newSprite.bAddWeapon = false;
+		newSprite.bAddBob = false;
+		
+		casing.overlay = casingId;
+		casing.vel = (cos(goAngle)*32, sin(goAngle)*32);
+		tsp_casings.Push(casing);
+		/*TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
+		int casingId = CASINGBASE+invoker.tsp_casings.Size();
+		casing.overlay = casingId;
+		
+		A_Overlay(casing.overlay, state);
+		A_OverlayFlags(casing.overlay, PSPF_ADDWEAPON|PSPF_ADDBOB, false);
+		A_OverlayOffset(casing.overlay, pos.x, pos.y);
+		A_OverlayPivot(casing.overlay, 0.5, 0.5);
+		
+		casing.vel = (cos(goAngle)*32, sin(goAngle)*32);
+		invoker.tsp_casings.Push(casing);*/
+	}
+	
+	void TSP_TickCasings()
+	{
+		for (int i = 0; i < tsp_casings.Size(); i++)
+		{
+			let casingData = tsp_casings[i];
+			//A_OverlayScale(casingData.overlay, 32, 32);
+			let newSprite = player.GetPSprite(casingData.overlay);
+			newSprite.scale = (frandom(-5,5), frandom(-5,5));
+			A_OverlayOffset(casingData.overlay, casingData.vel.x, casingData.vel.y, WOF_ADD);
+			casingData.vel.y += 1;
+		}
+	}
+}

@@ -413,6 +413,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TSPBobStuff();
 		
 		TickLogMessages();
+		TSP_TickCasings();
 		
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}

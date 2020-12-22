@@ -36,6 +36,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		A_PlaySound("nikki/fire", 6);
 		A_TSP_FireBullets(3,2,-1,8,"TSP_BulletPuff",1, Spawnofs_xy: xoff);
 		A_TSP_TakeClip(1);
+		TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (210, 132), frandom(-5,-25));
 	}
 	
 	States
@@ -95,6 +96,11 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121G A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			121G A 0 A_TSP_GotoReadyState;
 			Loop;
+			
+		Casing:
+			"----" A 0 A_Jump(256,random(0,8));
+			120C AAAABBBBCCCCDDDDEEEEFFFFGGGG 1;
+			Stop;
 			
 		Flash:
 			"----" A 0
