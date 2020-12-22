@@ -11,7 +11,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	const CASINGBASE = -100;
 	
-	void TSP_SpawnCasing(State state, Vector2 pos, double goAngle = -25)
+	void TSP_SpawnCasing(State state, Vector2 pos, double goAngle = -25, double goSpeed = 32)
 	{
 		int casingId = CASINGBASE+tsp_casings.Size();
 		TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
@@ -24,7 +24,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		newSprite.bAddBob = false;
 		
 		casing.overlay = casingId;
-		casing.vel = (cos(goAngle)*32, sin(goAngle)*32);
+		casing.vel = (cos(goAngle)*goSpeed, sin(goAngle)*goSpeed);
 		tsp_casings.Push(casing);
 		/*TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
 		int casingId = CASINGBASE+invoker.tsp_casings.Size();
@@ -46,8 +46,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			let casingData = tsp_casings[i];
 			//A_OverlayScale(casingData.overlay, 32, 32);
 			let newSprite = player.GetPSprite(casingData.overlay);
-			newSprite.scale = (frandom(-5,5), frandom(-5,5));
 			A_OverlayOffset(casingData.overlay, casingData.vel.x, casingData.vel.y, WOF_ADD);
+			casingData.vel *= 1.1;
+			newSprite.pivot = (0.5, 0.5);
+			newSprite.scale += (0.1, 0.1);
 			casingData.vel.y += 1;
 		}
 	}
