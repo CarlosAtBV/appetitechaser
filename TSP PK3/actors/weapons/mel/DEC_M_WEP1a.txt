@@ -80,6 +80,8 @@ ACTOR MelChargeStyle : TSP_Mel_BaseWeapon
 // Idle Animations   
 	Taunt:
 		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_JumpIf(CountInv("TSP_Upgrade_PowerBank")<1,"Idle") // If Power Bank is not purchased ya get NOTHING
+		TNT1 A 0 A_GiveInventory("ChargedAttack", 10)
 	Idle:
 		TNT1 A 0 A_TakeInventory("MelIdle", 99999)
 	Idle1:

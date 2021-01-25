@@ -170,6 +170,14 @@ page
 			inv_amount 1;
 			price 10;
 		}
+		item "Mt3"
+		{
+			name "Power Bank";
+			desc "$TSP_SHOP_MEL_POWERBANKDESC";
+			inv_class "TSP_Upgrade_PowerBank";
+			inv_amount 1;
+			price 10;
+		}
 		header "Good Shit";
 		item
 		{

@@ -47,6 +47,13 @@ Class TSP_Upgrade_MagSling : TSP_UpgradeBase
 		Inventory.PickupMessage "$MagSlingPickup";
 	}
 }
+Class TSP_Upgrade_PowerBank : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$PowerBankPickup";
+	}
+}
 
 Class TSP_Upgrade_Shield : TSP_UpgradeBase
 {

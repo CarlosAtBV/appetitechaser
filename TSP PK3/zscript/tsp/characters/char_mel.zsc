@@ -54,6 +54,7 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		GiveInventory("MelMelee",1);
 		GiveInventory("TSP_Upgrade_Shield",1);
 		GiveInventory("TSP_Upgrade_MagSpear",1);
+		GiveInventory("TSP_Upgrade_PowerBank",1);
 		GiveInventory("TSP_HealingSyringe",1);
 		if(!pp_meleestart)
 		{

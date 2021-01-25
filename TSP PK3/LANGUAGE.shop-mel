@@ -46,3 +46,4 @@ TSP_SHOP_SUZUKA_DAMDESC3 = "\cc(\ct%sx Base Damage\cc)\c-\nThese heavy-caliber s
 	TSP_SHOP_MEL_CHARGEDESC = "\cc(\c[Mel]Fighting Style\cc)\c-\nGain access to \ctCharge Style\c-! Unlocks a whole new set of melee moves!\n\cu(Press \ckMelee Key\c-\cu to activate)";
 	TSP_SHOP_MEL_MAGSPEARDESC = "\cc(\c[Mel]Trait\cc)\c-\nA powerful dive kick that does massive damage!\n\cu(Hold \c[mel]Trait\c-\cu -> \ckPrimary Fire\c-\cu in air) ";
 	TSP_SHOP_MEL_MAGSLINGDESC = "\cc(\c[Mel]Trait\cc)\c-\nUse an enemy as an anchor point to catapult yourself over to!\n\cu(Hold \c[mel]Trait\c-\cu -> \ckAlternate Fire\c-\cu) ";
+	TSP_SHOP_MEL_POWERBANKDESC = "\cc(\c[Mel]Trait\cc)\c-\nAfter pressing \c[Mel]Taunt\c-, energy will be stored for an instant charged attack! Compatible with \ctCharge Style\c-!";
