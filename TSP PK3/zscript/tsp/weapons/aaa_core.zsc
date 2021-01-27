@@ -129,7 +129,6 @@ Class TSP_EnemyHandler_Freezer : Thinker
 	
 	override void Tick(void)
 	{
-		Console.Printf("FUCK");
 		if(owner==null)
 		{
 			Destroy();
