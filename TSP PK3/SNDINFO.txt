@@ -40,6 +40,8 @@ item/pickupls            PCKUPLS
 
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 
+misc/meleekill "sounds/weapon fx/meleekill.ogg"
+
 //Armor Pickups
 
 armor/lightarmor         larmpck1

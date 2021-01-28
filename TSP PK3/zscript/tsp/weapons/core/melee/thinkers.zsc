@@ -1,10 +1,10 @@
 Class TSP_EnemyHandler_Freezer : Thinker
 {
 	int timeleft;
-	bool shakeDir;
 	Vector3 oldPos;
+	int oldTics;
 	Actor owner;
-	bool oldGrav;
+	bool wasHit;
 	
 	override void PostBeginPlay()
 	{
@@ -13,9 +13,10 @@ Class TSP_EnemyHandler_Freezer : Thinker
 			Destroy();
 			return;
 		}
+		
 		oldPos = owner.pos;
+		oldTics = owner.CurState.Tics;
 		owner.A_SetTics(-1);
-		oldGrav = owner.bNoGravity;
 		
 		super.PostBeginPlay();
 	}
@@ -27,18 +28,120 @@ Class TSP_EnemyHandler_Freezer : Thinker
 			Destroy();
 			return;
 		}
+		
 		if(timeleft>0)
 		{
 			timeleft--;
-			owner.SetOrigin(oldPos+(0,0,shakeDir*1),false);
-			shakeDir = !shakeDir;
+			owner.SetOrigin(oldPos,false);
+			if ( wasHit )
+			{
+				int shakeAngle = random(0,360);
+				owner.SpriteOffset = (cos(shakeAngle), sin(shakeAngle)) * 3;
+			}
 		}
 		else
 		{
-			owner.A_SetTics(1);
-			owner.bNoGravity = oldGrav;
+			if ( oldTics == -1 )
+			{
+				owner.A_SetTics(1);
+			}
+			else
+			{
+				owner.A_SetTics(oldTics);
+			}
+			
+			if ( wasHit )
+			{
+				owner.SpriteOffset = (0, 0);
+			}
 			Destroy();
 		}
+
+		Super.Tick();
+	}
+}
+
+Class TSP_EnemyHandler_OnHit : Thinker
+{
+	Actor owner;
+	
+	double oldZ;
+	
+	int superFreeze;
+	
+	Actor fx;
+	
+	override void PostBeginPlay()
+	{
+		if(superFreeze>0)
+		{
+			fx = Actor.Spawn("TSP_MagFX",owner.pos);
+			fx.target = owner;
+			owner.GiveInventory("TSP_EnemyHandler_IsSupered",superFreeze);
+			owner.A_SetTics(-1);
+		}
+	}
+	
+	override void Tick(void)
+	{
+		if(owner==null)
+		{
+			if(fx)
+			{
+				fx.Destroy();
+			}
+			Destroy();
+			return;
+		}
+		
+		if(owner.health<1)
+		{
+			if(owner!=null)
+			{
+				let defaultFucker = GetDefaultByType(owner.GetClass());
+				//owner.bNoGravity = defaultFucker.bNoGravity;
+				owner.A_SetTics(1);
+			}
+			if(fx)
+			{
+				fx.Destroy();
+			}
+			Destroy();
+			return;
+		}
+		
+		if(owner.CountInv("TSP_EnemyHandler_IsSupered")>0)
+		{
+			//owner.bNoGravity = true;
+			owner.bNoPain = true;
+			owner.vel.x *= 0.85;
+			owner.vel.y *= 0.85;
+			owner.A_SetTics(-1);
+			if(owner.vel.z<0)
+			{
+				owner.vel.z = 0;
+			}
+			if(owner.vel.z>0)
+			{
+				owner.vel.z *= 0.95;//0.85;
+			}
+			owner.TakeInventory("TSP_EnemyHandler_IsSupered",1);
+		}
+		else
+		{
+			if(fx) fx.Destroy();
+			if(owner.vel.z==oldZ)
+			{
+				let defaultFucker = GetDefaultByType(owner.GetClass());
+				owner.bNoPain = defaultFucker.bNoPain;
+				//owner.bNoGravity = defaultFucker.bNoGravity;
+				owner.SetStateLabel("See");
+				Destroy();
+				return;
+			}
+		}
+		
+		oldZ = owner.vel.z;
 
 		Super.Tick();
 	}

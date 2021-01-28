@@ -18,6 +18,7 @@ Extend Class TSP_Weapon_Core
 		action void A_TSP_Melee(int mDamage, int mRange = 72, string mPuff = "BasicMeleePuff", double mThrustHorz = 0, double mThrustVert = 0, double mThrustUp = 0, int mAngle = 45, int mPitch = 45, int flags = 0)
 		{
 			bool hasHit = false;
+			bool hasKilled = false;
 			
 			int baseAddon = HITLAG_BASE*floor(mDamage/20);
 			int baseHitlag = HITLAG_BASE+baseAddon;
@@ -26,8 +27,10 @@ Extend Class TSP_Weapon_Core
 			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self,512,0);
 			
 			Actor mo;
-			
-			int mMaxHealth = 0;
+			Array<Actor > freezeUs;
+			Array<Actor > hitFreezeUs;
+			freezeUs.Clear();
+			hitFreezeUs.Clear();
 			
 			Class<Actor > bulletPuffToSpawn = mPuff;
 			string bulletPuffToSpawn_sound = GetDefaultByType(bulletPuffToSpawn).seeSound;
@@ -35,19 +38,19 @@ Extend Class TSP_Weapon_Core
 			while (MonsterFinder.Next())
 			{
 				mo = Actor(MonsterFinder.thing);
-				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
-				&& (mo.bShootable || mo is "TSP_BountyHunters_TimeExtCrystal") && !mo.bNoDamage && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle)//s
+				
+				if ( mo == invoker.owner ) continue;
+				
+				if ( (invoker.owner.Distance3D(mo)-mo.radius<mRange) && mo.Health>0
+				&& (mo.bShootable || mo is "TSP_BountyHunters_TimeExtCrystal") && !mo.bNoDamage && CheckSight(mo)
+				&& abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle )
 				{
 					Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
 					
 					int damageamount = mDamage;
 					int myMaxHealth = mo.GetSpawnHealth();
 					double stuntime;
-					// zombieman stun longer
-					// baron stun shorter
-					//stuntime = 24*(40.0/myMaxHealth);
-					//stuntime = max(4,stuntime);
-					stuntime = baseHitlag;//mDamage * HITLAG_MULT + HITLAG_BASE;
+					stuntime = baseHitlag;
 					
 					if(!(flags & TSPM_SUPERFREEZE) && mo.CountInv("TSP_EnemyHandler_IsSupered")==0)
 					{
@@ -93,38 +96,53 @@ Extend Class TSP_Weapon_Core
 							blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
 						}
 					}
-					mo.A_PlaySound(bulletPuffToSpawn_sound,CHAN_BODY);
+					mo.A_PlaySound(bulletPuffToSpawn_sound, CHAN_BODY);
 					
-					/*if(myMaxHealth > mMaxHealth)
+					if ( mo.Health <= 0 )
 					{
-						mMaxHealth = mo.GetSpawnHealth();
-					}*/
-					mMaxHealth += mo.GetSpawnHealth();
-					hashit=true;
+						hasKilled = true;
+					}
+					
+					hashit = true;
+					hitFreezeUs.Push(mo);
 				}
-				else if (mo!=invoker.owner && mo.bIsMonster && mo.Health>0)
+				else if ( mo.Health > 0 && ( mo.bShootable || mo.bMissile ) )
 				{
-					TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
-					handlerFreezer.owner = mo;
-					handlerFreezer.timeleft = baseHitlag+2;
+					freezeUs.Push(mo);
 				}
 			}
+			
+			int baseHitlagFinal = ( hasKilled ? baseHitlag + 3 : baseHitlag );
+			
 			if(hashit)
 			{
-				//A_PlaySound("flesh/hit",CHAN_WEAPON);
-				//SoundAlert(invoker.owner);
-				A_SetTics(baseHitlag);//mDamage * HITLAG_MULT + HITLAG_BASE);
-				//A_SetTics(max(2,mMaxHealth/300));
+				A_SetTics(baseHitlagFinal);
 				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp = mDamage/10.0;
-				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_hitFreeze = baseHitlag;
+				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_hitFreeze = baseHitlagFinal;
 				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_hitVel = invoker.owner.vel;
-				//invoker.owner.vel = (0,0,0);
-				//TSP_ThinkerFreezer freeza = new("TSP_ThinkerFreezer");
-				//freeza.timeleft = max(2,mMaxHealth/300)-1;
+			
+				for ( int i = 0; i < freezeUs.Size(); i++ )
+				{
+					TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
+					handlerFreezer.owner = freezeUs[i];
+					handlerFreezer.timeleft = baseHitlagFinal + 2;
+				}
+				for ( int i = 0; i < hitFreezeUs.Size(); i++ )
+				{
+					TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
+					handlerFreezer.owner = hitFreezeUs[i];
+					handlerFreezer.timeleft = baseHitlagFinal + 2;
+					handlerFreezer.wasHit = true;
+				}
 			}
 			else
 			{
 				A_FireBullets(0,0,1,0,mPuff,0,mRange);
+			}
+			
+			if ( hasKilled )
+			{
+				invoker.owner.A_StartSound("misc/meleekill", CHAN_BODY, CHANF_OVERLAP);
 			}
 		}
 }
