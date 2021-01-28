@@ -32,17 +32,28 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	const CASINGBASE = -500;
 	const MAXCASINGS = 20;
+	int curCasing;
+	
+	/*void TSP_InitCasings()
+	{
+		curCasing = CASINGBASE;
+	}*/
 	
 	int TSP_GetFreeCasingOverlay()
 	{
-		for (int i = 0; i < MAXCASINGS; i++)
+		int newCasing = curCasing;
+		if (player.GetPSprite(newCasing).CurState == null)
 		{
-			if (player.GetPSprite(CASINGBASE+i).CurState == null)
-			{
-				return CASINGBASE+i;
-			}
+			TSP_RemoveOverlay(newCasing);
 		}
-		return -1;
+		
+		curCasing++;
+		
+		if ( curCasing >= MAXCASINGS )
+		{
+			curCasing = 0;
+		}
+		return CASINGBASE+newCasing;
 	}
 	
 	void TSP_RemoveOverlay(int id)
@@ -58,6 +69,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	void TSP_SpawnCasing(State state, Vector2 pos, double goAngle = -25, double goSpeed = 32)
 	{
 		int casingId = TSP_GetFreeCasingOverlay();
+		Console.Printf(""..casingId);
 		
 		TSP_Weapon_Casing casing = new("TSP_Weapon_Casing");
 		casing.Init();
