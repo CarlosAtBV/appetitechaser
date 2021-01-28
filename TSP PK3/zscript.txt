@@ -75,7 +75,6 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 
 #include "zscript/tsp/weapons/core_include.zsc"
 #include "zscript/tsp/weapons/aaa_core.zsc"
-#include "zscript/tsp/weapons/aaa_melee.zsc"
 #include "zscript/tsp/weapons/aaa_mag.zsc"
 #include "zscript/tsp/weapons/aaa_pickup.zsc"
 
