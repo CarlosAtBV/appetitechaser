@@ -1,0 +1,45 @@
+Class TSP_EnemyHandler_Freezer : Thinker
+{
+	int timeleft;
+	bool shakeDir;
+	Vector3 oldPos;
+	Actor owner;
+	bool oldGrav;
+	
+	override void PostBeginPlay()
+	{
+		if(owner==null)
+		{
+			Destroy();
+			return;
+		}
+		oldPos = owner.pos;
+		owner.A_SetTics(-1);
+		oldGrav = owner.bNoGravity;
+		
+		super.PostBeginPlay();
+	}
+	
+	override void Tick(void)
+	{
+		if(owner==null)
+		{
+			Destroy();
+			return;
+		}
+		if(timeleft>0)
+		{
+			timeleft--;
+			owner.SetOrigin(oldPos+(0,0,shakeDir*1),false);
+			shakeDir = !shakeDir;
+		}
+		else
+		{
+			owner.A_SetTics(1);
+			owner.bNoGravity = oldGrav;
+			Destroy();
+		}
+
+		Super.Tick();
+	}
+}
