@@ -8,6 +8,7 @@ Class TSP_BountyHuntersMap
 {
 	TextureID preview;
 	string name;
+	string maplump;
 }
 
 Class TSP_BountyHuntersMapMenu : GenericMenu
@@ -38,14 +39,16 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		
 		newMap = new("TSP_BountyHuntersMap");
 		newMap.name = StringTable.Localize("$TSPMAP_BATTLEZONE_NAME");
+		newMap.maplump = "TSP_BH01";
 		bhmaps.Push(newMap);
 		newMap = new("TSP_BountyHuntersMap");
 		newMap.name = StringTable.Localize("$TSPMAP_ELEGIA_NAME");
+		newMap.maplump = "TSP_BH02";
 		bhmaps.Push(newMap);
 		newMap = new("TSP_BountyHuntersMap");
 		newMap.name = StringTable.Localize("$TSPMAP_GROSSE_NAME");
+		newMap.maplump = "MAP32";
 		bhmaps.Push(newMap);
-		
 	}
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
@@ -69,7 +72,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 				
 			case MKEY_Enter:
 				S_Sound("menu/choose",CHAN_UI);
-				CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].name);
+				CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
 				SetMenu("SkillMenu",episodeID);
 				return true;
 		}
@@ -109,7 +112,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		Vector2 mapPos = mapListPos;
 		for( int i = 0; i<bhmaps.Size(); i++ )
 		{
-			screen.DrawText(SmallFont, Font.CR_WHITE, mapPos.x, mapPos.y, bhmaps[i].name,
+			screen.DrawText(SmallFont, i == curSelection ? Font.CR_YELLOW : Font.CR_WHITE, mapPos.x - 2 * (i == curSelection), mapPos.y, bhmaps[i].name,
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			mapPos.y += 10;
 		}
