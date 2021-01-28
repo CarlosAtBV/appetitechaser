@@ -42,9 +42,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	int TSP_GetFreeCasingOverlay()
 	{
 		int newCasing = curCasing;
-		if (player.GetPSprite(newCasing).CurState != null)
+		if (player.GetPSprite(CASINGBASE+newCasing).CurState != null)
 		{
-			TSP_RemoveOverlay(newCasing);
+			TSP_RemoveOverlay(CASINGBASE+newCasing);
 		}
 		
 		curCasing++;
