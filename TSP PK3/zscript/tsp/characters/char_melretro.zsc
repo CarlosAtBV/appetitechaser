@@ -47,13 +47,14 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		GiveInventory("MelRetroMelee",1);
 		if(!pp_meleestart)
 		{
+			GiveInventory("TSP_Upgrade_Shield",1);
 			GiveInventory("MelSMGA",1);
 			GiveInventory("TSPSMGAmmo",80);
 			GiveInventory("MelRetroPistol",1);
 			GiveInventory("TSPPistolAmmo",90);
 		}
 		
-		pp_initShield = 0;
+		pp_initShield = 15;
 		
 		GiveInventory("IsMelRetro",1);
 	}
