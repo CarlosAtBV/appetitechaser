@@ -1,0 +1,3 @@
+#include "zscript/tsp/weapons/core/states.zsc"
+#include "zscript/tsp/weapons/core/fx.zsc"
+#include "zscript/tsp/weapons/core/melee.zsc"

@@ -1,3 +1,7 @@
+//------------------------------------------------------------------------------
+// Are you tired of [USING GUNS]? Don't you just want to go ape shitt
+//------------------------------------------------------------------------------
+
 Extend Class TSP_Weapon_Core
 {	
 	const HITLAG_BASE = 2;//1;
