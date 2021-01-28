@@ -129,7 +129,7 @@ Class TSP_EventHandler : EventHandler
 		}
 		if((gamemode == TSP_GM_HUNTERS || CVar.GetCVar("tsp_meleesupreme").GetBool()) && (e.Thing is "TSP_WeaponPickup" || e.Thing is "TSP_Nothing"))
 		{
-			if(level.maptime==0)
+			if(level.maptime==0 && gamemode == TSP_GM_HUNTERS)
 			{
 				e.Thing.Spawn("TSP_BountyHunters_TimeExtCrystal",e.Thing.pos);
 			}
