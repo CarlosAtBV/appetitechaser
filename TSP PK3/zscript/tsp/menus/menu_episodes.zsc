@@ -215,3 +215,79 @@ Class TSP_EpisodeMenu : GenericMenu
 		return Super.MouseEvent(type, x, y);
 	}
 }
+
+struct TSP_MenuCommon native
+{
+	static void Draw9Slice(int x, int y, int width, int height, string bgPic = "graphics/menu/tsp_menuborder0.png")
+	{
+		TextureID tex = TexMan.CheckForTexture(bgPic);
+		int cornerSize = 5;
+		Vector2 texSize = (14.0, 15.0);
+		
+		screen.DrawTexture(tex, false, x, y,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize);
+		
+		screen.DrawTexture(tex, false, x+width-cornerSize, y,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, texSize.X-cornerSize,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize);
+		
+		screen.DrawTexture(tex, false, x, y+height-cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcY, texSize.Y-cornerSize,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize);
+		
+		screen.DrawTexture(tex, false, x+width-cornerSize, y+height-cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, texSize.X-cornerSize, DTA_SrcY, texSize.Y-cornerSize,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize);
+			
+		//parallels
+		
+		screen.DrawTexture(tex, false, x+cornerSize, y,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, cornerSize,
+			DTA_DestWidth, width - (cornerSize*2), DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, texSize.X - (cornerSize*2), DTA_SrcHeight, cornerSize);
+			
+		screen.DrawTexture(tex, false, x+cornerSize, y+height-cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, cornerSize, DTA_SrcY, texSize.y-cornerSize,
+			DTA_DestWidth, width - (cornerSize*2), DTA_DestHeight, cornerSize,
+			DTA_SrcWidth, texSize.X - (cornerSize*2), DTA_SrcHeight, cornerSize);
+		
+		screen.DrawTexture(tex, false, x, y+cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcY, cornerSize,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, height - (cornerSize*2),
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, texSize.Y - (cornerSize*2));
+		
+		screen.DrawTexture(tex, false, x+width-cornerSize, y+cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, texSize.x-cornerSize, DTA_SrcY, cornerSize,
+			DTA_DestWidth, cornerSize, DTA_DestHeight, height - (cornerSize*2),
+			DTA_SrcWidth, cornerSize, DTA_SrcHeight, texSize.Y - (cornerSize*2));
+			
+		//mid
+		
+		screen.DrawTexture(tex, false, x+cornerSize, y+cornerSize,
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+			DTA_SrcX, cornerSize, DTA_SrcY, cornerSize,
+			DTA_DestWidth, width-cornerSize*2, DTA_DestHeight, height-cornerSize*2,
+			DTA_SrcWidth, texSize.X-cornerSize*2, DTA_SrcHeight, texSize.Y-cornerSize*2);
+	}
+	
+	static Vector2 ConvertMousePos(Vector2 mouse)
+	{
+		Vector2 start, size;
+		[start, size] = Screen.VirtualToRealCoords((0, 0), (320, 240), (320, 240));
+		Vector2 adjustedMPos = mouse - start;
+		Vector2 virtualMPos = (adjustedMPos.x * 320 / size.x, adjustedMPos.y * 240 / size.y);
+		return virtualMPos;
+	}
+}
