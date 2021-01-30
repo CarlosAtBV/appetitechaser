@@ -26,5 +26,5 @@ void main()
 	vec4 loadingTex = texture(screenBG, coord);
 	vec4 blacken = vec4(0.0,0.0,0.0,1.0);
 	
-	FragColor = mix(screenTex, loadingTex, coord.x);//vec4(1, 1, mod(scan.y, 4), 1);
+	FragColor = mix(screenTex, loadingTex, fadeAmount);//vec4(1, 1, mod(scan.y, 4), 1);
 }
