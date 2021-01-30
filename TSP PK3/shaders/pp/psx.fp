@@ -23,7 +23,8 @@ void main()
 	vec2 scan = coord * baseSize;
 	
 	vec4 screenTex = texture(InputTexture, coord);
+	vec4 loadingTex = texture(screenBG, coord);
 	vec4 blacken = vec4(0.0,0.0,0.0,1.0);
 	
-	FragColor = mix(blacken, screenTex, mod(scan.y, 4));//vec4(1, 1, mod(scan.y, 4), 1);
+	FragColor = mix(screenTex, loadingTex, coord.x);//vec4(1, 1, mod(scan.y, 4), 1);
 }

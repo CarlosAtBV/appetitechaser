@@ -2,5 +2,6 @@ hardwareshader postprocess screen
 {
 	name "PSXFade"
 	shader "shaders/pp/psx.fp" 330
+	texture "screenBG" "graphics/menu/Conback.png"
 	uniform float fadeAmount
 }
