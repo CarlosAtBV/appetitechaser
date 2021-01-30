@@ -1,0 +1,6 @@
+hardwareshader postprocess beforebloom
+{
+	name "PSXFade"
+	shader "shaders/pp/psx.fp" 330
+	uniform float fadeAmount
+}

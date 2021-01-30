@@ -287,6 +287,9 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
+		Shader.SetEnabled(players[consoleplayer], "PSXFade", true);
+		Shader.SetUniform1f(players[consoleplayer], "PSXFade", "fadeAmount", sin(level.maptime));
+		
 		if(menuactive)
 		{
 			if(Menu.GetCurrentMenu() is "OptionMenu")
