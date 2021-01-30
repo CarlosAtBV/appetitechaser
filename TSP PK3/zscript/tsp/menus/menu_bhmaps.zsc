@@ -1,14 +1,9 @@
-Class TSP_BountyHuntersMapMenu_Item
-{
-	TextureID patch;
-	string name;
-}
-
 Class TSP_BountyHuntersMap
 {
 	TextureID preview;
 	string name;
 	string maplump;
+	bool isSelected;
 }
 
 Class TSP_BountyHuntersMapMenu : GenericMenu
@@ -24,6 +19,9 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	int curSelection;
 	int episodeID;
+	
+	const BUTTONHEIGHT = 12;
+	const BUTTONDIST = 1;
 	
 	Array<TSP_BountyHuntersMap > bhmaps;
 	
@@ -51,6 +49,36 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		bhmaps.Push(newMap);
 	}
 	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		int sel = -1;
+
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = TSP_MenuCommon.ConvertMousePos((x, y));
+		
+		Vector2 mapPos = mapListPos;
+		for( int i = 0; i<bhmaps.Size(); i++ )
+		{
+			if ( TSP_MenuCommon.CheckMousePos(mousePos, mapPos, (128, BUTTONHEIGHT)) )
+			{
+				if ( i != curSelection )
+				{
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				curSelection = i;
+			}
+			mapPos.y += BUTTONHEIGHT+BUTTONDIST;
+		}
+		
+		if ( type == Menu.MOUSE_Release )
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
 		switch (mkey)
@@ -71,9 +99,12 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 				return true;
 				
 			case MKEY_Enter:
-				S_Sound("menu/choose",CHAN_UI);
-				CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
-				SetMenu("SkillMenu",episodeID);
+				if ( curSelection != -1 )
+				{
+					S_Sound("menu/choose",CHAN_UI);
+					CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
+					SetMenu("SkillMenu",episodeID);
+				}
 				return true;
 		}
 		return super.MenuEvent(mkey, fromcontroller);
@@ -112,9 +143,11 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		Vector2 mapPos = mapListPos;
 		for( int i = 0; i<bhmaps.Size(); i++ )
 		{
-			screen.DrawText(SmallFont, i == curSelection ? Font.CR_YELLOW : Font.CR_WHITE, mapPos.x - 2 * (i == curSelection), mapPos.y, bhmaps[i].name,
+			int buttonWidth = SmallFont.StringWidth(bhmaps[i].name);
+			TSP_MenuCommon.Draw9Slice(mapPos.x + 1 * (i == curSelection), mapPos.y, buttonWidth + 10, BUTTONHEIGHT);
+			screen.DrawText(SmallFont, i == curSelection ? Font.CR_YELLOW : Font.CR_WHITE, mapPos.x + 5 + 1 * (i == curSelection), mapPos.y + 2, bhmaps[i].name,
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			mapPos.y += 10;
+			mapPos.y += BUTTONHEIGHT+BUTTONDIST;
 		}
 	}
 }

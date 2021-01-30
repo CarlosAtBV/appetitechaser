@@ -333,7 +333,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		bNoDamage = (pp_freezeMe>0);
 		bDontThrust = (pp_freezeMe>0);
-		bNoGravity = (pp_freezeMe>0);
+		bNoGravity = (pp_freezeMe>0 || bNoClip);
 		
 		Super.Tick();
 		

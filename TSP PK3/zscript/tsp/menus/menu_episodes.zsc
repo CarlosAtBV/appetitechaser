@@ -290,4 +290,9 @@ struct TSP_MenuCommon native
 		Vector2 virtualMPos = (adjustedMPos.x * 320 / size.x, adjustedMPos.y * 240 / size.y);
 		return virtualMPos;
 	}
+	
+	static bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)
+	{
+		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
+	}
 }

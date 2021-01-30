@@ -1,0 +1,6 @@
+hardwareshader texture "textures/terrain/tsp_terraintest.png"
+{
+	shader "shaders/glsl/terraintest.fp"
+	texture "mixTex1" "textures/terrain/cat/tsp_cat_grass.png"
+	texture "mixTex2" "textures/terrain/cat/tsp_cat_dirt.png"
+}
