@@ -1,6 +1,6 @@
-/*hardwareshader postprocess scene
+hardwareshader postprocess screen
 {
 	name "PSXFade"
 	shader "shaders/pp/psx.fp" 330
 	uniform float fadeAmount
-}*/
+}

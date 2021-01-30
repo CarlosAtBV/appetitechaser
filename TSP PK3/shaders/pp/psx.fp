@@ -8,7 +8,7 @@ vec3 tsp_saturation(vec3 color, float amount)
 
 void main()
 {
-	vec2 coord = TexCoord;
+	/*vec2 coord = TexCoord;
 	vec4 screenTex = texture(InputTexture, coord);
 	
 	vec4 blacken = vec4(0.0,0.0,0.0,1.0);
@@ -16,7 +16,14 @@ void main()
 	saturated.r *= 1.0 + fadeAmount * 1.25;
 	saturated.g *= 1.0 + fadeAmount * 2;
 	
-	vec4 fadeMoment = mix(saturated, blacken, fadeAmount);
+	vec4 fadeMoment = mix((screenTex-0.5)*2, blacken, max(0.0, (fadeAmount-0.5)*2));*/
 
-	FragColor = mix(screenTex, fadeMoment, fadeAmount);
+	vec2 baseSize = textureSize(InputTexture,0);
+	vec2 coord = TexCoord;
+	vec2 scan = coord * baseSize;
+	
+	vec4 screenTex = texture(InputTexture, coord);
+	vec4 blacken = vec4(0.0,0.0,0.0,1.0);
+	
+	FragColor = mix(blacken, screenTex, mod(scan.y, 4));//vec4(1, 1, mod(scan.y, 4), 1);
 }
