@@ -11,8 +11,12 @@ void main()
 	vec2 coord = TexCoord;
 	vec4 screenTex = texture(InputTexture, coord);
 	
-	vec4 saturated = vec4(tsp_saturation(screenTex.rgb, 2.0), 1.0);
-	vec4 fadeMoment = mix(saturated, vec4(0.0,0.0,0.0,1.0), fadeAmount);
+	vec4 blacken = vec4(0.0,0.0,0.0,1.0);
+	vec4 saturated = screenTex;
+	saturated.r *= 1.0 + fadeAmount * 1.25;
+	saturated.g *= 1.0 + fadeAmount * 2;
+	
+	vec4 fadeMoment = mix(saturated, blacken, fadeAmount);
 
 	FragColor = mix(screenTex, fadeMoment, fadeAmount);
 }

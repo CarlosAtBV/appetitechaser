@@ -17,6 +17,7 @@ Class TSP_EventHandler : EventHandler
 	
 	int hunters_combo;
 	int hunters_combotime;
+	//float fadeTime;
 	
 	bool tsp_meleeonly;
 	
@@ -48,6 +49,10 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldLoaded(WorldEvent e)
 	{
+		//fadeTime = 1.0;
+		//Shader.SetEnabled(players[consoleplayer], "PSXFade", true);
+		//Shader.SetUniform1f(players[consoleplayer], "PSXFade", "fadeAmount", fadeTime);
+		
 		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		
 		if(gamemode==1)
@@ -202,6 +207,10 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldTick()
 	{
+		/*if ( fadeTime > 0.0 )
+		{
+			fadeTime -= 0.025;
+		}*/
 		if(gamemode==TSP_GM_HUNTERS)
 		{
 			if(!gameover)
@@ -287,8 +296,7 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		Shader.SetEnabled(players[consoleplayer], "PSXFade", true);
-		Shader.SetUniform1f(players[consoleplayer], "PSXFade", "fadeAmount", sin(level.maptime));
+		Shader.SetUniform1f(players[consoleplayer], "PSXFade", "fadeAmount", fadeTime);
 		
 		if(menuactive)
 		{
