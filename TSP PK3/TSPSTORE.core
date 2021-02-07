@@ -148,11 +148,12 @@ page
 		header "Bare Knuckle";
 	    item "Mt0"
 		{
-			name "Rapid-Fire Infinite";
-			desc "$TSP_SHOP_MEL_RAPIDFIREINFDESC";
+			name "Rapid-Fire EX", "Rapid-Fire Infinite", "Rapid-Fire Upper";
+			descs "$TSP_SHOP_MEL_RAPIDFIREEXDESC", "$TSP_SHOP_MEL_RAPIDFIREINFDESC", "$TSP_SHOP_MEL_RAPIDFIREUPPERDESC";
 			inv_class "TSP_Upgrade_RapidFireInf";
 			inv_amount 1;
 			price 10;
+			price_increment 10;
 		}
 		header "Charge Style";
 		item "Mt1"

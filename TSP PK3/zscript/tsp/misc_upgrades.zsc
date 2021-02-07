@@ -30,6 +30,7 @@ Class TSP_Upgrade_RapidFireInf : TSP_UpgradeBase
 	Default
 	{
 		Inventory.PickupMessage "$RapidFireInfPickup";
+		Inventory.MaxAmount 3;
 	}
 }
 

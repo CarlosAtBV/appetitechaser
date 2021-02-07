@@ -15,7 +15,7 @@ MELRETRONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPYeller]Retro\c[TSPGray])";
 // MEL
 ////////////////
 // Trait Purchase Messages
-RapidFireInfPickup = "\cc[\c[Mel]Rapid-Fire Infinite\cc Acquired!]";
+RapidFireInfPickup = "\cc[\c[Mel]Rapid-Fire Combo\cc Upgraded!]";
 ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
 ChargeDunkPickup = "\cc[\ctCharge Dunk\cc Acquired!]";
 MagSpearPickup = "\cc[\c[Mel]Mag Spear\cc Acquired!]";
