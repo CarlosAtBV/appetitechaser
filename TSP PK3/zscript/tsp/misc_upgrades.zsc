@@ -25,6 +25,14 @@ Class TSP_UpgradeBase : Inventory
 	}
 }
 
+Class TSP_Upgrade_RapidFireInf : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$RapidFireInfPickup";
+	}
+}
+
 Class TSP_Upgrade_ChargeStyle : TSP_UpgradeBase
 {
 	Default
@@ -32,6 +40,14 @@ Class TSP_Upgrade_ChargeStyle : TSP_UpgradeBase
 		Inventory.PickupMessage "$ChargeStylePickup";
 	}
 }
+Class TSP_Upgrade_ChargeDunk : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$ChargeDunkPickup";
+	}
+}
+
 Class TSP_Upgrade_MagSpear : TSP_UpgradeBase
 
 {

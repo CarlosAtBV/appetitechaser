@@ -43,7 +43,9 @@ TSP_SHOP_SUZUKA_DAMNAME3 = "Kalseru Shells";
 TSP_SHOP_SUZUKA_DAMDESC3 = "\cc(\ct%sx Base Damage\cc)\c-\nThese heavy-caliber shells can be used in a OS06 Suzuka magazine without issue! Discretion advised.";
 
 // Special Moves (Traits, Melee)
-	TSP_SHOP_MEL_CHARGEDESC = "\cc(\c[Mel]Fighting Style\cc)\c-\nGain access to \ctCharge Style\c-! Unlocks a whole new set of melee moves!\n\cu(Press \ckMelee Key\c-\cu to activate)";
+	TSP_SHOP_MEL_RAPIDFIREINFDESC = "\cc(\c[Mel]Bare Knuckle\cc)\c-\nA flurry of infinite jabs that don't stop until you stop mashing!\n\cu(\cyK \cu-> \cyK \cu-> \ckP \cu-> \cu[Mash \ckP\cu])";
+	TSP_SHOP_MEL_CHARGEDESC = "\cc(\ckFighting Style\cc)\c-\nGain access to \ctCharge Style\c-! Unlocks a whole new set of melee moves!\n\cu(Press \ckMelee Key\c-\cu to activate)";
+	TSP_SHOP_MEL_CHARGEDUNKDESC = "\cc(\ctCharge Style\cc)\c-\nA powerful dunk punch executed in air!\n\cu(\c[Mel]Stasis Uppercut \cu-> \ckStyle Switch \cuto \ctCharge Style\cu)";
 	TSP_SHOP_MEL_MAGSPEARDESC = "\cc(\c[Mel]Trait\cc)\c-\nA powerful dive kick that deals massive damage!\n\cu(Hold \c[mel]Trait\c-\cu -> \ckPrimary Fire\c-\cu in air) ";
 	TSP_SHOP_MEL_MAGSLINGDESC = "\cc(\c[Mel]Trait\cc)\c-\nUse an enemy as an anchor point to catapult yourself over to!\n\cu(Hold \c[mel]Trait\c-\cu -> \cyAlternate Fire\c-\cu) ";
 	TSP_SHOP_MEL_POWERBANKDESC = "\cc(\c[Mel]Trait\cc)\c-\nAfter pressing \c[Mel]Taunt\c-, energy will be stored for an instant charged attack! Compatible with \ctCharge Style\c-!";

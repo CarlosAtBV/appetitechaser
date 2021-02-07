@@ -104,6 +104,7 @@ page
 			name "922a";
 			icons "graphics/store/items/store_item_spit.png";
 			price 50;
+			upgrade "MelRetroPistol";
 			mod_take "MelRetroPistol";
 			mod_give "MelRetroPistolA";
 			desc "$TSP_SHOP_919MMODA";
@@ -142,10 +143,19 @@ page
 			inv_class "TSP_Upgrade_Shield";
 		}
 	}
-	tab "Traits"
+	tab "Player"
 	{
-		header "Melee Moves";
-		item "Mt0"
+		header "Bare Knuckle";
+	    item "Mt0"
+		{
+			name "Rapid-Fire Infinite";
+			desc "$TSP_SHOP_MEL_RAPIDFIREINFDESC";
+			inv_class "TSP_Upgrade_RapidFireInf";
+			inv_amount 1;
+			price 10;
+		}
+		header "Charge Style";
+		item "Mt1"
 		{
 			name "Charge Style";
 			desc "$TSP_SHOP_MEL_CHARGEDESC";
@@ -153,8 +163,16 @@ page
 			inv_amount 1;
 			price 10;
 		}
+		item "Mt2"
+		{
+			name "Charge Dunk";
+			desc "$TSP_SHOP_MEL_CHARGEDUNKDESC";
+			inv_class "TSP_Upgrade_ChargeDunk";
+			inv_amount 1;
+			price 10;
+		}
 		header "Trait Moves";
-		item "Mt1"
+		item "Mt3"
 		{
 			name "Mag Spear";
 			desc "$TSP_SHOP_MEL_MAGSPEARDESC";
@@ -162,7 +180,7 @@ page
 			inv_amount 1;
 			price 10;
 		}
-		item "Mt2"
+		item "Mt4"
 		{
 			name "Mag Sling";
 			desc "$TSP_SHOP_MEL_MAGSLINGDESC";
@@ -170,7 +188,7 @@ page
 			inv_amount 1;
 			price 10;
 		}
-		item "Mt3"
+		item "Mt5"
 		{
 			name "Power Bank";
 			desc "$TSP_SHOP_MEL_POWERBANKDESC";
