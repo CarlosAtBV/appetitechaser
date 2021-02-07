@@ -144,6 +144,13 @@ mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02.ogg"
 mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03.ogg"
 mel/xlmelee4 "sounds/characters/mel/melee/vo_mel_melee_xl04.ogg"
 
+$random mel/chargedunk { mel/dunk1 null null null null null null null null null null null null null }
+mel/dunk1 "sounds/characters/mel/melee/vo_mel_magslam1.ogg"
+
+$random mel/magdunk { mel/dunk2 mel/dunk3 null null null null null null null null null null null null null null null null null null null }
+mel/dunk2 "sounds/characters/mel/melee/vo_mel_magslam2.ogg"
+mel/dunk3 "sounds/characters/mel/melee/vo_mel_magslam3.ogg"
+
 $random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 null null null null null null }
 meltemp1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
 meltemp2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"

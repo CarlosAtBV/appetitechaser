@@ -181,6 +181,7 @@ ACTOR MelChargeStyle : TSP_Mel_BaseWeapon
 		TNT1 A 3
 		TNT1 A 1 A_Raise
 		TNT1 A 0 A_WeaponOffset(0,32)
+	    TNT1 A 0 A_JumpIfInventory("StyleComboEnderToken", 1, "ChargeDunk")
 	ChargedPunch1:
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
 		TNT1 A 0 A_Recoil(-5)
@@ -413,7 +414,21 @@ ACTOR MelChargeStyle : TSP_Mel_BaseWeapon
 		TNT1 A 10
 		Goto AfterMelee*/
 
-		
+	ChargeDunk:
+		//TNT1 A 0 A_PlaySound("mel/chargedunk", CHAN_VOICE)
+		TNT1 A 0 A_PlaySound("*largemelee", CHAN_VOICE)
+		TNT1 A 8 Thrustthingz(0,35,0,0)
+		TNT1 A 0 A_PlaySoundEX("chargestyle/kick02", "SoundSlot6")
+		TNT1 A 0 A_SetBlend("144 0 191", 0.2, 5)
+		1124 ABC 1 BRIGHT
+		TNT1 A 0 A_Quake(10,5,0,5,"")
+		1124 D 1 BRIGHT A_TSP_Melee(250,90,"MagDivePuff",0,0, -300)
+		TNT1 A 0 Thrustthingz(0,35,1,0)
+		1124 EFGHIJ 1 BRIGHT
+		TNT1 A 5
+		Goto AfterMelee
+
+
 // MELEE COOLDOWN
 	AfterMelee:
 		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
@@ -425,6 +440,7 @@ ACTOR MelChargeStyle : TSP_Mel_BaseWeapon
 		TNT1 A 0 A_TakeInventory("MelMachCombo", 99)
 		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
 		TNT1 A 0 A_TakeInventory("ChargedAttack", 99)
+		TNT1 A 0 A_TakeInventory("StyleComboEnderToken", 99)
 		TNT1 A 0 A_TakeInventory("StyleComboToken", 99)
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
 		111U ABC 1
