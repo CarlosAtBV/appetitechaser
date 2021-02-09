@@ -1,0 +1,19 @@
+#library "TSP_FADE"
+#include "zcommon.acs"
+
+script "TSP_PreventMelGunchingDuringLevelFade" (void)
+{
+	ScriptCall("TSP_PSXFade", "PerformFadeOut");
+}
+
+script "TSP_EndLevelOverride" (int secret, int pos)
+{
+	if ( secret )
+	{
+		Exit_Secret(pos);
+	}
+	else
+	{
+		Exit_Normal(pos);
+	}
+}
