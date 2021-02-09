@@ -90,37 +90,8 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0111 F 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0111 G 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0111 J 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0111 K 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		0111 FGJK 1 A_WeaponReady
+		TNT1 A 12 A_WeaponReady
 		Goto AfterMelee
 		
 // DEFAULT P-P
@@ -139,34 +110,8 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		0112 E 1
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 		0112 H 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		TNT1 A 13 A_WeaponReady
 		Goto AfterMelee
 
 //P-P-P
@@ -187,27 +132,7 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		TNT1 A 11 A_WeaponReady
 		TNT1 A 3
 		Goto AfterMelee
 	
@@ -220,55 +145,41 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		0114 D 1 A_TSP_Melee(44,90,"UppercutMeleePuff",0,8,16,45,45)
 		Goto ScorpionTailFinisherEnd
 	ScorpionTailFinisherPowered: // STASIS UPPERCUT EX
-		TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0)
-		TNT1 A 0 A_JumpIf (momZ > 0, "SuperUppercutAir")
-        TNT1 A 0 A_JumpIf (momZ < 0, "SuperUppercutAir")
-	    TNT1 A 0 A_Recoil(-10)
+		TNT1 A 0
+		{
+			if (momZ > 0 && momZ <0)
+			{
+				A_Recoil(-5);
+
+			}
+			else
+			{
+				A_Recoil(-10);
+			}
+		}
 		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
-	    TNT1 A 0 ThrustThingZ(0,53,0,1)
-		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
+		TNT1 A 0
+		{
+			A_SetBlend("124 252 0", 0.2, 5);
+			if (momZ > 0 && momZ <0)
+			{
+				ThrustThingZ(0,25,0,1);
+			}
+			else
+			{
+				ThrustThingZ(0,50,0,1);
+			}
+		}
 		0114 ABC 1 BRIGHT
-		0114 D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		0114 D 2 BRIGHT A_TSP_Melee(88,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 3)
-	    0114 E 2 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 D 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 C 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 B 1 ThrustThingZ(0,1,0,1)
-		Goto FloatyBoy
-	SuperUppercutAir: //When in air, the uppercut doesn't carry you upwards that much
-	    TNT1 A 0 A_Recoil(-5)
-		TNT1 A 8 A_PlaySound("*xlmelee", CHAN_VOICE)
-		TNT1 A 0 A_PlaySoundEX("maguppercut", "SoundSlot6")
-	    TNT1 A 0 ThrustThingZ(0,25,0,1)
-		TNT1 A 0 A_SetBlend("124 252 0", 0.2, 5)
-		0114 ABC 1 BRIGHT
-		0114 D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
-	    TNT1 A 0 ThrustThingZ(0,4,0,1)
-		TNT1 A 0 A_SetPitch(pitch - 3)
-	    0114 E 2 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 D 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 C 1 BRIGHT ThrustThingZ(0,1,0,1)
-	    0114 B 1 ThrustThingZ(0,1,0,1)
-		Goto FloatyBoy
-	FloatyBoy:
-		0114 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-        TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-        TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-        TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
-		TNT1 A 1 ThrustThingZ(0,1,0,1)
+	    0114 EEDC 2 BRIGHT ThrustThingZ(0,1,0,1)
+	    0114 BA 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 10 ThrustThingZ(0,1,0,1)
 		Goto AfterMelee
-		
+
 // P-P-P-P End
 	ScorpionTailFinisherEnd:
 		0114 E 2
@@ -293,23 +204,8 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0115 H 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0115 I 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		0115 HI 1 A_WeaponReady
+		TNT1 A 7 A_WeaponReady
 		TNT1 A 5
 		Goto AfterMelee
 	
@@ -330,37 +226,9 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011O C 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011O B 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011O A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 3
-		Goto AfterMelee
+		011O CBA 1 A_WeaponReady
+		TNT1 A 0 A_Jump(256,"CrossEnder") //CrossPunch and CrossDuo have the same ending frames, merged into a single state for readability)
+
 	
 // K-K-P-P-P
 	CrossDuo:
@@ -380,35 +248,9 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelMachCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011P C 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011P B 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011P A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		011P CBA 1 A_WeaponReady
+	CrossEnder:
+		TNT1 A 12 A_WeaponReady
 		TNT1 A 3
 		Goto AfterMelee
 		
@@ -421,7 +263,7 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		011Q D 5 A_TSP_Melee(35,90,"StrongMeleePuff")
 		Goto RapidFireFinishEnd
 	RapidFireFinishPowered:
-		011Q E 5 A_TSP_Melee(70,90,"StrongMeleePuff")
+		011Q D 5 A_TSP_Melee(70,90,"StrongMeleePuff")
 		Goto RapidFireFinishEnd
 
 // K-K-P-P-P-P End
@@ -460,29 +302,8 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011K F 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011K G 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		011K H 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		011K FGH 1 A_WeaponReady
+		TNT1 A 9 A_WeaponReady
 		Goto AfterMelee
 		
 // K-K
@@ -503,26 +324,8 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		011L E 1
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 		011L F 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		TNT1 A 9 A_WeaponReady
 		TNT1 A 3
 		Goto AfterMelee
 		
@@ -553,7 +356,6 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherPowered")
 		011J D 1 A_TSP_Melee(48,90,"StrongMeleePuff")
 		Goto StreetSweeperFinisherEnd
-		
 	StreetSweeperFinisherPowered:
 		011J D 1 A_TSP_Melee(96,90,"StrongMeleePuff")
 		Goto StreetSweeperFinisherEnd
@@ -581,24 +383,9 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		011N CB 1
 		TNT1 A 0 A_GiveInventory("MelAlternateCombo", 4)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
 		011N A 1 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		TNT1 A 1 A_WeaponReady
+		TNT1 A 8 A_WeaponReady
 		TNT1 A 6
     Goto AfterMelee
 	
