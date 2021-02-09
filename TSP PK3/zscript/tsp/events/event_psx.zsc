@@ -14,7 +14,7 @@ Class TSP_PSXHandler : StaticEventHandler
 		{
 			if ( !tsp_psxFadeOut && tsp_psxFadeAmt > 0.0 )
 			{
-				tsp_psxFadeAmt -= 0.05;
+				tsp_psxFadeAmt -= 0.05 * e.FracTic;
 				if ( tsp_psxFadeAmt < 0.0 )
 				{
 					tsp_psxFadeAmt = 0.0;
@@ -22,7 +22,7 @@ Class TSP_PSXHandler : StaticEventHandler
 			}
 			else if ( tsp_psxFadeOut && tsp_psxFadeAmt < 1.0 )
 			{
-				tsp_psxFadeAmt += 0.05;
+				tsp_psxFadeAmt += 0.05 * e.FracTic;
 				if ( tsp_psxFadeAmt > 1.0 )
 				{
 					tsp_psxFadeAmt = 1.0;
