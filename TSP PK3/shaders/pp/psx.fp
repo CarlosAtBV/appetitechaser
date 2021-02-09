@@ -10,8 +10,10 @@ void main()
 	ivec2 texSize = textureSize(loadingText, 0);
 	vec2 texCoord = coord * vec2(res.x / (res.y * 1.333), 1.0);// * (res / texSize);
 	texCoord.y *= -1;
+	texCoord.y += 1.0;
+	ivec2 texiCoord = ivec2(int(texCoord.x * 320), int(texCoord.y * 240));
 	
-	vec4 texColor = textureLod(loadingText, texCoord, 0);
+	vec4 texColor = vec4(texelFetch(loadingText, texiCoord, 0).rgb, 1.0);
 	
 	vec4 fadedOut = ((screenTex - 0.5) * fadeLevel) + 0.5;
 	
