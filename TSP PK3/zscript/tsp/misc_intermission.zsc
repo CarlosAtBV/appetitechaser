@@ -26,11 +26,16 @@ Class TSP_StatusScreen : StatusScreen
 	
 	bool ss_missionFailed;
 	string ss_missionStatus;
+	TSP_PSXHandler psxHandler;
+	bool tsp_ss_endScreen;
+	int tsp_ss_endTimer;
 	
 	bool doEnding;
 	
 	override void initStats ()
 	{
+		psxHandler = TSP_PSXHandler(StaticEventHandler.Find("TSP_PSXHandler"));
+		
 		int gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
 		Console.Printf(""..players[0].mo.health);
 		
@@ -129,10 +134,24 @@ Class TSP_StatusScreen : StatusScreen
 		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
 		
+		if ( tsp_ss_endScreen )
+		{
+			psxHandler.tsp_psxFadeProc = true;
+			if ( tsp_ss_endTimer == 24 )
+			{
+				psxHandler.tsp_psxFadeProc = false;
+				End();
+				level.WorldDone();
+			}
+			tsp_ss_endTimer++;
+			//tsp_ss_endScreen = false;
+		}
+		
 		if(bcnt>12 && accelerateStage)
 		{
-			End();
-			level.WorldDone();
+			tsp_ss_endScreen = true;
+			//End();
+			//level.WorldDone();
 		}
 	}
 	

@@ -3,8 +3,15 @@ Class TSP_PSXHandler : StaticEventHandler
 	ui float tsp_psxFadeAmt;
 	ui bool tsp_psxFadeOut;
 	
+	bool tsp_psxFadeProc;
+	
 	override void UiTick()
 	{
+		if ( tsp_psxFadeProc )
+		{
+			tsp_psxFadeOut = true;
+		}
+		
 		if ( !tsp_psxFadeOut && tsp_psxFadeAmt > 0.0 )
 		{
 			tsp_psxFadeAmt -= 0.05;// * e.FracTic;
@@ -27,9 +34,9 @@ Class TSP_PSXHandler : StaticEventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		if ( level.maptime <= 2 )
+		if ( level.time <= 2 )
 		{
-			tsp_psxFadeAmt = 1.0;
+			//tsp_psxFadeAmt = 1.0;
 			tsp_psxFadeOut = false;
 		}
 	}
