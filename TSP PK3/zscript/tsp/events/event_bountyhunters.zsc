@@ -1,0 +1,248 @@
+Class TSP_BountyHunters_EnemySpawn : Actor
+{	
+	Default
+	{
+		+NOINTERACTION
+	}
+	
+	bool CheckSpaceFree()
+	{
+		BlockThingsIterator it = BlockThingsIterator.Create(self, 192);
+		Actor mo;
+
+		while (it.Next())
+		{
+			mo = it.thing;
+			if ( !mo || !mo.bSolid || Distance2D(mo)-mo.Radius > 192 )
+				continue;
+
+			return false;
+		}
+		
+		return true;
+	}
+}
+
+Class TSP_BHHandler : EventHandler
+{
+	int spawnDelay;
+	
+	Array<TSP_BountyHunters_EnemySpawn > bh_spawns;
+	Array<Actor > bh_enemies;
+	TSP_BountyHunters_EnemySpawn bh_prevSpawn;
+	
+	Array<String > bh_spawnList;
+	
+	static const string bh_spawnOrder[] =
+	{
+		"Zombieman",
+		"DoomImp",
+		"ShotgunGuy",
+		"Demon",
+		"Revenant",
+		"Cacodemon",
+		"HellKnight",
+		"BaronOfHell"
+	};
+	
+	override void OnRegister()
+	{
+		if ( tsp_gamemode != 1 )
+		{	
+			return;
+		}
+		
+		bh_spawns.Clear();
+		bh_enemies.Clear();
+		
+		bh_spawnList.Clear();
+		
+		for ( int i = 0; i < bh_spawnOrder.Size(); i++ )
+		{
+			int maxSize = bh_spawnOrder.Size()-1;
+			int spMin = max( 0, i-3 );
+			int spMax = min( i, min(i+3, maxSize) );
+			for ( int g = 0; g < 3; g++ )
+			{
+				for ( int v = spMin; v < spMax; v++ )
+				{
+					bh_spawnList.Push(bh_spawnOrder[v]);
+				}
+			}
+		}
+		
+		Console.Printf("Bounty Hunters Spawns:");
+		for ( int v = 0; v < bh_spawnList.Size(); v++ )
+		{
+			Console.Printf("--- "..bh_spawnList[v]);
+		}
+	}
+	
+	override void WorldThingSpawned(WorldEvent e)
+	{
+		if ( e.Thing is "TSP_BountyHunters_EnemySpawn" )
+		{
+			Console.Printf("Made new spawn");
+			bh_spawns.Push(TSP_BountyHunters_EnemySpawn(e.Thing));
+		}
+	}
+	
+	TSP_BountyHunters_EnemySpawn getCloseSpawn(Actor closeToMe)
+	{
+		TSP_BountyHunters_EnemySpawn theReturn;
+		int lastDist = 8192;
+		for ( int i = 0; i < bh_spawns.Size(); i++ )
+		{
+			let newSpawn = bh_spawns[i];
+			if ( bh_prevSpawn != newSpawn && closeToMe.Distance3D(newSpawn) < lastDist && newSpawn.CheckSpaceFree() )
+			{
+				lastDist = players[0].mo.Distance3D(newSpawn);
+				theReturn = newSpawn;
+			}
+		}
+		
+		bh_prevSpawn = theReturn;
+		return theReturn;
+	}
+	
+	override void WorldTick()
+	{
+		if ( tsp_gamemode != 1 )
+		{	
+			Destroy();
+			return;
+		}
+		
+		if ( spawnDelay > 0 )
+		{
+			spawndelay--;
+		}
+		else
+		{
+			spawndelay = 35;
+			
+			if ( bh_enemies.Size() >= 10 ) return;
+			
+			let spawnHere = getCloseSpawn(players[0].mo);
+			
+			if ( spawnHere != null && bh_spawnList.Size() > 0 )
+			{
+				Actor enemy = Actor.Spawn(bh_spawnList[0], spawnHere.pos);
+				enemy.target = players[0].mo;
+				enemy.SetStateLabel("See");
+				Actor.Spawn("TeleportFog", spawnHere.pos);
+				bh_enemies.Push(enemy);
+				bh_spawnList.Delete(0,1);
+			}
+			else
+			{
+				Console.Printf("No deathmatch spawns found.");
+			}
+		}
+	}
+	
+	override void WorldThingDied(WorldEvent e)
+	{
+		let checkList = bh_enemies.Find(e.Thing);
+		if ( checkList >= 0 )
+		{
+			bh_enemies.Delete(checkList, 1);
+		}
+	}
+			/*if(!gameover)
+			{
+				if(hunters_combotime>0)
+				{
+					hunters_combotime--;
+				}
+				else if(hunters_combo>0)
+				{
+					if(hunters_combo>hunters_maxCombo)
+					{
+						hunters_maxCombo = hunters_combo;
+					}
+					hunters_combo = 0;
+				}
+				
+				if(spawndelay<1)
+				{
+					Vector3 spawnpos;
+					int spawnangle;
+					[spawnpos, spawnangle] = G_PickDeathmatchStart();
+					
+					if(random(1,2)==2&&hunters_demonSpawnPoints.Size()!=0)
+					{
+						spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
+					}
+					
+					Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos,ALLOW_REPLACE);
+					Actor.Spawn("TeleportFog",spawnpos);
+					enemy.angle = spawnangle;
+					hunters_wave++;
+					players[0].mo.SoundAlert(players[0].mo);
+					spawndelay = 35*2;
+					if(hunters_wave%6==0)
+					{
+						hunters_monsterMax++;
+					}
+				}
+				else
+				{
+					spawndelay--;
+				}
+				
+				if(level.maptime%35==0)
+				{
+					if(hunters_time==0||players[0].mo.health<1)
+					{
+						if(hunters_combo>hunters_maxCombo)
+						{
+							hunters_maxCombo = hunters_combo;
+						}
+						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
+						gameover = true;
+						S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+					}
+					else
+					{
+						hunters_time--;
+						switch(hunters_time)
+						{
+							case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
+							case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
+							case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
+							case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
+							case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
+							case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
+							case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+						}
+					}
+				}
+			}
+			else
+			{
+				hunters_endtimer++;
+				if(hunters_endtimer>=(35*5))
+				{
+					players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
+				}
+			}
+		}*/
+}
+
+Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
+{
+	protected void Apply(Name checksum, String mapname)
+	{
+		if (tsp_gamemode == 1)
+		{
+			for (int i = 0; i < 65535; i ++)
+			{
+				if (GetThingEdNum(i) == 11)
+				{
+					SetThingEdNum(i, 24800);
+				}
+			}
+		}
+	}
+}

@@ -20,19 +20,6 @@ Class TSP_EventHandler : EventHandler
 	
 	bool tsp_meleeonly;
 	
-	static const string hunters_demonSpawns[] =
-	{
-		"Zombieman",
-		"DoomImp",
-		"ShotgunGuy",
-		"Demon",
-		//"ChaingunGuy",
-		"LostSoul",
-		//"Spectre",
-		"Cacodemon",
-		"HellKnight"
-	};
-	
 	TSP_Gamemode_Hunters hunterThinker;
 	
 	int gamemode;
@@ -188,7 +175,7 @@ Class TSP_EventHandler : EventHandler
 					myHealth-=1;
 				}
 				break;
-			case TSP_GM_HUNTERS:
+			/*case TSP_GM_HUNTERS:
 				if(!gameover && e.Thing.target == players[0].mo)
 				{
 					players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
@@ -196,92 +183,7 @@ Class TSP_EventHandler : EventHandler
 					hunters_combo++;
 					hunters_combotime = 10*35;
 				}
-				break;
-		}
-	}
-	
-	override void WorldTick()
-	{
-		if(gamemode==TSP_GM_HUNTERS)
-		{
-			if(!gameover)
-			{
-				if(hunters_combotime>0)
-				{
-					hunters_combotime--;
-				}
-				else if(hunters_combo>0)
-				{
-					if(hunters_combo>hunters_maxCombo)
-					{
-						hunters_maxCombo = hunters_combo;
-					}
-					hunters_combo = 0;
-				}
-				
-				if(spawndelay<1)
-				{
-					Vector3 spawnpos;
-					int spawnangle;
-					[spawnpos, spawnangle] = G_PickDeathmatchStart();
-					
-					if(random(1,2)==2&&hunters_demonSpawnPoints.Size()!=0)
-					{
-						spawnpos = hunters_demonSpawnPoints[random(0,hunters_demonSpawnPoints.Size()-1)].pos;
-					}
-					
-					Actor enemy = Actor.Spawn(hunters_demonSpawns[random(0,min(hunters_monsterMax,hunters_demonSpawns.Size()-1))],spawnpos,ALLOW_REPLACE);
-					Actor.Spawn("TeleportFog",spawnpos);
-					enemy.angle = spawnangle;
-					hunters_wave++;
-					players[0].mo.SoundAlert(players[0].mo);
-					spawndelay = 35*2;
-					if(hunters_wave%6==0)
-					{
-						hunters_monsterMax++;
-					}
-				}
-				else
-				{
-					spawndelay--;
-				}
-				
-				if(level.maptime%35==0)
-				{
-					if(hunters_time==0||players[0].mo.health<1)
-					{
-						if(hunters_combo>hunters_maxCombo)
-						{
-							hunters_maxCombo = hunters_combo;
-						}
-						players[0].mo.GiveInventory("TSP_Hunters_MaxCombo",hunters_maxCombo);
-						gameover = true;
-						S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
-					}
-					else
-					{
-						hunters_time--;
-						switch(hunters_time)
-						{
-							case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
-							case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
-							case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
-							case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
-							case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
-							case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
-							case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
-						}
-					}
-				}
-			}
-			else
-			{
-				hunters_endtimer++;
-				if(hunters_endtimer>=(35*5))
-				{
-					players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
-				}
-			}
+				break;*/
 		}
 	}
 	

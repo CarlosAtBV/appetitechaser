@@ -23,7 +23,7 @@ gameinfo
 	menufontcolor_selection = "LightBlue"
 	menuslidercolor = "LightBlue"
   
-		AddEventHandlers = "TSP_EventHandler", "TSP_ReplaceHandler", "TSP_PSXHandler"
+		AddEventHandlers = "TSP_EventHandler", "TSP_ReplaceHandler", "TSP_PSXHandler", "TSP_BHHandler"
 		StatScreen_Single = "TSP_StatusScreen"
 		StatusBarClass = "TSP_StatusBar"
 }
@@ -295,6 +295,8 @@ DoomEdNums
 {
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
+	
+	24800 = TSP_BountyHunters_EnemySpawn
 }
 
 DamageType TSP_NoDamage
