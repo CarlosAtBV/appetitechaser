@@ -23,7 +23,7 @@ gameinfo
 	menufontcolor_selection = "LightBlue"
 	menuslidercolor = "LightBlue"
   
-		AddEventHandlers = "TSP_EventHandler", "TSP_ReplaceHandler"
+		AddEventHandlers = "TSP_EventHandler", "TSP_ReplaceHandler", "TSP_PSXHandler"
 		StatScreen_Single = "TSP_StatusScreen"
 		StatusBarClass = "TSP_StatusBar"
 }

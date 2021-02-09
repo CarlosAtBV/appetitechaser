@@ -2,7 +2,6 @@
 
 Class TSP_EventHandler : EventHandler
 {
-	ui float tsp_psxFadeAmt;
 	ui bool tsp_shopmusic;
 	
 	bool gameover;
@@ -294,24 +293,6 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		if( level.maptime <= 2 )
-		{
-			tsp_psxFadeAmt = 1.0;
-		}
-		else
-		{
-			if ( tsp_psxFadeAmt > 0.0 )
-			{
-				tsp_psxFadeAmt -= 0.05;
-				if ( tsp_psxFadeAmt < 0.0 )
-				{
-					tsp_psxFadeAmt = 0.0;
-				}
-			}
-		}
-		//Shader.SetEnabled(players[consoleplayer], "TSP_PSXFade", true);
-		Shader.SetUniform1f(players[consoleplayer], "TSP_PSXFade", "fadeAmount", tsp_psxFadeAmt);
-		
 		if(menuactive)
 		{
 			if(Menu.GetCurrentMenu() is "OptionMenu")

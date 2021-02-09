@@ -20,14 +20,26 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	int curSelection;
 	int episodeID;
 	
+	TSP_PSXHandler psxHandler;
+	
 	const BUTTONHEIGHT = 12;
 	const BUTTONDIST = 1;
 	
 	Array<TSP_BountyHuntersMap > bhmaps;
 	
+	override void Ticker()
+	{
+		if ( psxHandler.tsp_psxFadeAmt == 1.0 )
+		{
+			SetMenu("SkillMenu",episodeID);
+		}
+	}
+	
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		
+		psxHandler = TSP_PSXHandler(StaticEventHandler.Find("TSP_PSXHandler"));
 		
 		mapListPos = (20, 44);
 		
@@ -51,6 +63,8 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	override bool MouseEvent(int type, int x, int y)
 	{
+		if ( psxHandler.tsp_psxFadeOut ) return true;
+		
 		int sel = -1;
 
 		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
@@ -81,6 +95,8 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
+		if ( psxHandler.tsp_psxFadeOut ) return true;
+		
 		switch (mkey)
 		{
 			case MKEY_Up:
@@ -101,9 +117,11 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 			case MKEY_Enter:
 				if ( curSelection != -1 )
 				{
+					//waitForFade = true;
+					psxHandler.tsp_psxFadeOut = true;
 					S_Sound("menu/choose",CHAN_UI);
 					CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
-					SetMenu("SkillMenu",episodeID);
+					//SetMenu("SkillMenu",episodeID);
 				}
 				return true;
 		}
