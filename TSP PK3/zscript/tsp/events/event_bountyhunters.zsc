@@ -123,7 +123,7 @@ Class TSP_BHHandler : EventHandler
 			let newSpawn = bh_spawns[i];
 			if ( bh_prevSpawn != newSpawn && (closeToMe.Distance3D(newSpawn) < lastDist || lastDist == -1) && newSpawn.CheckSpaceFree() )
 			{
-				lastDist = players[0].mo.Distance3D(newSpawn);
+				lastDist = closeToMe.Distance3D(newSpawn);
 				theReturn = newSpawn;
 			}
 		}
@@ -301,8 +301,6 @@ Class TSP_BHHandler : EventHandler
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
 				DTA_SrcWidth, barLength, DTA_DestWidthF, barLength);
 		}
-		
-		
 		
 		if ( bh_endtimer > 0 )
 		{
