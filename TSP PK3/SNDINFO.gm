@@ -4,6 +4,9 @@ ailene/goodmorning01 "sounds/announcer/ailene/vo_misc_ailene_goodmorning01.ogg"
 ailene/goodmorning02 "sounds/announcer/ailene/vo_misc_ailene_goodmorning02.ogg"
 ailene/goodmorning03 "sounds/announcer/ailene/vo_misc_ailene_goodmorning03.ogg"
 
+announcer/hunters/ailene/hunt "sounds/announcer/ailene/vo_bh_ailene_gamestart01.ogg"
+announcer/hunters/ailene/ready "sounds/announcer/ailene/vo_bh_ailene_gamestart02.ogg"
+announcer/hunters/ailene/go "sounds/announcer/ailene/vo_bh_ailene_gamestart03.ogg"
 
 $random announcer/hunters/ailene/gameover { ailene/gameover01 ailene/gameover02 ailene/gameover03 }
 ailene/gameover01 "sounds/announcer/ailene/vo_bh_ailene_gameover01.ogg"

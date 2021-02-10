@@ -147,7 +147,7 @@ Class TSP_StatusScreen : StatusScreen
 			//tsp_ss_endScreen = false;
 		}
 		
-		if(bcnt>12 && accelerateStage)
+		if(bcnt>12 && accelerateStage && !(tsp_gamemode == 1))
 		{
 			tsp_ss_endScreen = true;
 			//End();

@@ -26,6 +26,10 @@ Class TSP_BountyHunters_EnemySpawn : Actor
 Class TSP_BHHandler : EventHandler
 {
 	int spawnDelay;
+	int bh_startWait;
+	int bh_backgroundTimer; // used to track the overall time of the round
+	int bh_roundTimer;
+	int bh_endtimer;
 	
 	Array<TSP_BountyHunters_EnemySpawn > bh_spawns;
 	Array<Actor > bh_enemies;
@@ -39,9 +43,9 @@ Class TSP_BHHandler : EventHandler
 		"DoomImp",
 		"ShotgunGuy",
 		"Demon",
-		"Revenant",
-		"Cacodemon",
 		"HellKnight",
+		"Cacodemon",
+		"Revenant",
 		"BaronOfHell"
 	};
 	
@@ -57,25 +61,38 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_spawnList.Clear();
 		
-		for ( int i = 0; i < bh_spawnOrder.Size(); i++ )
+		for ( int i = 0; i < 15; i++ ) //uhhhhhh fix this later idk
 		{
 			int maxSize = bh_spawnOrder.Size()-1;
-			int spMin = max( 0, i-3 );
-			int spMax = min( i, min(i+3, maxSize) );
-			for ( int g = 0; g < 3; g++ )
+			for ( int v = 0; v < 3; v++ )
 			{
-				for ( int v = spMin; v < spMax; v++ )
+				for ( int g = 0; g < 5; g++ )
 				{
-					bh_spawnList.Push(bh_spawnOrder[v]);
+					int spawnInt = clamp(i-g, 0, maxSize);
+					bh_spawnList.Push(bh_spawnOrder[spawnInt]);
 				}
 			}
 		}
 		
-		Console.Printf("Bounty Hunters Spawns:");
+		/*Console.Printf("Bounty Hunters Spawns:");
 		for ( int v = 0; v < bh_spawnList.Size(); v++ )
 		{
 			Console.Printf("--- "..bh_spawnList[v]);
+		}*/
+	}
+	
+	override void WorldLoaded(WorldEvent e)
+	{
+		Console.Printf("do start shit");
+		
+		if ( tsp_gamemode != 1 )
+		{	
+			Destroy();
+			return;
 		}
+		
+		bh_startWait = 35*3;
+		bh_roundTimer = 60*2;
 	}
 	
 	override void WorldThingSpawned(WorldEvent e)
@@ -90,11 +107,11 @@ Class TSP_BHHandler : EventHandler
 	TSP_BountyHunters_EnemySpawn getCloseSpawn(Actor closeToMe)
 	{
 		TSP_BountyHunters_EnemySpawn theReturn;
-		int lastDist = 8192;
+		int lastDist = -1;
 		for ( int i = 0; i < bh_spawns.Size(); i++ )
 		{
 			let newSpawn = bh_spawns[i];
-			if ( bh_prevSpawn != newSpawn && closeToMe.Distance3D(newSpawn) < lastDist && newSpawn.CheckSpaceFree() )
+			if ( bh_prevSpawn != newSpawn && (closeToMe.Distance3D(newSpawn) < lastDist || lastDist == -1) && newSpawn.CheckSpaceFree() )
 			{
 				lastDist = players[0].mo.Distance3D(newSpawn);
 				theReturn = newSpawn;
@@ -113,6 +130,26 @@ Class TSP_BHHandler : EventHandler
 			return;
 		}
 		
+		if ( bh_startWait > 0 ) 
+		{
+			bh_startWait--;
+			switch(bh_startWait)
+			{
+				case 100:
+					S_Sound("announcer/hunters/ailene/hunt", CHAN_VOICE);
+					break;
+				case 35:
+					S_Sound("announcer/hunters/ailene/ready", CHAN_VOICE);
+					break;
+				case 0:
+					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
+					break;
+			}
+			return;
+		}
+		
+		bh_backgroundTimer++;
+		
 		if ( spawnDelay > 0 )
 		{
 			spawndelay--;
@@ -121,7 +158,7 @@ Class TSP_BHHandler : EventHandler
 		{
 			spawndelay = 35;
 			
-			if ( bh_enemies.Size() >= 10 ) return;
+			if ( bh_enemies.Size() >= TSP_MAXMONSTERS_BH ) return;
 			
 			let spawnHere = getCloseSpawn(players[0].mo);
 			
@@ -137,6 +174,46 @@ Class TSP_BHHandler : EventHandler
 			else
 			{
 				Console.Printf("No deathmatch spawns found.");
+			}
+		}
+		
+		if( bh_roundTimer > 0 && bh_backgroundTimer % 35 == 0 ) //a second has passed!!!
+		{
+			bh_roundTimer--;
+			switch(bh_roundTimer)
+			{
+				case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
+				case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
+				case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
+				case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
+				case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
+				case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
+				case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+			}
+			
+			if ( bh_roundTimer == 0 )
+			{
+				S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+				level.setFrozen(true);
+				players[0].mo.vel = (0,0,0);
+				players[0].mo.viewbob = 0;
+				for ( int i = -200; i < 200; i++ )
+				{
+					let pSprite = players[0].GetPSprite(i);
+					if ( pSprite != null )
+					{
+						pSprite.Tics = -1;
+					}
+				}
+			}
+		}
+		
+		if ( bh_roundTimer <= 0 )
+		{
+			bh_endtimer++;
+			if( bh_endtimer >= (35*5) )
+			{
+				players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
 			}
 		}
 	}
@@ -228,6 +305,28 @@ Class TSP_BHHandler : EventHandler
 				}
 			}
 		}*/
+		
+	override void RenderOverlay(RenderEvent e)
+	{
+		int time = bh_roundTimer;
+		int minutes = time/60;
+		time -= minutes*60;
+		string seconds = ""..time;
+		if(time<10)
+		{
+			seconds = "0"..seconds;
+		}
+		string printTime = minutes..":"..seconds;
+		
+		screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
+			160-BigFont.StringWidth(printTime)/2, 4, printTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		//screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		
+		/*if(gameover)
+		{
+			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
+		}*/
+	}
 }
 
 Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
