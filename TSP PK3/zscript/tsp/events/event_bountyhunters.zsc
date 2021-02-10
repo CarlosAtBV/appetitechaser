@@ -276,13 +276,25 @@ Class TSP_BHHandler : EventHandler
 		double screenLeftX = -floor((screen.GetWidth() * (240.0 / screen.GetHeight()) - 320) / 2);
 		double screenRightX = 320 + -screenLeftX;
 		
+		let scoreBarFront = TexMan.CheckForTexture("graphics/bh/scoremult_fg.png");
+		let scoreBarBack = TexMan.CheckForTexture("graphics/bh/scoremult_bg.png");
+		
 		//if ( bh_comboTier >= 2 )
 		{
 			string scoreMult = ""..bh_comboTier;
 			int scoreX = screenRightX - 32;
 			screen.DrawText(BigFont, Font.CR_YELLOW, scoreX-BigFont.StringWidth(scoreMult), 120 - BigFont.GetHeight(), ""..bh_comboTier, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			screen.DrawText(SmallFont, Font.CR_YELLOW, scoreX+2, 120 - SmallFont.GetHeight(), "x", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			
+			double barLength = 24 * (bh_comboTime/double(35*10));
+			Screen.DrawTexture(scoreBarBack, false, scoreX - 16, 120 + 2,
+				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			Screen.DrawTexture(scoreBarFront, false, scoreX - 16, 120 + 2,
+				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+				DTA_SrcWidth, barLength, DTA_DestWidthF, barLength);
 		}
+		
+		
 		
 		/*if(gameover)
 		{
