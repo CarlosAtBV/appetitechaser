@@ -239,18 +239,26 @@ Class TSP_BHHandler : EventHandler
 	
 	override void WorldThingDied(WorldEvent e)
 	{
-		let checkList = bh_enemies.Find(e.Thing);
-		if ( checkList >= 0 )
+		if ( e.Thing == players[0].mo )
 		{
-			bh_enemies.Delete(checkList, 1);
+			S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+			bh_roundTimer = 0;
 		}
-		
-		if ( e.Thing.target == players[0].mo )
+		else
 		{
-			bh_comboTier++;
-			bh_comboTime = 35*10;
+			let checkList = bh_enemies.Find(e.Thing);
+			if ( checkList >= 0 )
+			{
+				bh_enemies.Delete(checkList, 1);
+			}
 			
-			players[0].mo.score += e.Thing.GetSpawnHealth() * bh_comboTier;
+			if ( e.Thing.target == players[0].mo )
+			{
+				bh_comboTier++;
+				bh_comboTime = 35*10;
+				
+				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_comboTier;
+			}
 		}
 	}
 		
@@ -296,10 +304,10 @@ Class TSP_BHHandler : EventHandler
 		
 		
 		
-		/*if(gameover)
+		if ( bh_endtimer > 0 )
 		{
 			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
-		}*/
+		}
 	}
 }
 
