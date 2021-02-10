@@ -22,8 +22,6 @@ Class TSP_EventHandler : EventHandler
 	
 	int gamemode;
 	
-	int hunters_maxCombo;
-	
 	override void OnRegister()
 	{
 		tsp_meleeonly = CVar.GetCVar("tsp_meleesupreme",players[0]).GetBool();
