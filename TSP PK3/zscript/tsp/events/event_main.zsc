@@ -158,33 +158,22 @@ Class TSP_EventHandler : EventHandler
 	{
 		if(e.Thing is "TSP_PlayerPawn_ZSCBase" && !deathmatch) return;
 		
-		switch(gamemode)
+		if ( tsp_gamemode != 0 ) return;
+		
+		int myHealth = e.Thing.SpawnHealth()/5;
+		while(myHealth>=5)
 		{
-			default:
-				int myHealth = e.Thing.SpawnHealth()/5;
-				while(myHealth>=5)
-				{
-					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
-					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
-					myHealth-=5;
-				}
-				while(myHealth>=1)
-				{
-					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
-					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
-					myHealth-=1;
-				}
-				break;
-			/*case TSP_GM_HUNTERS:
-				if(!gameover && e.Thing.target == players[0].mo)
-				{
-					players[0].mo.score += e.Thing.SpawnHealth()*max(1,hunters_combo);
-					players[0].mo.GiveInventory("TSP_Hunters_Kills",1);
-					hunters_combo++;
-					hunters_combotime = 10*35;
-				}
-				break;*/
+			Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
+			money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+			myHealth-=5;
 		}
+		while(myHealth>=1)
+		{
+			Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
+			money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
+			myHealth-=1;
+		}
+		break;
 	}
 	
 	/*double lerp(double start, double finish, double progress)
