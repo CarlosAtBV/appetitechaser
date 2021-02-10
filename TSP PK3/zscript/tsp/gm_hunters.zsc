@@ -1,20 +1,3 @@
-Class TSP_Hunters_SpawnPoint : Thinker
-{
-	Vector3 pos;
-}
-
-Class TSP_Gamemode_Hunters : Thinker
-{
-	
-	override void PostBeginPlay()
-	{
-	}
-	
-	override void Tick()
-	{
-	}
-}
-
 Class TSP_BountyHunters_TimeExtCrystal : Actor
 {
 	Default
@@ -46,11 +29,11 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				{
 					return;
 				}
-				let event = TSP_EventHandler(EventHandler.Find("TSP_EventHandler"));
+				let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
 				if(event)
 				{
-					event.TSPBH_AddTime(30);
-					TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",0);
+					event.BH_AddTime(30);
+					TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
 
 				}
 			}
@@ -94,14 +77,3 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		//return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
 	}
 }
-
-/*
-Class TSP_TimeCrystalMessage : TSP_UpgradeBase
-{
-	Default
-	{
-		Inventory.Amount 99;
-		Inventory.PickupMessage "$TimeCrystal";
-	}
-}
-*/

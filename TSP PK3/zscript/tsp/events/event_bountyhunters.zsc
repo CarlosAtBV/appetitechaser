@@ -49,6 +49,13 @@ Class TSP_BHHandler : EventHandler
 		"BaronOfHell"
 	};
 	
+	void BH_AddTime(int amt)
+	{
+		bh_roundTimer += amt;
+		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
+		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
+	}
+	
 	override void OnRegister()
 	{
 		if ( tsp_gamemode != 1 )

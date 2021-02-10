@@ -20,13 +20,9 @@ Class TSP_EventHandler : EventHandler
 	
 	bool tsp_meleeonly;
 	
-	TSP_Gamemode_Hunters hunterThinker;
-	
 	int gamemode;
 	
 	int hunters_maxCombo;
-	
-	array<TSP_Hunters_SpawnPoint > hunters_demonSpawnPoints;
 	
 	override void OnRegister()
 	{
@@ -36,46 +32,6 @@ Class TSP_EventHandler : EventHandler
 	override void WorldLoaded(WorldEvent e)
 	{
 		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
-		
-		if(gamemode==1)
-		{
-			ThinkerIterator SecretFinder = ThinkerIterator.Create("Actor");
-			Actor mo;
-			while (mo = Actor(SecretFinder.Next()))
-			{
-				if(mo!=null)
-				{
-					if(mo.bIsMonster)
-					{
-						TSP_Hunters_SpawnPoint spawn = new("TSP_Hunters_SpawnPoint");
-						spawn.pos = mo.pos;
-						hunters_demonSpawnPoints.Push(spawn);
-						mo.A_Die();
-						mo.Destroy();
-					}
-					else if (mo is "Inventory")
-					{
-						Inventory itemActor = Inventory(mo);
-						itemActor.bAlwaysRespawn = true;
-						itemActor.bDropped = false;
-					}
-				}
-			}
-			
-			/*let player = players[0].mo;
-			if(player!=null)
-			{
-				player.score = 0;
-				player.ClearInventory();
-				player.GiveDefaultInventory();
-				if(player.health>0)
-				{
-					player.health = player.player.health = player.SpawnHealth();
-				}
-			}*/
-			
-			hunters_time = 120;
-		}
 		
 		/*String clsname = "GSPlayer";
 		Class<Actor> cls = clsname;
@@ -100,13 +56,6 @@ Class TSP_EventHandler : EventHandler
 			}
 		}
 	}*/
-	
-	void TSPBH_AddTime(int amt)
-	{
-		hunters_time += amt;
-		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
-		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
-	}
 	
 	override void WorldThingSpawned(WorldEvent e)
 	{
@@ -173,7 +122,6 @@ Class TSP_EventHandler : EventHandler
 			money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
 			myHealth-=1;
 		}
-		break;
 	}
 	
 	/*double lerp(double start, double finish, double progress)
