@@ -4,17 +4,27 @@ Class TSP_PSXHandler : StaticEventHandler
 	ui bool tsp_psxFadeOut;
 	
 	bool tsp_psxFadeProc;
+	ui int tsp_lastGameState;
 	
 	override void UiTick()
 	{
-		if ( tsp_psxFadeProc )
+		if ( tsp_lastGameState != gamestate )
+		{
+			tsp_psxFadeOut = true;
+			tsp_psxFadeAmt = 1.0;
+		}
+		else if ( tsp_psxFadeProc )
 		{
 			tsp_psxFadeOut = true;
 		}
-		
+		else if ( tsp_psxFadeAmt == 1.0 )
+		{
+			tsp_psxFadeOut = false;
+		}
+				
 		if ( !tsp_psxFadeOut && tsp_psxFadeAmt > 0.0 )
 		{
-			tsp_psxFadeAmt -= 0.05;// * e.FracTic;
+			tsp_psxFadeAmt -= 0.05;
 			if ( tsp_psxFadeAmt < 0.0 )
 			{
 				tsp_psxFadeAmt = 0.0;
@@ -22,7 +32,7 @@ Class TSP_PSXHandler : StaticEventHandler
 		}
 		else if ( tsp_psxFadeOut && tsp_psxFadeAmt < 1.0 )
 		{
-			tsp_psxFadeAmt += 0.05;// * e.FracTic;
+			tsp_psxFadeAmt += 0.05;
 			if ( tsp_psxFadeAmt > 1.0 )
 			{
 				tsp_psxFadeAmt = 1.0;
@@ -30,14 +40,16 @@ Class TSP_PSXHandler : StaticEventHandler
 		}
 		
 		Shader.SetUniform1f(players[consoleplayer], "TSP_PSXFade", "fadeAmount", tsp_psxFadeAmt);
+		
+		tsp_lastGameState = gamestate;
 	}
 	
-	override void RenderOverlay(RenderEvent e)
+	/*override void RenderOverlay(RenderEvent e)
 	{
 		if ( level.time <= 2 )
 		{
 			//tsp_psxFadeAmt = 1.0;
 			tsp_psxFadeOut = false;
 		}
-	}
+	}*/
 }

@@ -160,8 +160,8 @@ Class TSP_StatusScreen : StatusScreen
 	override void updateStats ()
 	{
 	}
-
-	override void drawStats (void)
+	
+	override void Drawer (void)
 	{
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
 		TextureID melbg = TexMan.CheckForTexture("TESTMEL2",TexMan.Type_MiscPatch);
