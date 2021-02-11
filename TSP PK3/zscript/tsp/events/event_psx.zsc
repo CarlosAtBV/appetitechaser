@@ -6,9 +6,11 @@ Class TSP_PSXHandler : StaticEventHandler
 	bool tsp_psxFadeProc;
 	ui int tsp_lastGameState;
 	
+	ui string tsp_lastLevel;
+	
 	override void UiTick()
 	{
-		if ( tsp_lastGameState != gamestate )
+		if ( tsp_lastGameState != gamestate || tsp_lastLevel != level.levelname )
 		{
 			tsp_psxFadeOut = true;
 			tsp_psxFadeAmt = 1.0;
@@ -42,6 +44,7 @@ Class TSP_PSXHandler : StaticEventHandler
 		Shader.SetUniform1f(players[consoleplayer], "TSP_PSXFade", "fadeAmount", tsp_psxFadeAmt);
 		
 		tsp_lastGameState = gamestate;
+		tsp_lastLevel = level.levelname;
 	}
 	
 	/*override void RenderOverlay(RenderEvent e)

@@ -1,12 +1,29 @@
+Class TSP_CharMenu_Button
+{
+	Vector2 pos;
+	Vector2 size;
+	TextureID icon;
+	
+	Class<Actor> pickClass;
+	
+	TSP_CharMenu_Button goLeft;
+	TSP_CharMenu_Button goRight;
+}
+
 Class TSP_CharacterMenu_BH : GenericMenu
 {
-	const CSS_X = 10;
-	const CSS_Y = 150;
+	const CSS_X = 160;
+	const CSS_Y = 162;
 	
-	const CSS_ICONW = 56;
-	const CSS_ICONH = 31;
+	const CSS_ICONW = 24;
+	const CSS_ICONH = 64;
 	
-	int cm_curSelection;
+	const CSS_ICONPAD = 4;
+	
+	TSP_CharMenu_Button cm_curSelection;
+	int css_gamemode;
+	
+	Array<TSP_CharMenu_Button > css_buttons;
 	
 	static const string gamemodeNames[] =
 	{
@@ -15,22 +32,164 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		"$TSP_GAMEMODE_TRAINING"
 	};
 	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		
+		css_gamemode = -1;
+	}
+	
+	void generateChars()
+	{
+		TSP_CharMenu_Button newChar;
+		
+		Array<Class<Actor> > baseGameChars;
+		Array<Class<Actor> > bountyChars;
+		Array<Class<Actor> > bonusChars;
+		
+		for ( int i = 0; i < PlayerClasses.Size(); i++ )
+		{
+			let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(PlayerClasses[i].Type));
+			
+			if ( thisChar == null )
+			{
+				continue;
+			}
+			
+			if ( thisChar.bBonusCharacter )
+			{
+				bonusChars.Push(PlayerClasses[i].Type);
+			}
+			else if ( thisChar.bBountyHuntersOnly && css_gamemode == 1 )
+			{
+				bountyChars.Push(PlayerClasses[i].Type);
+			}
+			else if ( !thisChar.bBountyHuntersOnly )
+			{
+				baseGameChars.Push(PlayerClasses[i].Type);
+			}
+		}
+		
+		int xwidth = (CSS_ICONW + CSS_ICONPAD) * (5 + bountyChars.Size());//PlayerClasses.Size();
+		int xoff = CSS_X - xwidth / 2;
+		
+		for ( int i = 0; i < 5; i++ )
+		{
+			newChar = new("TSP_CharMenu_Button");
+			
+			if ( i < baseGameChars.Size() )
+			{
+				let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(baseGameChars[i]));
+				newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+				newChar.pickClass = baseGameChars[i];
+			}
+			else
+			{
+				newChar.icon = TexMan.CheckForTexture("CSS_UNKN");
+			}
+			newChar.pos = (xoff + (CSS_ICONW + CSS_ICONPAD) * i, CSS_Y);
+			newChar.size = (CSS_ICONW, CSS_ICONH);
+			
+			if ( i > 0 )
+			{
+				newChar.goLeft = css_buttons[i-1];
+				css_buttons[i-1].goRight = newChar;
+			}
+			css_buttons.Push(newChar);
+		}
+		
+		for ( int i = 0; i < bountyChars.Size(); i++ )
+		{
+			newChar = new("TSP_CharMenu_Button");
+			
+			if ( i < baseGameChars.Size() )
+			{
+				let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(bountyChars[i]));
+				newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+				newChar.pickClass = bountyChars[i];
+			}
+			else
+			{
+				newChar.icon = TexMan.CheckForTexture("CSS_UNKN");
+			}
+			newChar.pos = (xoff + (CSS_ICONW + CSS_ICONPAD) * (5 + i), CSS_Y);
+			newChar.size = (CSS_ICONW, CSS_ICONH);
+			
+			newChar.goLeft = css_buttons[5 + i -1];
+			css_buttons[5 + i - 1].goRight = newChar;
+			css_buttons.Push(newChar);
+		}
+		
+		int xoff_left = xoff - (CSS_ICONW + CSS_ICONPAD);
+		
+		for ( int i = 0; i < bonusChars.Size(); i++ )
+		{
+			newChar = new("TSP_CharMenu_Button");
+			newChar.pickClass = bonusChars[i];
+			
+			let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(bonusChars[i]));
+			newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+			newChar.pos = (xoff_left - (CSS_ICONW + CSS_ICONPAD) * i, CSS_Y);
+			newChar.size = (CSS_ICONW, 30);
+			css_buttons.Push(newChar);
+		}
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = TSP_MenuCommon.ConvertMousePos((x, y));
+		
+		for( int i = 0; i<css_buttons.Size(); i++ )
+		{
+			if ( TSP_MenuCommon.CheckMousePos(mousePos, css_buttons[i].pos, css_buttons[i].size) )
+			{
+				if ( css_buttons[i] != cm_curSelection )
+				{
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				cm_curSelection = css_buttons[i];
+			}
+		}
+		
+		if ( type == Menu.MOUSE_Release )
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
 		switch (mkey)
 		{
 			case MKEY_Left:
-				cm_curSelection = 0;
+				if ( cm_curSelection.goLeft != null )
+				{
+					cm_curSelection = cm_curSelection.goLeft;
+				}
 				S_Sound("menu/cursor",CHAN_UI);
 				return true;
 			case MKEY_Right:
-				cm_curSelection = 1;
+				if ( cm_curSelection.goRight != null )
+				{
+					cm_curSelection = cm_curSelection.goRight;
+				}
 				S_Sound("menu/cursor",CHAN_UI);
 				return true;
 				
 			case MKEY_Enter:
 				S_Sound("menu/choose",CHAN_UI);
-				SetMenu("EpisodeMenu",cm_curSelection);
+				for ( int i = 0; i < PlayerClasses.Size(); i++ )
+				{
+					if ( PlayerClasses[i].Type == cm_curSelection.pickClass )
+					{
+						SetMenu("EpisodeMenu", i);
+						return true;
+					}
+				}
 				return true;
 		}
 		return super.MenuEvent(mkey, fromcontroller);
@@ -38,66 +197,32 @@ Class TSP_CharacterMenu_BH : GenericMenu
 	
 	override void Drawer()
 	{
-		bool side = false;
-		int dd_it = 0;
+		TSP_MenuCommon.Draw9Slice(-64, 159, 320 + 128, 71);
 		
 		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
-		//screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(StringTable.Localize(gamemodeNames[gamemode]))/2, 4, gamemodeNames[gamemode], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		screen.DrawText(SmallFont, Font.CR_WHITE, 0, 4, gamemodeNames[css_gamemode], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
-		TextureID warnlimt = TexMan.CheckForTexture("WARNLIMT",TexMan.Type_MiscPatch);
+		//TextureID warnlimt = TexMan.CheckForTexture("WARNLIMT",TexMan.Type_MiscPatch);
 		//screen.DrawTexture (warnlimt, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 200);
 		
-		TextureID dd_slotBG = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
-		TextureID dd_charBG = TexMan.CheckForTexture("TESTMEL2",TexMan.Type_MiscPatch);
+		//TextureID dd_slotBG = TexMan.CheckForTexture("HUD_MELB",TexMan.Type_MiscPatch);
+		//TextureID dd_charBG = TexMan.CheckForTexture("TESTMEL2",TexMan.Type_MiscPatch);
 		
+		//screen.DrawTexture (dd_charBG, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
+		//let curChar = GetDefaultByType(PlayerClasses[cm_curSelection].Type);
 		
-		screen.DrawTexture (dd_charBG, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(128.0/240.0), screen.GetWidth(), screen.GetHeight()*(105.0/240.0));
-		
-		let curChar = GetDefaultByType(PlayerClasses[cm_curSelection].Type);
-		
-		for(int v = 0;v<2;v++)
-		{
-			int xoff = (CSS_ICONW/2)*side;
-			for(int i = 0;i<5;i++)
-			{
-				int xpos = CSS_X+((CSS_ICONW/2)+xoff+(CSS_ICONW*i));
-				int ypos = CSS_Y+(15+((CSS_ICONH+18)*v));
-				
-				TextureID charslot;
-				
-				if(dd_it<PlayerClasses.Size())
-				{
-					let thisChar = GetDefaultByType(PlayerClasses[i].Type);
-					charslot = TexMan.CheckForTexture(PlayerPawn(thisChar).Portrait,TexMan.Type_MiscPatch);
-				}
-				else
-				{
-					charslot = TexMan.CheckForTexture("unk_port",TexMan.Type_MiscPatch);
-				}
-				
-				screen.DrawTexture (dd_slotBG, true, xpos, ypos, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
-				screen.DrawTexture (charslot, true, xpos, ypos, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_LeftOffset, 37, DTA_TopOffset, 47);
-				dd_it++;
-			}
-			side = !side;
+		for( int cx = 0; cx < css_buttons.Size(); cx++ )
+		{	
+			let curButton = css_buttons[cx];
+			bool isSelected = cm_curSelection == curButton;
+			screen.DrawTexture (curButton.icon, true, curButton.pos.x, curButton.pos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
+				DTA_ScaleX, isSelected ? 1.1 : 1.0,
+				DTA_ScaleY, isSelected ? 1.1 : 1.0,
+				DTA_LeftOffsetF, isSelected ? 1. : 0.,
+				DTA_TopOffsetF, isSelected ? 1.5 : 0.);
+			TSP_MenuCommon.Draw9Slice(curButton.pos.x-1, curButton.pos.y-1, curButton.size.x+2, curButton.size.y+2);
 		}
-		
-		//screen.DrawTexture (charicon, true, -10, 100, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		
-		Font dd_tinyfont = Font.FindFont("TinyFont");
-		string selectionName = PlayerPawn.GetPrintableDisplayName(PlayerClasses[cm_curSelection].Type);
-		string selectionTitle = TSP_PlayerPawn_ZSCBase(curChar).pp_menutitle;
-		BrokenLines selectionDesc = dd_tinyfont.BreakLines(StringTable.Localize(TSP_PlayerPawn_ZSCBase(curChar).pp_menudesc),320-128);
-		int c = selectionDesc.Count();
-		for (int g = 0; g < c; g++)
-		{
-			screen.DrawText(dd_tinyfont, Font.CR_WHITE, 16, 16+BigFont.GetHeight()+8+(dd_tinyfont.GetHeight()+1)*g, selectionDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		}
-		
-		screen.DrawText(BigFont, Font.FindFontColor("TSPGreen1"), 16, 10, selectionName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen1"), 16, 29, selectionTitle, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 	}
 }

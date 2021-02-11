@@ -3,7 +3,8 @@ Class TSP_ShenMiPlayer : TSP_MelPlayer
 	Default
 	{
 		Player.DisplayName "$SHENNAMECS";
-		Player.Portrait "SHBST01";
+		//Player.Portrait "SHBST01";
+		Player.Portrait "CSS_SHEN";
 		Player.SoundClass "Mel";
 		Player.WeaponSlot 1, "MelChargeStyle";
 		Player.WeaponSlot 2, "ShenMiPistol";

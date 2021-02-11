@@ -27,13 +27,14 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	Array<TSP_BountyHuntersMap > bhmaps;
 	
-	override void Ticker()
+	/*override void Ticker()
 	{
-		if ( psxHandler.tsp_psxFadeAmt == 1.0 )
+		super.Ticker();
+		if ( GetCurrentMenu() == self && psxHandler.tsp_psxFadeAmt == 1.0 )
 		{
 			SetMenu("SkillMenu",episodeID);
 		}
-	}
+	}*/
 	
 	override void Init(Menu parent)
 	{
@@ -117,11 +118,10 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 			case MKEY_Enter:
 				if ( curSelection != -1 )
 				{
-					//waitForFade = true;
-					psxHandler.tsp_psxFadeOut = true;
+					//psxHandler.tsp_psxFadeOut = true;
 					S_Sound("menu/choose",CHAN_UI);
 					CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
-					//SetMenu("SkillMenu",episodeID);
+					SetMenu("SkillMenu",episodeID);
 				}
 				return true;
 		}

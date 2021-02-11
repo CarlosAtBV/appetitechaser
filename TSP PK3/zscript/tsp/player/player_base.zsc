@@ -57,6 +57,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int pp_playerpresflags;
 	//flagdef ModFireMode: pp_playerpresflags, 0;
 	flagdef BountyHuntersOnly: pp_playerpresflags, 1;
+	flagdef BonusCharacter: pp_playerpresflags, 2;
 	
 	int pp_freezeMe;
 	

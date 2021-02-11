@@ -152,7 +152,14 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTSP_MenuItem_PatchItem
 	{
 		CVar.GetCVar("tsp_gamemode", players[0]).SetInt(mParam);
 		Console.Printf("[\cbDEBUG\c-] set gamemode to \ck"..mParam);
-		Menu.SetMenu(mAction,mParam);
+		Menu.SetMenu(mAction, mParam);
+		
+		if ( Menu.GetCurrentMenu() is "TSP_CharacterMenu_BH" )
+		{
+			TSP_CharacterMenu_BH(Menu.GetCurrentMenu()).css_gamemode = mParam;
+			TSP_CharacterMenu_BH(Menu.GetCurrentMenu()).generateChars();
+		}
+		
 		return true;
 	}
 }

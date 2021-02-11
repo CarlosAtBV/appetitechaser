@@ -9,7 +9,8 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		Player.SoundClass "MelRetro";
 		Player.DisplayName "$MELRETRONAMECS";
 		Player.Face "MRG";
-		Player.Portrait "MRGST01";
+		//Player.Portrait "MRGST01";
+		Player.Portrait "CSB_MELR";
 		Player.WeaponSlot 1, "MelRetroMelee";
 		Player.WeaponSlot 2, "MelRetroPistol", "MelRetroPistolA";
 		Player.WeaponSlot 3, "MelSMG";
@@ -21,6 +22,7 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Space Pirate";
 		TSP_PlayerPawn_ZSCBase.DisplayDescription "Just Like You Remembered";
+		+TSP_PlayerPawn_ZSCBASE.BONUSCHARACTER
 	}
 	
 	override void OnStandardLoadout()

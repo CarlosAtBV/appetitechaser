@@ -3,7 +3,7 @@ Class TSP_DummyPlayer : TSP_MelPlayer
 	Default
 	{
 		Player.DisplayName "Meloby";
-		Player.Portrait "MELOBYPP";
+		Player.Portrait "CSS_MELO";
 		Player.SoundClass "MelRetro";
 		//Player.WeaponSlot 1, "MelChargeStyle", "MelMelee", "MelMeleeMetal";
 		TSP_PlayerPawn_ZSCBase.DisplayTitle "Funny Fella";
