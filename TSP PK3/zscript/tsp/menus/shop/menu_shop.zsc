@@ -1,0 +1,11 @@
+Class TSP_Shop_Retail : GenericMenu
+{
+	override void Drawer()
+	{
+		TSP_MenuCommon.Draw9Slice(185, 17, 111, 15);
+		
+		TSP_MenuCommon.Draw9Slice(160, 34, 161, 134);
+		
+		TSP_MenuCommon.Draw9Slice(163, 173, 155, 49);
+	}
+}
