@@ -2,6 +2,61 @@
 // Various common weapon related effects!
 //------------------------------------------------------------------------------
 
+Class TSP_HitSpark_Shine : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		RenderStyle "Add";
+		+FORCEXYBILLBOARD
+		Scale 0.3;
+		+BRIGHT
+		+ROLLSPRITE
+	}
+	
+	States
+	{
+		Spawn:
+			SPHS A 1
+			{
+				scale *= 1.5;
+				alpha -= 0.25;
+				if ( alpha <= 0 )
+				{
+					Destroy();
+				}
+			}
+			Loop;
+	}
+}
+
+Class TSP_HitSpark_Wave : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		RenderStyle "Add";
+		+FORCEXYBILLBOARD
+		Scale 0.2;
+		+BRIGHT
+	}
+	
+	States
+	{
+		Spawn:
+			SPHS B 1
+			{
+				scale += (0.2, 0.2);
+				alpha -= 0.2;
+				if ( alpha <= 0 )
+				{
+					Destroy();
+				}
+			}
+			Loop;
+	}
+}
+
 Class TSP_HitscanTracer : FastProjectile
 {
 	Default

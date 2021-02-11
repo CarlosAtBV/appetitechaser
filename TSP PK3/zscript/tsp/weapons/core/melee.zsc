@@ -45,7 +45,17 @@ Extend Class TSP_Weapon_Core
 				&& (mo.bShootable || mo is "TSP_BountyHunters_TimeExtCrystal") && !mo.bNoDamage && CheckSight(mo)
 				&& abs(DeltaAngle(AngleTo(mo),self.angle))<mAngle )
 				{
-					Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
+					//Spawn("TSP_HitSpark_Small",mo.pos+(0,0,mo.Height/2));
+					Vector3 spawnPos = mo.pos+(0,0,mo.Height/2);
+					Actor shine1 = Spawn("TSP_HitSpark_Shine", spawnPos);
+					shine1.roll = random(0,360);
+					Actor shine2 = Spawn("TSP_HitSpark_Shine", spawnPos);
+					shine2.roll = shine1.roll + random(80,100);
+					Actor wave = Spawn("TSP_HitSpark_Wave", spawnPos);
+					
+					shine1.scale *= mDamage/20;
+					shine2.scale *= mDamage/20;
+					wave.scale *= mDamage/20;
 					
 					int damageamount = mDamage;
 					int myMaxHealth = mo.GetSpawnHealth();
