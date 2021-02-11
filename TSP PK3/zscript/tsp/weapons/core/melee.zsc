@@ -21,7 +21,7 @@ Extend Class TSP_Weapon_Core
 			bool hasKilled = false;
 			
 			int baseAddon = HITLAG_BASE*floor(mDamage/20);
-			int baseHitlag = (mDamage * 0.1 + 4);//HITLAG_BASE+baseAddon;
+			int baseHitlag = (mDamage * 0.05 + 4);//HITLAG_BASE+baseAddon;
 			//A_FireBullets(0,0,1,0,"TQB_Puff",0,75);
 			//ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
 			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self,512,0);
