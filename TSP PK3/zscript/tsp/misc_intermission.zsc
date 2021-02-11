@@ -29,6 +29,7 @@ Class TSP_StatusScreen : StatusScreen
 	TSP_PSXHandler psxHandler;
 	bool tsp_ss_endScreen;
 	int tsp_ss_endTimer;
+	int gamemode;
 	
 	bool doEnding;
 	
@@ -36,7 +37,7 @@ Class TSP_StatusScreen : StatusScreen
 	{
 		psxHandler = TSP_PSXHandler(StaticEventHandler.Find("TSP_PSXHandler"));
 		
-		int gamemode = tsp_gamemode;
+		gamemode = tsp_gamemode;
 		
 		intermissioncounter = gameinfo.intermissioncounter;
 		CurState = StatCount;
