@@ -95,6 +95,12 @@ Class TSP_CharacterMenu_BH : GenericMenu
 				newChar.goLeft = css_buttons[i-1];
 				css_buttons[i-1].goRight = newChar;
 			}
+			
+			if ( cm_curSelection == null )
+			{
+				cm_curSelection = newChar;
+			}
+			
 			css_buttons.Push(newChar);
 		}
 		
@@ -131,6 +137,18 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
 			newChar.pos = (xoff_left - (CSS_ICONW + CSS_ICONPAD) * i, CSS_Y);
 			newChar.size = (CSS_ICONW, 30);
+			
+			if ( i > 0 )
+			{
+				newChar.goRight = css_buttons[i-1];
+				css_buttons[i-1].goLeft = newChar;
+			}
+			else
+			{
+				newChar.goRight = css_buttons[0];
+				css_buttons[0].goLeft = newChar;
+			}
+			
 			css_buttons.Push(newChar);
 		}
 	}
