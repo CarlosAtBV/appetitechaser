@@ -36,8 +36,7 @@ Class TSP_StatusScreen : StatusScreen
 	{
 		psxHandler = TSP_PSXHandler(StaticEventHandler.Find("TSP_PSXHandler"));
 		
-		int gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
-		Console.Printf(""..players[0].mo.health);
+		int gamemode = tsp_gamemode;
 		
 		intermissioncounter = gameinfo.intermissioncounter;
 		CurState = StatCount;
@@ -147,7 +146,7 @@ Class TSP_StatusScreen : StatusScreen
 			//tsp_ss_endScreen = false;
 		}
 		
-		if(bcnt>12 && accelerateStage && !(tsp_gamemode == 1))
+		if(bcnt>12 && accelerateStage && !(gamemode == 1))
 		{
 			tsp_ss_endScreen = true;
 			//End();
