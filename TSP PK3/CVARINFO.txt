@@ -16,6 +16,7 @@ server noarchive int tsp_internal_bhepisode = -1;
 
 server bool tsp_enemies_doom = false;
 server bool tsp_enemies_arcstar = true;
+server bool tsp_glupshitto = false;
 
 server bool tsp_enemyshuffle = false;
 
