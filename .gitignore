@@ -6,3 +6,4 @@ bv-tsp-dev.pk3
 *.backup1
 *.backup2
 *.backup3
+*.blend[0-9]
