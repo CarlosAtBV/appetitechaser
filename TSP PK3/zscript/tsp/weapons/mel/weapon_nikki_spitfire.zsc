@@ -38,7 +38,7 @@ Class MelPistolA : MelPistol
 			{
 				A_StartSound(invoker.firesound, CHAN_6);
 				A_TSP_FireBullets(6,6,-1,9,"TSP_BulletPuff",1, Spawnofs_xy: 3);
-				A_TSP_WeaponRecoilDir(70+random(-5,5), 7+frandom(-2,2), 1);
+				A_TSP_WeaponRecoilDir(60+random(-2,2), 4+frandom(-2,6), 1);
 				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (202, 136), frandom(-5,-25)-10, 52);
 				A_SetAngle(angle + (frandom(-0.3,0.3)));
 				A_SetPitch(pitch - 0.8);
