@@ -141,11 +141,13 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				if(cplayer.getgender()==2) // Are you a robot?
 				{
-				DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+12, HUDLEFT_Y-3), DI_ITEM_OFFSETS);
+				DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); 
 				}
 				else // You are not a robot
 				{
-				DrawTexture(GetMugShot(5), (HUDLEFT_X+12, HUDLEFT_Y-3), DI_ITEM_OFFSETS);
+				DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
 				}
 			}
 			
@@ -156,12 +158,12 @@ Class TSP_StatusBar : BaseStatusBar
 			}
 			else // Draw default player mugshot
 			{
-				DrawTexture(GetMugShot(5), (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+				DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			if(CPlayer.mo is "TSP_MelPlayer")
 			{
-				DrawImage("MCWST00", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
+				DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
 				if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
 				{
 				DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
