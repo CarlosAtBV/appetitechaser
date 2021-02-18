@@ -1,9 +1,11 @@
 server bool tsp_zmelee = false;
-server bool tsp_fistsstart = false;
-server bool tsp_meleesupreme = false;
+server noarchive bool tsp_fistsstart = false;
+server noarchive bool tsp_meleesupreme = false;
 
 server bool tsp_goldenpistol = false;
 server bool tsp_actionmode = false;
+
+server bool tsp_easyauto = false;
 
 server noarchive int tsp_melhudmod = 0;
 

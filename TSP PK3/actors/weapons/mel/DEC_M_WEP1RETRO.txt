@@ -90,8 +90,28 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_GiveInventory("MelPrimaryCombo", 1)
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1)
 		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
-		0111 FGJK 1 A_WeaponReady
-		TNT1 A 12 A_WeaponReady
+		0111 FGJK 1
+		{
+			if(GetCVar(tsp_easyauto)==1)
+			{
+				A_Refire("Fire");
+			}
+			else
+			{
+				A_WeaponReady;
+			}
+		}
+		TNT1 A 12
+		{
+			if(GetCVar(tsp_easyauto)==1)
+			{
+				A_Refire("Fire");
+			}
+			else
+			{
+				A_WeaponReady;
+			}
+		}
 		Goto AfterMelee
 		
 // DEFAULT P-P

@@ -136,6 +136,7 @@ OptionMenu "TSP_Modifiers"
 	Option "$GMPLYMNU_ALLOWJUMP",				"sv_jump", "JumpCrouchFreeLook"
 	Option "$GMPLYMNU_ALLOWCROUCH",				"sv_crouch", "JumpCrouchFreeLook"
 	Option "$GMPLYMNU_ALLOWFREELOOK",			"sv_freelook", "JumpCrouchFreeLook"
+	Option "Auto-Assist",						"tsp_easyauto", "TSPEasyAutoOnOff"
 	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
     StaticText      ""
 	StaticText "$TSPMELHUDMOD1"
@@ -157,6 +158,12 @@ OptionValue TSPMelHudMod
 	1, "$MELNAMECS"
 	2, "$MELRETRONAMECS"
 	3, "$MELRETROROBONAMECS"
+}
+
+OptionValue TSPEasyAutoOnOff
+{
+	0, "$OPTVAL_OFF"
+	1, "$TSPEASYAUTO_ON"
 }
 
 OptionValue TSPMeleeSupremeOnOff

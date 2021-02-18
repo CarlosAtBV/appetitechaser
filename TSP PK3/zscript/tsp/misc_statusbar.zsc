@@ -179,10 +179,10 @@ Class TSP_StatusBar : BaseStatusBar
 					if(CPlayer.mo is "TSP_MelPlayer")
 					{
 						DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
-						if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
+						/*if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
 						{
 						DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
-						}
+						}*/
 					}
 				
 			}
@@ -258,7 +258,7 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 				}
 			
-			// rIGHT HAND SIDE
+			// RIGHT HAND SIDE
 			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
 			
@@ -272,6 +272,11 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			// RIGHT SIDE BASE
 			//================
+			
+			if(CVar.GetCVar("tsp_easyauto", players[0]).GetBool()) //Auto-Assist Enabled
+			{
+			DrawString(mTinyFont, "\cfAuto", (HUDRIGHT_X+109, HUDRIGHT_Y+58), DI_TEXT_ALIGN_CENTER, Font.CR_GOLD);
+			}
 			
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			//DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
