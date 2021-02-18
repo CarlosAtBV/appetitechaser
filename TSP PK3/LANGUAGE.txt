@@ -113,6 +113,9 @@ TSPGRAPHICS2 = "\cu(Adjust graphical settings)\c-";
 TSPCHEATS1 = "\ckCheats and Fun Stuff!\c-";
 TSPCHEATS2 = "\cu(Enable cheat options and other shenanigans)\c-";
 
+TSPMELHUDMOD1 = "\c[Mel]Mel \cjSpecific";
+TSPMELHUDMOD2 = "\cu(Override Mel's HUD Portrait)\c-";
+
 TSPDEFAULT = "\ccDefault\c-";
 TSPMELEESUPREME_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgNo Weapon\c-\cc/\c-\cgAmmo Drops\c-\cc!\c-";
 CPS1MELEESND = "\ciCPS-1\c-";

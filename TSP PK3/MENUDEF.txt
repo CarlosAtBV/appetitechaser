@@ -137,6 +137,10 @@ OptionMenu "TSP_Modifiers"
 	Option "$GMPLYMNU_ALLOWCROUCH",				"sv_crouch", "JumpCrouchFreeLook"
 	Option "$GMPLYMNU_ALLOWFREELOOK",			"sv_freelook", "JumpCrouchFreeLook"
 	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
+    StaticText      ""
+	StaticText "$TSPMELHUDMOD1"
+	Option "HUD Portrait Override",						"tsp_melhudmod", "TSPMelHudMod" // MEL HUD FACE MODIFIER
+    StaticText      ""
 	Option "Start with Melee Only",          	"tsp_fistsstart", "OnOff"
 	Option "Melee Supreme!",                 	"tsp_meleesupreme", "TSPMeleeSupremeOnOff", "tsp_fistsstart"
     StaticText      ""
@@ -145,6 +149,14 @@ OptionMenu "TSP_Modifiers"
 	Option "Start with Golden Pistol",        	"tsp_goldenpistol", "OnOff"
 	//Option "WOG Beam Infinite Mode",         	"tsp_beaminf", "OnOff"
 	Option "Kano Transformations",           	"tsp_supersecret", "OnOff"
+}
+
+OptionValue TSPMelHudMod
+{
+	0, "$TSPDEFAULT"
+	1, "$MELNAMECS"
+	2, "$MELRETRONAMECS"
+	3, "$MELRETROROBONAMECS"
 }
 
 OptionValue TSPMeleeSupremeOnOff

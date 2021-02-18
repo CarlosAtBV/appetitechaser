@@ -123,7 +123,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 
-		
+	
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
 				case 0: DrawImage("MEL_SHDE", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
@@ -132,60 +132,87 @@ Class TSP_StatusBar : BaseStatusBar
 				case 3: DrawImage("MEL_SHD3", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
+			//================
+			// Mel Mugshot
+			//================			
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-			
-			if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
+			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
-				if(cplayer.getgender()==2) // Are you a robot?
-				{
-				DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
-				DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); 
-				}
-				else // You are not a robot
-				{
-				DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
-				DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
-				}
-			}
-			
-			else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
-			{
-				DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
-				//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
-			}
-			else // Draw default player mugshot
-			{
-				DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			}
-			
-			if(CPlayer.mo is "TSP_MelPlayer")
-			{
-				DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
-				if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
-				{
-				DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
-				}
-			}
-			
-			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
-			{
-				if(CPlayer.cheats & (CF_GODMODE | CF_GODMODE2) || CPlayer.mo.bInvulnerable)
-				{
-					if(CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2)
+				case 1: 
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MCW"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Default Mel
+					DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+				case 2:
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retrograde Mel
+					DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+				case 3: 
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retro/Robo Mel
+					DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+				default:		
+					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
-					DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						if(cplayer.getgender()==2) // Are you a robot?
+						{
+						DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+						DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); 
+						}
+						else // You are not a robot
+						{
+						DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+						DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
+						}
 					}
-					else // You are not a robot
+					
+					else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
 					{
-					DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
 					}
-				}
+					else // Draw default player mugshot
+					{
+						DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+					}
+					
+
+					if(CPlayer.mo is "TSP_MelPlayer")
+					{
+						DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
+						if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
+						{
+						DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						}
+					}
+				
 			}
 
+			//================
+			// GOD MODE SPARKS (Mel/Retro Mel)
+			//================
 			
+			if(CPlayer.cheats & (CF_GODMODE | CF_GODMODE2) || CPlayer.mo.bInvulnerable)
+			{
+				switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
+				{
+					case 1: 
+						DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Green Sparks (Default Mel)
+					case 2:
+						DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Green Sparks (Retrograde Mel)
+					case 3: 
+						DrawImage("HUDSPB00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Pink Sparks  (Retro/Robo Mel)
+					default:
+								if(CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2) // Are you Robo/Retro Mel?
+								{
+								DrawImage("HUDSPB00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); // Pink Sparks
+								}
+								else // You are not a robot
+								{
+								DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); // Green Sparks
+								}
+							
+				}
+			}
 			
 			//================
 			// Health

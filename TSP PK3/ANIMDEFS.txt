@@ -24,6 +24,56 @@ texture MEL_HBG1
     pic MEL_HBG6 tics 2
 	pic MEL_HBG7 tics 2
     pic MEL_HBG8 tics 2
+	
+// SPARKING
+texture HUDSPA00
+	pic HUDSPA04 tics 60
+    pic HUDSPA00 tics 1
+    pic HUDSPA01 tics 1
+    pic HUDSPA02 tics 1
+    pic HUDSPA03 tics 1
+    pic HUDSPA04 tics 1
+    pic HUDSPA05 tics 1
+    pic HUDSPA06 tics 1
+    pic HUDSPA07 tics 1
+    pic HUDSPA08 tics 1
+    pic HUDSPA09 tics 1
+    pic HUDSPA10 tics 1
+    pic HUDSPA11 tics 1
+    pic HUDSPA12 tics 1
+	
+texture HUDSPB00
+	pic HUDSPB04 tics 60
+    pic HUDSPB00 tics 1
+    pic HUDSPB01 tics 1
+    pic HUDSPB02 tics 1
+    pic HUDSPB03 tics 1
+    pic HUDSPB04 tics 1
+    pic HUDSPB05 tics 1
+    pic HUDSPB06 tics 1
+    pic HUDSPB07 tics 1
+    pic HUDSPB08 tics 1
+    pic HUDSPB09 tics 1
+    pic HUDSPB10 tics 1
+    pic HUDSPB11 tics 1
+    pic HUDSPB12 tics 1
+
+texture HUDSPC00
+	pic HUDSPC04 tics 60
+    pic HUDSPC00 tics 1
+    pic HUDSPC01 tics 1
+    pic HUDSPC02 tics 1
+    pic HUDSPC03 tics 1
+    pic HUDSPC04 tics 1
+    pic HUDSPC05 tics 1
+    pic HUDSPC06 tics 1
+    pic HUDSPC07 tics 1
+    pic HUDSPC08 tics 1
+    pic HUDSPC09 tics 1
+    pic HUDSPC10 tics 1
+    pic HUDSPC11 tics 1
+    pic HUDSPC12 tics 1
+
 
 //////////////////////
 // TEXTURES
