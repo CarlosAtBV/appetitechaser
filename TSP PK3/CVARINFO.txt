@@ -5,7 +5,7 @@ server bool tsp_meleesupreme = false;
 server bool tsp_goldenpistol = false;
 server bool tsp_actionmode = false;
 
-server int tsp_melhudmod = 0;
+server noarchive int tsp_melhudmod = 0;
 
 //Hmm
 server bool tsp_supersecret = false;
