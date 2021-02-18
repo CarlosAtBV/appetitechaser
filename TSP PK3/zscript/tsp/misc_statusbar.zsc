@@ -137,7 +137,7 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
-			if(CPlayer.mo is "TSP_MelRetroPlayer")
+			if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 			{
 				if(cplayer.getgender()==2) // Are you a robot?
 				{
@@ -169,6 +169,22 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
 				}
 			}
+			
+			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
+			{
+				if(CPlayer.cheats & (CF_GODMODE | CF_GODMODE2) || CPlayer.mo.bInvulnerable)
+				{
+					if(CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2)
+					{
+					DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+					}
+					else // You are not a robot
+					{
+					DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+					}
+				}
+			}
+
 			
 			
 			//================
