@@ -72,6 +72,14 @@ Class TSP_Upgrade_PowerBank : TSP_UpgradeBase
 	}
 }
 
+Class TSP_Upgrade_KeepAwayCombo : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$KeepAwayPickup";
+	}
+}
+
 Class TSP_Upgrade_Shield : TSP_UpgradeBase
 {
 	Default

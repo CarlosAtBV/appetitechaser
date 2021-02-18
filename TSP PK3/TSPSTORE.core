@@ -197,6 +197,16 @@ page
 			inv_amount 1;
 			price 10;
 		}
+		header "Retrograde Mel";
+		item "Mt6"
+		{
+			upgrade "MelRetroMelee";
+			name "Keep Away";
+			desc "$TSP_SHOP_MELRETRO_KEEPAWAYDESC";
+			inv_class "TSP_Upgrade_KeepAwayCombo";
+			inv_amount 1;
+			price 10;
+		}
 		header "Good Shit";
 		item
 		{

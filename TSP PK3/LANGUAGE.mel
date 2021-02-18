@@ -48,6 +48,8 @@ MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
 ////////////////
 // RETRO MEL
 ////////////////
+// Trait Purchase Messages
+KeepAwayPickup = "\cc[\c[Mel]Keep Away Combo\cc Acquired!]";
 
 MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
 
