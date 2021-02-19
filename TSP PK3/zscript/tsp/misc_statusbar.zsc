@@ -14,6 +14,7 @@ Class TSP_StatusBar : BaseStatusBar
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
 	LinearValueInterpolator mMoneyInterpolator;
+	LinearValueInterpolator mChargeInterpolator;
 	
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
@@ -57,6 +58,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
 		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
 		mMoneyInterpolator = LinearValueInterpolator.Create(0, 8);
+		mChargeInterpolator = LinearValueInterpolator.Create(0, 1);
 	}
 	
 	override void Tick()
@@ -65,6 +67,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
+		mChargeInterpolator.Update(CPlayer.mo.CountInv("ChargedAttack"));
 		
 		tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
 		
@@ -104,6 +107,7 @@ Class TSP_StatusBar : BaseStatusBar
 			int shield = mShieldInterpolator.GetValue();
 			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
+			int charge = mChargeInterpolator.GetValue();
             //DrawImage("H_GUIDER", (-135, -70), DI_ITEM_OFFSETS);
 			
 			
@@ -279,7 +283,49 @@ Class TSP_StatusBar : BaseStatusBar
 			}
 			
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			//DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			
+			// MEL MELEE HUD BASE
+			int maxCharge;
+			
+			// BARE KNUCKLE - Stasis Uppercut
+			if(CPlayer.mo.FindInventory("MelMelee") && CPlayer.mo.CountInv("MelPrimaryCombo")==1)
+			{
+				maxCharge = 9;
+			}
+			
+			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelMelee")
+			{
+				DrawBar("MEL_HAGF", "MEL_HAGE", shield, maxShield, (HUDRIGHT_X+3, HUDRIGHT_Y+37), 0, 1, DI_ITEM_OFFSETS);
+				DrawBar("MEL_HCHB", "MEL_HCHE", charge, maxCharge, (HUDRIGHT_X+3, HUDRIGHT_Y+46), 0, 1, DI_ITEM_OFFSETS);
+				DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			}
+			
+			
+			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelChargeStyle")
+			{
+				if(CPlayer.mo.CountInv("MelPrimaryCombo")==1)
+				{
+					maxCharge = 6;
+				}
+				else if(CPlayer.mo.CountInv("MelPrimaryCombo")==2)
+				{
+					maxCharge = 5;
+				}
+				else if(CPlayer.mo.CountInv("MelAlternateCombo")==3)
+				{
+					maxCharge = 8;
+				}
+			}
+			
+			
+			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelChargeStyle")
+			{
+				DrawBar("MEL_HAGF", "MEL_HAGE", shield, maxShield, (HUDRIGHT_X+3, HUDRIGHT_Y+37), 0, 1, DI_ITEM_OFFSETS);
+				DrawBar("MEL_HCHC", "MEL_HCHE", charge, maxCharge, (HUDRIGHT_X+3, HUDRIGHT_Y+46), 0, 1, DI_ITEM_OFFSETS);
+				DrawImage("MEL_WEPC", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			}
+		
+		
 			
 			//================
 			// WEAPON PIP
