@@ -140,6 +140,14 @@ Default
 	Inventory.MaxAmount 99;
 	}
 }	
+class MelAlternateCombo2 : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
 
 class MelMachCombo : Inventory
 {
