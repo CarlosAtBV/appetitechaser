@@ -177,9 +177,10 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		0114 ABC 1 BRIGHT
 		0114 D 2 BRIGHT A_TSP_Melee(88,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
-		TNT1 A 0 A_SetPitch(pitch - 3)
+		TNT1 A 0 A_SetPitch(pitch - 2, SPF_INTERPOLATE)
 	    0114 EEDC 2 BRIGHT ThrustThingZ(0,1,0,1)
 	    0114 BA 1 ThrustThingZ(0,1,0,1)
+		TNT1 A 0 A_SetPitch(pitch + 2, SPF_INTERPOLATE)
 		TNT1 A 10 ThrustThingZ(0,1,0,1)
 		Goto AfterMelee
 
@@ -416,6 +417,9 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 // P-P-K End
 	StreetSweeperFinisherEnd:
 		011J EFGHI 1
+		{
+			A_SetAngle(angle + 2.0, SPF_INTERPOLATE);
+		}
 		TNT1 A 5
 		Goto AfterMelee
 	

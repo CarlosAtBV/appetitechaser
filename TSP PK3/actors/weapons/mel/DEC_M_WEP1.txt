@@ -308,13 +308,14 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 		110D ABC 1 BRIGHT
 		110D D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,25,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
-		TNT1 A 0 A_SetPitch(pitch - 3)
+		TNT1 A 0 A_SetPitch(pitch - 2)
 	    110D E 2 BRIGHT ThrustThingZ(0,1,0,1)
 	    110D F 1 BRIGHT ThrustThingZ(0,1,0,1)
 	    110D G 1 BRIGHT ThrustThingZ(0,1,0,1)
 	    110D H 1 ThrustThingZ(0,1,0,1)
 		110D ICBA 1 //Uppercut Finished
 		{
+			A_SetPitch(pitch + .5, SPF_INTERPOLATE);
 			ThrustThingZ(0,1,0,1);
 		}
 		TNT1 A 0 A_JumpIf(CountInv("TSP_Upgrade_ChargeStyle") < 1, "SuperUppercutEnd") //No Charge Style? GTFO
@@ -490,8 +491,6 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 		TNT1 A 5 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 Thrustthing(angle*256/360,9, 0, 0)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
-		TNT1 A 0 A_SetPitch(pitch - 0.5)
-		TNT1 A 0 A_SetAngle(angle + (frandom(-0.3,0.3)))
 		111R ABC 1
 		111R D 3 A_TSP_Melee(24,90,"StrongMeleePuff",0,16,8)
 		Goto ViperFinisherEnd
@@ -508,12 +507,15 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111J ABC 1
 		111J D 0 A_JumpIfInventory("PowerStrength",1,"StreetSweeperFinisherBerserk")
-		111J D 1 A_TSP_Melee(30,90,"StrongMeleePuff")
+		111J D 1 A_TSP_Melee(30,90,"StrongMeleePuff", -10)
 		Goto StreetSweeperFinisherEnd
 
 // P-P-K END
 	StreetSweeperFinisherEnd:
 		111J EFGH 1
+		{
+			A_SetAngle(angle + 2.0, SPF_INTERPOLATE);
+		}
 		TNT1 A 5
 		Goto AfterMelee
 
@@ -541,12 +543,18 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 		TNT1 A 6 A_PlaySound("*largemelee", CHAN_VOICE)
 		TNT1 A 0 A_PlaySoundEX("strongmelee/miss", "SoundSlot5")
 		111M ABCDE 1
+		{
+			A_SetAngle(angle + 3.0, SPF_INTERPOLATE);
+		}
 		111M F 1 A_TSP_Melee(30+2+2+2,90,"StrongMeleePuff",10,0)
 		Goto CrescentFangFinisherEnd
 
 // P-P-P-K-K END
 	CrescentFangFinisherEnd:
 		111M GH 1
+		{
+			A_SetAngle(angle - 10, SPF_INTERPOLATE);
+		}
 		TNT1 A 10
 		//TNT1 A 0 A_GiveInventory("MelPistolCombo", 1)//allows you to do the pistol combo (we'll get back to this)
 		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99)
