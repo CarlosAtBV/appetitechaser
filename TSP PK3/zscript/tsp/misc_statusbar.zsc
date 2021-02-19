@@ -154,6 +154,8 @@ Class TSP_StatusBar : BaseStatusBar
 				case 3: 
 					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retro/Robo Mel
 					DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+				case 4: 
+					DrawImage("HUDTEST1", (HUDLEFT_X+24, HUDLEFT_Y+2), DI_ITEM_OFFSETS); break;
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
