@@ -110,7 +110,8 @@ Class TSP_StatusBar : BaseStatusBar
 			int charge = mChargeInterpolator.GetValue();
             //DrawImage("H_GUIDER", (-135, -70), DI_ITEM_OFFSETS);
 			
-			
+			DrawImage("NEWHUD1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			/*
 			// Monet
 			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X+120, HUDLEFT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_WHITE);
@@ -142,7 +143,7 @@ Class TSP_StatusBar : BaseStatusBar
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
 				DrawImage("MEL_HBG1", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			}
+			}*/
 			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
@@ -155,9 +156,11 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retro/Robo Mel
 					DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
 				case 4: 
-					DrawImage("HUDTEST1", (HUDLEFT_X+24, HUDLEFT_Y+2), DI_ITEM_OFFSETS); break;
+					DrawImage("HUDTEST1", (HUDLEFT_X+16, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
 				case 5: 
-					DrawImage("HUDTEST3", (HUDLEFT_X+20, HUDLEFT_Y+2), DI_ITEM_OFFSETS); break;
+					DrawImage("HUDTEST3", (HUDLEFT_X+16, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
+				case 6: 
+					DrawImage("HUDTEST5", (HUDLEFT_X+16, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
@@ -221,7 +224,7 @@ Class TSP_StatusBar : BaseStatusBar
 							
 				}
 			}
-			
+			/*
 			//================
 			// Health
 			//================
@@ -265,7 +268,7 @@ Class TSP_StatusBar : BaseStatusBar
 						roww = max(roww, size.X);
 					}
 				}
-			
+			*/
 			// RIGHT HAND SIDE
 			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO

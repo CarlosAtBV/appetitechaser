@@ -7,7 +7,7 @@ server bool tsp_actionmode = false;
 
 server bool tsp_easyauto = false;
 
-server noarchive int tsp_melhudmod = 0;
+server /*noarchive*/ int tsp_melhudmod = 0;
 
 //Hmm
 server bool tsp_supersecret = false;
