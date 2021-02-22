@@ -13,17 +13,6 @@ texture M_SPSEL
     pic MSPSEL10 tics 2
     pic MSPSEL11 tics 2
     pic MSPSEL12 tics 2
-
-// Mel Hud BG
-texture MEL_HBG1
-    pic MEL_HBG1 tics 80
-    pic MEL_HBG2 tics 2
-    pic MEL_HBG3 tics 2
-    pic MEL_HBG4 tics 2
-	pic MEL_HBG5 tics 2
-    pic MEL_HBG6 tics 2
-	pic MEL_HBG7 tics 2
-    pic MEL_HBG8 tics 2
 	
 // SPARKING
 texture HUDSPA00
