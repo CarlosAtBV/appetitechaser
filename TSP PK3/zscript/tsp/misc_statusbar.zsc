@@ -204,32 +204,21 @@ Class TSP_StatusBar : BaseStatusBar
 			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MCW"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Default Mel
-					DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Default Mel
 				case 2:
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retrograde Mel
-					DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retrograde Mel
 				case 3: 
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS); // Retro/Robo Mel
-					DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); break;
-				case 4: 
-					DrawImage("HUDTEST1", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
-				case 5: 
-					DrawImage("HUDTEST3", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
-				case 6: 
-					DrawImage("", (HUDLEFT_X+16, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;
+					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
 						if(cplayer.getgender()==2) // Are you a robot?
 						{
-						DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RRG"), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
-						DrawImage("RRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); 
+						DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 						}
 						else // You are not a robot
 						{
-						DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
-						DrawImage("MRGST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
+						DrawTexture(GetMugShot(5), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 						}
 					}
 					
@@ -240,13 +229,12 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					else // Draw default player mugshot
 					{
-						DrawTexture(GetMugShot(5), (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(5), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 					}
 					
 
 					if(CPlayer.mo is "TSP_MelPlayer")
 					{
-						DrawImage("MCWST00", (HUDLEFT_X+15, HUDLEFT_Y), DI_ITEM_OFFSETS|DI_TRANSLATABLE); // Colorable jacket
 						/*if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
 						{
 						DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);

@@ -8,7 +8,7 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		Player.StartItem "IsMelRetro", 1;		
 		Player.SoundClass "MelRetro";
 		Player.DisplayName "$MELRETRONAMECS";
-		Player.Face "MRG";
+		Player.Face "MR1";
 		//Player.Portrait "MRGST01";
 		Player.Portrait "CSB_MELR";
 		Player.WeaponSlot 1, "MelRetroMelee";
