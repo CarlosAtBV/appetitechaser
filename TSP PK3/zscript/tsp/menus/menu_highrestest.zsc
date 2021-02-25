@@ -48,5 +48,11 @@ Class TSP_HiResMenu : GenericMenu
 				DTA_DestWidth, midX,
 				DTA_FlipY, i);
 		}
+		
+		Font fnt = "tsp_bold";
+		String testString = "FUCK NUGGET";
+		
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, screen.GetWidth()/2 - fnt.StringWidth(testString)/2, 8, testString, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
+		//screen.DrawText(BigFont, Font.CR_UNTRANSLATED, 32, 64, "FUCK NUGGET", DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
 	}
 }
