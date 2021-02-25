@@ -19,40 +19,34 @@ Class TSP_HiResMenu : GenericMenu
 		{
 			int yOff = i ? 720 - 96 : 0;
 			
-			screen.DrawTexture (testTex, true, 0, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
+			screen.DrawTexture (testTex, true, 0, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, midX,
 				DTA_FlipY, i);
 				
-			screen.DrawTexture (testTex, true, midX, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
+			screen.DrawTexture (testTex, true, midX, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_SrcX, 3,
 				DTA_SrcWidth, slopeWidth,
 				DTA_DestWidth, slopeWidth,
 				DTA_FlipY, i);
 				
-			screen.DrawTexture (testTex, true, midX+slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
+			screen.DrawTexture (testTex, true, midX+slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_SrcX, 96-3,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, 1280 - (midX+slopeWidth)*2,
 				DTA_FlipY, i);
 				
-			screen.DrawTexture (testTex, true, 1280-sideWidth-slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
+			screen.DrawTexture (testTex, true, 1280-sideWidth-slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_FlipX, true,
 				DTA_SrcX, 3,
 				DTA_SrcWidth, slopeWidth,
 				DTA_DestWidth, slopeWidth,
 				DTA_FlipY, i);
 				
-			screen.DrawTexture (testTex, true, 1280-sideWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
+			screen.DrawTexture (testTex, true, 1280-sideWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, midX,
 				DTA_FlipY, i);
 		}
-			
-		/*screen.DrawTexture (curButton.icon, true, curButton.pos.x, curButton.pos.y, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720,
-			DTA_ScaleX, isSelected ? 1.1 : 1.0,
-			DTA_ScaleY, isSelected ? 1.1 : 1.0,
-			DTA_LeftOffsetF, isSelected ? 1. : 0.,
-			DTA_TopOffsetF, isSelected ? 1.5 : 0.);*/
 	}
 }
