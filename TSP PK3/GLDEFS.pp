@@ -13,3 +13,10 @@ HardwareShader Texture "graphics/menu/common/header_top_green.png"
 	Texture "texScanline" "graphics/menu/common/scanlines.png"
 	Texture "texBorder" "graphics/menu/common/header_top.png"
 }
+
+HardwareShader Texture "graphics/menu/common/border/border_bg_green.png"
+{
+	Shader "shaders/glsl/menuscan.fp"
+	Texture "texScanline" "graphics/menu/common/scanlines.png"
+	Texture "texBorder" "graphics/menu/common/border/border.png"
+}

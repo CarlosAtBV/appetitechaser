@@ -49,6 +49,9 @@ Class TSP_HiResMenu : GenericMenu
 				DTA_FlipY, i);
 		}
 		
+		TSP_MenuCommon.Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		TSP_MenuCommon.Draw9Slice(216*3, 170*3, 155*3, 49*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK NUGGET";
 		
