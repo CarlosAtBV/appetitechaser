@@ -1,61 +1,78 @@
-Class TSP_HiResMenu : GenericMenu
+Class TSP_HiResMenu : TSP_MenuBase
 {
-	override void Init(Menu parent)
-	{
-		Super.Init(parent);
-	}
-	
-	Shape2D header_top;
-	
-	override void Drawer()
+	override void TSP_MenuDrawer()
 	{
 		let testTex = TexMan.CheckForTexture("graphics/menu/common/header_top_green.png");
+		let testTex2 = TexMan.CheckForTexture("graphics/placeholder/king_of_fellas.png");
 		
 		int sideWidth = 96;
 		int midX = 96;
 		int slopeWidth = 90;
 		
+		/*screen.DrawTexture (testTex2, true, 0, 0,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));*/
+		
 		for ( int i = 0; i < 2; i++ )
 		{
 			int yOff = i ? 720 - 96 : 0;
 			
-			screen.DrawTexture (testTex, true, 0, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			screen.DrawTexture (testTex, true, 0, yOff,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, midX,
-				DTA_FlipY, i);
+				DTA_FlipY, i,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 				
-			screen.DrawTexture (testTex, true, midX, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			screen.DrawTexture (testTex, true, midX, yOff,
 				DTA_SrcX, 3,
 				DTA_SrcWidth, slopeWidth,
 				DTA_DestWidth, slopeWidth,
-				DTA_FlipY, i);
+				DTA_FlipY, i,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 				
-			screen.DrawTexture (testTex, true, midX+slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			screen.DrawTexture (testTex, true, midX+slopeWidth, yOff,
 				DTA_SrcX, 96-3,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, 1280 - (midX+slopeWidth)*2,
-				DTA_FlipY, i);
+				DTA_FlipY, i,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 				
-			screen.DrawTexture (testTex, true, 1280-sideWidth-slopeWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			screen.DrawTexture (testTex, true, 1280-sideWidth-slopeWidth, yOff,
 				DTA_FlipX, true,
 				DTA_SrcX, 3,
 				DTA_SrcWidth, slopeWidth,
 				DTA_DestWidth, slopeWidth,
-				DTA_FlipY, i);
+				DTA_FlipY, i,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 				
-			screen.DrawTexture (testTex, true, 1280-sideWidth, yOff, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			screen.DrawTexture (testTex, true, 1280-sideWidth, yOff,
 				DTA_SrcWidth, 3,
 				DTA_DestWidth, midX,
-				DTA_FlipY, i);
+				DTA_FlipY, i,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		}
 		
-		TSP_MenuCommon.Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
-		TSP_MenuCommon.Draw9Slice(216*3, 170*3, 155*3, 49*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		Draw9Slice(216*3, 170*3, 155*3, 49*3, "graphics/menu/common/border/border_bg_green.png", 8);
 		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK NUGGET";
 		
-		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 1280/2 - fnt.StringWidth(testString)/2, 8, testString, DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 1280/2 - fnt.StringWidth(testString)/2, 8, testString,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		//screen.DrawText(BigFont, Font.CR_UNTRANSLATED, 32, 64, "FUCK NUGGET", DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
 	}
 }
