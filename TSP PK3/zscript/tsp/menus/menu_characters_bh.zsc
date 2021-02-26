@@ -2,23 +2,30 @@ Class TSP_CharMenu_Button
 {
 	Vector2 pos;
 	Vector2 size;
+	double scale;
 	TextureID icon;
+	bool isSelected;
 	
 	Class<Actor> pickClass;
 	
 	TSP_CharMenu_Button goLeft;
 	TSP_CharMenu_Button goRight;
+	
+	void Tick()
+	{
+		scale = scale + ((isSelected ? 1.1 : 1.0) - scale) / 4;
+	}
 }
 
-Class TSP_CharacterMenu_BH : GenericMenu
+Class TSP_CharacterMenu_BH : TSP_MenuBase
 {
-	const CSS_X = 160;
-	const CSS_Y = 162;
+	const CSS_X = 1280/2;
+	const CSS_Y = 162*3;
 	
-	const CSS_ICONW = 24;
-	const CSS_ICONH = 64;
+	const CSS_ICONW = 68;
+	const CSS_ICONH = 188;
 	
-	const CSS_ICONPAD = 4;
+	const CSS_ICONPAD = 4;//3*3;
 	
 	TSP_CharMenu_Button cm_curSelection;
 	int css_gamemode;
@@ -37,6 +44,16 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		Super.Init(parent);
 		
 		css_gamemode = -1;
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+		for ( int i = 0; i < css_buttons.Size(); i ++ )
+		{
+			css_buttons[i].isSelected = (css_buttons[i] == cm_curSelection);
+			css_buttons[i].Tick();
+		}
 	}
 	
 	void generateChars()
@@ -71,7 +88,7 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		}
 		
 		int xwidth = (CSS_ICONW + CSS_ICONPAD) * (5 + bountyChars.Size());//PlayerClasses.Size();
-		int xoff = CSS_X - xwidth / 2;
+		int xoff = (CSS_X - xwidth / 2) + CSS_ICONPAD/2;
 		
 		for ( int i = 0; i < 5; i++ )
 		{
@@ -80,7 +97,7 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			if ( i < baseGameChars.Size() )
 			{
 				let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(baseGameChars[i]));
-				newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+				newChar.icon = TexMan.CheckForTexture(thisChar.css_button);
 				newChar.pickClass = baseGameChars[i];
 			}
 			else
@@ -111,7 +128,7 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			if ( i < baseGameChars.Size() )
 			{
 				let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(bountyChars[i]));
-				newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+				newChar.icon = TexMan.CheckForTexture(thisChar.css_button);
 				newChar.pickClass = bountyChars[i];
 			}
 			else
@@ -134,9 +151,9 @@ Class TSP_CharacterMenu_BH : GenericMenu
 			newChar.pickClass = bonusChars[i];
 			
 			let thisChar = TSP_PlayerPawn_ZSCBase(GetDefaultByType(bonusChars[i]));
-			newChar.icon = TexMan.CheckForTexture(thisChar.Portrait);
+			newChar.icon = TexMan.CheckForTexture(thisChar.css_button);
 			newChar.pos = (xoff_left - (CSS_ICONW + CSS_ICONPAD) * i, CSS_Y);
-			newChar.size = (CSS_ICONW, 30);
+			newChar.size = (CSS_ICONW, 30*3);
 			
 			if ( i > 0 )
 			{
@@ -156,11 +173,13 @@ Class TSP_CharacterMenu_BH : GenericMenu
 	override bool MouseEvent(int type, int x, int y)
 	{
 		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
-		Vector2 mousePos = TSP_MenuCommon.ConvertMousePos((x, y));
+		Vector2 mousePos = ConvertMousePos((x, y));
+		
+		Console.Printf(""..mousePos);
 		
 		for( int i = 0; i<css_buttons.Size(); i++ )
 		{
-			if ( TSP_MenuCommon.CheckMousePos(mousePos, css_buttons[i].pos, css_buttons[i].size) )
+			if ( CheckMousePos(mousePos, css_buttons[i].pos, css_buttons[i].size) )
 			{
 				if ( css_buttons[i] != cm_curSelection )
 				{
@@ -213,12 +232,14 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		return super.MenuEvent(mkey, fromcontroller);
 	}
 	
-	override void Drawer()
+	override void TSP_MenuDrawer()
 	{
-		TSP_MenuCommon.Draw9Slice(-64, 159, 320 + 128, 71);
+		//Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		Draw9Slice(0, 478, 1280, 210, "graphics/menu/common/border/border_bg_green.png", 8);
 		
 		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
-		screen.DrawText(SmallFont, Font.CR_WHITE, 0, 4, gamemodeNames[css_gamemode], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		DrawText("tsp_bold", 1280/2, 8, gamemodeNames[css_gamemode].MakeUpper(), centered: true);
+		//screen.DrawText(SmallFont, Font.CR_WHITE, 0, 4, gamemodeNames[css_gamemode], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
 		//TextureID warnlimt = TexMan.CheckForTexture("WARNLIMT",TexMan.Type_MiscPatch);
 		//screen.DrawTexture (warnlimt, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 200);
@@ -234,12 +255,20 @@ Class TSP_CharacterMenu_BH : GenericMenu
 		{	
 			let curButton = css_buttons[cx];
 			bool isSelected = cm_curSelection == curButton;
-			screen.DrawTexture (curButton.icon, true, curButton.pos.x, curButton.pos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
-				DTA_ScaleX, isSelected ? 1.1 : 1.0,
-				DTA_ScaleY, isSelected ? 1.1 : 1.0,
-				DTA_LeftOffsetF, isSelected ? 1. : 0.,
-				DTA_TopOffsetF, isSelected ? 1.5 : 0.);
-			TSP_MenuCommon.Draw9Slice(curButton.pos.x-1, curButton.pos.y-1, curButton.size.x+2, curButton.size.y+2);
+			int texH = TexMan.GetSize(curButton.icon);
+			screen.DrawTexture (curButton.icon, true, curButton.pos.x + curButton.size.x/2, curButton.pos.y + curButton.size.y/2,
+				DTA_DestWidth, int(curButton.size.x), DTA_DestHeight, int(curButton.size.y),
+				DTA_SrcX, texH/2 - curButton.size.x / 2,
+				DTA_SrcWidth, curButton.size.x, DTA_SrcHeight, curButton.size.y,
+				
+				//DTA_LeftOffsetF, curButton.size.x/2,
+				DTA_CenterOffset, true,
+				DTA_ScaleX, curButton.scale,
+				DTA_ScaleY, curButton.scale,
+				
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		}
 		
 	}

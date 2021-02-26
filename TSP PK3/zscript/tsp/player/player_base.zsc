@@ -65,9 +65,13 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	bool ppc_mental;
 	
+	String css_button;
+	Property CSSButton : css_button;
+	
 	Default
 	{
 		DamageFactor "MagSlam", 0.0;
+		TSP_PlayerPawn_ZSCBase.CSSButton "graphics/menu/css/css_button_mel.png";
 	}
 	
 	override void GiveDefaultInventory()
