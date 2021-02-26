@@ -22,6 +22,10 @@ $playeralias	Mel   	 male  	*mediummelee		mel/mediummelee
 $playeralias	Mel    	 male  	*largemelee         mel/largemelee
 $playeralias	Mel   	 male  	*xlmelee			mel/xlmelee
 
+$playeralias	Mel   	 male  	*maggrapple			maggrapple
+$playeralias	Mel   	 male  	*magsling			magsling
+$playeralias	Mel   	 male  	*magdrive			magdrive
+
 $random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
 mel/pain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"
 mel/pain1002 "sounds/characters/mel/vo_mel_pain100-2.ogg"

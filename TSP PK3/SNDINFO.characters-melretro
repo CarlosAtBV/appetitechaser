@@ -18,6 +18,10 @@ $playeralias	MelRetro      male  	*mediummelee		melretro/smallmelee
 $playeralias	MelRetro   	  male  	*largemelee         melretro/largemelee
 $playeralias	MelRetro   	  male  	*xlmelee			melretro/largemelee
 
+$playeralias	MelRetro   	 male  		*maggrapple			maggrappleretro
+$playeralias	MelRetro   	 male  		*magsling			magslingretro
+$playeralias	MelRetro   	 male  		*magdrive			magdriveretro
+
 $random melretro/pain100 { melretro/pain1001 melretro/pain1002 melretro/pain1003 melretro/pain1004 }
 melretro/pain1001 "sounds/characters/melretro/default/vo_mel_retro_pain100-1.ogg"
 melretro/pain1002 "sounds/characters/melretro/default/vo_mel_retro_pain100-2.ogg"

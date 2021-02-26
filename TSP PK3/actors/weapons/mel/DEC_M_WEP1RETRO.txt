@@ -302,18 +302,20 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 // KEEP AWAY K-K-P-P-P
 	KeepAway:
 		TNT1 A 3 A_PlaySound("*strongmelee")
-		MLGF A 0 A_PlaySoundEX("magdriveretro", "SoundSlot6")
+		MLGF A 0 A_PlaySoundEX("*magdrive", "SoundSlot6")
 		MLGF ABCDEFGH 1
 		TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15)
 		MLGF I 1
 		{
-			A_TSP_Melee(100,150,"BlankMeleePuff", 0,32,8);
+			A_TSP_Melee(100,90,"BlankMeleePuff", 0,32,8);
 			A_SpawnItemEx ("MagPushProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION);
 			A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
 			A_SpawnItemEx ("MagPushProjectileReflective",0,15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
 			A_SpawnItemEx ("MagPushPainProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION);
+			A_Quake(3,2,0,3,"");
 		}
-		MLGF HGFEDCBA 1
+		MLGF HGFE 1 A_Quake(6,2,0,5,"")
+		MLGF DCBA 1
 		TNT1 A 6
 		Goto AfterMelee
 		
