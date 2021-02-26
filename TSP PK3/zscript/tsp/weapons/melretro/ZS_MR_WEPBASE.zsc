@@ -53,7 +53,7 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 		TNT1 A 0 A_SetBlend("18 65 32", 0.4, 15);
 		MLGF I 1
 		{
-			A_TSP_Melee(100,90,"BlankMeleePuff", 0,32,8);
+			A_TSP_Melee(50,90,"BlankMeleePuff", 0,32,8);
 			A_SpawnItemEx ("MagPushProjectile",20,0,18,cos(-pitch)*200,0,sin(-pitch)*200,0,SXF_NOCHECKPOSITION);
 			A_SpawnItemEx ("MagPushProjectileReflective",0,0,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
 			A_SpawnItemEx ("MagPushProjectileReflective",0,15,18,cos(-pitch)*60,0,sin(-pitch)*60,0,SXF_NOCHECKPOSITION);
