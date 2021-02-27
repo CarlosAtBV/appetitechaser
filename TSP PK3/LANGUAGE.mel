@@ -50,6 +50,7 @@ MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
 ////////////////
 // Trait Purchase Messages
 KeepAwayPickup = "\cc[\c[Mel]Keep Away Combo\cc Acquired!]";
+CrossSaberPickup = "\cc[\c[Mel]Cross Saber\cc Acquired!]";
 
 MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
 

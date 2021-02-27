@@ -207,6 +207,15 @@ page
 			inv_amount 1;
 			price 10;
 		}
+		item "Mt7"
+		{
+			upgrade "MelRetroMelee";
+			name "Cross Saber";
+			desc "$TSP_SHOP_MELRETRO_CROSSSABERDESC";
+			inv_class "TSP_Upgrade_CrossSaber";
+			inv_amount 1;
+			price 10;
+		}
 		header "Good Shit";
 		item
 		{

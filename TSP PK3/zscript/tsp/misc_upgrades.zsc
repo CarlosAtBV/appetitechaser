@@ -25,6 +25,8 @@ Class TSP_UpgradeBase : Inventory
 	}
 }
 
+// MEL
+
 Class TSP_Upgrade_RapidFireInf : TSP_UpgradeBase
 {
 	Default
@@ -72,11 +74,21 @@ Class TSP_Upgrade_PowerBank : TSP_UpgradeBase
 	}
 }
 
+// RETROGRADE MEL
+
 Class TSP_Upgrade_KeepAwayCombo : TSP_UpgradeBase
 {
 	Default
 	{
 		Inventory.PickupMessage "$KeepAwayPickup";
+	}
+}
+
+Class TSP_Upgrade_CrossSaber : TSP_UpgradeBase
+{
+	Default
+	{
+		Inventory.PickupMessage "$CrossSaberPickup";
 	}
 }
 
