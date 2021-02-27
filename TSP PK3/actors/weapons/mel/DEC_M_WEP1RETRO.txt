@@ -216,12 +216,12 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 			if (CountInv("ChargedAttack") == 30)
 			{
 				A_Print("3");
-				A_TSP_Melee(300,70,"BasicMeleePuff");
+				A_TSP_Melee(175,70,"MagDivePuff");
 			}
 			else if (CountInv("ChargedAttack") >= 15)
 			{
 				A_Print("2");
-				A_TSP_Melee(180,70,"BasicMeleePuff");
+				A_TSP_Melee(130,70,"StrongMeleePuff");
 			}
 			else if (CountInv("ChargedAttack") >= 5)
 			{
@@ -241,15 +241,15 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 		TNT1 A 5
 		Goto AfterMelee
 		
-// K-K-P (Cross Saber)
+// K-K-[Hold P] (Cross Saber)
 	CrossSaber:
 		TNT1 A 5
 		{
-			if (CountInv("ChargedAttack") == 30)
+			if (CountInv("ChargedAttack") >= 30)
 			{
 				A_PlaySound("chargestyle/charge03", 5);
 			}
-			else if (CountInv("ChargedAttack") == 15)
+			else if (CountInv("ChargedAttack") >= 15)
 			{
 				A_PlaySound("chargestyle/charge02", 5);
 			}
@@ -258,8 +258,6 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 				A_PlaySound("chargestyle/charge01", 5);
 			}
 		}
-		TNT1 A 1 A_Quake(3,2,0,5,"")
-		TNT1 A 0 A_SetBlend("124 252 0", 0.4, 10)
 	CrossSaberCharge:
 		TNT1 A 0
 		{
