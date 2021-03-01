@@ -62,7 +62,13 @@ texture HUDSPC00
     pic HUDSPC10 tics 1
 	pic TNT1A0   tics 1
     pic HUDSPC12 tics 1
-
+	
+// MISC
+texture MELOBYPA
+	pic MELOBYPA tics 150
+	pic MELOBYPB tics 3
+	pic MELOBYPC tics 5
+	pic MELOBYPB tics 3
 
 //////////////////////
 // TEXTURES

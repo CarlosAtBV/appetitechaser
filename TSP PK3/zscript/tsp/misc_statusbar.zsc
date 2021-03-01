@@ -204,32 +204,34 @@ Class TSP_StatusBar : BaseStatusBar
 			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Default Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Default Mel
 				case 2:
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retrograde Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retrograde Mel
 				case 3: 
-					DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
+				case 4: 
+					DrawImage("MELOBYPA", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;							   // Meloby
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
 						if(cplayer.getgender()==2) // Are you a robot?
 						{
-						DrawTexture(GetMugShot(5, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 						}
 						else // You are not a robot
 						{
-						DrawTexture(GetMugShot(5), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 						}
 					}
 					
 					else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
 					{
-						DrawImage("MELOBYPP", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						DrawImage("MELOBYPA", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 						//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
 					}
 					else // Draw default player mugshot
 					{
-						DrawTexture(GetMugShot(5), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
 					}
 					
 

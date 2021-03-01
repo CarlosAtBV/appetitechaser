@@ -158,9 +158,7 @@ OptionValue TSPMelHudMod
 	1, "$MELNAMECS"
 	2, "$MELRETRONAMECS"
 	3, "$MELRETROROBONAMECS"
-	4, "[TEST]"
-	5, "[TEST2]"
-	6, "[TEST3]"
+	4, "???"
 }
 
 OptionValue TSPEasyAutoOnOff
