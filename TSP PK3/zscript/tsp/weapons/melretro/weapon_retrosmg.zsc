@@ -159,6 +159,7 @@ class MelRetroSMG : TSP_MelRetro_BaseWeapon
 		Goto SPMeleeEnd;
 	SPMeleeEnd: 
 		ABXM EFGI 1;
+		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 		TNT1 A 8
 		{
 			A_WeaponReady(WRF_NOFIRE);
