@@ -158,7 +158,7 @@ class MelRetroSMG : TSP_MelRetro_BaseWeapon
 		ABXM D 1 A_TSP_Melee(48,90,"StrongMeleePuff");
 		Goto SPMeleeEnd;
 	SPMeleeEnd: 
-		ABXM FGI 1;
+		ABXM EFGI 1;
 		TNT1 A 8
 		{
 			A_WeaponReady(WRF_NOFIRE);
