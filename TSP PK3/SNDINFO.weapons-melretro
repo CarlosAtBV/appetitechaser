@@ -12,7 +12,7 @@
 // - PlanetSide 2
 // - Resident Evil 4
 // - Super Smash Bros Melee
-// - WildWeasel (Sounds originated from Agent Hernandez
+// - WildWeasel (Sounds originated from Agent Hernandez)
 // - Wolfenstein (2009)
 
 919m/draw		"sounds/weapons/Mel Retro/919m/sfx_919m_draw.ogg"
@@ -39,3 +39,24 @@ $random 922a/fire { 922a/firea01 922a/firea02 922a/firea03 }
 
 919m/autoon  "sounds/weapons/Mel Retro/919m/sfx_919m_auto_on.ogg"
 919m/autooff "sounds/weapons/Mel Retro/919m/sfx_919m_auto_off.ogg"
+
+// Slot 4: AB50
+// SOUND CREDITS/SOURCES: 
+// [ALL]
+// - Call of Duty: Modern Warfare 2
+// - Chronicles of Riddick: Assault on Dark Athena
+// - PlanetSide 2
+// - Resident Evil 4
+// - Titanfall 2
+
+ab50/draw		"sounds/weapons/Mel Retro/AB50/sfx_AB50_draw.ogg"
+ab50/holster	"sounds/weapons/Mel Retro/AB50/sfx_AB50_draw.ogg"
+
+$random AB50/fire { AB50/fire01 AB50/fire02 AB50/fire03 }
+AB50/fire01 "sounds/weapons/Mel Retro/AB50/sfx_AB50_fire01.ogg"
+AB50/fire02 "sounds/weapons/Mel Retro/AB50/sfx_AB50_fire02.ogg"
+AB50/fire03 "sounds/weapons/Mel Retro/AB50/sfx_AB50_fire03.ogg"
+
+AB50/reloadout "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload01.ogg"
+AB50/reloadin1 "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload02.ogg"
+AB50/cock "sounds/weapons/Mel Retro/AB50/sfx_AB50_cock.ogg"
