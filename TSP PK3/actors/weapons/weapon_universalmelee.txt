@@ -1,9 +1,3 @@
-ACTOR ComboCooldown: Inventory
-{
-	Inventory.MaxAmount 99
-	Inventory.Icon TNT1A0
-}
-
 /////////////////////
 //DEFAULT MELEE PUFFS
 /////////////////////

@@ -78,7 +78,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A -1;
 			Loop;
 		Deselect:
-			TNT1 A 0 A_TakeInventory("MelIdle", 99999);
+			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 			TNT1 A 0 A_TakeInventory("MeleeSelected", 1);
 			"----" A 0
 			{
@@ -89,9 +89,9 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "StyleDeselect");
 			TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "ComboDeselect");
 			TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect");
-			TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "ComboDeselect");
+			TNT1 A 0 A_JumpIfInventory("TSPPistolCombo", 1, "ComboDeselect");
 			TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
-			TNT1 A 0 A_TakeInventory("MelPistolCombo", 99);
+			TNT1 A 0 A_TakeInventory("TSPPistolCombo", 99);
 			111D ABC 1;
 			TNT1 A 3;
 		DeselectLoop:
@@ -120,16 +120,16 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("TSP_Upgrade_ChargeStyle", 1, "CompleteReady");
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt");
-			TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle");
-			TNT1 A 0 A_GiveInventory("MelIdle", 1);
+			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
+			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			111G A 1 A_WeaponReady;
 			Loop;
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch");
 			TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt");
-			TNT1 A 0 A_JumpIfInventory("MelIdle", 1575, "Idle");
-			TNT1 A 0 A_GiveInventory("MelIdle", 1);
+			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
+			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			111G A 1 A_WeaponReady;
 			Loop;
 
@@ -138,13 +138,13 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		Taunt:
 			TNT1 A 0 A_AlertMonsters;
 			TNT1 A 0 A_JumpIf(CountInv("TSP_Upgrade_PowerBank")<1,"Idle"); // If Power Bank is not purchased ya get NOTHING
-			TNT1 A 0 A_GiveInventory("ChargedAttack", 10);
+			TNT1 A 0 A_GiveInventory("TSPChargedAttack", 10);
 		Idle:
-			TNT1 A 0 A_TakeInventory("MelIdle", 99999);
+			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 		Idle1:
 			TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE);
 			111V ABCDEE 1 A_WeaponReady;
-			TNT1 A 0 A_PlaySound("melidlebk", 6);
+			TNT1 A 0 A_PlaySound("TSPIdlebk", 6);
 			TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50);
 			111V F 5 A_WeaponReady;
 			TNT1 A 0 A_Quake(1,40,0,5,"");
@@ -155,7 +155,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 
 	// Activates Charge Style
 		StyleSwitch:
-			TNT1 A 0 A_TakeInventory("MelIdle", 99999);
+			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 			"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_ChargeStyle")<1,"Nope"); // Charge Style not purchased yet
 		ChargeStyleActivate:
 			TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch");
@@ -199,7 +199,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_alt = 0;
 				invoker.combo_mach = 0;
 			}
-			TNT1 A 0 A_TakeInventory("ChargedAttack", 99);
+			TNT1 A 0 A_TakeInventory("TSPChargedAttack", 99);
 			TNT1 A 0 A_GiveInventory("MelChargeToken", 1);
 			TNT1 A 0 A_GiveInventory("MelChargeStyle", 1);
 			TNT1 A 1 A_SelectWeapon("MelChargeStyle");
@@ -224,7 +224,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 
 	// Punch!
 		Fire:
-			TNT1 A 0 A_TakeInventory("MelIdle", 99999);
+			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 			TNT1 A 0 A_GiveInventory("StyleComboToken", 1);
 			"----" A 0
 			{
@@ -364,8 +364,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,50,0,0);
 			TNT1 A 0 A_SetBlend("124 252 0", 0.4, 10);
 		ChargeLvl1:
-			TNT1 A 0 A_JumpIfInventory("ChargedAttack", 9, "ChargeComplete");
-			TNT1 A 3 A_GiveInventory("ChargedAttack", 1);
+			TNT1 A 0 A_JumpIfInventory("TSPChargedAttack", 9, "ChargeComplete");
+			TNT1 A 3 A_GiveInventory("TSPChargedAttack", 1);
 			TNT1 A 1 A_Quake(1,2,0,5,"");
 			TNT1 A 0 A_SetBlend("124 252 0", 0.05, 3);
 			TNT1 A 0 A_Refire("ChargeLvl1");
@@ -690,7 +690,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		CrescentFangFinisherEnd:
 			111M GH 1;
 			TNT1 A 10;
-			//TNT1 A 0 A_GiveInventory("MelPistolCombo", 1)//allows you to do the pistol combo (we'll get back to this)
+			//TNT1 A 0 A_GiveInventory("TSPPistolCombo", 1)//allows you to do the pistol combo (we'll get back to this)
 			"----" A 0
 			{
 				invoker.combo_primary = 0;
@@ -710,8 +710,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_alt = 0;
 				invoker.combo_mach = 0;
 			}
-			TNT1 A 0 A_TakeInventory("MelPistolCombo", 99);
-			TNT1 A 0 A_TakeInventory("ChargedAttack", 99);
+			TNT1 A 0 A_TakeInventory("TSPPistolCombo", 99);
+			TNT1 A 0 A_TakeInventory("TSPChargedAttack", 99);
 			TNT1 A 0 A_TakeInventory("StyleComboToken", 99);
 			TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
 			111U ABC 1;
@@ -725,7 +725,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 }
 
 
-/*ACTOR ChargedAttack: Inventory
+/*ACTOR TSPChargedAttack: Inventory
 {
   Inventory.MaxAmount 99
   Inventory.Icon TNT1A0

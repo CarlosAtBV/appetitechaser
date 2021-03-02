@@ -82,9 +82,10 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/aaa_core.zsc"
 #include "zscript/tsp/weapons/aaa_mag.zsc"
 #include "zscript/tsp/weapons/aaa_pickup.zsc"
+#include "zscript/tsp/weapons/aaa_tokens.zsc" // [CS] Someday, maybe we won't need tokens to play games at Chuck E. Cheese.
 
 // MEL
-#include "zscript/tsp/weapons/mel/ZS_M_WEPBASE.zsc"
+#include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"
 #include "zscript/tsp/weapons/mel/weapon_suzu.zsc"
 #include "zscript/tsp/weapons/mel/weapon_suzu_shotgun.zsc"
 #include "zscript/tsp/weapons/mel/weapon_suzu_nail.zsc"
@@ -93,12 +94,12 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/mel/weapon_melee_test_2.zsc"
 
 // MEL (RETROGADE)
-#include "zscript/tsp/weapons/melretro/ZS_MR_WEPBASE.zsc"
-#include "zscript/tsp/weapons/melretro/ZS_MR_WEP2.zsc"
-#include "zscript/tsp/weapons/melretro/ZS_MR_WEP2A.zsc"
+#include "zscript/tsp/weapons/melretro/weapon_base_melretro.zsc"
+#include "zscript/tsp/weapons/melretro/weapon_retropistol.zsc"
+#include "zscript/tsp/weapons/melretro/weapon_retropistola.zsc"
 
 // SHEN MI
-#include "zscript/tsp/weapons/shenmi/ZS_SHEN_WEP2.zsc"
+#include "zscript/tsp/weapons/shenmi/weapon_selena.zsc"
 
 Class TSP_Hunters_Kills : Inventory { Default { Inventory.MaxAmount 9999; } }
 Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } } // [Py] good luck getting that many in a row. fool. foolish man.

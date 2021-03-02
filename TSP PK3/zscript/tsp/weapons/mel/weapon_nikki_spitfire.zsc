@@ -30,7 +30,7 @@ Class MelPistolA : MelPistol
 			"----" A 0 A_TSP_GotoReadyState;
 			Loop;
 		ModFire:
-			"----" A 0 A_TakeInventory("MelIdle", 99999);
+			"----" A 0 A_TakeInventory("TSPIdle", 99999);
 			"----" A 0 A_TSP_JumpIfClipEmpty("Empty");
 			"----" A 1;
 			TNT1 A 0 A_Light2;

@@ -52,7 +52,7 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 			A_GiveInventory("WeaponSelectMemory", 021);
 		}
 		TNT1 A 0 A_WeaponOffset(0,32);
-		TNT1 A 0 A_JumpIfInventory("MelPistolCombo", 1, "PistolCombo");
+		TNT1 A 0 A_JumpIfInventory("TSPPistolCombo", 1, "PistolCombo");
 		TNT1 A 0 A_JumpIfInventory("FullAutoOn", 1, "AutoSelect");
 		TNT1 A 3;
 		MPTU ABCD 1;
@@ -67,7 +67,7 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 	Deselect:
 		TNT1 A 0
 		{
-			A_TakeInventory("MelPistolCombo", 99);
+			A_TakeInventory("TSPPistolCombo", 99);
 		}
 		TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect");
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
@@ -219,7 +219,7 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		
 	// PISTOL COMBO from Retrograde Mel's P-P-P-K-K String
 	PistolCombo:
-		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99);
+		TNT1 A 0 A_TakeInventory("TSPPistolCombo", 99);
 		TNT1 A 0 A_TSP_JumpIfClipLower(5,"Select");
 		TNT1 A 3 A_PlaySound("basicmelee/miss", 6);
 		MPCF ABCD 1;
@@ -281,10 +281,11 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		MPCF MN 1;
 		TNT1 A 8;
 	AfterCombo:
-		TNT1 A 0 A_TakeInventory("MelPistolCombo", 99);
-		TNT1 A 0 A_TakeInventory("MelPrimaryCombo", 99);
-		TNT1 A 0 A_TakeInventory("MelAlternateCombo", 99);
-		TNT1 A 0 A_TakeInventory("MelMachCombo", 99);
+		TNT1 A 0 A_TakeInventory("TSPPistolCombo", 99);
+		TNT1 A 0 A_TakeInventory("TSPPrimaryCombo", 99);
+		TNT1 A 0 A_TakeInventory("TSPAlternateCombo", 99);
+		TNT1 A 0 A_TakeInventory("TSPAlternateCombo2", 99);
+		TNT1 A 0 A_TakeInventory("TSPMachCombo", 99);
 		ASTU ABCD 1;
 		Goto Ready;
 

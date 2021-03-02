@@ -67,7 +67,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
-		mChargeInterpolator.Update(CPlayer.mo.CountInv("ChargedAttack"));
+		mChargeInterpolator.Update(CPlayer.mo.CountInv("TSPChargedAttack"));
 		
 		tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
 		
@@ -342,7 +342,7 @@ Class TSP_StatusBar : BaseStatusBar
 			int maxCharge;
 			
 			// BARE KNUCKLE - Stasis Uppercut
-			if(CPlayer.mo.FindInventory("MelMelee") && CPlayer.mo.CountInv("MelPrimaryCombo")==1)
+			if(CPlayer.mo.FindInventory("MelMelee") && CPlayer.mo.CountInv("TSPPrimaryCombo")==1)
 			{
 				maxCharge = 9;
 			}
@@ -357,15 +357,15 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelChargeStyle")
 			{
-				if(CPlayer.mo.CountInv("MelPrimaryCombo")==1)
+				if(CPlayer.mo.CountInv("TSPPrimaryCombo")==1)
 				{
 					maxCharge = 6;
 				}
-				else if(CPlayer.mo.CountInv("MelPrimaryCombo")==2)
+				else if(CPlayer.mo.CountInv("TSPPrimaryCombo")==2)
 				{
 					maxCharge = 5;
 				}
-				else if(CPlayer.mo.CountInv("MelAlternateCombo")==3)
+				else if(CPlayer.mo.CountInv("TSPAlternateCombo")==3)
 				{
 					maxCharge = 8;
 				}

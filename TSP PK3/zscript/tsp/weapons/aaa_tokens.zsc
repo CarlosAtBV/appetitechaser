@@ -1,0 +1,128 @@
+// This token is given after each melee attack and certain other animations.
+// When deselecting with this token in your inventory, switching to a weapon
+// in-between melee attacks will skip the melee deselect animation. Certain
+// weapons will also use a faster select animation.
+class ComboCooldown : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}
+
+// Counts number of hits you're at in the primary combo string
+// Formerly "MelPrimaryCombo". Renamed for additional character support
+// (seriously imagine all the tokens we'd have to create lol)
+class TSPPrimaryCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+class TSPPrimaryCombo2 : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+// Counts number of hits you're at in the alternate combo string
+class TSPAlternateCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+class TSPAlternateCombo2 : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+// Created specifically for Mel's "rapid-fire" combo
+class TSPMachCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}
+
+class TSPChargedAttack : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}		
+
+// when you're jus vibin
+class TSPIdle : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 2500;
+	}
+}	
+
+// Used specifically for Mel's P-P-K-K-K [Switch to Pistol] String
+class TSPPistolCombo : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelBareKnuckleToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class MelChargeToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleChangeToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleComboEnderToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StyleComboToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	
+
+class StartingComboToken : Inventory
+{
+Default
+	{
+	Inventory.MaxAmount 99;
+	}
+}	

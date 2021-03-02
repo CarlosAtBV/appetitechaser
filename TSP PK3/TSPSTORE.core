@@ -200,7 +200,6 @@ page
 		header "Retrograde Mel";
 		item "Mt6"
 		{
-			upgrade "MelRetroMelee";
 			name "Keep Away";
 			desc "$TSP_SHOP_MELRETRO_KEEPAWAYDESC";
 			inv_class "TSP_Upgrade_KeepAwayCombo";
@@ -209,7 +208,6 @@ page
 		}
 		item "Mt7"
 		{
-			upgrade "MelRetroMelee";
 			name "Cross Saber";
 			desc "$TSP_SHOP_MELRETRO_CROSSSABERDESC";
 			inv_class "TSP_Upgrade_CrossSaber";
