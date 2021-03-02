@@ -150,6 +150,21 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	Weapon tsp_desiredModSwitch;
 	
+	action void A_TSP_AnimLayer (int layer, double x, double y, double angle)
+	{
+		let psprite = invoker.owner.player.GetPSprite(layer);
+		
+		let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
+		Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
+		
+		psprite.bPivotPercent = false;
+		psprite.pivot = (160, 100-32) + sprOffset;//offset;
+		//Console.Printf(""..sprOffset);
+		psprite.x = x;
+		psprite.y = 32+y;
+		psprite.rotation = angle;
+	}
+	
 	//Inventory tspw_nextmod; Inventory tspw_prevmod;
 	
 	Default
