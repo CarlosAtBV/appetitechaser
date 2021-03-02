@@ -113,7 +113,6 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 
 	ModReady:
 		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"AutoModeMelee");
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 		ASTG A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 		"####" A 0 A_TSP_GotoReadyState;
 		Loop;
@@ -176,12 +175,12 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		Goto Ready;
 		
 	AutoEmpty:
-		TNT1 A 0 A_GiveInventory("NeedstheCock", 1);
+		TNT1 A 0 A_GiveInventory("Rechamber", 1);
 		ASTF A 5 A_PlaySound("919m/empty", 6);
 		"----" A 0 A_TSP_CheckReload();
 		Goto ModReady;
 	Empty:
-		TNT1 A 0 A_GiveInventory("NeedstheCock", 1);
+		TNT1 A 0 A_GiveInventory("Rechamber", 1);
 		MPTF A 5 A_PlaySound("919m/empty", 6);
 		"----" A 0 A_TSP_CheckReload();
 		Goto Ready;
@@ -202,15 +201,15 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		MPTR Q 1 A_PlaySound("919m/reloadin2", 5);
 		MPTR QRSTUVWX 1;
 		MPTG A 3;
-		TNT1 A 0 A_JumpIfInventory("NeedstheCock", 1, "Rechamber");
+		TNT1 A 0 A_JumpIfInventory("Rechamber", 1, "Rechambering");
 		TNT1 A 0 A_JumpIfInventory("FullAutoOn", 1, "AutoPistolFinish");
 		Goto Ready;
-	Rechamber:
+	Rechambering:
 		MPTC A 0 A_PlaySound("919m/cock", 6);
 		MPTC ABCC 1;
 		MPTC DEFGHIJ 1;
 		MPTG A 2;
-		TNT1 A 0 A_TakeInventory("NeedstheCock", 99);
+		TNT1 A 0 A_TakeInventory("Rechamber", 99);
 		TNT1 A 0 A_JumpIfInventory("FullAutoOn", 1, "AutoPistolFinish");
 		Goto Ready;
 	AutoPistolFinish:
@@ -310,14 +309,17 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		Goto SPMeleeA;
 	SPMeleeA:    
 		MPTM GI 1;
-		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-		TNT1 A 6 A_WeaponReady (WRF_NOFIRE);
-		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
-		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart");
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo");
-		TNT1 A 0 A_JumpIfInventory("FullAutoOn",1,"AutoMeleeCooldown");
-		MPTS ABCD 1;
-		Goto Ready;
+		TNT1 A 8
+		{
+			A_WeaponReady(WRF_NOFIRE);
+			if(CountInv("MeleePressed")==1)
+			{
+				return resolveState("SPMeleeStart");
+			}
+			return resolveState(null);
+		}
+		Goto AfterMelee;
+		
 	Melee2:
 		TNT1 A 7;
 		TNT1 A 0 A_PlaySound("strongmelee/miss", 5);
@@ -330,11 +332,15 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		Goto Melee2A;
 	Melee2A: 
 		MPTM OPR 1;
-		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-		TNT1 A 6 A_WeaponReady (WRF_NOFIRE);
-		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
-		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart");
-		TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo");
+		TNT1 A 8
+		{
+			A_WeaponReady(WRF_NOFIRE);
+			if(CountInv("MeleePressed")==1)
+			{
+				return resolveState("SPMeleeStart");
+			}
+			return resolveState(null);
+		}
 	AfterMelee:
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
 		TNT1 A 0 A_JumpIfInventory("FullAutoOn",1,"AutoMeleeCooldown");
@@ -342,13 +348,13 @@ class MelRetroPistol : TSP_MelRetro_BaseWeapon
 		TNT1 A 0 A_TakeInventory("FullAutoOn", 99);
 		TNT1 A 0 A_GiveInventory("FullAutoOn", 1);
 		Goto Ready;
-	//Auto Mode Melee
+		
+	//Auto Mode Melee Animation
 	AutoModeMelee:
 		ASTD ABCD 1;
 	AutoModeMeleeStart:
 		TNT1 A 0 A_Jump(256,"SPMeleeStart");
 	AutoMeleeCooldown:
-		TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"AutoModeMeleeStart");
 		ASTU EFGH 1;
 		Goto ModReady;
 	}
@@ -362,7 +368,7 @@ Default
 	}
 }
 
-Class NeedstheCock : Inventory
+Class Rechamber : Inventory
 {
 Default
 	{

@@ -201,3 +201,33 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 			Stop;
 	}
 }
+
+Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelRetroPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelRetroSMG",15);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		TSP_MelRetroPlayer:
+			ABXP A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}

@@ -4,7 +4,6 @@
 ACTOR TSP_Nothing {}
 ACTOR Nothing0 : TSP_Nothing replaces Chainsaw {}
 ACTOR Nothing2 : TSP_Nothing replaces SuperShotgun {}
-ACTOR Nothing3 : TSP_Nothing replaces Chaingun {}
 ACTOR Nothing4 : TSP_Nothing replaces RocketLauncher {}
 ACTOR Nothing5 : TSP_Nothing replaces PlasmaRifle {}
 ACTOR Nothing6 : TSP_Nothing replaces BFG9000 {}
