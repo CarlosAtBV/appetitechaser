@@ -55,9 +55,13 @@ CrossSaberPickup = "\cc[\c[Mel]Cross Saber\cc Acquired!]";
 MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
 
 //919M
-MelRetroPistolPickup = "\cc[\cy919m.0\cc - \cuPistol\cc]";
-MelRetroPistolTag = "\cc[\cy919m.0\cc]";
+MelRetroPistolPickup = "\cc[\cy919m.0\cc - \cuAuto-Pistol\cc]";
+MelRetroPistolTag = "\cc[\cy919m.0 Pistol\cc]";
 
 //922a
 MelRetroPistolAPickup = "\cc[\cy922a\cc - \cuAuto-Pistol\cc]";
-MelRetroPistolATag = "\cc[\cy922a\cc]";
+MelRetroPistolATag = "\cc[\cy922a Pistol\cc]";
+
+//AB50
+MelRetroSMGPickup = "\cc[\ckAB50\cc - \cuSMG\cc]";
+MelRetroSMGTag = "\cc[\ckAB50 SMG\cc]";

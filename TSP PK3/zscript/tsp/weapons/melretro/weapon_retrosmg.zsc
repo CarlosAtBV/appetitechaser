@@ -1,0 +1,229 @@
+//===========================================================================
+//
+// Kurdd & Schaumers AB-50
+//
+// by Cardboard Marty
+// Sprites by Mike12, zrrion the insect, and Cardboard Marty
+//
+//===========================================================================
+class MelRetroSMG : TSP_MelRetro_BaseWeapon
+{
+	DEFAULT
+	{
+	Tag "$MELRETROSMGTAG";
+	Inventory.PickupMessage "$MELRETROSMGPICKUP";
+	Obituary "%o learned why %k is the king of the iron fist.";
+	Weapon.Kickback 100;
+	Weapon.BobStyle "Alpha";
+	Weapon.BobStyle "InverseSmooth";
+	Weapon.BobSpeed 2.2;
+	Weapon.BobRangeY 0.5;
+	Weapon.BobRangeX 0.7;
+	Weapon.AmmoType "TSPSMGAmmo";
+	Weapon.AmmoGive 0;
+	Weapon.AmmoUse 1;
+	Inventory.Icon "919PA0";
+
+		//TSP_Weapon_Core.ModTag "Duel-Wield"; //Used for "---- On/Off" message when switching mod fire on or off
+		TSP_Weapon_Core.AmmoMult 1.2, 1.5, 2.0;
+		TSP_Weapon_Core.ClipSize 50; //Initial starting size of clip
+		TSP_Weapon_Core.FirstPickupLine "*AB50pickup"; //AAAAGH
+		/*+TSP_Weapon_Core.MODFIREMODE //Activates modfire stuff
+		-TSP_Weapon_Core.MODFIREZOOMS
+		-TSP_Weapon_Core.HOLDDOWNFORMOD*/
+		+WEAPON.NOAUTOFIRE
+		+WEAPON.AMMO_OPTIONAL
+		+NOEXTREMEDEATH
+		+WEAPON.NOALERT
+		+WEAPON.CHEATNOTWEAPON
+	}
+	States
+	{
+
+ACTOR MelAmmoBox50 : TSPMelLightWeapon
+{
+  Weapon.Kickback 100
+  Weapon.AmmoType  "AmmoBoxMag"
+  Weapon.AmmoGive  0
+  Weapon.AmmoUse  1
+  Weapon.AmmoType2 "AmmoBoxAmmo"
+  Weapon.AmmoGive2 0
+  Weapon.AmmoUse2  0
+  Weapon.BobStyle Alpha
+  Weapon.BobSpeed 2.0
+  Weapon.BobRangeY 0.6
+  Weapon.BobRangeX 0.4
+  Inventory.PickupMessage "[Kurdd & Schaumers AB-50] [Class: Sub-Machine Gun, Slot 4]"
+  Obituary "%o was riddled with bullets thanks to %k's AB-50."
+  +Weapon.AMMO_OPTIONAL
+  +NOEXTREMEDEATH
+  +WEAPON.NoAlert
+  Tag "K&S AB-50"
+  States
+  {
+  Spawn:
+    ABXP A -1
+    Stop
+  Ready:
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee")
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart")
+    ABXG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+    LOOP
+  Deselect:
+    TNT1 A 0 A_PlaySoundEx("AmmoBox/Down", "SoundSlot5")
+    TNT1 A 0 A_TakeInventory("MelPistolCombo", 99)
+    TNT1 A 0 A_TakeInventory("MagPushToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    TNT1 A 0 A_JumpIfInventory("ComboCoolDown", 1, "ComboDeselect")
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)
+    ABXD ABCDE 1
+    TNT1 A 6
+  DeselectLoop:
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+    TNT1 A 1 A_Lower
+    Loop
+  Select:
+    TNT1 A 0 A_TakeInventory("MeleeSelected", 1)
+    TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999)
+    TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 141)
+    TNT1 A 0 A_PlaySoundEx("AmmoBox/Up", "SoundSlot5")
+    TNT1 A 4
+    ABXU ABCDE 1
+  SelectLoop:
+    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+    ABXG A 1 A_Raise
+    Loop
+  Fire:
+    TNT1 A 0 A_JumpIfInventory("MagPushToken", 1,"MagPush")
+    TNT1 A 0 A_JumpIfNoAmmo("AutoEmpty")
+    TNT1 A 0 A_GiveInventory("AB50ShotsFiredPewPew", 1)
+    ABXG A 0 BRIGHT
+    ABXG A 0 A_GunFlash
+    ABXG A 0 A_AlertMonsters
+    ABXG A 0 A_SetPitch(pitch - .3)
+    ABXG A 0 A_SetAngle(angle + (frandom(-0.2,0.2)))
+    ABXG A 0 A_PlayWeaponSound("AmmoBox/fire")
+  Fire0:
+    ASTF A 0 BRIGHT A_FireBullets(5,1,-1,9,"919mBulletPuff",1)
+    ASTF A 0 A_Jump(64,"AFire4")
+    ASTF A 0 A_Jump(64,"AFire3")
+    ASTF A 0 A_Jump(88,"Afire2")
+  AFire1:
+    ASTF B 0 A_FireCustomMissile("9mmCasingSpawner",-4,0,0,0)
+    ASTF B 0 A_Light2
+    ABXF A 1 BRIGHT A_Light1
+    ASTF B 0 A_Light0
+    Goto FireEnd
+  AFire2:
+    ASTF B 0 A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0)
+    ASTF C 0 A_Light2
+    ABXF B 1 BRIGHT A_Light1
+    ASTF C 0 A_Light0
+    Goto FireEnd
+  AFire3:
+    ASTF B 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
+    ASTF D 0 A_Light2
+    ABXF C 1 BRIGHT A_Light1
+    ASTF D 0 A_Light0
+    Goto FireEnd
+  AFire4:
+    ASTF B 0 A_FireCustomMissile("9mmCasingSpawner",-5,0,0,0)
+    ASTF D 0 A_Light2
+    ABXF D 1 BRIGHT A_Light1
+    ASTF D 0 A_Light0
+  FireEnd:
+    ABXF E 1
+    ABXF F 1
+    ABXF G 2 A_Refire
+    ABXF FE 1 
+    ABXG A 1
+    Goto Ready
+  AltFire:
+    TNT1 A 0 A_JumpIfInventory("MagSlingToken", 1,"MagSling")
+    ABXG A 0
+	Goto Ready
+  AutoEmpty:
+    ABXG A 5 A_PlayWeaponSound("919m/dry")
+    Goto Reload 
+  Reload:
+	  ABXG A 0 A_JumpIfInventory("AmmoBoxMag", 50, "2")
+	  ABXG A 0 A_JumpIfInventory("AmmoBoxAmmo", 1, "2")
+	  ABXG A 1 A_WeaponReady(WRF_NOFIRE)
+	  Goto Ready
+  ReloadStart:
+    TNT1 A 0 A_JumpIfInventory("AB50ShotsFiredPewPew", 50, "GiveCockingAnimation")//lewd
+    Goto ReloadCont
+  GiveCockingAnimation:  
+    TNT1 A 0 A_GiveInventory("NeedstheCock", 1)
+  ReloadCont:
+	ABXG A 5 A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+	ABXR AUBC 1 A_WeaponReady(WRF_NOFIRE|WRF_NOBOB)
+	ABXG A 0 A_FireCustomMissile("SpentClip1",3,0,5,0)
+	ABXR D 1 A_PlayWeaponSound("AmmoBox/Out")
+	ABXR EFGHIIIIIIIIIIIIIIIIIIIIIIIIIII 1
+	ABXR J 1 A_PlayWeaponSound("AmmoBox/In")
+	ABXR KLMNOP 1 
+  ReloadWork:
+	MPTR I 0 A_TakeInventory("AmmoBoxAmmo",1)
+	MPTR I 0 A_GiveInventory("AmmoBoxMag",1)
+	MPTR I 0 A_JumpIfInventory("AmmoBoxMag",50,"ReloadFinish")
+	MPTR I 0 A_JumpifInventory("AmmoBoxAmmo",1,"ReloadWork")
+  ReloadFinish:
+    ABXR PSTCBUA 1
+    ABXG A 2
+    TNT1 A 0 A_TakeInventory("AB50ShotsFiredPewPew", 99)
+    TNT1 A 0 A_JumpIfInventory("NeedstheCock", 1, "Rechamber")
+    Goto Ready
+  Rechamber:
+    ABXC C 0 A_PlaySound("ammobox/pull", 6)
+    ABXC ABCC 1
+    ABXC DEFG 1
+    ABXG A 3
+    TNT1 A 0 A_TakeInventory("NeedstheCock", 99)
+    Goto Ready
+	
+  SPTraitStart:
+    ABXD ABCDE 1
+    TNT1 A 7 A_WeaponReady
+	Goto SPTrait
+
+//Melee Start
+  SPMelee:
+    ABXG A 1
+    ABXD ABCDE 1
+  SPMeleeStart:
+    TNT1 A 5
+    TNT1 A 0 A_PlaySound("strongmelee/miss", 5)
+    TNT1 A 0 A_PlaySound("*melee", 6)
+    ABXM ABC 1
+    ML1F D 0 A_JumpIfInventory("PowerStrength",1,"SPMeleeBerserk")
+    ABXM D 1 A_CustomPunch(12,0,0,"StrongMeleePuff",90)
+    Goto SPMeleeA
+  SPMeleeBerserk:
+    ABXM D 1 A_CustomPunch(24,0,0,"StrongMeleePuff",90)
+    Goto SPMeleeA
+  SPMeleeA: 
+    ABXM EFGHI 1
+    TNT1 A 8
+    TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMeleeStart")
+    TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitCombo")
+  AfterMelee:
+    TNT1 A 0 A_TakeInventory("ComboCoolDown", 99)  
+    TNT1 A 0 A_TakeInventory("MagPushToken", 99)
+    TNT1 A 0 A_TakeInventory("MagSlingToken", 99)
+    ABXU ABCDE 1
+    Goto Ready
+  }
+}
+
+ACTOR AB50ShotsFiredPewPew : Inventory
+{
+  +IGNORESKILL
+  Inventory.MaxAmount 50
+}
+
+ACTOR AmmoBoxMag : Ammo
+{
+  +IGNORESKILL
+  Inventory.MaxAmount 50
+}
