@@ -67,9 +67,19 @@ Class TSP_HiResMenu : TSP_MenuBase
 		Draw9Slice(216*3, 170*3, 155*3, 49*3, "graphics/menu/common/border/border_bg_green.png", 8);
 		
 		Font fnt = "tsp_bold";
-		String testString = "FUCK NUGGET";
+		String testString = "GAME MODES - START GAME - OPTIONS";
 		
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 1280/2 - fnt.StringWidth(testString)/2, 8, testString,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+			
+		screen.DrawText(fnt, Font.CR_YELLOW, 1280/2 - fnt.StringWidth(testString)/2, 8+34, testString,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+			
+		screen.DrawText(fnt, Font.FindFontColor("TSPMenuGreen"), 1280/2 - fnt.StringWidth(testString)/2, 8+34*2, testString,
 			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
