@@ -50,7 +50,7 @@ $random 922a/fire { 922a/firea01 922a/firea02 922a/firea03 }
 // - Titanfall 2
 
 ab50/draw		"sounds/weapons/Mel Retro/AB50/sfx_AB50_draw.ogg"
-ab50/holster	"sounds/weapons/Mel Retro/AB50/sfx_AB50_draw.ogg"
+ab50/holster	"sounds/weapons/Mel Retro/AB50/sfx_AB50_holster.ogg"
 
 $random AB50/fire { AB50/fire01 AB50/fire02 AB50/fire03 }
 AB50/fire01 "sounds/weapons/Mel Retro/AB50/sfx_AB50_fire01.ogg"
@@ -60,3 +60,25 @@ AB50/fire03 "sounds/weapons/Mel Retro/AB50/sfx_AB50_fire03.ogg"
 AB50/reloadout "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload01.ogg"
 AB50/reloadin "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload02.ogg"
 AB50/cock "sounds/weapons/Mel Retro/AB50/sfx_AB50_cock.ogg"
+
+// Slot 4: MP40
+// SOUND CREDITS/SOURCES: 
+// [ALL]
+// - Call of Duty: Modern Warfare 2
+// - Day of Defeat: Source
+// - Wolfenstein (2009)
+// - Wolfenstein 3D
+
+mp40/pickup		"sounds/weapons/Mel Retro/MP40/sfx_MP40_pickup.ogg"
+mp40/draw		"sounds/weapons/Mel Retro/MP40/sfx_MP40_draw.ogg"
+mp40/holster	"sounds/weapons/Mel Retro/MP40/sfx_MP40_holster.ogg"
+
+$random mp40/fire { mp40/fire01 mp40/fire02 mp40/fire03 }
+mp40/fire01 "sounds/weapons/Mel Retro/MP40/sfx_MP40_fire01.ogg"
+mp40/fire02 "sounds/weapons/Mel Retro/MP40/sfx_MP40_fire02.ogg"
+mp40/fire03 "sounds/weapons/Mel Retro/MP40/sfx_MP40_fire03.ogg"
+
+mp40/reloadout "sounds/weapons/Mel Retro/MP40/sfx_MP40_reload01.ogg"
+mp40/reloadin "sounds/weapons/Mel Retro/MP40/sfx_MP40_reload02.ogg"
+mp40/bolt1 "sounds/weapons/Mel Retro/MP40/sfx_MP40_bolt01.ogg"
+mp40/bolt2 "sounds/weapons/Mel Retro/MP40/sfx_MP40_bolt02.ogg"
