@@ -101,7 +101,7 @@ $playeralias	MelRetro   	  male  	*ab50pickup					melretro/ab50pickup
 $playeralias	MelRetro   	  male  	*mp40pickup					melretro/mp40pickup
 $playeralias	MelRetro   	  male  	*toolboxpickup				melretro/toolboxpickup
 $playeralias	MelRetro   	  male  	*adranospickup				melretro/adranospickup
-$playeralias	MelRetro   	  male  	*plasmapickup				melretro/919mpickup
+$playeralias	MelRetro   	  male  	*plasmapickup				melretro/plasmapickup
 
 // PERSEPHONE
 $random melretro/persephonepickup { melretro/persephonepickup01 melretro/persephonepickup02 melretro/persephonepickup03 melretro/persephonepickup04 }
