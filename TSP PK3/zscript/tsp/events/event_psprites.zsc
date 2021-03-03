@@ -11,10 +11,6 @@ Extend Class TSP_EventHandler
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 		
-		/*for ( int i = 0; i < dynlights.Size(); i++ )
-		{
-		}*/
-		
 		while(psprite)
 		{
 			if( psprite != null )
@@ -22,7 +18,6 @@ Extend Class TSP_EventHandler
 				if ( psprite.CurState != null )
 				{
 					let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
-					//let sprTex = psprite.CurState.GetSpriteTexture(0);
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
 					double weaponTilt = psprite.rotation;
@@ -38,13 +33,10 @@ Extend Class TSP_EventHandler
 						lerp(weaponOldPos.x, weaponNewPos.x, e.FracTic),
 						lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
 					);
-					//Actor.RotateVector(
+					
 					weaponPos.y -= 32;
 					
 					newOffset -= character.TSP_BobWeapon(e.FracTic);
-					
-					//weaponPos = Actor.RotateVector(weaponPos, weaponTilt);
-					//psprite.rotation;//cos((walkTimer * 2) + 35) * walkAmt * 4; //250
 					
 					int lights;
 					int r, g, b = 0;
@@ -102,19 +94,15 @@ Extend Class TSP_EventHandler
 								break;
 						}
 						
-						//ps_color = Color(255-int(lightLevel*255), sectorColor.r, sectorColor.g, sectorColor.b);
 						
 						Screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,
-							//DTA_CenterOffset, true,
 							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
-							//DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
 							ps_colorType, ps_color,
-							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,//sprOffset.x+160, DTA_TopOffsetF, sprOffset.y,
+							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,
 							DTA_Alpha, ps_alpha);
-							//DTA_Alpha, i == 1 ? lightLevel : 1.0);
 					}
 				}
 				psprite = psprite.Next;
