@@ -10,6 +10,39 @@ Extend Class TSP_EventHandler
 	{
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
+					
+		double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+		Color sectorColor = character.cursector ? character.cursector.ColorMap.LightColor : -1;
+		
+		int r, g, b = 0;
+					
+		Actor curLight;
+		
+		int activeLights = 0;
+		
+		for ( int i = 0; i < dynlights.Size(); i++ )
+		{
+			let checkLight = dynlights[i];
+			int lightTens = checkLight.args[DynamicLight.LIGHT_INTENSITY]+64;
+			if ( players[consoleplayer].mo.Distance3D(checkLight) < lightTens )
+			{
+				activeLights++;
+				double intensity = 1.0 - min(1.0, players[consoleplayer].mo.Distance3D(checkLight) / lightTens);
+				r += checkLight.args[0]*intensity;
+				g += checkLight.args[1]*intensity;
+				b += checkLight.args[2]*intensity;
+			}
+		}
+		
+		if ( activeLights > 0 )
+		{
+			r /= activeLights;
+			g /= activeLights;
+			b /= activeLights;
+		}
+		
+		//screen.DrawText(BigFont, , 0, 0, r..", "..g..", "..b, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		//screen.Dim(Color(r, g, b), 1.0, 0, 0, 64, 64);
 		
 		while(psprite)
 		{
@@ -21,9 +54,6 @@ Extend Class TSP_EventHandler
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
 					double weaponTilt = psprite.rotation;
-					
-					double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
-					Color sectorColor = character.cursector ? character.cursector.ColorMap.LightColor : -1;
 					
 					Vector2 newOffset = (160, 100 - 32) + sprOffset;
 					
@@ -37,39 +67,6 @@ Extend Class TSP_EventHandler
 					weaponPos.y -= 32;
 					
 					newOffset -= character.TSP_BobWeapon(e.FracTic);
-					
-					int lights;
-					int r, g, b = 0;
-					
-					Actor curLight;
-					
-					int activeLights = 0;
-					double lightIntensity = 0;
-					
-					for ( int i = 0; i < dynlights.Size(); i++ )
-					{
-						let checkLight = dynlights[i];
-						if ( players[consoleplayer].mo.Distance3D(checkLight) < checkLight.args[DynamicLight.LIGHT_INTENSITY] )
-						{
-							activeLights++;
-							double intensity = min(1.0, players[consoleplayer].mo.Distance3D(checkLight)/checkLight.args[DynamicLight.LIGHT_INTENSITY]);
-							lightIntensity += intensity;
-							r += checkLight.args[0]*intensity;
-							g += checkLight.args[1]*intensity;
-							b += checkLight.args[2]*intensity;
-						}
-					}
-					
-					if ( activeLights > 0 )
-					{
-						r /= activeLights;
-						g /= activeLights;
-						b /= activeLights;
-					}
-					else
-					{
-						lightIntensity = 1.0;
-					}
 					
 					for (int i = 0; i < 2; i++)
 					{
@@ -87,8 +84,8 @@ Extend Class TSP_EventHandler
 								ps_colorType = DTA_Color;
 								break;
 							case 1:
-								ps_renderStyle = STYLE_Add;
-								ps_alpha = 1.0 - lightIntensity;
+								ps_renderStyle = STYLE_AddShaded;
+								ps_alpha = 1.0;// - lightIntensity;
 								ps_color = Color(r, g, b);
 								ps_colorType = DTA_FillColor;
 								break;
