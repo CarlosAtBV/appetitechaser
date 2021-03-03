@@ -48,21 +48,25 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	}
 	
 	//lerp function by my homie JetPlane the epic one
-	double lerp(double start,double finish,double progress)
+	ui double lerp(double start,double finish,double progress)
 	{
 		//progress 0.0 is start, 1.0 is finish.
 		return start + (finish - start) * progress;
 
 	}
 	
-	double swayX, swayY;
-	Vector2 tsp_bobRecoil;
-	Vector2 tsp_shakeashakeashakea;
+	ui double swayX, swayY;
+	ui Vector2 tsp_bobRecoil;
+	ui Vector2 tsp_shakeashakeashakea;
+	ui double tsp_curbob;
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
 		return (0, -800);
+	}
 		
+	ui Vector2 TSP_BobWeapon (double ticfrac)
+	{
 		Vector2 p1, p2, r;
 		Vector2 result;
 
@@ -100,27 +104,27 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			// This also fixes the bug where you can "stick" a weapon off-center by
 			// shooting it when it's at the peak of its swing.
 			bobtarget = double(player.bob);
-			if (curbob != bobtarget)
+			if (tsp_curbob != bobtarget)
 			{
-				if (abs(bobtarget - curbob) <= 1)
+				if (abs(bobtarget - tsp_curbob) <= 1)
 				{
-					curbob = bobtarget;
+					tsp_curbob = bobtarget;
 				}
 				else
 				{
-					double zoom = MAX(1., abs(curbob - bobtarget) / 40);
-					if (curbob > bobtarget)
+					double zoom = MAX(1., abs(tsp_curbob - bobtarget) / 40);
+					if (tsp_curbob > bobtarget)
 					{
-						curbob -= zoom;
+						tsp_curbob -= zoom;
 					}
 					else
 					{
-						curbob += zoom;
+						tsp_curbob += zoom;
 					}
 				}
 			}
 
-			if (curbob != 0)
+			if (tsp_curbob != 0)
 			{
 				//[SP] Added in decorate player.viewbob checks
 				double bobx = (player.bob * Rangex * ViewBob)*d_bobFactor;
