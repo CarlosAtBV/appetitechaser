@@ -150,16 +150,22 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	Weapon tsp_desiredModSwitch;
 	
-	action void A_TSP_AnimLayer (int layer, double x, double y, double angle)
+	action void A_TSP_AnimLayer (int layer, double x, double y, double angle, bool interpolate = true)
 	{
 		let psprite = invoker.owner.player.GetPSprite(layer);
 		
 		let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
 		Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 		
+		if ( !interpolate )
+		{
+			psprite.oldx = x;
+			psprite.oldy = 32+y;
+		}
+		
 		psprite.bPivotPercent = false;
-		psprite.pivot = (160, 100-32) + sprOffset;//offset;
-		//Console.Printf(""..sprOffset);
+		psprite.pivot = (160, 100) + sprOffset;//offset;
+		//Console.Printf(""..psprite.pivot);
 		psprite.x = x;
 		psprite.y = 32+y;
 		psprite.rotation = angle;
