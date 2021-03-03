@@ -20,6 +20,8 @@ Class TSP_EventHandler : EventHandler
 	
 	bool tsp_meleeonly;
 	
+	Array<Actor > dynlights;
+	
 	int gamemode;
 	
 	override void OnRegister()
@@ -30,6 +32,17 @@ Class TSP_EventHandler : EventHandler
 	override void WorldLoaded(WorldEvent e)
 	{
 		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		
+		dynlights.Clear();
+		
+		ThinkerIterator findLights = ThinkerIterator.Create("DynamicLight");
+		Actor mo;
+		
+		while ( mo = Actor(findLights.Next()) )
+		{
+			Console.Printf("balls");
+			dynlights.Push(mo);
+		}
 		
 		/*String clsname = "GSPlayer";
 		Class<Actor> cls = clsname;

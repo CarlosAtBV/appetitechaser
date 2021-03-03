@@ -11,6 +11,10 @@ Extend Class TSP_EventHandler
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 		
+		/*for ( int i = 0; i < dynlights.Size(); i++ )
+		{
+		}*/
+		
 		while(psprite)
 		{
 			if( psprite != null )
@@ -24,6 +28,7 @@ Extend Class TSP_EventHandler
 					double weaponTilt = psprite.rotation;
 					
 					double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+					Color sectorColor = character.cursector ? character.cursector.ColorMap.LightColor : -1;
 					
 					Vector2 newOffset = (160, 100 - 32) + sprOffset;
 					
@@ -41,18 +46,75 @@ Extend Class TSP_EventHandler
 					//weaponPos = Actor.RotateVector(weaponPos, weaponTilt);
 					//psprite.rotation;//cos((walkTimer * 2) + 35) * walkAmt * 4; //250
 					
+					int lights;
+					int r, g, b = 0;
+					
+					Actor curLight;
+					
+					int activeLights = 0;
+					double lightIntensity = 0;
+					
+					for ( int i = 0; i < dynlights.Size(); i++ )
+					{
+						let checkLight = dynlights[i];
+						if ( players[consoleplayer].mo.Distance3D(checkLight) < checkLight.args[DynamicLight.LIGHT_INTENSITY] )
+						{
+							activeLights++;
+							double intensity = min(1.0, players[consoleplayer].mo.Distance3D(checkLight)/checkLight.args[DynamicLight.LIGHT_INTENSITY]);
+							lightIntensity += intensity;
+							r += checkLight.args[0]*intensity;
+							g += checkLight.args[1]*intensity;
+							b += checkLight.args[2]*intensity;
+						}
+					}
+					
+					if ( activeLights > 0 )
+					{
+						r /= activeLights;
+						g /= activeLights;
+						b /= activeLights;
+					}
+					else
+					{
+						lightIntensity = 1.0;
+					}
+					
 					for (int i = 0; i < 2; i++)
 					{
+						int ps_renderStyle;
+						double ps_alpha;
+						Color ps_color;
+						int ps_colorType;
+						
+						switch(i)
+						{
+							case 0:
+								ps_renderStyle = STYLE_Translucent;
+								ps_alpha = 1.0;
+								ps_color = Color(255, sectorColor.r, sectorColor.g, sectorColor.b);
+								ps_colorType = DTA_Color;
+								break;
+							case 1:
+								ps_renderStyle = STYLE_Add;
+								ps_alpha = 1.0 - lightIntensity;
+								ps_color = Color(r, g, b);
+								ps_colorType = DTA_FillColor;
+								break;
+						}
+						
+						//ps_color = Color(255-int(lightLevel*255), sectorColor.r, sectorColor.g, sectorColor.b);
+						
 						Screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,
 							//DTA_CenterOffset, true,
-							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add :
-								i == 1 ? Style_Translucent : Style_Stencil,
-							DTA_FillColor, i == 0 ? 25 : -1,
+							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
+							//DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
+							ps_colorType, ps_color,
 							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,//sprOffset.x+160, DTA_TopOffsetF, sprOffset.y,
-							DTA_Alpha, i == 1 ? lightLevel : 1.0);
+							DTA_Alpha, ps_alpha);
+							//DTA_Alpha, i == 1 ? lightLevel : 1.0);
 					}
 				}
 				psprite = psprite.Next;
