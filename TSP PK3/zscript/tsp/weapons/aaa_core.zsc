@@ -165,8 +165,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 		
 		psprite.bPivotPercent = false;
-		psprite.bAddWeapon = false;
-		psprite.bAddBob = false;
+		//psprite.bAddWeapon = true;
+		//psprite.bAddBob = true;
 		
 		Vector2 screenCenter = (160, 0);// - 32);
 		

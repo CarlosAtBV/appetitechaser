@@ -1,5 +1,11 @@
 Extend Class TSP_EventHandler
 {
+	ui double lerp(double start, double finish, double progress)
+	{
+		//progress 0.0 is start, 1.0 is finish.
+		return start + (finish - start) * progress;
+	}
+	
 	override void RenderUnderlay(RenderEvent e)
 	{
 		let psprite = players[consoleplayer].psprites;
@@ -15,19 +21,29 @@ Extend Class TSP_EventHandler
 					//let sprTex = psprite.CurState.GetSpriteTexture(0);
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
+					double weaponTilt = psprite.rotation;
+					
 					double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
 					
 					Vector2 newOffset = (160, 100 - 32) + sprOffset;
 					
-					Vector2 weaponPos = (psprite.x, psprite.y);
+					Vector2 weaponOldPos = (psprite.oldx, psprite.oldy);
+					Vector2 weaponNewPos = (psprite.x, psprite.y);
+					Vector2 weaponPos = (
+						lerp(weaponOldPos.x, weaponNewPos.x, e.FracTic),
+						lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
+					);
+					//Actor.RotateVector(
+					weaponPos.y -= 32;
 					
-					double weaponTilt = psprite.rotation;//cos((walkTimer * 2) + 35) * walkAmt * 4; //250
+					weaponPos = Actor.RotateVector(weaponPos, weaponTilt);
+					//psprite.rotation;//cos((walkTimer * 2) + 35) * walkAmt * 4; //250
 					
 					for (int i = 0; i < 2; i++)
 					{
 						Screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
-							DTA_VirtualHeight, 200,
+							DTA_VirtualHeight, 240,
 							DTA_Rotate, weaponTilt,
 							//DTA_CenterOffset, true,
 							DTA_FillColor, i == 0 ? 25 : -1,
