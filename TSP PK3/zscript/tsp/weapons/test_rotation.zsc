@@ -1,0 +1,48 @@
+Class TSP_TestPSpriteRotation : TSP_Weapon_Core
+{
+	double angler;
+	
+	States
+	{
+		Select:
+			"----" A 0
+			{
+				A_Overlay(10, "AlsoReady");
+				A_Overlay(20, "AlsoReady2");
+				A_Overlay(30, "AlsoReady3");
+			}
+			TEST A 1 A_Raise(64);
+			Loop;
+		Deselect:
+			TEST A 1 A_Lower(64);
+			Loop;
+		Ready:
+			TEST A 1
+			{
+				invoker.angler++;
+				A_TSP_AnimLayer(PSP_WEAPON, 0.00, 0.00, invoker.angler);
+			}
+			Loop;
+		AlsoReady:
+			TEST B 1
+			{
+				A_TSP_AnimLayer(10, 0.00, 0.00, invoker.angler);
+			}
+			Loop;
+		AlsoReady3:
+			TEST D 1
+			{
+				A_TSP_AnimLayer(30, 0.00, 0.00, invoker.angler);
+			}
+			Loop;
+		AlsoReady2:
+			121H C 1
+			{
+				A_TSP_AnimLayer(20, 0.00, 0.00, invoker.angler);
+			}
+			Loop;
+		Fire:
+			TEST A 1;
+			Goto Ready;
+	}
+}

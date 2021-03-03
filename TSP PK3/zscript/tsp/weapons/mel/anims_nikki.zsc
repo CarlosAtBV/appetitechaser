@@ -90,7 +90,7 @@ Extend Class MelPistol
                 TNT1 A 1 A_TSP_AnimLayer(-10, 65.53, 34.07, -14.01);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 65.53, 34.07, -14.29);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 65.53, 34.07, -14.36);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 63.91, 52.83, -44.65, false);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 63.91, 52.83, -44.65);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 48.18, 74.23, -42.76);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 17.17, 98.94, -40.41);
                 TNT1 A 1 A_TSP_AnimLayer(-10, -19.74, 123.44, -39.08);

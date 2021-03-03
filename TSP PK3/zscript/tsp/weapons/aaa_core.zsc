@@ -155,7 +155,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		let psprite = invoker.owner.player.GetPSprite(layer);
 		
 		let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
-		Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
+		Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);// - (0, 32);
+		Vector2 sprSize = TexMan.GetScaledSize(sprTex);
 		
 		if ( !interpolate )
 		{
@@ -164,10 +165,17 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 		
 		psprite.bPivotPercent = false;
-		psprite.pivot = (160, 100) + sprOffset;//offset;
-		//Console.Printf(""..psprite.pivot);
+		psprite.bAddWeapon = false;
+		psprite.bAddBob = false;
+		
+		Vector2 screenCenter = (160, 0);// - 32);
+		
+		psprite.pivot = sprOffset + screenCenter;
+		//psprite.pivot = screenCenter + (sprOffset.x, sprOffset.y);//(160, 100 - 32) + (-sprOffset.x, sprOffset.y);//offset;
+		//psprite.x = x;
 		psprite.x = x;
-		psprite.y = 32+y;
+		psprite.y = y+32;
+		//psprite.y = y;//layer == PSP_WEAPON ? 32+y : y;
 		psprite.rotation = angle;
 	}
 	

@@ -101,6 +101,8 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/melretro/weapon_retrosmg.zsc"
 #include "zscript/tsp/weapons/melretro/weapon_retromp40.zsc"
 
+#include "zscript/tsp/weapons/test_rotation.zsc"
+
 // SHEN MI
 #include "zscript/tsp/weapons/shenmi/weapon_selena.zsc"
 
