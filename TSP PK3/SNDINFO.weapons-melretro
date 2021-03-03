@@ -40,7 +40,43 @@ $random 922a/fire { 922a/firea01 922a/firea02 922a/firea03 }
 919m/autoon  "sounds/weapons/Mel Retro/919m/sfx_919m_auto_on.ogg"
 919m/autooff "sounds/weapons/Mel Retro/919m/sfx_919m_auto_off.ogg"
 
-// Slot 4: AB50
+// Slot 3A: BA240 Zeke
+// SOUND CREDITS/SOURCES: 
+// [ALL]
+// - Call of Duty: Modern Warfare 2
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Doom 3
+// - PlanetSide 2
+// - Resident Evil 4
+// - Quake 4
+
+shotgun/draw		"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_draw.ogg"
+shotgun/holster	"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_holster.ogg"
+
+$random shotgun/fire { shotgun/fire01 shotgun/fire02 shotgun/fire03 }
+shotgun/fire01 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire01.ogg"
+shotgun/fire02 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire02.ogg"
+shotgun/fire03 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire03.ogg"
+
+shotgun/electric "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire_electric.ogg"
+shotgun/hellfire "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire_hellfire.ogg"
+shotgun/toxic "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_fire_toxic.ogg"
+
+$random shotgun/pump { shotgun/pump01 shotgun/pump02 shotgun/pump03 }
+shotgun/pump01 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_pump01.ogg"
+shotgun/pump02 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_pump02.ogg"
+shotgun/pump03 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_pump03.ogg"
+
+$random shotgun/load { shotgun/load01 shotgun/load02 shotgun/load03 }
+shotgun/load01 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_load01.ogg"
+shotgun/load02 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_load02.ogg"
+shotgun/load03 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_load03.ogg"
+
+shotgun/unload01	"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_unload01.ogg"
+shotgun/unload02	"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_unload02.ogg"
+
+
+// Slot 4A: AB50
 // SOUND CREDITS/SOURCES: 
 // [ALL]
 // - Call of Duty: Modern Warfare 2
@@ -61,7 +97,7 @@ AB50/reloadout "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload01.ogg"
 AB50/reloadin "sounds/weapons/Mel Retro/AB50/sfx_AB50_reload02.ogg"
 AB50/cock "sounds/weapons/Mel Retro/AB50/sfx_AB50_cock.ogg"
 
-// Slot 4: MP40
+// Slot 4B: MP40
 // SOUND CREDITS/SOURCES: 
 // [ALL]
 // - Call of Duty: Modern Warfare 2
