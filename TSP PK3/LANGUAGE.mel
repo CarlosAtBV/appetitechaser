@@ -65,3 +65,7 @@ MelRetroPistolATag = "\cc[\cy922a Pistol\cc]";
 //AB50
 MelRetroSMGPickup = "\cc[\ckAB50\cc - \cuSMG\cc]";
 MelRetroSMGTag = "\cc[\ckAB50 SMG\cc]";
+
+//MP40
+MelRetroMP40Pickup = "\cc[\ckMP40\cc - \cuSMG\cc]";
+MelRetroMP40Tag = "\cc[\ckMP40\cc]";

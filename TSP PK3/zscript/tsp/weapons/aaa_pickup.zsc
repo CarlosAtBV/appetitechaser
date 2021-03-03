@@ -231,3 +231,37 @@ Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
 			Stop;
 	}
 }
+
+Class TSP_Pickup_MP40 : TSP_WeaponPickup
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelRetroPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelRetroMP40",30);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	Default
+	{
+		Inventory.PickupSound "mp40/pickup";
+	}
+	States
+	{
+		TSP_MelRetroPlayer:
+			MP4P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}

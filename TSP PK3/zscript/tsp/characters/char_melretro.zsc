@@ -13,7 +13,7 @@ Class TSP_MelRetroPlayer : TSP_PlayerPawn_ZSCBase
 		Player.Portrait "CSB_MELR";
 		Player.WeaponSlot 1, "MelRetroMelee";
 		Player.WeaponSlot 2, "MelRetroPistol", "MelRetroPistolA";
-		Player.WeaponSlot 3, "MelRetroSMG";
+		Player.WeaponSlot 3, "MelRetroSMG", "MelRetroMP40";
 		Species "Player";
 		+THRUSPECIES
 		+PLAYERPAWN.NOTHRUSTWHENINVUL

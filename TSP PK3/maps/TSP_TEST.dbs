@@ -11,7 +11,7 @@ maps
 		overridefloorheight = false;
 		customfloorheight = 0;
 		uselongtexturenames = false;
-		scriptcompiler = "zandronum_acs.cfg";
+		scriptcompiler = "zdoom_acs.cfg";
 		
 		resources
 		{
@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -574.6712f;
+		viewpositionx = 1818.543f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 4;
+			gridsize = 32;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = 613.8485f;
+		viewpositiony = -303.1669f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.1378577f;
+		viewscale = 0.1378576f;
 		
 		fieldtypes
 		{
@@ -84,13 +84,13 @@ maps
 			{
 				xpanningfloor = 1;
 				ypanningfloor = 1;
-				rotationceiling = 17;
+				rotationfloor = 1;
+				rotationceiling = 1;
 				xpanningceiling = 1;
 				floor_reflect = 1;
 				ypanningceiling = 1;
 				xscaleceiling = 1;
 				yscaleceiling = 1;
-				rotationfloor = 17;
 				xscalefloor = 1;
 				yscalefloor = 1;
 				desaturation = 1;
