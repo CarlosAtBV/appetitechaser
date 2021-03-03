@@ -2,7 +2,7 @@ defaultbind KP1 BV_OpenShop
 alias BV_OpenShop "openmenu TSP_ShopMenu"
 
 defaultbind q BV_Melee
-alias BV_Melee "give meleepressed; wait 15; take meleepressed"
+alias BV_Melee "give meleepressed; wait 5; take meleepressed"
 //alias +BV_Melee "use StartMelee" //"give Melee"
 //alias -BV_Melee "use StopMelee" //"give Melee"
 
