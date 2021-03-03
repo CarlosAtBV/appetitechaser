@@ -1,0 +1,42 @@
+Extend Class TSP_EventHandler
+{
+	override void RenderUnderlay(RenderEvent e)
+	{
+		let psprite = players[consoleplayer].psprites;
+		let character = players[consoleplayer].mo;
+		
+		while(psprite)
+		{
+			if( psprite != null )
+			{
+				if ( psprite.CurState != null )
+				{
+					let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
+					//let sprTex = psprite.CurState.GetSpriteTexture(0);
+					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
+					
+					double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+					
+					Vector2 newOffset = (160, 100 - 32) + sprOffset;
+					
+					Vector2 weaponPos = (psprite.x, psprite.y);
+					
+					double weaponTilt = psprite.rotation;//cos((walkTimer * 2) + 35) * walkAmt * 4; //250
+					
+					for (int i = 0; i < 2; i++)
+					{
+						Screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
+							DTA_VirtualWidth, 320,
+							DTA_VirtualHeight, 200,
+							DTA_Rotate, weaponTilt,
+							//DTA_CenterOffset, true,
+							DTA_FillColor, i == 0 ? 25 : -1,
+							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,//sprOffset.x+160, DTA_TopOffsetF, sprOffset.y,
+							DTA_Alpha, i == 1 ? lightLevel : 1.0);
+					}
+				}
+				psprite = psprite.Next;
+			}
+		}
+	}
+}

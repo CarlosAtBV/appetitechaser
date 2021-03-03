@@ -61,6 +61,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	override Vector2 BobWeapon (double ticfrac)
 	{
+		return (0, -800);
+		
 		Vector2 p1, p2, r;
 		Vector2 result;
 
