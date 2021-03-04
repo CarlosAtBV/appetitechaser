@@ -77,7 +77,7 @@ meltraitvodrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
 meltraitvograpple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
 meltraitvosling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"
 meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change01.ogg"
-meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
+meltraitchange02    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 
 // Slot 2: DARLING NIKKI
 // SOUND CREDITS/SOURCES: 
