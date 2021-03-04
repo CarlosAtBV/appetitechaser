@@ -167,7 +167,8 @@ Class TSP_DebugFontMenu : GenericMenu
 	{
 		"BigFont",
 		"SmallFont",
-		"TinyFont"
+		"TinyFont",
+		"tsp_bold"
 	};
 	override void Drawer()
 	{
