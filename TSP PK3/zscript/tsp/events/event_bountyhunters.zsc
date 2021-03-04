@@ -183,10 +183,10 @@ Class TSP_BHHandler : EventHandler
 			
 			if ( spawnHere != null && bh_spawnList.Size() > 0 )
 			{
-				Actor enemy = Actor.Spawn(bh_spawnList[0], spawnHere.pos);
+				Actor enemy = Actor.Spawn(bh_spawnList[0], spawnHere.pos, ALLOW_REPLACE);
 				enemy.target = players[0].mo;
 				enemy.SetStateLabel("See");
-				Actor.Spawn("TeleportFog", spawnHere.pos);
+				Actor.Spawn("TeleportFog", spawnHere.pos, ALLOW_REPLACE);
 				bh_enemies.Push(enemy);
 				bh_spawnList.Delete(0,1);
 			}
