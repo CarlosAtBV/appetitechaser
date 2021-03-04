@@ -98,6 +98,10 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/melretro/weapon_base_melretro.zsc"
 #include "zscript/tsp/weapons/melretro/weapon_retropistol.zsc"
 #include "zscript/tsp/weapons/melretro/weapon_retropistola.zsc"
+//#include "zscript/tsp/weapons/melretro/weapon_retroshotgun.zsc"
+//#include "zscript/tsp/weapons/melretro/weapon_retroshotguna.zsc" // ELECTRIC
+//#include "zscript/tsp/weapons/melretro/weapon_retroshotgunb.zsc" // HELLFIRE
+//#include "zscript/tsp/weapons/melretro/weapon_retroshotgunc.zsc" // TOXIC
 #include "zscript/tsp/weapons/melretro/weapon_retrosmg.zsc"
 #include "zscript/tsp/weapons/melretro/weapon_retromp40.zsc"
 
