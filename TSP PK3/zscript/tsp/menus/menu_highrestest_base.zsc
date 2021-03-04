@@ -30,7 +30,7 @@ Class TSP_MenuBase : GenericMenu
 		
 		TSP_MenuDrawer();
 		
-		screen.DrawText("BigFont", Font.CR_RED, 0, 0, ""..debugMouse);
+		//screen.DrawText("BigFont", Font.CR_RED, 0, 0, ""..debugMouse);
 		
 		let fuckNugget = TexMan.CheckForTexture("SFXAB0");
 		screen.DrawTexture (fuckNugget, true, debugMouse.x, debugMouse.y,
