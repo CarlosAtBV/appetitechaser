@@ -75,6 +75,54 @@ shotgun/load03 "sounds/weapons/Mel Retro/shotgun/sfx_shotgun_load03.ogg"
 shotgun/unload01	"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_unload01.ogg"
 shotgun/unload02	"sounds/weapons/Mel Retro/shotgun/sfx_shotgun_unload02.ogg"
 
+// TEMPORARY
+//Shotgun sounds (half life 1 sounds)
+
+$limit Weapons/ShockShell 0
+$random Weapons/ShockShell {Weapons/ShockShell1 Weapons/ShockShell2 Weapons/ShockShell3}
+Weapons/ShockShell1	spark1
+Weapons/ShockShell2	spark2
+Weapons/ShockShell3	spark3
+Weapons/ShockShell4	spark4
+
+$limit Weapons/ShockArc 0
+$random Weapons/ShockArc {Weapons/ShockArc1 Weapons/ShockArc2 Weapons/ShockArc3 Weapons/ShockArc4 Weapons/ShockArc5 Weapons/ShockArc6 Weapons/ShockArc7 Weapons/ShockArc8 Weapons/ShockArc9 Weapons/ShockArc10 Weapons/ShockArc11 Weapons/ShockArc12 Weapons/ShockArc13 Weapons/ShockArc14 Weapons/ShockArc15 Weapons/ShockArc16}
+
+Weapons/ShockArc1	DSHOCK01
+Weapons/ShockArc2	DSHOCK02
+Weapons/ShockArc3	DSHOCK03
+Weapons/ShockArc4	DSHOCK04
+Weapons/ShockArc5	DSHOCK05
+Weapons/ShockArc6	DSHOCK06
+Weapons/ShockArc7	DSHOCK07
+Weapons/ShockArc8	DSHOCK08
+Weapons/ShockArc9	DSHOCK09
+Weapons/ShockArc10	DSHOCK10
+Weapons/ShockArc11	DSHOCK11
+Weapons/ShockArc12	DSHOCK12
+Weapons/ShockArc13	DSHOCK13
+Weapons/ShockArc14	DSHOCK14
+Weapons/ShockArc15	DSHOCK15
+Weapons/ShockArc16	DSHOCK16
+
+$limit Weapons/PoisonShell 0
+Weapons/PoisonShell	HL1STEAM
+
+//Shotgun sounds (hexen sounds)
+
+$limit Weapons/HellShell 0
+Weapons/HellShell	HELL
+
+$limit Weapons/HellShell2 0
+$random Weapons/HellShell2 {Weapons/ShockShell3 Weapons/HellShell4 Weapons/HellShell5 Weapons/HellShell6}
+
+Weapons/HellShell3	HELL3
+Weapons/HellShell4	HELL4
+Weapons/HellShell5	HELL5
+Weapons/HellShell6	HELL6
+
+$limit Weapons/HellShell7 0
+Weapons/HellShell7	HELL7
 
 // Slot 4A: AB50
 // SOUND CREDITS/SOURCES: 
