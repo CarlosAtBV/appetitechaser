@@ -33,6 +33,7 @@ Class TSP_MainMenu : TSP_MenuBase
 	double buttonFlash;
 	
 	double tsp_lerpX;
+	double tsp_bgDim;
 	
 	string tsp_storedMenu;
 	
@@ -78,16 +79,19 @@ Class TSP_MainMenu : TSP_MenuBase
 	{
 		Super.Init(parent);
 		
+		DontDim = true;
+		
 		tsp_buttons.Clear();
 		
 		Vector2 basePos = (MENUBUTX, MENUBUTY);
 		AddButton("Start Game", "Start a new game!", "TSP_GameModeMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSPYeller"));
-		AddButton("Codex", "mel feet pics", "TSP_OptionsMenu", Font.FindFontColor("TSPBlue"));
+		AddButton("Codex", "Explore Mel's information database.", "TSP_OptionsMenu", Font.FindFontColor("TSPBlue"));
 		AddButton("Load Game", "Load a saved game.", "LoadGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSPRed"));
 		
+		tsp_bgDim = (mParentMenu == null || mParentMenu is "TSP_MainMenuButFake") ? 0.0 : 1.0;
 		tsp_storedMenu = "";
 	}
 	
@@ -100,16 +104,43 @@ Class TSP_MainMenu : TSP_MenuBase
 	{
 		super.Ticker();
 		
-		if ( tsp_storedMenu == "" && tsp_lerpX < 1.0 )
+		if ( tsp_storedMenu == "" )
 		{
-			tsp_lerpX += 0.05;
+			if ( tsp_lerpX < 1.0 )
+			{
+				tsp_lerpX += 0.05;
+			}
+			
+			if ( mParentMenu == null && tsp_bgDim < 1.0 )
+			{
+				tsp_bgDim += 0.1;
+			}
 		}
 		else if ( tsp_storedMenu != "" && tsp_lerpX > 0.0 )
 		{
-			tsp_lerpX -= 0.1;
+			if ( tsp_lerpX > 0.0 )
+			{
+				tsp_lerpX -= 0.1;
+			}
+			
+			if ( (mParentMenu == null && tsp_storedMenu == "shut the fuck up") && tsp_bgDim > 0.0 )
+			{
+				tsp_bgDim -= 0.1;
+			}
+			
 			if ( tsp_lerpX <= 0 )
 			{
-				SetMenu(tsp_storedMenu, 0);
+				if ( tsp_storedMenu == "shut the fuck up" )
+				{
+					Close();
+					let m = GetCurrentMenu();
+					MenuSound(m != null ? "menu/backup" : "menu/clear");
+					if (!m) menuDelegate.MenuDismissed();
+				}
+				else
+				{
+					SetMenu(tsp_storedMenu, 0);
+				}
 			}
 		}
 		
@@ -159,6 +190,7 @@ Class TSP_MainMenu : TSP_MenuBase
 				mb_curSelection.flash = 1.0;
 				S_Sound("menu/cursor",CHAN_UI);
 				return true;
+				
 			case MKEY_Down:
 				if ( mb_curSelection.buttonDown != null )
 				{
@@ -176,6 +208,9 @@ Class TSP_MainMenu : TSP_MenuBase
 					//SetMenu(mb_curSelection.menu, 0);
 					return true;
 				}
+				
+			case MKEY_Back:
+				tsp_storedMenu = "shut the fuck up";
 				return true;
 		}
 		return super.MenuEvent(mkey, fromcontroller);
@@ -184,6 +219,8 @@ Class TSP_MainMenu : TSP_MenuBase
 	override void TSP_MenuDrawer()
 	{
 		Vector2 menuOffset = (-640 + 640 * easeOutExpo(tsp_lerpX), 0);
+		
+		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
 		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK";

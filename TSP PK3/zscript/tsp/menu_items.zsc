@@ -37,7 +37,7 @@ Class TSP_MainMenuButFake : ListMenu
 {
 	override void Ticker()
 	{
-		menu.SetMenu("TSP_MainMenu",0);
+		menu.SetMenu("TSP_MainMenu", 0);
 		menu.GetCurrentMenu().mParentMenu = mParentMenu;
 	}
 }
