@@ -205,5 +205,13 @@ Class TSP_MainMenu : TSP_MenuBase
 					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 			}
 		}
+		
+		if ( mb_curSelection )
+		{
+			screen.DrawText("tsp_small", Font.CR_UNTRANSLATED, menuOffset.x + 87, 579, mb_curSelection.desc,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+		}
 	}
 }
