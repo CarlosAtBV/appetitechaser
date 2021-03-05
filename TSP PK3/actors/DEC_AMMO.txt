@@ -5,11 +5,11 @@
 ACTOR TSPPistolAmmo : Ammo
 {
 	+IGNORESKILL
-	Inventory.Amount 5
+	Inventory.Amount 10
 	Inventory.MaxAmount 150
 	Ammo.BackpackAmount 15
 	Ammo.BackpackMaxAmount 300
-	Ammo.DropAmount 5
+	Ammo.DropAmount 10
 	//Inventory.Icon "919AA0"
 	//Inventory.PickupMessage "$PISTOLAMMOPICKUP"
 	Inventory.PickupSound "919m/magout"
@@ -40,14 +40,14 @@ ACTOR TSPPistolAmmoPickup : TSP_CustomInventory
 	Height 16
 	Inventory.PickupMessage "$PISTOLAMMOPICKUP"
 	Inventory.PickupSound "919m/magout"
-	TSP_CustomInventory.AmountGiven 5
+	TSP_CustomInventory.AmountGiven 10
 	States
 	{
 	Spawn:
 		919F A -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_GiveInventory("TSPPistolAmmo",5)
+		TNT1 A 0 A_GiveInventory("TSPPistolAmmo",10)
 		Stop
 	}
 }
@@ -150,6 +150,104 @@ ACTOR TSPSMGAmmoPickupBig : TSPSMGAmmoPickup
 		Stop
 	}
 }
+
+//=============
+// Shotgun Ammo
+//=============
+
+ACTOR TSPShells: Ammo
+{
+	+IGNORESKILL
+	Inventory.Amount 4
+	Inventory.MaxAmount 48
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 96
+	Ammo.DropAmount 4
+	//Inventory.Icon "919AA0"
+	Inventory.PickupMessage "$SMGAMMOPICKUP"
+	Inventory.PickupSound "shotgun/load"
+	Tag "Shotgun Ammo"
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Stop
+	}
+}
+
+/*
+ACTOR BuckShotShell : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 48
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 96
+	Ammo.DropAmount 4
+	Inventory.Icon "SHELA0"
+	Inventory.PickupSound "zekeshotgun/load"
+	+IGNORESKILL
+	States
+	{
+	Spawn:
+      BCKS A -1
+	  Stop
+	}
+}
+
+ACTOR ElectricShell : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 48
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 96
+	Ammo.DropAmount 4
+	Inventory.Icon "SHELA0"
+	Inventory.PickupSound "zekeshotgun/load"
+	+IGNORESKILL
+	States
+	{
+	Spawn:
+      BCKS A -1
+	  Stop
+	}
+}
+
+ACTOR HellFireShell : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 48
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 96
+	Ammo.DropAmount 4
+	Inventory.Icon "SHELA0"
+	Inventory.PickupSound "zekeshotgun/load"
+	+IGNORESKILL
+	States
+	{
+	Spawn:
+      BCKS A -1
+	  Stop
+	}
+}
+
+ACTOR PoisonShell : Ammo
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 48
+	Ammo.BackpackAmount 0
+	Ammo.BackpackMaxAmount 96
+	Ammo.DropAmount 4
+	Inventory.Icon "SHELA0"
+	Inventory.PickupSound "zekeshotgun/load"
+	+IGNORESKILL
+	States
+	{
+	Spawn:
+      BCKS A -1
+	  Stop
+	}
+}
+*/
 
 ACTOR TSP_DoomShellReplacer : RandomSpawner replaces Shell
 {
