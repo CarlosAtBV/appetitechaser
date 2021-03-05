@@ -91,6 +91,8 @@ Class TSP_MainMenu : TSP_MenuBase
 		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSPRed"));
 		
+		mb_curSelection = tsp_buttons[0];
+		
 		tsp_bgDim = (mParentMenu == null || mParentMenu is "TSP_MainMenuButFake") ? 0.0 : 1.0;
 		tsp_storedMenu = "";
 	}
