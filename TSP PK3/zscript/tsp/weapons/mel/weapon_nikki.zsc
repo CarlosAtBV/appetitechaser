@@ -233,14 +233,14 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"----" A 0 A_Overlay(70, "Overlay_Reload_Weapon");
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" A 4;
-			"####" A 4;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
-			"####" C 9;
-			"####" B 21;
-			"####" E 12;
-			"####" C 8;
-			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+			"####" A 3;
+			"####" C 7;
+			"####" B 28;
+			"####" E 9;
+			"####" C 7;
 			"####" A 2;
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" AAAAAAAAAAA 1 A_TSP_WeaponReady(WRF_NOBOB);
 			/*121R JKLLMNO 1;
 			121R P 20 A_TSP_ReloadSpeed(20);
@@ -256,24 +256,17 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			
 		ReloadHand:
 			"----" A 0 A_Overlay(-11, "Overlay_Reload_Hand");
-			121H A 17;
-			"----" A 0 A_PlaySound("nikki/reloadout", 6);
-			121H C 17;
-			"----" A 0 A_PlaySound("nikki/reloadin1", 6);
-			121H C 6;
+			121H A 14;
+			121H C 4;
+			121H C 15 A_PlaySound("nikki/reloadout", 6);
+			121H C 9 A_PlaySound("nikki/reloadin1", 6);
 			121H A 2;
-			/*"----" A 0
-			{
-				A_PlaySound("nikki/reloadin2", 5);
-				A_TSP_ReloadAmmo();
-			}*/
-			121H B 9;
-			"----" A 0
+			121H B 7;
+			121H A 15
 			{
 				A_PlaySound("nikki/reloadin2", 6);
 				A_TSP_ReloadAmmo();
 			}
-			121H A 15;
 			Stop;
 			
 		Switch:
