@@ -1,0 +1,209 @@
+Class TSP_MenuBase_ListButton
+{
+	string text;
+	string desc;
+	string menu;
+	Font fnt;
+	Vector2 pos;
+	Vector2 size;
+	bool isSelected;
+	double flash;
+	Color color;
+	
+	TSP_MenuBase_ListButton buttonUp;
+	TSP_MenuBase_ListButton buttonDown;
+	
+	Vector2 offset;
+	
+	void Tick()
+	{
+		offset.x = offset.x + ((isSelected ? 35 : 0) - offset.x) / 4;
+		if ( flash > 0.0 )
+		{
+			flash -= 0.2;
+		}
+	}
+}
+
+Class TSP_MainMenu : TSP_MenuBase
+{
+	Array<TSP_MenuBase_ListButton> tsp_buttons;
+	
+	TSP_MenuBase_ListButton mb_curSelection;
+	double buttonFlash;
+	
+	double tsp_lerpX;
+	
+	string tsp_storedMenu;
+	
+	const MENUBUTX = 73;
+	const MENUBUTY = 228;
+	const MENUBUTH = 57;
+	
+	double easeOutBack (double x)
+	{
+		double c1 = 1.70158;
+		double c3 = c1 + 1;
+
+		return 1 + c3 * ((x - 1) ** 3) + c1 * ((x - 1) ** 2);
+	}
+	
+	double easeOutExpo (double x)
+	{
+		return (x == 1) ? 1 : 1 - ((2) ** (-10 * x));
+	}
+	
+	void AddButton(string name, string desc = "Add description pls", string menu = "TSP_MainMenu", Color color = Font.CR_UNTRANSLATED)
+	{
+		TSP_MenuBase_ListButton newButton;
+		newButton = new("TSP_MenuBase_ListButton");
+		newButton.text = name;
+		newButton.desc = desc;
+		newButton.menu = menu;
+		newButton.fnt = "tsp_bold";
+		newButton.color = color;
+		newButton.size = (newButton.fnt.StringWidth(name), newButton.fnt.GetHeight());
+		newButton.pos = (MENUBUTX, MENUBUTY + MENUBUTH * tsp_buttons.Size());
+		
+		if ( tsp_buttons.Size() > 0 )
+		{
+			newButton.buttonUp = tsp_buttons[tsp_buttons.Size()-1];
+			tsp_buttons[tsp_buttons.Size()-1].buttonDown = newButton;
+		}
+		
+		tsp_buttons.Push(newButton);
+	}
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		
+		tsp_buttons.Clear();
+		
+		Vector2 basePos = (MENUBUTX, MENUBUTY);
+		AddButton("Start Game", "Start a new game!", "TSP_GameModeMenu", Font.FindFontColor("TSPMenuGreen"));
+		AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSPYeller"));
+		AddButton("Codex", "mel feet pics", "TSP_OptionsMenu", Font.FindFontColor("TSPBlue"));
+		AddButton("Load Game", "Load a saved game.", "LoadGameMenu", Font.FindFontColor("TSPMenuGreen"));
+		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
+		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSPRed"));
+		
+		tsp_storedMenu = "";
+	}
+	
+	override void OnReturn()
+	{
+		tsp_storedMenu = "";
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+		
+		if ( tsp_storedMenu == "" && tsp_lerpX < 1.0 )
+		{
+			tsp_lerpX += 0.05;
+		}
+		else if ( tsp_storedMenu != "" && tsp_lerpX > 0.0 )
+		{
+			tsp_lerpX -= 0.1;
+			if ( tsp_lerpX <= 0 )
+			{
+				SetMenu(tsp_storedMenu, 0);
+			}
+		}
+		
+		for( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			tsp_buttons[i].isSelected = ( tsp_buttons[i] == mb_curSelection );
+			tsp_buttons[i].Tick();
+		}
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = ConvertMousePos((x, y));
+		
+		for( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			if ( CheckMousePos(mousePos, tsp_buttons[i].pos, tsp_buttons[i].size) )
+			{
+				if ( tsp_buttons[i] != mb_curSelection )
+				{
+					S_Sound("menu/cursor",CHAN_UI);
+					tsp_buttons[i].flash = 1.0;
+				}
+				mb_curSelection = tsp_buttons[i];
+			}
+		}
+		
+		if ( type == Menu.MOUSE_Release )
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Up:
+				if ( mb_curSelection.buttonUp != null )
+				{
+					mb_curSelection = mb_curSelection.buttonUp;
+				}
+				mb_curSelection.flash = 1.0;
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+			case MKEY_Down:
+				if ( mb_curSelection.buttonDown != null )
+				{
+					mb_curSelection = mb_curSelection.buttonDown;
+				}
+				mb_curSelection.flash = 1.0;
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+				
+			case MKEY_Enter:
+				S_Sound("menu/choose",CHAN_UI);
+				if ( mb_curSelection != null )
+				{
+					tsp_storedMenu = mb_curSelection.menu;
+					//SetMenu(mb_curSelection.menu, 0);
+					return true;
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override void TSP_MenuDrawer()
+	{
+		Vector2 menuOffset = (-640 + 640 * easeOutExpo(tsp_lerpX), 0);
+		
+		Font fnt = "tsp_bold";
+		String testString = "FUCK";
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			let button = tsp_buttons[i];
+			
+			screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x, button.pos.y, button.text,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				
+			if ( button.flash > 0.0 )
+			{
+				screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x, button.pos.y, button.text,
+					DTA_LegacyRenderStyle, STYLE_Add, DTA_Alpha, button.flash,
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+			}
+		}
+	}
+}

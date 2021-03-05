@@ -33,6 +33,15 @@ Class TSP_EpisodeMenuButFake : ListMenu
 	}
 }
 
+Class TSP_MainMenuButFake : ListMenu
+{
+	override void Ticker()
+	{
+		menu.SetMenu("TSP_MainMenu",0);
+		menu.GetCurrentMenu().mParentMenu = mParentMenu;
+	}
+}
+
 Class TSP_ListMenu : ListMenu
 {
 	override bool MouseEvent(int type, int x, int y)
