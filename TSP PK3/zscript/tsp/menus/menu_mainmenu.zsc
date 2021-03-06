@@ -231,6 +231,8 @@ Class TSP_MainMenu : TSP_MenuBase
 		
 		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
 		
+		//screen.Dim("#00FF00", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
+		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK";
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )

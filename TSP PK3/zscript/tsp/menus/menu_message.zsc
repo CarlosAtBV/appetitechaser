@@ -1,11 +1,81 @@
+Class TSP_MessageBoxButton
+{
+	String text;
+	Vector2 pos;
+	Vector2 size;
+}
+
 Class TSP_MessageBoxMenu : MessageBoxMenu
 {
 	mixin TSP_HiResBase;
+	
+	double mm_alpha;
+	
+	Array<TSP_MessageBoxButton> tsp_buttons;
+	
+	//const BUTTONWIDTH = 256;
+	const BUTTONHEIGHT = 72;
+	
+	Font fnt;
+	int fontHeight;
+	int c;
+	int boxWidth, boxHeight;
+	
+	const PADDING = 32;
 	
 	override void Init(Menu parent, String message, int messagemode, bool playsound, Name cmd, voidptr native_handler)
 	{
 		super.Init(parent, message, messagemode, playsound, cmd, native_handler);
 		DontDim = true;
+		
+		fnt = "tsp_small";
+		fontHeight = fnt.GetHeight();
+		c = mMessage.Count();
+		mm_alpha = 0.0;
+		
+		boxWidth = 0;
+		boxHeight = c * fontHeight + PADDING + BUTTONHEIGHT;
+		
+		for ( int i = 0; i < c; i++ )
+		{
+			int lineWidth = fnt.StringWidth(mMessage.StringAt(i));
+			
+			if ( boxWidth < lineWidth )
+			{
+				boxWidth = lineWidth;
+			}
+		}
+		
+		int BUTTONWIDTH = (boxWidth / 2) - PADDING;
+		int BUTTONDIST = boxWidth/4;
+		
+		boxWidth += PADDING*2;
+		boxHeight += PADDING*2;
+		
+		TSP_MessageBoxButton newButton;
+		
+		int buttonY = 360 + (boxHeight/2) - PADDING - BUTTONHEIGHT;
+		
+		newButton = new("TSP_MessageBoxButton");
+		newButton.text = "Minion";
+		newButton.pos = (640-BUTTONDIST-(BUTTONWIDTH/2), buttonY);
+		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
+		tsp_buttons.Push(newButton);
+		
+		newButton = new("TSP_MessageBoxButton");
+		newButton.text = "Da Bob";
+		newButton.pos = (640+BUTTONDIST-(BUTTONWIDTH/2), buttonY);
+		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
+		tsp_buttons.Push(newButton);
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+		if ( mm_alpha < 1.0 )
+		{
+			mm_alpha += 0.2;
+		}
 	}
 	
 	override void Drawer()
@@ -14,23 +84,30 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		
 		UpdateViewport();
 		
-		Font fnt = "tsp_small";
-		int fontHeight = fnt.GetHeight();
+		Draw9Slice(640-(boxWidth/2), 360-(boxHeight/2), boxWidth, boxHeight, "graphics/menu/common/slice_default.png", 16);
+		
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			let button = tsp_buttons[i];
+			Draw9Slice(button.pos.x, button.pos.y, button.size.x, button.size.y, "graphics/menu/common/slice_button.png", 16);
 			
-		int c = mMessage.Count();
-		int y = 720/2;
-		y -= c * fontHeight / 2;
+			screen.DrawText(fnt, Font.CR_UNTRANSLATED,
+				button.pos.x + (button.size.x / 2) - fnt.StringWidth(button.text)/2,
+				button.pos.y + (button.size.y / 2) - fnt.GetHeight()/2,
+				button.text,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+		}
 		
-		int boxWidth = 640;
-		int boxHeight = 240;
-		
-		Draw9Slice(640-(boxWidth/2), 360-(boxHeight/2), boxWidth, boxHeight, "graphics/menu/common/border/border_bg_green.png", 8);
+		int y = 360-(boxHeight/2)+PADDING;
 
 		for ( int i = 0; i < c; i++ )
 		{
 			int lineWidth = fnt.StringWidth(mMessage.StringAt(i));
 			
 			screen.DrawText(fnt, Font.CR_UNTRANSLATED, 640-lineWidth/2, y, mMessage.StringAt(i),
+				DTA_Alpha, mm_alpha,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
