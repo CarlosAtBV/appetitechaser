@@ -34,9 +34,12 @@ Class TSP_WolfSSReplaceHandler : EventHandler
 {
     Override void WorldThingDied(WorldEvent e)
     {
-		if ( e.Thing is "WolfensteinSS" || Actor.GetReplacee(e.Thing.GetClass()) is "WolfensteinSS" )
-		{
-			e.Thing.A_DropItem("TSP_Pickup_MP40");
-		}
-	}
+        if ( e.Thing is "WolfensteinSS" || Actor.GetReplacee(e.Thing.GetClass()) is "WolfensteinSS" )
+        {
+            if(!e.Thing.target.FindInventory("MelRetroMP40"))
+            {
+                e.Thing.A_DropItem("TSP_Pickup_MP40");
+            }
+        }
+    }
 }
