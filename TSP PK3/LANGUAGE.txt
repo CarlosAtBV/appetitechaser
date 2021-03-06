@@ -14,6 +14,8 @@ MENU_MODE_HUNTERS_SUB = "Take down as many enemies as you can!";
 MENU_MODE_TRAINING = "Training";
 MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
 
+MENU_OPT_MODIFIERS = "\c[TSPYeller]Modifiers";
+
 QUITMSG = "\cnI now have a quarrel with you.";
 QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
 QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";

@@ -33,7 +33,7 @@ ListMenu "TSP_GameModeMenu"
 	TSP_MenuItem_GamemodeItem "$MENU_MODE_STANDARD", "D", "TSP_CharacterMenu_BH", "$MENU_MODE_STANDARD_SUB", 0
 	TSP_MenuItem_GamemodeItem "$MENU_MODE_HUNTERS", "B", "TSP_CharacterMenu_BH", "$MENU_MODE_HUNTERS_SUB", 1
 	TSP_MenuItem_GamemodeItem "$MENU_MODE_TRAINING", "T", "TSP_CharacterMenu_BH", "$MENU_MODE_TRAINING_SUB", 2
-	//TSP_MenuItem_TextItem "SPMODEM", "M", "TSP_Modifiers", 0
+	TSP_MenuItem_TextItem "$MENU_OPT_MODIFIERS", "M", "TSP_Modifiers", "$MENU_OPT_MODIFIERS_SUB" 0
 }
 
 LISTMENU "TSP_OptionsMenu"

@@ -145,7 +145,7 @@ Class ListMenuItemTSP_MenuItem_TextItem : ListMenuItemTextItem
 {
 	String mSubtitle;
 
-	void Init(ListMenuDescriptor desc, String text, String hotkey, Name child, string subtitle = "melody squartswell", int param = 0)
+	void Init(ListMenuDescriptor desc, String text, String hotkey, Name child, string subtitle = "pls add description lmao!!!", int param = 0)
 	{
 		Super.Init(desc, text, hotkey, child, param);
 		mSubtitle = subtitle;
