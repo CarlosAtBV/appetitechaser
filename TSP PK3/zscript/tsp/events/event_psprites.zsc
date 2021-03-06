@@ -44,6 +44,8 @@ Extend Class TSP_EventHandler
 		//screen.DrawText(BigFont, , 0, 0, r..", "..g..", "..b, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		//screen.Dim(Color(r, g, b), 1.0, 0, 0, 64, 64);
 		
+		Console.Printf("~~~~~");
+		
 		while(psprite)
 		{
 			if( psprite != null )
@@ -57,6 +59,8 @@ Extend Class TSP_EventHandler
 					
 					Vector2 newOffset = (160, 100 - 32) + sprOffset;
 					
+					Console.Printf(psprite.id.." ~ "..psprite.bAddWeapon.." ~ "..psprite.y);
+					
 					Vector2 weaponOldPos = (psprite.oldx, psprite.oldy);
 					Vector2 weaponNewPos = (psprite.x, psprite.y);
 					Vector2 weaponPos = (
@@ -65,6 +69,11 @@ Extend Class TSP_EventHandler
 					);
 					
 					weaponPos.y -= 32;
+					
+					if ( psprite.id != PSP_WEAPON )
+					{
+						weaponPos.y += 32;
+					}
 					
 					newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
