@@ -1,0 +1,188 @@
+Class TSP_OptionMenu_Item ui
+{
+	Vector2 pos;
+	Vector2 size;
+	TSP_OptionMenu parent;
+	
+	string text;
+	string desc;
+	OptionMenuItem item;
+	
+	TSP_OptionMenu_Item goUp;
+	TSP_OptionMenu_Item goDown;
+	
+	virtual int GetHeight()
+	{
+		return 32;
+	}
+	
+	virtual void Draw(bool isSelected, Vector2 off = (0,0))
+	{
+		if ( isSelected )
+		{
+			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_button.png", 16);
+		}
+		else
+		{
+			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_default.png", 16);
+		}
+		parent.DrawText(off+(pos.x+16, pos.y+6), text);
+	}
+}
+
+Class TSP_OptionMenu_Selectable : TSP_OptionMenu_Item
+{
+}
+
+const OPTIONOPTWIDTH = 316;
+
+Class TSP_OptionMenu_Toggle : TSP_OptionMenu_Selectable
+{
+	override void Draw(bool isSelected, Vector2 off)
+	{
+		int optX = pos.x + size.x-OPTIONOPTWIDTH+8;
+		parent.Draw9Slice(pos.x, off.y+pos.y, size.x-OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button.png", 16);
+		parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button.png", 16);
+		
+		let fuckItem = OptionMenuItemOptionBase(item);
+		int selection = fuckItem.GetSelection();
+		string fuckNugget = StringTable.Localize(OptionValues.GetText(fuckItem.mValues, selection));
+		parent.DrawText(off+(pos.x+16, pos.y+6), text);
+		parent.DrawText(off+(optX+16, pos.y+6), fuckNugget);
+	}
+}
+
+Class TSP_OptionMenu_Header : TSP_OptionMenu_Item
+{
+	override void Draw(bool isSelected, Vector2 off)
+	{
+		parent.DrawText(off+(pos.x, pos.y+6), text);
+	}
+}
+
+Class TSP_OptionMenu : OptionMenu
+{
+	mixin TSP_HiResBase;
+	Array<TSP_OptionMenu_Item> tsp_buttons;
+	int scrollY;
+	
+	TSP_OptionMenu_Item tsp_curSel;
+	
+	override void Init(Menu parent, OptionMenuDescriptor desc)
+	{
+		super.Init(parent, desc);
+		
+		TSP_OptionMenu_Item newButton;
+		
+		int y = 0;
+		
+		for( int i=0; i<mDesc.mItems.Size(); i++ )
+		{
+			let item = mDesc.mItems[i];
+			if ( item is "OptionMenuItemStaticText" )
+			{
+				newButton = new("TSP_OptionMenu_Header");
+			}
+			else if ( item is "OptionMenuItemOptionBase" )
+			{
+				newButton = new("TSP_OptionMenu_Toggle");
+			}
+			else
+			{
+				newButton = new("TSP_OptionMenu_Selectable");
+			}
+			newButton.text = item.mLabel;
+			newButton.pos = (64, y);
+			newButton.size = (782, 32);
+			newButton.item = item;
+			newButton.parent = self;
+			newButton.desc = "Funny description goes here! Paul Blart: Mall Cop 2.";
+			if ( tsp_buttons.Size() > 0 )
+			{
+				for ( int i = tsp_buttons.Size()-1; i >= 0; i-- )
+				{
+					if ( tsp_buttons[i] is "TSP_OptionMenu_Selectable" )
+					{
+						tsp_buttons[i].goDown = newButton;
+						newButton.goUp = tsp_buttons[i];
+						break;
+					}
+				}
+			}
+			tsp_buttons.Push(newButton);
+			
+			y += 32+10;
+		}
+		
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			if ( tsp_buttons[i] is "TSP_OptionMenu_Selectable" )
+			{
+				tsp_curSel = tsp_buttons[i];
+				break;
+			}
+		}
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Up:
+				if ( tsp_curSel && tsp_curSel.goUp != null )
+				{
+					tsp_curSel = tsp_curSel.goUp;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+				
+			case MKEY_Down:
+				if ( tsp_curSel && tsp_curSel.goDown != null )
+				{
+					tsp_curSel = tsp_curSel.goDown;
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				return true;
+				
+			case MKEY_Enter:
+				if ( tsp_curSel != null )
+				{
+					S_Sound("menu/choose",CHAN_UI);
+					return tsp_curSel.item.Activate();
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override void Drawer ()
+	{
+		UpdateViewport();
+		
+		Font fnt = "tsp_small";
+		
+		DrawText((68, 74), mDesc.mTitle, "tsp_bold");
+		
+		screen.SetClipRect(0, 85, 1280, 516);
+		
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			let button = tsp_buttons[i];
+			
+			button.Draw(button == tsp_curSel, (0, 156 - scrollY));
+		}
+		
+		if ( tsp_curSel != null )
+		{
+			DrawText((84, 614), "itching my balls");
+		}
+	}
+	
+	void DrawText(Vector2 pos, string text, Font fnt = "tsp_small")
+	{
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, pos.x, pos.y, text,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+	}
+}
