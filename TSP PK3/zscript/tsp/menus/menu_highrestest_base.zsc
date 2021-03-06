@@ -1,18 +1,11 @@
-Class TSP_MenuBase : GenericMenu
+Mixin Class TSP_HiResBase
 {
 	Vector2 viewportSize;
 	Vector2 screenSize;
 	Vector2 viewportPos;
-		
-	override void Init(Menu parent)
-	{
-		Super.Init(parent);
-	}
 	
-	Vector2 debugMouse;
-	
-	override void Drawer()
-	{
+    void UpdateViewport ()
+    {
 		double scaleY;
 		
 		if ( screen.GetHeight() < 720 )
@@ -27,20 +20,22 @@ Class TSP_MenuBase : GenericMenu
 		viewportSize = (1280 * scaleY, 720 * scaleY);
 		screenSize = (screen.GetWidth(), screen.GetHeight());
 		viewportPos = (screenSize - viewportSize)/2;
-		
-		TSP_MenuDrawer();
-		
-		//screen.DrawText("BigFont", Font.CR_RED, 0, 0, ""..debugMouse);
-		
-		let fuckNugget = TexMan.CheckForTexture("SFXAB0");
-		screen.DrawTexture (fuckNugget, true, debugMouse.x, debugMouse.y,
-			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
-			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
-	}
-		
-	virtual void TSP_MenuDrawer()
+    }
+	
+	Vector2 ConvertMousePos(Vector2 mouse)
 	{
+		//debugMouse = mouse -= viewportPos;
+		return mouse;// -= viewportPos;
+		/*Vector2 start, size;
+		[start, size] = Screen.VirtualToRealCoords((0, 0), (1280, 720), (1280, 720));
+		Vector2 adjustedMPos = mouse - start;
+		Vector2 virtualMPos = (adjustedMPos.x * 1280 / size.x, adjustedMPos.y * 720 / size.y);
+		return virtualMPos;*/
+	}
+	
+	bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)
+	{
+		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
 	}
 	
 	void Draw9Slice(int x, int y, int width, int height, string bgPic = "graphics/menu/tsp_menuborder0.png", int cornerSize = 5)
@@ -135,21 +130,36 @@ Class TSP_MenuBase : GenericMenu
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 	}
+}
+
+Class TSP_MenuBase : GenericMenu
+{
+	mixin TSP_HiResBase;
 	
-	Vector2 ConvertMousePos(Vector2 mouse)
+	override void Init(Menu parent)
 	{
-		debugMouse = mouse -= viewportPos;
-		return mouse;// -= viewportPos;
-		/*Vector2 start, size;
-		[start, size] = Screen.VirtualToRealCoords((0, 0), (1280, 720), (1280, 720));
-		Vector2 adjustedMPos = mouse - start;
-		Vector2 virtualMPos = (adjustedMPos.x * 1280 / size.x, adjustedMPos.y * 720 / size.y);
-		return virtualMPos;*/
+		Super.Init(parent);
 	}
 	
-	bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)
+	Vector2 debugMouse;
+	
+	override void Drawer()
 	{
-		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
+		UpdateViewport();
+		
+		TSP_MenuDrawer();
+		
+		//screen.DrawText("BigFont", Font.CR_RED, 0, 0, ""..debugMouse);
+		
+		let fuckNugget = TexMan.CheckForTexture("SFXAB0");
+		screen.DrawTexture (fuckNugget, true, debugMouse.x, debugMouse.y,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+	}
+		
+	virtual void TSP_MenuDrawer()
+	{
 	}
 	
 	void DrawText(Font fnt, int x, int y, string text, Color color = Font.CR_UNTRANSLATED, bool centered = false)

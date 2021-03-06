@@ -105,6 +105,7 @@ Class TSP_MainMenu : TSP_MenuBase
 	override void Ticker()
 	{
 		super.Ticker();
+		Class<Menu> realMenu = tsp_storedMenu;
 		
 		if ( tsp_storedMenu == "" )
 		{
@@ -120,6 +121,12 @@ Class TSP_MainMenu : TSP_MenuBase
 		}
 		else if ( tsp_storedMenu != "" && tsp_lerpX > 0.0 )
 		{
+			if ( tsp_storedMenu == "QuitMenu" )
+			{
+				SetMenu(tsp_storedMenu, 0);
+				return;
+			}
+			
 			if ( tsp_lerpX > 0.0 )
 			{
 				tsp_lerpX -= 0.1;

@@ -1,0 +1,46 @@
+Class TSP_MessageBoxMenu : MessageBoxMenu
+{
+	mixin TSP_HiResBase;
+	
+	override void Init(Menu parent, String message, int messagemode, bool playsound, Name cmd, voidptr native_handler)
+	{
+		super.Init(parent, message, messagemode, playsound, cmd, native_handler);
+		DontDim = true;
+	}
+	
+	override void Drawer()
+	{
+		mParentMenu.Drawer();
+		
+		UpdateViewport();
+		
+		Font fnt = "tsp_small";
+		int fontHeight = fnt.GetHeight();
+			
+		int c = mMessage.Count();
+		int y = 720/2;
+		y -= c * fontHeight / 2;
+		
+		int boxWidth = 640;
+		int boxHeight = 240;
+		
+		Draw9Slice(640-(boxWidth/2), 360-(boxHeight/2), boxWidth, boxHeight, "graphics/menu/common/border/border_bg_green.png", 8);
+
+		for ( int i = 0; i < c; i++ )
+		{
+			int lineWidth = fnt.StringWidth(mMessage.StringAt(i));
+			
+			screen.DrawText(fnt, Font.CR_UNTRANSLATED, 640-lineWidth/2, y, mMessage.StringAt(i),
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				
+				y += fontHeight;
+		}
+		
+		/*screen.DrawText(fnt, Font.CR_UNTRANSLATED, 0, 0, "fuck nugget",
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));*/
+	}
+}

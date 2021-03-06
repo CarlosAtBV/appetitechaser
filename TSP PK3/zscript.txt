@@ -69,6 +69,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/menus/menu_highrestest_base.zsc"
 #include "zscript/tsp/menus/menu_highrestest.zsc"
 #include "zscript/tsp/menus/menu_mainmenu.zsc"
+#include "zscript/tsp/menus/menu_message.zsc"
 #include "zscript/tsp/menus/codex/codex_main.zsc"
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
