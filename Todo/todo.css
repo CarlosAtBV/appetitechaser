@@ -21,8 +21,7 @@ h3
 	border-style: solid;
 	border-image: url("images/slice_default.png");
 	border-image-slice: 16;
-	max-height: 512px;
-	width: fit-content;
+	display: table;
 }
 
 ul
@@ -39,11 +38,12 @@ ul
     right: 20px;
     bottom: 20px;
     left: 20px;
+	overflow: scroll;
 	
 	background-color: #FFFFFF00;
 	padding: 8px;
 	display: flex;
-	flex-flow: row wrap;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 
