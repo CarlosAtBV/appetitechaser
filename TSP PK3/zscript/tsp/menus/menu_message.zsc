@@ -1,8 +1,26 @@
 Class TSP_MessageBoxButton
 {
+	int id;
 	String text;
 	Vector2 pos;
 	Vector2 size;
+	double mult;
+	bool isSelected;
+	
+	Vector2 GetPos()
+	{
+		return pos - (8,8) * mult;
+	}
+	
+	Vector2 GetSize()
+	{
+		return size + (16,16) * mult;
+	}
+	
+	void Tick()
+	{
+		mult = mult + ((isSelected ? 1.0 : 0.0) - mult) / 3;
+	}
 }
 
 Class TSP_MessageBoxMenu : MessageBoxMenu
@@ -12,6 +30,7 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 	double mm_alpha;
 	
 	Array<TSP_MessageBoxButton> tsp_buttons;
+	TSP_MessageBoxButton tsp_curSelection;
 	
 	//const BUTTONWIDTH = 256;
 	const BUTTONHEIGHT = 72;
@@ -57,16 +76,20 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		int buttonY = 360 + (boxHeight/2) - PADDING - BUTTONHEIGHT;
 		
 		newButton = new("TSP_MessageBoxButton");
-		newButton.text = "Minion";
+		newButton.text = "cringe";
 		newButton.pos = (640-BUTTONDIST-(BUTTONWIDTH/2), buttonY);
 		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
+		newButton.id = 0;
 		tsp_buttons.Push(newButton);
 		
 		newButton = new("TSP_MessageBoxButton");
-		newButton.text = "Da Bob";
+		newButton.text = "deadass";
 		newButton.pos = (640+BUTTONDIST-(BUTTONWIDTH/2), buttonY);
 		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
+		newButton.id = 1;
 		tsp_buttons.Push(newButton);
+		
+		tsp_curSelection = tsp_buttons[0];
 	}
 	
 	override void Ticker()
@@ -76,6 +99,69 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		{
 			mm_alpha += 0.2;
 		}
+		
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			tsp_buttons[i].isSelected = (tsp_buttons[i] == tsp_curSelection);
+			tsp_buttons[i].Tick();
+		}
+	}
+	
+	override bool MenuEvent(int mkey, bool fromcontroller)
+	{
+		if (mMessageMode == 0)
+		{
+			if ( tsp_curSelection )
+			{
+				if (mkey == MKEY_Left || mkey == MKEY_Right)
+				{
+					MenuSound("menu/cursor");
+					tsp_curSelection = tsp_buttons[!tsp_curSelection.id];
+					return true;
+				}
+				else if (mkey == MKEY_Enter)
+				{
+					HandleResult(tsp_curSelection.id);
+					return true;
+				}
+				else if (mkey == MKEY_Back)
+				{
+					HandleResult(false);
+					return true;
+				}
+			}
+			return false;
+		}
+		else
+		{
+			Close();
+			CloseSound();
+			return true;
+		}
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		Vector2 mousePos = ConvertMousePos((x, y));
+
+		for ( int i = 0; i < tsp_buttons.Size(); i++ )
+		{
+			if ( CheckMousePos(mousePos, tsp_buttons[i].pos, tsp_buttons[i].size) )
+			{
+				if ( tsp_curSelection != tsp_buttons[i] )
+				{
+					MenuSound("menu/cursor");
+				}
+				tsp_curSelection = tsp_buttons[i];
+			}
+		}
+		
+		if ( type == MOUSE_Release )
+		{
+			return MenuEvent(MKEY_Enter, true);
+		}
+		
+		return true;
 	}
 	
 	override void Drawer()
@@ -89,7 +175,9 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
 			let button = tsp_buttons[i];
-			Draw9Slice(button.pos.x, button.pos.y, button.size.x, button.size.y, "graphics/menu/common/slice_button.png", 16);
+			Vector2 pos = button.GetPos();
+			Vector2 size = button.GetSize();
+			Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/menu/common/slice_button.png", 16);
 			
 			screen.DrawText(fnt, Font.CR_UNTRANSLATED,
 				button.pos.x + (button.size.x / 2) - fnt.StringWidth(button.text)/2,
