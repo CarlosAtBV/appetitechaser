@@ -1,0 +1,54 @@
+body
+{
+	background-color: #252424;
+	color: #E6E6E6;
+	font-family: "Monda";
+}
+
+h3
+{
+	text-align: center;
+	color: #D6D562;
+}
+
+.noteList
+{
+	background-color: #2C2A29EB;
+	background-clip: padding-box;
+	margin: 8px;
+	padding: 8px;
+	border-width: 16px;
+	border-style: solid;
+	border-image: url("images/slice_default.png");
+	border-image-slice: 16;
+	max-height: 512px;
+	width: fit-content;
+}
+
+ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+
+.noteContainer
+{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+	
+	background-color: #FFFFFF00;
+	padding: 8px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+p
+{
+	font-family: verdana;
+	font-size: 20px;
+}
