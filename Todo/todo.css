@@ -5,6 +5,12 @@ body
 	font-family: "Monda";
 }
 
+h1
+{
+	text-align: center;
+	color: #C8FF9B;
+}
+
 h3
 {
 	text-align: center;
@@ -31,20 +37,24 @@ ul
 	list-style-position: inside;
 }
 
+.taskDone
+{
+	text-decoration: line-through;
+	color: #999999;
+}
+
 .noteContainer
 {
-    position: fixed;
-    top: 20px;
     right: 20px;
-    bottom: 20px;
     left: 20px;
-	overflow: scroll;
 	
 	background-color: #FFFFFF00;
 	padding: 8px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	
+	border-bottom: 4px dotted #7A7A7A;
 }
 
 p
