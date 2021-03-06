@@ -7,6 +7,11 @@ DEFAULTLISTMENU
 	Linespacing 15
 }
 
+DEFAULTOPTIONMENU
+{
+	Class "TSP_OptionMenu"
+}
+
 LISTMENU "MainMenu"
 {
 	//Class "TSP_ListMenuButFake"
