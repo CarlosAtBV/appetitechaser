@@ -1,6 +1,7 @@
 DEFAULTLISTMENU
 {
-	Class "TSP_ListMenu"
+	//Class "TSP_ListMenu"
+	Class "TSP_ListMenuHiRes"
 	Font "DBIGFONT", "Green" //Font "MENUFNT", "DarkGreen"
 	Selector "M_SPSEL", -22, 3
 	Linespacing 15
@@ -8,17 +9,17 @@ DEFAULTLISTMENU
 
 LISTMENU "MainMenu"
 {
-	Class "TSP_MainMenuButFake"
+	//Class "TSP_ListMenuButFake"
 	StaticPatch 103, 39, "SP_MAIN"
 	Position 88, 15
 	Linespacing 29
 		
-	TSP_MenuItem_PatchItem "SPMENU1",  "n",	"TSP_GameModeMenu"
-	TSP_MenuItem_PatchItem "SPMENU2",	     "o",	"TSP_OptionsMenu"
-	TSP_MenuItem_PatchItem "SPMENU3",         "h",   "TSP_CodexMenu"
-	TSP_MenuItem_PatchItem "SPMENU4",         "l",	"LoadGameMenu"
-	TSP_MenuItem_PatchItem "SPMENU5",         "s",	"SaveGameMenu"
-	TSP_MenuItem_PatchItem "SPMENU6",	 "q",	"QuitMenu"
+	TSP_MenuItem_TextItem "Start Game", "n", "TSP_GameModeMenu", "$MENU_START_SUB"
+	TSP_MenuItem_TextItem "$MENU_OPTIONS", "o", "TSP_OptionsMenu", "$MENU_OPTIONS_SUB"
+	TSP_MenuItem_TextItem "$MENU_CODEX", "h", "TSP_CodexMenu", "$MENU_CODEX_SUB"
+	TSP_MenuItem_TextItem "SPMENU4", "l", "LoadGameMenu", "$MENU_LOAD_SUB"
+	TSP_MenuItem_TextItem "SPMENU5", "s", "SaveGameMenu", "$MENU_SAVE_SUB"
+	TSP_MenuItem_TextItem "$MENU_QUIT", "q", "QuitMenu", "$MENU_QUIT_SUB"
 	
 	Font "TinyFont"
 	StaticText 90, 195, "$VERSION"
@@ -29,10 +30,10 @@ ListMenu "TSP_GameModeMenu"
 	StaticPatch 103, 39, "SPMODE"
 	Position 16, 15
 	Linespacing 29
-	TSP_MenuItem_GamemodeItem "SPMODE1", "D", "TSP_CharacterMenu_BH", 0
-	TSP_MenuItem_GamemodeItem "SPMODE2", "B", "TSP_CharacterMenu_BH", 1
-	TSP_MenuItem_GamemodeItem "SPMODET", "T", "TSP_CharacterMenu_BH", 2
-	TSP_MenuItem_PatchItem "SPMODEM", "M", "TSP_Modifiers", 0
+	TSP_MenuItem_GamemodeItem "$MENU_MODE_STANDARD", "D", "TSP_CharacterMenu_BH", "$MENU_MODE_STANDARD_SUB", 0
+	TSP_MenuItem_GamemodeItem "$MENU_MODE_HUNTERS", "B", "TSP_CharacterMenu_BH", "$MENU_MODE_HUNTERS_SUB", 1
+	TSP_MenuItem_GamemodeItem "$MENU_MODE_TRAINING", "T", "TSP_CharacterMenu_BH", "$MENU_MODE_TRAINING_SUB", 2
+	//TSP_MenuItem_TextItem "SPMODEM", "M", "TSP_Modifiers", 0
 }
 
 LISTMENU "TSP_OptionsMenu"
@@ -41,12 +42,12 @@ LISTMENU "TSP_OptionsMenu"
 	Position 16, 15
 	Linespacing 29
 		
-	TSP_MenuItem_PatchItem "SPOPT1",  "C",	"TSP_ConfigMenu"
-	TSP_MenuItem_PatchItem "SPMODEM",	     "M",	"TSP_Modifiers"
-	TSP_MenuItem_PatchItem "SPOPT2",         "v",   "TSP_VideoMenu"
-	TSP_MenuItem_PatchItem "SPOPT3",         "a",	"SoundOptions"
-	TSP_MenuItem_PatchItem "SPOPT4",         "o",	"OtherModOptions"
-	TSP_MenuItem_PatchItem "SPOPT5",	 "G",	"OptionsMenu"
+	TSP_MenuItem_TextItem "SPOPT1",  "C",	"TSP_ConfigMenu"
+	TSP_MenuItem_TextItem "SPMODEM",	     "M",	"TSP_Modifiers"
+	TSP_MenuItem_TextItem "SPOPT2",         "v",   "TSP_VideoMenu"
+	TSP_MenuItem_TextItem "SPOPT3",         "a",	"SoundOptions"
+	TSP_MenuItem_TextItem "SPOPT4",         "o",	"OtherModOptions"
+	TSP_MenuItem_TextItem "SPOPT5",	 "G",	"OptionsMenu"
 }
 
 ListMenu "SkillMenu"

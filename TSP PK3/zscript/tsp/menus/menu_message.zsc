@@ -76,14 +76,14 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		int buttonY = 360 + (boxHeight/2) - PADDING - BUTTONHEIGHT;
 		
 		newButton = new("TSP_MessageBoxButton");
-		newButton.text = "cringe";
+		newButton.text = "$TXT_NO";
 		newButton.pos = (640-BUTTONDIST-(BUTTONWIDTH/2), buttonY);
 		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
 		newButton.id = 0;
 		tsp_buttons.Push(newButton);
 		
 		newButton = new("TSP_MessageBoxButton");
-		newButton.text = "deadass";
+		newButton.text = "$TXT_YES";
 		newButton.pos = (640+BUTTONDIST-(BUTTONWIDTH/2), buttonY);
 		newButton.size = (BUTTONWIDTH, BUTTONHEIGHT);
 		newButton.id = 1;

@@ -33,15 +33,6 @@ Class TSP_EpisodeMenuButFake : ListMenu
 	}
 }
 
-Class TSP_MainMenuButFake : ListMenu
-{
-	override void Ticker()
-	{
-		menu.SetMenu("TSP_MainMenu", 0);
-		menu.GetCurrentMenu().mParentMenu = mParentMenu;
-	}
-}
-
 Class TSP_ListMenu : ListMenu
 {
 	override bool MouseEvent(int type, int x, int y)
@@ -150,13 +141,19 @@ Class ListMenuItemTSP_MenuItem_PatchItem : ListMenuItemPatchItem
 	}
 }
 
-Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTSP_MenuItem_PatchItem
+Class ListMenuItemTSP_MenuItem_TextItem : ListMenuItemTextItem
 {
-	String mText;
-	Font mFont;
-	int mColor;
-	int mColorSelected;
-	
+	String mSubtitle;
+
+	void Init(ListMenuDescriptor desc, String text, String hotkey, Name child, string subtitle = "melody squartswell", int param = 0)
+	{
+		Super.Init(desc, text, hotkey, child, param);
+		mSubtitle = subtitle;
+	}
+}
+
+Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTSP_MenuItem_TextItem
+{
 	override bool Activate()
 	{
 		CVar.GetCVar("tsp_gamemode", players[0]).SetInt(mParam);
@@ -165,6 +162,7 @@ Class ListMenuItemTSP_MenuItem_GamemodeItem : ListMenuItemTSP_MenuItem_PatchItem
 		
 		if ( Menu.GetCurrentMenu() is "TSP_CharacterMenu_BH" )
 		{
+			Console.Printf("ok now set gamemode");
 			TSP_CharacterMenu_BH(Menu.GetCurrentMenu()).css_gamemode = mParam;
 			TSP_CharacterMenu_BH(Menu.GetCurrentMenu()).generateChars();
 		}
