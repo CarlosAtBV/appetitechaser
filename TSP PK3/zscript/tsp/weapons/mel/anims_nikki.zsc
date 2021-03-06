@@ -2,7 +2,7 @@ Extend Class MelPistol
 {
 	States
 	{
-			Overlay_Reload_Weapon:
+        Overlay_Reload_Weapon:
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 0.00, 32.00, 0.00);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, -5.64, 36.13, 0.63);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, -17.70, 44.95, 2.12);
@@ -23,23 +23,23 @@ Extend Class MelPistol
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 61.83, -8.76, -8.88);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 65.13, -11.68, -8.88);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 48.96, -8.34, -7.39);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 49.98, -8.40, -7.38);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 52.21, -8.53, -7.36);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 54.91, -8.70, -7.34);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 57.65, -8.88, -7.34);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.14, -9.07, -7.39);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 62.15, -9.25, -7.49);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.48, -9.42, -7.66);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 49.98, -8.43, -7.38);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 52.21, -8.61, -7.36);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 54.91, -8.83, -7.34);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 57.65, -9.05, -7.34);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.14, -9.25, -7.39);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 62.15, -9.42, -7.49);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.48, -9.52, -7.66);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.96, -9.56, -7.93);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.76, -9.71, -7.85);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.17, -9.87, -7.64);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 62.34, -10.01, -7.36);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 61.54, -10.10, -7.15);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.99, -10.13, -7.07);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.77, -9.56, -7.89);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 63.20, -9.56, -7.78);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 62.38, -9.54, -7.62);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 61.56, -9.50, -7.46);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.99, -9.45, -7.35);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -9.38, -7.32);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -9.51, -7.07);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -8.99, -7.17);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -7.88, -7.37);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -9.05, -7.34);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -8.32, -7.39);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -7.63, -7.44);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 60.80, -7.36, -7.46);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 65.55, -7.81, -7.46);
                 TNT1 A 1 A_TSP_AnimLayer(PSP_WEAPON, 65.18, -7.57, -7.46);
@@ -93,23 +93,23 @@ Extend Class MelPistol
                 TNT1 A 1 A_TSP_AnimLayer(-10, 89.17, 32.73, -19.61);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 71.78, 46.23, -21.45);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 20.96, 71.24, -18.63);
-                TNT1 A 1 A_TSP_AnimLayer(-10, -18.73, 97.18, -13.90);
-                TNT1 A 1 A_TSP_AnimLayer(-10, -57.34, 126.69, -8.28);
-                TNT1 A 1 A_TSP_AnimLayer(-10, -88.55, 153.66, -2.09);
-                TNT1 A 1 A_TSP_AnimLayer(-10, -107.13, 171.26, 4.02);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -18.73, 97.18, -13.02);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -57.34, 126.69, -5.27);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -88.55, 153.66, 2.59);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -107.13, 171.26, 7.96);
                 TNT1 A 1 A_TSP_AnimLayer(-10, -112.76, 176.93, 9.58);
-                TNT1 A 1 A_TSP_AnimLayer(-10, -67.58, 172.92, 15.97);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 29.11, 159.99, 22.28);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 74.29, 142.56, 24.99);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 73.90, 118.63, 19.80);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 72.87, 86.28, 5.36);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 71.85, 59.04, -9.18);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 71.46, 47.99, -14.64);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -106.80, 172.75, 8.36);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -90.36, 161.21, 5.24);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -65.62, 143.84, 1.22);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -34.95, 122.31, -3.56);
+                TNT1 A 1 A_TSP_AnimLayer(-10, -1.14, 98.58, -8.23);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 32.18, 75.20, -11.99);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 59.67, 55.90, -14.35);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 72.17, 47.13, -15.13);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 71.46, 47.99, -14.64);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 74.54, 45.58, -14.83);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 82.60, 39.29, -15.24);
-                TNT1 A 1 A_TSP_AnimLayer(-10, 90.67, 33.00, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 70.48, 48.09, -15.17);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 73.69, 45.67, -15.28);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 82.11, 39.34, -15.39);
+                TNT1 A 1 A_TSP_AnimLayer(-10, 90.53, 33.01, -15.43);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 93.75, 30.59, -15.43);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 93.75, 30.59, -15.43);
                 TNT1 A 1 A_TSP_AnimLayer(-10, 93.75, 30.59, -15.43);
