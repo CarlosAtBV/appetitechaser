@@ -65,6 +65,8 @@ Class TSP_OptionMenu : OptionMenu
 	mixin TSP_HiResBase;
 	Array<TSP_OptionMenu_Item> tsp_buttons;
 	int scrollY;
+	double scrollYLerp;
+	int maxScroll;
 	
 	TSP_OptionMenu_Item tsp_curSel;
 	
@@ -118,6 +120,9 @@ Class TSP_OptionMenu : OptionMenu
 			y += 32+10;
 		}
 		
+		let heightRef = tsp_buttons[tsp_buttons.Size()-1];
+		maxScroll = heightRef.pos.y + heightRef.size.y - CLIPHEIGHT;
+		
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
 			if ( tsp_buttons[i] is "TSP_OptionMenu_Selectable" )
@@ -125,6 +130,32 @@ Class TSP_OptionMenu : OptionMenu
 				tsp_curSel = tsp_buttons[i];
 				break;
 			}
+		}
+	}
+	
+	override bool OnUIEvent(UIEvent ev)
+	{
+		if (ev.type == UIEvent.Type_WheelUp && scrollY > 0)
+		{
+			scrollY = max(0, scrollY-64);
+			return true;
+		}
+		else if (ev.type == UIEvent.Type_WheelDown && scrollY < maxScroll)
+		{
+			scrollY = min(maxScroll, scrollY+64);
+			return true;
+		}
+		return Super.OnUIEvent(ev);
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+		
+		scrollYLerp = scrollYLerp + (scrollY - scrollYLerp) / 2;
+		if ( abs(scrollY - scrollYLerp) < 2 )
+		{
+			scrollYLerp = scrollY;
 		}
 	}
 	
@@ -176,6 +207,35 @@ Class TSP_OptionMenu : OptionMenu
 		return super.MenuEvent(mkey, fromcontroller);
 	}
 	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = ConvertMousePos((x, y));
+		
+		if ( mousePos.y > CLIPY && mousePos.y < CLIPY + CLIPHEIGHT )
+		{
+			for( int i = 0; i < tsp_buttons.Size(); i++ )
+			{
+				if ( CheckMousePos(mousePos - (0, (CLIPY - int(scrollYLerp))), tsp_buttons[i].pos, tsp_buttons[i].size) )
+				{
+					if ( tsp_buttons[i] != tsp_curSel )
+					{
+						S_Sound("menu/cursor",CHAN_UI);
+					}
+					tsp_curSel = tsp_buttons[i];
+				}
+			}
+			
+			if ( type == Menu.MOUSE_Release && tsp_curSel != null )
+			{
+				tsp_curSel.item.MouseEvent(type, x, y);
+				return true;
+			}
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
 	override void Drawer ()
 	{
 		UpdateViewport();
@@ -190,7 +250,7 @@ Class TSP_OptionMenu : OptionMenu
 		{
 			let button = tsp_buttons[i];
 			
-			button.Draw(button == tsp_curSel, (0, CLIPY - scrollY));
+			button.Draw(button == tsp_curSel, (0, CLIPY - int(scrollYLerp)));
 		}
 		
 		screen.ClearClipRect();
