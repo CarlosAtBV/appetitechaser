@@ -106,7 +106,7 @@ ListMenu "SaveGameMenu"
 OptionMenu "TSP_ConfigMenu"
 {
     Title "$CONFIGHEADER"
-	StaticText " "
+	
 	StaticText "Bindings and Controls", 1
     Submenu "Customize Controls",                   "TSP_AbridgedControls"
     Submenu "Mouse Options",                        "MouseOptions"
@@ -135,7 +135,7 @@ OptionMenu "TSP_VideoMenu"
 OptionMenu "TSP_Modifiers"
 {
     Title "$TSPMENU2"
-    StaticText      ""
+	
 	SubMenu "Enemies Menu (WIP)",						"TSP_EnemiesMenu"
     StaticText      ""
     StaticText      "$TSPGAMEPLAY1"
@@ -147,11 +147,11 @@ OptionMenu "TSP_Modifiers"
 	//Option "Action! Mode",        "tsp_actionmode", "OnOff"
     StaticText      ""
 	StaticText "$TSPMELHUDMOD1"
-	Option "HUD Portrait Override",						"tsp_melhudmod", "TSPMelHudMod" // MEL HUD FACE MODIFIER
+	Option "$TSPMNU_MELMUGOVERRIDE", "tsp_melhudmod", "TSPMelHudMod" // MEL HUD FACE MODIFIER
     StaticText      ""
 	Option "Start with Melee Only",          	"tsp_fistsstart", "OnOff"
 	Option "Melee Supreme!",                 	"tsp_meleesupreme", "TSPMeleeSupremeOnOff", "tsp_fistsstart"
-    StaticText      ""
+    //StaticText      ""
     StaticText      "$TSPCHEATS1"
 	StaticText      "$TSPCHEATS2"
 	Option "Start with Golden Pistol",        	"tsp_goldenpistol", "OnOff"

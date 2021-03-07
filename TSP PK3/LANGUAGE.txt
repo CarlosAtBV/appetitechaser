@@ -16,6 +16,9 @@ MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
 
 MENU_OPT_MODIFIERS = "\c[TSPYeller]Modifiers";
 
+TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
+TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";
+
 QUITMSG = "\cnI now have a quarrel with you.";
 QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
 QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";
