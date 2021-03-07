@@ -104,7 +104,7 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		mb_curSelection = tsp_buttons[0];
 		
-		tsp_bgDim = 0.0;//(mParentMenu == null || mParentMenu is "TSP_MainMenuButFake") ? 0.0 : 1.0;
+		tsp_bgDim = (mParentMenu == null) ? 0.0 : 1.0;
 		tsp_storedMenu = null;
 	}
 	
@@ -127,6 +127,10 @@ Class TSP_ListMenuHiRes : ListMenu
 			if ( mParentMenu == null && tsp_bgDim < 1.0 )
 			{
 				tsp_bgDim += 0.1;
+				if ( tsp_bgDim > 1.0 )
+				{
+					tsp_bgDim = 1.0;
+				}
 			}
 		}
 		else if ( tsp_lerpX > 0.0 )
