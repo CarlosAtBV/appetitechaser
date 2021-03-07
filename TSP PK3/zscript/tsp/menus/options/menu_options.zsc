@@ -41,8 +41,16 @@ Class TSP_OptionMenu_Toggle : TSP_OptionMenu_Selectable
 	override void Draw(bool isSelected, Vector2 off)
 	{
 		int optX = pos.x + size.x-OPTIONOPTWIDTH+8;
-		parent.Draw9Slice(pos.x, off.y+pos.y, size.x-OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button.png", 16);
-		parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button.png", 16);
+		parent.Draw9Slice(pos.x, off.y+pos.y, size.x-OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_default.png", 16);
+		
+		if ( isSelected )
+		{
+			parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button_active.png", 16);
+		}
+		else
+		{
+			parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_button.png", 16);
+		}
 		
 		let fuckItem = OptionMenuItemOptionBase(item);
 		int selection = fuckItem.GetSelection();
