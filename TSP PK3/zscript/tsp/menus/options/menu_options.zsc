@@ -192,7 +192,7 @@ Class TSP_OptionMenu : OptionMenu
 			case MKEY_Enter:
 				if ( tsp_curSel != null && tsp_curSel.item.Activate() )
 				{
-					S_Sound("menu/choose",CHAN_UI);
+					//S_Sound("menu/choose",CHAN_UI);
 					return true;
 				}
 				return true;
