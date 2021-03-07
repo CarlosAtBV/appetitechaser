@@ -36,7 +36,7 @@ Class TSP_WolfSSReplaceHandler : EventHandler
     {
         if ( e.Thing is "WolfensteinSS" || Actor.GetReplacee(e.Thing.GetClass()) is "WolfensteinSS" )
         {
-            if (!e.Thing.target.CountInv("MelRetroMP40"))
+            if ( e.Thing.target is "TSP_MelRetroPlayer" && !e.Thing.target.CountInv("MelRetroMP40"))
             {
                 e.Thing.A_DropItem("TSP_Pickup_MP40");
             }
