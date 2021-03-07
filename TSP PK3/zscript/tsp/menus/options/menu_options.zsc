@@ -159,12 +159,19 @@ Class TSP_OptionMenu : OptionMenu
 				return true;
 				
 			case MKEY_Enter:
-				if ( tsp_curSel != null )
+				if ( tsp_curSel != null && tsp_curSel.item.Activate() )
 				{
 					S_Sound("menu/choose",CHAN_UI);
-					return tsp_curSel.item.Activate();
+					return true;
 				}
 				return true;
+			
+			default:
+				if ( tsp_curSel && tsp_curSel.item.MenuEvent(mkey, fromcontroller) )
+				{
+					return true;
+				}
+				return Super.MenuEvent(mkey, fromcontroller);
 		}
 		return super.MenuEvent(mkey, fromcontroller);
 	}
