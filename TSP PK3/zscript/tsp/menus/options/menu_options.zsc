@@ -20,11 +20,11 @@ Class TSP_OptionMenu_Item ui
 	{
 		if ( isSelected )
 		{
-			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_button.png", 16);
+			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_button_active.png", 16);
 		}
 		else
 		{
-			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_default.png", 16);
+			parent.Draw9Slice(pos.x, off.y+pos.y, size.x, size.y, "graphics/menu/common/slice_button.png", 16);
 		}
 		parent.DrawText(off+(pos.x+16, pos.y+6), text);
 	}
