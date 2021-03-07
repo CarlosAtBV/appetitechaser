@@ -92,7 +92,7 @@ Class TSP_OptionMenu : OptionMenu
 		for( int i=0; i<mDesc.mItems.Size(); i++ )
 		{
 			let item = mDesc.mItems[i];
-			if ( item is "OptionMenuItemStaticText" )
+			if ( item is "OptionMenuItemStaticText" || item is "OptionMenuItemStaticTextSwitchable" )
 			{
 				newButton = new("TSP_OptionMenu_Header");
 			}
@@ -224,7 +224,7 @@ Class TSP_OptionMenu : OptionMenu
 		{
 			for( int i = 0; i < tsp_buttons.Size(); i++ )
 			{
-				if ( CheckMousePos(mousePos - (0, (CLIPY - int(scrollYLerp))), tsp_buttons[i].pos, tsp_buttons[i].size) )
+				if ( tsp_buttons[i] is "TSP_OptionMenu_Selectable" && CheckMousePos(mousePos - (0, (CLIPY - int(scrollYLerp))), tsp_buttons[i].pos, tsp_buttons[i].size) )
 				{
 					if ( tsp_buttons[i] != tsp_curSel )
 					{
