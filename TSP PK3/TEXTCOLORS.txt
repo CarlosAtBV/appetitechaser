@@ -96,6 +96,12 @@ TSPYeller // OUTLINE
 	#735024  #ddd05c  128  256
 }
 
+TSPOrange // OUTLINE
+{
+	#000000  #000000    0  1
+	#7C2009  #FFB03A   2  256
+}
+
 TSPHudYeller // OUTLINE
 {
 	#000000  #000000    0  1
