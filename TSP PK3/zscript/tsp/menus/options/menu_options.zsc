@@ -68,6 +68,9 @@ Class TSP_OptionMenu : OptionMenu
 	
 	TSP_OptionMenu_Item tsp_curSel;
 	
+	const CLIPHEIGHT = 470;
+	const CLIPY = 128;
+	
 	override void Init(Menu parent, OptionMenuDescriptor desc)
 	{
 		super.Init(parent, desc);
@@ -96,7 +99,8 @@ Class TSP_OptionMenu : OptionMenu
 			newButton.size = (782, 32);
 			newButton.item = item;
 			newButton.parent = self;
-			newButton.desc = "Funny description goes here! Paul Blart: Mall Cop 2.";
+			newButton.desc = item.mLabel.."_SUB";
+			//newButton.desc = "Funny description goes here! Paul Blart: Mall Cop 2.";
 			if ( tsp_buttons.Size() > 0 )
 			{
 				for ( int i = tsp_buttons.Size()-1; i >= 0; i-- )
@@ -132,6 +136,12 @@ Class TSP_OptionMenu : OptionMenu
 				if ( tsp_curSel && tsp_curSel.goUp != null )
 				{
 					tsp_curSel = tsp_curSel.goUp;
+					while ( scrollY > (tsp_curSel.pos.y) )
+					{
+						scrollY--;
+					}
+					//scrollY = min(scrollY, tsp_curSel.pos.y);
+					//scrollY = min(scrollY, tsp_curSel.pos.y+tsp_curSel.size.y);
 					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
@@ -140,6 +150,10 @@ Class TSP_OptionMenu : OptionMenu
 				if ( tsp_curSel && tsp_curSel.goDown != null )
 				{
 					tsp_curSel = tsp_curSel.goDown;
+					while ( scrollY < (tsp_curSel.pos.y + tsp_curSel.size.y - CLIPHEIGHT) )
+					{
+						scrollY++;
+					}
 					S_Sound("menu/cursor",CHAN_UI);
 				}
 				return true;
@@ -163,18 +177,20 @@ Class TSP_OptionMenu : OptionMenu
 		
 		DrawText((68, 74), mDesc.mTitle, "tsp_bold");
 		
-		screen.SetClipRect(0, 85, 1280, 516);
+		screen.SetClipRect(0, CLIPY, 1280, CLIPHEIGHT);
 		
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
 			let button = tsp_buttons[i];
 			
-			button.Draw(button == tsp_curSel, (0, 156 - scrollY));
+			button.Draw(button == tsp_curSel, (0, CLIPY - scrollY));
 		}
+		
+		screen.ClearClipRect();
 		
 		if ( tsp_curSel != null )
 		{
-			DrawText((84, 614), "itching my balls");
+			DrawText((84, 614), tsp_curSel.desc);
 		}
 	}
 	
