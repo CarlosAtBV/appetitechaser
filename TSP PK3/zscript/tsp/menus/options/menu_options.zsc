@@ -11,6 +11,11 @@ Class TSP_OptionMenu_Item ui
 	TSP_OptionMenu_Item goUp;
 	TSP_OptionMenu_Item goDown;
 	
+	virtual void Init()
+	{
+		desc = item.mLabel.."_SUB";
+	}
+	
 	virtual int GetHeight()
 	{
 		return 32;
@@ -62,6 +67,11 @@ Class TSP_OptionMenu_Toggle : TSP_OptionMenu_Selectable
 
 Class TSP_OptionMenu_Control : TSP_OptionMenu_Selectable
 {
+	override void Init()
+	{
+		desc = "Set the desired binding for '"..item.mLabel.."'.";
+	}
+	
 	override void Draw(bool isSelected, Vector2 off)
 	{
 		let controlItem = OptionMenuItemControlBase(item);
@@ -143,7 +153,8 @@ Class TSP_OptionMenu : OptionMenu
 			newButton.size = (782, 32);
 			newButton.item = item;
 			newButton.parent = self;
-			newButton.desc = item.mLabel.."_SUB";
+			
+			newButton.Init();
 			//newButton.desc = "Funny description goes here! Paul Blart: Mall Cop 2.";
 			if ( tsp_buttons.Size() > 0 )
 			{
