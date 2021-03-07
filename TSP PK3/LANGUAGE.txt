@@ -1,24 +1,5 @@
 [enu default]
 
-MENU_OPTIONS = "\c[TSPYeller]Options";
-MENU_OPTIONS_SUB = "Adjust game settings.";
-MENU_CODEX = "\c[TSPBlue]Codex";
-MENU_CODEX_SUB = "Explore the Indigo Skyline's database.";
-MENU_QUIT = "\c[TSPRed]Shut Down";
-MENU_QUIT_SUB = "Exit The Space Pirate.";
-
-MENU_MODE_STANDARD = "Standard";
-MENU_MODE_STANDARD_SUB = "Play through the game normally.";
-MENU_MODE_HUNTERS = "Bounty Hunters";
-MENU_MODE_HUNTERS_SUB = "Take down as many enemies as you can!";
-MENU_MODE_TRAINING = "Training";
-MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
-
-MENU_OPT_MODIFIERS = "\c[TSPYeller]Modifiers";
-
-TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
-TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";
-
 QUITMSG = "\cnI now have a quarrel with you.";
 QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
 QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";

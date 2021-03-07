@@ -4,6 +4,33 @@ TSP_GAMEMODE_STANDARD = "Standard Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "Training Mode";
 
+MENU_OPTIONS = "\c[TSPYeller]Options";
+MENU_OPTIONS_SUB = "Adjust game settings.";
+MENU_CODEX = "\c[TSPBlue]Codex";
+MENU_CODEX_SUB = "Explore the Indigo Skyline's database.";
+MENU_QUIT = "\c[TSPRed]Shut Down";
+MENU_QUIT_SUB = "Exit The Space Pirate.";
+
+MENU_MODE_STANDARD = "Standard";
+MENU_MODE_STANDARD_SUB = "Play through the game normally.";
+MENU_MODE_HUNTERS = "Bounty Hunters";
+MENU_MODE_HUNTERS_SUB = "Take down as many enemies as you can!";
+MENU_MODE_TRAINING = "Training";
+MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
+
+TSPMNU_MNU_CONFIG = "\c[TSPOrange]Config";
+TSPMNU_MNU_CONFIG_SUB = "Configure key bindings.";
+TSPMNU_MNU_OTHERMODOPTIONS = "\c[TSPPurple]Other Mod Options";
+TSPMNU_MNU_OTHERMODOPTIONS_SUB = "Settings for other compatible mods.";
+TSPMNU_MNU_MODIFIERS = "\c[TSPYeller]Modifiers";
+TSPMNU_MNU_MODIFIERS_SUB = "Tweak gameplay options and parameters.";
+
+TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
+TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";
+
+TSPMNU_MELEESTART = "Melee-Only Start";
+TSPMNU_MELEESTART_SUB = "Start with only your melee weapon. Slappers only!";
+
 ////////////
 // MAP NAMES
 ////////////
