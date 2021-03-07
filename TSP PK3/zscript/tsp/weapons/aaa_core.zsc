@@ -431,7 +431,32 @@ Class TSP_Weapon_Core : DoomWeapon
 			 case 2: speedy /= (invoker.tspw_reloadmult2); break;
 			 case 3: speedy /= (invoker.tspw_reloadmult3); break;
 		}
+		
 		A_SetTics(speedy);
+	}
+	
+	action void A_TSP_ReloadMult()
+	{
+		let psprite = invoker.owner.player.psprites;
+		
+		int add;
+		
+		switch(invoker.tspw_reloadlevel)
+		{
+			 case 0: add = 15; break;
+			 case 1: add = 10; break;
+			 case 2: add = 5; break;
+			 case 3: add = 0; break;
+		}
+		
+		while(psprite)
+		{
+			if( psprite != null )
+			{
+				psprite.Tics += add;
+				psprite = psprite.Next;
+			}
+		}
 	}
 		
 	//==========================================================================
