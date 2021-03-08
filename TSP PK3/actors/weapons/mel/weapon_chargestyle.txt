@@ -87,7 +87,7 @@ ACTOR MelChargeStyle : TSP_Mel_BaseWeapon
 	Idle1:
 		TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE)
 		111V ABCDEE 1 A_WeaponReady
-		TNT1 A 0 A_PlaySound("TSPIdlecs", 6)
+		TNT1 A 0 A_PlaySound("melidlecs", 6)
 		TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50)
 		111V F 5 A_WeaponReady
 		TNT1 A 0 A_Quake(1,40,0,5,"")
