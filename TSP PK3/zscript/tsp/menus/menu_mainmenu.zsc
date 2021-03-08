@@ -61,12 +61,12 @@ Class TSP_ListMenuHiRes : ListMenu
 	{
 		TSP_MenuBase_ListButton newButton;
 		newButton = new("TSP_MenuBase_ListButton");
-		newButton.text = name;
+		newButton.text = StringTable.Localize(name).MakeUpper();
 		newButton.desc = desc;
 		newButton.item = item;
 		newButton.fnt = "tsp_bold";
 		newButton.color = color;
-		newButton.size = (newButton.fnt.StringWidth(name), newButton.fnt.GetHeight());
+		newButton.size = (newButton.fnt.StringWidth(name), 32);
 		newButton.pos = (MENUBUTX, MENUBUTY + MENUBUTH * tsp_buttons.Size());
 		
 		if ( tsp_buttons.Size() > 0 )
@@ -90,10 +90,10 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		for( int i = 0; i < mDesc.mItems.Size(); i++ )
 		{
-			let menuitem = ListMenuItemTSP_MenuItem_TextItem(mDesc.mItems[i]);
+			let menuitem = ListMenuItemTextItem(mDesc.mItems[i]);
 			if ( menuitem )
 			{
-				AddButton(menuitem.mText, menuitem.mSubtitle, ListMenuItemSelectable(mDesc.mItems[i]), Font.FindFontColor("TSPMenuGreen"));
+				AddButton(menuitem.mText, menuitem.mText.."_SUB", ListMenuItemSelectable(mDesc.mItems[i]), Font.FindFontColor("TSPMenuGreen"));
 			}
 		}
 		/*AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSPYeller"));
@@ -102,7 +102,10 @@ Class TSP_ListMenuHiRes : ListMenu
 		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSPRed"));*/
 		
-		mb_curSelection = tsp_buttons[0];
+		if ( tsp_buttons.Size() > 0 )
+		{
+			mb_curSelection = tsp_buttons[0];
+		}
 		
 		tsp_bgDim = (mParentMenu == null) ? 0.0 : 1.0;
 		tsp_storedMenu = null;
@@ -256,14 +259,14 @@ Class TSP_ListMenuHiRes : ListMenu
 		{
 			let button = tsp_buttons[i];
 			
-			screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x, button.pos.y, button.text,
+			screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x + 4, button.pos.y, button.text,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 				
 			if ( button.flash > 0.0 )
 			{
-				screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x, button.pos.y, button.text,
+				screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x + 4, button.pos.y, button.text,
 					DTA_LegacyRenderStyle, STYLE_Add, DTA_Alpha, button.flash,
 					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),

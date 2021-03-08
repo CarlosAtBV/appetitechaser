@@ -1,5 +1,14 @@
 [enu default]
 
+TSPDIF_EASYPEASY = "Easy Peasy";
+TSPDIF_EASYPEASY_SUB = "(EASY) Stress-free piracy!";
+TSPDIF_BRINGITON = "Bring it On!";
+TSPDIF_BRINGITON_SUB = "(MEDIUM) A moderate challenge.";
+TSPDIF_HIGHINTENSITY = "\c[TSPOrange]High Intensity!!";
+TSPDIF_HIGHINTENSITY_SUB = "(HARD) Tough opposition lies ahead!";
+TSPDIF_DARKESTHELL = "\c[TSPRed]Blood n' Bone!!!";
+TSPDIF_DARKESTHELL_SUB = "(EXTREME) The toughest challenge yet!";
+
 TSP_GAMEMODE_STANDARD = "Standard Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "Training Mode";

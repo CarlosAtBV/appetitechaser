@@ -155,8 +155,8 @@ skill TSPbaby
   DamageFactor = 0.5
   EasyBossBrain
   SpawnFilter = Baby
-  PicName = "SPSKILL1"
-  Name = "Easy Peasy"
+  //PicName = "SPSKILL1"
+  Name = "$TSPDIF_EASYPEASY"
   ACSReturn = 0
   Key = "1"
 }
@@ -194,8 +194,8 @@ skill TSPMedium
 {
   DefaultSkill
   SpawnFilter = Normal
-  PicName = "SPSKILL2"
-  Name = "Bring It On!"
+  //PicName = "SPSKILL2"
+  Name = "$TSPDIF_BRINGITON"
   ACSReturn = 1
   Key = "2"
 }
@@ -203,8 +203,8 @@ skill TSPMedium
 skill TSPhard
 {
   SpawnFilter = Hard
-  PicName = "SPSKILL3"
-  Name = "High Intensity!!"
+  //PicName = "SPSKILL3"
+  Name = "$TSPDIF_HIGHINTENSITY"
   ACSReturn = 2
   Key = "3"
 }
@@ -215,8 +215,9 @@ skill TSPhardest
   MonsterHealth =  1.5
   //MustConfirm
   SpawnFilter = Hard
-  PicName = "SPSKILL4"
-  Name = "Purest, Darkest Hell"
+  //PicName = "SPSKILL4"
+  Name = "$TSPDIF_DARKESTHELL"
+  //Name = "Purest, Darkest Hell"
   ACSReturn = 3
   Key = "4"
 }
@@ -260,8 +261,9 @@ skill TSPNotFinished
   damagefactor = 2.0
   monsterhealth = 2.0
   spawnfilter = Hard
-  PicName = "SPSKILLX"
-  mustconfirm = "$SKILLNONFINISH"
+  //PicName = "SPSKILLX"
+  Name = "???"
+  //mustconfirm = "$SKILLNONFINISH"
   ACSReturn = 999
   Key = "0"
 }

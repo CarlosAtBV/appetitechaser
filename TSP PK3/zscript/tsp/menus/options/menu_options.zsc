@@ -295,7 +295,7 @@ Class TSP_OptionMenu : OptionMenu
 		
 		Font fnt = "tsp_small";
 		
-		DrawText((68, 74), mDesc.mTitle, "tsp_bold");
+		DrawText((68, 74), mDesc.mTitle.MakeUpper(), "tsp_bold");
 		
 		screen.SetClipRect(0, CLIPY, 1280, CLIPHEIGHT);
 		
