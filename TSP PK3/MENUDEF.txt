@@ -19,12 +19,12 @@ LISTMENU "MainMenu"
 	Position 88, 15
 	Linespacing 29
 		
-	TSP_MenuItem_TextItem "Start Game", "n", "TSP_GameModeMenu", "$MENU_START_SUB"
-	TSP_MenuItem_TextItem "$MENU_OPTIONS", "o", "TSP_OptionsMenu", "$MENU_OPTIONS_SUB"
-	TSP_MenuItem_TextItem "$MENU_CODEX", "h", "TSP_CodexMenu", "$MENU_CODEX_SUB"
-	TSP_MenuItem_TextItem "SPMENU4", "l", "LoadGameMenu", "$MENU_LOAD_SUB"
-	TSP_MenuItem_TextItem "SPMENU5", "s", "SaveGameMenu", "$MENU_SAVE_SUB"
-	TSP_MenuItem_TextItem "$MENU_QUIT", "q", "QuitMenu", "$MENU_QUIT_SUB"
+	TextItem "$TSPMNU_MENU_STARTGAME", "n", "TSP_GameModeMenu"
+	TextItem "$TSPMNU_MENU_OPTION", "o", "TSP_OptionsMenu"
+	TextItem "$TSPMNU_MENU_CODEX", "h", "TSP_CodexMenu"
+	TextItem "SPMENU4", "l", "LoadGameMenu"
+	TextItem "SPMENU5", "s", "SaveGameMenu"
+	TextItem "$TSPMNU_MENU_QUIT", "q", "QuitMenu"
 	
 	Font "TinyFont"
 	StaticText 90, 195, "$VERSION"

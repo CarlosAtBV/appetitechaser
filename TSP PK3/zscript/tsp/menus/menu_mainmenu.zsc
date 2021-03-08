@@ -66,7 +66,7 @@ Class TSP_ListMenuHiRes : ListMenu
 		newButton.item = item;
 		newButton.fnt = "tsp_bold";
 		newButton.color = color;
-		newButton.size = (newButton.fnt.StringWidth(name), 32);
+		newButton.size = (newButton.fnt.StringWidth(name), 35);
 		newButton.pos = (MENUBUTX, MENUBUTY + MENUBUTH * tsp_buttons.Size());
 		
 		if ( tsp_buttons.Size() > 0 )
@@ -182,22 +182,32 @@ Class TSP_ListMenuHiRes : ListMenu
 		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
 		Vector2 mousePos = ConvertMousePos((x, y));
 		
+		TSP_MenuBase_ListButton newSel = null;
+		
 		for( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
 			if ( CheckMousePos(mousePos, tsp_buttons[i].pos, tsp_buttons[i].size) )
 			{
-				if ( tsp_buttons[i] != mb_curSelection )
-				{
-					S_Sound("menu/cursor",CHAN_UI);
-					tsp_buttons[i].flash = 1.0;
-				}
-				mb_curSelection = tsp_buttons[i];
+				newSel = tsp_buttons[i];
 			}
 		}
 		
+		if ( newSel != mb_curSelection )
+		{
+			if ( newSel != null )
+			{
+				newSel.flash = 1.0;
+				S_Sound("menu/cursor",CHAN_UI);
+			}
+		}
+		mb_curSelection = newSel;
+		
 		if ( type == Menu.MOUSE_Release )
 		{
-			MenuEvent(MKEY_Enter,false);
+			if ( mb_curSelection != null )
+			{
+				MenuEvent(MKEY_Enter,false);
+			}
 			return true;
 		}
 		
@@ -206,6 +216,11 @@ Class TSP_ListMenuHiRes : ListMenu
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
+		if ( mb_curSelection == null )
+		{
+			mb_curSelection = tsp_buttons[0];
+		}
+		
 		switch (mkey)
 		{
 			case MKEY_Up:
