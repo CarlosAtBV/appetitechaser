@@ -133,7 +133,7 @@ map TSP_BH01 "Neoscape - Battle Zone"
 	noskillmenu
 }*/
 
-map TSP_BH02 "Elegia - Red Hot Research"
+map TSP_BH02 "Elegia - Red Hot Rumble"
 {
     sky1 = "HELL"
 	music = "TSP_OBST"
