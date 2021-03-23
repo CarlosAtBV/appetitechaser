@@ -151,9 +151,22 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			
 			if ( mo == self || !mo.bIsMonster && mo.health > 0 ) continue;
 			
-			//tsp_traits.Push(mo);
-			tsp_traitTargets.Push(mo);
-			mo.GiveInventory("TSP_TargetHandler", 1);
+			if ( Distance3D(mo) < 512 && abs(DeltaAngle(angle, AngleTo(mo))) < 45 )
+			{
+				tsp_traitTargets.Push(mo);
+				mo.GiveInventory("TSP_TargetHandler", 1);
+			}
+		}
+		
+		for ( int i = 0; i < tsp_traitTargets.Size(); i++ )
+		{
+			let traitTarg = tsp_traitTargets[i];
+			if ( !(Distance3D(traitTarg) < 512) || !(abs(DeltaAngle(angle, AngleTo(traitTarg))) < 45) )
+			{
+				traitTarg.TakeInventory("TSP_TargetHandler", 1);
+				tsp_traitTargets.Delete(i, 1);
+				i--;
+			}
 		}
 	}
 	
