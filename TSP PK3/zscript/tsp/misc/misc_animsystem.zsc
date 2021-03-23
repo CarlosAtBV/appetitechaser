@@ -18,6 +18,7 @@ Class TSP_PyAnim
 		TSP_PyAnim newAnim = new("TSP_PyAnim");
 		newAnim.psprites.Clear();
 		newAnim.keyframes.Clear();
+		newAnim.tics = -1;
 		return newAnim;
 	}
 	
