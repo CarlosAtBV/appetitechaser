@@ -78,14 +78,14 @@ Extend Class TSP_EventHandler
 						[weaponOff_pos, weaponOff_ang] = weapon.TSP_GetWeaponOffsets(psprite.id, e.FracTic);
 					}
 					
-					weaponPos += weaponOff_pos;
+					weaponPos = weaponOff_pos;
 					weaponTilt += weaponOff_ang;
 					
 					screen.DrawText(BigFont, Font.CR_GREEN, 0, 0, ""..weaponTilt, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					//Console.Printf(""..weaponTilt);
 					//weaponPos = TSP_GetWeaponOffsets;
 					
-					//weaponPos.y -= 32;
+					weaponPos.y += 32;
 					
 					/*if ( psprite.id != PSP_WEAPON )
 					{
