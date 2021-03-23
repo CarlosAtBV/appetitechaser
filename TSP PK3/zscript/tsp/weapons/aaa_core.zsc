@@ -371,11 +371,11 @@ Class TSP_Weapon_Core : DoomWeapon
 			//A_WeaponReady(flags);
 			if(invoker.bModFireMode && !invoker.tspw_traitmode)
 			{
-				A_WeaponReady(flags|WRF_NOSECONDARY);
+				A_WeaponReady(flags|WRF_NOBOB|WRF_NOSECONDARY);
 			}
 			else
 			{
-				A_WeaponReady(flags);
+				A_WeaponReady(flags|WRF_NOBOB);
 			}
 		}
 	}
