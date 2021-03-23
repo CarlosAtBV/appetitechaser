@@ -60,7 +60,6 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121);
 			TNT1 A 0 A_PlaySound("nikki/draw", 5);
 			TNT1 A 0 A_WeaponOffset(0,32);
-			"----" A 0 A_TSP_AllowZoom(true);
 			121U ABCDEFGHIJKLM 1;
 			121G A 1;
 			121G A 1 A_Raise;
@@ -85,6 +84,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			122G A 1 A_Raise;
 			Goto Ready;
 		Deselect:
+			"----" A 0 A_TSP_DeselectLogic();
 			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 			TNT1 A 0 A_TakeInventory("StyleComboToken", 99);
 			TNT1 A 0 A_TakeInventory("ComboCooldown", 99);
@@ -210,7 +210,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				A_GunFlash("AltFlash");
 			}
 			121A B 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 20+frandom(0,2), 1);
-			121A B 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 8+frandom(0,2), 1);
+			121A B 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 4+frandom(0,2), 1);
 			121A B 1 A_TSP_WeaponReady(WRF_NOBOB);
 			121A C 3 A_TSP_WeaponReady(WRF_NOBOB);
 			121A D 3 A_TSP_WeaponReady(WRF_NOBOB);
@@ -228,6 +228,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			{
 				invoker.tspw_altmode = false;
 			}
+			"----" A 0 A_TSP_ZoomFactor(1.0);
 			121S B 1;
 			121S A 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(random(1,5), 4, 1);
@@ -285,12 +286,14 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			Stop;
 			
 		Switch:
+			"----" A 0 A_TSP_ZoomFactor(0.75);
 			121S A 1;
 			121S B 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(180+random(1,5), 4, 1);
 			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE)
 			Goto ModReady;
 		ModSwitch:
+			"----" A 0 A_TSP_ZoomFactor(1.0);
 			121S B 1;
 			121S A 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(random(1,5), 4, 1);

@@ -150,6 +150,21 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	Weapon tsp_desiredModSwitch;
 	
+	action void A_TSP_ZoomFactor (double scale = 1.0)
+	{
+		let tspOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
+		if ( tspOwner != null )
+		{
+			tspOwner.tsp_fb_zoom = scale;
+		}
+	}
+	
+	action void A_TSP_DeselectLogic()
+	{
+		A_TSP_ZoomFactor(1.0);
+		invoker.tspw_altmode = false;
+	}
+	
 	action void A_TSP_AnimLayer (int layer, double x, double y, double angle, bool interpolate = true)
 	{
 		let psprite = invoker.owner.player.GetPSprite(layer);
@@ -235,7 +250,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
-			FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
+			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
 	}
 	

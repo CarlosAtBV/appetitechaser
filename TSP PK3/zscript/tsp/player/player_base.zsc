@@ -2,6 +2,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 {
 	Array<Class<TSP_Weapon_Core > > pp_haveTheseWeapons;
 	
+	Vector3 tsp_fb_recoilPos;
+	Vector3 tsp_fb_recoilLast;
+	
 	override void AddInventory (Inventory item)
 	{
 		if(item is "TSP_Weapon_Core")
@@ -215,6 +218,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		gvars = TSP_GlobalVariables.Get();
 		gvars.tsp_employer = 0;
+		
+		tsp_fb_zoom = 1.0;
 	}
 	
 	void notifyMessage (string message, int time = 70)

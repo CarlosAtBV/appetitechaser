@@ -5,6 +5,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	int pp_moddelay;
 	
 	double pp_punchWarp;
+	double tsp_fb_zoom;
+	double tsp_fb_zoomlerp;
 	
 	override Weapon PickNextWeapon()
 	{
@@ -96,9 +98,18 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	override void CheckFOV()
 	{
+		//super.CheckFOV();
+		//Console.Printf(""..tsp_fb_zoom);
+		double targetZoom = tsp_fb_zoom;//player.DesiredFOV * tsp_fb_zoom;
+		tsp_fb_zoomlerp = tsp_fb_zoomlerp + ( targetZoom - tsp_fb_zoomlerp ) / 2;
+		player.FOV = player.DesiredFOV * tsp_fb_zoomlerp;//tsp_fb_zoom;
+	}
+	
+	/*override void CheckFOV()
+	{
 		super.CheckFOV();
 		
 		player.FOV = player.FOV + pp_punchWarp;
 		pp_punchWarp = pp_punchWarp + (0 - pp_punchWarp)/5;
-	}
+	}*/
 }

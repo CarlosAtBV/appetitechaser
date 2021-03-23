@@ -75,6 +75,8 @@ Extend Class TSP_EventHandler
 						weaponPos.y += 32;
 					}
 					
+					weaponPos *= (2.0 - character.tsp_fb_zoomlerp);
+					
 					newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
 					for (int i = 0; i < 2; i++)
@@ -105,6 +107,8 @@ Extend Class TSP_EventHandler
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,
+							DTA_ScaleX, 2.0 - character.tsp_fb_zoomlerp,
+							DTA_ScaleY, 2.0 - character.tsp_fb_zoomlerp,
 							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
 							ps_colorType, ps_color,
 							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,
