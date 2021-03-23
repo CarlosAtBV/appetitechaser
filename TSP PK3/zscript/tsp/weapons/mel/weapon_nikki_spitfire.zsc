@@ -37,7 +37,7 @@ Class MelPistolA : MelPistol
 			122I A 1 BRIGHT
 			{
 				A_StartSound(invoker.firesound, CHAN_6);
-				A_TSP_FireBullets(6,6,-1,9,"TSP_BulletPuff",1, Spawnofs_xy: 3);
+				A_TSP_FireBullets(6,6,-1,9,"TSP_BulletPuff",1, Spawnofs_xy: 0);
 				A_TSP_WeaponRecoilDir(90+random(-2,2), 4+frandom(-1,1), 1);
 				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (202, 136), frandom(-5,-25)-10, 52);
 				A_SetAngle(angle + (frandom(-0.3,0.3)));
