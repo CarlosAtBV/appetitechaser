@@ -5,408 +5,408 @@ Extend Class MelPistol
         Overlay_Reload_Weapon:
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, 32.00, 0.00);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, 0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, -0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, -0.00, 0.00);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -5.64, 36.13, 0.63);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -5.64, 4.13, 0.63);
+                        A_TSP_AnimLayer(PSP_WEAPON, -5.64, 4.95, 1.26);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -5.64, 4.95, 1.26);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -17.70, 44.95, 2.12);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -17.70, 12.95, 2.12);
+                        A_TSP_AnimLayer(PSP_WEAPON, -17.70, 15.54, 4.25);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -17.70, 15.54, 4.25);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -23.34, 49.08, 3.22);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -23.34, 17.08, 3.22);
+                        A_TSP_AnimLayer(PSP_WEAPON, -23.34, 20.49, 6.45);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -23.34, 20.49, 6.45);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -22.40, 47.74, 3.78);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -22.40, 15.74, 3.78);
+                        A_TSP_AnimLayer(PSP_WEAPON, -22.40, 18.89, 7.58);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -22.40, 18.89, 7.58);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -19.24, 43.52, 4.21);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -19.24, 11.52, 4.21);
+                        A_TSP_AnimLayer(PSP_WEAPON, -19.24, 13.82, 8.45);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -19.24, 13.82, 8.45);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -13.55, 36.57, 4.48);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -13.55, 4.57, 4.48);
+                        A_TSP_AnimLayer(PSP_WEAPON, -13.55, 5.49, 9.02);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -13.55, 5.49, 9.02);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, -5.64, 27.94, 4.62);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -5.64, -4.06, 4.62);
+                        A_TSP_AnimLayer(PSP_WEAPON, -5.64, -4.88, 9.32);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -5.64, -4.88, 9.32);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 3.62, 19.06, 4.66);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 3.62, -12.94, 4.66);
+                        A_TSP_AnimLayer(PSP_WEAPON, 3.62, -15.53, 9.42);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 3.62, -15.53, 9.42);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 13.33, 11.02, 4.66);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 13.33, -20.98, 4.66);
+                        A_TSP_AnimLayer(PSP_WEAPON, 13.33, -25.17, 9.45);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 13.33, -25.17, 9.45);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 25.69, 1.80, 1.91);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 25.69, -30.20, 1.91);
+                        A_TSP_AnimLayer(PSP_WEAPON, 25.54, -35.58, 4.41);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 25.54, -35.58, 4.41);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 41.05, -8.45, -4.29);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 41.05, -40.45, -4.29);
+                        A_TSP_AnimLayer(PSP_WEAPON, 40.72, -47.12, -7.58);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 40.72, -47.12, -7.58);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 53.33, -14.50, -7.95);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 53.33, -46.50, -7.95);
+                        A_TSP_AnimLayer(PSP_WEAPON, 53.33, -55.80, -16.09);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 53.33, -55.80, -16.09);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.05, -16.73, -8.76);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.05, -48.73, -8.76);
+                        A_TSP_AnimLayer(PSP_WEAPON, 63.49, -60.85, -19.15);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.49, -60.85, -19.15);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 65.13, -17.05, -8.88);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.13, -49.05, -8.88);
+                        A_TSP_AnimLayer(PSP_WEAPON, 67.64, -61.99, -19.56);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 67.64, -61.99, -19.56);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 64.34, -15.05, -8.88);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.34, -47.05, -8.88);
+                        A_TSP_AnimLayer(PSP_WEAPON, 65.93, -61.56, -19.15);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.93, -61.56, -19.15);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.63, -10.77, -8.88);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.63, -42.77, -8.88);
+                        A_TSP_AnimLayer(PSP_WEAPON, 62.28, -60.62, -18.27);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.28, -60.62, -18.27);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 61.83, -8.76, -8.88);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 61.83, -40.76, -8.88);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.58, -60.18, -17.85);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.58, -60.18, -17.85);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 65.13, -11.68, -8.88);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.13, -43.68, -8.88);
+                        A_TSP_AnimLayer(PSP_WEAPON, 64.51, -61.17, -17.84);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.51, -61.17, -17.84);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 48.96, -8.34, -7.39);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 48.96, -40.34, -7.39);
+                        A_TSP_AnimLayer(PSP_WEAPON, 40.83, -49.04, -14.83);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 40.83, -49.04, -14.83);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 49.98, -8.43, -7.39);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 49.98, -40.43, -7.39);
+                        A_TSP_AnimLayer(PSP_WEAPON, 36.08, -44.09, -8.56);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 36.08, -44.09, -8.56);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 52.21, -8.61, -7.40);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 52.21, -40.61, -7.40);
+                        A_TSP_AnimLayer(PSP_WEAPON, 38.30, -44.59, -11.55);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 38.30, -44.59, -11.55);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 54.91, -8.83, -7.40);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 54.91, -40.83, -7.40);
+                        A_TSP_AnimLayer(PSP_WEAPON, 43.19, -45.69, -13.51);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 43.19, -45.69, -13.51);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 57.65, -9.05, -7.40);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 57.65, -41.05, -7.40);
+                        A_TSP_AnimLayer(PSP_WEAPON, 49.11, -47.03, -14.66);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 49.11, -47.03, -14.66);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.14, -9.25, -7.39);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.14, -41.25, -7.39);
+                        A_TSP_AnimLayer(PSP_WEAPON, 55.12, -48.38, -15.17);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 55.12, -48.38, -15.17);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.15, -9.42, -7.38);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.15, -41.42, -7.38);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.58, -49.61, -15.23);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.58, -49.61, -15.23);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 63.48, -9.52, -7.35);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.48, -41.52, -7.35);
+                        A_TSP_AnimLayer(PSP_WEAPON, 64.97, -50.60, -15.05);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.97, -50.60, -15.05);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 63.96, -9.56, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.96, -41.56, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 67.90, -51.26, -14.80);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 67.90, -51.26, -14.80);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 63.77, -9.56, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.77, -41.56, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 68.96, -51.50, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 68.96, -51.50, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 63.20, -9.56, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.20, -41.56, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 68.23, -51.42, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 68.23, -51.42, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.38, -9.54, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.38, -41.54, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 66.19, -51.14, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 66.19, -51.14, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 61.56, -9.50, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 61.56, -41.50, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 63.57, -50.69, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 63.57, -50.69, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.99, -9.45, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.99, -41.45, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 61.52, -50.17, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 61.52, -50.17, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -9.38, -7.32);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -41.38, -7.32);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -49.65, -14.67);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -49.65, -14.67);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -9.05, -7.34);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -41.05, -7.34);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -49.01, -14.71);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -49.01, -14.71);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -8.32, -7.39);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -40.32, -7.39);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -48.16, -14.82);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -48.16, -14.82);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -7.63, -7.44);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -39.63, -7.44);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -47.48, -14.93);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -47.48, -14.93);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -7.36, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -39.36, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 60.80, -47.24, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 60.80, -47.24, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 65.55, -7.81, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.55, -39.81, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 65.55, -47.78, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.55, -47.78, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 65.47, -7.57, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 65.47, -39.57, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 64.46, -49.37, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.46, -49.37, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 64.75, -6.94, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.75, -38.94, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 61.38, -51.56, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 61.38, -51.56, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.67, -6.31, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.67, -38.31, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 57.65, -54.46, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 57.65, -54.46, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 59.15, -6.06, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 59.15, -38.06, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 54.95, -57.84, -14.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 54.95, -57.84, -14.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 52.20, -8.09, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 52.20, -40.09, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 53.44, -62.39, -15.36);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 53.44, -62.39, -15.36);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 42.79, -12.43, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 42.79, -44.43, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 52.63, -68.54, -16.52);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 52.63, -68.54, -16.52);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 38.27, -14.46, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 38.27, -46.46, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 52.04, -74.77, -18.20);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 52.04, -74.77, -18.20);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 37.75, -14.45, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 37.75, -46.45, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 50.96, -79.10, -19.87);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 50.96, -79.10, -19.87);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 37.70, -14.37, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 37.70, -46.37, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 49.00, -80.54, -21.12);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 49.00, -80.54, -21.12);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 37.18, -14.16, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 37.18, -46.16, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 47.26, -80.32, -22.16);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 47.26, -80.32, -22.16);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 35.08, -13.29, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 35.08, -45.29, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 45.75, -78.30, -23.17);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 45.75, -78.30, -23.17);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 33.53, -12.57, -7.46);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 33.53, -44.57, -7.46);
+                        A_TSP_AnimLayer(PSP_WEAPON, 41.94, -72.48, -23.85);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 41.94, -72.48, -23.85);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.28, -12.63, -7.74);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.28, -44.63, -7.74);
+                        A_TSP_AnimLayer(PSP_WEAPON, 34.36, -62.62, -24.06);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 34.36, -62.62, -24.06);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 67.34, -16.72, -7.94);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 67.34, -48.72, -7.94);
+                        A_TSP_AnimLayer(PSP_WEAPON, 3.29, -26.69, -6.85);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 3.29, -26.69, -6.85);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 66.67, -19.35, -8.04);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 66.67, -51.35, -8.04);
+                        A_TSP_AnimLayer(PSP_WEAPON, 6.79, -29.17, -8.07);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 6.79, -29.17, -8.07);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 64.77, -21.05, -8.09);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 64.77, -53.05, -8.09);
+                        A_TSP_AnimLayer(PSP_WEAPON, 15.95, -35.66, -11.26);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 15.95, -35.66, -11.26);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 62.67, -21.52, -8.10);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 62.67, -53.52, -8.10);
+                        A_TSP_AnimLayer(PSP_WEAPON, 25.11, -42.15, -14.46);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 25.11, -42.15, -14.46);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 61.58, -20.10, -8.05);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 61.58, -52.10, -8.05);
+                        A_TSP_AnimLayer(PSP_WEAPON, 28.62, -44.63, -15.68);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 28.62, -44.63, -15.68);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 58.31, -14.99, -7.65);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 58.31, -46.99, -7.65);
+                        A_TSP_AnimLayer(PSP_WEAPON, 15.82, -24.68, -8.66);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 15.82, -24.68, -8.66);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 49.46, -6.35, -6.59);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 49.46, -38.35, -6.59);
+                        A_TSP_AnimLayer(PSP_WEAPON, 6.92, -10.79, -3.78);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 6.92, -10.79, -3.78);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 34.98, 6.11, -4.69);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 34.98, -25.89, -4.69);
+                        A_TSP_AnimLayer(PSP_WEAPON, 1.27, -1.97, -0.69);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 1.27, -1.97, -0.69);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 18.79, 19.17, -2.50);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 18.79, -12.83, -2.50);
+                        A_TSP_AnimLayer(PSP_WEAPON, -1.77, 2.76, 0.97);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -1.77, 2.76, 0.97);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 6.54, 28.48, -0.83);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 6.54, -3.52, -0.83);
+                        A_TSP_AnimLayer(PSP_WEAPON, -2.83, 4.42, 1.54);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -2.83, 4.42, 1.54);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 1.48, 31.76, -0.16);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 1.48, -0.24, -0.16);
+                        A_TSP_AnimLayer(PSP_WEAPON, -2.55, 3.97, 1.39);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -2.55, 3.97, 1.39);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 0.47, 31.93, -0.05);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.47, -0.07, -0.05);
+                        A_TSP_AnimLayer(PSP_WEAPON, -1.56, 2.43, 0.85);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -1.56, 2.43, 0.85);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 0.05, 31.99, -0.01);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.05, -0.01, -0.01);
+                        A_TSP_AnimLayer(PSP_WEAPON, -0.50, 0.77, 0.27);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, -0.50, 0.77, 0.27);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, 32.00, 0.00);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, 0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, -0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, -0.00, 0.00);
                 }
                 TNT1 A 1
                 {
-                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, 32.00, 0.00);
-                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, 0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_WEAPON, 0.00, -0.00, 0.00);
+                        A_TSP_AnimLayer(PSP_TSP_UNDERGUN, 0.00, -0.00, 0.00);
                 }
                 Stop;
         Overlay_Reload_Hand:
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -52.04, 174.35, 4.33);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -51.75, 171.43, 6.22);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -50.59, 162.47, 11.10);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -48.09, 147.80, 16.28);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -43.73, 128.87, 21.05);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -37.20, 108.16, 25.57);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -28.53, 88.46, 29.13);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -18.00, 71.85, 31.31);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -6.04, 59.41, 32.05);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 9.82, 50.34, 29.55);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 31.33, 43.86, 17.27);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 53.56, 39.28, -2.23);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 71.29, 34.99, -12.60);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 85.79, 30.71, -14.55);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 91.65, 29.07, -14.79);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 91.65, 29.07, -14.79);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 91.65, 29.07, -14.79);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 91.65, 29.07, -14.79);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 89.17, 32.73, -19.61);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 71.78, 46.23, -21.45);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 20.96, 71.24, -18.65);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -18.73, 97.18, -13.09);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -57.34, 126.69, -5.37);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -88.55, 153.66, 2.50);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -107.13, 171.26, 7.97);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -112.76, 176.93, 9.82);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -106.80, 172.75, 9.00);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -90.36, 161.21, 6.48);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -65.62, 143.84, 2.39);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -34.95, 122.31, -2.61);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -1.14, 98.58, -7.61);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 32.18, 75.20, -11.69);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 59.67, 55.90, -14.27);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 72.17, 47.13, -15.13);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 70.48, 48.09, -15.17);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 73.69, 45.67, -15.28);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 82.11, 39.34, -15.39);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 90.53, 33.01, -15.43);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 93.75, 30.59, -15.43);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 93.75, 30.59, -15.43);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 93.75, 30.59, -15.43);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 93.75, 30.59, -15.43);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 71.33, 34.33, 12.71);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 41.91, 49.33, 18.19);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 11.13, 68.95, 21.85);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -0.56, 77.08, 23.95);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -0.52, 75.38, 24.93);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -0.22, 68.21, 25.26);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 0.52, 55.63, 25.30);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 49.26, 30.12, 18.09);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 10.96);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 10.38);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 9.97);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 9.76);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 9.66);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 97.45, 12.95, 9.64);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 86.36, 38.57, 5.13);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 59.54, 90.90, -4.00);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, -6.50);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, -2.68);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 1.72);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 5.07);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 6.41);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 6.64);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 6.73);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 6.74);
-                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.28, 198.47, 6.74);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -75.37, 250.86, 4.33);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -75.38, 253.90, 6.22);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -74.36, 257.03, 11.10);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -70.89, 246.23, 16.28);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -65.31, 222.39, 21.05);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -57.84, 192.27, 25.57);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -47.54, 159.30, 29.13);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -34.05, 127.26, 31.31);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -17.79, 99.32, 32.05);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 2.29, 75.44, 30.06);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 21.82, 52.59, 19.32);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 37.55, 33.04, 0.58);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 54.75, 20.40, -12.60);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 76.69, 13.30, -18.11);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 87.58, 11.72, -19.12);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 86.41, 12.01, -18.71);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 83.88, 12.62, -17.84);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 82.71, 12.90, -17.41);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 86.67, 11.90, -17.40);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 66.78, 22.78, -14.39);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 6.14, 74.69, -12.38);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -45.35, 106.78, -12.88);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -90.22, 133.06, -7.69);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -122.33, 151.83, 0.37);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -137.74, 161.85, 6.96);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -138.27, 164.19, 9.38);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -125.98, 159.21, 8.70);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -100.73, 145.49, 6.36);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -65.59, 123.66, 2.39);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -25.32, 97.00, -2.61);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 13.63, 70.52, -7.61);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 44.66, 49.01, -11.69);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 63.99, 35.59, -14.27);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 70.43, 31.43, -15.13);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 70.37, 32.09, -15.17);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 70.21, 32.95, -15.28);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 73.81, 31.07, -15.39);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 81.79, 25.81, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 90.29, 22.70, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 89.21, 21.10, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 86.12, 18.92, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 82.40, 16.02, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 79.70, 12.63, -15.43);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 71.70, 12.23, -11.17);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 52.23, 17.29, 1.07);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 26.72, 24.30, 16.82);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 5.03, 29.03, 28.42);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -5.65, 29.91, 31.75);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 23.08, -4.96, 27.10);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 37.35, -48.67, 41.32);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 74.56, -26.92, 2.08);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 66.81, -16.94, 1.87);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 47.81, 7.34, 19.08);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 50.57, 5.80, 17.86);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 57.72, 1.69, 14.67);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 64.74, -2.52, 11.47);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 67.39, -4.17, 10.25);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 58.80, 42.80, 14.47);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 33.76, 109.16, -9.90);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, 16.42, 145.73, -14.24);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -1.41, 171.91, -17.24);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -19.28, 190.13, -19.62);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -36.44, 201.95, -21.61);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -51.80, 208.81, -23.23);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -64.05, 212.39, -24.37);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -71.78, 214.55, -24.88);
+                TNT1 A 1 A_TSP_AnimLayer(PSP_TSP_RELOADHAND, -74.34, 215.58, -24.93);
                 Stop;
 	}
 }

@@ -57,7 +57,7 @@ Extend Class TSP_EventHandler
 					
 					double weaponTilt = psprite.rotation;
 					
-					Vector2 newOffset = (160, 100 - 32) + sprOffset;
+					Vector2 newOffset = (160, 100) + sprOffset;
 					
 					//Console.Printf(psprite.id.." ~ "..psprite.bAddWeapon.." ~ "..psprite.y);
 					
@@ -68,16 +68,18 @@ Extend Class TSP_EventHandler
 						lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
 					);
 					
-					weaponPos.y -= 32;
+					weaponPos = weaponNewPos;
 					
-					if ( psprite.id != PSP_WEAPON )
+					//weaponPos.y -= 32;
+					
+					/*if ( psprite.id != PSP_WEAPON )
 					{
 						weaponPos.y += 32;
-					}
+					}*/
 					
 					weaponPos *= (2.0 - character.tsp_fb_zoomlerp);
 					
-					newOffset -= character.TSP_BobWeapon(e.FracTic);
+					//newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
 					for (int i = 0; i < 2; i++)
 					{

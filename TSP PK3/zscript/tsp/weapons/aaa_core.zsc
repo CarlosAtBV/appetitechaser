@@ -178,7 +178,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		if ( !interpolate )
 		{
 			psprite.oldx = x;
-			psprite.oldy = y;
+			psprite.oldy = y + 32;
 		}
 		
 		psprite.bPivotPercent = false;
@@ -191,7 +191,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		//psprite.pivot = screenCenter + (sprOffset.x, sprOffset.y);//(160, 100 - 32) + (-sprOffset.x, sprOffset.y);//offset;
 		//psprite.x = x;
 		psprite.x = x;
-		psprite.y = y;
+		psprite.y = y + 32;
 		//psprite.y = y;//layer == PSP_WEAPON ? 32+y : y;
 		psprite.rotation = angle;
 	}
