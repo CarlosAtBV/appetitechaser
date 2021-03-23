@@ -161,6 +161,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		for ( int i = 0; i < tsp_traitTargets.Size(); i++ )
 		{
 			let traitTarg = tsp_traitTargets[i];
+			
+			if ( traitTarg == null )
+			{
+				tsp_traitTargets.Delete(i, 1);
+				continue;
+			}
+			
 			if ( !(Distance3D(traitTarg) < 512) || !(abs(DeltaAngle(angle, AngleTo(traitTarg))) < 45) )
 			{
 				traitTarg.TakeInventory("TSP_TargetHandler", 1);
