@@ -152,6 +152,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	Weapon tsp_desiredModSwitch;
 	
+	Array<TSP_PyAnim> tspw_animations;
+	
 	action void A_TSP_ZoomFactor (double scale = 1.0)
 	{
 		let tspOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
@@ -165,6 +167,10 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		A_TSP_ZoomFactor(1.0);
 		invoker.tspw_altmode = false;
+		for ( int i = 0; i < invoker.tspw_animations.Size(); i++ )
+		{
+			invoker.tspw_animations[i].Reset();
+		}
 	}
 	
 	action void A_TSP_AnimLayer (int layer, double x, double y, double angle, bool interpolate = true)
@@ -241,6 +247,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		super.PostBeginPlay();
 		if(tspw_curclip==0) tspw_curclip = GetClipCapacity();
+		tspw_animations.Clear();
+		Console.Printf("initializing animations");
+		TSP_InitAnimations();
 	}
 	
 	override void Tick()
@@ -258,6 +267,11 @@ Class TSP_Weapon_Core : DoomWeapon
 			if ( owner.player.ReadyWeapon == self )
 			{
 				crosshair = 16;
+				for ( int i = 0; i < tspw_animations.Size(); i++ )
+				{
+					Console.Printf("DO ITT!!!!");
+					tspw_animations[i].Tick();
+				}
 			}
 			//A_SetCrosshair(16);
 			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
@@ -522,6 +536,41 @@ Class TSP_Weapon_Core : DoomWeapon
 				amt--;
 			}
 		}
+		
+	virtual void TSP_InitAnimations()
+	{
+	}
+	
+	TSP_PyAnim CreateNewAnimation()
+	{
+		TSP_PyAnim newAnim = TSP_PyAnim.Init();
+		tspw_animations.Push(newAnim);
+		return newAnim;
+	}
+	
+	override void AttachToOwner (Actor other)
+	{
+		super.AttachToOwner(other);
+		TSP_InitAnimations();
+	}
+	
+	ui Vector2, double TSP_GetWeaponOffsets(int psprite, double ticFrac)
+	{
+		Vector2 baseOffset = (0, 0);
+		double baseRotate = 0;
+		
+		for ( int i = 0; i < tspw_animations.Size(); i++ )
+		{
+			//Console.Printf("uhhh the find is "..tspw_animations[i].psprites.Find(psprite));
+			if ( tspw_animations[i].psprites.Find(psprite) != tspw_animations[i].psprites.Size() )
+			{
+				baseOffset += tspw_animations[i].GetPos(ticFrac);
+				baseRotate += tspw_animations[i].GetRot(ticFrac);
+			}
+		}
+		
+		return baseOffset, baseRotate;
+	}
 
 	States
 	{

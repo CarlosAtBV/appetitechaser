@@ -57,6 +57,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 }
 
 #include "zscript/tsp/misc/misc_tokenizer.zsc"
+#include "zscript/tsp/misc/misc_animsystem.zsc"
 
 #include "zscript/tsp/items_gbd.zsc"
 #include "zscript/tsp/items/items_custom.zsc"

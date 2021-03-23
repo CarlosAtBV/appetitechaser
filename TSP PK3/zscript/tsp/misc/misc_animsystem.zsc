@@ -1,0 +1,87 @@
+Class TSP_PyAnim_Keyframe
+{
+	Vector2 pos;
+	double angle;
+	double scale;
+}
+
+Class TSP_PyAnim
+{
+	int id;
+	int tics;
+	
+	Array<TSP_PyAnim_Keyframe> keyframes;
+	Array<int> psprites;
+	
+	static TSP_PyAnim Init()
+	{
+		TSP_PyAnim newAnim = new("TSP_PyAnim");
+		newAnim.psprites.Clear();
+		newAnim.keyframes.Clear();
+		return newAnim;
+	}
+	
+	void AddPSprite(int id)
+	{
+		psprites.Push(id);
+	}
+	
+	void Tick()
+	{
+		Console.Printf("TICKING ANIMATION");
+		if ( tics >= 0 )
+		{
+			tics++;
+		}
+		if ( tics >= keyframes.Size() )
+		{
+			tics = -1;
+			//return false;
+		}
+		//return true;
+	}
+	
+	void Reset()
+	{
+		tics = -1;
+	}
+	
+	void PlayAnim()
+	{
+		tics = 0;
+	}
+	
+	void AddKeyframe(double x, double y, double angle, double scale = 1.0)
+	{
+		TSP_PyAnim_Keyframe newFrame = new("TSP_PyAnim_Keyframe");
+		newFrame.pos = (x, y);
+		newFrame.angle = angle;
+		newFrame.scale = scale;
+		
+		keyframes.Push(newFrame);
+	}
+	
+	Vector2 GetPos(double fracTic = 0)
+	{
+		if ( tics == -1 )
+		{
+			return(0,0);
+		}
+		
+		TSP_PyAnim_Keyframe last = keyframes[tics > 0 ? tics - 1 : tics];
+		
+		return last.pos + (keyframes[tics].pos - last.pos) * fracTic;
+	}
+	
+	double GetRot(double fracTic = 0)
+	{
+		if ( tics == -1 )
+		{
+			return 0;
+		}
+		
+		TSP_PyAnim_Keyframe last = keyframes[tics > 0 ? tics - 1 : tics];
+		
+		return last.angle + (keyframes[tics].angle - last.angle) * fracTic;
+	}
+}
