@@ -141,12 +141,14 @@ Class TSP_Weapon_Core : DoomWeapon
 	property ClipSize : tspw_clipsize;
 	
 	TSP_PlayerPawn_ZSCBase tspw_owner;
+	string tspw_crosshair;
 	
 	int tspw_lastfire;
 	bool tspw_canZoom;
 	
 	string tspw_firstpickupline;
 	property FirstPickupLine : tspw_firstpickupline;
+	Property Crosshair : tspw_crosshair;
 	
 	Weapon tsp_desiredModSwitch;
 	
@@ -204,6 +206,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ModTag "Default";
+		
+		TSP_Weapon_Core.Crosshair "graphics/crosshairs/crosshair_nikki.png";
 	}
 	
 	action void A_TSP_AllowZoom(bool theVerdict)
@@ -250,6 +254,9 @@ Class TSP_Weapon_Core : DoomWeapon
 			{
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
+			
+			Crosshair = 16;
+			//A_SetCrosshair(16);
 			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
 	}

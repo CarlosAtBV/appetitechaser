@@ -460,6 +460,11 @@ Class TSP_StatusBar : BaseStatusBar
 						alpha = 0.6;
 						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+45), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPGold"));
 					}
+					
+					let crossTex = TexMan.CheckForTexture(wepon.tspw_crosshair);
+					
+					screen.DrawTexture(crossTex, false, screen.GetWidth()/2, screen.GetHeight()/2,
+						DTA_CenterOffset, true);
 				}
 			}
 			
