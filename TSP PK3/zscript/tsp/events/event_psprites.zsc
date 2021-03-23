@@ -44,7 +44,7 @@ Extend Class TSP_EventHandler
 		//screen.DrawText(BigFont, , 0, 0, r..", "..g..", "..b, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		//screen.Dim(Color(r, g, b), 1.0, 0, 0, 64, 64);
 		
-		Console.Printf("~~~~~");
+		//Console.Printf("~~~~~");
 		
 		while(psprite)
 		{
@@ -59,7 +59,7 @@ Extend Class TSP_EventHandler
 					
 					Vector2 newOffset = (160, 100 - 32) + sprOffset;
 					
-					Console.Printf(psprite.id.." ~ "..psprite.bAddWeapon.." ~ "..psprite.y);
+					//Console.Printf(psprite.id.." ~ "..psprite.bAddWeapon.." ~ "..psprite.y);
 					
 					Vector2 weaponOldPos = (psprite.oldx, psprite.oldy);
 					Vector2 weaponNewPos = (psprite.x, psprite.y);

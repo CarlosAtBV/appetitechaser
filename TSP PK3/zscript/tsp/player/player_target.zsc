@@ -1,58 +1,127 @@
-Class TSP_EnemyTargeter : Actor
+Class TSP_TargetHandler : Inventory
 {
-	TSP_PlayerPawn_ZSCBase father;
-	Actor thefeller;
+	TSP_TargetFX fx;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+	
+	override void PostBeginPlay()
+	{
+		fx = TSP_TargetFX(Actor.Spawn("TSP_TargetFX", owner.pos));
+		fx.master = owner;
+	}
+	
+	override void DetachFromOwner ()
+	{
+		if ( fx != null )
+		{
+			fx.fxFading = true;
+		}
+	}
+}
+
+Class TSP_TargetDebris : Actor
+{
+	Default
+	{
+		+BRIGHT
+		+NOINTERACTION
+		+ROLLSPRITE
+		+ROLLCENTER
+		Alpha 1.0;
+		RenderStyle "Add";
+		Scale 0.5;
+	}
+	
+	override void PostBeginPlay()
+	{
+		roll = random(0,360);
+		scale.x = scale.x*randompick(-1,1);
+	}
+	
+	States
+	{
+		Spawn:
+			TFX0 ABCDE 1;
+			Stop;
+	}
+}
+
+Class TSP_TargetFX : Actor
+{
+	//TSP_PlayerPawn_ZSCBase player;
+	int lifetime;
+	bool fxFading;
 	
 	Default
 	{
 		+BRIGHT
 		+NOINTERACTION
-		//+NOBLOCKMAP
-		Translation "TSP_TargetYea";
 		Alpha 1.0;
 		RenderStyle "Add";
+		Translation "TSP_Targeting_Normal";
 	}
 	
 	override void Tick()
 	{
 		super.Tick();
-		if(father==null) return;
-		if(father.thezoop!=null)
+		
+		if ( master == null )//|| player == null )
 		{
-			bInvisible = false;
-			target = father.thezoop;
-			sprite = target.sprite;
-			frame = target.frame;
-			angle = target.angle;
-			scale.x = target.scale.x * 1.025;
-			scale.y = target.scale.y * 1.025;
-			A_Warp(AAPTR_TARGET,cos(players[consoleplayer].camera.Angle)*-1,sin(players[consoleplayer].camera.Angle)*-1,0,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE|WARPF_COPYINTERPOLATION|WARPF_ABSOLUTEOFFSET);
-			//SetOrigin(father.thezoop.pos + (cos(players[consoleplayer].camera.Angle)*-0.2,sin(players[consoleplayer].camera.Angle)*-0.2,0) ,true);
+			fxFading = true;
 		}
 		else
 		{
-			bInvisible = true;
-		}
-		/*if(thefeller!=father.thezoop)
-		{
-			SwitchTarget(father.thezoop);
-		}*/
-	}
-	
-	void SwitchTarget(Actor newfeller)
-	{
-		/*if(thefeller!=null)
-		{
-			let defaultShit = GetDefaultByType(thefeller.GetClass());
-			thefeller.Translation = defaultShit.Translation;
-			thefeller.bBRIGHT = defaultShit.bBRIGHT;
+			SetOrigin(master.pos, true);
+			angle = master.angle;
+			sprite = master.sprite;
+			frame = master.frame;
+			scale = master.scale;
+			
+			if ( level.maptime % 2 == 0 )
+			{
+				Vector3 debrisPos = (random(-master.radius, master.radius), random(-master.radius, master.radius), random(16, master.height-16));
+				Spawn("TSP_TargetDebris", master.pos + debrisPos);
+			}
 		}
 		
-		if(newfeller!=null)
+		if ( lifetime == 0 )
 		{
-			thefeller = newfeller;
-			newfeller.Translation = Translation.GetID('TSP_TargetYea');
-		}*/
+			A_SetTranslation('TSP_Targeting_Blink1');
+		}
+		else if ( lifetime == 1 )
+		{
+			A_SetTranslation('TSP_Targeting_Blink2');
+		}
+		else
+		{
+			A_SetTranslation('TSP_Targeting_Normal');
+		}
+		
+		lifetime++;
+		
+		if ( fxFading )
+		{
+			alpha -= 0.1;
+			if ( alpha <= 0.1 )
+			{
+				Destroy();
+			}
+			return;
+		}
+		else
+		{
+			if ( lifetime >= 2 )
+			{
+				alpha = 0.75 + cos(level.maptime * 20)/4;
+			}
+			else
+			{
+				alpha = 1.0;
+			}
+		}
 	}
 	
 	States
@@ -60,5 +129,42 @@ Class TSP_EnemyTargeter : Actor
 		Spawn:
 			POSS A -1;
 			Stop;
+	}
+}
+
+Extend Class TSP_PlayerPawn_ZSCBase
+{
+	Array<Actor> tsp_traitTargets;
+	
+	virtual void TSP_StartTrait()
+	{
+	}
+	
+	virtual void TSP_TickTrait()
+	{
+		BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(self, 512, 0);
+		Actor mo;
+		
+		while (MonsterFinder.Next())
+		{
+			mo = Actor(MonsterFinder.thing);
+			
+			if ( mo == self ) continue;
+			
+			//tsp_traits.Push(mo);
+			tsp_traitTargets.Push(mo);
+			mo.GiveInventory("TSP_TargetHandler", 1);
+		}
+	}
+	
+	virtual void TSP_EndTrait()
+	{
+		for ( int i = 0; i < tsp_traitTargets.Size(); i++ )
+		{
+			if ( tsp_traitTargets[i] != null )
+			{
+				tsp_traitTargets[i].TakeInventory("TSP_TargetHandler", 1);
+			}
+		}
 	}
 }

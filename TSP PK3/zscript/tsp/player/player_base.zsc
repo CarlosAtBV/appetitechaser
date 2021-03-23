@@ -268,45 +268,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		return 0;
 	}
 	
-	Actor theZoop;
-	TSP_EnemyTargeter myZooper;
 	Actor pp_slingStore;
-	
-	void searchForZoopTarget()
-	{
-		pp_traitMode = player.cmd.buttons & BT_USER1;
-		
-		/*if(!(player.oldbuttons & BT_USER1))
-		{
-			theZoop = null;
-		}*/
-		theZoop = null;
-		
-		if(pp_traitMode)
-		{
-			FLineTraceData traceStuff;
-			//Console.Printf(""..angley);
-			LineTrace(angle, 512, pitch, 0, 41.0, 0.0, 0.0, traceStuff);
-			if(traceStuff.HitActor!=null)
-			{
-				let thisFucker = traceStuff.HitActor;
-				if(thisFucker.bShootable&&thisFucker.health>0)
-				{
-					theZoop = thisFucker;
-					myZooper.SwitchTarget(thisFucker);
-				}
-			}
-		}
-	
-		/*if((theZoop==null||theZoop!=oldZoop)&&oldZoop!=null)
-		{
-			Console.Printf("Shart");
-			oldZoop.Translation = GetDefaultByType(oldZoop.GetClass()).Translation;
-			oldZoop.bBRIGHT = GetDefaultByType(oldZoop.GetClass()).bBRIGHT;
-		}
-		
-		oldZoop = theZoop;*/
-	}
 	
 	Vector3 pp_sit_oldPos;
 	Vector3 pp_hitVel;
@@ -402,11 +364,20 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 		}
 		
-		searchForZoopTarget();
-		if(myZooper==null)
+		if ( pp_traitMode )
 		{
-			myZooper = TSP_EnemyTargeter(Spawn("TSP_EnemyTargeter"));
-			myZooper.father = self;
+			TSP_TickTrait();
+		}
+		
+		if ( player.cmd.buttons & BT_USER1 && !pp_traitMode )
+		{
+			pp_traitMode = true;
+			TSP_StartTrait();
+		}
+		else if ( !(player.cmd.buttons & BT_USER1) && pp_traitMode )
+		{
+			pp_traitMode = false;
+			TSP_EndTrait();
 		}
 		
 		if(pp_sit!=null)

@@ -118,7 +118,7 @@ Extend Class TSP_Weapon_Core
 	
 		action void A_TSP_StoreSlingTarget()
 		{
-			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingStore = TSP_PlayerPawn_ZSCBase(invoker.owner).theZoop;
+			//TSP_PlayerPawn_ZSCBase(invoker.owner).pp_slingStore = TSP_PlayerPawn_ZSCBase(invoker.owner).theZoop;
 		}
 	
 		action void A_TSP_Sling(int range = 512)
