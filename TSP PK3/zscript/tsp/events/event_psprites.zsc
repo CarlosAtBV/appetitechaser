@@ -61,6 +61,7 @@ Extend Class TSP_EventHandler
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
 					double weaponTilt = psprite.rotation;
+					double weaponScale = 2.0 - character.tsp_fb_zoomlerp;
 					
 					Vector2 newOffset = (160, 100) + sprOffset;
 					
@@ -87,10 +88,7 @@ Extend Class TSP_EventHandler
 					
 					weaponPos.y += 32;
 					
-					/*if ( psprite.id != PSP_WEAPON )
-					{
-						weaponPos.y += 32;
-					}*/
+					//weaponScale = frandom(0.5, 1.5);
 					
 					weaponPos *= (2.0 - character.tsp_fb_zoomlerp);
 					
@@ -124,8 +122,8 @@ Extend Class TSP_EventHandler
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,
-							DTA_ScaleX, 2.0 - character.tsp_fb_zoomlerp,
-							DTA_ScaleY, 2.0 - character.tsp_fb_zoomlerp,
+							DTA_ScaleX, weaponScale,
+							DTA_ScaleY, weaponScale,
 							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
 							ps_colorType, ps_color,
 							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,

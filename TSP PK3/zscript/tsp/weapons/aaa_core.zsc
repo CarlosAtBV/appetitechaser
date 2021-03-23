@@ -153,6 +153,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	Weapon tsp_desiredModSwitch;
 	
 	Array<TSP_PyAnim> tspw_animations;
+	Vector3 tspw_recoilPos;
 	
 	action void A_TSP_ZoomFactor (double scale = 1.0)
 	{
@@ -558,6 +559,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		Vector2 baseOffset = (0, 0);
 		double baseRotate = 0;
+		double baseScale = 0;
 		
 		for ( int i = 0; i < tspw_animations.Size(); i++ )
 		{

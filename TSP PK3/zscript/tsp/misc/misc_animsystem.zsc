@@ -29,7 +29,6 @@ Class TSP_PyAnim
 	
 	void Tick()
 	{
-		Console.Printf("TICKING ANIMATION");
 		if ( tics >= 0 )
 		{
 			tics++;
