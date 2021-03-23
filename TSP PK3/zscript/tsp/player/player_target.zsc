@@ -149,7 +149,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			mo = Actor(MonsterFinder.thing);
 			
-			if ( mo == self || !mo.bIsMonster && mo.health > 0 ) continue;
+			if ( mo == self || !mo.bIsMonster || mo.health <= 0 ) continue;
 			
 			if ( Distance3D(mo) < 512 && abs(DeltaAngle(angle, AngleTo(mo))) < 45 )
 			{
