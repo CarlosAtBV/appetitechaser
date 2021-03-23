@@ -149,7 +149,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			mo = Actor(MonsterFinder.thing);
 			
-			if ( mo == self ) continue;
+			if ( mo == self || !mo.bIsMonster && mo.health > 0 ) continue;
 			
 			//tsp_traits.Push(mo);
 			tsp_traitTargets.Push(mo);
