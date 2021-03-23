@@ -255,7 +255,10 @@ Class TSP_Weapon_Core : DoomWeapon
 				tspw_owner = TSP_PlayerPawn_ZSCBase(owner);
 			}
 			
-			Crosshair = 16;
+			if ( owner.player.ReadyWeapon == self )
+			{
+				crosshair = 16;
+			}
 			//A_SetCrosshair(16);
 			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
