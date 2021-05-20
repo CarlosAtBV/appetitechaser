@@ -90,6 +90,7 @@ Extend Class TSP_EventHandler
 					
 					//weaponScale = frandom(0.5, 1.5);
 					
+					weaponPos += character.TSP_BobWeapon(e.FracTic);
 					weaponPos *= (2.0 - character.tsp_fb_zoomlerp);
 					
 					//newOffset -= character.TSP_BobWeapon(e.FracTic);
