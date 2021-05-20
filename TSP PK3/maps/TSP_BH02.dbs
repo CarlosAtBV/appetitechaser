@@ -21,15 +21,15 @@ maps
 			}
 		}
 		defaultfloortexture = "DEV_GREY";
-		defaultceiltexture = "F_SKY1";
+		defaultceiltexture = "DEV_GREY";
 		defaulttoptexture = "-";
-		defaultwalltexture = "-";
+		defaultwalltexture = "DEV_128W";
 		defaultbottomtexture = "DEV_64F";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
 		overridefloortexture = true;
-		overrideceiltexture = false;
+		overrideceiltexture = true;
 		overridetoptexture = true;
 		overridemiddletexture = true;
 		overridebottomtexture = true;
@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 1142.624f;
-		viewpositiony = 278.755f;
-		viewscale = 0.3028721f;
+		viewpositionx = -927.2946f;
+		viewpositiony = 1266.542f;
+		viewscale = 0.25f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -51,7 +51,7 @@ maps
 			backoffsety = 0;
 			backscalex = 100;
 			backscaley = 100;
-			gridsize = 16;
+			gridsize = 64;
 			gridrotate = 0;
 			gridoriginx = 0;
 			gridoriginy = 0;
@@ -108,25 +108,7 @@ maps
 			sidedef
 			{
 				offsetx_mid = 1;
-				offsetx_bottom = 1;
-				offsety_bottom = 1;
 				offsetx_top = 1;
-				offsety_top = 1;
-			}
-			
-			sector
-			{
-				rotationfloor = 17;
-				xpanningfloor = 1;
-				xpanningceiling = 1;
-				ypanningceiling = 1;
-				rotationceiling = 17;
-				xscaleceiling = 1;
-				yscaleceiling = 1;
-				ypanningfloor = 1;
-				xscalefloor = 1;
-				yscalefloor = 1;
-				desaturation = 1;
 			}
 		}
 	}
