@@ -281,12 +281,13 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			}
 			121H C 10 A_PlaySound("nikki/reloadin1", 6);
 			121H A 2;
-			121H B 7;
-			121H A 15
+			121H B 5;
+			121H B 2
 			{
 				A_PlaySound("nikki/reloadin2", 6);
 				A_TSP_ReloadAmmo();
 			}
+			121H A 15;
 			Stop;
 			
 		Switch:
