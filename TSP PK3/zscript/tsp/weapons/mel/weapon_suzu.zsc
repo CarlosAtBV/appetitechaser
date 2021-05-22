@@ -343,7 +343,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			130M B 1 A_OverlayOffset(10, 0, 32, WOF_INTERPOLATE);
 			Stop;
 
-		ModOff:
+		/*ModOff:
 			"----" A 0 A_TSP_AllowZoom(false);
 			TNT1 A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "M");
 			"----" A 0 A_WeaponOffset(0,32);
@@ -356,7 +356,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 				A_TSP_WeaponRecoilDir(-135,16);
 			}
 			"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
-			Stop;
+			Stop;*/
 		ModOn:
 			"----" A 0 A_TSP_AllowZoom(true);
 			131M A 0 A_Overlay(-10,"ModOnMod");

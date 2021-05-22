@@ -74,10 +74,6 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 	AfterMelee:
 		TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
 		Goto Select; // If I change it to "Goto Ready" it disappears, so...
-	ModOff:
-		TNT1 A 0 A_WeaponOffset(0,32);
-		"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
-		Stop;
 	ModOn:
 		TNT1 A 0 A_WeaponOffset(0,32);
 		TNT1 A 0 A_Raise;

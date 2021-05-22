@@ -558,7 +558,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		let origsprite = owner.player.FindPSprite(PSP_WEAPON);
 		
-		Vector2 baseOffset = origsprite ? (origsprite.x, origsprite.y - 32) : (0,0);
+		Vector2 baseOffset = origsprite ? (origsprite.oldx + (origsprite.x - origsprite.oldx) * ticFrac, origsprite.oldy + (origsprite.y - origsprite.oldy) * ticFrac - 32) : (0,0);
 		double baseRotate = 0;
 		double baseScale = 0;
 		
@@ -577,15 +577,26 @@ Class TSP_Weapon_Core : DoomWeapon
 
 	States
 	{
+		ModOff:
+			"----" A 1 A_WeaponOffset(0, 1, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 2, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 4, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 8, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 16, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 32, WOF_ADD);
+			"----" A 1 A_WeaponOffset(0, 64, WOF_ADD);
+			TNT1 A 3 A_WeaponOffset(0, 0);
+			"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
+			Stop;
 		WaitForModSwitch:
 			"----" A 1
 			{
-				let pOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
+				/*let pOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
 				if(pOwner.pp_moddelay>0)
 				{
 					pOwner.pp_moddelay--;
 				}
-				else
+				else*/
 				{
 					let oldWeapon = invoker.owner.player.ReadyWeapon;
 					//Console.Printf("Switching to "..invoker.owner.player.PendingWeapon.GetTag());
