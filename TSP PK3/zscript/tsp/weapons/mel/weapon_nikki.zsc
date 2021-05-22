@@ -76,10 +76,14 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			Stop;*/
 		ModOn:
 			TNT1 A 0 A_WeaponOffset(0,32);
-			122U PONML 1;
-			122U K 1 A_PlaySound("nikki/upgradespitfire", 5);
-			122U JIIIIHH 1;
-			122U GFEDDD 1;
+			122U PONML 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
+			122U K 1
+			{
+				A_PlaySound("nikki/upgradespitfire", 5);
+				A_TSP_WeaponReady(WRF_ALLOWRELOAD);
+			}
+			122U JIIIIHH 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
+			122U GFEDDD 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			122U CB 1;
 			122G A 1 A_Raise;
 			Goto Ready;
