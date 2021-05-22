@@ -90,11 +90,9 @@ Extend Class TSP_Weapon_Core
 					if ( mo.FindInventory("TSP_Mel_StasisHandler") )
 					{
 						mo.TakeInventory("TSP_Mel_StasisHandler", 1);
-						TSP_EnemyHandler_SlamDunk slamdunk = new("TSP_EnemyHandler_SlamDunk");
-						slamdunk.owner = mo;
+						TSP_Mel_SlamHandler slamdunk = TSP_Mel_SlamHandler(mo.GiveInventoryType("TSP_Mel_SlamHandler"));
 						slamdunk.inflictor = invoker.owner;
 						mo.A_PlaySound("mag/fissure/start",CHAN_5);
-						mo.vel = (0,0,-32);
 					}
 					else
 					{
