@@ -270,7 +270,6 @@ Class TSP_Weapon_Core : DoomWeapon
 				crosshair = 16;
 				for ( int i = 0; i < tspw_animations.Size(); i++ )
 				{
-					Console.Printf("DO ITT!!!!");
 					tspw_animations[i].Tick();
 				}
 			}

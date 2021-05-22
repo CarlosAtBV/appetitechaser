@@ -82,7 +82,7 @@ Extend Class TSP_EventHandler
 					weaponPos = weaponOff_pos;
 					weaponTilt += weaponOff_ang;
 					
-					screen.DrawText(BigFont, Font.CR_GREEN, 0, 0, ""..weaponTilt, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					//screen.DrawText(BigFont, Font.CR_GREEN, 0, 0, ""..weaponTilt, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					//Console.Printf(""..weaponTilt);
 					//weaponPos = TSP_GetWeaponOffsets;
 					
