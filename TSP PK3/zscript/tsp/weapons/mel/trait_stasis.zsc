@@ -26,7 +26,7 @@ Class TSP_Mel_StasisHandler : Inventory
 		fx.timeleft = 35*4;
 	}
 	
-	override void Tick()
+	override void DoEffect()
 	{
 		lifetime++;
 		owner.vel *= 0.85;

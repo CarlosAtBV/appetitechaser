@@ -12,19 +12,45 @@ Class TSP_Mel_SlamHandler : Inventory
 		super.AttachToOwner(other);
 	}
 	
-	override void Tick()
+	override void DoEffect()
 	{
 		owner.A_SetTics(-1);
+		owner.bTHRUACTORS = true;
 		owner.vel = (0, 0, 0);
 		
 		if ( !owner.Warp(owner, 0, 0, -32, 0, 0, 0, 0, 0) )
 		{
-			owner.A_Explode(512);
+			owner.Warp(owner, 0, 0, 0, 0, WARPF_TOFLOOR, 0, 0, 0);
+			
+			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(owner, 512, 0);
+			
+			Actor mo;
+			
+			while ( MonsterFinder.Next() )
+			{
+				mo = Actor(MonsterFinder.thing);
+				if ( mo == inflictor || mo == owner || owner.Distance3D(mo) > 512 )
+				{
+					continue;
+				}
+				
+				double damageAmount = owner.Distance3D(mo) / 768.;
+				mo.DamageMobj(inflictor, inflictor, owner.SpawnHealth() * damageAmount, 'MagSlam', DMG_FORCED);
+			}
+			
+			owner.DamageMobj(inflictor, inflictor, 400, 'MagSlam', DMG_FORCED);
+			
+			owner.TakeInventory("TSP_Mel_SlamHandler", 1);
 		}
 	}
 	
 	override void DetachFromOwner ()
 	{
+		owner.bTHRUACTORS = false;
+		if ( owner.health > 0 )
+		{
+			owner.A_SetTics(12);
+		}
 		super.DetachFromOwner();
 	}
 }
