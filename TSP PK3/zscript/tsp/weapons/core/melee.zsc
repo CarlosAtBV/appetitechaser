@@ -71,7 +71,10 @@ Extend Class TSP_Weapon_Core
 					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
-						mo.GiveInventory("TSP_Mel_StasisHandler", 1);
+						if ( flags & TSPM_SUPERFREEZE )
+						{
+							mo.GiveInventory("TSP_Mel_StasisHandler", 1);
+						}
 						/*stuntime = -1;
 						TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
 						if(flags & TSPM_SUPERFREEZE)
