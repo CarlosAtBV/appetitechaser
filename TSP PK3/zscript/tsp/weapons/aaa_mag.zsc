@@ -87,9 +87,9 @@ Extend Class TSP_Weapon_Core
 					stuntime = 24*(40.0/myMaxHealth);
 					stuntime = max(4,stuntime);
 					
-					bool isSupered = mo.CountInv("TSP_EnemyHandler_IsSupered");
-					if(isSupered)
+					if ( mo.FindInventory("TSP_Mel_StasisHandler") )
 					{
+						mo.TakeInventory("TSP_Mel_StasisHandler", 1);
 						TSP_EnemyHandler_SlamDunk slamdunk = new("TSP_EnemyHandler_SlamDunk");
 						slamdunk.owner = mo;
 						slamdunk.inflictor = invoker.owner;
