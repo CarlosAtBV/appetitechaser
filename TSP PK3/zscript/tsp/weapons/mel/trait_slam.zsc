@@ -41,6 +41,8 @@ Class TSP_Mel_SlamHandler : Inventory
 			
 			owner.DamageMobj(inflictor, inflictor, 400, 'MagSlam', DMG_FORCED);
 			
+			owner.A_QuakeEx(2, 2, 2, 3, 0, 1024);
+			
 			owner.TakeInventory("TSP_Mel_SlamHandler", 1);
 		}
 	}
