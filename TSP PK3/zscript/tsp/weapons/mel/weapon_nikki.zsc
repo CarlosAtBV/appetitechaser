@@ -224,6 +224,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"----" A 0 A_TSP_CheckReload();
 			Goto Ready;
 		Reload:
+			"----" A 0 A_WeaponOffset(0, 32);
 			"----" A 0 A_TSP_JumpIfModInactive("ReloadFinish");
 			"----" A 0
 			{

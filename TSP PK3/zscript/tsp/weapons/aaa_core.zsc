@@ -556,7 +556,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	ui Vector2, double TSP_GetWeaponOffsets(int psprite, double ticFrac)
 	{
-		Vector2 baseOffset = (0, 0);
+		let origsprite = owner.player.FindPSprite(PSP_WEAPON);
+		
+		Vector2 baseOffset = origsprite ? (origsprite.x, origsprite.y - 32) : (0,0);
 		double baseRotate = 0;
 		double baseScale = 0;
 		
