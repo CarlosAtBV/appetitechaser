@@ -319,7 +319,7 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 			}
 		}
 		110D ABC 1 BRIGHT
-		110D D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,25,45,45,TSPM_SUPERFREEZE)
+		110D D 2 BRIGHT A_TSP_Melee(20,90,"MagDivePuff",0,8,45,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 2)
 	    110D E 2 BRIGHT ThrustThingZ(0,1,0,1)

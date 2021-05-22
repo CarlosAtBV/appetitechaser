@@ -175,7 +175,7 @@ ACTOR MelRetroMelee : TSP_MelRetro_BaseWeapon
 			}
 		}
 		0114 ABC 1 BRIGHT
-		0114 D 2 BRIGHT A_TSP_Melee(88,90,"MagDivePuff",0,8,16,45,45,TSPM_SUPERFREEZE)
+		0114 D 2 BRIGHT A_TSP_Melee(88,90,"MagDivePuff",0,8,45,45,45,TSPM_SUPERFREEZE)
 	    TNT1 A 0 ThrustThingZ(0,4,0,1)
 		TNT1 A 0 A_SetPitch(pitch - 2, SPF_INTERPOLATE)
 	    0114 EEDC 2 BRIGHT ThrustThingZ(0,1,0,1)
