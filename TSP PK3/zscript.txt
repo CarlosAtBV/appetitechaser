@@ -99,6 +99,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/mel/weapon_nikki_spitfire.zsc"
 #include "zscript/tsp/weapons/mel/anims_nikki.zsc"
 #include "zscript/tsp/weapons/mel/weapon_melee_test_2.zsc"
+#include "zscript/tsp/weapons/mel/trait_stasis.zsc"
 
 // MEL (RETROGADE)
 #include "zscript/tsp/weapons/melretro/weapon_base_melretro.zsc"

@@ -1,0 +1,131 @@
+Class TSP_Mel_StasisHandler : Inventory
+{
+	TSP_Mel_StasisFX fx;
+	
+	int lifetime;
+	double rollDir;
+	
+	bool oldGravity;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+	
+	override void AttachToOwner (Actor other)
+	{
+		super.AttachToOwner(other);
+		owner.bROLLSPRITE = true;
+		owner.bROLLCENTER = true;
+		oldGravity = owner.bNOGRAVITY;
+		owner.bNOGRAVITY = true;
+		
+		rollDir = frandom(0.1,0.2) * randompick(-1,1);
+		fx = TSP_Mel_StasisFX(Spawn("TSP_Mel_StasisFX", owner.pos));
+		fx.master = owner;
+		fx.timeleft = 35*4;
+	}
+	
+	override void Tick()
+	{
+		lifetime++;
+		owner.vel *= 0.85;
+		owner.roll += rollDir;
+		owner.A_SetTics(-1);
+		if ( lifetime >= 35*4 )
+		{
+			owner.TakeInventory("TSP_Mel_StasisHandler", 1);
+		}
+	}
+	
+	override void DetachFromOwner ()
+	{
+		owner.A_SetTics(1);
+		owner.roll = 0;
+		owner.bNOGRAVITY = oldGravity;
+		owner.bROLLSPRITE = false;
+		owner.bROLLCENTER = false;
+		if ( fx != null )
+		{
+			fx.fxFading = true;
+		}
+		super.DetachFromOwner();
+	}
+}
+
+Class TSP_Mel_StasisFX : Actor
+{
+	int timeleft;
+	bool fxFading;
+	
+	Default
+	{
+		+BRIGHT
+		+NOINTERACTION
+		+ROLLSPRITE
+		+ROLLCENTER
+		Alpha 1.0;
+		RenderStyle "Add";
+		Translation "TSP_Targeting_Normal";
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		if ( master == null )//|| player == null )
+		{
+			fxFading = true;
+		}
+		else
+		{
+			SetOrigin(master.pos, true);
+			angle = master.angle;
+			sprite = master.sprite;
+			frame = master.frame;
+			scale = master.scale;
+			roll = master.roll;
+			
+			if ( level.maptime % 2 == 0 )
+			{
+				Vector3 debrisPos = (random(-master.radius, master.radius), random(-master.radius, master.radius), random(16, master.height-16));
+				Spawn("TSP_TargetDebris", master.pos + debrisPos);
+			}
+		}
+		
+		if ( timeleft <= 35 && timeleft % 5 == 0 )
+		{
+			A_SetTranslation('TSP_Targeting_Blink1');
+		}
+		else if ( timeleft % 12 == 0 )
+		{
+			A_SetTranslation('TSP_Targeting_Blink1');
+		}
+		else
+		{
+			A_SetTranslation('TSP_Targeting_Normal');
+		}
+		
+		timeleft--;
+		
+		scale.x = frandom(0.99,1.1);
+		scale.y = frandom(0.99,1.1);
+		
+		if ( fxFading )
+		{
+			alpha -= 0.1;
+			if ( alpha <= 0.1 )
+			{
+				Destroy();
+			}
+			return;
+		}
+	}
+	
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+}

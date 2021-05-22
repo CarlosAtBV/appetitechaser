@@ -71,14 +71,15 @@ Extend Class TSP_Weapon_Core
 					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
-						stuntime = -1;
+						mo.GiveInventory("TSP_Mel_StasisHandler", 1);
+						/*stuntime = -1;
 						TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
 						if(flags & TSPM_SUPERFREEZE)
 						{
-							handlerThing.superfreeze = 35*5;
+							//handlerThing.superfreeze = 35*5;
 						}
 						handlerThing.owner = mo;
-						mo.A_PlaySound(mo.PainSound,CHAN_VOICE);
+						mo.A_PlaySound(mo.PainSound,CHAN_VOICE);*/
 					}
 					
 					double fugSin = sin(angle);
