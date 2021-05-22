@@ -32,7 +32,7 @@ Class TSP_Mel_StasisHandler : Inventory
 		owner.vel *= 0.85;
 		owner.roll += rollDir;
 		owner.A_SetTics(-1);
-		if ( lifetime >= 35*4 )
+		if ( lifetime >= 35*4 || owner.health <= 0)
 		{
 			owner.TakeInventory("TSP_Mel_StasisHandler", 1);
 		}

@@ -34,9 +34,10 @@ Class TSP_Mel_SlamHandler : Inventory
 					continue;
 				}
 				
-				double damageAmount = 1.0 - (owner.Distance3D(mo) / 768.);
-				mo.vel.z += 16 * damageAmount;
-				mo.DamageMobj(inflictor, inflictor, owner.SpawnHealth() * damageAmount, 'MagSlam', DMG_FORCED);
+				double damageAmount = 1.0 - owner.Distance3D(mo) / 512.;
+				mo.vel.z += 4 * damageAmount;
+				Console.Printf(""..damageAmount);
+				mo.DamageMobj(inflictor, inflictor, (owner.SpawnHealth() * 0.75) * damageAmount, 'MagSlam', DMG_FORCED);
 			}
 			
 			owner.DamageMobj(inflictor, inflictor, 400, 'MagSlam', DMG_FORCED);
@@ -51,6 +52,10 @@ Class TSP_Mel_SlamHandler : Inventory
 		if ( owner.health > 0 )
 		{
 			owner.A_SetTics(12);
+		}
+		else
+		{
+			owner.A_SetTics(1);
 		}
 		super.DetachFromOwner();
 	}
