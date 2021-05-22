@@ -36,7 +36,6 @@ Class TSP_Mel_SlamHandler : Inventory
 				
 				double damageAmount = 1.0 - owner.Distance3D(mo) / 512.;
 				mo.vel.z += 4 * damageAmount;
-				Console.Printf(""..damageAmount);
 				mo.DamageMobj(inflictor, inflictor, (owner.SpawnHealth() * 0.75) * damageAmount, 'MagSlam', DMG_FORCED);
 			}
 			
