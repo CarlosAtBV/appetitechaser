@@ -432,20 +432,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		//Console.Printf((pos.z==floorz).." "..(vel.z!=oldVelZ));
 		
-		if(player.crouchfactor<1.0)
-		{
-			if(pos.z==floorz&&vel.z!=oldVelZ&&!pp_hasCrouchSlid)
-			{
-				vel.x*=4;
-				vel.y*=4;
-				pp_hasCrouchSlid = true;
-			}
-		}
-		else
-		{
-			pp_hasCrouchSlid = false;
-		}
-		
 		FLineTraceData traceStuff;
 		
 		int sidedir = sign(player.cmd.sidemove);

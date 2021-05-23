@@ -98,6 +98,10 @@ map TSP_DHUB "Demoscape - Unknown Sector"
 	noskillmenu
 }*/
 
+/////////////////
+// BOUNTY HUNTERS
+/////////////////
+
 episode TSP_BH
 {
 	name = "TSPSpecialMapWarp"
@@ -109,29 +113,12 @@ map TSP_BH "FUUUCKKK! FUUUUUCKKKK!!!"
 	EventHandlers = "TSP_EventHandler_GotoBHMap"
 }
 
-map BH_SKIF "flyin lmao"
-{
-    sky1 = "SPACE", -0.1
-	lightmode = 0
-	eventhandlers = "TSP_EventHandler_Skiff"
-}
-
-/////////////////
-// BOUNTY HUNTERS
-/////////////////
-
 map TSP_BH01 "Neoscape - Battle Zone"
 {
     //sky1 = "SPACE", -0.1
 	music = "TSP_BH01"
 	lightmode = 0
 }
-
-/*episode TSP_BH01
-{
-	name = "TSPBH:BattleZone"
-	noskillmenu
-}*/
 
 map TSP_BH02 "Elegia - Red Hot Rumble"
 {
@@ -140,11 +127,12 @@ map TSP_BH02 "Elegia - Red Hot Rumble"
 	lightmode = 0
 }
 
-/*episode TSP_BH02
+map BH_SKIF "flyin lmao"
 {
-	name = "TSPBH:Elegia"
-	noskillmenu
-}*/
+    sky1 = "SPACE", -0.1
+	lightmode = 0
+	eventhandlers = "TSP_EventHandler_Skiff"
+}
 
 clearskills
 
