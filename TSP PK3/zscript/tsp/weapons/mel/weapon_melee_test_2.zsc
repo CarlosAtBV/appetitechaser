@@ -38,21 +38,6 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 	
 	int combo_held;
 	
-	override void Tick()
-	{
-		super.Tick();
-		
-		if ( owner == null || owner.player.ReadyWeapon != self )
-		{
-			return;
-		}
-		
-		if ( combo_held > 0 && !(owner.player.cmd.buttons & BT_ATTACK) )
-		{
-			combo_held = 0;
-		}
-	}
-	
 	action State A_TSP_IfFireHeld(int tics, State state)
 	{
 		if ( invoker.owner.player.cmd.buttons & BT_ATTACK )
@@ -76,14 +61,14 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 	{
 		if ( invoker.TSP_IsFirePressed() )
 		{
-			Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
-			return invoker.GetAtkState(false);
+			//Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
+			return invoker.resolveState("Fire");
 		}
 		
 		if ( invoker.TSP_IsAltFirePressed() )
 		{
-			Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
-			return invoker.GetAltAtkState(false);
+			//Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
+			return invoker.resolveState("AltFire");
 		}
 		
 		A_WeaponReady(WRF_NOFIRE);
