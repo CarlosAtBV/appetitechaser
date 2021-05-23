@@ -19,6 +19,7 @@ Extend Class TSP_Weapon_Core
 		{
 			bool hasHit = false;
 			bool hasKilled = false;
+			bool hitStasis = false;
 			
 			int baseAddon = HITLAG_BASE*floor(mDamage/20);
 			int baseHitlag = (mDamage * 0.05 + 4);//HITLAG_BASE+baseAddon;
@@ -69,6 +70,11 @@ Extend Class TSP_Weapon_Core
 						handlerFreezer.timeleft = stuntime+2;
 					}
 					
+					if ( mo.FindInventory("TSP_Mel_StasisHandler") )
+					{
+						hitStasis = true;
+					}
+					
 					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
 					{
 						if ( flags & TSPM_SUPERFREEZE )
@@ -95,7 +101,7 @@ Extend Class TSP_Weapon_Core
 						mo.vel.Z = mThrustUp;
 					}
 					
-					int funnyDamage = mo.DamageMobj(invoker.owner,invoker.owner,damageamount,'Melee');
+					int funnyDamage = mo.DamageMobj(invoker.owner, invoker.owner, damageamount, 'Melee', DMG_THRUSTLESS);
 					//mo.A_Quake(2,4,0,750);
 					if(!mo.bNoPain&&mo.resolveState("Pain")!=null&&mo.Health>0)
 					{
@@ -128,7 +134,7 @@ Extend Class TSP_Weapon_Core
 			
 			int baseHitlagFinal = baseHitlag;//( hasKilled ? baseHitlag + 3 : baseHitlag );
 			
-			if(hashit)
+			if ( hashit )
 			{
 				A_SetTics(baseHitlag);
 				TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp = mDamage/10.0;
@@ -147,6 +153,11 @@ Extend Class TSP_Weapon_Core
 					handlerFreezer.owner = hitFreezeUs[i];
 					handlerFreezer.timeleft = baseHitlagFinal + 2;
 					handlerFreezer.wasHit = true;
+				}
+				
+				if ( hitStasis )
+				{
+					TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_airtime = 12;
 				}
 			}
 			else

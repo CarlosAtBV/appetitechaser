@@ -23,6 +23,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		return;
 	}
 	
+	int tsp_airtime;
+	double tsp_airtime_mult;
+	
 	int pp_hitFreeze;
 	
 	bool ptp_wallJump;
@@ -306,6 +309,27 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		bNoDamage = (pp_freezeMe>0);
 		bDontThrust = (pp_freezeMe>0);
 		bNoGravity = (pp_freezeMe>0 || bNoClip);
+		
+		// [Py] Cool airstop stuff for stopping in the air
+		
+			if ( pp_hitFreeze == 0 && tsp_airtime > 0 )
+			{
+				tsp_airtime_mult = 1.0;
+				tsp_airtime--;
+			}
+			else if ( tsp_airtime == 0 )
+			{
+				tsp_airtime_mult -= 0.1;
+			}
+			
+			if ( tsp_airtime_mult > 0 )
+			{
+				if ( vel.z < 0 )
+				{
+					vel.z *= 1.0 - tsp_airtime_mult;
+				}
+				vel.xy *= 1.0 - tsp_airtime_mult;
+			}
 		
 		Super.Tick();
 		
