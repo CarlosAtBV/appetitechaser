@@ -45,7 +45,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		else if ( player.onground )
 		{
-			vel.xy *= 0.9;
+			vel.xy *= 0.875;
 		}
 		
 		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove) / 6400;
