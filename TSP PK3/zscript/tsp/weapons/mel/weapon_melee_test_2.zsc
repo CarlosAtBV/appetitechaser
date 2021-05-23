@@ -305,12 +305,12 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			1111 FF 1;
 			1111 GH 1
 			{
-				A_WeaponReady();
+				A_TSP_MeleeReady();
 				return A_TSP_IfFireHeld(3, resolveState("ChargeUppercut"));
 			}
 			TNT1 A 2
 			{
-				A_WeaponReady();
+				A_TSP_MeleeReady();
 				return A_TSP_IfFireHeld(3, resolveState("ChargeUppercut"));
 			}
 		Punch1End: //You'll return to this state if you don't continue with the uppercut!
