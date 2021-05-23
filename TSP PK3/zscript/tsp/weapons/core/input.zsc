@@ -26,6 +26,11 @@ Extend Class TSP_Weapon_Core
 		}
 	}
 	
+	int TSP_GetFireHeldTime()
+	{
+		return tsp_input_firebuffer;
+	}
+	
 	bool TSP_IsFireHeld()
 	{
 		return ( owner.player.cmd.buttons & BT_ATTACK );

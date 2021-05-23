@@ -76,11 +76,13 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 	{
 		if ( invoker.TSP_IsFirePressed() )
 		{
+			Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
 			return invoker.GetAtkState(false);
 		}
 		
 		if ( invoker.TSP_IsAltFirePressed() )
 		{
+			Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
 			return invoker.GetAltAtkState(false);
 		}
 		
@@ -302,14 +304,15 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_primary++;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			1111 FF 1;
-			1111 GH 1
-			{
-				return A_TSP_MeleeReady() || A_TSP_IfFireHeld(3, resolveState("ChargeUppercut"));
-			}
+			1111 FF 1 A_TSP_MeleeReady();
+			1111 GH 1 A_TSP_MeleeReady();
 			TNT1 A 2
 			{
-				return A_TSP_MeleeReady() || A_TSP_IfFireHeld(3, resolveState("ChargeUppercut"));
+				if ( invoker.TSP_GetFireHeldTime() > 3 )
+				{
+					return resolveState("ChargeUppercut");
+				}
+				return A_TSP_MeleeReady();
 			}
 		Punch1End: //You'll return to this state if you don't continue with the uppercut!
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0);
