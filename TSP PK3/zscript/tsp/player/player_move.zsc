@@ -21,12 +21,17 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			return;
 		}
 		
-		if ( player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 4 ) )
+		if ( player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
 		{
 			tsp_crouchSliding = false;
 		}
 		else if ( player.cmd.buttons & BT_CROUCH )
 		{
+			if ( !tsp_crouchSliding )
+			{
+				vel.z -= 4;
+				vel.xy += (cos(angle), sin(angle)) * 6;
+			}
 			tsp_crouchSliding = true;
 		}
 		
