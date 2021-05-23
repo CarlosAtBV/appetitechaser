@@ -18,6 +18,13 @@ Class TSP_Mel_SlamHandler : Inventory
 		owner.bTHRUACTORS = true;
 		owner.vel = (0, 0, 0);
 		
+		let fx = TSP_Mel_SlamAfterImage(Spawn("TSP_Mel_SlamAfterImage", owner.pos));
+		if ( fx )
+		{
+			fx.master = owner;
+			fx.Initialize();
+		}
+		
 		if ( !owner.Warp(owner, 0, 0, -32, 0, 0, 0, 0, 0) )
 		{
 			owner.Warp(owner, 0, 0, 0, 0, WARPF_TOFLOOR, 0, 0, 0);
@@ -59,5 +66,55 @@ Class TSP_Mel_SlamHandler : Inventory
 			owner.A_SetTics(1);
 		}
 		super.DetachFromOwner();
+	}
+}
+
+Class TSP_Mel_SlamAfterImage : Actor
+{
+	Default
+	{
+		+BRIGHT
+		+NOINTERACTION
+		+NOBLOCKMAP
+		+ROLLSPRITE
+		+ROLLCENTER
+		Alpha 1.0;
+		RenderStyle "Add";
+		Translation "TSP_Targeting_Normal";
+	}
+	
+	void Initialize()
+	{
+		if ( master != null )//|| player == null )
+		{
+			angle = master.angle;
+			sprite = master.sprite;
+			frame = master.frame;
+			scale = master.scale;
+			roll = master.roll;
+		}
+		else
+		{
+			Destroy();
+		}
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		alpha -= 0.1;
+		scale.x *= 0.8;
+		if ( alpha <= 0.0 )
+		{
+			Destroy();
+		}
+	}
+	
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
 	}
 }
