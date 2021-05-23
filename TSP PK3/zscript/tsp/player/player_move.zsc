@@ -43,11 +43,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			vel.xy *= 0.9;
 		}
 		
-		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove).Unit();
+		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove) / 6400;
 		double moveAngle = atan2(moveDir.y, moveDir.x) + angle;
 		
-		double runspeed = cmd.buttons & BT_SPEED ? 3.0 : 2.0;
-		runspeed *= Speed;
+		double runspeed = min(moveDir.Length()*2, 3);
+		//runspeed *= Speed;
 		
 		bool isMoving = (cmd.forwardmove || cmd.sidemove);
 		
