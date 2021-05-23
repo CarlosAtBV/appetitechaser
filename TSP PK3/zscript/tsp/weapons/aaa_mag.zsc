@@ -99,7 +99,7 @@ Extend Class TSP_Weapon_Core
 					}
 					else
 					{
-						mo.Vel3DFromAngle(32, mo.AngleTo(self), 0);
+						mo.vel = (invoker.owner.pos - mo.pos).Unit() * invoker.owner.Distance3D(mo) / 4;
 					}
 					
 					if(mo.resolveState("Pain")!=null&&mo.Health>0)

@@ -564,6 +564,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		double baseRotate = 0;
 		double baseScale = 0;
 		
+		baseOffset.y += tspw_owner.tsp_lastbob + (tspw_owner.tsp_bob - tspw_owner.tsp_lastbob) * ticFrac;
+		
 		for ( int i = 0; i < tspw_animations.Size(); i++ )
 		{
 			//Console.Printf("uhhh the find is "..tspw_animations[i].psprites.Find(psprite));

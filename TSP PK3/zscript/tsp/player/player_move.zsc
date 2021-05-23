@@ -2,6 +2,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 {	
 	bool tsp_crouchSliding;
 	
+	double tsp_bob;
+	double tsp_lastbob;
+	double tsp_bobamt;
+	
 	override void MovePlayer ()
 	{
 		UserCmd cmd = player.cmd;
@@ -42,15 +46,21 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove).Unit();
 		double moveAngle = atan2(moveDir.y, moveDir.x) + angle;
 		
-		Console.Printf(""..vel);
-		
 		double runspeed = cmd.buttons & BT_SPEED ? 3.0 : 2.0;
 		runspeed *= Speed;
+		
+		bool isMoving = (cmd.forwardmove || cmd.sidemove);
 		
 		if ( !tsp_crouchSliding && (cmd.forwardmove || cmd.sidemove) )
 		{
 			vel.xy += (cos(moveAngle), sin(moveAngle)) * ( !player.onground ? 0.1 : runspeed );
 		}
+		
+		//int stepFreq = 30 / runspeed;
+		double bobTarg = cos(level.maptime * runspeed * 8) * tsp_bobAmt;//(stepFreq - (level.maptime % stepFreq)) / double(stepFreq) * tsp_bobAmt;
+		tsp_lastbob = tsp_bob;
+		tsp_bob = tsp_bob + ( bobTarg * 2 - tsp_bob ) / 3;
+		tsp_bobamt = tsp_bobamt + ( (isMoving ? 1 : 0) - tsp_bobAmt ) / 4.;
 	}	
 	
 	override void CalcHeight()
@@ -61,7 +71,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		else
 		{
-			super.CalcHeight();
+			player.viewz = pos.Z + viewheight;
+			//super.CalcHeight();
 		}
 	}
 	

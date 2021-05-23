@@ -41,7 +41,7 @@ Class TSP_Mel_StasisHandler : Inventory
 	
 	override void DetachFromOwner ()
 	{
-		owner.A_SetTics(1);
+		owner.A_SetTics(3);
 		owner.roll = 0;
 		owner.bNOGRAVITY = oldGravity;
 		owner.bROLLSPRITE = false;
