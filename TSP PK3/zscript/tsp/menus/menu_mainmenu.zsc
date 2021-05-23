@@ -136,13 +136,8 @@ Class TSP_ListMenuHiRes : ListMenu
 				}
 			}
 		}
-		else if ( tsp_lerpX > 0.0 )
+		/*else if ( tsp_lerpX > 0.0 )
 		{
-			/*if ( tsp_storedMenu is "QuitMenu" )
-			{
-				tsp_storedMenu.Activate();
-				return;
-			}*/
 			
 			if ( tsp_lerpX > 0.0 )
 			{
@@ -168,7 +163,7 @@ Class TSP_ListMenuHiRes : ListMenu
 					tsp_storedMenu.Activate();
 				}
 			}
-		}
+		}*/
 		
 		for( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
@@ -245,13 +240,25 @@ Class TSP_ListMenuHiRes : ListMenu
 				S_Sound("menu/choose",CHAN_UI);
 				if ( mb_curSelection != null )
 				{
-					tsp_storedMenu = mb_curSelection.item;
+					mb_curSelection.item.Activate();
+					//tsp_storedMenu = mb_curSelection.item;
 					//SetMenu(mb_curSelection.menu, 0);
 					return true;
 				}
 				
 			case MKEY_Back:
-				isQuitting = true;
+				Close();
+				let m = GetCurrentMenu();
+				MenuSound(m != null ? "menu/backup" : "menu/clear");
+				if ( !m )
+				{
+					menuDelegate.MenuDismissed();
+				}
+				else if ( TSP_ListMenuHiRes(m) )
+				{
+					TSP_ListMenuHiRes(m).tsp_lerpX = 0.0;
+				}
+				//isQuitting = true;
 				//tsp_storedMenu = "shut the fuck up";
 				return true;
 		}
@@ -267,6 +274,11 @@ Class TSP_ListMenuHiRes : ListMenu
 		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
 		
 		//screen.Dim("#00FF00", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
+			
+		/*screen.DrawText("tsp_bold", Font.CR_WHITE, 0, 0, ""..CVar.FindCVar("playerclass").GetString(),
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));*/
 		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK";

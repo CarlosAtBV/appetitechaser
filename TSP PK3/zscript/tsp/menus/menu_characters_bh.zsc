@@ -223,7 +223,7 @@ Class TSP_CharacterMenu_BH : TSP_MenuBase
 				{
 					if ( PlayerClasses[i].Type == cm_curSelection.pickClass )
 					{
-						SetMenu("EpisodeMenu", i);
+						Menu.SetMenu("EpisodeMenu", i);
 						return true;
 					}
 				}

@@ -41,7 +41,7 @@ Class TSP_PSXHandler : StaticEventHandler
 			}
 		}
 		
-		Shader.SetUniform1f(players[consoleplayer], "TSP_PSXFade", "fadeAmount", tsp_psxFadeAmt);
+		//Shader.SetUniform1f(players[consoleplayer], "TSP_PSXFade", "fadeAmount", tsp_psxFadeAmt);
 		
 		tsp_lastGameState = gamestate;
 		tsp_lastLevel = level.levelname;
