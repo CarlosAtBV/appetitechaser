@@ -60,15 +60,29 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			invoker.combo_held++;
 		}
 		
-		Console.Printf(""..invoker.combo_held);
+		//Console.Printf(""..invoker.combo_held);
 		
 		if ( invoker.combo_held >= tics )
 		{
 			invoker.combo_held = 0;
-			Console.Printf("YESH!");
+			//Console.Printf("YESH!");
 			return state;
 		}
 		
+		return resolveState(null);
+	}
+	
+	action State A_TSP_MeleeReady()
+	{
+		if ( invoker.TSP_IsFirePressed() )
+		{
+			return invoker.GetAtkState(false);
+		}
+		
+		if ( invoker.TSP_IsAltFirePressed() )
+		{
+			return invoker.GetAltAtkState(false);
+		}
 		return resolveState(null);
 	}
 	
@@ -122,7 +136,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt");
 			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
-			111G A 1 A_WeaponReady;
+			111G A 1 A_TSP_MeleeReady();
 			Loop;
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
@@ -130,7 +144,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("TauntPressed",1,"Taunt");
 			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
-			111G A 1 A_WeaponReady;
+			111G A 1 A_TSP_MeleeReady();
 			Loop;
 
 
@@ -143,14 +157,14 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 		Idle1:
 			TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE);
-			111V ABCDEE 1 A_WeaponReady;
+			111V ABCDEE 1 A_TSP_MeleeReady();
 			TNT1 A 0 A_PlaySound("TSPIdlebk", 6);
 			TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50);
-			111V F 5 A_WeaponReady;
+			111V FFFFF 1 A_TSP_MeleeReady();
 			TNT1 A 0 A_Quake(1,40,0,5,"");
-			110F ABCDEABCDEABCDEABCDEABCDEABCDEFGHIJ 1 BRIGHT A_WeaponReady; 
+			110F ABCDEABCDEABCDEABCDEABCDEABCDEFGHIJ 1 BRIGHT A_TSP_MeleeReady(); 
 			TNT1 A 0 A_SetBlend("124 252 0", 0.01, 2);
-			111V FEEDDCBA 1 A_WeaponReady;
+			111V FEEDDCBA 1 A_TSP_MeleeReady();
 			Goto Ready;
 
 	// Activates Charge Style
@@ -159,7 +173,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_ChargeStyle")<1,"Nope"); // Charge Style not purchased yet
 		ChargeStyleActivate:
 			TNT1 A 0 A_JumpIfInventory("StyleComboToken", 1, "QuickStyleSwitch");
-			111V ABCDEE 1 A_WeaponReady;
+			111V ABCDEE 1 A_TSP_MeleeReady();
 			TNT1 A 0 A_PlaySound("melstylecssfx1", 6);
 			TNT1 A 0 A_SetBlend("144 0 191", 0.4, 50);
 			111V F 5;
@@ -298,7 +312,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			}
 		Punch1End: //You'll return to this state if you don't continue with the uppercut!
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0);
-			TNT1 A 11 A_WeaponReady;
+			TNT1 AAAAAAAAAAA 1 A_TSP_MeleeReady();
 			Goto AfterMelee;
 		
 	// DEFAULT P-P
@@ -316,8 +330,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_primary++;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			1112 FG 1 A_WeaponReady;
-			TNT1 A 12 A_WeaponReady;
+			1112 FG 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAAAAAAA 1 A_TSP_MeleeReady();
 			Goto AfterMelee;
 		
 	// P-P-P DEFAULT
@@ -337,8 +351,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 			//TNT1 GJAAAAAAAAA 1 A_TSP_HoldForCombo("VenomFinisher","SuperUpperCut","AzureKnee","AzureKnee")
-			1122 CEFA 1 A_WeaponReady;
-			TNT1 A 7 A_WeaponReady;
+			1122 CEFA 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAA 1 A_TSP_MeleeReady();
 			TNT1 A 3;
 			Goto AfterMelee;
 		
@@ -457,8 +471,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_mach++;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			111S GHI 1 A_WeaponReady;
-			TNT1 A 7 A_WeaponReady;
+			111S GHI 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAA 1 A_TSP_MeleeReady();
 			TNT1 A 5;
 			Goto AfterMelee;
 		
@@ -479,7 +493,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait");
-			111O CBA 1 A_WeaponReady;
+			111O CBA 1 A_TSP_MeleeReady();
 			TNT1 A 0 A_Jump(256,"CrossEnder"); //CrossPunch and CrossDuo have the same ending frames, merged into a single state for readability)
 		
 	// K-K-P-P-P
@@ -507,9 +521,9 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			}
 		CrossDuoB:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait");
-			111P CBA 1 A_WeaponReady;
+			111P CBA 1 A_TSP_MeleeReady();
 		CrossEnder:
-			TNT1 A 10 A_WeaponReady;
+			TNT1 AAAAAAAAAA 1 A_TSP_MeleeReady();
 		CrossFinisherA: //Do you have Rapid-Fire Upgrades?
 			TNT1 A 0
 			{
@@ -526,7 +540,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				}
 			}
 		CrossFinisherB: //If no upgrades found, here you are
-			TNT1 A 2 A_WeaponReady;
+			TNT1 AA 1 A_TSP_MeleeReady();
 			TNT1 A 3;
 			Goto AfterMelee;
 		
@@ -548,7 +562,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_mach = 99;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			TNT1 AAAAAA 1 A_WeaponReady;
+			TNT1 AAAAAA 1 A_TSP_MeleeReady();
 			"----" A 0
 			{
 				invoker.combo_alt = 0;
@@ -597,8 +611,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_alt++;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			111K FG 1 A_WeaponReady;
-			TNT1 A 10 A_WeaponReady;
+			111K FG 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAAAAA 1 A_TSP_MeleeReady();
 			Goto AfterMelee;
 		
 	// K-K
@@ -619,8 +633,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait");
-			111L F 1 A_WeaponReady;
-			TNT1 A 9 A_WeaponReady;
+			111L F 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAAAA 1 A_TSP_MeleeReady();
 			TNT1 A 3;
 			Goto AfterMelee;
 		
@@ -673,8 +687,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				invoker.combo_alt += 4;
 			}
 			TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
-			111N A 1 A_WeaponReady;
-			TNT1 A 9 A_WeaponReady;
+			111N A 1 A_TSP_MeleeReady();
+			TNT1 AAAAAAAAA 1 A_TSP_MeleeReady();
 			TNT1 A 6;
 			Goto AfterMelee;
 

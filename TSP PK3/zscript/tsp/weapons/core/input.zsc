@@ -1,0 +1,40 @@
+Extend Class TSP_Weapon_Core
+{
+	int tsp_input_firebuffer;
+	int tsp_input_altfirebuffer;
+	
+	void InputTick()
+	{
+		bool timeStopped = tspw_owner ? tspw_owner.pp_hitfreeze : false;
+		
+		if ( owner.player.cmd.buttons & BT_ATTACK )
+		{
+			tsp_input_firebuffer++;
+		}
+		else
+		{
+			tsp_input_firebuffer = 0;
+		}
+		
+		if ( owner.player.cmd.buttons & BT_ALTATTACK )
+		{
+			tsp_input_altfirebuffer++;
+		}
+		else
+		{
+			tsp_input_altfirebuffer = 0;
+		}
+		
+		Console.Printf(""..tsp_input_firebuffer);
+	}
+	
+	bool TSP_IsFirePressed()
+	{
+		return ( tsp_input_firebuffer != 0 && tsp_input_firebuffer < 5 );
+	}
+	
+	bool TSP_IsAltFirePressed()
+	{
+		return ( tsp_input_altfirebuffer != 0 && tsp_input_altfirebuffer < 5 );
+	}
+}

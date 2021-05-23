@@ -273,6 +273,8 @@ Class TSP_Weapon_Core : DoomWeapon
 					tspw_animations[i].Tick();
 				}
 			}
+			
+			InputTick();
 			//A_SetCrosshair(16);
 			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
