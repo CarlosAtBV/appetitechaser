@@ -20,7 +20,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		Weapon.BobSpeed 1.5;
 		Weapon.BobRangeY 1.0;
 		Weapon.BobRangeX 0.5;
-		Tag "$MelMeleeTag";
+		Tag "ZScript Melee Test";//"$MelMeleeTag";
 		
 		+WEAPON.WIMPY_WEAPON
 		+WEAPON.MELEEWEAPON
@@ -148,7 +148,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		Idle1:
 			TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE);
 			111V ABCDEE 1 A_TSP_MeleeReady();
-			TNT1 A 0 A_PlaySound("TSPIdlebk", 6);
+			TNT1 A 0 A_PlaySound("melidlebk", 6);
 			TNT1 A 0 A_SetBlend("124 252 0", 0.4, 50);
 			111V FFFFF 1 A_TSP_MeleeReady();
 			TNT1 A 0 A_Quake(1,40,0,5,"");
