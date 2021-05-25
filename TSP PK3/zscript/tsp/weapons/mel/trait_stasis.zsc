@@ -15,6 +15,11 @@ Class TSP_Mel_StasisHandler : Inventory
 	override void AttachToOwner (Actor other)
 	{
 		super.AttachToOwner(other);
+		if ( owner.health <= 0 )
+		{
+			Destroy();
+			return;
+		}
 		owner.bROLLSPRITE = true;
 		owner.bROLLCENTER = true;
 		oldGravity = owner.bNOGRAVITY;
