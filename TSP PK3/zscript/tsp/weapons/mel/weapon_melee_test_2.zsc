@@ -39,12 +39,6 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 	
 	int combo_held;
 	
-	override void Tick()
-	{
-		super.Tick();
-		Console.Printf("mach = "..combo_mach);
-	}
-	
 	action State A_TSP_IfFireHeld(int tics, State state)
 	{
 		if ( invoker.owner.player.cmd.buttons & BT_ATTACK )
