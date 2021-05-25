@@ -248,12 +248,13 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				{
 					switch(invoker.combo_mach)
 					{
-						case 6: return resolveState("AfterMelee"); break; 		//made so you can't Melbow again after the Rapid Fire Finish
+						default: return resolveState("AfterMelee"); break; 		//made so you can't Melbow again after the Rapid Fire Finish
 						case 5: return resolveState("RapidFireFinish"); break; 	//K-K-P-P-P-P-P-P
 						case 4: return resolveState("CrossDuo"); break;			//K-K-P-P-P-P-P
 						case 3: return resolveState("CrossPunch"); break;		//K-K-P-P-P-P
 						case 2: return resolveState("CrossDuo"); break; 		//K-K-P-P-P
 						case 1: return resolveState("CrossPunch"); break; 		//K-K-P-P
+						case 0: break;
 					}
 					
 					switch(invoker.combo_alt)
@@ -716,6 +717,10 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 
 	// MELEE COOLDOWN
 		AfterMelee:
+			"----" A 0
+			{
+				Console.Printf("After melee moment");
+			}
 			TNT1 A 0 A_JumpIf(CountInv("TSP_Upgrade_ChargeStyle")<1,"AfterMeleeCont");
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"QuickStyleSwitch");
 		AfterMeleeCont:
