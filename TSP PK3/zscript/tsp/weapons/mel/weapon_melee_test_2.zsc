@@ -256,31 +256,29 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 						}
 					}
 				}
-				else
+				
+				switch(invoker.combo_mach)
 				{
-					switch(invoker.combo_mach)
-					{
-						default: return resolveState("AfterMelee"); break; 		//made so you can't Melbow again after the Rapid Fire Finish
-						case 5: return resolveState("RapidFireFinish"); break; 	//K-K-P-P-P-P-P-P
-						case 4: return resolveState("CrossDuo"); break;			//K-K-P-P-P-P-P
-						case 3: return resolveState("CrossPunch"); break;		//K-K-P-P-P-P
-						case 2: return resolveState("CrossDuo"); break; 		//K-K-P-P-P
-						case 1: return resolveState("CrossPunch"); break; 		//K-K-P-P
-						case 0: break;
-					}
-					
-					if ( invoker.combo_alt >= 2 )
-					{
-						return resolveState("Melbow"); //K-K-P
-					}
-					
-					switch(invoker.combo_primary)
-					{
-						default: return resolveState("VenomFinisher"); break; 	//P-P-P-P
-						case 2: return resolveState("LeftOverhead"); break; 	//P-P-P
-						case 1: return resolveState("RightHook"); break; 		//P-P
-						case 0: break;
-					}
+					default: return resolveState("AfterMelee"); break; 		//made so you can't Melbow again after the Rapid Fire Finish
+					case 5: return resolveState("RapidFireFinish"); break; 	//K-K-P-P-P-P-P-P
+					case 4: return resolveState("CrossDuo"); break;			//K-K-P-P-P-P-P
+					case 3: return resolveState("CrossPunch"); break;		//K-K-P-P-P-P
+					case 2: return resolveState("CrossDuo"); break; 		//K-K-P-P-P
+					case 1: return resolveState("CrossPunch"); break; 		//K-K-P-P
+					case 0: break;
+				}
+				
+				if ( invoker.combo_alt >= 2 )
+				{
+					return resolveState("Melbow"); //K-K-P
+				}
+				
+				switch(invoker.combo_primary)
+				{
+					default: return resolveState("VenomFinisher"); break; 	//P-P-P-P
+					case 2: return resolveState("LeftOverhead"); break; 	//P-P-P
+					case 1: return resolveState("RightHook"); break; 		//P-P
+					case 0: break;
 				}
 				
 				//Just go to punch lmao
