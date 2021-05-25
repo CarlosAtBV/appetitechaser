@@ -18,7 +18,7 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 	Weapon.BobSpeed 1.5
 	Weapon.BobRangeY 1.0
 	Weapon.BobRangeX 0.5
-	Tag "$MelMeleeTag"
+	Tag "Melee DECORATE V"
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.MELEEWEAPON
 	+WEAPON.NOALERT
