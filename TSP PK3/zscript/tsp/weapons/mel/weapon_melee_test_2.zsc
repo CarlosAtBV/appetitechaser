@@ -729,8 +729,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_TakeInventory("TSPChargedAttack", 99);
 			TNT1 A 0 A_TakeInventory("StyleComboToken", 99);
 			TNT1 A 0 A_TakeInventory("ComboCoolDown", 99);
-			111U ABC 1 A_WeaponReady(WRF_NOSWITCH);
-			111G A 1 A_WeaponReady(WRF_NOSWITCH);
+			111U ABC 1;
+			111G A 1;
 			Goto Ready;
 
 		SPTraitStart:
