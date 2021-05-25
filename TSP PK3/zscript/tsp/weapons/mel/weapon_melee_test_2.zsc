@@ -236,12 +236,18 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 				if ( CountInv("TSP_Upgrade_RapidFireInf") )
 				{
 					// Rapid-Fire EX
-					switch(invoker.combo_mach)
+					if ( invoker.combo_mach >= 8 )
 					{
-						case 8: return resolveState("AfterMelee"); break; //made so you can't Melbow again after the Rapid Fire Finish
-						case 7: return resolveState("RapidFireFinish"); break; 	//K-K-P-P-P-P-P-P-P-P
-						case 6: return resolveState("CrossDuo"); break;			//K-K-P-P-P-P-P-P-P
-						case 5: return resolveState("CrossPunch"); break;		//K-K-P-P-P-P-P-P
+						return resolveState("AfterMelee"); //made so you can't Melbow again after the Rapid Fire Finish
+					}
+					else
+					{
+						switch(invoker.combo_mach)
+						{
+							case 7: return resolveState("RapidFireFinish"); break; 	//K-K-P-P-P-P-P-P-P-P
+							case 6: return resolveState("CrossDuo"); break;			//K-K-P-P-P-P-P-P-P
+							case 5: return resolveState("CrossPunch"); break;		//K-K-P-P-P-P-P-P
+						}
 					}
 				}
 				else
