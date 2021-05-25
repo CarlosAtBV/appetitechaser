@@ -97,27 +97,27 @@ ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
 MELRUBY = "\cgRuby\c-";
 
 //Menu Junk
-MNU_CHOOSECLASS		= "Character Select";
-MNU_CHOOSESKILL		= "Difficulty Select";
-TSPCustomControls = "\c[TSPYELLER]Customize Controls\c-";
-TSPMouseOptions = "\c[TSPYELLER]Mouse Options\c-";
-TSPControllerOptions = "\c[TSPYELLER]Controller Options\c-";
+MNU_CHOOSECLASS		= "CHARACTER SELECT";
+MNU_CHOOSESKILL		= "DIFFICULTY SELECT";
+TSPCustomControls = "\c[TSPYELLER]CUSTOMIZE CONTROLS\c-";
+TSPMouseOptions = "\c[TSPYELLER]MOUSE OPTIONS\c-";
+TSPControllerOptions = "\c[TSPYELLER]CONTROLLER OPTIONS\c-";
 
 //TSP Menu Options
 TSPMENU1 = "\c[TSPGREEN]The Space Pirate\c- \cjModifiers\c-";
-TSPMENU2 = "\c[TSPGREEN1]Modifiers\c-";
-TSPGAMEPLAY1 = "\cjGameplay Modifiers\c-";
+TSPMENU2 = "\c[TSPMODGOLD]MODIFIERS\c-";
+TSPGAMEPLAY1 = "\cjGAMEPLAY MODIFIERS\c-";
 TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)\c-";
-TSPGRAPHICS1 = "\cjGraphic Modifiers\c-";
+TSPGRAPHICS1 = "\cjGRAPHIC MODIFIERS\c-";
 TSPGRAPHICS2 = "\cu(Adjust graphical settings)\c-";
-TSPCHEATS1 = "\ckCheats and Fun Stuff!\c-";
+TSPCHEATS1 = "\ckCHEATS AND FUN STUFF\c-";
 TSPCHEATS2 = "\cu(Enable cheat options and other shenanigans)\c-";
 
 TSPEASYAUTOHUD = "\cc[\cfAuto\cc]";
 TSPEASYAUTO1 = "\cfAuto-Assist\c-";
 TSPEASYAUTO_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgWeapons \cffire automatically \cgwhen button is held.";
 
-TSPMELHUDMOD1 = "\c[Mel]Mel \cjSpecific";
+TSPMELHUDMOD1 = "\c[Mel]MEL \cjSPECIFIC";
 TSPMELHUDMOD2 = "\cu(Override Mel's HUD Portrait)\c-";
 
 TSPDEFAULT = "\ccDefault\c-";
@@ -150,7 +150,7 @@ OPTVAL_OTHER				= "\cjObject";
 MK2TSP = "\c[TSPGREEN]TSP MK2\c-";
 
 //Controls Menu
-CONFIGHEADER = "\c[TSPYeller]Configuration\c-";
+CONFIGHEADER = "\c[TSPYeller]CONFIGURATION\c-";
 CUSTOMERCONTROLS1 = "\c[TSPYeller]Customize Controls\c-";
 CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
 CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
