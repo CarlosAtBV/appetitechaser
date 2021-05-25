@@ -75,22 +75,6 @@ Extend Class TSP_Weapon_Core
 						hitStasis = true;
 					}
 					
-					if(mThrustUp>0&&mo.health>0&&mo.bIsMonster)
-					{
-						if ( flags & TSPM_SUPERFREEZE )
-						{
-							mo.GiveInventory("TSP_Mel_StasisHandler", 1);
-						}
-						/*stuntime = -1;
-						TSP_EnemyHandler_OnHit handlerThing = TSP_EnemyHandler_OnHit(new("TSP_EnemyHandler_OnHit"));
-						if(flags & TSPM_SUPERFREEZE)
-						{
-							//handlerThing.superfreeze = 35*5;
-						}
-						handlerThing.owner = mo;
-						mo.A_PlaySound(mo.PainSound,CHAN_VOICE);*/
-					}
-					
 					double fugSin = sin(angle);
 					double fugCos = cos(angle);
 					
@@ -118,7 +102,17 @@ Extend Class TSP_Weapon_Core
 					}
 					mo.A_PlaySound(bulletPuffToSpawn_sound, CHAN_BODY);
 					
-					if ( mo.Health <= 0 )
+					if ( mo.health > 0 )
+					{
+						if ( mThrustUp > 0 && mo.bIsMonster )
+						{
+							if ( flags & TSPM_SUPERFREEZE )
+							{
+								mo.GiveInventory("TSP_Mel_StasisHandler", 1);
+							}
+						}
+					}
+					else
 					{
 						hasKilled = true;
 					}
