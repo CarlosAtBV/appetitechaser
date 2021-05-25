@@ -259,14 +259,17 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 					
 					switch(invoker.combo_alt)
 					{
-						case 2: return resolveState("Melbow"); break; 			//K-K-P
+						default: return resolveState("Melbow"); break; 			//K-K-P
+						case 1:
+						case 0: break;
 					}
 					
 					switch(invoker.combo_primary)
 					{
-						case 3: return resolveState("VenomFinisher"); break; 	//P-P-P-P
+						default: return resolveState("VenomFinisher"); break; 	//P-P-P-P
 						case 2: return resolveState("LeftOverhead"); break; 	//P-P-P
 						case 1: return resolveState("RightHook"); break; 		//P-P
+						case 0: break;
 					}
 				}
 				
