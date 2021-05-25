@@ -38,6 +38,12 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 	
 	int combo_held;
 	
+	override void Tick()
+	{
+		super.Tick();
+		Console.Printf("mach = "..combo_mach);
+	}
+	
 	action State A_TSP_IfFireHeld(int tics, State state)
 	{
 		if ( invoker.owner.player.cmd.buttons & BT_ATTACK )
@@ -233,7 +239,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			"----" A 0
 			{
 				//A_JumpIfInventory("TraitPressed",1,"SPTrait")
-				if ( CountInv("TSP_Upgrade_RapidFireInf") )
+				if ( CountInv("TSP_Upgrade_RapidFireInf") >= 1 )
 				{
 					// Rapid-Fire EX
 					if ( invoker.combo_mach >= 8 )
@@ -263,11 +269,9 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 						case 0: break;
 					}
 					
-					switch(invoker.combo_alt)
+					if ( invoker.combo_alt >= 2 )
 					{
-						default: return resolveState("Melbow"); break; 			//K-K-P
-						case 1:
-						case 0: break;
+						return resolveState("Melbow"); //K-K-P
 					}
 					
 					switch(invoker.combo_primary)
@@ -538,17 +542,18 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		CrossFinisherA: //Do you have Rapid-Fire Upgrades?
 			TNT1 A 0
 			{
-				if (CountInv("TSP_Upgrade_RapidFireInf") == 2)
+				if ( invoker.TSP_IsFirePressed() )
 				{
-				   A_Refire("RapidFireFinish");
+					if (CountInv("TSP_Upgrade_RapidFireInf") == 2)
+					{
+					   return resolveState("RapidFireFinish");
+					}
+					else if (CountInv("TSP_Upgrade_RapidFireInf") == 3)
+					{
+					   return resolveState("VenomFinisher");
+					}
 				}
-				else if (CountInv("TSP_Upgrade_RapidFireInf") == 3)
-				{
-				   A_Refire("VenomFinisher");
-				}
-				else
-				{
-				}
+				return resolveState(null);
 			}
 		CrossFinisherB: //If no upgrades found, here you are
 			TNT1 AA 1 A_TSP_MeleeReady();
