@@ -63,13 +63,13 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		if ( invoker.TSP_IsFirePressed() )
 		{
 			//Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
-			return invoker.resolveState("Fire");
+			return invoker.GetAtkState(false);
 		}
 		
 		if ( invoker.TSP_IsAltFirePressed() )
 		{
 			//Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
-			return invoker.resolveState("AltFire");
+			return invoker.GetAltAtkState(false);
 		}
 		
 		A_WeaponReady(WRF_NOFIRE);

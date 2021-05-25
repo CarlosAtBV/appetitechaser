@@ -41,7 +41,7 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 		TNT1 A 0;
 		Goto AfterMelee;
 	TraitAltFire:
-		"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"Ready");
+		"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSling")<1,"TraitAltFireFail");
 		"----" A 0 A_TSP_StoreSlingTarget;
 		MLGF A 0 A_StartSound("*magsling", 6);
 		MLGF ABCDEFGH 1;
@@ -53,6 +53,16 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 		TNT1 AAAAAAAAAAAAA 1 A_WeaponReady;
 		TNT1 A 0 A_Jump(256, "AfterMelee");
 		Goto AfterMelee;
+	TraitAltFireFail:
+		"----" A 1 A_WeaponOffset(0, 33);
+		"----" A 1 A_WeaponOffset(0, 32.5);
+		"----" A 1 A_WeaponOffset(0, 32.25);
+		"----" A 1 A_WeaponOffset(0, 32);
+		"----" A 0
+		{
+			return resolveState("Ready");
+		}
+		Stop;
 //DIVEKICK!
 	MagSpear:
 		"----" A 0 A_JumpIf(CountInv("TSP_Upgrade_MagSpear")<1,"TraitFireCont");
