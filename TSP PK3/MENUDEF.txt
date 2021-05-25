@@ -20,10 +20,10 @@ LISTMENU "MainMenu"
 	Linespacing 29
 		
 	TextItem "$TSPMNU_MENU_STARTGAME", "n", "TSP_GameModeMenu"
-	TextItem "$TSPMNU_MENU_OPTION", "o", "TSP_OptionsMenu"
+	TextItem "$TSPMNU_MENU_OPTIONS", "o", "TSP_OptionsMenu"
 	TextItem "$TSPMNU_MENU_CODEX", "h", "TSP_CodexMenu"
-	TextItem "SPMENU4", "l", "LoadGameMenu"
-	TextItem "SPMENU5", "s", "SaveGameMenu"
+	TextItem "$TSPMNU_MENU_LOAD", "l", "LoadGameMenu"
+	TextItem "$TSPMNU_MENU_SAVE", "s", "SaveGameMenu"
 	TextItem "$TSPMNU_MENU_QUIT", "q", "QuitMenu"
 	
 	Font "TinyFont"

@@ -1,3 +1,10 @@
+
+TSPLogoColor
+{
+	#1f0a1b  #1f4a5a    0  127
+	#1f4a5a  #3fc2b0  128  256
+}
+
 TSPGreen
 {
 	#1d3948  #84bb9b
@@ -21,17 +28,32 @@ Flat:
 	#5da590
 }
 
-TSPMenuGreen //Outlined
+//MENU
+TSPStartGreen // OUTLINE
+{
+	#000000  #000000    0  1
+	#396649  #396649    2  127
+	#48714c  #d6d562  128  256
+}
+
+TSPMenuGreen // OUTLINE
 {
 	#000000  #000000    0  1    // BLACK OUTLINE
 	#1b485b  #1b485b  2  127
 	#205563  #34c597  128  255
 }
 
-TSPMenuGreen1
+TSPMenuGreen1 // NO OUTLINE
 {
 	#1b485b  #1b485b  0  127
 	#205563  #34c597  128  255
+}
+
+TSPLoadGreen // OUTLINE
+{
+	#000000  #000000    0  1
+	#1e3925  #1e3925    2  127
+	#21402c  #b2c495  128  256
 }
 
 TSPGray // OUTLINE
@@ -63,6 +85,11 @@ TSPHudRed
 	#000000  #000000    0  1
 	#3F0000  #FF0000    2  256
 }
+TSPRed2 // NO OUTLINE
+{
+	#460b0b  #c72424	0  256
+}
+
 TSPBlue // OUTLINE
 {
 	#000000  #000000    0  1

@@ -13,14 +13,18 @@ TSP_GAMEMODE_STANDARD = "Standard Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "Training Mode";
 
-TSPMNU_MENU_STARTGAME = "\c[TSPMenuGreen]Start Game";
-TSPMNU_MENU_STARTGAME_SUB = "Play through the game normally.";
+TSPMNU_MENU_STARTGAME = "\c[TSPStartGreen]Start Game";
+TSPMNU_MENU_STARTGAME_SUB = "Start a \c[TSPLimeGreen]new game\c-!";
 TSPMNU_MENU_OPTIONS = "\c[TSPYeller]Options";
-TSPMNU_MENU_OPTIONS_SUB = "Adjust game settings.";
+TSPMNU_MENU_OPTIONS_SUB = "Adjust game settings and customize controls.";
 TSPMNU_MENU_CODEX = "\c[TSPBlue]Codex";
 TSPMNU_MENU_CODEX_SUB = "Explore the Indigo Skyline's database.";
+TSPMNU_MENU_LOAD = "\c[TSPLoadGreen]Load Game";
+TSPMNU_MENU_LOAD_SUB = "Load a previously saved game.";
+TSPMNU_MENU_SAVE = "\c[TSPLoadGreen]Save Game";
+TSPMNU_MENU_SAVE_SUB = "Save current progress.";
 TSPMNU_MENU_QUIT = "\c[TSPRed]Shut Down";
-TSPMNU_MENU_QUIT_SUB = "Exit The Space Pirate.";
+TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-.";
 
 MENU_MODE_STANDARD = "Standard";
 MENU_MODE_STANDARD_SUB = "Play through the game normally.";
