@@ -86,7 +86,7 @@ Class TSP_EnemyHandler_SlamDunk : Thinker
 			owner.DamageMobj(inflictor,inflictor,200,'Melee',DMG_THRUSTLESS);
 			if(owner!=null)
 			{
-				owner.A_PlaySound("mag/fissure/hit",CHAN_5);
+				owner.A_PlaySound("magslam/impact",CHAN_5);
 				owner.A_QuakeEx(1,1,1,4,0,192);
 				owner.A_Explode(128,128,0,false,0,0,0,"","MagSlam");
 				Destroy();

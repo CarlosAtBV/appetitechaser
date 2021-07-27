@@ -95,7 +95,7 @@ Extend Class TSP_Weapon_Core
 						{
 							slamdunk.inflictor = invoker.owner;
 						}
-						mo.A_PlaySound("mag/fissure/start",CHAN_5);
+						mo.A_PlaySound("magslam/down",CHAN_5);
 					}
 					else
 					{

@@ -20,9 +20,13 @@
 // - Mortal Kombat (2011)
 // - Mortal Kombat X
 // - Super Monday Night Combat
+// - Wolfenstein (2009)
 
 maggrappleretro "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
 maggrapple 		"sounds/weapons/Mel/MagTrait/sfx_mag_grapple02.ogg"
+magslam			"sounds/weapons/Mel/MagTrait/sfx_mag_slam01.ogg"
+magslam/down	"sounds/weapons/Mel/MagTrait/sfx_mag_slam02.ogg"
+magslam/impact	"sounds/weapons/Mel/MagTrait/sfx_mag_slam_impact01.ogg"
 magslingretro 	"sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
 magsling 		"sounds/weapons/Mel/MagTrait/sfx_mag_sling02.ogg"
 magdriveretro	"sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
