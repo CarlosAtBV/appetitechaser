@@ -144,9 +144,9 @@ mel/largemelee8 "sounds/characters/mel/melee/vo_mel_melee_lg08.ogg"
 mel/largemelee9 "sounds/characters/mel/melee/vo_mel_melee_lg09.ogg"
 
 $random mel/xlmelee { mel/xlmelee1 mel/xlmelee2 mel/xlmelee3 mel/xlmelee4 null null null null null null null null null null null null null null null null null null null }
-mel/xlmelee1 "sounds/characters/mel/melee/vo_mel_melee_xl01.ogg"
-mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02.ogg"
-mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03.ogg"
+mel/xlmelee1 "sounds/characters/mel/melee/vo_mel_melee_xl01_short.ogg"
+mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02_short.ogg"
+mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03_short.ogg"
 mel/xlmelee4 "sounds/characters/mel/melee/vo_mel_melee_xl04.ogg"
 
 $random mel/chargedunk { mel/dunk1 null null null null null null null null null null null null null }
