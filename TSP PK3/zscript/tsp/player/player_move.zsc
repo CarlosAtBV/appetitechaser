@@ -11,6 +11,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		UserCmd cmd = player.cmd;
 		
 		Angle += cmd.yaw * (360./65536.);
+
+		player.onground = (pos.z <= floorz) || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
 		
 		if(pp_hitFreeze>0)
 		{
@@ -27,17 +29,18 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		else if ( player.cmd.buttons & BT_CROUCH )
 		{
-			if ( !tsp_crouchSliding )
+			if ( !player.onground )
 			{
-				vel.z -= 4;
-				vel.xy += (cos(angle), sin(angle)) * 6;
+				if ( !tsp_crouchSliding )
+				{
+					vel.z -= 4;
+					vel.xy += (cos(angle), sin(angle)) * 6;
+				}
+				tsp_crouchSliding = true;
 			}
-			tsp_crouchSliding = true;
 		}
 		
 		bNOFRICTION = tsp_crouchSliding;
-
-		player.onground = (pos.z <= floorz) || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
 		
 		if ( tsp_crouchSliding && player.onground )
 		{
