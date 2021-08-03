@@ -100,6 +100,39 @@ Class TSP_OptionMenu_Control : TSP_OptionMenu_Selectable
 	}
 }
 
+Class TSP_OptionMenu_Slider : TSP_OptionMenu_Selectable
+{
+	override void Init()
+	{
+		desc = "Set the desired binding for '"..item.mLabel.."'.";
+	}
+	
+	const SLIDEROFFX = 88;
+	
+	override void Draw(bool isSelected, Vector2 off)
+	{
+		let controlItem = OptionMenuItemSlider(item);
+		
+		double sliderAmount = controlItem.GetSliderValue();
+		
+		parent.Draw9Slice(pos.x, off.y+pos.y, size.x-OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_default.png", 16);
+			
+		int optX = pos.x + size.x-OPTIONOPTWIDTH+8;
+		
+		parent.DrawText(off+(pos.x+16, pos.y+6), item.mLabel);
+		
+		// Slider Part
+		
+		parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_default.png", 16);
+				
+		parent.Draw9Slice(optX + SLIDEROFFX + 8, off.y+pos.y+8, OPTIONOPTWIDTH-SLIDEROFFX-16-8, 16, "graphics/menu/common/slider_bg.png", 16);
+		
+		parent.Draw9Slice(optX + SLIDEROFFX - 2, off.y+pos.y - 2, 32 + 4, size.y + 4, isSelected ? "graphics/menu/common/slice_button_active.png" : "graphics/menu/common/slice_button.png", 16);
+		
+		parent.DrawText(off+(optX+16, pos.y+6), ""..String.format("%.2f", sliderAmount));
+	}
+}
+
 Class TSP_OptionMenu_Header : TSP_OptionMenu_Item
 {
 	override void Draw(bool isSelected, Vector2 off)
@@ -143,6 +176,10 @@ Class TSP_OptionMenu : OptionMenu
 			else if ( item is "OptionMenuItemOptionBase" )
 			{
 				newButton = new("TSP_OptionMenu_Toggle");
+			}
+			else if ( item is "OptionMenuItemSlider" )
+			{
+				newButton = new("TSP_OptionMenu_Slider");
 			}
 			else
 			{
