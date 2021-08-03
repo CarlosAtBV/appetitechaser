@@ -70,13 +70,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	override void CalcHeight()
 	{
+		double viewBob = 4*cos(level.maptime * 8);
 		if ( tsp_crouchSliding )
 		{
 			player.viewz = pos.Z + 24;
 		}
 		else
 		{
-			player.viewz = pos.Z + viewheight;
+			player.viewz = pos.Z + viewheight + viewBob;
 			//super.CalcHeight();
 		}
 	}
