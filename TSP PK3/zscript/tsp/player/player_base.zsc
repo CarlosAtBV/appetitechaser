@@ -420,6 +420,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TickLogMessages();
 		TSP_TickCasings();
 		
+		A_SetViewRoll(tsp_crouchSliding ? 2 : 0, SPF_INTERPOLATE);
+		
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}
 	

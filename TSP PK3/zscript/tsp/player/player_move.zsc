@@ -6,6 +6,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_lastbob;
 	double tsp_bobamt;
 	
+	//
+	// MovePlayer()
+	//
+	// [Py] Handles the new movement stuff
+	//
+	
 	override void MovePlayer ()
 	{
 		UserCmd cmd = player.cmd;
@@ -44,7 +50,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( tsp_crouchSliding && player.onground )
 		{
-			vel.xy *= 0.99;
+			vel.xy *= 0.98;
 		}
 		else if ( player.onground )
 		{
@@ -59,9 +65,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		bool isMoving = (cmd.forwardmove || cmd.sidemove);
 		
-		if ( !tsp_crouchSliding && (cmd.forwardmove || cmd.sidemove) )
+		if ( cmd.forwardmove || cmd.sidemove )
 		{
-			vel.xy += (cos(moveAngle), sin(moveAngle)) * ( !player.onground ? 0.1 : runspeed );
+			if ( !tsp_crouchSliding )
+			{
+				vel.xy += (cos(moveAngle), sin(moveAngle)) * ( !player.onground ? 0.1 : runspeed );
+			}
 		}
 		
 		//int stepFreq = 30 / runspeed;
@@ -70,6 +79,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		tsp_bob = tsp_bob + ( bobTarg * 2 - tsp_bob ) / 3;
 		tsp_bobamt = tsp_bobamt + ( (isMoving ? 1 : 0) - tsp_bobAmt ) / 4.;
 	}	
+	
+	//
+	// CalcHeight()
+	//
+	// [Py] Handles viewbobbing so that mel go like uhhh boing boing!!!
+	//
 	
 	override void CalcHeight()
 	{
