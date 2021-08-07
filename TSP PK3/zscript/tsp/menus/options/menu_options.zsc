@@ -225,6 +225,8 @@ Class TSP_OptionMenu : OptionMenu
 				break;
 			}
 		}
+		
+		UpdateViewport();
 	}
 	
 	override bool OnUIEvent(UIEvent ev)
@@ -338,7 +340,7 @@ Class TSP_OptionMenu : OptionMenu
 		
 		DrawText((68, 74), mDesc.mTitle.MakeUpper(), "tsp_bold");
 		
-		screen.SetClipRect(0, CLIPY, 1280, CLIPHEIGHT);
+		SetClipRect(0, CLIPY, 1280, CLIPHEIGHT);
 		
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )
 		{

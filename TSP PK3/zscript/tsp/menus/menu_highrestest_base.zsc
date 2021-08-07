@@ -24,24 +24,25 @@ Mixin Class TSP_HiResBase
 	
 	void SetClipRect(int x, int y, int width, int height)
 	{
-		double modX = double(1280)/x;
-		double modY = double(720)/y;
-		double modWidth = double(1280)/width;
-		double modHeight = double(720)/height;
-		Vector2 pos = viewportPos + (modX * x, modY * y);
-		Vector2 size = (modWidth * x, modHeight * y);
-		screen.SetClipRect(int(pos.x) , int(pos.y), int(size.x), int(size.y));
+		Vector2 pos = (x / 1280., y / 720.);
+		pos.x *= viewportSize.x;
+		pos.y *= viewportSize.y;
+		
+		Vector2 size = (width / 1280., height / 720.);
+		size.x *= viewportSize.x;
+		size.y *= viewportSize.y;
+				
+		screen.SetClipRect(int(viewportPos.x + pos.x) , int(viewportPos.y + pos.y), int(size.x), int(size.y));
 	}
 	
 	Vector2 ConvertMousePos(Vector2 mouse)
 	{
 		//debugMouse = mouse -= viewportPos;
-		return mouse;// -= viewportPos;
-		/*Vector2 start, size;
-		[start, size] = Screen.VirtualToRealCoords((0, 0), (1280, 720), (1280, 720));
-		Vector2 adjustedMPos = mouse - start;
-		Vector2 virtualMPos = (adjustedMPos.x * 1280 / size.x, adjustedMPos.y * 720 / size.y);
-		return virtualMPos;*/
+		Vector2 getPos = (mouse - viewportPos);
+		getPos = (getPos.x / viewportSize.x, getPos.y / viewportSize.y);
+		getPos = (getPos.x * 1280, getPos.y * 720);
+		
+		return getPos;
 	}
 	
 	bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)

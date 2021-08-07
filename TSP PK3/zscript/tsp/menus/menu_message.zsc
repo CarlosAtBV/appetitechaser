@@ -90,6 +90,8 @@ Class TSP_MessageBoxMenu : MessageBoxMenu
 		tsp_buttons.Push(newButton);
 		
 		tsp_curSelection = tsp_buttons[0];
+		
+		UpdateViewport();
 	}
 	
 	override void Ticker()

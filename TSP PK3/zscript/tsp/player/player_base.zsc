@@ -358,24 +358,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		pp_lastRecoil = pp_combinedRecoil;
 		pp_combinedRecoil = pp_weaponRecoil+pp_weaponRecoilSlow;
 		
-		/*if(pp_enemyTargeter==null)
-		{
-			pp_enemyTargeter = TSP_EnemyTargeter(Spawn("TSP_EnemyTargeter",pos));
-		}*/
-		
-		/*if(theZoop!=null)
-		{
-			if(pp_enemyTargeter.follower==null)
-			{
-				pp_enemyTargeter.SetOrigin(theZoop.pos, false);
-			}
-			pp_enemyTargeter.follower = theZoop;
-		}
-		else
-		{
-			pp_enemyTargeter.follower = null;
-		}*/
-		
 		if(pp_slingTarget)
 		{
 			if(pp_slingTarget.health<1)
