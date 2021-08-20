@@ -77,7 +77,7 @@ shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
 shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Devil May Cry 4: Special Edition, Mortal Kombat X, Super Monday Night Combat
 
 // GENERAL
-mantle "sounds/general/player/sfx_general_mantle.ogg" // From Chornicles of Riddick: Assault on Dark Athena, Devil May Cry 4: Special Edition
+mantle "sounds/general/player/sfx_general_mantle.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Devil May Cry 4: Special Edition
 money/pickup "sounds/shop/ui_gbd_sm.ogg"
 $volume money/pickup 0.5
 
