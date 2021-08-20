@@ -10,7 +10,10 @@ enum E_TSPTokens
     TSPT_ParenC,
     TSPT_BraceO,
     TSPT_BraceC,
+    TSPT_BrackO,
+    TSPT_BrackC,
 	TSPT_Slash,
+	TSPT_Colon,
 	TSPT_Semicolon,
     TSPT_Unknown,
 }
@@ -25,6 +28,8 @@ Class TSP_Tokenizer
 {
 	string lumpString;
 	int currentPos;
+	
+	Array<TSP_Token> tokens;
 	
 	static TSP_Tokenizer Create(string input)
     {
@@ -66,37 +71,123 @@ Class TSP_Tokenizer
 		return false;
 	}
 	
-	static bool IsDigit(string c)
+	static bool IsDigit(int cc)
     {
-        int cc = c.CharCodeAt(0);
-        return cc <= 57 && cc >= 48;
+        //int cc = c.CharCodeAt(0);
+        return cc <= 57 && cc >= 48 || cc == 45 || cc == 46;
     }
 
-    static bool IsLetter(string c)
+    static bool IsLetter(int c)
     {
         return IsLower(c) || IsUpper(c);
     }
 
-    static bool IsLetterOrDigit(string c)
+    static bool IsLetterOrDigit(int c)
     {
         return IsLetter(c) || IsDigit(c);
     }
 
-    static bool IsLower(string c)
+    static bool IsLower(int cc)
     {
-        int cc = c.CharCodeAt(0);
+        //int cc = c.CharCodeAt(0);
         return cc <= 122 && cc >= 97;
     }
 
-    static bool IsUpper(string c)
+    static bool IsUpper(int cc)
     {
-        int cc = c.CharCodeAt(0);
+        //int cc = c.CharCodeAt(0);
         return cc <= 90 && cc >= 65;
     }
 	
+	static TSP_Tokenizer TK_Tokenize (string toTokenize)
+	{
+        let newTokenizer = new("TSP_Tokenizer");
+		
+		newTokenizer.tokens.Clear();
+		
+		TSP_Token curToken = new("TSP_Token");
+		
+		int pos = 0;
+		
+		for ( int i = 0; i < toTokenize.Length(); i++ )
+		{
+			if ( isWhitespace(toTokenize.ByteAt(i)) )
+			{
+				continue;
+			}
+			
+			switch(toTokenize.ByteAt(i))
+			{
+				case 123:
+					curToken.type = TSPT_BraceO;
+					break;
+				case 125:
+					curToken.type = TSPT_BraceC;
+					break;
+				case 44:
+					curToken.type = TSPT_Comma;
+					break;
+				case 58:
+					curToken.type = TSPT_Colon;
+					break;
+				case 91:
+					curToken.type = TSPT_BrackO;
+					break;
+				case 93:
+					curToken.type = TSPT_BrackC;
+					break;
+				case 34:
+					curToken.type = TSPT_String;
+					i++;
+					while ( i < toTokenize.Length() && toTokenize.ByteAt(i) != 34 )
+					{
+						curToken.value = curToken.value..toTokenize.Mid(i, 1);
+						i++;
+					}
+					break;
+				default:
+					if ( IsDigit(toTokenize.ByteAt(i)) )
+					{
+						curToken.type = TSPT_Number;
+						while ( IsDigit(toTokenize.ByteAt(i)) && i < toTokenize.Length() )
+						{
+							curToken.value = curToken.value..toTokenize.Mid(i, 1);
+							if ( !IsDigit(toTokenize.ByteAt(i+1)) )
+							{
+								break;
+							}
+							i++;
+						}
+					}
+					else
+					{
+						curToken.type = TSPT_Identifier;
+						while ( !isWhitespace(toTokenize.ByteAt(i)) && i < toTokenize.Length() )
+						{
+							curToken.value = curToken.value..toTokenize.Mid(i, 1);
+							i++;
+						}
+					}
+					break;
+			}
+			
+			newTokenizer.tokens.push(curToken);
+			curToken = new("TSP_Token");
+		}
+		
+		return newTokenizer;
+	}
+	
+	TSP_Token TK_GetToken(int pos)
+	{
+		return tokens[pos];
+	}
+	
 	virtual TSP_Token GoThru()
 	{
-		while(isWhitespace(lumpString.CharCodeAt(currentPos))&&currentPos<=lumpString.Length())
+		return null;
+		
+		/*while( isWhitespace(lumpString.CharCodeAt(currentPos)) && currentPos <= lumpString.Length() )
 		{
 			currentPos++;
 		}
@@ -152,7 +243,7 @@ Class TSP_Tokenizer
 			case 39: // '''
 				tk.type = TSPT_String;
 				currentPos++;
-				while(/* !isWhitespace(lumpString.CharCodeAt(currentPos))&&*/lumpString.CharCodeAt(currentPos)!=34&&currentPos<=lumpString.Length())
+				while(lumpString.CharCodeAt(currentPos)!=34&&currentPos<=lumpString.Length())
 				{
 					tk.value.AppendFormat("%s", lumpString.CharAt(currentPos));
 					currentPos++;
@@ -162,7 +253,7 @@ Class TSP_Tokenizer
 				if(IsLetter(lumpString.CharAt(currentPos)))
 				{
 					tk.type = TSPT_Identifier;
-					while(!isWhitespace(lumpString.CharCodeAt(currentPos))&&lumpString.CharCodeAt(currentPos)!=59/*&&IsLetterOrDigit(lumpString.CharAt(currentPos))*/&&currentPos<=lumpString.Length())
+					while(!isWhitespace(lumpString.CharCodeAt(currentPos))&&lumpString.CharCodeAt(currentPos)!=59&&currentPos<=lumpString.Length())
 					{
 						tk.value.AppendFormat("%s", lumpString.CharAt(currentPos));
 						currentPos++;
@@ -172,7 +263,7 @@ Class TSP_Tokenizer
 				else if(IsDigit(lumpString.CharAt(currentPos)))
 				{
 					tk.type = TSPT_Number;
-					while(!isWhitespace(lumpString.CharCodeAt(currentPos))&&lumpString.CharCodeAt(currentPos)!=59&&lumpString.CharCodeAt(currentPos)!=44/*&&IsDigit(lumpString.CharAt(currentPos))*/&&currentPos<=lumpString.Length())
+					while(!isWhitespace(lumpString.CharCodeAt(currentPos))&&lumpString.CharCodeAt(currentPos)!=59&&lumpString.CharCodeAt(currentPos)!=44&&currentPos<=lumpString.Length())
 					{
 						tk.value.AppendFormat("%s", lumpString.CharAt(currentPos));
 						currentPos++;
@@ -183,6 +274,6 @@ Class TSP_Tokenizer
 		}
 		//Console.Printf(currentPos..". "..tk.value.." ("..tk.type..")");
 		currentPos++;
-		return tk;
+		return tk;*/
 	}
 }

@@ -6,17 +6,85 @@ Class TSP_PyAnim_Keyframe
 	double scale;
 }
 
+Class TSP_PyAnimBrain play
+{
+	static TSP_PyAnim PA_ParseAnimFile (string findFile)
+	{
+		int getFile = Wads.CheckNumForFullName(findFile);
+		
+		if ( getFile == -1 )
+		{
+			Console.Printf("Could not find "..findFile);
+		}
+		
+		Console.Printf("Yep, found "..findFile);
+		string fileString = Wads.ReadLump(getFile);
+		TSP_Tokenizer fileTokens = TSP_Tokenizer.TK_Tokenize(fileString);
+		
+		bool pa_parsingKeyframes = false;
+		bool pa_parsingDrivers = false;
+		
+		TSP_PyAnim curAnim = TSP_PyAnim.Init();
+		TSP_PyAnim_Keyframe curKeyframe = null;
+		
+		for ( int i = 0; i < fileTokens.tokens.Size(); i++ )
+		{
+			let thisToken = fileTokens.TK_GetToken(i);
+			
+			if ( thisToken.type == TSPT_String )
+			{
+				if ( thisToken.value == "keyframes" )
+				{
+					pa_parsingKeyframes = true;
+				}
+				else if ( pa_parsingKeyframes )
+				{
+					if ( thisToken.value == "frame" )
+					{
+						curKeyframe = new("TSP_PyAnim_Keyframe");
+						i += 2;
+						curKeyframe.frame = fileTokens.TK_GetToken(i).value.ToInt();
+					}
+					else if ( thisToken.value == "value" )
+					{
+						i += 3;
+						curKeyframe.pos.x = fileTokens.TK_GetToken(i).value.ToDouble();
+						i += 2;
+						curKeyframe.pos.y = fileTokens.TK_GetToken(i).value.ToDouble();
+						Console.Printf("added frame "..curKeyframe.frame);
+						curAnim.keyframes.Push(curKeyframe);
+					}
+				}
+			}
+		}
+		
+		/*for ( int i = 0; i < fileTokens.tokens.Size(); i++ )
+		{
+			let thisToken = fileTokens.TK_GetToken(i);
+			Console.Printf(thisToken.type.." ~ "..thisToken.value);
+		}*/
+		
+		/*Console.Printf("yuh");
+		for ( int i = 0; i < curAnim.keyframes.Size(); i++ )
+		{
+			Console.Printf(curAnim.keyframes[i].frame.." ~ "..curAnim.keyframes[i].pos);
+		}*/
+		
+		return curAnim;
+	}
+}
+
 Class TSP_PyAnim
 {
 	int id;
 	int tics;
-	
-	Array<TSP_PyAnim_Keyframe> keyframes;
-	Array<int> psprites;
 		
 	TSP_PyAnim_Keyframe lastKey;
 	TSP_PyAnim_Keyframe nextKey;
 	int keyDiff, timeDiff;
+	
+	Array<TSP_PyAnim_Keyframe> keyframes;
+	Array<int> psprites;
 	
 	static TSP_PyAnim Init()
 	{
@@ -37,6 +105,11 @@ Class TSP_PyAnim
 		return -(cos(180 * input) - 1) / 2.;
 	}
 	
+	double ease_bezier(double input)
+	{
+		return input * input * (3.0 - 2.0 * input);
+	}
+	
 	void Tick()
 	{
 		if ( tics >= 0 )
@@ -55,25 +128,27 @@ Class TSP_PyAnim
 			return;
 		}
 		
-		for ( int i = 0; i < keyframes.size(); i++ )
+		lastKey = keyframes[tics];
+		nextKey = tics + 1 < keyframes[keyframes.Size()-1].frame ? keyframes[tics+1] : lastKey;
+		/*for ( int i = 0; i < keyframes.size(); i++ )
 		{
 			if ( keyframes[i].frame <= tics )
 			{
 				lastKey = keyframes[i];
 			}
-		}
+		}*/
 		
-		for ( int i = 0; i < keyframes.size(); i++ )
+		/*for ( int i = 0; i < keyframes.size(); i++ )
 		{
 			if ( keyframes[i].frame > tics )
 			{
 				nextKey = keyframes[i];
 				break;
 			}
-		}
+		}*/
 		
-		keyDiff = nextKey.frame - lastKey.frame;
-		timeDiff = tics - lastKey.frame;
+		//keyDiff = nextKey.frame - lastKey.frame;
+		//timeDiff = tics - lastKey.frame;
 		//return true;
 	}
 	
@@ -98,16 +173,6 @@ Class TSP_PyAnim
 		keyframes.Push(newFrame);
 	}
 	
-	/*void AddKeyframe(double x, double y, double angle, double scale = 1.0)
-	{
-		TSP_PyAnim_Keyframe newFrame = new("TSP_PyAnim_Keyframe");
-		newFrame.pos = (x, y);
-		newFrame.angle = angle;
-		newFrame.scale = scale;
-		
-		keyframes.Push(newFrame);
-	}*/
-	
 	Vector2 GetPos(double fracTic = 0)
 	{
 		if ( tics == -1 || !lastKey || !nextKey )
@@ -115,9 +180,9 @@ Class TSP_PyAnim
 			return(0,0);
 		}
 		
-		double finalDiff = (fracTic + timeDiff) / double(keyDiff);
+		double finalDiff = fracTic;//(fracTic + timeDiff) / double(keyDiff);
 		
-		Vector2 returnPos = lastKey.pos + (nextKey.pos - lastKey.pos) * ease_inOut_sine(finalDiff);
+		Vector2 returnPos = lastKey.pos + (nextKey.pos - lastKey.pos) * (finalDiff);
 		
 		return returnPos;
 	}
@@ -129,9 +194,9 @@ Class TSP_PyAnim
 			return 0;
 		}
 		
-		double finalDiff = (fracTic + timeDiff) / double(keyDiff);
+		double finalDiff = fracTic;//(fracTic + timeDiff) / double(keyDiff);
 		
-		double returnPos = lastKey.angle + (nextKey.angle - lastKey.angle) * ease_inOut_sine(finalDiff);
+		double returnPos = lastKey.angle + (nextKey.angle - lastKey.angle) * finalDiff;
 		
 		return returnPos;
 	}
