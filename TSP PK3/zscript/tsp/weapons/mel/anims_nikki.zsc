@@ -31,29 +31,29 @@ Extend Class MelPistol
 		
 		anim_reloadStart_hand = CreateNewAnimation();
 		anim_reloadStart_hand.AddPSprite(PSP_TSP_RELOADHAND);
-		anim_reloadStart_hand.AddKeyframe(0, -52.04, 209.31, 0.0);
-		anim_reloadStart_hand.AddKeyframe(8, -6.04, 71.32, 9.1);
-		anim_reloadStart_hand.AddKeyframe(12, 58.98, 39.17, -0.42);
-		anim_reloadStart_hand.AddKeyframe(14, 80.67, 30.74, -1.94);
-		anim_reloadStart_hand.AddKeyframe(17, 80.67, 30.74, -1.94);
-		anim_reloadStart_hand.AddKeyframe(19, 80.67, 30.74, -1.94);
-		anim_reloadStart_hand.AddKeyframe(20, 20.96, 85.52, -4.04);
-		anim_reloadStart_hand.AddKeyframe(24, -72.61, 199.0, 8.77);
-		anim_reloadStart_hand.AddKeyframe(25, 24.64, 199.1, 10.02);
-		anim_reloadStart_hand.AddKeyframe(32, 71.08, 40.03, 6.22);
-		anim_reloadStart_hand.AddKeyframe(33, 73.14, 35.31, 8.72);
-		anim_reloadStart_hand.AddKeyframe(35, 66.08, 42.89, -2.39);
-		anim_reloadStart_hand.AddKeyframe(38, 79.39, 29.55, -2.39);
-		anim_reloadStart_hand.AddKeyframe(41, 79.39, 29.55, -2.39);
-		anim_reloadStart_hand.AddKeyframe(42, 79.39, 29.55, 23.67);
-		anim_reloadStart_hand.AddKeyframe(47, -6.13, 116.8, 26.68);
-		anim_reloadStart_hand.AddKeyframe(48, 17.4, 54.48, 21.23);
-		anim_reloadStart_hand.AddKeyframe(49, 68.78, -22.13, 10.74);
-		anim_reloadStart_hand.AddKeyframe(50, 88.03, -3.11, 10.74);
-		anim_reloadStart_hand.AddKeyframe(56, 88.03, -3.11, 9.32);
-		anim_reloadStart_hand.AddKeyframe(57, 90.01, 28.89, -5.2);
-		anim_reloadStart_hand.AddKeyframe(58, 67.74, 85.05, -14.42);
-		anim_reloadStart_hand.AddKeyframe(66, -48.34, 174.2);
+		anim_reloadStart_hand.AddKeyframe(0, -75.37, 250.86, 0.0);
+		anim_reloadStart_hand.AddKeyframe(8, 5.75, 151.17, 9.1);
+		anim_reloadStart_hand.AddKeyframe(12, 60.82, 74.88, -0.42);
+		anim_reloadStart_hand.AddKeyframe(14, 95.65, 59.56, -1.94);
+		anim_reloadStart_hand.AddKeyframe(17, 99.43, 54.98, -1.94);
+		anim_reloadStart_hand.AddKeyframe(19, 96.18, 59.67, -1.94);
+		anim_reloadStart_hand.AddKeyframe(20, 36.11, 102.94, -4.04);
+		anim_reloadStart_hand.AddKeyframe(24, -92.77, 190.26, 8.77);
+		anim_reloadStart_hand.AddKeyframe(25, 2.33, 208.43, 10.02);
+		anim_reloadStart_hand.AddKeyframe(32, 78.94, 61.37, 6.22);
+		anim_reloadStart_hand.AddKeyframe(33, 81.99, 57.6, 8.72);
+		anim_reloadStart_hand.AddKeyframe(35, 74.48, 69.74, -2.39);
+		anim_reloadStart_hand.AddKeyframe(38, 105.48, 58.06, -2.39);
+		anim_reloadStart_hand.AddKeyframe(41, 102.94, 51.91, -2.39);
+		anim_reloadStart_hand.AddKeyframe(42, 102.01, 50.68, 23.67);
+		anim_reloadStart_hand.AddKeyframe(47, -15.32, 105.19, 26.68);
+		anim_reloadStart_hand.AddKeyframe(48, 21.28, 60.78, 21.23);
+		anim_reloadStart_hand.AddKeyframe(49, 74.96, 13.22, 10.74);
+		anim_reloadStart_hand.AddKeyframe(50, 78.91, 46.43, 10.74);
+		anim_reloadStart_hand.AddKeyframe(56, 94.76, 36.99, 9.32);
+		anim_reloadStart_hand.AddKeyframe(57, 89.56, 66.86, -5.2);
+		anim_reloadStart_hand.AddKeyframe(58, 54.97, 118.16, -14.42);
+		anim_reloadStart_hand.AddKeyframe(66, -74.34, 215.58);
 	}
 	
 	/*override void TSP_InitAnimations()
