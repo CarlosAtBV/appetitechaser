@@ -37,6 +37,11 @@ Mixin Class TSP_HiResBase
 	
 	Vector2 ConvertMousePos(Vector2 mouse)
 	{
+		if ( viewportPos == (0,0) )
+		{
+			UpdateViewport();
+		}
+		
 		//debugMouse = mouse -= viewportPos;
 		Vector2 getPos = (mouse - viewportPos);
 		getPos = (getPos.x / viewportSize.x, getPos.y / viewportSize.y);
