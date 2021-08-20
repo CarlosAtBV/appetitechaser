@@ -1,6 +1,7 @@
 Extend Class TSP_PlayerPawn_ZSCBase
 {	
 	bool tsp_crouchSliding;
+	bool tsp_slidingOnGround;
 	
 	double tsp_bob;
 	double tsp_lastbob;
@@ -28,6 +29,25 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			A_SetPitch(pitch+1,SPF_INTERPOLATE);
 			return;
 		}
+		
+		bool isSlidingOnGround = (player.onground && tsp_crouchSliding);
+		
+		if ( isSlidingOnGround )
+		{
+			if ( !tsp_slidingOnGround )
+			{
+				A_StartSound("ability/crouchsliding", CHAN_6);
+			}
+		}
+		else
+		{
+			if ( tsp_slidingOnGround )
+			{
+				A_StopSound(CHAN_6);
+			}
+		}
+		
+		tsp_slidingOnGround = isSlidingOnGround;
 		
 		if ( player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
 		{
