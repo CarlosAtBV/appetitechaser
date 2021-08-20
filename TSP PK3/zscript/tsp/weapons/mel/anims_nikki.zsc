@@ -4,6 +4,25 @@ Extend Class MelPistol
 	TSP_PyAnim anim_reloadStart_hand;
 	
 	override void TSP_InitAnimations()
+	{   
+		anim_reloadStart_gun = CreateNewAnimation();
+		anim_reloadStart_gun.AddPSprite(PSP_WEAPON);
+		anim_reloadStart_gun.AddPSprite(PSP_TSP_UNDERGUN);
+		anim_reloadStart_gun.AddKeyframe(0, 0.00, 0.00);
+        anim_reloadStart_gun.AddKeyframe(3, -15.0, 9.15);
+        anim_reloadStart_gun.AddKeyframe(9, 35.81, 37.66);
+        anim_reloadStart_gun.AddKeyframe(12, 49.3, -0.46);
+        anim_reloadStart_gun.AddKeyframe(14, 75.71, -14.15);
+        anim_reloadStart_gun.AddKeyframe(17, 77.29, -18.1);
+		anim_reloadStart_gun.AddKeyframe(65, 0.00, 0.00);
+		
+		anim_reloadStart_hand = CreateNewAnimation();
+		anim_reloadStart_hand.AddPSprite(PSP_TSP_RELOADHAND);
+		anim_reloadStart_hand.AddKeyframe(0, 0.00, -0.00, 0.00);
+		anim_reloadStart_hand.AddKeyframe(70, 0.00, -0.00, 0.00);
+	}
+	
+	/*override void TSP_InitAnimations()
 	{        
                 anim_reloadStart_gun = CreateNewAnimation();
                 anim_reloadStart_gun.AddPSprite(PSP_WEAPON);
@@ -145,5 +164,5 @@ Extend Class MelPistol
                 anim_reloadStart_hand.AddKeyframe(-64.48, 210.82, -24.71);
                 anim_reloadStart_hand.AddKeyframe(-71.78, 214.55, -24.88);
                 anim_reloadStart_hand.AddKeyframe(-74.34, 215.58, -24.93);
-	}
+	}*/
 }

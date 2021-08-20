@@ -1,5 +1,6 @@
 Class TSP_PyAnim_Keyframe
 {
+	int frame;
 	Vector2 pos;
 	double angle;
 	double scale;
@@ -12,6 +13,10 @@ Class TSP_PyAnim
 	
 	Array<TSP_PyAnim_Keyframe> keyframes;
 	Array<int> psprites;
+		
+	TSP_PyAnim_Keyframe lastKey;
+	TSP_PyAnim_Keyframe nextKey;
+	double finalDiff;
 	
 	static TSP_PyAnim Init()
 	{
@@ -27,17 +32,49 @@ Class TSP_PyAnim
 		psprites.Push(id);
 	}
 	
+	double ease_inOut_sine(double input)
+	{
+		return -(cos(180 * input) - 1) / 2.;
+	}
+	
 	void Tick()
 	{
 		if ( tics >= 0 )
 		{
 			tics++;
 		}
-		if ( tics >= keyframes.Size() )
+		
+		if ( tics >= keyframes[keyframes.Size()-1].frame )
 		{
 			tics = -1;
 			//return false;
 		}
+		
+		if ( tics == -1 )
+		{
+			return;
+		}
+		
+		for ( int i = 0; i < keyframes.size(); i++ )
+		{
+			if ( keyframes[i].frame <= tics )
+			{
+				lastKey = keyframes[i];
+			}
+		}
+		
+		for ( int i = 0; i < keyframes.size(); i++ )
+		{
+			if ( keyframes[i].frame > tics )
+			{
+				nextKey = keyframes[i];
+				break;
+			}
+		}
+		
+		int keyDiff = nextKey.frame - lastKey.frame;
+		int timeDiff = tics - lastKey.frame;
+		finalDiff = timeDiff / double(keyDiff);
 		//return true;
 	}
 	
@@ -51,9 +88,10 @@ Class TSP_PyAnim
 		tics = 0;
 	}
 	
-	void AddKeyframe(double x, double y, double angle, double scale = 1.0)
+	void AddKeyframe(int frame, double x, double y, double angle = 0, double scale = 1.0)
 	{
 		TSP_PyAnim_Keyframe newFrame = new("TSP_PyAnim_Keyframe");
+		newFrame.frame = frame;
 		newFrame.pos = (x, y);
 		newFrame.angle = angle;
 		newFrame.scale = scale;
@@ -61,16 +99,26 @@ Class TSP_PyAnim
 		keyframes.Push(newFrame);
 	}
 	
+	/*void AddKeyframe(double x, double y, double angle, double scale = 1.0)
+	{
+		TSP_PyAnim_Keyframe newFrame = new("TSP_PyAnim_Keyframe");
+		newFrame.pos = (x, y);
+		newFrame.angle = angle;
+		newFrame.scale = scale;
+		
+		keyframes.Push(newFrame);
+	}*/
+	
 	Vector2 GetPos(double fracTic = 0)
 	{
-		if ( tics == -1 )
+		if ( tics == -1 || !lastKey )
 		{
 			return(0,0);
 		}
 		
-		TSP_PyAnim_Keyframe last = keyframes[tics > 0 ? tics - 1 : tics];
+		Vector2 returnPos = lastKey.pos + (nextKey.pos - lastKey.pos) * ease_inOut_sine(finalDiff);
 		
-		return last.pos + (keyframes[tics].pos - last.pos) * fracTic;
+		return returnPos;
 	}
 	
 	double GetRot(double fracTic = 0)
@@ -80,8 +128,30 @@ Class TSP_PyAnim
 			return 0;
 		}
 		
+		return 0;
+	}
+	
+	/*Vector2 GetPos(double fracTic = 0)
+	{
+		if ( tics == -1 )
+		{
+			return(0,0);
+		}
+		
+		TSP_PyAnim_Keyframe last = keyframes[tics > 0 ? tics - 1 : tics];
+		
+		return last.pos + (keyframes[tics].pos - last.pos) * fracTic;
+	}*/
+	
+	/*double GetRot(double fracTic = 0)
+	{
+		if ( tics == -1 )
+		{
+			return 0;
+		}
+		
 		TSP_PyAnim_Keyframe last = keyframes[tics > 0 ? tics - 1 : tics];
 		
 		return last.angle + (keyframes[tics].angle - last.angle) * fracTic;
-	}
+	}*/
 }
