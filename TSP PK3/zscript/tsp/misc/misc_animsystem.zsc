@@ -16,7 +16,7 @@ Class TSP_PyAnim
 		
 	TSP_PyAnim_Keyframe lastKey;
 	TSP_PyAnim_Keyframe nextKey;
-	double finalDiff;
+	int keyDiff, timeDiff;
 	
 	static TSP_PyAnim Init()
 	{
@@ -72,9 +72,8 @@ Class TSP_PyAnim
 			}
 		}
 		
-		int keyDiff = nextKey.frame - lastKey.frame;
-		int timeDiff = tics - lastKey.frame;
-		finalDiff = timeDiff / double(keyDiff);
+		keyDiff = nextKey.frame - lastKey.frame;
+		timeDiff = tics - lastKey.frame;
 		//return true;
 	}
 	
@@ -111,10 +110,12 @@ Class TSP_PyAnim
 	
 	Vector2 GetPos(double fracTic = 0)
 	{
-		if ( tics == -1 || !lastKey )
+		if ( tics == -1 || !lastKey || !nextKey )
 		{
 			return(0,0);
 		}
+		
+		double finalDiff = (fracTic + timeDiff) / double(keyDiff);
 		
 		Vector2 returnPos = lastKey.pos + (nextKey.pos - lastKey.pos) * ease_inOut_sine(finalDiff);
 		
@@ -123,10 +124,12 @@ Class TSP_PyAnim
 	
 	double GetRot(double fracTic = 0)
 	{
-		if ( tics == -1 )
+		if ( tics == -1 || !lastKey || !nextKey )
 		{
 			return 0;
 		}
+		
+		double finalDiff = (fracTic + timeDiff) / double(keyDiff);
 		
 		double returnPos = lastKey.angle + (nextKey.angle - lastKey.angle) * ease_inOut_sine(finalDiff);
 		
