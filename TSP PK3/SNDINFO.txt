@@ -43,7 +43,7 @@ general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // Fr
 misc/meleekill "sounds/weapon fx/meleekill.ogg"
 
 ability/crouchsliding "sounds/placeholder/mel_scrapes_her_knee_on_pavement.ogg" // HL2
-$volume ability/crouchsliding 0.75
+$volume ability/crouchsliding 0.5
 
 //Armor Pickups
 
