@@ -128,7 +128,9 @@ Class TSP_PyAnim
 			return 0;
 		}
 		
-		return 0;
+		double returnPos = lastKey.angle + (nextKey.angle - lastKey.angle) * ease_inOut_sine(finalDiff);
+		
+		return returnPos;
 	}
 	
 	/*Vector2 GetPos(double fracTic = 0)
