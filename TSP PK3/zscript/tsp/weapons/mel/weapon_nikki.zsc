@@ -76,7 +76,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			Stop;*/
 		ModOverlay:
 			122S A 18;
-			"----" A 0 A_StartSound("nikki/upgradespitfire", CHAN_5);
+			122S B 7 A_StartSound("nikki/upgradespitfire", CHAN_5);
 			Stop;
 		ModOn:
 			"----" A 0
@@ -88,8 +88,10 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			}
 			121S A 18;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
+			122R A 0;
 			"####" B 10;
 			"####" A 2;
+			122G A 0;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" A 5;
 			"----" A 0 A_Raise;
@@ -267,7 +269,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 6;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
 			"####" A 2;
-			"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
+			//"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
 			"####" B 4;
 			"####" B 1 A_PlaySound("nikki/reloadout", 6);
 			

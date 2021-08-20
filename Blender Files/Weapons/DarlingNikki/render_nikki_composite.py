@@ -29,6 +29,7 @@ frame_names = [
 	"12{mod}RC0",
 	
 	"12{mod}SA0",
+	"12{mod}SB0",
 	
 	"120HA0",
 	"120HB0",
