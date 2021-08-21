@@ -149,13 +149,13 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				121F A 1 BRIGHT;
 				Stop;
 			Flash2:
-				121F B 1 BRIGHT;
+				121F A 1 BRIGHT;
 				Stop;
 			Flash3:
-				121F C 1 BRIGHT;
+				121F A 1 BRIGHT;
 				Stop;
 			Flash4:
-				121F D 1 BRIGHT;
+				121F A 1 BRIGHT;
 				Stop;
 		AltFlash:
 			"----" A 0
