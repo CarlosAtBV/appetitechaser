@@ -5,7 +5,10 @@ import render_fetus2021
 scene = bpy.context.scene
 
 frame_names = [
-	"121FA0"
+	"121FA0",
+	"121FB0",
+	"121FC0",
+	"121FD0",
 ];
 
 render_fetus2021.set_offsets((159, 50+32));
