@@ -595,12 +595,12 @@ Class TSP_Weapon_Core : DoomWeapon
 		WaitForModSwitch:
 			"----" A 1
 			{
-				/*let pOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
+				let pOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
 				if(pOwner.pp_moddelay>0)
 				{
 					pOwner.pp_moddelay--;
 				}
-				else*/
+				else
 				{
 					let oldWeapon = invoker.owner.player.ReadyWeapon;
 					//Console.Printf("Switching to "..invoker.owner.player.PendingWeapon.GetTag());

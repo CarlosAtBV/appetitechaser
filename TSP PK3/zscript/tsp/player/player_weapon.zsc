@@ -68,7 +68,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		let potentialWep = player.weapons.GetWeapon(slot, indexSearch);
 		GiveInventory(potentialWep,1);
 		
-		pp_moddelay = 25;
+		pp_moddelay = 12;
 		
 		TSP_SwitchToMod(potentialWep);
 	}
