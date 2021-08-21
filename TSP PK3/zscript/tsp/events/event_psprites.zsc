@@ -69,20 +69,29 @@ Extend Class TSP_EventHandler
 					
 					Vector2 weaponOldPos = (psprite.oldx, psprite.oldy);
 					Vector2 weaponNewPos = (psprite.x, psprite.y);
-					Vector2 weaponPos = (
+					Vector2 weaponPos;/* = (
 						lerp(weaponOldPos.x, weaponNewPos.x, e.FracTic),
 						lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
-					);
+					);*/
 					
 					if ( weapon != null )
 					{
 						[weaponOff_pos, weaponOff_ang] = weapon.TSP_GetWeaponOffsets(psprite.id, e.FracTic);
 					}
 					
-					weaponPos = weaponOff_pos;
+					if ( psprite.id >= TSP_PlayerPawn_ZSCBase.CASINGBASE && psprite.id <= TSP_PlayerPawn_ZSCBase.CASINGBASE + 20 )
+					{
+						weaponPos = (
+							lerp(weaponOldPos.x, weaponNewPos.x, e.FracTic),
+							lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
+						);
+					}
+					else
+					{
+						weaponPos = weaponOff_pos;
+						weaponPos.y += 32;
+					}
 					weaponTilt += weaponOff_ang;
-					
-					weaponPos.y += 32;
 					
 					//weaponScale = frandom(0.5, 1.5);
 					
@@ -120,8 +129,7 @@ Extend Class TSP_EventHandler
 								break;
 						}
 						
-						
-						Screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
+						screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,

@@ -82,8 +82,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		newSprite.pivot = (0.5, 0.5);
 		newSprite.x = pos.x;
 		newSprite.y = pos.y;
-		newSprite.bAddWeapon = false;
-		newSprite.bAddBob = false;
+		//newSprite.bAddWeapon = false;
+		//newSprite.bAddBob = false;
 		
 		casing.overlay = casingId;
 		casing.vel = (cos(goAngle)*goSpeed, sin(goAngle)*goSpeed);
