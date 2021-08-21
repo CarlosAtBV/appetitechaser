@@ -91,7 +91,7 @@ Extend Class TSP_EventHandler
 					
 					//newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
-					for (int i = 0; i < 2; i++)
+					for (int i = 0; i < 3; i++)
 					{
 						int ps_renderStyle;
 						double ps_alpha;
@@ -101,12 +101,18 @@ Extend Class TSP_EventHandler
 						switch(i)
 						{
 							case 0:
-								ps_renderStyle = STYLE_Translucent;
-								ps_alpha = 1.0;
-								ps_color = Color(255, sectorColor.r, sectorColor.g, sectorColor.b);
+								ps_renderStyle = STYLE_Normal;
+								ps_alpha = 1.0;// - lightIntensity;
+								ps_color = Color(255, 0, 0, 0);
 								ps_colorType = DTA_Color;
 								break;
 							case 1:
+								ps_renderStyle = STYLE_Translucent;
+								ps_alpha = lightLevel;
+								ps_color = Color(255, sectorColor.r, sectorColor.g, sectorColor.b);
+								ps_colorType = DTA_Color;
+								break;
+							case 2:
 								ps_renderStyle = STYLE_AddShaded;
 								ps_alpha = 1.0;// - lightIntensity;
 								ps_color = Color(r, g, b);
