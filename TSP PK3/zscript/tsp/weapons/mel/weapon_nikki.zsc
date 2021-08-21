@@ -302,18 +302,18 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			
 		ReloadHand:
 			120H A 35;
-			120H B 12
+			120H B 9
 			{
 				A_PlaySound("nikki/reloadin1", 6);
 				A_TSP_ReloadAmmo();
 			}
 			"----" A 0 A_Overlay(PSP_TSP_UPPERHAND, "ReloadUpperHand");
-			120H C 4;
+			120H C 7;
 			120H C 15 A_PlaySound("nikki/reloadin2", 6);
 			Stop;
 			
 		ReloadUpperHand:
-			120H C 15;
+			120H C 18;
 			Stop;
 			
 		Switch:
