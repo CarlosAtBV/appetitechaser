@@ -75,8 +75,9 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
 			Stop;*/
 		ModOverlay:
-			122S A 18;
-			122S B 7 A_StartSound("nikki/upgradespitfire", CHAN_5);
+			122S A 17;
+			122S A 1 A_StartSound("nikki/upgradespitfire", CHAN_5);
+			122S B 7;
 			Stop;
 		ModOn:
 			"----" A 0
