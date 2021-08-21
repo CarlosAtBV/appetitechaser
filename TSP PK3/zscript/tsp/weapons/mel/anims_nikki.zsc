@@ -85,6 +85,7 @@ Extend Class MelPistol
 		
 		anim_reloadStart_hand = CreateNewAnimation();
 		anim_reloadStart_hand.AddPSprite(PSP_TSP_RELOADHAND);
+		anim_reloadStart_hand.AddPSprite(PSP_TSP_UPPERHAND);
         anim_reloadStart_hand.AddKeyframe(0, -20.489999771118164, 171.80999755859375, 40.69999694824219);
         anim_reloadStart_hand.AddKeyframe(1, -20.489368438720703, 171.8086395263672, 40.69999694824219);
         anim_reloadStart_hand.AddKeyframe(2, -20.484861373901367, 171.79888916015625, 40.69999694824219);

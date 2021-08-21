@@ -6,6 +6,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 	
 	const PSP_TSP_UNDERGUN = -10;
 	const PSP_TSP_RELOADHAND = -5;
+	const PSP_TSP_UPPERHAND = 5;
 	
 	Default
 	{
@@ -306,8 +307,13 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				A_PlaySound("nikki/reloadin1", 6);
 				A_TSP_ReloadAmmo();
 			}
+			"----" A 0 A_Overlay(PSP_TSP_UPPERHAND, "ReloadUpperHand");
 			120H C 4;
 			120H C 15 A_PlaySound("nikki/reloadin2", 6);
+			Stop;
+			
+		ReloadUpperHand:
+			120H C 15;
 			Stop;
 			
 		Switch:
