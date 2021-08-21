@@ -27,6 +27,7 @@ frame_names = [
 	["12{mod}RA0"] * 2,
 	["12{mod}RB0"] * 2,
 	["12{mod}RC0"] * 2,
+	["12{mod}RD0"] * 2,
 	
 	["12{mod}SA0"] * 2,
 	["12{mod}SB0"]  * 2,
