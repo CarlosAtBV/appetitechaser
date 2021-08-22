@@ -188,12 +188,26 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 		Idle1:
 			TNT1 A 0 A_PlaySound("meltemp", CHAN_VOICE);
-			TNT1 A 0 A_PlaySound("nikki/idle01", 5);
-			121G A 2 A_WeaponReady;
-			121U MLKK 1 A_WeaponReady;
-			121T AAABBCDEFGGAABCDEFGGHIJKKKKKKKKKL 1 A_WeaponReady;
-			121U KLM 1 A_WeaponReady;
-			121G A 2 A_WeaponReady;
+			"----" A 0
+			{
+				A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+				invoker.anim_spinGun.PlayAnim();
+			}
+			"####" A 3 A_WeaponReady;
+			"----" A 0 A_PlaySound("nikki/idle01", 5);
+			"####" A 3 A_WeaponReady;
+			
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "I");
+			"####" FBC 2 A_WeaponReady;
+			"####" DEF 1 A_WeaponReady;
+			"####" BCDEFBCDEFBCDEF 1 A_WeaponReady;
+			"####" BC 1 A_WeaponReady;
+			
+			//"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "I");
+			"####" AA 1 A_WeaponReady;
+			//"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "I");
+			"####" A 17 A_WeaponReady;
 			Goto Ready;
 
 		Fire:
