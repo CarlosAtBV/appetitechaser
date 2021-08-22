@@ -37,8 +37,9 @@ frame_names = [
 	["120HB0", "ignore"],
 	["120HC0", "ignore"],
 	
-	["ignore", "12{mod}AA0"],
-	["ignore", "12{mod}AB0"],
+	["12{mod}AA0"] * 2,
+	["12{mod}AB0"] * 2,
+	["12{mod}AC0", "ignore"],
 	
 	["120HD0", "ignore"],
 ];

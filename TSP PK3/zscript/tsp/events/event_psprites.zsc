@@ -61,7 +61,7 @@ Extend Class TSP_EventHandler
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
 					double weaponTilt = psprite.rotation;
-					double weaponScale = 2.0 - character.tsp_fb_zoomlerp;
+					double weaponScale = psprite.scale.x * (2.0 - character.tsp_fb_zoomlerp);
 					
 					Vector2 newOffset = (160, 100) + sprOffset;
 					
