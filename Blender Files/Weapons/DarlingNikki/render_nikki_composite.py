@@ -39,6 +39,8 @@ frame_names = [
 	
 	["ignore", "12{mod}AA0"],
 	["ignore", "12{mod}AB0"],
+	
+	["120HD0", "ignore"],
 ];
 
 for cntmod, mod in enumerate(mods):
