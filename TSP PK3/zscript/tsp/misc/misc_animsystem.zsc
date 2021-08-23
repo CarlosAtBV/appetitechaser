@@ -157,6 +157,11 @@ Class TSP_PyAnim
 		tics = -1;
 	}
 	
+	void StopAnim()
+	{
+		tics = -1;
+	}
+	
 	void PlayAnim()
 	{
 		tics = 0;
