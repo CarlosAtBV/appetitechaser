@@ -44,3 +44,8 @@ suzuka/fired01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg01.ogg"
 suzuka/fired02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg02.ogg"
 suzuka/fired03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg03.ogg"
 $volume suzuka/fired 0.6
+
+$random suzuka/sniper { suzuka/sniper01 suzuka/sniper02 }
+suzuka/sniper01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_sp01.ogg"
+suzuka/sniper02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_sp02.ogg"
+$volume suzuka/fired 0.8
