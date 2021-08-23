@@ -36,14 +36,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			if ( !tsp_slidingOnGround )
 			{
-				A_StartSound("ability/crouchsliding", CHAN_6);
+				A_StartSound("ability/slipdash/start", 98);
+				A_StartSound("ability/crouchsliding", 99);
 			}
 		}
 		else
 		{
 			if ( tsp_slidingOnGround )
 			{
-				A_StopSound(CHAN_6);
+				A_StartSound("ability/slipdash/end", 98);
+				A_StopSound(99);
 			}
 		}
 		
