@@ -45,7 +45,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 	action void A_TSP_MelPistol_Fire(int xoff = 4)
 	{
 		A_AlertMonsters();
-		A_PlaySound(invoker.firesound, 6);
+		A_StartSound(invoker.firesound, 6);
 		A_TSP_FireBullets(3,2,-1,8,"TSP_BulletPuff",1, Spawnofs_xy: xoff);
 		A_TSP_TakeClip(1);
 	}
@@ -59,7 +59,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_TakeInventory("MeleeSelected", 1);
 			TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999);
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121);
-			TNT1 A 0 A_PlaySound("nikki/draw", 5);
+			TNT1 A 0 A_StartSound("nikki/draw", 5);
 			TNT1 A 0 A_WeaponOffset(0,32);
 			121U ABCDEFGHIJKLM 1;
 			121G A 1;
@@ -70,7 +70,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121G A 1;
 			122V E 1;
 			122U ABCDDEEFFGGHH 1;
-			122U III 1 A_PlaySound("nikki/upgraderemove", 6);
+			122U III 1 A_StartSound("nikki/upgraderemove", 6);
 			122U JKKLLLMNOP 1;
 			122U Q 0;//122U Q 10
 			"----" A 0 A_Jump(256,"WaitForModSwitch"); //has 2 be a jump :pensive:
@@ -102,7 +102,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			/*122S BBBBB 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			/*122S A 1
 			{
-				A_PlaySound("nikki/upgradespitfire", 5);
+				A_StartSound("nikki/upgradespitfire", 5);
 				A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			}
 			122S AAAA 1;
@@ -114,7 +114,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
 			TNT1 A 0 A_TakeInventory("StyleComboToken", 99);
 			TNT1 A 0 A_TakeInventory("ComboCooldown", 99);
-			TNT1 A 0 A_PlaySound("nikki/holster", 5);
+			TNT1 A 0 A_StartSound("nikki/holster", 5);
 			121G A 1;
 			121U IHGFEDC 1;
 			TNT1 A 5;
@@ -189,12 +189,12 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		Idle1:
 			TNT1 A 0
 			{
-				A_PlaySound("meltemp", CHAN_VOICE);
+				A_StartSound("meltemp", CHAN_VOICE);
 				A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 				invoker.anim_spinGun.PlayAnim();
 			}
 			"####" A 3 A_WeaponReady;
-			"####" A 0 A_PlaySound("nikki/idle01", 5);
+			"####" A 0 A_StartSound("nikki/idle01", 5);
 			"####" A 3 A_WeaponReady;
 			
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "I");
@@ -262,7 +262,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			Goto Ready;
 		
 		Empty:
-			"----" A 5 A_PlaySound("nikki/empty", 5);
+			"----" A 5 A_StartSound("nikki/empty", 5);
 			"----" A 0 A_TSP_CheckReload();
 			Goto Ready;
 		Reload:
@@ -292,7 +292,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 2;
 			//"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
 			"####" C 4;
-			"####" C 1 A_PlaySound("nikki/reloadout", 6);
+			"####" C 1 A_StartSound("nikki/reloadout", 6);
 			"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
 			
 			"####" D 22;
@@ -305,10 +305,10 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121R P 20 A_TSP_ReloadSpeed(20);
 			//121R PPPPPPPPPPPPPPPPPPPPPP 1//22
 			121R QRS 1;
-			TNT1 A 0 A_PlaySound("nikki/reloadin1", 5);
+			TNT1 A 0 A_StartSound("nikki/reloadin1", 5);
 			121R TUUUVWXYZ 1;
 			TNT1 A 0 A_TSP_ReloadAmmo;
-			121R Z 1 A_PlaySound("nikki/reloadin2", 6);
+			121R Z 1 A_StartSound("nikki/reloadin2", 6);
 			121S AAABCD 1;
 			121G A 3;*/
 			Goto Ready;
@@ -324,12 +324,12 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			120H A 12;
 			120H B 12
 			{
-				A_PlaySound("nikki/reloadin1", 6);
+				A_StartSound("nikki/reloadin1", 6);
 				A_TSP_ReloadAmmo();
 			}
 			"----" A 0 A_Overlay(PSP_TSP_UPPERHAND, "ReloadUpperHand");
 			120H C 4;
-			120H C 3 A_PlaySound("nikki/reloadin2", 6);
+			120H C 3 A_StartSound("nikki/reloadin2", 6);
 			120H C 15;
 			Stop;
 			
@@ -340,6 +340,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		Switch:
 			"----" A 0
 			{
+				A_StartSound("nikki/aim01", 5);
 				A_TSP_ZoomFactor(0.75);
 				A_OverlayScale(PSP_WEAPON, 0.9);
 				invoker.anim_spitFire_on.PlayAnim();
@@ -351,6 +352,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		ModSwitch:
 			"----" A 0
 			{
+				A_StartSound("nikki/aim02", 5);
 				A_TSP_ZoomFactor(1.0);
 				A_OverlayScale(PSP_WEAPON, 1.0);
 				invoker.anim_spitFire_on.PlayAnim();

@@ -18,6 +18,7 @@ Class MelPistolA : MelPistol
 		Switch:
 			"----" A 1
 			{
+				A_StartSound("nikki/aima01", 5);
 				A_TSP_ZoomFactor(0.9);
 				invoker.anim_spitFire_on.PlayAnim();
 			}
@@ -27,6 +28,7 @@ Class MelPistolA : MelPistol
 		ModSwitch:
 			"----" A 1
 			{
+				A_StartSound("nikki/aima02", 5);
 				A_TSP_ZoomFactor(1.0);
 				invoker.anim_spitFire_on.PlayAnim();
 			}

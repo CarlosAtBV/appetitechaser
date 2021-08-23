@@ -101,6 +101,9 @@ meltraitchange02    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 // [SELECT/DESELECT]
 // - GDC 2018 Audio Bundle
 // - Mortal Kombat (2011)
+// [ADS/ALTERNATE]
+//
+//
 
 nikki/draw		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
 nikki/drawgold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
@@ -134,6 +137,12 @@ nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
 nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
 nikki/reloadin1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload02.ogg"
 nikki/reloadin2 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload03.ogg"
+
+nikki/aim01		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aim01.ogg"
+nikki/aim02		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aim02.ogg"
+
+nikki/aima01		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aima01.ogg"
+nikki/aima02		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aima02.ogg"
 
 nikki/idle01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
 
