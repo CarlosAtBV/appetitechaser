@@ -34,8 +34,8 @@ quit8 quit8
 quit9 quit9
 
 //Startup
-misc/startupdone         GAMELOAD
-
+$random misc/startupdone { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
+$volume misc/startupdone 0.5
 item/pickupls            PCKUPLS
 
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
