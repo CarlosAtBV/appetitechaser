@@ -1,6 +1,7 @@
 Extend Class MelSMG
 {
 	TSP_PyAnim anim_scopeIn;
+	TSP_PyAnim anim_scopeOut;
 	
 	override void TSP_InitAnimations()
 	{   
@@ -13,5 +14,21 @@ Extend Class MelSMG
         anim_scopeIn.AddKeyframe(4, -60.0, -5.819999694824219, 0.0);
         anim_scopeIn.AddKeyframe(5, -60.0, -5.819999694824219, 0.0);
         anim_scopeIn.AddKeyframe(6, -60.0, -5.819999694824219, 0.0);
+		
+		anim_scopeOut = CreateNewAnimation();
+		anim_scopeOut.AddPSprite(PSP_WEAPON);
+        anim_scopeOut.AddKeyframe(0, -63.84000015258789, -3.5699996948242188, 2.799999713897705);
+        anim_scopeOut.AddKeyframe(1, -60.880706787109375, -2.9657938480377197, 2.508073568344116);
+        anim_scopeOut.AddKeyframe(2, -52.14860534667969, -1.2639315128326416, 1.685807228088379);
+        anim_scopeOut.AddKeyframe(3, -39.871788024902344, 0.921248197555542, 0.6300231218338013);
+        anim_scopeOut.AddKeyframe(4, -28.237709045410156, 2.623110771179199, -0.19224333763122559);
+        anim_scopeOut.AddKeyframe(5, -20.3409366607666, 3.2273166179656982, -0.48416972160339355);
+        anim_scopeOut.AddKeyframe(6, -14.989669799804688, 3.1153223514556885, -0.46736809611320496);
+        anim_scopeOut.AddKeyframe(7, -10.300461769104004, 2.781028985977173, -0.41721659898757935);
+        anim_scopeOut.AddKeyframe(8, -6.456859588623047, 2.2547497749328613, -0.3382629156112671);
+        anim_scopeOut.AddKeyframe(9, -3.586707592010498, 1.6136583089828491, -0.24208486080169678);
+        anim_scopeOut.AddKeyframe(10, -1.6874043941497803, 0.9725669622421265, -0.14590682089328766);
+        anim_scopeOut.AddKeyframe(11, -0.6090106964111328, 0.4462873935699463, -0.06695312261581421);
+        anim_scopeOut.AddKeyframe(12, -0.12115097045898438, 0.11199378967285156, -0.01680159568786621);
 	}
 }
