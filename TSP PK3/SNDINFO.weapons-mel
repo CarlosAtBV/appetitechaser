@@ -85,6 +85,9 @@ meltraitchange02    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 
 // Slot 2: DARLING NIKKI
 // SOUND CREDITS/SOURCES: 
+// [SELECT/DESELECT]
+// - GDC 2018 Audio Bundle
+// - Mortal Kombat (2011)
 // [FIRING]
 // - Chronicles of Riddick: Assault on Dark Athena
 // - Devil May Cry 4: Special Edition
@@ -98,9 +101,6 @@ meltraitchange02    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
 // [UPGRADE EQUIP]
 // - Chronicles of Riddick: Assault on Dark Athena
 // - GDC 2018 Audio Bundle
-// [SELECT/DESELECT]
-// - GDC 2018 Audio Bundle
-// - Mortal Kombat (2011)
 // [ADS/ALTERNATE]
 //
 //
@@ -151,6 +151,12 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 
 // Slot 3: OS06 SUZUKA
 // SOUND CREDITS/SOURCES: 
+// [SELECT/DESELECT]
+// - Alien vs Predator 2
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Mortal Kombat X
+// - PlanetSide 2
+// - Wolfenstein (2009)
 // [FIRING (DEFAULT)]
 // - Alien vs Predator 2
 // - DOOM (2016)
@@ -182,12 +188,19 @@ nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfi
 // - Left 4 Dead
 // - Super Monday Night Combat
 
+suzuka/ads/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_ads_on.ogg"
+suzuka/ads/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_ads_off.ogg"
 $random suzuka/fire { suzuka/fire01 suzuka/fire02 suzuka/fire03 }
 suzuka/fire01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
 suzuka/fire02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire02.ogg"
 suzuka/fire03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire03.ogg"
 $volume suzuka/fire 0.6
 
+// Shotgun Suzu
+suzuka/shotgun/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_shotgun_on.ogg"
+$volume suzuka/shotgun/on 0.4
+suzuka/shotgun/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_shotgun_off.ogg"
+$volume suzuka/shotgun/off 0.4
 $random suzuka/firea { suzuka/firea01 suzuka/firea02 suzuka/firea03 }
 suzuka/firea01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_mg01.ogg"
 suzuka/firea02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_mg02.ogg"
@@ -198,6 +211,11 @@ suzuka/fireasg01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_sg01.ogg"
 suzuka/fireasg02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_sg02.ogg"
 suzuka/scock "sounds/weapons/Mel/Suzuka/sfx_suzuka_pump.ogg"
 
+// Nail Suzu
+suzuka/nailgun/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_nailgun_on.ogg"
+$volume suzuka/nailgun/on 0.4
+suzuka/nailgun/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_nailgun_off.ogg"
+$volume suzuka/nailgun/off 0.4
 $random suzuka/fireb { suzuka/fireb01 suzuka/fireb02 suzuka/fireb03 }
 suzuka/fireb01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_mg01.ogg"
 suzuka/fireb02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_mg02.ogg"
@@ -214,11 +232,14 @@ suzuka/upgradedefault "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_default.ogg"
 suzuka/upgradeshotgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_shotgun.ogg"
 suzuka/upgradenailgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_nailgun.ogg"
 
+suzuka/draw "sounds/weapons/Mel/Suzuka/sfx_suzuka_draw.ogg"
+suzuka/holster "sounds/weapons/Mel/Suzuka/sfx_suzuka_holster.ogg"
 suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec_gn01.ogg"
 suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
 suzuka/load "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload02.ogg"
 suzuka/rcock "sounds/weapons/Mel/Suzuka/sfx_suzuka_cock.ogg"
 suzuka/empty "sounds/weapons/Mel/Suzuka/sfx_suzuka_empty.ogg"
+suzuka/emptyb "sounds/weapons/Mel/Suzuka/sfx_suzuka_emptyb.ogg" //Empty sound without the beep
 
 //Weapon Junk
 $random weapons/casing  { weapons/casing1 weapons/casing2 weapons/casing3 }

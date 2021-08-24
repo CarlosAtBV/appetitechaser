@@ -20,7 +20,7 @@ Class MelSMGB : MelSMG
 			TNT1 A 0 A_TakeInventory("MeleeSelected", 1);
 			TNT1 A 0 A_TakeInventory("WeaponSelectMemory", 999);
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 131);
-			TNT1 A 0 A_PlaySound("919m/select", 5);
+			TNT1 A 0 A_StartSound("suzuka/draw", 5);
 			TNT1 A 0 A_WeaponOffset(0,32);
 			133G A 1 A_Raise;
 			Loop;
@@ -39,10 +39,12 @@ Class MelSMGB : MelSMG
 			Loop;
 			
 		Switch:
+			TNT1 A 0 A_StartSound("suzuka/nailgun/on", 5);
 			133S A 1;
 			133S B 2;
 			Goto ModReady;
 		ModSwitch:
+			TNT1 A 0 A_StartSound("suzuka/nailgun/off", 5);
 			133S B 1;
 			133S A 2;
 			Goto Ready;
