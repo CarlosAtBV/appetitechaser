@@ -92,12 +92,16 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 
 // MEL
 #include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"
-#include "zscript/tsp/weapons/mel/weapon_suzu.zsc"
-#include "zscript/tsp/weapons/mel/weapon_suzu_shotgun.zsc"
-#include "zscript/tsp/weapons/mel/weapon_suzu_nail.zsc"
+
 #include "zscript/tsp/weapons/mel/weapon_nikki.zsc"
 #include "zscript/tsp/weapons/mel/weapon_nikki_spitfire.zsc"
 #include "zscript/tsp/weapons/mel/anims_nikki.zsc"
+
+#include "zscript/tsp/weapons/mel/weapon_suzu.zsc"
+#include "zscript/tsp/weapons/mel/weapon_suzu_shotgun.zsc"
+#include "zscript/tsp/weapons/mel/weapon_suzu_nail.zsc"
+#include "zscript/tsp/weapons/mel/anims_suzu.zsc"
+
 #include "zscript/tsp/weapons/mel/weapon_melee_test_2.zsc"
 #include "zscript/tsp/weapons/mel/trait_stasis.zsc"
 #include "zscript/tsp/weapons/mel/trait_slam.zsc"

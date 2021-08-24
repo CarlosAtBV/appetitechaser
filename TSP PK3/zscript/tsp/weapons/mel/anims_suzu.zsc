@@ -1,0 +1,17 @@
+Extend Class MelSMG
+{
+	TSP_PyAnim anim_scopeIn;
+	
+	override void TSP_InitAnimations()
+	{   
+		anim_scopeIn = CreateNewAnimation();
+		anim_scopeIn.AddPSprite(PSP_WEAPON);
+        anim_scopeIn.AddKeyframe(0, 0.0, -0.0, 0.0);
+        anim_scopeIn.AddKeyframe(1, -8.297065734863281, -0.8048153519630432, 0.0);
+        anim_scopeIn.AddKeyframe(2, -30.0, -2.9099998474121094, 0.0);
+        anim_scopeIn.AddKeyframe(3, -51.70293045043945, -5.015183925628662, 0.0);
+        anim_scopeIn.AddKeyframe(4, -60.0, -5.819999694824219, 0.0);
+        anim_scopeIn.AddKeyframe(5, -60.0, -5.819999694824219, 0.0);
+        anim_scopeIn.AddKeyframe(6, -60.0, -5.819999694824219, 0.0);
+	}
+}

@@ -102,18 +102,20 @@ Class MelSMG : TSP_Mel_LightWeapon
 			
 		Switch:
 			TNT1 A 0 A_StartSound("suzuka/ads/on", 5);
-			131S A 1 A_WeaponOffset(-4,32,WOF_INTERPOLATE);
-			131S B 1 A_WeaponOffset(-8,32,WOF_INTERPOLATE);
+			"----" A 0
+			{
+				A_TSP_ZoomFactor(0.5);
+				invoker.anim_scopeIn.PlayAnim();
+			}
+			131A ABC 1;
 			"----" A 1 A_SetBlend("Black",1.0,10);
 			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE)
 			Goto ModReady;
 		ModSwitch:
 			TNT1 A 0 A_StartSound("suzuka/ads/off", 5);
+			"----" A 0 A_TSP_ZoomFactor(1.0);
 			"----" A 1 A_SetBlend("Black",1.0,10);
-			"----" A 0 A_WeaponOffset(0,32);
-			"----" A 0 A_TSP_WeaponRecoil(-12,0);
-			131S B 1;
-			131S A 1;
+			131A CBA 1;
 			Goto Ready;
 			
 		Casing:

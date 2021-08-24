@@ -23,8 +23,12 @@ mods = [
 ]
 
 frame_names = [
-	["13{mod}GA0"] * 2,
-	["13{mod}GB0"] * 2,
+	["13{mod}GA0"] * 3,
+	["13{mod}GB0"] * 3,
+	
+	["13{mod}AA0", "ignore",  "ignore"],
+	["13{mod}AB0", "ignore",  "ignore"],
+	["13{mod}AC0", "ignore",  "ignore"],
 ];
 
 for cntmod, mod in enumerate(mods):
@@ -38,7 +42,7 @@ for cntmod, mod in enumerate(mods):
 		scene.timeline_markers.remove(m);
 	
 	for cnt, frame in enumerate(frame_names):
-		scene.timeline_markers.new(frame[cnt].format(mod = mod["number"]), frame=cnt);
+		scene.timeline_markers.new(frame[cntmod].format(mod = mod["number"]), frame=cnt);
 
 	render_fetus2021.refresh_markers();
 	render_fetus2021.render_frames_by_markers("POSS", "finalrender");
