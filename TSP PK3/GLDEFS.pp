@@ -20,3 +20,8 @@ HardwareShader Texture "graphics/menu/common/border/border_bg_green.png"
 	Texture "texScanline" "graphics/menu/common/scanlines.png"
 	Texture "texBorder" "graphics/menu/common/border/border.png"
 }
+
+HardwareShader Sprite "131XA0"
+{
+	Shader "shaders/glsl/scopescan.fp"
+}
