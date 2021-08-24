@@ -11,6 +11,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 {
 	bool smg_bottomFire;
 	
+	bool smg_scoped;
+	
 	Default
 	{
 		Inventory.PickupMessage "$MELSMGPICKUP";
@@ -41,6 +43,19 @@ Class MelSMG : TSP_Mel_LightWeapon
 		+Weapon.AMMO_OPTIONAL
 		+NOEXTREMEDEATH
 		+WEAPON.NoAlert
+	}
+	
+	override void TSP_DrawWeaponHud (double fractic)
+	{
+		if ( smg_scoped )
+		{
+			let sprTex = TexMan.CheckForTexture("131XA0");
+			
+			screen.DrawTexture(sprTex, false, 160, 100,
+				DTA_VirtualWidth, 320,
+				DTA_VirtualHeight, 200,
+				DTA_CenterOffset, true);
+		}
 	}
 	
 	action void A_TSP_MelSMG_Fire(int xoff = 4)
@@ -102,7 +117,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 		ModReady:
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee");
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait");
-			131X A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
+			TNT1 A 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			"####" A 0 A_TSP_GotoReadyState;
 			Loop;
 			
@@ -117,6 +132,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 			TNT1 A 1
 			{
 				A_SetBlend("Black",1.0,10);
+				invoker.smg_scoped = true;
 				invoker.anim_scopeIn.Reset();
 			}
 			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE)
@@ -124,7 +140,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 		ModSwitch:
 			TNT1 A 0 A_StartSound("suzuka/ads/off", 5);
 			"----" A 0 A_TSP_ZoomFactor(1.0);
-			"----" A 1 A_SetBlend("Black",1.0,10);
+			"----" A 1
+			{
+				A_SetBlend("Black",1.0,10);
+				invoker.smg_scoped = false;
+			}
 			131A CBA 1;
 			Goto Ready;
 			

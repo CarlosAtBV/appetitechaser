@@ -164,6 +164,10 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 	}
 	
+	virtual ui void TSP_DrawWeaponHud (double fractic)
+	{
+	}
+	
 	action void A_TSP_DeselectLogic()
 	{
 		A_TSP_ZoomFactor(1.0);

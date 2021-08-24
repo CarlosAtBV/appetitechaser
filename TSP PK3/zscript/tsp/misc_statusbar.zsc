@@ -96,6 +96,13 @@ Class TSP_StatusBar : BaseStatusBar
 	override void Draw (int state, double TicFrac)
 	{
 		Super.Draw (state, TicFrac);
+		
+		let curWeapon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
+		
+		if ( curWeapon )
+		{
+			curWeapon.TSP_DrawWeaponHud(TicFrac);
+		}
 
 		if (state == HUD_StatusBar||state == HUD_Fullscreen)
 		{
