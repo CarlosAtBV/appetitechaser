@@ -34,32 +34,31 @@ Class MelSMGA : MelSMG
 		ModReady:
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee");
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTrait");
-			132G C 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
+			132A D 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
 			"####" A 0 A_TSP_GotoReadyState;
 			Loop;
 		
 		Fire:
 			"####" A 0 A_TSP_JumpIfClipEmpty("Empty");
-			"####" A 0
-			{
-				A_StartSound("suzuka/firea", CHAN_WEAPON|CHANF_OVERLAP);
-				A_TSP_MelSMG_Fire();
-			}
-			"####" A 1 A_Light2;
-			"####" BA 1;
-			"####" A 0 A_Refire("Fire");
-			"####" A 0 A_TSP_GotoReadyState;
-			Goto Ready;
+			"####" A 0 A_StartSound("suzuka/firea", CHAN_WEAPON|CHANF_OVERLAP);
+			"----" A 0 A_Jump(256, "FireEnd");
+			Stop;
 			
 		Switch:
-			TNT1 A 0 A_StartSound("suzuka/shotgun/on", 5);
-			132S A 1;
-			132S B 2;
+			TNT1 A 0
+			{
+				A_StartSound("suzuka/shotgun/on", 5);
+				A_TSP_WeaponRecoilDir(random(80,90),frandom(1,2));
+			}
+			132A ABC 1;
 			Goto ModReady;
 		ModSwitch:
-			TNT1 A 0 A_StartSound("suzuka/shotgun/off", 5);
-			132S B 1;
-			132S A 2;
+			TNT1 A 0
+			{
+				A_StartSound("suzuka/shotgun/off", 5);
+				A_TSP_WeaponRecoilDir(random(80,90),frandom(1,2));
+			}
+			132A CBA 1;
 			Goto Ready;
 		
 		ModFire:
