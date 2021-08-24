@@ -12,6 +12,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 	bool smg_bottomFire;
 	
 	bool smg_scoped;
+	float smg_firetime;
+	float smg_firetime_last;
 	
 	Default
 	{
@@ -51,7 +53,13 @@ Class MelSMG : TSP_Mel_LightWeapon
 		{
 			let sprTex = TexMan.CheckForTexture("131XA0");
 			
+			float getTime = smg_firetime_last + (smg_firetime - smg_firetime_last) * fractic;
+			
+			float scaleAmt = 1.0 + (getTime / 32.);
+			
 			screen.DrawTexture(sprTex, false, 160, 100,
+				DTA_ScaleX, scaleAmt,
+				DTA_ScaleY, scaleAmt,
 				DTA_VirtualWidth, 320,
 				DTA_VirtualHeight, 200,
 				DTA_CenterOffset, true);
@@ -63,6 +71,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 		A_AlertMonsters();
 		A_TSP_FireBullets(2, 4, -1, 7, "TSP_BulletPuff", 1, Spawnofs_xy: xoff);
 		A_TSP_TakeClip(1);
+		invoker.smg_firetime = frandom(1.0,1.35);
 		if ( invoker.tspw_altmode )
 		{
 			A_GunFlash("ModFlash");
@@ -80,6 +89,22 @@ Class MelSMG : TSP_Mel_LightWeapon
 		}
 		invoker.smg_bottomFire = !invoker.smg_bottomFire;
 		//A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0);
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		smg_firetime_last = smg_firetime;
+		
+		if ( smg_firetime > 0 )
+		{
+			smg_firetime--;
+			if ( smg_firetime < 0 )
+			{
+				smg_firetime = 0;
+			}
+		}
 	}
 	
 	States
