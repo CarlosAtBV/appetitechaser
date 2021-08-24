@@ -14,6 +14,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 	bool smg_scoped;
 	float smg_firetime;
 	float smg_firetime_last;
+	double smg_fadein;
 	
 	Default
 	{
@@ -58,11 +59,18 @@ Class MelSMG : TSP_Mel_LightWeapon
 			float scaleAmt = 1.0 + (getTime / 32.);
 			
 			screen.DrawTexture(sprTex, false, 160, 100,
-				DTA_ScaleX, scaleAmt,
-				DTA_ScaleY, scaleAmt,
+				DTA_ScaleX, scaleAmt + smg_fadein,
+				DTA_ScaleY, scaleAmt + smg_fadein,
 				DTA_VirtualWidth, 320,
 				DTA_VirtualHeight, 200,
 				DTA_CenterOffset, true);
+		}
+		
+		if ( smg_fadein )
+		{
+			let fadeOver = TexMan.CheckForTexture("graphics/generic_black.png");
+			
+			screen.Dim("#000000", smg_fadein, 0, 0, screen.GetWidth(), screen.GetHeight());
 		}
 	}
 	
@@ -104,6 +112,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 			{
 				smg_firetime = 0;
 			}
+		}
+		
+		if ( smg_fadein > 0 )
+		{
+			smg_fadein *= 0.75;
 		}
 	}
 	
@@ -168,8 +181,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 			131A ABC 1;
 			TNT1 A 1
 			{
-				A_SetBlend("Black",1.0,10);
 				invoker.smg_scoped = true;
+				invoker.smg_fadein = 1.0;
 				invoker.anim_scopeIn.Reset();
 			}
 			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE)
@@ -179,8 +192,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 0 A_TSP_ZoomFactor(1.0);
 			"----" A 1
 			{
-				A_SetBlend("Black",1.0,10);
 				invoker.smg_scoped = false;
+				invoker.smg_fadein = 1.0;
 				invoker.anim_scopeOut.PlayAnim();
 			}
 			131A CBA 1;
