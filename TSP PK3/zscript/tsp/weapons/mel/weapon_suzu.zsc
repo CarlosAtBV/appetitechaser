@@ -79,8 +79,6 @@ Class MelSMG : TSP_Mel_LightWeapon
 			}
 		}
 		invoker.smg_bottomFire = !invoker.smg_bottomFire;
-		A_SetPitch(pitch - 0.4);
-		A_SetAngle(angle + (frandom(-0.1,0.3)));
 		//A_FireCustomMissile("9mmCasingSpawner",-3,0,0,0);
 	}
 	
@@ -161,6 +159,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 				A_StartSound("suzuka/fire", CHAN_WEAPON|CHANF_OVERLAP);
 				A_TSP_WeaponRecoilDir(random(35,55),frandom(4,9));
 				A_TSP_MelSMG_Fire(invoker.tspw_altmode ? 0 : 4);
+				A_SetPitch(pitch - 0.4);
+				A_SetAngle(angle + (frandom(-0.1,0.3)));
 				//TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (210, 134), frandom(-5,-25));
 			}
 			"####" A 1 A_Light2;
@@ -175,6 +175,8 @@ Class MelSMG : TSP_Mel_LightWeapon
 				A_StartSound("suzuka/fire", CHAN_WEAPON|CHANF_OVERLAP);
 				A_TSP_WeaponRecoilDir(random(95,85),frandom(1,3));
 				A_TSP_MelSMG_Fire(invoker.tspw_altmode ? 0 : 4);
+				A_SetPitch(pitch - frandom(0.1, 0.2));
+				A_SetAngle(angle + (frandom(-0.01,0.05)));
 				//TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (210, 134), frandom(-5,-25));
 			}
 			"####" A 1 A_Light2;
