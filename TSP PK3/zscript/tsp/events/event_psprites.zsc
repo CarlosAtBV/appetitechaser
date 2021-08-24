@@ -58,6 +58,7 @@ Extend Class TSP_EventHandler
 				if ( psprite.CurState != null )
 				{
 					let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
+					let brtTex = TexMan.CheckForTexture("brightmaps/weapons/"..String.Format(psprite.Sprite.."%c0", 65+psprite.frame)..".png");
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
 					
 					double weaponTilt = psprite.rotation;
@@ -100,20 +101,23 @@ Extend Class TSP_EventHandler
 					
 					//newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
-					for (int i = 0; i < 3; i++)
+					bool doBright = TexMan.GetName(brtTex) != "";
+					
+					for (int i = 0; i < (doBright ? 4 : 3); i++)
 					{
 						int ps_renderStyle;
 						double ps_alpha;
 						Color ps_color;
 						int ps_colorType;
+						TextureID ps_tex = sprTex;
 						
 						switch(i)
 						{
 							case 0:
 								ps_renderStyle = STYLE_Normal;
 								ps_alpha = 1.0;// - lightIntensity;
-								ps_color = Color(255, 0, 0, 0);
 								ps_colorType = DTA_Color;
+								ps_color = Color(255, 0, 0, 0);
 								break;
 							case 1:
 								ps_renderStyle = STYLE_Translucent;
@@ -127,9 +131,16 @@ Extend Class TSP_EventHandler
 								ps_color = Color(r, g, b);
 								ps_colorType = DTA_FillColor;
 								break;
+							case 3:
+								ps_renderStyle = STYLE_Add;
+								ps_alpha = 1.0 - lightLevel;
+								ps_colorType = DTA_Color;
+								ps_color = Color(255, 255, 255, 255);
+								ps_tex = brtTex;
+								break;
 						}
 						
-						screen.DrawTexture(sprTex, false, 160 + weaponPos.x, 100 + weaponPos.y,
+						screen.DrawTexture(ps_tex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,

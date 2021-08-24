@@ -19,7 +19,19 @@ mods = [
 		"number":"3",
 		"path":"//../../../TSP PK3/sprites/weapons/mel/Suzuka/Nails/",
 		"visual":"GunStrip_Nails"
-	}
+	},
+	
+	{
+		"number":"2",
+		"path":"//../../../TSP PK3/brightmaps/weapons/",
+		"visual":"GunStrip_Shotgun_BM"
+	},
+	
+	{
+		"number":"1",
+		"path":"//../../../TSP PK3/brightmaps/weapons/",
+		"visual":"GunStrip_Normal_BM"
+	},
 ]
 
 frame_names = [
@@ -38,6 +50,8 @@ for cntmod, mod in enumerate(mods):
 	render_fetus2021.set_offsets((159, 50+32));
 	render_fetus2021.set_path(mod["path"]);
 	
+	modnum = int(mod["number"])-1;
+	
 	for i in mods:
 		scene.sequence_editor.sequences_all[i["visual"]].mute = not (i == mod);
 
@@ -45,7 +59,7 @@ for cntmod, mod in enumerate(mods):
 		scene.timeline_markers.remove(m);
 	
 	for cnt, frame in enumerate(frame_names):
-		scene.timeline_markers.new(frame[cntmod].format(mod = mod["number"]), frame=cnt);
+		scene.timeline_markers.new(frame[modnum].format(mod = mod["number"]), frame=cnt);
 
 	render_fetus2021.refresh_markers();
 	render_fetus2021.render_frames_by_markers("POSS", "finalrender");
