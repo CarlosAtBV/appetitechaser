@@ -1,7 +1,7 @@
 // Slot 2: SELENA
 // SOUND CREDITS/SOURCES: 
 // [ALL]
-// - Alien Breed Evolution Impact
+// - Alien Breed: Impact
 // - Chronicles of Riddick: Assault on Dark Athena
 // - Dying Light Enhanced Edition
 // - Halo Reach
@@ -30,24 +30,3 @@ selena/cock		  "sounds/weapons/Shen Mi/Selena/sfx_selena_reload03.ogg"
 $volume selena/cock 0.8
 selena/trifireon  "sounds/weapons/Shen Mi/Selena/sfx_selena_trifire_modeon.ogg"
 selena/trifireoff "sounds/weapons/Shen Mi/Selena/sfx_selena_trifire_modeoff.ogg"
-
-// Slot 3: OS06 SUZUKA (CUSTOM)
-// SOUND CREDITS/SOURCES: 
-// [FIRING]
-// - Alien vs Predator 2
-// - DOOM (2016)
-// - Wolfenstein (2009)
-
-// All other weapon sounds are shared with Mel's version
-$random suzuka/fired { suzuka/fired01 suzuka/fired02 suzuka/fired03 }
-suzuka/fired01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg01.ogg"
-suzuka/fired02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg02.ogg"
-suzuka/fired03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_mg03.ogg"
-$volume suzuka/fired 0.6
-
-suzuka/sniper/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_sniper_on.ogg"
-suzuka/sniper/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_sniper_off.ogg"
-$random suzuka/sniper { suzuka/sniper01 suzuka/sniper02 }
-suzuka/sniper01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_sp01.ogg"
-suzuka/sniper02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fired_sp02.ogg"
-$volume suzuka/fired 0.8

@@ -150,96 +150,141 @@ nikki/upgraderemove "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_remove.o
 nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfire.ogg"
 
 // Slot 3: OS06 SUZUKA
-// SOUND CREDITS/SOURCES: 
-// [SELECT/DESELECT]
-// - Alien vs Predator 2
-// - Chronicles of Riddick: Assault on Dark Athena
-// - Mortal Kombat X
-// - PlanetSide 2
-// - Wolfenstein (2009)
-// [FIRING (DEFAULT)]
+// [DEFAULT FIRING]
+// SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
 // - DOOM (2016)
 // - Halo Reach
 // - Left 4 Dead
 // - PlanetSide 2
-// [FIRING (NAILGUN)]
+$random suzuka/default/fire { suzuka/default/fire01 suzuka/default/fire02 suzuka/default/fire03 }
+suzuka/default/fire01	"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_fire01.ogg"
+suzuka/default/fire02	"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_fire02.ogg"
+suzuka/default/fire03	"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_fire03.ogg"
+$volume suzuka/default/fire 0.6
+// [DEFAULT ADS TOGGLE]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
+// - PlanetSide 2
+// - Wolfenstein (2009)
+suzuka/ads/on			"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_ads_on.ogg"
+$volume suzuka/ads/on 0.7
+suzuka/ads/off			"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_ads_off.ogg"
+$volume suzuka/ads/off 0.7
+
+// [SHOTGUN FIRING]
+// SOUND CREDITS/SOURCES:
+// - Alien vs Predator 2
+// - DOOM (2016)
+// - Dying Light: Enhanced Edition
+// - Left 4 Dead
+$random suzuka/shotgun/primaryfire { suzuka/shotgun/primaryfire01 suzuka/shotgun/primaryfire02 suzuka/shotgun/primaryfire03 }
+suzuka/shotgun/primaryfire01 "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_primaryfire01.ogg"
+suzuka/shotgun/primaryfire02 "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_primaryfire02.ogg"
+suzuka/shotgun/primaryfire03 "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_primaryfire03.ogg"
+$volume suzuka/shotgun/primaryfire 0.6
+$random suzuka/shotgun/altfire { suzuka/shotgun/altfire01 suzuka/shotgun/altfire02 }
+suzuka/shotgun/altfire01 "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_altfire01.ogg"
+suzuka/shotgun/altfire02 "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_altfire02.ogg"
+// [SHOTGUN MODE TOGGLE]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Halo Reach
+// - Insurgency
+// - Mortal Kombat X
+// - PlanetSide 2
+// - Wolfenstein (2009)
+suzuka/shotgun/on "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_on.ogg"
+$volume suzuka/shotgun/on 0.4
+suzuka/shotgun/off "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_off.ogg"
+$volume suzuka/shotgun/off 0.4
+
+// [NAILGUN FIRING]
 // - Alien vs Predator 2
 // - Chronicles of Riddick: Assault on Dark Athena
 // - DOOM (2016)
 // - Left 4 Dead
 // - Mortal Kombat X
 // - PlanetSide 2
-// [FIRING (SHOTGUN)]
+$random suzuka/nailgun/primaryfire { suzuka/nailgun/primaryfire01 suzuka/nailgun/primaryfire02 suzuka/nailgun/primaryfire03 }
+suzuka/nailgun/primaryfire01 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_primaryfire01.ogg"
+suzuka/nailgun/primaryfire02 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_primaryfire02.ogg"
+suzuka/nailgun/primaryfire03 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_primaryfire03.ogg"
+$volume suzuka/nailgun/primaryfire 0.6
+$random suzuka/nailgun/altfire { suzuka/nailgun/altfire01 suzuka/nailgun/altfire02 suzuka/nailgun/altfire03 }
+suzuka/nailgun/altfire01 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_altfire01.ogg"
+suzuka/nailgun/altfire02 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_altfire02.ogg"
+suzuka/nailgun/altfire03 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_altfire03.ogg"
+$volume suzuka/nailgun/altfire 0.6
+// [NAILGUN MODE TOGGLE]
+// SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
-// - DOOM (2016)
-// - Dying Light: Enhanced Edition
-// - Left 4 Dead
-// [FIRING (GRENADE)]
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Mortal Kombat X
+// - PlanetSide 2
+// - Wolfenstein (2009) 
+suzuka/nailgun/on "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_on.ogg"
+$volume suzuka/nailgun/on 0.4
+suzuka/nailgun/off "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_off.ogg"
+$volume suzuka/nailgun/off 0.4
+
+// [GRENADE FIRING]
+// SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
 // - Chronicles of Riddick: Assault on Dark Athena
 // - DOOM (2016)
 // - Left 4 Dead
-// [RELOADING, COCKING, UPGRADE EQUIP]
+suzuka/grenade "sounds/weapons/mel/suzuka/grenade/sfx_suzuka_grenade_altfire01.ogg"
+
+// [SNIPER FIRING]
+// SOUND CREDITS/SOURCES: 
+// - Alien vs Predator 2
+// - DOOM (2016)
+// - Wolfenstein (2009)
+$random suzuka/sniper/primaryfire { suzuka/sniper/primaryfire01 suzuka/sniper/primaryfire02 suzuka/sniper/primaryfire03 }
+suzuka/sniper/primaryfire01 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_sniper_primaryfire01.ogg"
+suzuka/sniper/primaryfire02 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_sniper_primaryfire02.ogg"
+suzuka/sniper/primaryfire03 "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_sniper_primaryfire03.ogg"
+$volume suzuka/sniper/primaryfire 0.6
+$random suzuka/sniper/altfire { suzuka/sniper/altfire01 suzuka/sniper/altfire02 }
+suzuka/sniper/altfire01 "sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_altfire01.ogg"
+suzuka/sniper/altfire02 "sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_altfire02.ogg"
+suzuka/sniper/cock		"sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_cock.ogg"
+// [SNIPER TOGGLE]
+// SOUND CREDITS/SOURCES: 
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
+// - PlanetSide 2
+// - Wolfenstein (2009)
+suzuka/sniper/on "sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_on.ogg"
+suzuka/sniper/off "sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_off.ogg"
+
+// [GENERAL/HANDLING]
+// SOUND CREDITS/SOURCES: 
 // - Chronicles of Riddick: Assault on Dark Athena
 // - Dying Light: Enhanced Edition
 // - Halo Reach
 // - Insurgency
 // - Left 4 Dead
 // - Super Monday Night Combat
+suzuka/draw				"sounds/weapons/mel/suzuka/general/sfx_suzuka_general_draw.ogg"
+suzuka/holster			"sounds/weapons/mel/suzuka/general/sfx_suzuka_general_holster.ogg"
+suzuka/pump				"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_pump.ogg"
+suzuka/eject			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_eject.ogg"
+suzuka/load				"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_load.ogg"
+suzuka/empty01			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_empty01.ogg" // No beep, default
+suzuka/empty02			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_empty02.ogg" // Used for alt-fires, beep!
 
-suzuka/ads/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_ads_on.ogg"
-suzuka/ads/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_ads_off.ogg"
-$random suzuka/fire { suzuka/fire01 suzuka/fire02 suzuka/fire03 }
-suzuka/fire01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire01.ogg"
-suzuka/fire02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire02.ogg"
-suzuka/fire03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fire03.ogg"
-$volume suzuka/fire 0.6
-
-// Shotgun Suzu
-suzuka/shotgun/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_shotgun_on.ogg"
-$volume suzuka/shotgun/on 0.4
-suzuka/shotgun/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_shotgun_off.ogg"
-$volume suzuka/shotgun/off 0.4
-$random suzuka/firea { suzuka/firea01 suzuka/firea02 suzuka/firea03 }
-suzuka/firea01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_mg01.ogg"
-suzuka/firea02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_mg02.ogg"
-suzuka/firea03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_mg03.ogg"
-$volume suzuka/firea 0.6
-$random suzuka/fireasg { suzuka/fireasg01 suzuka/fireasg02 }
-suzuka/fireasg01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_sg01.ogg"
-suzuka/fireasg02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_firea_sg02.ogg"
-suzuka/scock "sounds/weapons/Mel/Suzuka/sfx_suzuka_pump.ogg"
-
-// Nail Suzu
-suzuka/nailgun/on "sounds/weapons/Mel/Suzuka/sfx_suzuka_nailgun_on.ogg"
-$volume suzuka/nailgun/on 0.4
-suzuka/nailgun/off "sounds/weapons/Mel/Suzuka/sfx_suzuka_nailgun_off.ogg"
-$volume suzuka/nailgun/off 0.4
-$random suzuka/fireb { suzuka/fireb01 suzuka/fireb02 suzuka/fireb03 }
-suzuka/fireb01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_mg01.ogg"
-suzuka/fireb02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_mg02.ogg"
-suzuka/fireb03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_mg03.ogg"
-$volume suzuka/fireb 0.6
-$random suzuka/firebng { suzuka/firebng01 suzuka/firebng02 suzuka/firebng03 }
-suzuka/firebng01 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng01.ogg"
-suzuka/firebng02 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng02.ogg"
-suzuka/firebng03 "sounds/weapons/Mel/Suzuka/sfx_suzuka_fireb_ng03.ogg"
-$volume suzuka/firebng 0.6
-
-suzuka/upgraderemove "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_remove.ogg"
-suzuka/upgradedefault "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_default.ogg"
-suzuka/upgradeshotgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_shotgun.ogg"
-suzuka/upgradenailgun "sounds/weapons/Mel/Suzuka/sfx_suzuka_upgrade_nailgun.ogg"
-
-suzuka/draw "sounds/weapons/Mel/Suzuka/sfx_suzuka_draw.ogg"
-suzuka/holster "sounds/weapons/Mel/Suzuka/sfx_suzuka_holster.ogg"
-suzuka/grenade "sounds/weapons/Mel/Suzuka/sfx_suzuka_firec_gn01.ogg"
-suzuka/eject "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload01.ogg"
-suzuka/load "sounds/weapons/Mel/Suzuka/sfx_suzuka_reload02.ogg"
-suzuka/rcock "sounds/weapons/Mel/Suzuka/sfx_suzuka_cock.ogg"
-suzuka/empty "sounds/weapons/Mel/Suzuka/sfx_suzuka_empty.ogg"
-suzuka/emptyb "sounds/weapons/Mel/Suzuka/sfx_suzuka_emptyb.ogg" //Empty sound without the beep
+// [UPGRADE/MOD SWAP]
+// SOUND CREDITS/SOURCES:
+// - Alien Breed: Impact
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
+suzuka/upgrade/remove	"sounds/weapons/mel/suzuka/general/sfx_suzuka_upgrade_remove.ogg"
+suzuka/upgrade/default	"sounds/weapons/mel/suzuka/general/sfx_suzuka_upgrade_default.ogg"
+suzuka/upgrade/shotgun	"sounds/weapons/mel/suzuka/general/sfx_suzuka_upgrade_shotgun.ogg"
+suzuka/upgrade/nailgun	"sounds/weapons/mel/suzuka/general/sfx_suzuka_upgrade_nailgun.ogg"
 
 //Weapon Junk
 $random weapons/casing  { weapons/casing1 weapons/casing2 weapons/casing3 }
