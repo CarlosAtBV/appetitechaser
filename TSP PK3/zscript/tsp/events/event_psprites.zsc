@@ -6,12 +6,23 @@ Extend Class TSP_EventHandler
 		return start + (finish - start) * progress;
 	}
 	
+	ui double lightLevel_current;
+	ui double lightLevel_last;
+	
+	override void UiTick ()
+	{
+		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
+		
+		lightLevel_last = lightLevel_current;
+		lightLevel_current = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+	}
+	
 	override void RenderUnderlay(RenderEvent e)
 	{
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 					
-		double lightLevel = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+		double lightlevel = lightLevel_last + (lightLevel_current - lightLevel_last) * e.fractic;
 		Color sectorColor = character.cursector ? character.cursector.ColorMap.LightColor : -1;
 		
 		int r, g, b = 0;
