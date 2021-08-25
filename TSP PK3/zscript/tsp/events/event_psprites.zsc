@@ -14,7 +14,8 @@ Extend Class TSP_EventHandler
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 		
 		lightLevel_last = lightLevel_current;
-		lightLevel_current = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+		double targ = character.cursector ? character.cursector.lightlevel / 255.0 : 0.0;
+		lightLevel_current = lightLevel_current + (targ - lightLevel_current) / 4;
 	}
 	
 	override void RenderUnderlay(RenderEvent e)
