@@ -146,7 +146,7 @@ Extend Class TSP_EventHandler
 								break;
 							case 3:
 								ps_renderStyle = STYLE_Add;
-								ps_alpha = 1.0 - lightLevel;
+								ps_alpha = 1.0 - max(lightLevel - 0.1, 0.0);
 								ps_colorType = DTA_Color;
 								ps_color = Color(255, 255, 255, 255);
 								ps_tex = brtTex;

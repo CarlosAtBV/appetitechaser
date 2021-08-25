@@ -31,6 +31,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		
 		bool isSlidingOnGround = (player.onground && tsp_crouchSliding);
+		bool isFloating = ( waterlevel || bNoGravity ) && pitch != 0 && !player.GetClassicFlight();
 		
 		if ( isSlidingOnGround )
 		{
@@ -79,6 +80,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			vel.xy *= 0.875;
 		}
 		
+		if ( isFloating )
+		{
+			vel.z *= 0.875;
+		}
+		
 		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove) / 6400;
 		double moveAngle = atan2(moveDir.y, moveDir.x) + angle;
 		
@@ -89,9 +95,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( cmd.forwardmove || cmd.sidemove )
 		{
+			double finalSpeed = ( !player.onground ? 0.1 : runspeed );
+			
 			if ( !tsp_crouchSliding )
 			{
-				vel.xy += (cos(moveAngle), sin(moveAngle)) * ( !player.onground ? 0.1 : runspeed );
+				vel.xy += (cos(moveAngle), sin(moveAngle)) * finalSpeed;
+			}
+			if ( isFloating )
+			{
+				vel.z -= finalSpeed * sin(pitch);
+				vel.xy *= cos(pitch);
 			}
 		}
 		
