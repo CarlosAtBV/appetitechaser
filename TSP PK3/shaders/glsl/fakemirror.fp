@@ -58,7 +58,10 @@ vec4 Process(vec4 color)
 	}
 	
 	vec4 realTex = getTexel(vTexCoord.st);
+	vec4 maskTex = texture(refMask, vTexCoord.st);
+	
 	float blendAmt = (realTex.r + realTex.g + realTex.b) / 3.;
+	blendAmt = mix(blendAmt, 1.0, maskTex.r);
 	return mix(vec4(balls, 1.0), realTex, blendAmt);
 	
 	return vec4(balls, 1.0);

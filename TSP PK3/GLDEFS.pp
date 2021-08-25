@@ -28,16 +28,11 @@ HardwareShader Texture "graphics/menu/common/border/border_bg_green.png"
 	Texture "texBorder" "graphics/menu/common/border/border.png"
 }
 
-HardwareShader Texture "textures/mirrortest.png"
-{
-	Shader "shaders/glsl/fakemirror.fp"
-	Texture "toReflect" "textures/mirrortest_2.png"
-}
-
 HardwareShader Texture "CYBAB"
 {
 	Shader "shaders/glsl/fakemirror.fp"
 	Texture "toReflect" "textures/mirrortest_2.png"
+	Texture "refMask" "textures/dex/CYBG.png"
 }
 
 HardwareShader Sprite "131XA0"
