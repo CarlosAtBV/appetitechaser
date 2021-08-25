@@ -133,7 +133,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -12473.66f;
+		viewpositionx = -10587.09f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -149,7 +149,7 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 8;
+			gridsize = 16;
 			background = "";
 			backoffsety = 0;
 		}
@@ -157,15 +157,20 @@ maps
 		overridebottomtexture = true;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 6213.045f;
+		viewpositiony = 2930.21f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
 		overridemiddletexture = true;
 		custombrightness = 196;
-		viewscale = 0.06274779f;
+		viewscale = 0.1378584f;
 		
 		fieldtypes
 		{
+			
+			linedef
+			{
+				renderstyle = 2;
+			}
 			
 			sidedef
 			{
@@ -175,6 +180,7 @@ maps
 				offsety_bottom = 1;
 				offsetx_top = 1;
 				offsety_top = 1;
+				light = 0;
 			}
 			
 			sector
@@ -193,12 +199,10 @@ maps
 				color_wallbottom = 0;
 				lightceilingabsolute = 3;
 				fogdensity = 0;
-				floor_reflect = 1;
 				xscaleceiling = 1;
 				yscaleceiling = 1;
 				xscalefloor = 1;
 				yscalefloor = 1;
-				ceiling_reflect = 1;
 			}
 		}
 		
