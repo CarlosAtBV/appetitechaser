@@ -2,7 +2,9 @@ mat3 GetTBN()
 {
     vec3 n = normalize(vWorldNormal.xyz);
     vec3 p = pixelpos.xyz;
-    vec2 uv = vTexCoord.st;
+    //vec2 uv = vTexCoord.st;
+	
+	vec2 uv = vec2(0.5, 0.5) + (vec2(-pixelpos.x, pixelpos.z) / (16768.0));
 
     // get edge vectors of the pixel triangle
     vec3 dp1 = dFdx(p);
@@ -24,12 +26,16 @@ mat3 GetTBN()
 vec2 ParallaxMap(mat3 tbn, float dist)
 {
 	ivec2 texSize = textureSize(tex, 0);
-	float newDist = dist / texSize.x;
+	//float newDist = dist / texSize.x;
+	float newDist = dist / (16768.0 / 4.);
 	
     mat3 invTBN = transpose(tbn);
     vec3 V = normalize(invTBN * (uCameraPos.xyz - pixelpos.xyz));
 
-    vec2 texCoords = vTexCoord.st;
+    //vec2 texCoords = vTexCoord.st;
+	
+	vec2 texCoords = vec2(0.5, 0.5) + (vec2(-pixelpos.x, pixelpos.z) / (16768.0));
+	
     vec2 p = V.xy / abs(V.z) * newDist;// * parallaxScale;
     return texCoords - p;
 }
@@ -40,14 +46,20 @@ vec4 Process(vec4 color)
 	
 	vec3 balls = vec3(0,0,0);
 	
-	for ( int i = 32; i > 0; i-- )
+    const int doLayers = 16;
+	
+	for ( int i = doLayers; i > 0; i-- )
 	{
 		vec2 texCoord = ParallaxMap(tbn, i);
-		vec4 colorFinal = getTexel(texCoord);
+		vec4 colorFinal = mix(texture(toReflect, texCoord.st), vec4(0, 0, 0, 1.0), (i / doLayers));
 		
 		float getAmt = (balls.r + balls.g + balls.b) / 3.;
 		balls = mix(balls, colorFinal.rgb, (1.0 - getAmt) * 0.25);
 	}
+	
+	vec4 realTex = getTexel(vTexCoord.st);
+	float blendAmt = (realTex.r + realTex.g + realTex.b) / 3.;
+	return mix(vec4(balls, 1.0), realTex, blendAmt);
 	
 	return vec4(balls, 1.0);
 }

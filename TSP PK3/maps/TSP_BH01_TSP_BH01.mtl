@@ -1,0 +1,51 @@
+# MTL for TSP_BH01.wad, map TSP_BH01
+# Created by Ultimate Doom Builder 3.0.0.3739
+
+newmtl CYBA
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBA.png
+
+newmtl CYBC
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBC.png
+
+newmtl CYBD
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBD.png
+
+newmtl CYBE
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBE.png
+
+newmtl CYBA
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBA_FLAT.png
+
+newmtl CYBAB
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBAB.png
+
+newmtl CYBC
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBC_FLAT.png
+
+newmtl CYBD
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBD_FLAT.png
+
+newmtl CYBDB
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBDB.png
+
+newmtl CYBE
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBE_FLAT.png
+
+newmtl CYBF00
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\CYBF00.png
+
+newmtl F_SKY1
+Kd 1.0 1.0 1.0
+map_Kd D:\Projects\TheSpacePirate\TSP Git\TSP PK3\maps\F_SKY1.png
+
