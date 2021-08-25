@@ -10,7 +10,7 @@ maps
 		defaultceiltexture = "TSPFL1";
 		overridefloorheight = false;
 		customfloorheight = 0;
-		uselongtexturenames = false;
+		uselongtexturenames = true;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		resources
@@ -19,14 +19,14 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
+				location = "D:\\Projects\\TheSpacePirate\\TSP Git\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = 1818.543f;
+		viewpositionx = -49.35641f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -49,13 +49,13 @@ maps
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = -303.1669f;
+		viewpositiony = -492.1979f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.1378576f;
+		viewscale = 1.124547f;
 		
 		fieldtypes
 		{
