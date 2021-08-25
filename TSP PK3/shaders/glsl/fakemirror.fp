@@ -23,13 +23,14 @@ mat3 GetTBN()
 
 vec2 ParallaxMap(mat3 tbn, float dist)
 {
-    const float parallaxScale = 0.4;
+	ivec2 texSize = textureSize(tex, 0);
+	float newDist = dist / texSize.x;
 	
     mat3 invTBN = transpose(tbn);
     vec3 V = normalize(invTBN * (uCameraPos.xyz - pixelpos.xyz));
 
     vec2 texCoords = vTexCoord.st;
-    vec2 p = V.xy / abs(V.z) * dist;// * parallaxScale;
+    vec2 p = V.xy / abs(V.z) * newDist;// * parallaxScale;
     return texCoords - p;
 }
 
@@ -39,12 +40,13 @@ vec4 Process(vec4 color)
 	
 	vec3 balls = vec3(0,0,0);
 	
-	for ( int i = 0; i < 12; i++ )
+	for ( int i = 32; i > 0; i-- )
 	{
-		vec2 texCoord = ParallaxMap(tbn, i / 12.);
+		vec2 texCoord = ParallaxMap(tbn, i);
 		vec4 colorFinal = getTexel(texCoord);
 		
-		balls += colorFinal.rgb;
+		float getAmt = (balls.r + balls.g + balls.b) / 3.;
+		balls = mix(balls, colorFinal.rgb, (1.0 - getAmt) * 0.25);
 	}
 	
 	return vec4(balls, 1.0);

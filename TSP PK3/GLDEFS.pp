@@ -33,6 +33,11 @@ HardwareShader Texture "textures/mirrortest.png"
 	Shader "shaders/glsl/fakemirror.fp"
 }
 
+HardwareShader Texture "CYBAB"
+{
+	Shader "shaders/glsl/fakemirror.fp"
+}
+
 HardwareShader Sprite "131XA0"
 {
 	Shader "shaders/glsl/scopescan.fp"
