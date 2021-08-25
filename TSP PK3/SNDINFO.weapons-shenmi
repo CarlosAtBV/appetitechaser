@@ -12,21 +12,21 @@
 // - Wolfenstein (2009)
 
 $random selena/firea { selena/firea01 selena/firea02 selena/firea03 }
-selena/firea01 "sounds/weapons/Shen Mi/Selena/sfx_selena_firea01.ogg"
-selena/firea02 "sounds/weapons/Shen Mi/Selena/sfx_selena_firea02.ogg"
-selena/firea03 "sounds/weapons/Shen Mi/Selena/sfx_selena_firea03.ogg"
+selena/firea01 "sounds/weapons/shenmi/selena/sfx_selena_firea01.ogg"
+selena/firea02 "sounds/weapons/shenmi/selena/sfx_selena_firea02.ogg"
+selena/firea03 "sounds/weapons/shenmi/selena/sfx_selena_firea03.ogg"
 $volume selena/firea 0.7
 
 $random selena/fireb { selena/fireb01 selena/fireb02 }
-selena/fireb01 "sounds/weapons/Shen Mi/Selena/sfx_selena_fireb01.ogg"
-selena/fireb02 "sounds/weapons/Shen Mi/Selena/sfx_selena_fireb02.ogg"
+selena/fireb01 "sounds/weapons/shenmi/selena/sfx_selena_fireb01.ogg"
+selena/fireb02 "sounds/weapons/shenmi/selena/sfx_selena_fireb02.ogg"
 $volume selena/fireb 0.7
 
-selena/reloadout  "sounds/weapons/Shen Mi/Selena/sfx_selena_reload01.ogg"
+selena/reloadout  "sounds/weapons/shenmi/selena/sfx_selena_reload01.ogg"
 $volume selena/reloadout 0.8
-selena/reloadin   "sounds/weapons/Shen Mi/Selena/sfx_selena_reload02.ogg"
+selena/reloadin   "sounds/weapons/shenmi/selena/sfx_selena_reload02.ogg"
 $volume selena/reloadin 0.8
-selena/cock		  "sounds/weapons/Shen Mi/Selena/sfx_selena_reload03.ogg"
+selena/cock		  "sounds/weapons/shenmi/selena/sfx_selena_reload03.ogg"
 $volume selena/cock 0.8
-selena/trifireon  "sounds/weapons/Shen Mi/Selena/sfx_selena_trifire_modeon.ogg"
-selena/trifireoff "sounds/weapons/Shen Mi/Selena/sfx_selena_trifire_modeoff.ogg"
+selena/trifireon  "sounds/weapons/shenmi/selena/sfx_selena_trifire_modeon.ogg"
+selena/trifireoff "sounds/weapons/shenmi/selena/sfx_selena_trifire_modeoff.ogg"

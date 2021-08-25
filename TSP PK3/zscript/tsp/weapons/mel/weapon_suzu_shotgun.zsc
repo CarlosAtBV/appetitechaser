@@ -40,7 +40,7 @@ Class MelSMGA : MelSMG
 		
 		Fire:
 			"####" A 0 A_TSP_JumpIfClipEmpty("Empty");
-			"####" A 0 A_StartSound("suzuka/firea", CHAN_WEAPON|CHANF_OVERLAP);
+			"####" A 0 A_StartSound("suzuka/shotgun/primaryfire", CHAN_WEAPON|CHANF_OVERLAP);
 			"----" A 0 A_Jump(256, "FireEnd");
 			Stop;
 			
@@ -66,7 +66,7 @@ Class MelSMGA : MelSMG
 			TNT1 A 0
 			{
 				A_GunFlash("ModFlash");
-				A_PlaySound("suzuka/fireasg", 6);
+				A_StartSound("suzuka/shotgun/altfire", 6);
 				A_AlertMonsters();
 				A_Quake(2,3,0,5,"");
 				A_TSP_FireBullets(6,2,8,7,"TSP_BulletPuff",1,0,"TSP_HitscanTracer", frandom(-3,-1), Spawnofs_xy: frandom(3,5));
@@ -90,7 +90,7 @@ Class MelSMGA : MelSMG
 			//cocking anim
 			"----" A 0
 			{
-				A_PlaySound("suzuka/scock", 5);
+				A_StartSound("suzuka/pump", 5);
 				A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
 			}
 			132A EEEE 1 A_TSP_WeaponRecoilDir(35,6,1);

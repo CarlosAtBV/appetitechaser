@@ -1,0 +1,91 @@
+////////////////
+// MENU
+////////////////
+$random ailene/bluevertigo { ailene/bluevertigo01 ailene/bluevertigo02 }
+ailene/bluevertigo01 "sounds/announcer/ailene/menu/vo_menu_ailene_bluevertigo01.ogg"
+ailene/bluevertigo02 "sounds/announcer/ailene/menu/vo_menu_ailene_bluevertigo02.ogg"
+$random ailene/bv10 { ailene/bv1001 ailene/bv1002 }
+ailene/bv1001 "sounds/announcer/ailene/menu/vo_menu_ailene_bv1001.ogg" 
+ailene/bv1002 "sounds/announcer/ailene/menu/vo_menu_ailene_bv1002.ogg" 
+$random ailene/title { ailene/title01 ailene/title02 }
+ailene/title01 "sounds/announcer/ailene/menu/vo_menu_ailene_title01.ogg" 
+ailene/title02 "sounds/announcer/ailene/menu/vo_menu_ailene_title02.ogg" 
+$random ailene/titledemo { ailene/titledemo01 ailene/titledemo02 }
+ailene/titledemo01 "sounds/announcer/ailene/menu/vo_menu_ailene_titledemo01.ogg" 
+ailene/titledemo02 "sounds/announcer/ailene/menu/vo_menu_ailene_titledemo02.ogg" 
+
+$random ailene/standard { ailene/standard01 ailene/standard02 }
+ailene/standard01 "sounds/announcer/ailene/menu/vo_menu_ailene_standard01.ogg" 
+ailene/standard02 "sounds/announcer/ailene/menu/vo_menu_ailene_standard02.ogg" 
+ailene/bountyhunters01 "sounds/announcer/ailene/menu/vo_menu_ailene_bountyhunters01.ogg" 
+$random ailene/usermaps { ailene/usermaps01 ailene/usermaps02 }
+ailene/usermaps01 "sounds/announcer/ailene/menu/vo_menu_ailene_usermaps01.ogg" 
+ailene/usermaps02 "sounds/announcer/ailene/menu/vo_menu_ailene_usermaps02.ogg"   
+$random ailene/arcade { ailene/arcade01 ailene/arcade02 }
+ailene/arcade01 "sounds/announcer/ailene/menu/vo_menu_ailene_arcade01.ogg" 
+ailene/arcade02 "sounds/announcer/ailene/menu/vo_menu_ailene_arcade02.ogg" 
+
+$random ailene/css/mel { ailene/css/mel01 ailene/css/mel02 }
+ailene/css/mel01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel01.ogg" 
+ailene/css/mel02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel02.ogg" 
+$random ailene/css/melretro { ailene/css/melretro01 ailene/css/melretro02 }
+ailene/css/melretro01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro01.ogg" 
+ailene/css/melretro02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro02.ogg" 
+ailene/css/melretro03 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro03.ogg" // "Retro Mel"
+ailene/css/shen01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_shen01.ogg"
+$random ailene/css/zane { ailene/css/zane01 ailene/css/zane02 }
+ailene/css/zane01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_zane01.ogg" 
+ailene/css/zane02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_zane02.ogg"   
+ailene/css/maeve01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_maeve01.ogg" 
+ailene/css/nagi01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_nagi01.ogg" 
+ailene/css/thi01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_thi01.ogg" 
+$random ailene/css/robomel { ailene/css/robomel01 ailene/css/robomel02 }
+ailene/css/robomel01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel01.ogg" 
+ailene/css/robomel02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel02.ogg" 
+ailene/css/robomel03 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel03.ogg" // "AILENE"                      
+
+////////////////
+// MISC
+////////////////
+$random announcer/hunters/ailene/goodmorning { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
+ailene/goodmorning01 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning01.ogg"
+ailene/goodmorning02 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning02.ogg"
+ailene/goodmorning03 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning03.ogg"
+
+////////////////
+// BOUNTY HUNTERS
+////////////////
+
+announcer/hunters/ailene/hunt "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart01.ogg"
+announcer/hunters/ailene/ready "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart02.ogg"
+announcer/hunters/ailene/go "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart03.ogg"
+
+$random announcer/hunters/ailene/gameover { ailene/gameover01 ailene/gameover02 ailene/gameover03 }
+ailene/gameover01 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover01.ogg"
+ailene/gameover02 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover02.ogg"
+ailene/gameover03 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover03.ogg"
+
+announcer/hunters/ailene/30secs "sounds/announcer/ailene/bh/vo_bh_ailene_30sec.ogg"
+announcer/hunters/ailene/10secs "sounds/announcer/ailene/bh/vo_bh_ailene_10sec.ogg"
+announcer/hunters/ailene/5secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown5.ogg"
+announcer/hunters/ailene/4secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown4.ogg"
+announcer/hunters/ailene/3secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown3.ogg"
+announcer/hunters/ailene/2secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown2.ogg"
+announcer/hunters/ailene/1secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown1.ogg"
+
+$random announcer/hunters/ailene/timeext { announcer/hunters/ailene/timeext01 announcer/hunters/ailene/timeext02 announcer/hunters/ailene/timeext03 announcer/hunters/ailene/timeext04 announcer/hunters/ailene/timeext05 announcer/hunters/ailene/timeext06 announcer/hunters/ailene/timeext07 announcer/hunters/ailene/timeext08 announcer/hunters/ailene/timeext09 announcer/hunters/ailene/timeext10 announcer/hunters/ailene/timeext11 announcer/hunters/ailene/timeext12 announcer/hunters/ailene/timeext13 announcer/hunters/ailene/timeext14 announcer/hunters/ailene/timeext15 }
+announcer/hunters/ailene/timeext01 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext01.ogg"
+announcer/hunters/ailene/timeext02 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext02.ogg"
+announcer/hunters/ailene/timeext03 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext03.ogg"
+announcer/hunters/ailene/timeext04 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext04.ogg"
+announcer/hunters/ailene/timeext05 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext05.ogg"
+announcer/hunters/ailene/timeext06 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext06.ogg"
+announcer/hunters/ailene/timeext07 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext07.ogg"
+announcer/hunters/ailene/timeext08 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext08.ogg"
+announcer/hunters/ailene/timeext09 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext09.ogg"
+announcer/hunters/ailene/timeext10 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext10.ogg"
+announcer/hunters/ailene/timeext11 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext11.ogg"
+announcer/hunters/ailene/timeext12 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext12.ogg"
+announcer/hunters/ailene/timeext13 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext13.ogg"
+announcer/hunters/ailene/timeext14 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext14.ogg"
+announcer/hunters/ailene/timeext15 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext15.ogg"

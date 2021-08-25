@@ -22,56 +22,56 @@
 // - Super Monday Night Combat
 // - Wolfenstein (2009)
 
-maggrappleretro "sounds/weapons/Mel/MagTrait/sfx_mag_grapple01.ogg"
-maggrapple 		"sounds/weapons/Mel/MagTrait/sfx_mag_grapple02.ogg"
-magslam			"sounds/weapons/Mel/MagTrait/sfx_mag_slam01.ogg"
-magslam/down	"sounds/weapons/Mel/MagTrait/sfx_mag_slam02.ogg"
-magslam/impact	"sounds/weapons/Mel/MagTrait/sfx_mag_slam_impact01.ogg"
-magslingretro 	"sounds/weapons/Mel/MagTrait/sfx_mag_sling01.ogg"
-magsling 		"sounds/weapons/Mel/MagTrait/sfx_mag_sling02.ogg"
-magdriveretro	"sounds/weapons/Mel/MagTrait/sfx_mag_drive01.ogg"
-magdrive 		"sounds/weapons/Mel/MagTrait/sfx_mag_drive02.ogg"
-magphit 		"sounds/weapons/Mel/MagTrait/sfx_mag_driveimpact01.ogg"
-maghit 			"sounds/weapons/Mel/MagTrait/sfx_mag_impactbeta01.ogg"
-magloop 		"sounds/weapons/Mel/MagTrait/sfx_mag_ambloop01.ogg"
+maggrappleretro "sounds/weapons/mel/magtrait/sfx_mag_grapple01.ogg"
+maggrapple 		"sounds/weapons/mel/magtrait/sfx_mag_grapple02.ogg"
+magslam			"sounds/weapons/mel/magtrait/sfx_mag_slam01.ogg"
+magslam/down	"sounds/weapons/mel/magtrait/sfx_mag_slam02.ogg"
+magslam/impact	"sounds/weapons/mel/magtrait/sfx_mag_slam_impact01.ogg"
+magslingretro 	"sounds/weapons/mel/magtrait/sfx_mag_sling01.ogg"
+magsling 		"sounds/weapons/mel/magtrait/sfx_mag_sling02.ogg"
+magdriveretro	"sounds/weapons/mel/magtrait/sfx_mag_drive01.ogg"
+magdrive 		"sounds/weapons/mel/magtrait/sfx_mag_drive02.ogg"
+magphit 		"sounds/weapons/mel/magtrait/sfx_mag_driveimpact01.ogg"
+maghit 			"sounds/weapons/mel/magtrait/sfx_mag_impactbeta01.ogg"
+magloop 		"sounds/weapons/mel/magtrait/sfx_mag_ambloop01.ogg"
 
-magpunch/charge    "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge01.ogg"
-magpunch/chargefin "sounds/weapons/Mel/MagTrait/sfx_mag_uppercutcharge02.ogg"
-maguppercut "sounds/weapons/Mel/MagTrait/sfx_mag_uppercut01.ogg"
+magpunch/charge    "sounds/weapons/mel/magtrait/sfx_mag_uppercutcharge01.ogg"
+magpunch/chargefin "sounds/weapons/mel/magtrait/sfx_mag_uppercutcharge02.ogg"
+maguppercut "sounds/weapons/mel/magtrait/sfx_mag_uppercut01.ogg"
 
-chargestyle/charge01 "sounds/weapons/Melee/Charge/sfx_mel_charge_start01.ogg"
-chargestyle/charge02 "sounds/weapons/Melee/Charge/sfx_mel_charge_start02.ogg"
-chargestyle/charge03 "sounds/weapons/Melee/Charge/sfx_mel_charge_start03.ogg"
+chargestyle/charge01 "sounds/weapons/melee/charge/sfx_mel_charge_start01.ogg"
+chargestyle/charge02 "sounds/weapons/melee/charge/sfx_mel_charge_start02.ogg"
+chargestyle/charge03 "sounds/weapons/melee/charge/sfx_mel_charge_start03.ogg"
 
-chargestyle/kick01 "sounds/weapons/Melee/Charge/sfx_mel_chargekick01.ogg"
-chargestyle/kick02 "sounds/weapons/Melee/Charge/sfx_mel_chargekick02.ogg"
+chargestyle/kick01 "sounds/weapons/melee/charge/sfx_mel_chargekick01.ogg"
+chargestyle/kick02 "sounds/weapons/melee/charge/sfx_mel_chargekick02.ogg"
 
 $random magpunch/miss { magpunch/miss1 magpunch/miss2 magpunch/miss3 }
-magpunch/miss1 "sounds/weapons/Mel/MagTrait/sfx_mag_miss01.ogg"
-magpunch/miss2 "sounds/weapons/Mel/MagTrait/sfx_mag_miss02.ogg"
-magpunch/miss3 "sounds/weapons/Mel/MagTrait/sfx_mag_miss03.ogg"
+magpunch/miss1 "sounds/weapons/mel/magtrait/sfx_mag_miss01.ogg"
+magpunch/miss2 "sounds/weapons/mel/magtrait/sfx_mag_miss02.ogg"
+magpunch/miss3 "sounds/weapons/mel/magtrait/sfx_mag_miss03.ogg"
 $random magpunch/contact { magpunch/contact1 magpunch/contact2 }
-magpunch/contact1 "sounds/weapons/Mel/MagTrait/sfx_mag_physimpact01.ogg"
-magpunch/contact2 "sounds/weapons/Mel/MagTrait/sfx_mag_physimpact02.ogg"
+magpunch/contact1 "sounds/weapons/mel/magtrait/sfx_mag_physimpact01.ogg"
+magpunch/contact2 "sounds/weapons/mel/magtrait/sfx_mag_physimpact02.ogg"
 $random magpunch/wall { magpunch/wall1 magpunch/wall2 magpunch/wall3 }
-magpunch/wall1 "sounds/weapons/Mel/MagTrait/sfx_mag_wall01.ogg"
-magpunch/wall2 "sounds/weapons/Mel/MagTrait/sfx_mag_wall02.ogg"
-magpunch/wall3 "sounds/weapons/Mel/MagTrait/sfx_mag_wall03.ogg"
+magpunch/wall1 "sounds/weapons/mel/magtrait/sfx_mag_wall01.ogg"
+magpunch/wall2 "sounds/weapons/mel/magtrait/sfx_mag_wall02.ogg"
+magpunch/wall3 "sounds/weapons/mel/magtrait/sfx_mag_wall03.ogg"
 
 //////////////////////
 // Mel's Style Change
 //////////////////////
 
 melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
-melidlebk      "sounds/weapons/Mel/sfx_mel_idlebk.ogg"
-melstylebksfx1 "sounds/weapons/Mel/sfx_mel_style_bk01.ogg"
-melstylebksfx2 "sounds/weapons/Mel/sfx_mel_style_bk02.ogg"
+melidlebk      "sounds/weapons/mel/sfx_mel_idlebk.ogg"
+melstylebksfx1 "sounds/weapons/mel/sfx_mel_style_bk01.ogg"
+melstylebksfx2 "sounds/weapons/mel/sfx_mel_style_bk02.ogg"
 
 
 melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
-melidlecs      "sounds/weapons/Mel/sfx_mel_idlecs.ogg"
-melstylecssfx1 "sounds/weapons/Mel/sfx_mel_style_cs01.ogg"
-melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
+melidlecs      "sounds/weapons/mel/sfx_mel_idlecs.ogg"
+melstylecssfx1 "sounds/weapons/mel/sfx_mel_style_cs01.ogg"
+melstylecssfx2 "sounds/weapons/mel/sfx_mel_style_cs02.ogg"
 
 //////////////////////
 // Mel's Trait Change
@@ -80,77 +80,110 @@ melstylecssfx2 "sounds/weapons/Mel/sfx_mel_style_cs02.ogg"
 meltraitvodrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
 meltraitvograpple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
 meltraitvosling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"
-meltraitchange01    "sounds/weapons/Mel/sfx_mel_trait_change01.ogg"
-meltraitchange02    "sounds/weapons/Mel/sfx_mel_trait_change02.ogg"
+meltraitchange01    "sounds/weapons/mel/sfx_mel_trait_change01.ogg"
+meltraitchange02    "sounds/weapons/mel/sfx_mel_trait_change02.ogg"
 
+/////////////////////////
 // Slot 2: DARLING NIKKI
-// SOUND CREDITS/SOURCES: 
-// [SELECT/DESELECT]
-// - GDC 2018 Audio Bundle
-// - Mortal Kombat (2011)
-// [FIRING]
+/////////////////////////
+// [DEFAULT]
+// SOUND CREDITS/SOURCES:
 // - Chronicles of Riddick: Assault on Dark Athena
 // - Devil May Cry 4: Special Edition
 // - PlanetSide 2
 // - Sniper Elite 3
-// [IDLE 1]
+$random nikki/default/fire { nikki/default/fire01 nikki/default/fire02 nikki/default/fire03 }
+nikki/default/fire01 "sounds/weapons/mel/darlingnikki/default/sfx_nikki_default_fire01.ogg"
+nikki/default/fire02 "sounds/weapons/mel/darlingnikki/default/sfx_nikki_default_fire02.ogg"
+nikki/default/fire03 "sounds/weapons/mel/darlingnikki/default/sfx_nikki_default_fire03.ogg"
+$volume nikki/default/fire 0.9
+// [DEFAULT ADS TOGGLE]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
+// - Mortal Kombat (2011)
+// - PlanetSide 2
+nikki/default/aim01		"sounds/weapons/mel/darlingnikki/default/sfx_nikki_default_aim01.ogg"
+$volume nikki/default/aim01 0.5
+nikki/default/aim02		"sounds/weapons/mel/darlingnikki/default/sfx_nikki_default_aim02.ogg"
+$volume nikki/default/aim02 0.5
+
+// [SPITFIRE]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
 // - Devil May Cry 4: Special Edition
-// - Mortal Kombat X
+// - PlanetSide 2
+// - Sniper Elite 3
+$random nikki/spitfire/fire { nikki/spitfire/fire01 nikki/spitfire/fire02 nikki/spitfire/fire03 }
+nikki/spitfire/fire01 "sounds/weapons/mel/darlingnikki/spitfire/sfx_nikki_spitfire_fire01.ogg"
+nikki/spitfire/fire02 "sounds/weapons/mel/darlingnikki/spitfire/sfx_nikki_spitfire_fire02.ogg"
+nikki/spitfire/fire03 "sounds/weapons/mel/darlingnikki/spitfire/sfx_nikki_spitfire_fire03.ogg"
+$volume nikki/spitfire/fire 0.9
+// [SPITFIRE ADS TOGGLE]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Insurgency
+// - Mortal Kombat (2011)
+// - PlanetSide 2
+nikki/spitfire/aim01	"sounds/weapons/mel/darlingnikki/spitfire/sfx_nikki_spitfire_aim01.ogg"
+$volume nikki/spitfire/aim01 0.7
+nikki/spitfire/aim02	"sounds/weapons/mel/darlingnikki/spitfire/sfx_nikki_spitfire_aim02.ogg"
+$volume nikki/spitfire/aim02 0.5
+
+// [WHISPER]
+// SOUND CREDITS/SOURCES:
+// - Chronicles of Riddick: Assault on Dark Athena
+// - Devil May Cry 4: Special Edition
+// - GDC 2018 Audio Bundle
+// - PlanetSide 2
+// - Sniper Elite 3
+$random nikki/whisper/fire { nikki/whisper/fire01 nikki/whisper/fire02 nikki/whisper/fire03 }
+nikki/whisper/fire01 "sounds/weapons/mel/darlingnikki/whisper/sfx_nikki_whisper_fire01.ogg"
+nikki/whisper/fire02 "sounds/weapons/mel/darlingnikki/whisper/sfx_nikki_whisper_fire02.ogg"
+nikki/whisper/fire03 "sounds/weapons/mel/darlingnikki/whisper/sfx_nikki_whisper_fire03.ogg"
+
+// [TREASURED]
+// SOUND CREDITS/SOURCES:
+// - Devil May Cry 4: Special Edition
 // - PlanetSide 2
 // - Super Monday Night Combat
-// [UPGRADE EQUIP]
+$random nikki/treasured/fire { nikki/treasured/fire01 nikki/treasured/fire02 nikki/treasured/fire03 }
+nikki/treasured/fire01 "sounds/weapons/mel/darlingnikki/treasured/sfx_nikki_firegold01.ogg"
+nikki/treasured/fire02 "sounds/weapons/mel/darlingnikki/treasured/sfx_nikki_firegold02.ogg"
+nikki/treasured/fire03 "sounds/weapons/mel/darlingnikki/treasured/sfx_nikki_firegold03.ogg"
+$volume nikki/treasured/fire 0.9
+
+// [GENERAL/HANDLING]
+// SOUND CREDITS/SOURCES: 
 // - Chronicles of Riddick: Assault on Dark Athena
 // - GDC 2018 Audio Bundle
-// [ADS/ALTERNATE]
-//
-//
+// - Halo Reach
+// - Insurgency
+// - Mortal Kombat (2011)
+// - PlanetSide 2
+// - Sniper Elite III
+// - Super Monday Night Combat
+nikki/draw					"sounds/weapons/mel/darlingnikki/general/sfx_nikki_general_draw.ogg"
+nikki/holster				"sounds/weapons/mel/darlingnikki/general/sfx_nikki_general_holster.ogg"
+nikki/treasured/draw		"sounds/weapons/mel/darlingnikki/general/sfx_nikki_general_treasured_draw.ogg"
+nikki/treasured/holster		"sounds/weapons/mel/darlingnikki/general/sfx_nikki_general_treasured_holster.ogg"
+nikki/eject					"sounds/weapons/mel/darlingnikki/general/sfx_nikki_reload_eject.ogg"
+nikki/load					"sounds/weapons/mel/darlingnikki/general/sfx_nikki_reload_load.ogg"
+nikki/tap					"sounds/weapons/mel/darlingnikki/general/sfx_nikki_reload_tap.ogg"
+nikki/empty					"sounds/weapons/mel/darlingnikki/general/sfx_nikki_reload_empty.ogg"
+nikki/idle01				"sounds/weapons/mel/darlingnikki/general/sfx_nikki_general_idle01.ogg" 
 
-nikki/draw		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_draw.ogg"
-nikki/drawgold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_drawc.ogg"
-nikki/holster	"sounds/weapons/Mel/Darling Nikki/sfx_nikki_holster.ogg"
-nikki/holstergold  "sounds/weapons/Mel/Darling Nikki/sfx_nikki_holsterc.ogg"
+// [UPGRADE/MOD SWAP]
+// SOUND CREDITS/SOURCES: 
+// - Chronicles of Riddick: Assault on Dark Athena
+// - GDC 2018 Audio Bundle
+nikki/upgrade/remove		"sounds/weapons/mel/darlingnikki/general/sfx_nikki_upgrade_remove.ogg"
+nikki/upgrade/spitfire		"sounds/weapons/mel/darlingnikki/general/sfx_nikki_upgrade_spitfire.ogg"
 
-$random nikki/fire { nikki/fire01 nikki/fire02 nikki/fire03 }
-nikki/fire01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire01.ogg"
-nikki/fire02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire02.ogg"
-nikki/fire03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fire03.ogg"
-$volume nikki/fire 0.9
-
-$random nikki/firea { nikki/firea01 nikki/firea02 nikki/firea03 }
-nikki/firea01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea01.ogg"
-nikki/firea02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea02.ogg"
-nikki/firea03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firea03.ogg"
-$volume nikki/firea 0.9
-
-$random nikki/fireb { nikki/fireb01 nikki/fireb02 nikki/fireb03 }
-nikki/fireb01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb01.ogg"
-nikki/fireb02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb02.ogg"
-nikki/fireb03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_fireb03.ogg"
-
-$random nikki/firec { nikki/firegold01 nikki/firegold02 nikki/firegold03 }
-nikki/firegold01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold01.ogg"
-nikki/firegold02 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold02.ogg"
-nikki/firegold03 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_firegold03.ogg"
-$volume nikki/firec 0.9
-
-nikki/empty "sounds/weapons/Mel/Darling Nikki/sfx_nikki_empty.ogg"
-nikki/reloadout "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload01.ogg"
-nikki/reloadin1 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload02.ogg"
-nikki/reloadin2 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_reload03.ogg"
-
-nikki/aim01		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aim01.ogg"
-nikki/aim02		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aim02.ogg"
-
-nikki/aima01		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aima01.ogg"
-nikki/aima02		"sounds/weapons/Mel/Darling Nikki/sfx_nikki_aima02.ogg"
-
-nikki/idle01 "sounds/weapons/Mel/Darling Nikki/sfx_nikki_idle01.ogg" 
-
-nikki/upgraderemove "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_remove.ogg"
-nikki/upgradespitfire "sounds/weapons/Mel/Darling Nikki/sfx_nikki_upgrade_spitfire.ogg"
-
+///////////////////////
 // Slot 3: OS06 SUZUKA
-// [DEFAULT FIRING]
+///////////////////////
+// [DEFAULT]
 // SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
 // - DOOM (2016)
@@ -173,7 +206,7 @@ $volume suzuka/ads/on 0.7
 suzuka/ads/off			"sounds/weapons/mel/suzuka/default/sfx_suzuka_default_ads_off.ogg"
 $volume suzuka/ads/off 0.7
 
-// [SHOTGUN FIRING]
+// [SHOTGUN]
 // SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
 // - DOOM (2016)
@@ -200,7 +233,7 @@ $volume suzuka/shotgun/on 0.4
 suzuka/shotgun/off "sounds/weapons/mel/suzuka/shotgun/sfx_suzuka_shotgun_off.ogg"
 $volume suzuka/shotgun/off 0.4
 
-// [NAILGUN FIRING]
+// [NAILGUN]
 // - Alien vs Predator 2
 // - Chronicles of Riddick: Assault on Dark Athena
 // - DOOM (2016)
@@ -229,7 +262,7 @@ $volume suzuka/nailgun/on 0.4
 suzuka/nailgun/off "sounds/weapons/mel/suzuka/nailgun/sfx_suzuka_nailgun_off.ogg"
 $volume suzuka/nailgun/off 0.4
 
-// [GRENADE FIRING]
+// [GRENADE]
 // SOUND CREDITS/SOURCES:
 // - Alien vs Predator 2
 // - Chronicles of Riddick: Assault on Dark Athena
@@ -237,7 +270,7 @@ $volume suzuka/nailgun/off 0.4
 // - Left 4 Dead
 suzuka/grenade "sounds/weapons/mel/suzuka/grenade/sfx_suzuka_grenade_altfire01.ogg"
 
-// [SNIPER FIRING]
+// [SNIPER]
 // SOUND CREDITS/SOURCES: 
 // - Alien vs Predator 2
 // - DOOM (2016)

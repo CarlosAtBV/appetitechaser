@@ -3,90 +3,90 @@
 // - Mortal Kombat X
 
 $random basicmelee/miss { basicmelee/miss1 basicmelee/miss2 basicmelee/miss3 basicmelee/miss4 basicmelee/miss5 }
-basicmelee/miss1 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_miss01.ogg"
-basicmelee/miss2 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_miss02.ogg"
-basicmelee/miss3 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_miss03.ogg"
-basicmelee/miss4 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_miss04.ogg"
-basicmelee/miss5 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_miss05.ogg"
+basicmelee/miss1 "sounds/weapons/melee/universal/sfx_unimelee_basic_miss01.ogg"
+basicmelee/miss2 "sounds/weapons/melee/universal/sfx_unimelee_basic_miss02.ogg"
+basicmelee/miss3 "sounds/weapons/melee/universal/sfx_unimelee_basic_miss03.ogg"
+basicmelee/miss4 "sounds/weapons/melee/universal/sfx_unimelee_basic_miss04.ogg"
+basicmelee/miss5 "sounds/weapons/melee/universal/sfx_unimelee_basic_miss05.ogg"
 
 $random basicmelee/contact { basicmelee/contact1 basicmelee/contact2 basicmelee/contact3 basicmelee/contact4 }
-basicmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_contact01.ogg"
-basicmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_contact02.ogg"
-basicmelee/contact3 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_contact03.ogg"
-basicmelee/contact4 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_contact04.ogg"
+basicmelee/contact1 "sounds/weapons/melee/universal/sfx_unimelee_basic_contact01.ogg"
+basicmelee/contact2 "sounds/weapons/melee/universal/sfx_unimelee_basic_contact02.ogg"
+basicmelee/contact3 "sounds/weapons/melee/universal/sfx_unimelee_basic_contact03.ogg"
+basicmelee/contact4 "sounds/weapons/melee/universal/sfx_unimelee_basic_contact04.ogg"
 
 $random basicmelee/wall { basicmelee/wall1 basicmelee/wall2 basicmelee/wall3 basicmelee/wall4 }
-basicmelee/wall1 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_wall01.ogg"
-basicmelee/wall2 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_wall02.ogg"
-basicmelee/wall3 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_wall03.ogg"
-basicmelee/wall4 "sounds/weapons/Melee/Universal/sfx_unimelee_basic_wall04.ogg"
+basicmelee/wall1 "sounds/weapons/melee/universal/sfx_unimelee_basic_wall01.ogg"
+basicmelee/wall2 "sounds/weapons/melee/universal/sfx_unimelee_basic_wall02.ogg"
+basicmelee/wall3 "sounds/weapons/melee/universal/sfx_unimelee_basic_wall03.ogg"
+basicmelee/wall4 "sounds/weapons/melee/universal/sfx_unimelee_basic_wall04.ogg"
 
 $random strongmelee/miss { strongmelee/miss1 strongmelee/miss2 strongmelee/miss3 strongmelee/miss4 strongmelee/miss5 }
-strongmelee/miss1 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_miss01.ogg"
-strongmelee/miss2 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_miss02.ogg"
-strongmelee/miss3 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_miss03.ogg"
-strongmelee/miss4 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_miss04.ogg"
-strongmelee/miss5 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_miss05.ogg"
+strongmelee/miss1 "sounds/weapons/melee/universal/sfx_unimelee_strong_miss01.ogg"
+strongmelee/miss2 "sounds/weapons/melee/universal/sfx_unimelee_strong_miss02.ogg"
+strongmelee/miss3 "sounds/weapons/melee/universal/sfx_unimelee_strong_miss03.ogg"
+strongmelee/miss4 "sounds/weapons/melee/universal/sfx_unimelee_strong_miss04.ogg"
+strongmelee/miss5 "sounds/weapons/melee/universal/sfx_unimelee_strong_miss05.ogg"
 
 $random strongmelee/contact { strongmelee/contact1 strongmelee/contact2 strongmelee/contact3 strongmelee/contact4 strongmelee/contact5 }
-strongmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_contact01.ogg"
-strongmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_contact02.ogg"
-strongmelee/contact3 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_contact03.ogg"
-strongmelee/contact4 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_contact04.ogg"
-strongmelee/contact5 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_contact05.ogg"
+strongmelee/contact1 "sounds/weapons/melee/universal/sfx_unimelee_strong_contact01.ogg"
+strongmelee/contact2 "sounds/weapons/melee/universal/sfx_unimelee_strong_contact02.ogg"
+strongmelee/contact3 "sounds/weapons/melee/universal/sfx_unimelee_strong_contact03.ogg"
+strongmelee/contact4 "sounds/weapons/melee/universal/sfx_unimelee_strong_contact04.ogg"
+strongmelee/contact5 "sounds/weapons/melee/universal/sfx_unimelee_strong_contact05.ogg"
 
 $random strongmelee/wall { strongmelee/wall1 strongmelee/wall2 strongmelee/wall3 strongmelee/wall4 }
-strongmelee/wall1 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_wall01.ogg"
-strongmelee/wall2 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_wall02.ogg"
-strongmelee/wall3 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_wall03.ogg"
-strongmelee/wall4 "sounds/weapons/Melee/Universal/sfx_unimelee_strong_wall04.ogg"
+strongmelee/wall1 "sounds/weapons/melee/universal/sfx_unimelee_strong_wall01.ogg"
+strongmelee/wall2 "sounds/weapons/melee/universal/sfx_unimelee_strong_wall02.ogg"
+strongmelee/wall3 "sounds/weapons/melee/universal/sfx_unimelee_strong_wall03.ogg"
+strongmelee/wall4 "sounds/weapons/melee/universal/sfx_unimelee_strong_wall04.ogg"
 
 $random uppercutmelee/contact { uppercutmelee/contact1 uppercutmelee/contact2 }
-uppercutmelee/contact1 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact01.ogg"
-uppercutmelee/contact2 "sounds/weapons/Melee/Universal/sfx_unimelee_uppercut_contact02.ogg"
+uppercutmelee/contact1 "sounds/weapons/melee/universal/sfx_unimelee_uppercut_contact01.ogg"
+uppercutmelee/contact2 "sounds/weapons/melee/universal/sfx_unimelee_uppercut_contact02.ogg"
 
 // Metal Melee Sounds
 // SOUND CREDITS/SOURCES: 
 // - Mortal Kombat X
 
 $random metalbasicmelee/miss { metalbasicmelee/miss1 metalbasicmelee/miss2 metalbasicmelee/miss3 metalbasicmelee/miss4 metalbasicmelee/miss5 }
-metalbasicmelee/miss1 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_miss01.ogg"
-metalbasicmelee/miss2 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_miss02.ogg"
-metalbasicmelee/miss3 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_miss03.ogg"
-metalbasicmelee/miss4 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_miss04.ogg"
-metalbasicmelee/miss5 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_miss05.ogg"
+metalbasicmelee/miss1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss01.ogg"
+metalbasicmelee/miss2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss02.ogg"
+metalbasicmelee/miss3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss03.ogg"
+metalbasicmelee/miss4 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss04.ogg"
+metalbasicmelee/miss5 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss05.ogg"
 
 $random metalbasicmelee/contact { metalbasicmelee/contact1 metalbasicmelee/contact2 metalbasicmelee/contact3 metalbasicmelee/contact4 }
-metalbasicmelee/contact1 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_contact01.ogg"
-metalbasicmelee/contact2 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_contact02.ogg"
-metalbasicmelee/contact3 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_contact03.ogg"
-metalbasicmelee/contact4 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_contact04.ogg"
+metalbasicmelee/contact1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_contact01.ogg"
+metalbasicmelee/contact2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_contact02.ogg"
+metalbasicmelee/contact3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_contact03.ogg"
+metalbasicmelee/contact4 "sounds/weapons/melee/metal/sfx_metalmelee_basic_contact04.ogg"
 
 $random metalbasicmelee/wall { metalbasicmelee/wall1 metalbasicmelee/wall2 metalbasicmelee/wall3 }
-metalbasicmelee/wall1 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_wall01.ogg"
-metalbasicmelee/wall2 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_wall02.ogg"
-metalbasicmelee/wall3 "sounds/weapons/Melee/Metal/sfx_metalmelee_basic_wall03.ogg"
+metalbasicmelee/wall1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
+metalbasicmelee/wall2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall02.ogg"
+metalbasicmelee/wall3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall03.ogg"
 
 
 $random metalstrongmelee/miss { metalstrongmelee/miss1 metalstrongmelee/miss2 metalstrongmelee/miss3 metalstrongmelee/miss4 metalstrongmelee/miss5 }
-metalstrongmelee/miss1 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_miss01.ogg"
-metalstrongmelee/miss2 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_miss02.ogg"
-metalstrongmelee/miss3 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_miss03.ogg"
-metalstrongmelee/miss4 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_miss04.ogg"
-metalstrongmelee/miss5 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_miss05.ogg"
+metalstrongmelee/miss1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss01.ogg"
+metalstrongmelee/miss2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss02.ogg"
+metalstrongmelee/miss3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss03.ogg"
+metalstrongmelee/miss4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss04.ogg"
+metalstrongmelee/miss5 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss05.ogg"
 
 $random metalstrongmelee/contact { metalstrongmelee/contact1 metalstrongmelee/contact2 metalstrongmelee/contact3 metalstrongmelee/contact4 }
-metalstrongmelee/contact1 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_contact01.ogg"
-metalstrongmelee/contact2 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_contact02.ogg"
-metalstrongmelee/contact3 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_contact03.ogg"
-metalstrongmelee/contact4 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_contact04.ogg"
+metalstrongmelee/contact1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_contact01.ogg"
+metalstrongmelee/contact2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_contact02.ogg"
+metalstrongmelee/contact3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_contact03.ogg"
+metalstrongmelee/contact4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_contact04.ogg"
 
 $random metalstrongmelee/wall { metalstrongmelee/wall1 metalstrongmelee/wall2 metalstrongmelee/wall3 metalstrongmelee/wall4 }
-metalstrongmelee/wall1 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_wall01.ogg"
-metalstrongmelee/wall2 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_wall02.ogg"
-metalstrongmelee/wall3 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_wall03.ogg"
-metalstrongmelee/wall4 "sounds/weapons/Melee/Metal/sfx_metalmelee_strong_wall04.ogg"
+metalstrongmelee/wall1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall01.ogg"
+metalstrongmelee/wall2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall02.ogg"
+metalstrongmelee/wall3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall03.ogg"
+metalstrongmelee/wall4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall04.ogg"
 
 $random metaluppercutmelee/contact { metaluppercutmelee/contact1 metaluppercutmelee/contact2 }
-metaluppercutmelee/contact1 "sounds/weapons/Melee/Metal/sfx_metalmelee_uppercut_contact01.ogg"
-metaluppercutmelee/contact2 "sounds/weapons/Melee/Metal/sfx_metalmelee_uppercut_contact02.ogg"
+metaluppercutmelee/contact1 "sounds/weapons/melee/metal/sfx_metalmelee_uppercut_contact01.ogg"
+metaluppercutmelee/contact2 "sounds/weapons/melee/metal/sfx_metalmelee_uppercut_contact02.ogg"
