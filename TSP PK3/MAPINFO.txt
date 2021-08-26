@@ -116,7 +116,7 @@ map TSP_BH "FUUUCKKK! FUUUUUCKKKK!!!"
 map TSP_BH01 "Neoscape - Battle Zone"
 {
     //sky1 = "SPACE", -0.1
-	music = "TSP_BH01"
+	music = "music/TSP_BH01.ogg"
 	lightmode = 0
 }
 
