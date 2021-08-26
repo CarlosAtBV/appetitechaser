@@ -35,6 +35,39 @@ HardwareShader Texture "CYBAB"
 	Texture "refMask" "textures/dex/CYBG.png"
 }
 
+HardwareShader Texture "CYBF00"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF01"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF02"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF03"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF04"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF05"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF06"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+HardwareShader Texture "CYBF07"
+{
+	Shader "shaders/glsl/fakefog.fp"
+}
+
 HardwareShader Sprite "131XA0"
 {
 	Shader "shaders/glsl/scopescan.fp"

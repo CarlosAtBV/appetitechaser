@@ -126,14 +126,14 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
+				location = "D:\\Projects\\TheSpacePirate\\TSP Git\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -10587.09f;
+		viewpositionx = -11299.33f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -157,12 +157,12 @@ maps
 		overridebottomtexture = true;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 2930.21f;
+		viewpositiony = 3198.317f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
 		overridemiddletexture = true;
 		custombrightness = 196;
-		viewscale = 0.1378584f;
+		viewscale = 2.470641f;
 		
 		fieldtypes
 		{
@@ -181,6 +181,7 @@ maps
 				offsetx_top = 1;
 				offsety_top = 1;
 				light = 0;
+				scaley_mid = 1;
 			}
 			
 			sector
@@ -203,6 +204,7 @@ maps
 				yscaleceiling = 1;
 				xscalefloor = 1;
 				yscalefloor = 1;
+				color_floor = 0;
 			}
 		}
 		
