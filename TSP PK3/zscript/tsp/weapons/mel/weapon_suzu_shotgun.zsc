@@ -106,6 +106,18 @@ Class MelSMGA : MelSMG
 			TNT1 A 0 A_FireCustomMissile("9mmCasingSpawner",-6,0,0,0);
 			"----" A 0 A_TSP_GotoReadyState;
 			Goto Ready;
+		
+		Reload:
+			"----" A 0 A_TSP_JumpIfModInactive("ReloadFinish");
+			"----" A 0
+			{
+				A_StartSound("suzuka/shotgun/off", 5);
+				A_TSP_WeaponRecoilDir(random(80,90),frandom(1,2));
+			}
+			132A CBA 1;
+			132G AAA 1;
+			"----" A 0 A_Jump(256, "ReloadFinish");
+			Stop;
 			
 		Flash1:
 			132F A 1 BRIGHT;
