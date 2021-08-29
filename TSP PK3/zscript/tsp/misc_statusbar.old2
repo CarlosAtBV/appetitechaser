@@ -45,7 +45,7 @@ Class TSP_StatusBar : BaseStatusBar
 	override void Init()
 	{
 		Super.Init();
-		SetSize(0, 1280, 720);
+		SetSize(0, 320, 240);
 
 		// Create the font used for the fullscreen HUD
 		Font fnt = "TSP_HUDFONT";
@@ -120,7 +120,7 @@ Class TSP_StatusBar : BaseStatusBar
 			// MEL HUD
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("MEL_HUDB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("MEL_HUDA", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			// Monet
@@ -137,7 +137,7 @@ Class TSP_StatusBar : BaseStatusBar
 			// Main Stats
 			
 			// BOX SHADOW
-			DrawImage("HUD_VITD", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			DrawImage("HUD_VITC", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// HEALTH
 				Color hpColor;
@@ -148,60 +148,60 @@ Class TSP_StatusBar : BaseStatusBar
 				else if(health>75)
 				{
 					hpColor = Font.FindFontColor("TSPHealthBlue");
-					DrawBar("HUD_VHPB", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VHPA", "HUD_VHPC", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
 				}
 				else if(health>50)
 				{
 					hpColor = Font.FindFontColor("TSPHudYeller");
-					DrawBar("HUD_VHPF", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VHPE", "HUD_VHPC", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
 				}
 				else
 				{
 					hpColor = Font.FindFontColor("TSPHudRed");
-					DrawBar("HUD_VHPH", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VHPG", "HUD_VHPC", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
 				}
 				
 
 			// SHIELD
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 0: DrawBar("HUD_VSHN", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 1: DrawBar("HUD_VSHF", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 2: DrawBar("HUD_VSHH", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 3: DrawBar("HUD_VSHJ", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 4: DrawBar("HUD_VSHL", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 5: DrawBar("HUD_VSHB", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 0: DrawBar("HUD_VSHM", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 1: DrawBar("HUD_VSHE", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 2: DrawBar("HUD_VSHG", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 3: DrawBar("HUD_VSHI", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 4: DrawBar("HUD_VSHK", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 5: DrawBar("HUD_VSHA", "HUD_VSHC", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
 			}
 			
 			// MONEY
-			DrawImage("HUD_VMNB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
+			DrawImage("HUD_VMNA", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
 			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE); //Money Stuff
 			
 			// MEL/RETROGRADE MEL HUD CHUNK
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("MEL_HUDB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("MEL_HUDA", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			// HUD LEFT STATS OVERLAY
-			DrawImage("HUD_VITB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			DrawImage("HUD_VITA", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// SHIELD CONT
 			if(CPlayer.mo is "TSP_MelPlayer")
 			{
-				DrawImage("SHD_3B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("SHD_3A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("SHD_2B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("SHD_2A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 1: DrawImage("SHD_1D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 2: DrawImage("SHD_2D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 3: DrawImage("SHD_3D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 4: DrawImage("SHD_4D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 5: DrawImage("SHD_5D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 1: DrawImage("SHD_1C", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 2: DrawImage("SHD_2C", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 3: DrawImage("SHD_3C", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 4: DrawImage("SHD_4C", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 5: DrawImage("SHD_5C", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
 			//================

@@ -304,8 +304,10 @@ suzuka/sniper/off "sounds/weapons/mel/suzuka/sniper/sfx_suzuka_sniper_off.ogg"
 suzuka/draw				"sounds/weapons/mel/suzuka/general/sfx_suzuka_general_draw.ogg"
 suzuka/holster			"sounds/weapons/mel/suzuka/general/sfx_suzuka_general_holster.ogg"
 suzuka/pump				"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_pump.ogg"
+suzuka/open				"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_open.ogg"
 suzuka/eject			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_eject.ogg"
 suzuka/load				"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_load.ogg"
+suzuka/close			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_close.ogg"
 suzuka/empty01			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_empty01.ogg" // No beep, default
 suzuka/empty02			"sounds/weapons/mel/suzuka/general/sfx_suzuka_reload_empty02.ogg" // Used for alt-fires, beep!
 
