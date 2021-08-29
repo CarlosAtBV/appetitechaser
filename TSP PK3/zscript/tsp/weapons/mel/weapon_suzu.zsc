@@ -300,7 +300,9 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 0
 			{
 				invoker.anim_reloadStart_gun.PlayAnim();
+				invoker.anim_reloadStart_hand.PlayAnim();
 				A_Overlay(PSP_TSP_RELOADHAND, "ReloadHand");
+				A_Overlay(150, "ReloadSounds");
 			}
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" A 2;
@@ -322,9 +324,18 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 0 A_Jump(256, "Switch");
 			Stop;
 		
+		ReloadSounds:
+			TNT1 A 15;
+			TNT1 A 22 A_StartSound("suzuka/open", 6);
+			TNT1 A 19 A_StartSound("suzuka/load", 6);
+			TNT1 A 15 A_StartSound("suzuka/close", 6);
+			Stop;
 		ReloadHand:
 			130H A 29;
-			130H B 37;
+			130H A 0 A_Overlay(PSP_TSP_UPPERHAND, "ReloadHandUpper");
+			Stop;
+		ReloadHandUpper:
+			130H B 25;
 			Stop;
 		/*Reload:
 			131G A 10

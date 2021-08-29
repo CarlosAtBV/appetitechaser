@@ -121,6 +121,7 @@ Extend Class MelSMG
 		
 		anim_reloadStart_hand = CreateNewAnimation();
 		anim_reloadStart_hand.AddPSprite(PSP_TSP_RELOADHAND);
+		anim_reloadStart_hand.AddPSprite(PSP_TSP_UPPERHAND);
         anim_reloadStart_hand.AddKeyframe(0, 80.63999938964844, 94.47000122070312, 0.0);
         anim_reloadStart_hand.AddKeyframe(1, 80.63999938964844, 94.47000122070312, 0.0);
         anim_reloadStart_hand.AddKeyframe(2, 80.63999938964844, 94.47000122070312, 0.0);
