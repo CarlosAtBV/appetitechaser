@@ -105,6 +105,10 @@ Class TSP_EnemyHandler_SlamDunk : Thinker
 
 Class TSP_Weapon_Core : DoomWeapon
 {
+	const PSP_TSP_UNDERGUN = -10;
+	const PSP_TSP_RELOADHAND = -5;
+	const PSP_TSP_UPPERHAND = 5;
+	
 	bool tspw_traitmode;
 	
 	bool tspw_altmode;
