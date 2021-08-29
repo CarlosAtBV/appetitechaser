@@ -52,6 +52,7 @@ frame_names = [
 	
 	["130HA0", "ignore",  "ignore"],
 	["130HB0", "ignore",  "ignore"],
+	["130HC0", "ignore",  "ignore"],
 	
 	["13{mod}RE0"] * 3,
 	["13{mod}RF0"] * 3,
