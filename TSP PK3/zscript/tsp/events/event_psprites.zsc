@@ -72,12 +72,13 @@ Extend Class TSP_EventHandler
 					let sprTex = TexMan.CheckForTexture(String.Format(psprite.Sprite.."%c0", 65+psprite.frame));
 					let brtTex = TexMan.CheckForTexture("brightmaps/weapons/"..String.Format(psprite.Sprite.."%c0", 65+psprite.frame)..".png");
 					Vector2 sprOffset = TexMan.GetScaledOffset(sprTex);
-					Vector2 brtOffset = sprOffset - TexMan.GetScaledOffset(brtTex);
+					Vector2 brtOffset = TexMan.GetScaledOffset(brtTex);
 					
 					double weaponTilt = psprite.rotation;
 					double weaponScale = psprite.scale.x * (2.0 - character.tsp_fb_zoomlerp);
 					
 					Vector2 newOffset = (160, 100) + sprOffset;
+					Vector2 altOffset = (160, 100) + brtOffset;
 					
 					//Console.Printf(psprite.id.." ~ "..psprite.bAddWeapon.." ~ "..psprite.y);
 					
@@ -123,7 +124,7 @@ Extend Class TSP_EventHandler
 						Color ps_color;
 						int ps_colorType;
 						TextureID ps_tex = sprTex;
-						Vector2 ps_offset = weaponPos;
+						Vector2 ps_offset = newOffset;
 						
 						switch(i)
 						{
@@ -151,11 +152,11 @@ Extend Class TSP_EventHandler
 								ps_colorType = DTA_Color;
 								ps_color = Color(255, 255, 255, 255);
 								ps_tex = brtTex;
-								ps_offset += brtOffset;
+								ps_offset = altOffset;
 								break;
 						}
 						
-						screen.DrawTexture(ps_tex, false, 160 + ps_offset.x, 100 + ps_offset.y,
+						screen.DrawTexture(ps_tex, false, 160 + weaponPos.x, 100 + weaponPos.y,
 							DTA_VirtualWidth, 320,
 							DTA_VirtualHeight, 200,
 							DTA_Rotate, weaponTilt,
@@ -163,7 +164,7 @@ Extend Class TSP_EventHandler
 							DTA_ScaleY, weaponScale,
 							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
 							ps_colorType, ps_color,
-							DTA_LeftOffsetF, newOffset.x, DTA_TopOffsetF, newOffset.y,
+							DTA_LeftOffsetF, ps_offset.x, DTA_TopOffsetF, ps_offset.y,
 							DTA_Alpha, ps_alpha);
 					}
 				}
