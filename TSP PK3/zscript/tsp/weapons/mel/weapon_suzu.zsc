@@ -319,8 +319,6 @@ Class MelSMG : TSP_Mel_LightWeapon
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" A 14;
 			"----" A 0 A_TSP_JumpIfModInactive("Ready");
-			131S A 1 A_PlaySound("weapon/mod/on", 5);
-			131S B 2;
 			"----" A 0 A_Jump(256, "Switch");
 			Stop;
 		

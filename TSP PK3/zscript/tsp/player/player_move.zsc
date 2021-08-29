@@ -7,6 +7,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_lastbob;
 	double tsp_bobamt;
 	
+	bool tsp_crouching;
+	double tsp_viewheight_mult;
+	
 	//
 	// MovePlayer()
 	//
@@ -95,7 +98,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( cmd.forwardmove || cmd.sidemove )
 		{
-			double finalSpeed = ( !player.onground ? 0.1 : runspeed );
+			double finalSpeed = ( !player.onground ? 0.1 : runspeed ) * tsp_viewheight_mult;
 			
 			if ( !tsp_crouchSliding )
 			{
@@ -113,6 +116,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		tsp_lastbob = tsp_bob;
 		tsp_bob = tsp_bob + ( bobTarg * 2 - tsp_bob ) / 3;
 		tsp_bobamt = tsp_bobamt + ( (isMoving ? 1 : 0) - tsp_bobAmt ) / 4.;
+		
+		tsp_viewheight_mult = tsp_viewheight_mult + ( (tsp_crouching ? 0.42 : 1.0) - tsp_viewheight_mult ) / 2;
 	}	
 	
 	//
@@ -124,14 +129,39 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	override void CalcHeight()
 	{
 		double viewBob = 3 * cos(level.maptime * 16) * (vel.length() / 8);
+		double newViewheight = viewheight * tsp_viewheight_mult;
+		
 		if ( tsp_crouchSliding )
 		{
 			player.viewz = pos.Z + 24;
 		}
 		else
 		{
-			player.viewz = pos.Z + viewheight + viewBob;
+			player.viewz = pos.Z + (newViewheight * player.crouchfactor) + viewBob;
 			//super.CalcHeight();
+		}
+	}
+	
+	override void CheckCrouch (bool totallyfrozen)
+	{
+		let player = self.player;
+		UserCmd cmd = player.cmd;
+
+		if ( cmd.buttons & BT_JUMP )
+		{
+			cmd.buttons &= ~BT_CROUCH;
+		}
+		
+		if ( CanCrouch() && player.health > 0 && level.IsCrouchingAllowed() )
+		{
+			if ( !totallyfrozen )
+			{
+				tsp_crouching = (cmd.buttons & BT_CROUCH);
+			}
+		}
+		else
+		{
+			tsp_crouching = false;
 		}
 	}
 	

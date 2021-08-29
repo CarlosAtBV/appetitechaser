@@ -223,6 +223,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		gvars.tsp_employer = 0;
 		
 		tsp_fb_zoom = 1.0;
+		
+		tsp_viewheight_mult = 1.0;
 	}
 	
 	void notifyMessage (string message, int time = 70)
