@@ -297,37 +297,25 @@ Class MelSMG : TSP_Mel_LightWeapon
 			131A CBA 1;
 			131G AAA 1;
 			ReloadFinish:
-			"----" A 0
-			{
-				A_Overlay(70,"Offsets_Reload");
-				A_Overlay(10,"ReloadHand");
-				A_Overlay(11,"Offsets_ReloadHand");
-				A_OverlayFlags(10,PSPF_ADDWEAPON,false);
-			}
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			"####" A 2;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
-			"####" A 2;
-			"----" A 0 A_StartSound("suzuka/eject", 6);
-			"####" B 2;
-			"####" CD 1;
-			"####" EF 13;
+			"####" A 1;
+			"####" B 9;
+			"####" C 1;
+			"####" D 21;
+			"####" E 19;
+			"####" F 1;
 			"----" A 0 A_TSP_ReloadAmmo;
-			"####" G 2;
-			"####" H 2 A_StartSound("suzuka/load", 5);
+			"####" B 9;
+			"####" A 1;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
-			"####" A 12;
-			"----" A 0
-			{
-				A_StartSound("suzuka/pump", 6);
-				A_TSP_WeaponRecoilDir(random(35,55)-10,18,1);
-			}
-			"####" GGGG 1 A_TSP_WeaponRecoilDir(35,6,1);
-			"####" GF 2;
+			"####" A 14;
 			"----" A 0 A_TSP_JumpIfModInactive("Ready");
 			131S A 1 A_PlaySound("weapon/mod/on", 5);
 			131S B 2;
-			Goto ModReady;
+			"----" A 0 A_Jump(256, "Switch");
+			Stop;
 		
 		Offsets_ReloadHand:
 			TNT1 A 1 A_OverlayOffset(10, 84, 168, WOF_INTERPOLATE);
