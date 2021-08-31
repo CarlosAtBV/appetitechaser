@@ -16,9 +16,17 @@
 	GOD3 2;
 	GOD2 2;
 	GOD1 26;
-	GODA 1;
-	GODB 1;
-	GODA 1;
+	GOD2 2;
+	GOD3 2;
+	GOD4 2;
+	GOD5 2;
+	GOD6 1;
+	GOD7 2;
+	GOD6 1;
+	GOD5 2;
+	GOD4 2;
+	GOD3 2;
+	GOD2 2;
     }
 	
 	mugshot "Pain", health

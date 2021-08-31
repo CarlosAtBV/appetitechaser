@@ -89,9 +89,9 @@ Class TSP_StatusBar : BaseStatusBar
 	}
 	
 	const HUDLEFT_X = 0;
-	const HUDLEFT_Y = -70;
-	const HUDRIGHT_X = -135;
-	const HUDRIGHT_Y = -70;
+	const HUDLEFT_Y = -140;
+	const HUDRIGHT_X = -270;
+	const HUDRIGHT_Y = -140;
 
 	override void Draw (int state, double TicFrac)
 	{
@@ -115,7 +115,8 @@ Class TSP_StatusBar : BaseStatusBar
 			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			int charge = mChargeInterpolator.GetValue();
-            //DrawImage("H_GUIDER", (-135, -70), DI_ITEM_OFFSETS);
+            DrawImage("H_GUIDEL", (0, -140), DI_ITEM_OFFSETS); // guide
+            DrawImage("H_GUIDER", (-270, -140), DI_ITEM_OFFSETS); // guide
 			
 			// MEL HUD
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
@@ -211,34 +212,34 @@ Class TSP_StatusBar : BaseStatusBar
 			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Default Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Default Mel
 				case 2:
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retrograde Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Retrograde Mel
 				case 3: 
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
+					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
 				case 4: 
-					DrawImage("MELOBYPA", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS); break;							   // Meloby
+					DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;							   // Meloby
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
 						if(cplayer.getgender()==2) // Are you a robot?
 						{
-						DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 						}
 						else // You are not a robot
 						{
-						DrawTexture(GetMugShot(6), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 						}
 					}
 					
 					else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
 					{
-						DrawImage("MELOBYPA", (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 						//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
 					}
 					else // Draw default player mugshot
 					{
-						DrawTexture(GetMugShot(6), (HUDLEFT_X+14.5, HUDLEFT_Y+1.5), DI_ITEM_OFFSETS);
+						DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 					}
 					
 
@@ -246,7 +247,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						/*if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
 						{
-						DrawImage("MCWSTZZ", (HUDLEFT_X+9, HUDLEFT_Y-1), DI_ITEM_OFFSETS);
+						DrawImage("MCWSTZZ", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 						}*/
 					}
 				
@@ -261,19 +262,19 @@ Class TSP_StatusBar : BaseStatusBar
 				switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 				{
 					case 1: 
-						DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Green Sparks (Default Mel)
+						DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Green Sparks (Default Mel)
 					case 2:
-						DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Green Sparks (Retrograde Mel)
+						DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Green Sparks (Retrograde Mel)
 					case 3: 
-						DrawImage("HUDSPB00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); break; // Pink Sparks  (Retro/Robo Mel)
+						DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Pink Sparks  (Retro/Robo Mel)
 					default:
 								if(CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2) // Are you Robo/Retro Mel?
 								{
-								DrawImage("HUDSPB00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); // Pink Sparks
+								DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); // Pink Sparks
 								}
 								else // You are not a robot
 								{
-								DrawImage("HUDSPA00", (HUDLEFT_X+16, HUDLEFT_Y-2), DI_ITEM_OFFSETS); // Green Sparks
+								DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); // Green Sparks
 								}
 							
 				}
