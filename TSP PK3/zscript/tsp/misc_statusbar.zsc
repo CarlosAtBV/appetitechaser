@@ -115,13 +115,18 @@ Class TSP_StatusBar : BaseStatusBar
 			int money = mMoneyInterpolator.GetValue();
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			int charge = mChargeInterpolator.GetValue();
-            DrawImage("H_GUIDEL", (0, -140), DI_ITEM_OFFSETS); // guide
+            //DrawImage("H_GUIDEL", (0, -140), DI_ITEM_OFFSETS); // guide
             DrawImage("H_GUIDER", (-270, -140), DI_ITEM_OFFSETS); // guide
+			
+			//LEFT SIDE OF THE HUD (Health, Armor, Armor Pips, Money)
+			
+			// SHADOW
+			DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// MEL HUD
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("MEL_HUDB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			// Monet
@@ -137,77 +142,72 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// Main Stats
 			
-			// BOX SHADOW
-			DrawImage("HUD_VITD", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// HEALTH
 				Color hpColor;
 				if(health>100)
 				{
 					hpColor = Font.FindFontColor("TSPHealthGold");
+					DrawBar("HUD_VITO", "HUD_VITF", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				}
-				else if(health>75)
+				else if(health>70)
 				{
 					hpColor = Font.FindFontColor("TSPHealthBlue");
-					DrawBar("HUD_VHPB", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VITF", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				}
-				else if(health>50)
+				else if(health>40)
 				{
 					hpColor = Font.FindFontColor("TSPHudYeller");
-					DrawBar("HUD_VHPF", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VITM", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				}
 				else
 				{
 					hpColor = Font.FindFontColor("TSPHudRed");
-					DrawBar("HUD_VHPH", "HUD_VHPD", health, 100, (HUDLEFT_X+68.5, HUDLEFT_Y+41), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VITR", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				}
 				
 
-			// SHIELD
+			// SHIELD BAR
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 0: DrawBar("HUD_VSHN", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 1: DrawBar("HUD_VSHF", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 2: DrawBar("HUD_VSHH", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 3: DrawBar("HUD_VSHJ", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 4: DrawBar("HUD_VSHL", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
-				case 5: DrawBar("HUD_VSHB", "HUD_VSHD", shield, maxShield, (HUDLEFT_X+71, HUDLEFT_Y+51.5), 0, 0, DI_ITEM_OFFSETS); break;
+				case 0: DrawBar("HUD_SHD0", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 1: DrawBar("HUD_SHD1", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 2: DrawBar("HUD_SHD2", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 3: DrawBar("HUD_SHD3", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 4: DrawBar("HUD_SHD4", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 5: DrawBar("HUD_SHD5", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
 			}
+			
+			// MAIN HUD GRAPHIC
+			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// MONEY
-			DrawImage("HUD_VMNB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
+			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
 			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE); //Money Stuff
 			
-			// MEL/RETROGRADE MEL HUD CHUNK
-			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
-			{
-				DrawImage("MEL_HUDB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			}
-			
-			// HUD LEFT STATS OVERLAY
-			DrawImage("HUD_VITB", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			
-			// SHIELD CONT
+			// SHIELD PIPS
 			if(CPlayer.mo is "TSP_MelPlayer")
 			{
-				DrawImage("SHD_3B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("SHD_3A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("SHD_2B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				DrawImage("SHD_2A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 1: DrawImage("SHD_1D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 2: DrawImage("SHD_2D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 3: DrawImage("SHD_3D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 4: DrawImage("SHD_4D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 5: DrawImage("SHD_5D", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 1: DrawImage("SHD_1B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 2: DrawImage("SHD_2B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 3: DrawImage("SHD_3B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 4: DrawImage("SHD_4B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 5: DrawImage("SHD_5B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
 			}
 			
 			//================
-			// Mel Mugshot
-			//================			
+			// MUGSHOTS
+			//================
+			
+			// MEL (MEL, RETROGRADE MEL)
 
 			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
@@ -279,6 +279,7 @@ Class TSP_StatusBar : BaseStatusBar
 							
 				}
 			}
+			
 			/*
 			//================
 			// Health
