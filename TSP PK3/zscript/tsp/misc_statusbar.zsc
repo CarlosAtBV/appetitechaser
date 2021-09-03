@@ -148,7 +148,7 @@ Class TSP_StatusBar : BaseStatusBar
 				if(health>100)
 				{
 					hpColor = Font.FindFontColor("TSPHealthGold");
-					DrawBar("HUD_VITO", "HUD_VITF", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
+					DrawBar("HUD_VITO", "HUD_VITF", health - 100, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				}
 				else if(health>70)
 				{
