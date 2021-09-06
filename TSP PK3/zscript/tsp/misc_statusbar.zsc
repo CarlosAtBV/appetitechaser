@@ -116,7 +116,7 @@ Class TSP_StatusBar : BaseStatusBar
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			int charge = mChargeInterpolator.GetValue();
             //DrawImage("H_GUIDEL", (0, -140), DI_ITEM_OFFSETS); // guide
-            DrawImage("H_GUIDER", (-270, -140), DI_ITEM_OFFSETS); // guide
+            //DrawImage("H_GUIDER", (-270, -140), DI_ITEM_OFFSETS); // guide
 			
 			//LEFT SIDE OF THE HUD (Health, Armor, Armor Pips, Money)
 			
@@ -178,7 +178,7 @@ Class TSP_StatusBar : BaseStatusBar
 				case 5: DrawBar("HUD_SHD5", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
 			}
 			
-			// MAIN HUD GRAPHIC
+			// MAIN HUD GRAPHIC (LEFT)
 			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// MONEY
@@ -280,33 +280,6 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 			}
 			
-			/*
-			//================
-			// Health
-			//================
-			
-				Color hpColor;
-				if(health>100)
-				{
-					hpColor = Font.FindFontColor("TSPHealthGold");
-				}
-				else if(health>75)
-				{
-					hpColor = Font.FindFontColor("TSPHealthBlue");
-				}
-				else if(health>50)
-				{
-					hpColor = Font.FindFontColor("TSPHudYeller");
-				}
-				else
-				{
-					hpColor = Font.FindFontColor("TSPHudRed");
-				}
-				DrawString(mSmallFont, ""..health, (HUDLEFT_X+84, HUDLEFT_Y+36), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, hpColor);
-				
-				// sheld number stats
-				DrawString(mSmallFont, ""..shield, (HUDLEFT_X+84, HUDLEFT_Y+47), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.FindFontColor("TSPShieldOrange"));
-			
 			//================
 			// Keys
 			//================
@@ -324,7 +297,7 @@ Class TSP_StatusBar : BaseStatusBar
 						roww = max(roww, size.X);
 					}
 				}
-			*/
+
 			// RIGHT HAND SIDE
 			
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
@@ -339,6 +312,9 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			// RIGHT SIDE BASE
 			//================
+			
+			// SHADOW
+			DrawImage("HUD_RBG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			if(CVar.GetCVar("tsp_easyauto", players[0]).GetBool()) //Auto-Assist Enabled
 			{
@@ -411,32 +387,8 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
 			}
-			
-			// RETRO MEL
-			if(CPlayer.mo is "TSP_MelRetroPlayer")
-			{
-				DrawImage("MRG_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-				for(int i = 0;i<8;i++)
-				{
-					if(CPlayer.HasWeaponsInSlot(i+1))
-					{
-						DrawImage("MRG_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-					}
-				}
-				
-					if(CPlayer.mo.FindInventory("SuperShotgun")) //temp for testing
-					{
-					DrawImage("MRG_WPI3", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-					}
-					
-					/*if(CPlayer.mo.FindInventory("Chainsaw")) //temp for testing
-					{
-					DrawImage("MRG_WPI7", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-					}*/
-			}
 
 
-			
 			//================
 			// WEAPON BASE
 			//================
@@ -476,6 +428,9 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
+			
+			// MAIN HUD GRAPHIC (RIGHT)
+			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			//================
 			// Weapon Mod
