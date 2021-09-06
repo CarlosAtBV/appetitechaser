@@ -46,6 +46,8 @@ misc/meleekill "sounds/weapon fx/meleekill.ogg"
 ability/slipdash/start "sounds/general/player/sfx_general_slipdash_start.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
 ability/slipdash/end "sounds/general/player/sfx_general_slipdash_end.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
 ability/crouchsliding "sounds/placeholder/mel_scrapes_her_knee_on_pavement.ogg" // HL2
+$volume ability/slipdash/start 0.6
+$volume ability/slipdash/end 0.6
 $volume ability/crouchsliding 0.5
 
 //Armor Pickups
