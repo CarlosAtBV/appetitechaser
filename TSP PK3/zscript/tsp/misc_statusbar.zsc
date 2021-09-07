@@ -10,6 +10,7 @@ Class TSP_StatusBar : BaseStatusBar
 	HUDFont mSmallFont;
 	HUDFont mAmountFont;
 	HUDFont mTinyFont;
+	HUDFont fnt_ammoBig;
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
@@ -54,6 +55,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mSmallFont = HUDFont.Create(fnt);
 		mTinyFont = HUDFont.Create("TINYFONT",0,Mono_off,1,1);
 		mAmountFont = HUDFont.Create("INDEXFONT");
+		fnt_ammoBig = HUDFont.Create("tsp_ammo_big");
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
 		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -387,7 +389,9 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
 			}
-
+			
+			// MAIN HUD GRAPHIC (RIGHT)
+			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 
 			//================
 			// WEAPON BASE
@@ -417,7 +421,7 @@ Class TSP_StatusBar : BaseStatusBar
 						{
 							ammoColor = Font.FindFontColor("TSPWhite");
 						}
-						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+38, HUDRIGHT_Y+38), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
+						DrawString(fnt_ammoBig, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+51, HUDRIGHT_Y+75), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
 						alpha = 0.6;
 						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+45), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.FindFontColor("TSPGold"));
 					}
@@ -428,9 +432,6 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
-			
-			// MAIN HUD GRAPHIC (RIGHT)
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			//================
 			// Weapon Mod
