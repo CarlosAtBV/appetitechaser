@@ -9,6 +9,18 @@ lengths = [];
 
 render_crop2021.doCropLeft = False;
 
+layers = [
+    {
+        "layers":[0],
+		"path":'//../../../TSP PK3/fonts/tsp_ammo_big/',
+    },
+    {
+        "layers":[1],
+		"path":'//../../../TSP PK3/fonts/tsp_ammo_small/',
+    },
+];
+
+
 def renderFont(basePath):
 	for curFrame in range(48, 57+1):
 		getCode = format(curFrame, 'x');
@@ -28,8 +40,6 @@ def renderFont(basePath):
 
 		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(pX-15), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
 		
-renderFont('//../../../TSP PK3/fonts/tsp_ammo_big/');
-
-bpy.data.objects["Text"].data.size *= 0.5;
-
-renderFont('//../../../TSP PK3/fonts/tsp_ammo_small/');
+for layer in layers:
+	scene.layers = [l in layer["layers"] for l in range(20)];
+	renderFont(layer["path"]);
