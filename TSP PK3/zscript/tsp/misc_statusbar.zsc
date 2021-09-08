@@ -13,6 +13,7 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	HUDFont fnt_ammoBig;
 	HUDFont fnt_ammoSmall;
+	HUDFont fnt_ammoTag;
 	
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
@@ -60,6 +61,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		fnt_ammoBig = HUDFont.Create("tsp_ammo_big");
 		fnt_ammoSmall = HUDFont.Create("tsp_ammo_small");
+		fnt_ammoTag = HUDFont.Create("tsp_ammo_tag");
 		
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -381,17 +383,14 @@ Class TSP_StatusBar : BaseStatusBar
 			// MAIN HUD GRAPHIC (RIGHT)
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
-			if(CPlayer.ReadyWeapon)
-			{
-				//DrawInventoryIcon(CPlayer.ReadyWeapon,(HUDRIGHT_X+22, HUDRIGHT_Y+42),DI_ITEM_LEFT,0.5);
-				DrawString(mTinyFont, CPlayer.ReadyWeapon.GetTag(), (HUDRIGHT_X+63, HUDRIGHT_Y+58), DI_TEXT_ALIGN_RIGHT);
-			}
-			
 			if (a1 != null)
 			{
 				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core")
 				{
 					TSP_Weapon_Core wepon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
+					
+					DrawString(fnt_ammoTag, wepon.tspw_altname, (HUDRIGHT_X+128, HUDRIGHT_Y+100), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+				
 					if(wepon.tspw_clipsize>0)
 					{
 						int ammoRed = wepon.tspw_clipsize*0.4;

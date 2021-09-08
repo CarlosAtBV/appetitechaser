@@ -18,16 +18,21 @@ layers = [
         "layers":[1],
 		"path":'//../../../TSP PK3/fonts/tsp_ammo_small/',
     },
+    {
+        "layers":[2],
+		"path":'//../../../TSP PK3/fonts/tsp_ammo_tag/',
+    },
 ];
 
 
 def renderFont(basePath):
-	for curFrame in range(48, 57+1):
+	for curFrame in range(48, 122+1):#57
 		getCode = format(curFrame, 'x');
 
 		frameName = format(getCode, "0>4");
 
 		bpy.data.objects["Text"].data.body = chr(curFrame);
+		bpy.data.objects["Text.002"].data.body = chr(curFrame);
 		
 		scene.render.filepath = basePath+frameName;
 		bpy.ops.render.render(write_still = True);
