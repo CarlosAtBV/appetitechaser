@@ -394,9 +394,6 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
 			}
-			
-			// MAIN HUD GRAPHIC (RIGHT)
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 
 			//================
 			// WEAPON BASE
@@ -427,7 +424,6 @@ Class TSP_StatusBar : BaseStatusBar
 							ammoColor = Font.FindFontColor("TSPWhite");
 						}
 						DrawString(fnt_ammoBig, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+75), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
-						alpha = 0.6;
 						DrawString(fnt_ammoSmall, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+117, HUDRIGHT_Y+75), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 					}
 					
@@ -437,6 +433,12 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
+			
+			// MAIN HUD GRAPHIC (AMMO)
+			DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);			
+
+			// MAIN HUD GRAPHIC (RIGHT)
+			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			//================
 			// Weapon Mod
