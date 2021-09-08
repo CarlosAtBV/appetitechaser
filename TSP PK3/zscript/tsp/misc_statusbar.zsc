@@ -310,27 +310,21 @@ Class TSP_StatusBar : BaseStatusBar
 			// HOW CAN I KILL NOOBS WITHOUT ANY AMMO
 			
 			//================
-			// TRAIT
-			//================
-			
-			DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS, mTraitAlpha);
-			
-			//================
 			// RIGHT SIDE BASE
 			//================
 			
 			// SHADOW
 			DrawImage("HUD_RBG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
-			if(CVar.GetCVar("tsp_easyauto", players[0]).GetBool()) //Auto-Assist Enabled
-			{
-			DrawString(mTinyFont, "\cfAuto", (HUDRIGHT_X+109, HUDRIGHT_Y+58), DI_TEXT_ALIGN_CENTER, Font.CR_GOLD);
-			}
+			//================
+			// TRAIT
+			//================
 			
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS, mTraitAlpha);
 			
-			// MEL MELEE HUD BASE
+			
+			// MEL SHENANIGANS
 			int maxCharge;
 			
 			// BARE KNUCKLE - Stasis Uppercut
@@ -371,29 +365,6 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("MEL_WEPC", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			}
 		
-		
-			
-			//================
-			// WEAPON PIP
-			//================
-			
-			// MEL
-			if(CPlayer.mo is "TSP_MelPlayer")
-			{
-				DrawImage("MEL_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-				for(int i = 0;i<7;i++)
-				{
-					if(CPlayer.HasWeaponsInSlot(i+1))
-					{
-						DrawImage("MEL_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-					}
-				}
-				
-				if(CPlayer.mo.FindInventory("MelChargeStyle"))
-				{
-					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-				}
-			}
 
 			//================
 			// WEAPON BASE
@@ -438,6 +409,35 @@ Class TSP_StatusBar : BaseStatusBar
 					
 					screen.DrawTexture(crossTex, false, screen.GetWidth()/2, screen.GetHeight()/2,
 						DTA_CenterOffset, true);
+				}
+			}
+			
+			
+			// EASY AUTO ACTIVATED
+			/*if(CVar.GetCVar("tsp_easyauto", players[0]).GetBool()) //Auto-Assist Enabled
+			{
+			DrawString(mTinyFont, "\cfAuto", (HUDRIGHT_X+109, HUDRIGHT_Y+58), DI_TEXT_ALIGN_CENTER, Font.CR_GOLD);
+			}*/
+			
+			//================
+			// WEAPON PIP
+			//================
+			
+			// MEL
+			if(CPlayer.mo is "TSP_MelPlayer")
+			{
+				DrawImage("MEL_WPIE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				for(int i = 0;i<7;i++)
+				{
+					if(CPlayer.HasWeaponsInSlot(i+1))
+					{
+						DrawImage("MEL_WPI"..i, (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					}
+				}
+				
+				if(CPlayer.mo.FindInventory("MelChargeStyle"))
+				{
+					DrawImage("MEL_WPIX", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
 			}
 			
