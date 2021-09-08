@@ -1,9 +1,13 @@
 import math, bpy
 
+doCropLeft = True;
+
 def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 	num_channels=orig_img.channels
 	image_size_X = orig_img.size[0]
 	image_size_Y = orig_img.size[1]
+	
+	global doCropLeft;
 	
 	simpleArray = []
 
@@ -42,6 +46,8 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 					crop_top_Y = iy;
 
 	print("Grabbing modified size ...")
+	
+	if ( not doCropLeft ) : crop_left_X = 0;
 	
 	final_size_X = crop_right_X - crop_left_X;
 	final_size_Y = crop_bottom_Y - crop_top_Y;

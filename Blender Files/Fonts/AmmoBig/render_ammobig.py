@@ -5,6 +5,10 @@ import render_crop2021
 
 scene = bpy.context.scene
 
+lengths = [];
+
+render_crop2021.doCropLeft = False;
+
 def renderFont(basePath):
 	for curFrame in range(48, 57+1):
 		getCode = format(curFrame, 'x');
@@ -22,7 +26,7 @@ def renderFont(basePath):
 		cropImg.filepath_raw = scene.render.filepath+str('.png');
 		cropImg.save();
 
-		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(0), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
+		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(pX-15), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
 		
 renderFont('//../../../TSP PK3/fonts/tsp_ammo_big/');
 
