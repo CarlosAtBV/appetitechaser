@@ -233,6 +233,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		pp_notificationTime = time;
 	}
 	
+	float pp_hitMult;
+	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
 		/*string damageGiver = (inflictor!=null ? inflictor.GetClassName() : 'N/A');
@@ -252,6 +254,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			int truDamage = damage;
 			damage = 0;
 			
+			pp_hitMult = 0.25;
+			
 			TakeInventory("TSP_PlayerPawn_Shield",truDamage);
 			A_PlaySound("shield/hit",CHAN_BODY);
 			if(CountInv("TSP_PlayerPawn_Shield")<1)
@@ -261,6 +265,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			A_SetBlend("#56E7FF", 0.1, 8, "#56E7FF", 0.0);
 			return 0;
 		}
+		
+		pp_hitMult = 1.0;
 		
 		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
 	}
@@ -405,6 +411,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TSP_TickCasings();
 		
 		A_SetViewRoll(tsp_crouchSliding ? 2 : 0, SPF_INTERPOLATE);
+		
+		if ( pp_hitMult > 0 )
+		{
+			pp_hitMult *= 0.95;
+		}
 		
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}

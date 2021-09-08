@@ -124,6 +124,14 @@ Class TSP_StatusBar : BaseStatusBar
 		{
 			curWeapon.TSP_DrawWeaponHud(TicFrac);
 		}
+		
+		let tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
+		
+		if ( tsp_player )
+		{
+			float hitTime = tsp_player.pp_hitMult;
+			drawOffset = hitTime ? (frandom(-5,5), frandom(-5,5)) * hitTime : (0, 0);
+		}
 
 		if (state == HUD_StatusBar||state == HUD_Fullscreen)
 		{
