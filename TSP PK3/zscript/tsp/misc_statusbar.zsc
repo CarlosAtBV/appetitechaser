@@ -373,7 +373,10 @@ Class TSP_StatusBar : BaseStatusBar
 			Inventory a1 = GetCurrentAmmo();
 			
 			// MAIN HUD GRAPHIC (AMMO)
-			DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);			
+			if (a1 != null)
+			{
+				DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			}				
 
 			// MAIN HUD GRAPHIC (RIGHT)
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
@@ -401,8 +404,15 @@ Class TSP_StatusBar : BaseStatusBar
 						{
 							ammoColor = Font.FindFontColor("TSPWhite");
 						}
-						DrawString(fnt_ammoBig, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+49, HUDRIGHT_Y+75), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
-						DrawString(fnt_ammoSmall, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+117, HUDRIGHT_Y+75), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+						
+						int clipAmount = TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip;
+						string clipString = string.format("%03d", TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip);
+						for ( int i; i < clipString.length(); i++ )
+						{
+							DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72 + 21*i, HUDRIGHT_Y+76), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED,
+								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);
+						}
+						DrawString(fnt_ammoSmall, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+110, HUDRIGHT_Y+84), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 					}
 					
 					let crossTex = TexMan.CheckForTexture(wepon.tspw_crosshair);
