@@ -400,6 +400,13 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			
 			Inventory a1 = GetCurrentAmmo();
+			
+			// MAIN HUD GRAPHIC (AMMO)
+			DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);			
+
+			// MAIN HUD GRAPHIC (RIGHT)
+			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			
 			if(CPlayer.ReadyWeapon)
 			{
 				//DrawInventoryIcon(CPlayer.ReadyWeapon,(HUDRIGHT_X+22, HUDRIGHT_Y+42),DI_ITEM_LEFT,0.5);
@@ -433,12 +440,6 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
-			
-			// MAIN HUD GRAPHIC (AMMO)
-			DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);			
-
-			// MAIN HUD GRAPHIC (RIGHT)
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			//================
 			// Weapon Mod

@@ -22,7 +22,7 @@ def renderFont(basePath):
 		cropImg.filepath_raw = scene.render.filepath+str('.png');
 		cropImg.save();
 
-		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(pX), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
+		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(0), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
 		
 renderFont('//../../../TSP PK3/fonts/tsp_ammo_big/');
 
