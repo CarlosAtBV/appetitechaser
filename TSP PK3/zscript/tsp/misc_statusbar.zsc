@@ -18,8 +18,10 @@ Class TSP_StatusBar : BaseStatusBar
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
-	LinearValueInterpolator mMoneyInterpolator;
 	LinearValueInterpolator mChargeInterpolator;
+	
+	int hud_money_target;
+	int hud_money_lerp;
 	
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
@@ -66,7 +68,6 @@ Class TSP_StatusBar : BaseStatusBar
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
 		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
-		mMoneyInterpolator = LinearValueInterpolator.Create(0, 8);
 		mChargeInterpolator = LinearValueInterpolator.Create(0, 1);
 	}
 	
@@ -75,7 +76,18 @@ Class TSP_StatusBar : BaseStatusBar
 		super.Tick();
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
-		mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
+		//mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
+		hud_money_target = CPlayer.mo.CountInv("TSP_GlobalDollars");
+		
+		if ( hud_money_lerp != hud_money_target )
+		{
+			hud_money_lerp = hud_money_lerp + ( hud_money_target - hud_money_lerp ) * 0.99;
+			if ( (hud_money_target - hud_money_lerp) < 10 )
+			{
+				hud_money_lerp = hud_money_target;
+			}
+		}
+		
 		mChargeInterpolator.Update(CPlayer.mo.CountInv("TSPChargedAttack"));
 		
 		tsp_player = TSP_PlayerPawn_ZSCBase(CPlayer.mo);
@@ -121,7 +133,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			int health = mHealthInterpolator.GetValue();
 			int shield = mShieldInterpolator.GetValue();
-			int money = mMoneyInterpolator.GetValue();
+			int money = hud_money_lerp;
 			int maxShield = CPlayer.mo.CountInv("TSP_PlayerPawn_MaxShield");
 			int charge = mChargeInterpolator.GetValue();
             //DrawImage("H_GUIDEL", (0, -140), DI_ITEM_OFFSETS); // guide
@@ -138,8 +150,6 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
-			// Monet
-			//DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
 			
 			if(CPlayer.mo.InvSel)
@@ -192,6 +202,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MONEY
 			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
+			DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE); //Money Stuff
 			
 			// SHIELD PIPS
@@ -428,7 +439,7 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 			}
 			
-			DrawString(fnt_ammoBig, "0123456789", (40, 40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
+			//DrawString(fnt_ammoBig, "0123456789", (40, 40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
 			
 			
 			// EASY AUTO ACTIVATED
