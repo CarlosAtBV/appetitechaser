@@ -116,8 +116,9 @@ Extend Class TSP_EventHandler
 					//newOffset -= character.TSP_BobWeapon(e.FracTic);
 					
 					bool doBright = TexMan.GetName(brtTex) != "";
+					bool isFlash = psprite.id == PSP_FLASH;
 					
-					for (int i = 0; i < (doBright ? 4 : 3); i++)
+					for (int i = isFlash ? 1 : 0; i < (doBright ? 4 : isFlash ? 2 : 3); i++)
 					{
 						int ps_renderStyle;
 						double ps_alpha;
@@ -136,8 +137,8 @@ Extend Class TSP_EventHandler
 								break;
 							case 1:
 								ps_renderStyle = STYLE_Translucent;
-								ps_alpha = lightLevel;
-								ps_color = Color(255, sectorColor.r, sectorColor.g, sectorColor.b);
+								ps_alpha = isFlash ? 1.0 : lightLevel;
+								ps_color = isFlash ? Color(255, 255, 255, 255) : Color(255, sectorColor.r, sectorColor.g, sectorColor.b);
 								ps_colorType = DTA_Color;
 								break;
 							case 2:
@@ -162,7 +163,7 @@ Extend Class TSP_EventHandler
 							DTA_Rotate, weaponTilt,
 							DTA_ScaleX, weaponScale,
 							DTA_ScaleY, weaponScale,
-							DTA_LegacyRenderStyle, psprite.id == PSP_FLASH ? Style_Add : ps_renderStyle,
+							DTA_LegacyRenderStyle, isFlash ? Style_Add : ps_renderStyle,
 							ps_colorType, ps_color,
 							DTA_LeftOffsetF, ps_offset.x, DTA_TopOffsetF, ps_offset.y,
 							DTA_Alpha, ps_alpha);
