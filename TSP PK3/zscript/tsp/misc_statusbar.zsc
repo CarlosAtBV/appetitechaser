@@ -173,16 +173,23 @@ Class TSP_StatusBar : BaseStatusBar
 			// HEALTH
 				Color hpColor;
 				
+				bool overheal = (health > 100);
 				int healthWidth = 121;
-				int healthOffset_base = (health / 100.) * healthWidth;
+				int healthOffset_base = ( health / 100. ) * healthWidth;
 				
 				string healthBarTex;
 				
-				if(health>70)
+				// [Py] Get the best graphic for the healthbar depending on the amount of HP
+				if ( overheal )
+				{
+					healthBarTex = "HUD_VITO";
+					healthOffset_base -= healthWidth;
+				}
+				else if ( health>70 )
 				{
 					healthBarTex = "HUD_VITF";
 				}
-				else if(health>40)
+				else if ( health>40 )
 				{
 					healthBarTex = "HUD_VITM";
 				}
@@ -191,10 +198,13 @@ Class TSP_StatusBar : BaseStatusBar
 					healthBarTex = "HUD_VITR";
 				}
 				
-				DrawImage("HUD_VITE", (HUDLEFT_X+122, HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
+				// [Py] Draw the background
+				// [Py] This swaps over to VITF for the overheal so that we only have to write this one line because uhhhhhhh
+				DrawImage(overheal ? "HUD_VITF" : "HUD_VITE", (HUDLEFT_X+122, HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
 				
 				if ( health > 0 )
 				{
+					// [Py] just a mini fucked up hack for masking the bars ...
 					for ( int i = 0; i < 2; i++ )
 					{
 						if ( i == 0 ) { SetClipRect(HUDLEFT_X+122, HUDLEFT_Y+75, 132, 9); }
@@ -204,27 +214,6 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					ClearClipRect();
 				}
-				
-				/*if(health>100)
-				{
-					hpColor = Font.FindFontColor("TSPHealthGold");
-					DrawBar("HUD_VITO", "HUD_VITF", health - 100, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
-				}
-				else if(health>70)
-				{
-					hpColor = Font.FindFontColor("TSPHealthBlue");
-					DrawBar("HUD_VITF", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
-				}
-				else if(health>40)
-				{
-					hpColor = Font.FindFontColor("TSPHudYeller");
-					DrawBar("HUD_VITM", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
-				}
-				else
-				{
-					hpColor = Font.FindFontColor("TSPHudRed");
-					DrawBar("HUD_VITR", "HUD_VITE", health, 100, (HUDLEFT_X+120, HUDLEFT_Y+74), 0, 0, DI_ITEM_OFFSETS);
-				}*/
 				
 
 			// SHIELD BAR
@@ -240,8 +229,6 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MAIN HUD GRAPHIC (LEFT)
 			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
-			
-			DrawString(mSmallFont, ""..(-healthWidth + healthOffset_base), (HUDLEFT_X+122, HUDLEFT_Y), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 			
 			// MONEY
 			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
