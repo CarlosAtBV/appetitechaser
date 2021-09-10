@@ -61,7 +61,7 @@ Class TSP_EnemyHandler_Freezer : Thinker
 	}
 }
 
-Class TSP_EnemyHandler_OnHit : Thinker
+/*Class TSP_EnemyHandler_OnHit : Thinker
 {
 	Actor owner;
 	
@@ -145,4 +145,4 @@ Class TSP_EnemyHandler_OnHit : Thinker
 
 		Super.Tick();
 	}
-}
+}*/

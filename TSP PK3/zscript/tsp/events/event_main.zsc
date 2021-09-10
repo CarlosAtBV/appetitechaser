@@ -90,7 +90,7 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldThingDamaged(WorldEvent e)
 	{
-		if(!e.Thing.CountInv("TSP_EnemyHandler_IsSupered")) return;
+		if(!e.Thing.CountInv("TSP_Mel_StasisHandler")) return;
 		
 		switch(gamemode)
 		{

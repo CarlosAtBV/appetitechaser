@@ -374,10 +374,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 			else if(Distance3D(pp_slingTarget)-pp_slingTarget.radius<64)
 			{
-				if(pp_SlingTarget.CountInv("TSP_EnemyHandler_IsSupered"))
+				/*if(pp_SlingTarget.CountInv("TSP_EnemyHandler_IsSupered"))
 				{
 					pp_freezeMe = pp_SlingTarget.CountInv("TSP_EnemyHandler_IsSupered")/2;
-				}
+				}*/
 				pp_slingTarget=null;
 				A_Stop();
 			}

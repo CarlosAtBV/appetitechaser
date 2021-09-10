@@ -85,10 +85,6 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/gm_hunters.zsc"
 
 #include "zscript/tsp/weapons/core_include.zsc" // [Py] for the sake of organization
-#include "zscript/tsp/weapons/aaa_core.zsc"
-#include "zscript/tsp/weapons/aaa_mag.zsc"
-#include "zscript/tsp/weapons/aaa_pickup.zsc"
-#include "zscript/tsp/weapons/aaa_tokens.zsc" // [CS] Someday, maybe we won't need tokens to play games at Chuck E. Cheese.
 
 // MEL
 #include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"

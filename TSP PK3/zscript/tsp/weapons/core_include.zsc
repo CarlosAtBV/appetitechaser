@@ -1,6 +1,11 @@
+#include "zscript/tsp/weapons/core/core.zsc"
 #include "zscript/tsp/weapons/core/states.zsc"
 #include "zscript/tsp/weapons/core/fx.zsc"
 #include "zscript/tsp/weapons/core/melee.zsc"
 #include "zscript/tsp/weapons/core/input.zsc"
 
 #include "zscript/tsp/weapons/core/melee/thinkers.zsc"
+
+#include "zscript/tsp/weapons/aaa_mag.zsc"
+#include "zscript/tsp/weapons/aaa_pickup.zsc"
+#include "zscript/tsp/weapons/aaa_tokens.zsc" // [CS] Someday, maybe we won't need tokens to play games at Chuck E. Cheese.

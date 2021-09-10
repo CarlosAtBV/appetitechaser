@@ -63,13 +63,6 @@ Extend Class TSP_Weapon_Core
 					double stuntime;
 					stuntime = baseHitlag;
 					
-					if(!(flags & TSPM_SUPERFREEZE) && mo.CountInv("TSP_EnemyHandler_IsSupered")==0)
-					{
-						TSP_EnemyHandler_Freezer handlerFreezer = TSP_EnemyHandler_Freezer(new("TSP_EnemyHandler_Freezer"));
-						handlerFreezer.owner = mo;
-						handlerFreezer.timeleft = stuntime+2;
-					}
-					
 					if ( mo.FindInventory("TSP_Mel_StasisHandler") )
 					{
 						hitStasis = true;
