@@ -221,7 +221,7 @@ Class TSP_StatusBar : BaseStatusBar
 						if ( i == 0 ) { SetClipRect(HUDLEFT_X+122, HUDLEFT_Y+75, 132, 9); }
 						else { SetClipRect(HUDLEFT_X+127, HUDLEFT_Y+84, 132, 9); }
 						
-						DrawImage(healthBarTex, (HUDLEFT_X+122 + (-healthWidth + healthOffset_base), HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
+						DrawImage(healthBarTex, (HUDLEFT_X+121 + (-healthWidth + healthOffset_base), HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
 					}
 					ClearClipRect();
 				}
