@@ -33,6 +33,9 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	const CLR_WHITE = Color(255, 255, 255, 255);
 	const CLR_AMMO_LOW = Color(255, 255, 0, 0);
+	const CLR_AMMO_NORMAL = Color(255, 255, 213, 144);
+	const CLR_CLIP_NORMAL = Color(255, 255, 255, 208);
+	const CLR_CLIP_LOW = Color(255, 255, 179, 66);
 	
 	Array<TSP_NotificationLogger> tsp_notifs;
 	
@@ -458,12 +461,24 @@ Class TSP_StatusBar : BaseStatusBar
 							ammoColor = Font.FindFontColor("TSPWhite");
 						}
 						
+						
 						int maxClip = TSP_Weapon_Core(CPlayer.ReadyWeapon).GetClipCapacity();
 						int clipAmount = TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip;
+						float clipLeft = clipAmount / float(maxClip);
+						Color baseColor = CLR_CLIP_NORMAL;
+						Color lowColor = CLR_CLIP_LOW;
+						Color clipColor = Color(
+							255,
+							int(lowColor.R + (baseColor.R - lowColor.R) * clipLeft),
+							int(lowColor.G + (baseColor.G - lowColor.G) * clipLeft),
+							int(lowColor.B + (baseColor.B - lowColor.B) * clipLeft)
+						);
+						Console.Printf(""..clipLeft);
 						string clipString = string.format("%03d", clipAmount);
 						for ( int i; i < clipString.length(); i++ )
 						{
-							TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount == 0 ? CLR_AMMO_LOW : CLR_WHITE,
+							TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW,
+								a1.amount == 0 ? CLR_AMMO_LOW : clipColor,
 								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 						
@@ -471,7 +486,7 @@ Class TSP_StatusBar : BaseStatusBar
 						string ammoString = string.format("%03d", ammoAmount);
 						for ( int i; i < ammoString.length(); i++ )
 						{
-							TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_WHITE,
+							TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
 								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 					}
