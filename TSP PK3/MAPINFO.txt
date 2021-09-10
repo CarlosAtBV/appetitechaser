@@ -27,6 +27,9 @@ gameinfo
 		StatScreen_Single = "TSP_StatusScreen"
 		StatusBarClass = "TSP_StatusBar"
 		MessageBoxClass = "TSP_MessageBoxMenu"
+		
+	PrecacheClasses = "MelPistol", "MelPistolA",
+		"MelSMG", "MelSMGA"
 }
 
 map TITLEMAP "Into Burning Space"
