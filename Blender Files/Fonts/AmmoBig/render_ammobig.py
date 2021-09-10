@@ -43,7 +43,7 @@ def renderFont(basePath):
 		cropImg.filepath_raw = scene.render.filepath+str('.png');
 		cropImg.save();
 
-		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(pX-15), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
+		process = subprocess.Popen([bpy.path.abspath('//../../RenderPipeline/compresssprite.bat'), str(0), str(pY), bpy.path.abspath(cropImg.filepath_raw)]);
 		
 for layer in layers:
 	scene.layers = [l in layer["layers"] for l in range(20)];

@@ -240,7 +240,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		invoker.owner.player.GetPSprite(layer).Sprite = invoker.GetSpriteIndex(invoker.tspw_spritename..theSprite);
 	}
 	
-	int GetClipCapacity()
+	clearscope int GetClipCapacity()
 	{
 		int clipcap = tspw_clipsize;
 		switch(tspw_ammolevel)

@@ -29,6 +29,11 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	bool isDebug;
 	
+	Vector2 screenSize;
+	
+	const CLR_WHITE = Color(255, 255, 255, 255);
+	const CLR_AMMO_LOW = Color(255, 255, 0, 0);
+	
 	Array<TSP_NotificationLogger> tsp_notifs;
 	
 	override bool ProcessNotify(EPrintLevel printlevel, String outline)
@@ -135,7 +140,10 @@ Class TSP_StatusBar : BaseStatusBar
 
 		if (state == HUD_StatusBar||state == HUD_Fullscreen)
 		{
-			BeginHUD(1.0);//,true,320,240);
+			BeginHUD();//,true,320,240);
+			
+			Vector2 hudScale = GetHUDScale();
+			screenSize = ( screen.GetWidth()/hudScale.x, screen.GetHeight()/hudScale.y );
 			
 			alpha = 1.0;
 			
@@ -232,7 +240,12 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MONEY
 			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
-			DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			//DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			TSP_DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW);
+			
+			
+			//DrawString(mSmallFont, "Test", (HUDLEFT_X+224, HUDLEFT_Y+2), DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			//TSP_DrawString(mSmallFont,  "Test", (HUDLEFT_X+224, HUDLEFT_Y+2), DI_NOSHADOW, Font.CR_UNTRANSLATED);
 			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE); //Money Stuff
 			
 			// SHIELD PIPS
@@ -445,11 +458,12 @@ Class TSP_StatusBar : BaseStatusBar
 							ammoColor = Font.FindFontColor("TSPWhite");
 						}
 						
+						int maxClip = TSP_Weapon_Core(CPlayer.ReadyWeapon).GetClipCapacity();
 						int clipAmount = TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip;
 						string clipString = string.format("%03d", clipAmount);
 						for ( int i; i < clipString.length(); i++ )
 						{
-							DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED,
+							TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount == 0 ? CLR_AMMO_LOW : CLR_WHITE,
 								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 						
@@ -457,8 +471,8 @@ Class TSP_StatusBar : BaseStatusBar
 						string ammoString = string.format("%03d", ammoAmount);
 						for ( int i; i < ammoString.length(); i++ )
 						{
-							DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED,
-								alpha = (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);
+							TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_WHITE,
+								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 					}
 					
@@ -583,5 +597,20 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawString(mSmallFont, "\cj[\cd"..playerobj.pp_nextModSwitch.tspw_altname.."\cj]", (0, -32), DI_TEXT_ALIGN_CENTER|DI_SCREEN_CENTER_BOTTOM, Font.CR_UNTRANSLATED, 1.0);
 				}
 		}
+	}
+	
+	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, double alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	{
+		int xOff = 0;
+		if ( flags & DI_TEXT_ALIGN_RIGHT )
+		{
+			xOff = -(doFont.mFont.StringWidth(string));
+		}
+		screen.DrawText(doFont.mFont, Font.CR_UNTRANSLATED, drawOffset.x+pos.x+xOff, drawOffset.y+pos.y, string,
+			DTA_Alpha, alpha, DTA_COLOR, color,
+			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);
+		/*let tex = TexMan.CheckForTexture("HUD_LBAS");
+		screen.DrawTexture(tex, false, HUDLEFT_X, HUDLEFT_Y,
+			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);*/
 	}
 }
