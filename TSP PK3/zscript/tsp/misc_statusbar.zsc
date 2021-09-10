@@ -473,7 +473,6 @@ Class TSP_StatusBar : BaseStatusBar
 							int(lowColor.G + (baseColor.G - lowColor.G) * clipLeft),
 							int(lowColor.B + (baseColor.B - lowColor.B) * clipLeft)
 						);
-						Console.Printf(""..clipLeft);
 						string clipString = string.format("%03d", clipAmount);
 						for ( int i; i < clipString.length(); i++ )
 						{
