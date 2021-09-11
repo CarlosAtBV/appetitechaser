@@ -25,6 +25,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			+TSP_Weapon_Core.MODFIREMODE
 			+TSP_Weapon_Core.MODFIREZOOMS
 			+TSP_Weapon_Core.HOLDDOWNFORMOD
+			TSP_Weapon_Core.HudColor "#0FA4F1";
 
 		Tag "$MELPISTOLTAG";
 		+Weapon.NOAUTOFIRE

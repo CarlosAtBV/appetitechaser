@@ -27,6 +27,7 @@ ACTOR MelMelee : TSP_Mel_BaseWeapon
 	+NOEXTREMEDEATH
 	+INVENTORY.UNDROPPABLE
 	+TSP_Weapon_Core.NoModSwitch
+	
 	States
 	{
 	Spawn:

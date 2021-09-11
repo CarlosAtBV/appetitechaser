@@ -465,7 +465,14 @@ Class TSP_StatusBar : BaseStatusBar
 					int xPos = HUDRIGHT_X + (16*slot_offset);// + (19*slot_offset);
 					if ( CPlayer.HasWeaponsInSlot(i) )
 					{
-						DrawImage("ARM_BOXB", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+						let weaponRef = TSP_Weapon_Core(GetDefaultByType(CPlayer.weapons.GetWeapon(i, slotSize-1)));
+						
+						if ( weaponRef )
+						{
+							Color daColor = weaponRef.tspw_hudcolor;
+							
+							DrawImage("ARM_BOXB", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM, col: Color(255, daColor.r, daColor.g, daColor.b));
+						}
 					}
 					DrawImage("ARM_BOXA", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
 					DrawImage("ARM_NUM"..(i), (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);

@@ -29,6 +29,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	double tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
 	double tspw_reloadmult1, tspw_reloadmult2, tspw_reloadmult3;
 	
+	Color tspw_hudcolor;
+	
 	property MaxLevels : tspw_maxpowerlevel, tspw_maxammolevel, tspw_maxreloadlevel;
 	property PowerMult : tspw_powermult1, tspw_powermult2, tspw_powermult3;
 	property AmmoMult : tspw_ammomult1, tspw_ammomult2, tspw_ammomult3;
@@ -46,8 +48,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	bool tspw_canZoom;
 	
 	string tspw_firstpickupline;
-	property FirstPickupLine : tspw_firstpickupline;
+	Property FirstPickupLine : tspw_firstpickupline;
 	Property Crosshair : tspw_crosshair;
+	Property HudColor : tspw_hudcolor;
 	
 	Weapon tsp_desiredModSwitch;
 	
@@ -116,6 +119,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ReloadMult 1.5, 2.0, 2.5;
 		TSP_Weapon_Core.ModTag "Default";
+		TSP_Weapon_Core.HudColor "#FF00FF";
 		
 		TSP_Weapon_Core.Crosshair "graphics/crosshairs/crosshair_nikki.png";
 	}

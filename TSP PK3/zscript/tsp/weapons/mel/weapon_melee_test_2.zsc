@@ -31,6 +31,8 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 		+NOEXTREMEDEATH
 		+INVENTORY.UNDROPPABLE
 		+TSP_Weapon_Core.NoModSwitch
+		
+		TSP_Weapon_Core.HudColor "#B6D84D";
 	}
 	
 	int combo_mach;
