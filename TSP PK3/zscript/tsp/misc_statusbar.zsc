@@ -456,6 +456,8 @@ Class TSP_StatusBar : BaseStatusBar
 			}
 			
 			int slot_offset = 0;
+			bool wepFound; int wepSlot;
+			[wepFound, wepSlot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
 			
 			for ( int i = 0; i < 10; i++ )
 			{
@@ -463,6 +465,8 @@ Class TSP_StatusBar : BaseStatusBar
 				if ( slotSize > 0 )
 				{
 					int xPos = HUDRIGHT_X + (16*slot_offset);// + (19*slot_offset);
+					bool selected = ( wepSlot == i );
+					
 					if ( CPlayer.HasWeaponsInSlot(i) )
 					{
 						let weaponRef = TSP_Weapon_Core(GetDefaultByType(CPlayer.weapons.GetWeapon(i, slotSize-1)));
