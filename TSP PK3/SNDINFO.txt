@@ -37,6 +37,7 @@ quit9 quit9
 $random misc/startupdone { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
 $volume misc/startupdone 0.5
 item/pickupls            PCKUPLS
+title/swoosh "sounds/ui_titleswoosh.ogg"
 
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 

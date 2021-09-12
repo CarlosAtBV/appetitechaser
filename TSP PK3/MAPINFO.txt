@@ -32,12 +32,21 @@ gameinfo
 		"MelSMG", "MelSMGA"
 }
 
+map TITLEMAP "First Hunt"
+{
+    sky1 = "SPACE", -0.1
+	music = "TSP_FHTL"
+	EventHandlers = "TSP_TitleHandler"
+}
+
+/*
 map TITLEMAP "Into Burning Space"
 {
     sky1 = "SPACE", -0.1
 	music = "TSPTITLE"
 	EventHandlers = "TSP_TitleHandler"
 }
+*/
 
 /////////////////
 // TRAINING MAPS
