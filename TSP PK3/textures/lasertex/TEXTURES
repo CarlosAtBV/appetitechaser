@@ -1,0 +1,44 @@
+texture B_ARCH, 256, 256
+{
+	Patch ARCH_1, 0, 0
+	Patch ARCH_1, 128, 0
+	{
+		FlipX
+	}
+}
+
+texture Y_ARCH, 256, 256
+{
+	Patch ARCH_2, 0, 0
+	Patch ARCH_2, 128, 0
+	{
+		FlipX
+	}
+}
+
+texture G_ARCH, 256, 256
+{
+	Patch ARCH_3, 0, 0
+	Patch ARCH_3, 128, 0
+	{
+		FlipX
+	}
+}
+
+texture P_ARCH, 256, 256
+{
+	Patch ARCH_4, 0, 0
+	Patch ARCH_4, 128, 0
+	{
+		FlipX
+	}
+}
+
+texture R_ARCH, 256, 256
+{
+	Patch ARCH_5, 0, 0
+	Patch ARCH_5, 128, 0
+	{
+		FlipX
+	}
+}

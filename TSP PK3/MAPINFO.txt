@@ -120,7 +120,7 @@ episode TSP_BH
 	noskillmenu
 }
 
-map TSP_BH "FUUUCKKK! FUUUUUCKKKK!!!"
+map TSP_BH "INTERMISSION"
 {
 	EventHandlers = "TSP_EventHandler_GotoBHMap"
 }
@@ -132,10 +132,9 @@ map TSP_BH01 "Neoscape - Battle Zone"
 	lightmode = 0
 }
 
-map TSP_BH02 "Elegia - Red Hot Rumble"
+map TSP_BH02 "Space Orbital Neos - Multitier"
 {
-    sky1 = "HELL"
-	music = "TSP_OBST"
+	music = "music/TSP_BH02.ogg"
 	lightmode = 0
 }
 
