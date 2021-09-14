@@ -2,6 +2,13 @@ Class TSP_TitleHandler : EventHandler
 {
 	int titleFrame;
 	
+	ui double easeInOutCirc (double x)
+	{
+		return x < 0.5
+		? (1 - sqrt(1 - ((2 * x) ** 2))) / 2
+		: (sqrt(1 - ((-2 * x + 2) ** 2)) + 1) / 2;
+	}
+	
 	override void WorldLoaded(WorldEvent e)
 	{
 		titleFrame = -12;
@@ -17,12 +24,7 @@ Class TSP_TitleHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		if ( titleFrame >= 5 )
-		{
-			let titlePic = TexMan.CheckForTexture("graphics/title/titleanim_"..titleFrame..".png");
-			
-			Screen.DrawTexture(titlePic, false, 160, 120,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		}
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", max(0.0, titleFrame / 105.));
+		//Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", frandom(0.0,1.0));
 	}
 }

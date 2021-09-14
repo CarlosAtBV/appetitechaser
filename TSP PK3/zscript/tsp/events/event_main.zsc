@@ -44,6 +44,8 @@ Class TSP_EventHandler : EventHandler
 			dynlights.Push(mo);
 		}
 		
+		Shader.SetEnabled(players[consoleplayer], "TSP_TitleShader", (gamestate == GS_TITLELEVEL));
+		
 		/*String clsname = "GSPlayer";
 		Class<Actor> cls = clsname;
 		if(cls!=null)

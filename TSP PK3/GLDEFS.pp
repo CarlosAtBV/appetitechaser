@@ -72,3 +72,15 @@ HardwareShader Sprite "131XA0"
 {
 	Shader "shaders/glsl/scopescan.fp"
 }
+
+hardwareshader postprocess screen
+{
+	Name "TSP_TitleShader"
+	Shader "shaders/pp/title.fp" 330
+	
+	Texture "texText" "graphics/title/title_text.png"
+	Texture "texTextMask" "graphics/title/title_textmask.png"
+	Texture "texGradient" "graphics/title/title_gradient.png"
+	
+	Uniform float text_fadeAmount
+}
