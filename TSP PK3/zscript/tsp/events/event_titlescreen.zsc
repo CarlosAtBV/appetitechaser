@@ -1,17 +1,18 @@
 Class TSP_TitleHandler : EventHandler
 {
 	int titleFrame;
+	int bgFrame;
+	float bgFade;
 	
-	ui double easeInOutCirc (double x)
+	ui double easeIt (double x)
 	{
-		return x < 0.5
-		? (1 - sqrt(1 - ((2 * x) ** 2))) / 2
-		: (sqrt(1 - ((-2 * x + 2) ** 2)) + 1) / 2;
+		return x < 0.5 ? 8 * x * x * x * x : 1 - ((-2 * x + 2) ** 4) / 2;
 	}
 	
 	override void WorldLoaded(WorldEvent e)
 	{
 		titleFrame = -12;
+		bgFade = 0.0;
 	}
 	
 	override void WorldTick()
@@ -20,11 +21,21 @@ Class TSP_TitleHandler : EventHandler
 		{
 			titleFrame++;
 		}
+		if ( bgFrame < 105 )
+		{
+			bgFrame++;
+		}
+		
+		if ( bgFrame >= 105 && bgFade < 1.0 )
+		{
+			bgFade += 0.025;
+		}
 	}
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", max(0.0, titleFrame / 105.));
-		//Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", frandom(0.0,1.0));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", easeIt(max(0.0, titleFrame / 105.)));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "textbg_fadeAmount", easeIt(max(0.0, bgFrame / 105.)));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "bg_fadeAmount", bgFade);
 	}
 }

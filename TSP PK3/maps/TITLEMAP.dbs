@@ -19,7 +19,7 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
+				location = "D:\\Projects\\TheSpacePirate\\TSP Git\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
@@ -120,7 +120,7 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 10;
+				caretposition = 209;
 				activetab = true;
 			}
 		}
