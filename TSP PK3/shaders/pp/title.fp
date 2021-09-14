@@ -12,5 +12,5 @@ void main()
 	
 	vec4 gradTex = textureLod(texGradient, vec2(textGradX, 0.0), 0);
 	
-	FragColor = mix(screenTex, vec4(1.0, 1.0, 1.0, 1.0), (gradTex.r * textMaskTex.r));
+	FragColor = mix(screenTex, vec4(0.96, 0.96, 0.96, 1.0), (gradTex.r * textMaskTex.r));
 }
