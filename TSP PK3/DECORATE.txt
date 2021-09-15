@@ -173,7 +173,7 @@ Actor MeleeSelected : Boolean {}
 //#include "actors/weapons/mel/DEC_M_WEP2.txt" // DARLING NIKKI
 //#include "actors/weapons/mel/DEC_M_WEP2a.txt" // DARLING NIKKI (Spitfire)
 //#include "actors/weapons/mel/DEC_M_WEP2b.txt" // DARLING NIKKI (Whisper)
-#include "actors/weapons/mel/DEC_M_WEP2c.txt" // TREASURED NIKKI
+//#include "actors/weapons/mel/DEC_M_WEP2c.txt" // TREASURED NIKKI
 //#include "actors/weapons/mel/DEC_M_WEP3.txt" // SUZUKA
 //#include "actors/weapons/mel/DEC_M_WEP3a.txt" // SUZUKA
 //#include "actors/weapons/mel/DEC_M_WEP3b.txt" // SUZUKA
