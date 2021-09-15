@@ -493,6 +493,8 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("ARM_NUM"..(wepSlot), (selSlotOffset+1, HUDRIGHT_Y + 45), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
 			}
 			
+			DrawImage("ARM_ACCT", (HUDRIGHT_X + 27, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+			
 			// Draw Ammo Numbers
 			
 			if (a1 != null)
