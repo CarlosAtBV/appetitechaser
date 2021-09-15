@@ -49,6 +49,11 @@ Class MelPistol : TSP_Mel_BaseWeapon
 	
 	States
 	{
+		Precache:
+			121G A 0;
+			121R A 0;
+			121I A 0;
+			Stop;
 		Spawn:
 			121P A -1;
 			Stop;
