@@ -443,29 +443,27 @@ Class TSP_StatusBar : BaseStatusBar
 			// MAIN HUD GRAPHIC (RIGHT)
 			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
-			int slotCount = 0;
+			// Draw Weapon Slots
 			
-			for ( int i = 0; i < 10; i++ )
-			{
-				//string CPlayer.HasWeaponsInSlot(2)
-				int slotSize = CPlayer.weapons.SlotSize(i);
-				if ( slotSize > 0 )
-				{
-					slotCount += 1;
-				}
-			}
+			int slotCount = 0;
+			int selSlotOffset = -1;
+			Color selSlotColor;
 			
 			int slot_offset = 0;
 			bool wepFound; int wepSlot;
 			[wepFound, wepSlot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
 			
-			for ( int i = 0; i < 10; i++ )
+			for ( int i = 1; i < 10; i++ )
 			{
 				int slotSize = CPlayer.weapons.SlotSize(i);
 				if ( slotSize > 0 )
 				{
-					int xPos = HUDRIGHT_X + (16*slot_offset);// + (19*slot_offset);
-					bool selected = ( wepSlot == i );
+					int xPos = HUDRIGHT_X + 31 + (16*slot_offset);// + (19*slot_offset);
+					
+					if ( wepSlot == i )
+					{
+						selSlotOffset = xPos;
+					}
 					
 					if ( CPlayer.HasWeaponsInSlot(i) )
 					{
@@ -474,6 +472,10 @@ Class TSP_StatusBar : BaseStatusBar
 						if ( weaponRef )
 						{
 							Color daColor = weaponRef.tspw_hudcolor;
+							if ( wepSlot == i )
+							{
+								selSlotColor = daColor;
+							}
 							
 							DrawImage("ARM_BOXB", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM, col: Color(255, daColor.r, daColor.g, daColor.b));
 						}
@@ -483,6 +485,15 @@ Class TSP_StatusBar : BaseStatusBar
 					slot_offset += 1;
 				}
 			}
+			
+			if ( selSlotOffset != -1 )
+			{
+				DrawImage("ARM_BOXD", (selSlotOffset-2, HUDRIGHT_Y + 43), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM, col: Color(255, selSlotColor.r, selSlotColor.g, selSlotColor.b));
+				DrawImage("ARM_BOXC", (selSlotOffset-2, HUDRIGHT_Y + 43), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+				DrawImage("ARM_NUM"..(wepSlot), (selSlotOffset+1, HUDRIGHT_Y + 45), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+			}
+			
+			// Draw Ammo Numbers
 			
 			if (a1 != null)
 			{
@@ -540,8 +551,6 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
-			
-			//DrawString(fnt_ammoBig, "0123456789", (40, 40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW,Font.CR_UNTRANSLATED);
 			
 			
 			// EASY AUTO ACTIVATED
