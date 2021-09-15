@@ -411,7 +411,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0);
 			TNT1 A 0
 			{
-				if (momZ > 0 && momZ <0)
+				if (Vel.Z > 0 && Vel.Z <0)
 				{
 					A_Recoil(-5);
 
@@ -426,7 +426,7 @@ Class MelMeleeTest : TSP_Mel_BaseWeapon
 			TNT1 A 0
 			{
 				A_SetBlend("124 252 0", 0.2, 5);
-				if (momZ > 0 && momZ <0)
+				if (Vel.Z > 0 && Vel.Z <0)
 				{
 					ThrustThingZ(0,25,0,1);
 				}
