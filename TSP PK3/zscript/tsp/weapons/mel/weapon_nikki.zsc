@@ -63,8 +63,13 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121);
 			TNT1 A 0 A_StartSound("nikki/draw", 5);
 			TNT1 A 0 A_WeaponOffset(0,32);
-			121U ABCDEFGHIJKLM 1;
-			121G A 1;
+			"----" A 0
+			{
+				invoker.anim_drawGun.PlayAnim();
+			}
+			121D A 6;
+			121D B 4;
+			121D C 2;
 			121G A 1 A_Raise;
 			Loop;
 		/*ModOff:

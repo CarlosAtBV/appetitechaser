@@ -17,38 +17,44 @@ mods = [
 	}
 ]
 
+MODNUM = 2;
+
 frame_names = [
-	["12{mod}GA0"] * 2,
-	["12{mod}GB0"] * 2,
-	["12{mod}GC0"] * 2,
-	["12{mod}GD0"] * 2,
-	["12{mod}GE0"] * 2,
+	["12{mod}GA0"] * MODNUM,
+	["12{mod}GB0"] * MODNUM,
+	["12{mod}GC0"] * MODNUM,
+	["12{mod}GD0"] * MODNUM,
+	["12{mod}GE0"] * MODNUM,
 	
-	["12{mod}RA0"] * 2,
-	["12{mod}RB0"] * 2,
-	["12{mod}RC0"] * 2,
-	["12{mod}RD0"] * 2,
+	["12{mod}RA0"] * MODNUM,
+	["12{mod}RB0"] * MODNUM,
+	["12{mod}RC0"] * MODNUM,
+	["12{mod}RD0"] * MODNUM,
 	
-	["12{mod}SA0"] * 2,
-	["12{mod}SB0"]  * 2,
-	["12{mod}SC0"]  * 2,
+	["12{mod}SA0"] * MODNUM,
+	["12{mod}SB0"]  * MODNUM,
+	["12{mod}SC0"]  * MODNUM,
 	
 	["120HA0", "ignore"],
 	["120HB0", "ignore"],
 	["120HC0", "ignore"],
 	
-	["12{mod}AA0"] * 2,
-	["12{mod}AB0"] * 2,
+	["12{mod}AA0"] * MODNUM,
+	["12{mod}AB0"] * MODNUM,
 	["12{mod}AC0", "ignore"],
 	
 	["120HD0", "ignore"],
 	
-	["12{mod}IA0"] * 2,
-	["12{mod}IB0"] * 2,
-	["12{mod}IC0"] * 2,
-	["12{mod}ID0"] * 2,
-	["12{mod}IE0"] * 2,
-	["12{mod}IF0"] * 2,
+	["12{mod}IA0"] * MODNUM,
+	["12{mod}IB0"] * MODNUM,
+	["12{mod}IC0"] * MODNUM,
+	["12{mod}ID0"] * MODNUM,
+	["12{mod}IE0"] * MODNUM,
+	["12{mod}IF0"] * MODNUM,
+	
+	["12{mod}DA0"] * MODNUM,
+	["12{mod}DB0"] * MODNUM,
+	["12{mod}DC0"] * MODNUM,
 ];
 
 for cntmod, mod in enumerate(mods):
