@@ -20,7 +20,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	States
 	{
 		Spawn:
-			BHTC A -1;
+			BHTS ABCDEFGHIJKLMNOP 2;
 			Loop;
 		Death:
 			BHTC A 0
@@ -28,6 +28,18 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				if(target==null)
 				{
 					return;
+				}
+				A_FaceTarget();
+				int daAngle = angle+90;
+				for ( int i = 0; i < 16; i++ )
+				{
+					int yerAngle = i*(360/16);
+					double daX = cos(yerAngle);
+					double daY = sin(yerAngle);
+					Actor debris = Spawn("TSP_BountyHunters_TimeExtCrystal_Debris", pos + (0, 0, 48) + (daX * cos(daAngle), daX * sin(daAngle), daY) * 12);
+					double randangle = daAngle + frandom(-25,25);
+					debris.vel = (daX * cos(randangle), daX * sin(randangle), daY) * frandom(4,12);
+					debris.roll = (yerAngle)-90;
 				}
 				let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
 				if(event)
@@ -52,7 +64,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	override void Tick()
 	{
 		super.Tick();
-		A_SetRoll(BobSin(level.maptime),SPF_INTERPOLATE);
+		A_SetRoll(BobSin(FloatBobPhase + level.maptime*1.5),SPF_INTERPOLATE);
 	}
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
@@ -75,5 +87,41 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		//Console.Printf("FUCK");
 		
 		//return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
+}
+
+Class TSP_BountyHunters_TimeExtCrystal_Debris : Actor
+{
+	Default
+	{
+		+NOBLOCKMAP
+		//+NOINTERACTION
+		+ROLLSPRITE
+		+BRIGHT
+		+MISSILE
+		BounceType "Doom";
+		BounceFactor 0.5;
+		WallBounceFactor 0.5;
+		//Gravity 0.9;
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		A_SetRoll(roll+abs(vel.z/4), SPF_INTERPOLATE);
+	}
+	
+	States
+	{
+		Spawn:
+			BHTF A 0;
+			BHTF A -1
+			{
+				frame = random(0,14);
+			}
+			Stop;
+		Death:
+			"----" A 1 A_FadeOut(0.05);
+			Loop;
 	}
 }
