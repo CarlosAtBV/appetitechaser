@@ -109,13 +109,12 @@ Class TSP_OptionMenu_Slider : TSP_OptionMenu_Selectable
 	{
 		let controlItem = OptionMenuItemSlider(item);
 		
-		double sliderAmount = controlItem.GetSliderValue();
-		
-		double sliderOutOfMax = sliderAmount / controlItem.mMax;
+		double maxVal = controlItem.mMax - controlItem.mMin;
+		double sliderAmount = (controlItem.GetSliderValue() - controlItem.mMin) / maxVal ;
 		
 		parent.Draw9Slice(pos.x, off.y+pos.y, size.x-OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_default.png", 16);
 			
-		int optX = pos.x + size.x-OPTIONOPTWIDTH+8;
+		int optX = pos.x + size.x - OPTIONOPTWIDTH + 8;
 		
 		parent.DrawText(off+(pos.x+16, pos.y+6), item.mLabel);
 		
@@ -123,13 +122,32 @@ Class TSP_OptionMenu_Slider : TSP_OptionMenu_Selectable
 		
 		parent.Draw9Slice(optX, off.y+pos.y, OPTIONOPTWIDTH, size.y, "graphics/menu/common/slice_default.png", 16);
 		
-		int slideWidth = OPTIONOPTWIDTH-SLIDEROFFX-16-8;
+		int slideWidth = OPTIONOPTWIDTH - SLIDEROFFX - 24;
+		int xOff = optX + SLIDEROFFX + 8;
+		int xOff_slider = optX + SLIDEROFFX + 16;
+		int slideWidth_slider = slideWidth - 16;
 				
-		parent.Draw9Slice(optX + SLIDEROFFX + 8, off.y+pos.y+8, slideWidth, 16, "graphics/menu/common/slider_bg.png", 16);
+		parent.Draw9Slice(xOff, off.y+pos.y+8, slideWidth, 16, "graphics/menu/common/slider_bg.png", 16);
 		
-		parent.Draw9Slice(optX + SLIDEROFFX - 2 + (slideWidth * sliderOutOfMax), off.y+pos.y - 2, 32 + 4, size.y + 4, isSelected ? "graphics/menu/common/slice_button_active.png" : "graphics/menu/common/slice_button.png", 16);
+		parent.Draw9Slice(xOff_slider - 18 + (slideWidth_slider * sliderAmount), off.y+pos.y - 2, 36, size.y + 4, isSelected ? "graphics/menu/common/slice_button_active.png" : "graphics/menu/common/slice_button.png", 16);
 		
-		parent.DrawText(off+(optX+16, pos.y+6), ""..String.format("%.2f", sliderAmount));
+		parent.DrawText(off+(optX+16, pos.y+6), ""..String.format("%.2f", controlItem.GetSliderValue()));
+	}
+	
+	bool, double GetSliderOffset(int x)
+	{
+		int optX = pos.x + size.x - OPTIONOPTWIDTH + 8;
+		int slideWidth = OPTIONOPTWIDTH - SLIDEROFFX - 24;
+		
+		int extentLeft = optX + SLIDEROFFX + 16;
+		int extentRight = extentLeft + slideWidth - 16;
+
+		//if ( x < extentLeft || x >= extentRight ) return false, 0.0;
+
+		x = clamp(x, extentLeft, extentRight);
+		double v = (x - extentLeft) / double(extentRight - extentLeft);
+		
+		return true, v;
 	}
 }
 
@@ -150,6 +168,7 @@ Class TSP_OptionMenu : OptionMenu
 	int maxScroll;
 	
 	TSP_OptionMenu_Item tsp_curSel;
+	TSP_OptionMenu_Item tsp_focusItem;
 	
 	const CLIPHEIGHT = 470;
 	const CLIPY = 128;
@@ -326,26 +345,36 @@ Class TSP_OptionMenu : OptionMenu
 				}
 			}
 			
-			if ( type == Menu.MOUSE_Click && tsp_curSel != null )
+			if ( tsp_focusItem == null && type == Menu.MOUSE_Click && tsp_curSel != null )
 			{
-				if ( tsp_curSel is "OptionMenuItemSlider" )
+				tsp_focusItem = tsp_curSel;
+				return true;
+			}
+			
+			if ( type == Menu.MOUSE_Move && tsp_focusItem != null )
+			{
+				if ( tsp_focusItem is "TSP_OptionMenu_Slider" )
 				{
-					let menuItem = OptionMenuSliderBase(tsp_curSel.item);
-					int slide_left = tsp_curSel.pos.x;
-					int slide_right = slide_left + tsp_curSel.size.x;	// 10 char cells with 16 pixels each.
-
-					if ( x < slide_left || x >= slide_right ) return true;
-
-					x = clamp(x, slide_left, slide_right);
-					double v = menuItem.mMin + ((x - slide_left) * (menuItem.mMax - menuItem.mMin)) / (slide_right - slide_left);
+					let sliderItem = TSP_OptionMenu_Slider(tsp_focusItem);
+					let menuItem = OptionMenuSliderBase(tsp_focusItem.item);
 					
-					if ( v != menuItem.GetSliderValue() )
+					bool doSlide;
+					float slideFac;
+					[doSlide, slideFac] = sliderItem.GetSliderOffset(mousePos.x);
+					
+					double v = menuItem.mMin + (slideFac * (menuItem.mMax - menuItem.mMin));
+					if ( doSlide && v != menuItem.GetSliderValue() )
 					{
 						menuItem.SetSliderValue(v);
 					}
 					
 					return true;
 				}
+			}
+			
+			if ( type == Menu.MOUSE_Release && tsp_focusItem != null )
+			{
+				tsp_focusItem = null;
 			}
 			
 			if ( type == Menu.MOUSE_Release && tsp_curSel != null )
