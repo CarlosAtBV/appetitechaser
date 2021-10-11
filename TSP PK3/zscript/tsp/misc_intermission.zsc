@@ -216,20 +216,23 @@ Class TSP_StatusScreen : StatusScreen
 	}
 		
 	const BOX_X = 164;
-	const BOX_Y = 324;
+	const BOX_Y = 314;
 	const BOX_WIDTH = 524;
+	const BOX_HEIGHT = 324;
 	const BOX_PADDING = 24;
 	
 	override void Drawer (void)
 	{
 		UpdateViewport();
 		
+		Font boldFont = "tsp_bold";
+		
 		float shakeOffset = ( bcnt % 2 == 0 ? 1 : -1 ) * ss_shakeAmount;
 		
 		float boxY = shakeOffset + BOX_Y;
 		
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
-		TextureID melbg = TexMan.CheckForTexture("TESTMEL2",TexMan.Type_MiscPatch);
+		TextureID melbg = TexMan.CheckForTexture("graphics/intermission/int_melody.png", TexMan.Type_MiscPatch);
 		
 		Color secondColor = Font.FindFontColor("TSPGreen");
 		
@@ -244,17 +247,26 @@ Class TSP_StatusScreen : StatusScreen
 		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(108.0/240.0), screen.GetWidth(), screen.GetHeight()*(116.0/240.0));
 		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(16.0/240.0), screen.GetWidth(), screen.GetHeight()*(32.0/240.0));
 		
-		screen.DrawTexture (melbg, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Desaturate, ss_missionFailed ? 255 : 0);
+		//screen.DrawTexture (melbg, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Desaturate, ss_missionFailed ? 255 : 0);
+		
+		screen.DrawTexture(melbg, false, 0, 0,
+			DTA_Desaturate, ss_missionFailed ? 255 : 0,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		
 		screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		
-		Draw9Slice(BOX_X, boxY, BOX_WIDTH, 324, "graphics/demo/char_slice.png", 24);
-		DrawString("tsp_bold", BOX_X + BOX_PADDING, shakeOffset + 566, "Rank:", alpha: ss_textAlpha);//"Rank:");
+		Draw9Slice(BOX_X, boxY, BOX_WIDTH, BOX_HEIGHT, "graphics/demo/char_slice.png", 24);
+		
+		int rankY = boxY + BOX_HEIGHT - BOX_PADDING - boldFont.GetHeight();
+		
+		DrawString("tsp_bold", BOX_X + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
 		
 		double rankSlamScale = (1.0 + 1.0 - ease_inQuart(ss_rankLerp));
 		//DrawString("tsp_bold", BOX_X + BOX_WIDTH - BOX_PADDING, 566, ss_ranks[finalRank], alpha: ss_textAlpha, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
-		DrawString("tsp_bold", BOX_X + BOX_WIDTH - BOX_PADDING, shakeOffset + 566, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
+		DrawString("tsp_bold", BOX_X + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
 		
 		for(int i = 0;i<4;i++)
 		{
