@@ -13,6 +13,12 @@ Class TSP_StatusScreen : StatusScreen
 	float ss_textAlpha;
 	float ss_rankLerp;
 	float ss_shakeAmount;
+	float ss_shakeAmount_header;
+	float ss_mapNameAlpha;
+	float ss_missionStatusAlpha;
+	int ss_statsDelay;
+	
+	float ss_partOffset[3];
 	
 	string ss_hours;
 	string ss_minutes;
@@ -61,6 +67,11 @@ Class TSP_StatusScreen : StatusScreen
 		
 		ss_levelName = level.LevelName;
 		ss_rankLerp = -1.0;
+		ss_missionStatusAlpha = -0.5;
+		
+		ss_partOffset[0] = 1.0;
+		ss_partOffset[1] = 1.0;
+		ss_partOffset[2] = 1.0;
 		
 		int time = level.totaltime/35;
 		
@@ -80,6 +91,8 @@ Class TSP_StatusScreen : StatusScreen
 		{
 			ss_seconds = "0"..ss_seconds;
 		}
+		
+		ss_statsDelay = 35;
 		
 		switch(gamemode)
 		{
@@ -135,13 +148,62 @@ Class TSP_StatusScreen : StatusScreen
 		
 		if ( ss_shakeAmount > 0.0 )
 		{
-			ss_shakeAmount -= 0.5;
+			ss_shakeAmount -= 0.25;
+		}
+		
+		if ( ss_shakeAmount_header > 0.0 )
+		{
+			ss_shakeAmount_header -= 0.5;
 		}
 		
 		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
 		
+		if ( bcnt < 5 )
+		{
+			return;
+		}
+		
+		for ( int i = 0; i < ss_partOffset.size(); i++ )
+		{
+			if ( ss_partOffset[i] > 0)
+			{
+				ss_partOffset[i] -= 0.1;
+				if ( ss_partOffset[i] < 0.5 )
+				{
+					continue;
+				}
+				return;
+			}
+		}
+		
 		if(bcnt>12)
 		{
+			if ( ss_mapNameAlpha < 1.0 )
+			{
+				ss_mapNameAlpha += 0.1;
+				if ( ss_mapNameAlpha >= 1.0 )
+				{
+					ss_shakeAmount_header = 4.0;
+					S_Sound("intermission/mapname",0);
+				}
+				return;
+			}
+			
+			if ( ss_missionStatusAlpha < 1.0 )
+			{
+				if ( ss_missionStatusAlpha > -0.1 && ss_missionStatusAlpha <= 0.0 )
+				{
+					S_Sound("intermission/mapstatus", 0);
+				}
+				ss_missionStatusAlpha += 0.1;
+			}
+			
+			if ( ss_statsDelay > 0 )
+			{
+				ss_statsDelay -= 1;
+				return;
+			}
+			
 			for ( int i = 0; i < ss_tallyAlphaLeft.size(); i++ )
 			{
 				if ( ss_tallyAlphaLeft[i] < 1.0 )
@@ -228,7 +290,9 @@ Class TSP_StatusScreen : StatusScreen
 		Font boldFont = "tsp_bold";
 		
 		float shakeOffset = ( bcnt % 2 == 0 ? 1 : -1 ) * ss_shakeAmount;
+		float shakeOffsetHeader = ( bcnt % 2 == 0 ? 1 : -1 ) * ss_shakeAmount_header;
 		
+		float boxX = BOX_X + ease_inQuart(ss_partOffset[2]) * -1280;
 		float boxY = shakeOffset + BOX_Y;
 		
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
@@ -244,29 +308,30 @@ Class TSP_StatusScreen : StatusScreen
 		
 		screen.DrawTexture (spacebg, true, 160+ss_bgPos.x, 0+ss_bgPos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
 		
-		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(108.0/240.0), screen.GetWidth(), screen.GetHeight()*(116.0/240.0));
-		screen.Dim("#000000", 0.5, 0, screen.GetHeight()*(16.0/240.0), screen.GetWidth(), screen.GetHeight()*(32.0/240.0));
+		Draw9Slice(ease_inQuart(ss_partOffset[0]) * -1280 + 128, 48+shakeOffsetHeader, 1280 - 256, 96, "graphics/demo/char_slice.png", 24);
 		
-		//screen.DrawTexture (melbg, true, 0, 0, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Desaturate, ss_missionFailed ? 255 : 0);
-		
-		screen.DrawTexture(melbg, false, 0, 0,
+		screen.DrawTexture(melbg, false, ease_inQuart(ss_partOffset[1]) * 1280, 0,
 			DTA_Desaturate, ss_missionFailed ? 255 : 0,
 			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		
-		screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
-		screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+		double titleSlamScale = (1.0 + (1.0 - ease_inQuart(ss_mapNameAlpha)) * 2);
+		//double statusSlamScale = (1.0 + 1.0 - ease_inQuart(ss_missionStatusAlpha));
+		DrawString("tsp_bold", ease_inQuart(ss_partOffset[0]) * -1280 + 206, shakeOffsetHeader + 58, ss_levelName, alpha: ss_mapNameAlpha, scale: (titleSlamScale, titleSlamScale));
+		DrawString("tsp_small", ease_inQuart(ss_partOffset[0]) * -1280 + 230, shakeOffsetHeader + 104, ss_missionStatus, alpha: ss_missionStatusAlpha);
 		
-		Draw9Slice(BOX_X, boxY, BOX_WIDTH, BOX_HEIGHT, "graphics/demo/char_slice.png", 24);
+		//screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);
+		//screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);
+		
+		Draw9Slice(boxX, boxY, BOX_WIDTH, BOX_HEIGHT, "graphics/demo/char_slice.png", 24);
 		
 		int rankY = boxY + BOX_HEIGHT - BOX_PADDING - boldFont.GetHeight();
 		
-		DrawString("tsp_bold", BOX_X + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
+		DrawString("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
 		
 		double rankSlamScale = (1.0 + 1.0 - ease_inQuart(ss_rankLerp));
-		//DrawString("tsp_bold", BOX_X + BOX_WIDTH - BOX_PADDING, 566, ss_ranks[finalRank], alpha: ss_textAlpha, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
-		DrawString("tsp_bold", BOX_X + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
+		DrawString("tsp_bold", boxX + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
 		
 		for(int i = 0;i<4;i++)
 		{

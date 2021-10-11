@@ -9,6 +9,22 @@ Mixin Class TSP_HiResBase
 		return x * x * x * x;
 	}
 	
+	double ease_outBack (double x)
+	{
+		float c1 = 1.70158;
+		float c3 = c1 + 1.0;
+
+		return 1.0 + c3 * ((x - 1.0) ** 3) + c1 * ((x - 1.0) ** 2);
+	}
+	
+	double ease_inBack (double x)
+	{
+		float c1 = 1.70158;
+		float c3 = c1 + 1;
+
+		return c3 * x * x * x - c1 * x * x;
+	}
+	
 	enum ETSPHiResAlignment
 	{
 		TSP_ALIGN_LEFT,

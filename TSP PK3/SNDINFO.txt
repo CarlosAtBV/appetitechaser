@@ -111,6 +111,10 @@ bountyhunters/timecrystal		"sounds/general/items/sfx_bountyhunters_timecrystal_h
 bountyhunters/combocrystal		"sounds/general/items/sfx_bountyhunters_combocrystal_hit.ogg"
 bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrystal_timeup.ogg"
 
+//$alias intermission/mapname menu/prompt
+intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
+$volume intermission/mapname 0.75
+$alias intermission/mapstatus menu/prompt
 intermission/tally "sounds/DSRADIO.ogg"
 intermission/skillrating "sounds/ui/intermission_rating.ogg" // From Doom Eternal
 
