@@ -39,6 +39,8 @@ Class TSP_StatusScreen : StatusScreen
 		
 		gamemode = tsp_gamemode;
 		
+		TSP_PlayerPawn_ZSCBase ss_player = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		
 		intermissioncounter = gameinfo.intermissioncounter;
 		CurState = StatCount;
 		acceleratestage = 0;
@@ -83,24 +85,26 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyRight[1] = level.found_items.." / "..level.total_items;
 				ss_tallyRight[2] = level.found_secrets.." / "..level.total_secrets;
 				ss_tallyRight[3] = ss_hours..":"..ss_minutes..":"..ss_seconds;
+		
+				ss_rankCalc = (double(level.killed_monsters)/max(1,level.total_monsters))
+				+(double(level.found_items)/max(1,level.total_items))
+				+(double(level.found_secrets)/max(1,level.total_secrets));
+				
+				ss_rankCalc = int(ss_ranks.Size()*(ss_rankCalc/4));
 				break;
 			case 1:
 				ss_tallyLeft[0] = "Kills:";
 				ss_tallyLeft[1] = "Max. Combo:";
 				ss_tallyLeft[2] = "Score:";
 				ss_tallyLeft[3] = "----:";
-				ss_tallyRight[0] = ""..players[0].mo.CountInv("TSP_Hunters_Kills");
-				ss_tallyRight[1] = ""..players[0].mo.CountInv("TSP_Hunters_MaxCombo");
+				ss_tallyRight[0] = ""..ss_player.tsp_bh_kills;
+				ss_tallyRight[1] = ""..ss_player.CountInv("TSP_Hunters_MaxCombo");
 				ss_tallyRight[2] = ""..players[0].mo.score;
 				ss_tallyRight[3] = "----";
+				
+				ss_rankCalc = ss_player.tsp_bh_rating * ss_ranks.size();
 				break;
 		}
-		
-		ss_rankCalc = (double(level.killed_monsters)/max(1,level.total_monsters))
-		+(double(level.found_items)/max(1,level.total_items))
-		+(double(level.found_secrets)/max(1,level.total_secrets));
-		
-		ss_rankCalc = int(ss_ranks.Size()*(ss_rankCalc/4));
 		
 		ss_missionStatus = "Mission Complete!";
 		if(players[0].mo.health<0)

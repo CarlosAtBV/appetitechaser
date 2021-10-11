@@ -38,6 +38,10 @@ Class TSP_BHHandler : EventHandler
 	Array<Actor > bh_enemies;
 	TSP_BountyHunters_EnemySpawn bh_prevSpawn;
 	
+	int bh_maxCombo;
+	int bh_kills;
+	int bh_killgoal;
+	
 	Array<String > bh_spawnList;
 	
 	static const string bh_spawnOrder[] =
@@ -49,7 +53,7 @@ Class TSP_BHHandler : EventHandler
 		"HellKnight",
 		"Cacodemon",
 		"Revenant",
-		"BaronOfHell"
+		"Fatso"
 	};
 	
 	void BH_AddTime(int amt)
@@ -71,17 +75,24 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_spawnList.Clear();
 		
-		for ( int i = 0; i < 15; i++ ) //uhhhhhh fix this later idk
+		for ( int i = 0; i < bh_spawnOrder.size()+1; i++ ) //uhhhhhh fix this later idk
 		{
 			int maxSize = bh_spawnOrder.Size()-1;
-			for ( int v = 0; v < 3; v++ )
+			//for ( int v = 0; v < 3; v++ )
 			{
 				for ( int g = 0; g < 5; g++ )
 				{
-					int spawnInt = clamp(i-g, 0, maxSize);
+					int spawnInt = clamp(i-g, 0, min(maxSize, i));
 					bh_spawnList.Push(bh_spawnOrder[spawnInt]);
 				}
 			}
+		}
+		
+		bh_killgoal = bh_spawnList.size();
+		
+		for ( int i = 0; i < 35; i++ )
+		{
+			bh_spawnList.Push(bh_spawnOrder[bh_spawnOrder.Size()-1]);
 		}
 		
 		/*Console.Printf("Bounty Hunters Spawns:");
@@ -130,6 +141,22 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_prevSpawn = theReturn;
 		return theReturn;
+	}
+	
+	void BH_GameOver(bool died = false)
+	{
+		TSP_PlayerPawn_ZSCBase thePlayer = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		thePlayer.tsp_bh_kills = bh_kills;
+		
+		double killMult = bh_kills / double(bh_killgoal);
+		double timeBonus = died ? 0 : bh_roundTimer/60.;
+		
+		double finalScore = killMult + timeBonus;
+		
+		thePlayer.tsp_bh_rating = finalScore;
+		
+		S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+		bh_roundTimer = 0;
 	}
 	
 	override void WorldTick()
@@ -241,8 +268,7 @@ Class TSP_BHHandler : EventHandler
 	{
 		if ( e.Thing == players[0].mo )
 		{
-			S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
-			bh_roundTimer = 0;
+			BH_GameOver(true);
 		}
 		else
 		{
@@ -250,11 +276,16 @@ Class TSP_BHHandler : EventHandler
 			if ( checkList >= 0 )
 			{
 				bh_enemies.Delete(checkList, 1);
+				bh_kills += 1;
 			}
 			
 			if ( e.Thing.target == players[0].mo )
 			{
 				bh_comboTier++;
+				if ( bh_comboTier > bh_maxCombo )
+				{
+					bh_maxCombo = bh_comboTier;
+				}
 				bh_comboTime = 35*10;
 				
 				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_comboTier;
@@ -273,7 +304,7 @@ Class TSP_BHHandler : EventHandler
 			seconds = "0"..seconds;
 		}
 		string printTime = minutes..":"..seconds;
-		string scorePrint = "Score: "..players[0].mo.score;
+		string scorePrint = "Kills: "..bh_kills.."/"..bh_killgoal;
 		
 		screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
 			160-BigFont.StringWidth(printTime)/2, 4, printTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
