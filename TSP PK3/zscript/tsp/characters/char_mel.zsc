@@ -56,12 +56,23 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		GiveInventory("TSP_Upgrade_MagSpear",1);
 		GiveInventory("TSP_Upgrade_PowerBank",1);
 		GiveInventory("TSP_HealingSyringe",1);
-		if(!pp_meleestart)
+		
+		if ( !pp_meleestart )
 		{
-			//GiveInventory("UpgradeAniSpitfire", 1);
-			GiveInventory("MelSMGA",1);
+			if ( GetCVar("tsp_demo_loadout") == 0 )
+			{
+				GiveInventory("MelSMGA",1);
+				GiveInventory("MelPistolA",1);
+				GiveInventory("TSPPistolAmmo",90);
+			}
+			else
+			{
+				GiveInventory("MelSMG",1);
+				GiveInventory("TSPSMGAmmo",80);
+				GiveInventory("MelPistol",1);
+			}
+			
 			GiveInventory("TSPSMGAmmo",80);
-			GiveInventory("MelPistolA",1);
 			GiveInventory("TSPPistolAmmo",90);
 		}
 		

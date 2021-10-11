@@ -179,11 +179,26 @@ Class TSP_MenuBase : GenericMenu
 	{
 	}
 	
-	void DrawText(Font fnt, int x, int y, string text, Color color = Font.CR_UNTRANSLATED, bool centered = false)
+	void DrawText(Font fnt, int x, int y, string text, Color color = Font.CR_UNTRANSLATED, bool centered = false, int breakWidth = -1)
 	{
-		screen.DrawText(fnt, color, centered ? x - fnt.StringWidth(text)/2 : x, y, text,
-			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
-			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+		if ( breakWidth == -1 )
+		{
+			screen.DrawText(fnt, color, centered ? x - fnt.StringWidth(text)/2 : x, y, text,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+		}
+		else
+		{
+			BrokenLines daText = fnt.BreakLines(text, breakWidth);
+			for ( int i = 0; i < daText.count(); i++ )
+			{
+				screen.DrawText(fnt, color, centered ? x - fnt.StringWidth(daText.StringAt(i))/2 : x, y + fnt.GetHeight() * i, daText.StringAt(i),
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				;
+			}
+		}
 	}
 }

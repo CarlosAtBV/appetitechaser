@@ -1,0 +1,95 @@
+Class TSP_CharacterMenu_Demo : TSP_MenuBase
+{
+	static const string loadoutNames[] =
+	{
+		"Burst Kit",
+		"Zoom Kit"
+	};
+	
+	static const string loadoutDescs[] =
+	{
+		"A loadout consisting of mods that deal a ton of damage in a short amount of time.\nThis is Melody's default loadout in Bounty Hunters.",
+		"A loadout consisting of completely unmodded weapons.\nThese are Melody's Slot 2 and Slot 3 weapons in the standard modes."
+	};
+	
+	int ld_selected;
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = ConvertMousePos((x, y));
+		
+		if ( type == Menu.MOUSE_Release )
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Left:
+			case MKEY_Right:
+				ld_selected = !ld_selected;
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+				
+			case MKEY_Enter:
+				CVar doLoadout = CVar.GetCVar("tsp_demo_loadout", players[consoleplayer]);
+				doLoadout.SetInt(ld_selected);
+				S_Sound("menu/choose",CHAN_UI);
+				for ( int i = 0; i < PlayerClasses.Size(); i++ )
+				{
+					if ( PlayerClasses[i].Type == "TSP_MelPlayer" )
+					{
+						Menu.SetMenu("EpisodeMenu", i);
+						return true;
+					}
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override void TSP_MenuDrawer()
+	{
+		//Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
+		int spaceWidth = 768/2;
+		int boxWidth = 256;
+		int boxHeight = 384;
+		int boxPadding = 16;
+		
+		int baseX = (1280 - (spaceWidth * 2)) / 2;
+		int baseY = 720 / 2;
+		
+		for ( int i = 0; i < 2; i++ )
+		{
+			int exWidth = boxWidth + ( ld_selected == i ? 16 : 0 );
+			int exHeight = boxHeight + ( ld_selected == i ? 16 : 0 );
+			int posX = baseX + (spaceWidth * i) + (spaceWidth/2);
+			int posY = baseY;
+			Draw9Slice(posX-(exWidth/2), posY-(exHeight/2), exWidth, exHeight, "graphics/demo/char_slice.png", 24);
+			
+			DrawText("tsp_small", posX, posY - (exHeight / 2) + boxPadding, loadoutNames[i].MakeUpper(), centered: true);
+		}
+		
+		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		DrawText("tsp_bold", 1280/2, 74, "Select Loadout", centered: true);
+		
+		DrawText("tsp_small", 1280/2, 720-74-32, loadoutDescs[ld_selected], centered: true, breakWidth: 1280);
+	}
+}

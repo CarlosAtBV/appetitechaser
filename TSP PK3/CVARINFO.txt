@@ -5,6 +5,8 @@ server noarchive bool tsp_meleesupreme = false;
 server bool tsp_goldenpistol = false;
 server bool tsp_actionmode = false;
 
+user int tsp_demo_loadout = 0;
+
 server bool tsp_easyauto = false;
 
 server /*noarchive*/ int tsp_melhudmod = 0;
