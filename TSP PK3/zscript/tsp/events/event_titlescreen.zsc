@@ -19,7 +19,8 @@ Class TSP_TitleHandler : EventHandler
 	
 	override void WorldLoaded(WorldEvent e)
 	{
-		titleFrame = -12;
+		titleFrame = -24;
+		bgFrame = -12;
 		bgFade = 0.0;
 	}
 	

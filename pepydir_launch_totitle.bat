@@ -1,1 +1,1 @@
-C:\Users\legow\Desktop\Games\devgz\gzdoom.exe -iwad DOOM2.wad -file "D:\Projects\TheSpacePirate\TSP Git\TSP PK3" +tsp_debug 1
+C:\Users\legow\Desktop\Games\devgz\gzdoom.exe -iwad DOOM2.wad -file "D:\Projects\TheSpacePirate\TSP Git\TSP PK3" +tsp_debug 1 -nomusic
