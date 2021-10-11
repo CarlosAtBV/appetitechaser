@@ -111,6 +111,8 @@ bountyhunters/timecrystal		"sounds/general/items/sfx_bountyhunters_timecrystal_h
 bountyhunters/combocrystal		"sounds/general/items/sfx_bountyhunters_combocrystal_hit.ogg"
 bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrystal_timeup.ogg"
 
+intermission/skillrating "sounds/ui/intermission_rating.ogg"
+
 world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
 
 weapon/mod/on "sounds/placeholder/modon.wav" // From Fortress Forever

@@ -4,6 +4,18 @@ Mixin Class TSP_HiResBase
 	Vector2 screenSize;
 	Vector2 viewportPos;
 	
+	double ease_inQuart (double x)
+	{
+		return x * x * x * x;
+	}
+	
+	enum ETSPHiResAlignment
+	{
+		TSP_ALIGN_LEFT,
+		TSP_ALIGN_CENTER,
+		TSP_ALIGN_RIGHT,
+	}
+	
     void UpdateViewport ()
     {
 		double scaleY;
@@ -146,6 +158,26 @@ Mixin Class TSP_HiResBase
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+	}
+	
+	void DrawString(Font fnt, int x, int y, string text, double alpha = 1.0, Vector2 scale = (1.0, 1.0), int hAlign = TSP_ALIGN_LEFT)
+	{
+		int xPos;
+		int yPos = y + (fnt.GetHeight() * (1.0 - scale.y)) / 2;
+		int stringWidth = fnt.StringWidth(text) * scale.x;
+		
+		switch(hAlign)
+		{
+			case TSP_ALIGN_LEFT: xPos = x; break;
+			case TSP_ALIGN_CENTER: xPos = x - stringWidth/2; break;
+			case TSP_ALIGN_RIGHT: xPos = x - stringWidth; break;
+		}
+		
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, xPos, yPos, text,
+			DTA_Alpha, alpha, DTA_ScaleX, scale.x, DTA_ScaleY, scale.y,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 	}
 }
 

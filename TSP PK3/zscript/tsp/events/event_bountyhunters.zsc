@@ -146,6 +146,20 @@ Class TSP_BHHandler : EventHandler
 	void BH_GameOver(bool died = false)
 	{
 		TSP_PlayerPawn_ZSCBase thePlayer = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		
+		S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+		level.setFrozen(true);
+		players[0].mo.vel = (0,0,0);
+		players[0].mo.viewbob = 0;
+		for ( int i = -200; i < 200; i++ )
+		{
+			let pSprite = players[0].GetPSprite(i);
+			if ( pSprite != null )
+			{
+				pSprite.Tics = -1;
+			}
+		}
+		
 		thePlayer.tsp_bh_kills = bh_kills;
 		
 		double killMult = bh_kills / double(bh_killgoal);
@@ -239,25 +253,14 @@ Class TSP_BHHandler : EventHandler
 			
 			if ( bh_roundTimer == 0 )
 			{
-				S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
-				level.setFrozen(true);
-				players[0].mo.vel = (0,0,0);
-				players[0].mo.viewbob = 0;
-				for ( int i = -200; i < 200; i++ )
-				{
-					let pSprite = players[0].GetPSprite(i);
-					if ( pSprite != null )
-					{
-						pSprite.Tics = -1;
-					}
-				}
+				BH_GameOver(false);
 			}
 		}
 		
 		if ( bh_roundTimer <= 0 )
 		{
 			bh_endtimer++;
-			if( bh_endtimer >= (35*5) )
+			if( bh_endtimer >= (35*5) || players[0].cmd.buttons & BT_USE )
 			{
 				players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
 			}
@@ -336,6 +339,14 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_endtimer > 0 )
 		{
 			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
+		}
+	}
+	
+	override void NetworkProcess(ConsoleEvent e)
+	{
+		if ( e.Name == "SHUTTHEFUCKUPMYMONEYBITCH" )
+		{
+			BH_GameOver(false);
 		}
 	}
 }
