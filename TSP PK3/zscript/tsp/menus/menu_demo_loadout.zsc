@@ -17,6 +17,7 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		S_Sound("ailene/bountyhunters01", CHAN_UI);
 	}
 	
 	override void Ticker()
