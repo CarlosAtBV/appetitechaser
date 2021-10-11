@@ -3,13 +3,15 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 	static const string loadoutNames[] =
 	{
 		"Burst Kit",
-		"Zoom Kit"
+		"Zoom Kit",
+		"Melee Only"
 	};
 	
 	static const string loadoutDescs[] =
 	{
 		"A loadout consisting of mods that deal a ton of damage in a short amount of time.\nThis is Melody's default loadout in Bounty Hunters.",
-		"A loadout consisting of completely unmodded weapons.\nThese are Melody's Slot 2 and Slot 3 weapons in the standard modes."
+		"A loadout consisting of completely unmodded weapons.\nThese are Melody's Slot 2 and Slot 3 weapons in the standard modes.",
+		"Slappers only!"
 	};
 	
 	int ld_selected;
@@ -44,8 +46,19 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		switch (mkey)
 		{
 			case MKEY_Left:
+				ld_selected -= 1;
+				if ( ld_selected < 0 )
+				{
+					ld_selected = loadoutNames.size()-1;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				break;
 			case MKEY_Right:
-				ld_selected = !ld_selected;
+				ld_selected += 1;
+				if ( ld_selected > loadoutNames.size()-1 )
+				{
+					ld_selected = 0;
+				}
 				S_Sound("menu/cursor",CHAN_UI);
 				return true;
 				
@@ -73,11 +86,12 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		int boxWidth = 256;
 		int boxHeight = 384;
 		int boxPadding = 16;
+		int maxLoadout = loadoutNames.size();
 		
-		int baseX = (1280 - (spaceWidth * 2)) / 2;
+		int baseX = (1280 - (spaceWidth * maxLoadout)) / 2;
 		int baseY = 720 / 2;
 		
-		for ( int i = 0; i < 2; i++ )
+		for ( int i = 0; i < maxLoadout; i++ )
 		{
 			int exWidth = boxWidth + ( ld_selected == i ? 16 : 0 );
 			int exHeight = boxHeight + ( ld_selected == i ? 16 : 0 );
