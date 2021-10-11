@@ -5,6 +5,7 @@ Class TSP_TitleHandler : EventHandler
 	float bgFade;
 	
 	const TITLEEND = 150;
+	const BGEND = 100;
 	
 	ui double easeIt (double x)
 	{
@@ -28,12 +29,12 @@ Class TSP_TitleHandler : EventHandler
 		{
 			titleFrame++;
 		}
-		if ( bgFrame < TITLEEND )
+		if ( bgFrame < BGEND )
 		{
 			bgFrame++;
 		}
 		
-		if ( bgFrame >= TITLEEND && bgFade < 1.0 )
+		if ( titleFrame >= BGEND && bgFade < 1.0 )
 		{
 			bgFade += 0.02;
 		}
@@ -42,7 +43,7 @@ Class TSP_TitleHandler : EventHandler
 	override void RenderOverlay(RenderEvent e)
 	{
 		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", ease_inOutSine(max(0.0, titleFrame / double(TITLEEND))));
-		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "textbg_fadeAmount", ease_inOutSine(max(0.0, bgFrame / 105.)));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "textbg_fadeAmount", ease_inOutSine(max(0.0, bgFrame / double(BGEND))));
 		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "bg_fadeAmount", bgFade);
 	}
 }

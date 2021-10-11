@@ -81,6 +81,7 @@ hardwareshader postprocess scene
 	Texture "texText" "graphics/title/title_text.png"
 	Texture "texTextBG" "graphics/title/title_textbg.png"
 	Texture "texTextMask" "graphics/title/title_textmask.png"
+	Texture "texTextBGMask" "graphics/title/title_textbgmask.png"
 	Texture "texGradient" "graphics/title/title_gradient.png"
 	
 	Uniform float bg_fadeAmount
