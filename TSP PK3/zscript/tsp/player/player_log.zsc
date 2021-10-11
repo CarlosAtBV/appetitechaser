@@ -25,7 +25,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	void AddLogMessage(string whatugot, int howmany)
 	{
 		TSP_PlayerPawn_LogMessage newlog = new("TSP_PlayerPawn_LogMessage");
-		newlog.whatugot = StringTable.Localize(whatugot);
+		newlog.whatugot = String.format(StringTable.Localize(whatugot), howmany);
 		newlog.howmany = howmany;
 		newlog.timeleft = 4*35;
 		int new = tsp_logs.Size()-1;
