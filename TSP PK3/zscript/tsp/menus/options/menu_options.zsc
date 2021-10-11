@@ -255,6 +255,15 @@ Class TSP_OptionMenu : OptionMenu
 	{
 		switch (mkey)
 		{
+			case MKEY_Back:
+			{
+				Close();
+				let m = GetCurrentMenu();
+				MenuSound(m != null ? "menu/backup" : "menu/clear");
+				if (!m) menuDelegate.MenuDismissed();
+				return true;
+			}
+		
 			case MKEY_Up:
 				if ( tsp_curSel && tsp_curSel.goUp != null )
 				{
@@ -292,7 +301,7 @@ Class TSP_OptionMenu : OptionMenu
 				{
 					return true;
 				}
-				return Super.MenuEvent(mkey, fromcontroller);
+				return false;//Super.MenuEvent(mkey, fromcontroller);
 		}
 		return super.MenuEvent(mkey, fromcontroller);
 	}
@@ -317,6 +326,28 @@ Class TSP_OptionMenu : OptionMenu
 				}
 			}
 			
+			if ( type == Menu.MOUSE_Click && tsp_curSel != null )
+			{
+				if ( tsp_curSel is "OptionMenuItemSlider" )
+				{
+					let menuItem = OptionMenuSliderBase(tsp_curSel.item);
+					int slide_left = tsp_curSel.pos.x;
+					int slide_right = slide_left + tsp_curSel.size.x;	// 10 char cells with 16 pixels each.
+
+					if ( x < slide_left || x >= slide_right ) return true;
+
+					x = clamp(x, slide_left, slide_right);
+					double v = menuItem.mMin + ((x - slide_left) * (menuItem.mMax - menuItem.mMin)) / (slide_right - slide_left);
+					
+					if ( v != menuItem.GetSliderValue() )
+					{
+						menuItem.SetSliderValue(v);
+					}
+					
+					return true;
+				}
+			}
+			
 			if ( type == Menu.MOUSE_Release && tsp_curSel != null )
 			{
 				//Console.Printf("DA BALL FLICKER");
@@ -326,7 +357,7 @@ Class TSP_OptionMenu : OptionMenu
 			}
 		}
 		
-		return Super.MouseEvent(type, x, y);
+		return true;//Super.MouseEvent(type, x, y);
 	}
 	
 	override void Drawer ()
