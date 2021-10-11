@@ -65,8 +65,7 @@ Class TSP_StatusBar : BaseStatusBar
 		// Create the font used for the fullscreen HUD
 		Font fnt = "TSP_HUDFONT";
 		mHUDFont = HUDFont.Create(fnt,1,false);
-		fnt = "SmallFont";
-		mSmallFont = HUDFont.Create(fnt);
+		mSmallFont = HUDFont.Create("tsp_small");
 		mTinyFont = HUDFont.Create("TINYFONT",0,Mono_off,1,1);
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		fnt_ammoBig = HUDFont.Create("tsp_ammo_big");
@@ -634,7 +633,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						alpher = thisone.time/35.; //whoosh
 					}
-					DrawString(mSmallFont, thisone.message, (0, 4+9*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
+					DrawString(mSmallFont, thisone.message, (0, 4+24*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================
