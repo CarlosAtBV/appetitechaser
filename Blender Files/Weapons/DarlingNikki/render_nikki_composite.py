@@ -55,6 +55,7 @@ frame_names = [
 	["12{mod}DA0"] * MODNUM,
 	["12{mod}DB0"] * MODNUM,
 	["12{mod}DC0"] * MODNUM,
+	["12{mod}DD0"] * MODNUM,
 ];
 
 for cntmod, mod in enumerate(mods):

@@ -67,9 +67,9 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			{
 				invoker.anim_drawGun.PlayAnim();
 			}
-			121D A 6;
-			121D B 4;
-			121D C 2;
+			121D A 4;
+			121D BC 2;
+			121D D 4;
 			121G A 1 A_Raise;
 			Loop;
 		/*ModOff:
