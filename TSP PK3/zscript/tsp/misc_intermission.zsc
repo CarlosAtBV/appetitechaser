@@ -22,6 +22,8 @@ Class TSP_StatusScreen : StatusScreen
 	
 	string ss_tallyLeft[4];
 	string ss_tallyRight[4];
+	float ss_tallyAlphaLeft[4];
+	float ss_tallyAlphaRight[4];
 	
 	static const string ss_ranks[] =
 	{
@@ -58,6 +60,7 @@ Class TSP_StatusScreen : StatusScreen
 		//
 		
 		ss_levelName = level.LevelName;
+		ss_rankLerp = -1.0;
 		
 		int time = level.totaltime/35;
 		
@@ -135,8 +138,36 @@ Class TSP_StatusScreen : StatusScreen
 			ss_shakeAmount -= 0.5;
 		}
 		
+		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
+		
 		if(bcnt>12)
 		{
+			for ( int i = 0; i < ss_tallyAlphaLeft.size(); i++ )
+			{
+				if ( ss_tallyAlphaLeft[i] < 1.0 )
+				{
+					if ( ss_tallyAlphaLeft[i] <= 0.0 )
+					{
+						S_Sound("intermission/tally", 0, pitch: 1.0 + (i * 0.1));
+					}
+					ss_tallyAlphaLeft[i] += 0.25;
+					return;
+				}
+				else if ( ss_tallyAlphaRight[i] < 1.0 )
+				{
+					if ( ss_tallyAlphaRight[i] <= 0.0 )
+					{
+						S_Sound("intermission/tick", 0, pitch: 1.0 + (i * 0.1));
+					}
+					ss_tallyAlphaRight[i] += 0.1;
+					return;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			
 			if ( ss_textAlpha < 1.0 )
 			{
 				ss_textAlpha += 0.1;
@@ -153,12 +184,9 @@ Class TSP_StatusScreen : StatusScreen
 			}
 		}
 		
-		if(bcnt==13)
+		/*if(bcnt==13)
 		{
-			S_Sound("menu/prompt",0);
-		}
-		
-		ss_bgPos = (cos(bcnt),sin(bcnt*1.2))*16;
+		}*/
 		
 		if ( tsp_ss_endScreen )
 		{
@@ -230,8 +258,10 @@ Class TSP_StatusScreen : StatusScreen
 		
 		for(int i = 0;i<4;i++)
 		{
-			screen.DrawText(SmallFont, secondColor, 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
-			screen.DrawText(SmallFont, Font.CR_WHITE, SS_RIGHTSTATSX-SmallFont.StringWidth(""..ss_tallyRight[i]), 112+18*i, ""..ss_tallyRight[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+			DrawString("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], alpha: ss_tallyAlphaLeft[i]);
+			DrawString("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
+			/*screen.DrawText(SmallFont, secondColor, 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+			screen.DrawText(SmallFont, Font.CR_WHITE, SS_RIGHTSTATSX-SmallFont.StringWidth(""..ss_tallyRight[i]), 112+18*i, ""..ss_tallyRight[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);*/
 		}
 		
 		//screen.DrawText(BigFont, secondColor, 8, 188, "Rank:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
