@@ -142,6 +142,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 1 A_WeaponOffset(0, 32+32, WOF_INTERPOLATE);
 			"####" A 1 A_WeaponOffset(0, 32+64, WOF_INTERPOLATE);
 			"####" A 1 A_WeaponOffset(0, 32+128, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+256, WOF_INTERPOLATE);
 			//121G A 1;
 			//121U IHGFEDC 1;
 		DeselectLoop:
