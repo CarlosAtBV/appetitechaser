@@ -91,10 +91,18 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		ModOn:
 			"----" A 0
 			{
-				A_Overlay(PSP_TSP_RELOADHAND, "ModOverlay");
-				A_WeaponOffset(0,32);
-				invoker.anim_modSwap_gun.PlayAnim();
-				invoker.anim_modSwap_mod.PlayAnim();
+				if ( invoker.GetClassName() == "MelPistol" )
+				{
+					return resolveState("Select");
+				}
+				else
+				{
+					A_Overlay(PSP_TSP_RELOADHAND, "ModOverlay");
+					A_WeaponOffset(0,32);
+					invoker.anim_modSwap_gun.PlayAnim();
+					invoker.anim_modSwap_mod.PlayAnim();
+				}
+				return resolveState(null);
 			}
 			121S A 21;
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
