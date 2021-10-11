@@ -13,7 +13,8 @@ Class TSP_OptionMenu_Item ui
 	
 	virtual void Init()
 	{
-		desc = item.mLabel.."_SUB";
+		string getText = ("-"..text).Mid(2,text.length()-1).."_SUB"; // [Py] slightly dirty hack to get the title cleanly ...
+		desc = ( StringTable.Localize("$"..getText) == getText ? "" : StringTable.Localize("$"..getText) );
 	}
 	
 	virtual int GetHeight()
@@ -102,11 +103,6 @@ Class TSP_OptionMenu_Control : TSP_OptionMenu_Selectable
 
 Class TSP_OptionMenu_Slider : TSP_OptionMenu_Selectable
 {
-	override void Init()
-	{
-		desc = "Set the desired binding for '"..item.mLabel.."'.";
-	}
-	
 	const SLIDEROFFX = 88;
 	
 	override void Draw(bool isSelected, Vector2 off)
