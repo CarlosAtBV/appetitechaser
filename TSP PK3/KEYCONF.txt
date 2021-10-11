@@ -1,5 +1,5 @@
 defaultbind KP1 BV_OpenShop
-alias BV_OpenShop "openmenu TSP_ShopMenu"
+alias BV_OpenShop "netevent tsp_openstore"
 
 defaultbind q BV_Melee
 alias BV_Melee "give meleepressed; wait 5; take meleepressed"

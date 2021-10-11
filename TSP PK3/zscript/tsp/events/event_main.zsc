@@ -178,12 +178,12 @@ Class TSP_EventHandler : EventHandler
 		
 		if(Menu.GetCurrentMenu()!=null && !tsp_shopmusic)
 		{
-			if(Menu.GetCurrentMenu() is "TSP_ShopMenu")
+			/*if(Menu.GetCurrentMenu() is "TSP_ShopMenu")
 			{
 				S_ChangeMusic("music/TSP_INT.ogg");
 				tsp_shopmusic = true;
 			}
-			else if (Menu.GetCurrentMenu() is "TSP_CodexMenu")
+			else */if (Menu.GetCurrentMenu() is "TSP_CodexMenu")
 			{
 				S_ChangeMusic("music/TSP_CDEX.ogg");
 				tsp_shopmusic = true;
@@ -197,6 +197,8 @@ Class TSP_EventHandler : EventHandler
 		
 		if(players[0].mo == null) return;
 	}
+	
+	int demoShopAttempt;
 	
 	override void NetworkProcess(ConsoleEvent e)
 	{
@@ -253,6 +255,39 @@ Class TSP_EventHandler : EventHandler
 			{
 				PlayerInfo curPlayer = players[e.Player];
 				TSP_PlayerPawn_ZSCBase(curPlayer.mo).TSP_CycleModNext();
+			}
+			else if(e.Name == "tsp_openstore")
+			{
+				string funnyMessage = "";
+				switch(demoShopAttempt)
+				{
+					case 0:
+						funnyMessage = "The shop is not available in this demo!"; break;
+					case 1:
+						funnyMessage = "No, really! The shop is not available!"; break;
+					case 2:
+						funnyMessage = "I mean it! It's broken right now anyway!"; break;
+					case 3:
+						funnyMessage = "Seriously! No shop!"; break;
+					case 4:
+						funnyMessage = "Stop it!"; break;
+					case 5:
+						funnyMessage = "Cease!"; break;
+					case 6:
+						funnyMessage = "I said CEASE!"; break;
+					case 7:
+						funnyMessage = "STOP!!!"; break;
+					case 8:
+						funnyMessage = "Aight I'm heading out"; break;
+					default:
+						break;
+				}
+				demoShopAttempt++;
+				
+				S_StartSound("menu/invalid", 0);
+				
+				if ( funnyMessage == "" ) return;
+				players[e.Player].mo.A_Log(funnyMessage, true);
 			}
 		}
 	}
