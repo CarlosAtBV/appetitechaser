@@ -4,9 +4,16 @@ Class TSP_TitleHandler : EventHandler
 	int bgFrame;
 	float bgFade;
 	
+	const TITLEEND = 150;
+	
 	ui double easeIt (double x)
 	{
 		return x < 0.5 ? 8 * x * x * x * x : 1 - ((-2 * x + 2) ** 4) / 2;
+	}
+	
+	ui double ease_inOutSine (double x)
+	{
+		return -( cos(180 * x) - 1 ) / 2.;
 	}
 	
 	override void WorldLoaded(WorldEvent e)
@@ -17,25 +24,25 @@ Class TSP_TitleHandler : EventHandler
 	
 	override void WorldTick()
 	{
-		if ( titleFrame < 105 )
+		if ( titleFrame < TITLEEND )
 		{
 			titleFrame++;
 		}
-		if ( bgFrame < 105 )
+		if ( bgFrame < TITLEEND )
 		{
 			bgFrame++;
 		}
 		
-		if ( bgFrame >= 105 && bgFade < 1.0 )
+		if ( bgFrame >= TITLEEND && bgFade < 1.0 )
 		{
-			bgFade += 0.025;
+			bgFade += 0.02;
 		}
 	}
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", easeIt(max(0.0, titleFrame / 105.)));
-		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "textbg_fadeAmount", easeIt(max(0.0, bgFrame / 105.)));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "text_fadeAmount", ease_inOutSine(max(0.0, titleFrame / double(TITLEEND))));
+		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "textbg_fadeAmount", ease_inOutSine(max(0.0, bgFrame / 105.)));
 		Shader.SetUniform1f(players[consoleplayer], "TSP_TitleShader", "bg_fadeAmount", bgFade);
 	}
 }
