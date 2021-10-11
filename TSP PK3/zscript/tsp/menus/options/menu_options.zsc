@@ -287,10 +287,8 @@ Class TSP_OptionMenu : OptionMenu
 					//S_Sound("menu/choose",CHAN_UI);
 					return true;
 				}
-				return true;
-			
 			default:
-				if ( tsp_curSel && tsp_curSel.item.MenuEvent(mkey, fromcontroller) )
+				if ( tsp_curSel != null && tsp_curSel.item.MenuEvent(mkey, fromcontroller) )
 				{
 					return true;
 				}
@@ -315,12 +313,15 @@ Class TSP_OptionMenu : OptionMenu
 						S_Sound("menu/cursor",CHAN_UI);
 					}
 					tsp_curSel = tsp_buttons[i];
+					break;
 				}
 			}
 			
 			if ( type == Menu.MOUSE_Release && tsp_curSel != null )
 			{
-				tsp_curSel.item.MouseEvent(type, x, y);
+				//Console.Printf("DA BALL FLICKER");
+				//tsp_curSel.item.MouseEvent(type, x, y);
+				MenuEvent(MKEY_ENTER, 0);
 				return true;
 			}
 		}
