@@ -53,6 +53,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121G A 0;
 			121R A 0;
 			121I A 0;
+			121D A 0;
 			Stop;
 		Spawn:
 			121P A -1;
@@ -63,14 +64,16 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_GiveInventory("WeaponSelectMemory", 121);
 			TNT1 A 0 A_StartSound("nikki/draw", 5);
 			TNT1 A 0 A_WeaponOffset(0,32);
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "D");
 			"----" A 0
 			{
 				invoker.anim_drawGun.PlayAnim();
 			}
-			121D A 3;
-			121D BC 2;
-			121D D 3;
-			121G A 1 A_Raise;
+			"####" A 3;
+			"####" BC 2;
+			"####" D 3;
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+			"####" A 1 A_Raise;
 			Loop;
 		/*ModOff:
 			TNT1 A 0 A_WeaponOffset(0,32);
@@ -126,12 +129,20 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			Goto Ready;
 		Deselect:
 			"----" A 0 A_TSP_DeselectLogic();
-			TNT1 A 0 A_TakeInventory("TSPIdle", 99999);
-			TNT1 A 0 A_TakeInventory("StyleComboToken", 99);
-			TNT1 A 0 A_TakeInventory("ComboCooldown", 99);
-			TNT1 A 0 A_StartSound("nikki/holster", 5);
-			121G A 1;
-			121U IHGFEDC 1;
+			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+			"----" A 0 A_TakeInventory("TSPIdle", 99999);
+			"----" A 0 A_TakeInventory("StyleComboToken", 99);
+			"----" A 0 A_TakeInventory("ComboCooldown", 99);
+			"----" A 0 A_StartSound("nikki/holster", 5);
+			"####" A 1 A_WeaponOffset(0, 32+1, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+2, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+4, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+8, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+16, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+32, WOF_INTERPOLATE);
+			"####" A 1 A_WeaponOffset(0, 32+64, WOF_INTERPOLATE);
+			//121G A 1;
+			//121U IHGFEDC 1;
 			TNT1 A 5;
 		DeselectLoop:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower;

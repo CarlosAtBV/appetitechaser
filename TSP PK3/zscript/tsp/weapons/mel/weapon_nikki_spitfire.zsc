@@ -15,6 +15,7 @@ Class MelPistolA : MelPistol
 		Precache:
 			122G A 0;
 			122R A 0;
+			122D A 0;
 			Stop;
 		Switch:
 			"----" A 1
