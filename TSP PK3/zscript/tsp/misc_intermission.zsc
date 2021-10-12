@@ -316,10 +316,10 @@ Class TSP_StatusScreen : StatusScreen
 			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
 			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		
-		double titleSlamScale = (1.0 + (1.0 - ease_inQuart(ss_mapNameAlpha)) * 2);
+		double titleSlamScale = (1.0 + (1.0 - ease_inQuart(ss_mapNameAlpha)) * 1);
 		//double statusSlamScale = (1.0 + 1.0 - ease_inQuart(ss_missionStatusAlpha));
-		DrawString("tsp_bold", ease_inQuart(ss_partOffset[0]) * -1280 + 206, shakeOffsetHeader + 58, ss_levelName, alpha: ss_mapNameAlpha, scale: (titleSlamScale, titleSlamScale));
-		DrawString("tsp_small", ease_inQuart(ss_partOffset[0]) * -1280 + 230, shakeOffsetHeader + 104, ss_missionStatus, alpha: ss_missionStatusAlpha);
+		DrawStringHack("tsp_bold", ease_inQuart(ss_partOffset[0]) * -1280 + 206, shakeOffsetHeader + 58, ss_levelName, alpha: ss_mapNameAlpha, scale: (titleSlamScale, titleSlamScale));
+		DrawStringHack("tsp_small", ease_inQuart(ss_partOffset[0]) * -1280 + 230, shakeOffsetHeader + 104, ss_missionStatus, alpha: ss_missionStatusAlpha);
 		
 		//screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);
 		//screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);
@@ -328,20 +328,40 @@ Class TSP_StatusScreen : StatusScreen
 		
 		int rankY = boxY + BOX_HEIGHT - BOX_PADDING - boldFont.GetHeight();
 		
-		DrawString("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
+		DrawStringHack("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
 		
-		double rankSlamScale = (1.0 + 1.0 - ease_inQuart(ss_rankLerp));
-		DrawString("tsp_bold", boxX + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
+		double rankSlamScale = (1.0 + (1.0 - ease_inQuart(ss_rankLerp)) * 4);
+		DrawStringHack("tsp_bold", boxX + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
 		
 		for(int i = 0;i<4;i++)
 		{
-			DrawString("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], alpha: ss_tallyAlphaLeft[i]);
-			DrawString("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
+			DrawStringHack("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], alpha: ss_tallyAlphaLeft[i]);
+			DrawStringHack("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
 			/*screen.DrawText(SmallFont, secondColor, 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 			screen.DrawText(SmallFont, Font.CR_WHITE, SS_RIGHTSTATSX-SmallFont.StringWidth(""..ss_tallyRight[i]), 112+18*i, ""..ss_tallyRight[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);*/
 		}
 		
 		//screen.DrawText(BigFont, secondColor, 8, 188, "Rank:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		//screen.DrawText(BigFont, Font.CR_WHITE, SS_RIGHTSTATSX+8-BigFont.StringWidth(ss_ranks[finalRank]), 188, ss_ranks[finalRank], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
+	}
+	
+	void DrawStringHack(Font fnt, int x, int y, string text, double alpha = 1.0, Vector2 scale = (1.0, 1.0), int hAlign = TSP_ALIGN_LEFT)
+	{
+		int xPos;
+		int yPos = y + (fnt.GetHeight() * (1.0 - scale.y)) / 2;
+		int stringWidth = fnt.StringWidth(text) * scale.x;
+		
+		switch(hAlign)
+		{
+			case TSP_ALIGN_LEFT: xPos = x; break;
+			case TSP_ALIGN_CENTER: xPos = x - stringWidth/2; break;
+			case TSP_ALIGN_RIGHT: xPos = x - stringWidth; break;
+		}
+		
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, xPos, yPos, text,
+			DTA_Alpha, alpha, DTA_ScaleX, scale.x, DTA_ScaleY, scale.y,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 	}
 }
