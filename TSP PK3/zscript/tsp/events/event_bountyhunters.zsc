@@ -116,6 +116,8 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_startWait = 35*3;
 		bh_roundTimer = 60*2;
+		
+		bh_readyFrame = -1;
 	}
 	
 	override void WorldThingSpawned(WorldEvent e)
@@ -175,12 +177,23 @@ Class TSP_BHHandler : EventHandler
 		bh_roundTimer = 0;
 	}
 	
+	int bh_readyFrame; int bh_goFrame;
+	
 	override void WorldTick()
 	{
 		if ( tsp_gamemode != 1 )
 		{	
 			Destroy();
 			return;
+		}
+		
+		if ( bh_readyFrame != -1 && bh_readyFrame < 14 )
+		{
+			bh_readyFrame++;
+			if ( bh_readyFrame == 14 )
+			{
+				bh_readyFrame = -1;
+			}
 		}
 		
 		if ( bh_startWait > 0 ) 
@@ -193,6 +206,7 @@ Class TSP_BHHandler : EventHandler
 					break;
 				case 35:
 					S_Sound("announcer/hunters/ailene/ready", CHAN_VOICE);
+					bh_readyFrame = 0;
 					break;
 				case 0:
 					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
@@ -318,9 +332,13 @@ Class TSP_BHHandler : EventHandler
 		
 	override void RenderOverlay(RenderEvent e)
 	{
-		return;
-		
-		string scorePrint = "Kills: "..bh_kills.."/"..bh_killgoal;
+		if ( bh_readyFrame != -1 )
+		{
+			string texName = String.Format("graphics/bh/BH_RDY%02d.png", bh_readyFrame);
+			let getReadyTex = TexMan.CheckForTexture(texName);
+			Screen.DrawTexture(getReadyTex, false, 0, 0,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+		}
 		
 		/*screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
 			160-BigFont.StringWidth(printTime)/2, 4, printTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
