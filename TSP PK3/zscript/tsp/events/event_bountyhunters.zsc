@@ -310,6 +310,11 @@ Class TSP_BHHandler : EventHandler
 		}
 		return minutes..":"..seconds;
 	}
+	
+	clearscope int BH_GetKillsLeft()
+	{
+		return bh_killgoal - bh_kills;
+	}
 		
 	override void RenderOverlay(RenderEvent e)
 	{

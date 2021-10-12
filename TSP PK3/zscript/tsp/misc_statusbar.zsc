@@ -650,7 +650,8 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if ( ev_hunters )
 			{
-				TSP_DrawText("tsp_bold", ev_hunters.BH_GetTime(), (0, 0), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
+				TSP_DrawText("tsp_bold", ev_hunters.BH_GetTime(), (0, 24), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
+				TSP_DrawText("tsp_small", ""..ev_hunters.BH_GetKillsLeft(), (0, 84), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
 			}
 			
 			//================
