@@ -4,6 +4,7 @@ Extend Class MelSMG
 	TSP_PyAnim anim_scopeOut;
 	TSP_PyAnim anim_reloadStart_gun;
 	TSP_PyAnim anim_reloadStart_hand;
+	TSP_PyAnim anim_drawGun;
 	
 	override void TSP_InitAnimations()
 	{   
@@ -205,5 +206,34 @@ Extend Class MelSMG
         anim_reloadStart_hand.AddKeyframe(80, 105.44303894042969, 110.3421401977539, -5.5701904296875);
         anim_reloadStart_hand.AddKeyframe(81, 105.44303894042969, 110.3421401977539, -5.5701904296875);
         anim_reloadStart_hand.AddKeyframe(82, 105.44303894042969, 110.3421401977539, -5.5701904296875);
+		
+		anim_drawGun = CreateNewAnimation();
+		anim_drawGun.AddPSprite(PSP_WEAPON);
+		anim_drawGun.AddKeyframe(0, -134.0699920654297, 143.75999450683594, 27.499998092651367);
+        anim_drawGun.AddKeyframe(1, -132.79954528808594, 140.88925170898438, 27.205730438232422);
+        anim_drawGun.AddKeyframe(2, -128.9563751220703, 132.23309326171875, 26.316160202026367);
+        anim_drawGun.AddKeyframe(3, -122.55595397949219, 118.04100799560547, 24.83597183227539);
+        anim_drawGun.AddKeyframe(4, -113.72543334960938, 99.13068389892578, 22.795982360839844);
+        anim_drawGun.AddKeyframe(5, -102.73579406738281, 76.99516296386719, 20.260578155517578);
+        anim_drawGun.AddKeyframe(6, -90.02173614501953, 53.707061767578125, 17.332225799560547);
+        anim_drawGun.AddKeyframe(7, -76.17587280273438, 31.571563720703125, 14.149959564208984);
+        anim_drawGun.AddKeyframe(8, -61.907901763916016, 12.661209106445312, 10.879733085632324);
+        anim_drawGun.AddKeyframe(9, -47.97228240966797, -1.5308380126953125, 7.697464942932129);
+        anim_drawGun.AddKeyframe(10, -35.082862854003906, -10.186996459960938, 4.769113540649414);
+        anim_drawGun.AddKeyframe(11, -23.83959197998047, -13.057757377624512, 2.2337112426757812);
+        anim_drawGun.AddKeyframe(12, -14.686676025390625, -7.2202582359313965, 0.1937255859375);
+        anim_drawGun.AddKeyframe(13, -7.9053955078125, -3.156881332397461, -1.2864646911621094);
+        anim_drawGun.AddKeyframe(14, -3.63299560546875, -0.5772876739501953, -2.176036834716797);
+        anim_drawGun.AddKeyframe(15, -1.8941583633422852, 0.808863639831543, -2.4703071117401123);
+        anim_drawGun.AddKeyframe(16, -1.4338812828063965, 1.2919187545776367, -2.4155426025390625);
+        anim_drawGun.AddKeyframe(17, -1.0300943851470947, 1.1622180938720703, -2.2507243156433105);
+        anim_drawGun.AddKeyframe(18, -0.6923763751983643, 0.7101020812988281, -1.9827388525009155);
+        anim_drawGun.AddKeyframe(19, -0.4275742471218109, 0.22591686248779297, -1.632226824760437);
+        anim_drawGun.AddKeyframe(20, -0.23676979541778564, -0.0, -1.2351535558700562);
+        anim_drawGun.AddKeyframe(21, -0.1133304238319397, -0.0, -0.8380801677703857);
+        anim_drawGun.AddKeyframe(22, -0.0438457727432251, -0.0, -0.4875681400299072);
+        anim_drawGun.AddKeyframe(23, -0.011752724647521973, -0.0, -0.21958279609680176);
+        anim_drawGun.AddKeyframe(24, -0.0013184547424316406, -0.0, -0.054764509201049805);
+        anim_drawGun.AddKeyframe(25, 0.0, -0.0, 0.0);
 	}
 }

@@ -133,13 +133,17 @@ Class MelSMG : TSP_Mel_LightWeapon
 				A_TakeInventory("WeaponSelectMemory", 999);
 				A_GiveInventory("WeaponSelectMemory", 131);
 				A_StartSound("suzuka/draw", 5);
-				A_Raise(32);
 				invoker.smg_scoped = false;
+				invoker.anim_drawGun.PlayAnim();
+				A_WeaponOffset(0,32);
+				A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			}
+			"####" A 10;
+			"----" A 0 A_Raise(32);
 			Loop;
 			
 		Deselect:
-			"----" A 0 A_TSP_JumpIfModInactive("DeselectNext");
+			"----" A 0 A_TSP_JumpIfModInactive("DeselectFinal");
 			"----" A 1
 			{
 				invoker.tspw_altmode = false;
@@ -149,15 +153,27 @@ Class MelSMG : TSP_Mel_LightWeapon
 				invoker.anim_scopeOut.PlayAnim();
 			}
 			131A CBA 1;
-			131G AAA 1;
-			DeselectNext:
-				"----" A 0 A_TSP_DeselectLogic();
-				TNT1 A 0 A_StartSound("suzuka/holster", 5);
-				131G A 1;
-			DeselectLoop:
-				TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0  A_Lower;
-				TNT1 A 1 A_Lower;
-				Loop;
+			Goto DeselectFinal;
+			DeselectFinal:
+				"----" A 0
+				{
+					A_StartSound("suzuka/holster", 5);
+				}
+				"####" A 1 A_WeaponOffset(0, 32+1, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+2, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+4, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+8, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+16, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+32, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+64, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+128, WOF_INTERPOLATE);
+				"####" A 1 A_WeaponOffset(0, 32+256, WOF_INTERPOLATE);
+				"----" A 0
+				{
+					A_TSP_DeselectLogic();
+					A_Lower(32);
+				}
+				Stop;
 		
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"SPMelee");
@@ -453,10 +469,11 @@ Class MelSMG : TSP_Mel_LightWeapon
 			Stop;
 			
 		// Sprite Shite
-			SpriteStore:
-				131R A 0;
-				131S A 0;
-				131M A 0;
-				Stop;
+		Precache:
+			131G A 0;
+			131R A 0;
+			131S A 0;
+			131M A 0;
+			Stop;
 	}
 }
