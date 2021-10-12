@@ -278,9 +278,9 @@ Class TSP_StatusScreen : StatusScreen
 	}
 		
 	const BOX_X = 164;
-	const BOX_Y = 314;
+	const BOX_Y = 426;
 	const BOX_WIDTH = 524;
-	const BOX_HEIGHT = 324;
+	const BOX_HEIGHT = 216;
 	const BOX_PADDING = 24;
 	
 	override void Drawer (void)
@@ -296,6 +296,7 @@ Class TSP_StatusScreen : StatusScreen
 		float boxY = shakeOffset + BOX_Y;
 		
 		TextureID spacebg = TexMan.CheckForTexture("tsps_e",TexMan.Type_MiscPatch);
+		TextureID stagebg = TexMan.CheckForTexture("graphics/bh/maps/banner_battlezone.png", TexMan.Type_MiscPatch);
 		TextureID melbg = TexMan.CheckForTexture("graphics/intermission/int_melody.png", TexMan.Type_MiscPatch);
 		
 		Color secondColor = Font.FindFontColor("TSPGreen");
@@ -309,6 +310,12 @@ Class TSP_StatusScreen : StatusScreen
 		screen.DrawTexture (spacebg, true, 160+ss_bgPos.x, 0+ss_bgPos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
 		
 		Draw9Slice(ease_inQuart(ss_partOffset[0]) * -1280 + 128, 48+shakeOffsetHeader, 1280 - 256, 96, "graphics/demo/char_slice.png", 24);
+			
+		screen.DrawTexture(stagebg, false, 0, 156,
+			DTA_Desaturate, ss_missionFailed ? 255 : 0,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
 		
 		screen.DrawTexture(melbg, false, ease_inQuart(ss_partOffset[1]) * 1280, 0,
 			DTA_Desaturate, ss_missionFailed ? 255 : 0,
