@@ -110,6 +110,8 @@ shop/misc					"sounds/shop/ui_shop_buy_misc.ogg"
 bountyhunters/timecrystal		"sounds/general/items/sfx_bountyhunters_timecrystal_hit.ogg"
 bountyhunters/combocrystal		"sounds/general/items/sfx_bountyhunters_combocrystal_hit.ogg"
 bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrystal_timeup.ogg"
+bountyhunters/readysound		"sounds/placeholder/bruh.ogg"
+bountyhunters/gosound			"sounds/placeholder/bruh.ogg"
 
 //$alias intermission/mapname menu/prompt
 intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"

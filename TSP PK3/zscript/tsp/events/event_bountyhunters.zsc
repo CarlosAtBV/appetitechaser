@@ -230,10 +230,12 @@ Class TSP_BHHandler : EventHandler
 					break;
 				case 35:
 					S_Sound("announcer/hunters/ailene/ready", CHAN_VOICE);
+					S_Sound("bountyhunters/readysound", CHAN_BODY);
 					bh_readyFrame = 0;
 					break;
 				case 0:
 					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
+					S_Sound("bountyhunters/gosound", CHAN_BODY);
 					bh_goFrame = 0;
 					break;
 			}
