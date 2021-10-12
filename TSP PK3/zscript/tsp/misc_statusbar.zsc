@@ -453,7 +453,10 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			int slot_offset = 0;
 			bool wepFound; int wepSlot;
-			[wepFound, wepSlot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
+			if ( CPlayer.ReadyWeapon )
+			{
+				[wepFound, wepSlot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
+			}
 			
 			for ( int i = 1; i < 10; i++ )
 			{
