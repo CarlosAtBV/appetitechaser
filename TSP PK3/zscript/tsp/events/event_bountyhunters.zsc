@@ -118,6 +118,7 @@ Class TSP_BHHandler : EventHandler
 		bh_roundTimer = 60*2;
 		
 		bh_readyFrame = -1;
+		bh_goFrame = -1;
 	}
 	
 	override void WorldThingSpawned(WorldEvent e)
@@ -177,7 +178,7 @@ Class TSP_BHHandler : EventHandler
 		bh_roundTimer = 0;
 	}
 	
-	int bh_readyFrame; int bh_goFrame;
+	float bh_readyFrame; float bh_goFrame;
 	
 	override void WorldTick()
 	{
@@ -189,10 +190,33 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_readyFrame != -1 && bh_readyFrame < 14 )
 		{
-			bh_readyFrame++;
+			if ( bh_readyFrame > 10 && bh_readyFrame < 12 )
+			{
+				bh_readyFrame+=0.1;
+			}
+			else
+			{
+				bh_readyFrame++;
+			}
 			if ( bh_readyFrame == 14 )
 			{
 				bh_readyFrame = -1;
+			}
+		}
+		
+		if ( bh_goFrame != -1 && bh_goFrame < 12 )
+		{
+			if ( bh_goFrame > 8 && bh_goFrame < 10 )
+			{
+				bh_goFrame+=0.1;
+			}
+			else
+			{
+				bh_goFrame++;
+			}
+			if ( bh_goFrame == 12 )
+			{
+				bh_goFrame = -1;
 			}
 		}
 		
@@ -210,6 +234,7 @@ Class TSP_BHHandler : EventHandler
 					break;
 				case 0:
 					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
+					bh_goFrame = 0;
 					break;
 			}
 			return;
@@ -340,38 +365,13 @@ Class TSP_BHHandler : EventHandler
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
 		}
 		
-		/*screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
-			160-BigFont.StringWidth(printTime)/2, 4, printTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		screen.DrawText(SmallFont, Font.FindFontColor("Grey"),
-			160-SmallFont.StringWidth(scorePrint)/2, 24, scorePrint, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);*/
-			
-		//screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-		
-		/*double screenLeftX = -floor((screen.GetWidth() * (240.0 / screen.GetHeight()) - 320) / 2);
-		double screenRightX = 320 + -screenLeftX;
-		
-		let scoreBarFront = TexMan.CheckForTexture("graphics/bh/scoremult_fg.png");
-		let scoreBarBack = TexMan.CheckForTexture("graphics/bh/scoremult_bg.png");
-		
-		//if ( bh_comboTier >= 2 )
+		if ( bh_goFrame != -1 )
 		{
-			string scoreMult = ""..bh_comboTier;
-			int scoreX = screenRightX - 32;
-			screen.DrawText(BigFont, Font.CR_YELLOW, scoreX-BigFont.StringWidth(scoreMult), 120 - BigFont.GetHeight(), ""..bh_comboTier, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			screen.DrawText(SmallFont, Font.CR_YELLOW, scoreX+2, 120 - SmallFont.GetHeight(), "x", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			
-			double barLength = 24 * (bh_comboTime/double(35*10));
-			Screen.DrawTexture(scoreBarBack, false, scoreX - 16, 120 + 2,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			Screen.DrawTexture(scoreBarFront, false, scoreX - 16, 120 + 2,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240,
-				DTA_SrcWidth, barLength, DTA_DestWidthF, barLength);
+			string texName = String.Format("graphics/bh/BH_GO%02d.png", bh_goFrame);
+			let getReadyTex = TexMan.CheckForTexture(texName);
+			Screen.DrawTexture(getReadyTex, false, 0, 0,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
 		}
-		
-		if ( bh_endtimer > 0 )
-		{
-			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
-		}*/
 	}
 	
 	override void NetworkProcess(ConsoleEvent e)
