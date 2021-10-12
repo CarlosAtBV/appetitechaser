@@ -359,6 +359,13 @@ Class TSP_BHHandler : EventHandler
 		
 	override void RenderOverlay(RenderEvent e)
 	{
+		Font fnt_big = "tsp_bh_big";
+		Font fnt_small = "tsp_bh_small";
+		
+		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 24, BH_GetTime());
+		
+		screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(""..BH_GetKillsLeft())/2, 84, ""..BH_GetKillsLeft());
+					
 		if ( bh_readyFrame != -1 )
 		{
 			string texName = String.Format("graphics/bh/BH_RDY%02d.png", bh_readyFrame);

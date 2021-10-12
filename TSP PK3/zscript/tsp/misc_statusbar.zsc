@@ -26,8 +26,6 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
-	TSP_BHHandler ev_hunters;
-	
 	double mTraitAlpha;
 	
 	bool isDebug;
@@ -98,11 +96,6 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				hud_money_lerp = hud_money_target;
 			}
-		}
-		
-		if ( !ev_hunters )
-		{
-			ev_hunters = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
 		}
 		
 		mChargeInterpolator.Update(CPlayer.mo.CountInv("TSPChargedAttack"));
@@ -645,14 +638,6 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					DrawString(mSmallFont, thisone.message, (0, 4+24*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
 				}
-				
-			// Bounty Hunters
-			
-			if ( ev_hunters )
-			{
-				TSP_DrawText("tsp_bold", ev_hunters.BH_GetTime(), (0, 24), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
-				TSP_DrawText("tsp_small", ""..ev_hunters.BH_GetKillsLeft(), (0, 84), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
-			}
 			
 			//================
 			// Debug Shit
