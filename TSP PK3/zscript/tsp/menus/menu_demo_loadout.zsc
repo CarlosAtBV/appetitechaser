@@ -2,15 +2,15 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 {
 	static const string loadoutNames[] =
 	{
-		"Burst Kit",
-		"Zoom Kit",
-		"Melee Only"
+		"\cgBurst\c- Kit",
+		"\cnZoom\c- Kit",
+		"\c[MEL]Melee\c- Only"
 	};
 	
 	static const string loadoutDescs[] =
 	{
-		"A loadout consisting of mods that deal a ton of damage in a short amount of time.\nThis is Melody's default loadout in Bounty Hunters.",
-		"A loadout consisting of completely unmodded weapons.\nThese are Melody's Slot 2 and Slot 3 weapons in the standard modes.",
+		"A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSPBHGrad]Bounty Hunters\c-.",
+		"A loadout consisting of completely \ckunmodded\c- weapons.\nThese are \c[MEL]Melody's\c- Slot 2 and Slot 3 weapons in the \c[TSPStandardGrad]standard modes\c-.",
 		"Slappers only!"
 	};
 	

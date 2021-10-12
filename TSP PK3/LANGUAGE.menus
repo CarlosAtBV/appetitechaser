@@ -24,7 +24,8 @@ TSPMNU_MENU_LOAD_SUB = "Load a previously saved game.";
 TSPMNU_MENU_SAVE = "\c[TSPLoadGreen]Save Game";
 TSPMNU_MENU_SAVE_SUB = "Save current progress.";
 TSPMNU_MENU_QUIT = "\c[TSPRed]Shut Down";
-TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-.";
+//TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-.";
+TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-: \c[TSPSkill1Blue]First Hunt \c[TSPRed2]Demo\c-.";
 
 MENU_MODE_STANDARD = "\c[TSPStandardGrad]Standard";
 MENU_MODE_STANDARD_SUB = "Play through the game normally.";
