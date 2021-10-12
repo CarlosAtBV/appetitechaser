@@ -44,6 +44,8 @@ Class TSP_BHHandler : EventHandler
 	
 	Array<String > bh_spawnList;
 	
+	mixin TSP_HiResBase;
+	
 	static const string bh_spawnOrder[] =
 	{
 		"Zombieman",
@@ -295,8 +297,8 @@ Class TSP_BHHandler : EventHandler
 			}
 		}
 	}
-		
-	override void RenderOverlay(RenderEvent e)
+	
+	clearscope string BH_GetTime()
 	{
 		int time = bh_roundTimer;
 		int minutes = time/60;
@@ -306,16 +308,23 @@ Class TSP_BHHandler : EventHandler
 		{
 			seconds = "0"..seconds;
 		}
-		string printTime = minutes..":"..seconds;
+		return minutes..":"..seconds;
+	}
+		
+	override void RenderOverlay(RenderEvent e)
+	{
+		return;
+		
 		string scorePrint = "Kills: "..bh_kills.."/"..bh_killgoal;
 		
-		screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
+		/*screen.DrawText(BigFont, bh_startWait > 0 ? Font.FindFontColor("Grey") : Font.FindFontColor("TSPYeller"),
 			160-BigFont.StringWidth(printTime)/2, 4, printTime, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		screen.DrawText(SmallFont, Font.FindFontColor("Grey"),
-			160-SmallFont.StringWidth(scorePrint)/2, 24, scorePrint, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+			160-SmallFont.StringWidth(scorePrint)/2, 24, scorePrint, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);*/
+			
 		//screen.DrawText(SmallFont, Font.CR_WHITE, 160-SmallFont.StringWidth(scoredisplay)/2, 4+BigFont.GetHeight()+2, scoredisplay, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		
-		double screenLeftX = -floor((screen.GetWidth() * (240.0 / screen.GetHeight()) - 320) / 2);
+		/*double screenLeftX = -floor((screen.GetWidth() * (240.0 / screen.GetHeight()) - 320) / 2);
 		double screenRightX = 320 + -screenLeftX;
 		
 		let scoreBarFront = TexMan.CheckForTexture("graphics/bh/scoremult_fg.png");
@@ -339,7 +348,7 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_endtimer > 0 )
 		{
 			screen.DrawText(BigFont, Font.CR_YELLOW, 80-BigFont.StringWidth("GAME OVER")/2, 60-8, "GAME OVER", DTA_VirtualWidth, 160, DTA_VirtualHeight, 120);
-		}
+		}*/
 	}
 	
 	override void NetworkProcess(ConsoleEvent e)

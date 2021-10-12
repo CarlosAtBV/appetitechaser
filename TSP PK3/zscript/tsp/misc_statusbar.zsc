@@ -11,6 +11,7 @@ Class TSP_StatusBar : BaseStatusBar
 	HUDFont mAmountFont;
 	HUDFont mTinyFont;
 	
+	HUDFont fnt_bold;
 	HUDFont fnt_ammoBig;
 	HUDFont fnt_ammoSmall;
 	HUDFont fnt_ammoTag;
@@ -25,6 +26,8 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
+	TSP_BHHandler ev_hunters;
+	
 	double mTraitAlpha;
 	
 	bool isDebug;
@@ -36,6 +39,7 @@ Class TSP_StatusBar : BaseStatusBar
 	const CLR_AMMO_NORMAL = Color(255, 255, 213, 144);
 	const CLR_CLIP_NORMAL = Color(255, 255, 255, 208);
 	const CLR_CLIP_LOW = Color(255, 255, 179, 66);
+	const CLR_BH_TIMER = Color(255, 255, 183, 57);
 	
 	Array<TSP_NotificationLogger> tsp_notifs;
 	
@@ -71,6 +75,7 @@ Class TSP_StatusBar : BaseStatusBar
 		fnt_ammoBig = HUDFont.Create("tsp_ammo_big");
 		fnt_ammoSmall = HUDFont.Create("tsp_ammo_small");
 		fnt_ammoTag = HUDFont.Create("tsp_ammo_tag");
+		fnt_bold = HUDFont.Create("tsp_bold");
 		
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -93,6 +98,11 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				hud_money_lerp = hud_money_target;
 			}
+		}
+		
+		if ( !ev_hunters )
+		{
+			ev_hunters = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
 		}
 		
 		mChargeInterpolator.Update(CPlayer.mo.CountInv("TSPChargedAttack"));
@@ -635,6 +645,13 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					DrawString(mSmallFont, thisone.message, (0, 4+24*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
 				}
+				
+			// Bounty Hunters
+			
+			if ( ev_hunters )
+			{
+				TSP_DrawText("tsp_bold", ev_hunters.BH_GetTime(), (0, 0), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER|DI_NOSHADOW);
+			}
 			
 			//================
 			// Debug Shit
@@ -673,15 +690,48 @@ Class TSP_StatusBar : BaseStatusBar
 	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, double alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
 	{
 		int xOff = 0;
+		
+		bool manualPos = flags & DI_SCREEN_HCENTER;
+		
 		if ( flags & DI_TEXT_ALIGN_RIGHT )
 		{
 			xOff = -(doFont.mFont.StringWidth(string));
 		}
+		else if ( flags & DI_TEXT_ALIGN_CENTER )
+		{
+			xOff = -(doFont.mFont.StringWidth(string))/2;
+		}
+		
 		screen.DrawText(doFont.mFont, Font.CR_UNTRANSLATED, drawOffset.x+pos.x+xOff, drawOffset.y+pos.y, string,
 			DTA_Alpha, alpha, DTA_COLOR, color,
-			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);
+			DTA_HUDRules, manualPos ? BaseStatusBar.HUD_HorizCenter : BaseStatusBar.HUD_NORMAL);
 		/*let tex = TexMan.CheckForTexture("HUD_LBAS");
 		screen.DrawTexture(tex, false, HUDLEFT_X, HUDLEFT_Y,
 			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);*/
+	}
+	
+	void TSP_DrawText (Font fnt, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, double alpha = 1.0)
+	{
+		int xOff = 0;
+		int baseX = pos.x;
+		
+		bool manualPos = flags & DI_SCREEN_HCENTER;
+		
+		if ( flags & DI_TEXT_ALIGN_RIGHT )
+		{
+			xOff = -(fnt.StringWidth(string));
+		}
+		else if ( flags & DI_TEXT_ALIGN_CENTER )
+		{
+			xOff = -(fnt.StringWidth(string))/2;
+		}
+		
+		if ( flags & DI_SCREEN_HCENTER )
+		{
+			baseX = screen.GetWidth() / 2;
+		}
+		
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, drawOffset.x+baseX+xOff, drawOffset.y+pos.y, string,
+			DTA_Alpha, alpha, DTA_COLOR, CLR_BH_TIMER);
 	}
 }
