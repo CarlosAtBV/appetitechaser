@@ -283,6 +283,8 @@ Class TSP_StatusScreen : StatusScreen
 	const BOX_HEIGHT = 216;
 	const BOX_PADDING = 24;
 	
+	const CLR_TSPGREEN = Color(255, 0, 206, 148);
+	
 	override void Drawer (void)
 	{
 		UpdateViewport();
@@ -333,20 +335,18 @@ Class TSP_StatusScreen : StatusScreen
 		
 		Draw9Slice(boxX, boxY, BOX_WIDTH, BOX_HEIGHT, "graphics/demo/char_slice.png", 24);
 		
+		for(int i = 0;i<4;i++)
+		{
+			DrawStringHack("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], color: CLR_TSPGREEN, alpha: ss_tallyAlphaLeft[i]);
+			DrawStringHack("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
+		}
+		
 		int rankY = boxY + BOX_HEIGHT - BOX_PADDING - boldFont.GetHeight();
 		
-		DrawStringHack("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", alpha: ss_textAlpha);//"Rank:");
+		DrawStringHack("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", color: CLR_TSPGREEN, alpha: ss_textAlpha);//"Rank:");
 		
 		double rankSlamScale = (1.0 + (1.0 - ease_inQuart(ss_rankLerp)) * 4);
 		DrawStringHack("tsp_bold", boxX + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);
-		
-		for(int i = 0;i<4;i++)
-		{
-			DrawStringHack("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], alpha: ss_tallyAlphaLeft[i]);
-			DrawStringHack("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
-			/*screen.DrawText(SmallFont, secondColor, 16, 112+18*i, ss_tallyLeft[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
-			screen.DrawText(SmallFont, Font.CR_WHITE, SS_RIGHTSTATSX-SmallFont.StringWidth(""..ss_tallyRight[i]), 112+18*i, ""..ss_tallyRight[i], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);*/
-		}
 		
 		//screen.DrawText(BigFont, secondColor, 8, 188, "Rank:", DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
 		//screen.DrawText(BigFont, Font.CR_WHITE, SS_RIGHTSTATSX+8-BigFont.StringWidth(ss_ranks[finalRank]), 188, ss_ranks[finalRank], DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_textAlpha);
