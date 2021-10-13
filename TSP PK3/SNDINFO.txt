@@ -113,6 +113,8 @@ bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrys
 bountyhunters/readysound		"sounds/bh_ready.ogg"
 bountyhunters/gosound			"sounds/bh_go.ogg"
 
+bh/pickup/ammo "sounds/placeholder/tsp_ammomini.ogg"
+
 //$alias intermission/mapname menu/prompt
 intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
 $volume intermission/mapname 0.75

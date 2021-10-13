@@ -23,6 +23,104 @@ Class TSP_BountyHunters_EnemySpawn : Actor
 	}
 }
 
+Class TSP_BH_Zooper : Actor
+{
+	Default
+	{
+		+BRIGHT
+	}
+	
+	int grabRadius;
+	int mineSpeeden;
+	bool movingToMeet;
+	
+	override void Tick()
+	{
+		super.Tick();
+		
+		if(Distance3D(players[0].mo)<32)
+		{
+			DoShit(players[0].mo);
+			Destroy();
+			return;
+		}
+		
+		if ( movingToMeet )
+		{
+			if ( mineSpeeden < 30 )
+			{
+				mineSpeeden++;
+			}
+			Vel3DFromAngle(mineSpeeden, AngleTo(players[0].mo), -atan2(players[0].mo.pos.z+24 - pos.z,Distance2D(players[0].mo)));
+		}
+		
+		if ( players[0].mo!=null && players[0].mo.health > 0 && Distance3D(players[0].mo) < grabradius )
+		{
+			movingToMeet = true;
+			bNoClip = true;
+			bNoGravity = true;
+		}
+		
+		if ( grabradius<1024 )
+		{
+			grabradius+=4;
+		}
+	}
+	
+	virtual void DoShit (Actor theFella) {}
+	
+	States
+	{
+		Spawn:
+			BHPU A -1;
+			Stop;
+	}
+}
+
+Class TSP_BH_HealthZooper : TSP_BH_Zooper
+{
+	States
+	{
+		Spawn:
+			BHPU A -1;
+			Stop;
+	}
+	
+	override void DoShit (Actor theFella)
+	{
+		theFella.GiveBody(3, 100);
+	}
+}
+
+Class TSP_BH_AmmoZooper : TSP_BH_Zooper
+{
+	States
+	{
+		Spawn:
+			BHPU B -1;
+			Stop;
+	}
+	
+	override void DoShit (Actor theFella)
+	{
+		let thePlayer = PlayerPawn(theFella);
+		if ( !thePlayer ) return;
+		
+		thePlayer.A_StartSound("bh/pickup/ammo", 32, CHANF_OVERLAP, 0.5, pitch: frandom(0.8,1.2));
+		for ( let it = thePlayer.Inv; it != null; it = it.Inv )
+		{
+			if ( it is "Weapon" )
+			{
+				let weapon = Weapon(it);
+				if ( weapon.ammotype1 != null )
+				{
+					thePlayer.GiveInventory(weapon.ammotype1, 1);
+				}
+			}
+		}
+	}
+}
+
 Class TSP_BHHandler : EventHandler
 {
 	int spawnDelay;
@@ -41,6 +139,8 @@ Class TSP_BHHandler : EventHandler
 	int bh_maxCombo;
 	int bh_kills;
 	int bh_killgoal;
+	
+	bool bh_roundStarted;
 	
 	Array<String > bh_spawnList;
 	
@@ -127,6 +227,12 @@ Class TSP_BHHandler : EventHandler
 		{
 			Console.Printf("Made new spawn");
 			bh_spawns.Push(TSP_BountyHunters_EnemySpawn(e.Thing));
+			return;
+		}
+		
+		if ( bh_roundStarted == true && e.Thing is "TSP_CustomInventory" )
+		{
+			e.Thing.Destroy();
 		}
 	}
 	
@@ -237,6 +343,7 @@ Class TSP_BHHandler : EventHandler
 					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
 					S_Sound("bountyhunters/gosound", CHAN_BODY);
 					bh_goFrame = 0;
+					bh_roundStarted = true;
 					break;
 			}
 			return;
@@ -335,6 +442,25 @@ Class TSP_BHHandler : EventHandler
 				bh_comboTime = 35*10;
 				
 				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_comboTier;
+			}
+			
+			double healthDropMult = 1.0 - clamp(players[0].mo.health / 75., 0.0, 1.0);
+			double ammoDropMult = 1.0 - clamp(players[0].mo.Distance3D(e.Thing) / 512., 0.0, 1.0);
+			Console.Printf(""..ammoDropMult);
+			
+			int getHealth = e.Thing.health*healthDropMult;
+			while ( getHealth < 0 )
+			{
+				getHealth += 3;
+				let zooper = Actor.Spawn("TSP_BH_HealthZooper", e.Thing.pos + (frandom(-3,3), frandom(-3,3), frandom(0,6)));
+				zooper.vel = (frandom(-6,6), frandom(-6,6), frandom(3,9));
+			}
+			int getAmmo = (e.Thing.GetSpawnHealth()/5)*ammoDropMult;
+			while ( getAmmo > 0 )
+			{
+				getAmmo -= 3;
+				let zooper = Actor.Spawn("TSP_BH_AmmoZooper", e.Thing.pos + (frandom(-3,3), frandom(-3,3), frandom(0,6)));
+				zooper.vel = (frandom(-6,6), frandom(-6,6), frandom(3,9));
 			}
 		}
 	}
