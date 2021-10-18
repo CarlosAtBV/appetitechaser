@@ -28,8 +28,10 @@ Class TSP_StatusScreen : StatusScreen
 	
 	string ss_tallyLeft[4];
 	string ss_tallyRight[4];
+	string ss_tallyScore[4];
 	float ss_tallyAlphaLeft[4];
 	float ss_tallyAlphaRight[4];
+	string ss_tallyAlphaScore[4];
 	
 	const RANK_A = 5;
 	
@@ -75,7 +77,12 @@ Class TSP_StatusScreen : StatusScreen
 		ss_partOffset[1] = 1.0;
 		ss_partOffset[2] = 1.0;
 		
-		int time = level.totaltime/35;
+		int time;
+		switch(gamemode)
+		{
+			case 1: time = ss_player.tsp_bh_kills;
+			default: time = level.totaltime/35;
+		}
 		
 		int hours = time/3600;
 		time -= hours*3600;
@@ -117,11 +124,11 @@ Class TSP_StatusScreen : StatusScreen
 			case 1:
 				ss_tallyLeft[0] = "Kills:";
 				ss_tallyLeft[1] = "Max. Combo:";
-				ss_tallyLeft[2] = "Score:";
-				ss_tallyLeft[3] = "----:";
+				ss_tallyLeft[2] = "Time Left:";
+				ss_tallyLeft[3] = "Score:";
 				ss_tallyRight[0] = ""..ss_player.tsp_bh_kills;
-				ss_tallyRight[1] = ""..ss_player.CountInv("TSP_Hunters_MaxCombo");
-				ss_tallyRight[2] = ""..players[0].mo.score;
+				ss_tallyRight[1] = ""..ss_player.tsp_bh_maxcombo;
+				ss_tallyRight[2] = ""..ss_hours..":"..ss_minutes..":"..ss_seconds;
 				ss_tallyRight[3] = "----";
 				
 				ss_rankCalc = ss_player.tsp_bh_rating * RANK_A;

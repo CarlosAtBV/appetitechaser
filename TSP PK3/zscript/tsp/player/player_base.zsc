@@ -26,6 +26,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	double tsp_bh_rating;
 	int tsp_bh_kills;
 	int tsp_bh_maxcombo;
+	int tsp_bh_timeleft;
 	
 	int tsp_airtime;
 	double tsp_airtime_mult;

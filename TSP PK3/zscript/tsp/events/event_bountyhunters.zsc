@@ -272,10 +272,12 @@ Class TSP_BHHandler : EventHandler
 		thePlayer.tsp_bh_kills = bh_kills;
 		
 		double killMult = bh_kills / double(bh_killgoal);
-		double timeBonus = died ? 0 : bh_roundTimer/60.;
+		double timeBonus = died ? 0 : bh_roundTimer/120.;
 		
 		double finalScore = killMult + timeBonus;
 		
+		thePlayer.tsp_bh_maxcombo = bh_maxCombo;
+		thePlayer.tsp_bh_timeleft = bh_roundTimer;
 		thePlayer.tsp_bh_rating = finalScore;
 		
 		S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
@@ -498,7 +500,12 @@ Class TSP_BHHandler : EventHandler
 		
 		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
 		screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(""..BH_GetKillsLeft())/2, 102, ""..BH_GetKillsLeft());
-					
+		
+		if ( bh_comboTime > 0 )
+		{
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 1258 - fnt_big.StringWidth(bh_comboTier.."x"), 296, bh_comboTier.."x");
+		}
+		
 		if ( bh_readyFrame != -1 )
 		{
 			string texName = String.Format("graphics/bh/BH_RDY%02d.png", bh_readyFrame);
