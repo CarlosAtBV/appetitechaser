@@ -172,5 +172,10 @@ Extend Class TSP_EventHandler
 				psprite = psprite.Next;
 			}
 		}
+		
+		if ( eh_telefadeout > 0.0 )
+		{
+			screen.Dim("#000000", eh_telefadeout, 0, 0, screen.GetWidth(), screen.GetHeight());
+		}
 	}
 }

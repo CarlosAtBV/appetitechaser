@@ -22,6 +22,10 @@ Class TSP_EventHandler : EventHandler
 	bool eh_hasDeathPlane;
 	int eh_deathZ;
 	
+	float eh_telefadeout;
+	int eh_telewait;
+	bool eh_teleback;
+	
 	bool tsp_meleeonly;
 	
 	Array<Actor > dynlights;
@@ -102,25 +106,55 @@ Class TSP_EventHandler : EventHandler
 				}
 			}
 			
-			if ( players[0].mo.pos.z < eh_deathZ )
+			if ( players[0].mo.pos.z < eh_deathZ && !eh_teleback )
 			{
-				ThinkerIterator findGoodSpot = ThinkerIterator.Create("TSP_BountyHunters_EnemySpawn");
-				Actor curSpot = null;
-				TSP_BountyHunters_EnemySpawn mo;
-				int curDist = -1;
+				eh_teleback = true;
+				eh_telewait = 12;
+				players[0].mo.bINVULNERABLE = true;
+			}
+		}
+		
+		if ( eh_teleback )
+		{
+			eh_telefadeout += 0.25;
+			
+			if ( eh_telefadeout >= 1.0 )
+			{
+				eh_telefadeout = 1.0;
+				eh_telewait--;
+				players[0].mo.vel = (0,0,0);
 				
-				while ( mo = TSP_BountyHunters_EnemySpawn(findGoodSpot.Next()) )
+				if ( eh_telewait <= 0 )
 				{
-					if ( curDist == -1 || ( players[0].mo.Distance3D(mo) < curDist && mo.CheckSpaceFree() ) )
+					ThinkerIterator findGoodSpot = ThinkerIterator.Create("TSP_BountyHunters_EnemySpawn");
+					Actor curSpot = null;
+					TSP_BountyHunters_EnemySpawn mo;
+					int curDist = -1;
+					
+					while ( mo = TSP_BountyHunters_EnemySpawn(findGoodSpot.Next()) )
 					{
-						curSpot = mo;
+						if ( curDist == -1 || ( players[0].mo.Distance3D(mo) < curDist && mo.CheckSpaceFree() ) )
+						{
+							curSpot = mo;
+						}
+					}
+					
+					if ( curSpot )
+					{
+						players[0].mo.SetOrigin(curSpot.pos, false);
+						players[0].mo.angle = curSpot.angle;
+						players[0].mo.pitch = 0;
+						players[0].mo.bINVULNERABLE = false;
+						eh_teleback = false;
 					}
 				}
-				
-				if ( curSpot )
-				{
-					players[0].mo.SetOrigin(curSpot.pos, false);
-				}
+			}
+		}
+		else
+		{
+			if ( eh_telefadeout > 0.0 )
+			{
+				eh_telefadeout -= 0.25;
 			}
 		}
 	}
