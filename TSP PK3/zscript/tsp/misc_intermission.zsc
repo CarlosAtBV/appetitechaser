@@ -31,9 +31,11 @@ Class TSP_StatusScreen : StatusScreen
 	float ss_tallyAlphaLeft[4];
 	float ss_tallyAlphaRight[4];
 	
+	const RANK_A = 5;
+	
 	static const string ss_ranks[] =
 	{
-		"E","D","C","B","A","S"
+		"F","E","D","C","B","A","S","S+","X"
 	};
 	
 	bool ss_missionFailed;
@@ -122,7 +124,7 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyRight[2] = ""..players[0].mo.score;
 				ss_tallyRight[3] = "----";
 				
-				ss_rankCalc = ss_player.tsp_bh_rating * ss_ranks.size();
+				ss_rankCalc = ss_player.tsp_bh_rating * RANK_A;
 				break;
 		}
 		
