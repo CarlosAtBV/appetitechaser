@@ -177,25 +177,23 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_spawnList.Clear();
 		
-		for ( int i = 0; i < bh_spawnOrder.size()+1; i++ ) //uhhhhhh fix this later idk
+		for ( int i = 0; i < bh_spawnOrder.size()+8; i++ )
 		{
-			int maxSize = bh_spawnOrder.Size()-1;
-			//for ( int v = 0; v < 3; v++ )
+			for ( int addMon = 0; addMon < 1 + min(i, bh_spawnOrder.size()-1); addMon++ )
 			{
-				for ( int g = 0; g < 5; g++ )
+				for ( int g = 0; g < 1 + min(max(i-addMon, 0), 4); g++ )
 				{
-					int spawnInt = clamp(i-g, 0, min(maxSize, i));
-					bh_spawnList.Push(bh_spawnOrder[spawnInt]);
+					bh_spawnList.Push(bh_spawnOrder[min(addMon, bh_spawnOrder.size()-1)]);
 				}
 			}
 		}
 		
-		bh_killgoal = bh_spawnList.size();
+		bh_killgoal = 50;//bh_spawnList.size();
 		
-		for ( int i = 0; i < 35; i++ )
+		/*for ( int i = 0; i < 35; i++ )
 		{
 			bh_spawnList.Push(bh_spawnOrder[bh_spawnOrder.Size()-1]);
-		}
+		}*/
 		
 		/*Console.Printf("Bounty Hunters Spawns:");
 		for ( int v = 0; v < bh_spawnList.Size(); v++ )
