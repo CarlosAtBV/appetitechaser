@@ -639,6 +639,8 @@ Class TSP_StatusBar : BaseStatusBar
 			// Notification Log
 			//================
 			
+			int notiOffset = handler_bh ? 134 : 4;
+			
 				for(int i = 0;i<tsp_notifs.Size();i++)
 				{
 					let thisone  = tsp_notifs[i];
@@ -651,7 +653,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						alpher = thisone.time/35.; //whoosh
 					}
-					DrawString(mSmallFont, thisone.message, (0, 4+24*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
+					DrawString(mSmallFont, thisone.message, (0, notiOffset+24*i), DI_TEXT_ALIGN_CENTER|DI_SCREEN_HCENTER, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================
