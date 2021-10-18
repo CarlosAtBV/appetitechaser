@@ -24,6 +24,8 @@ Class TSP_StatusBar : BaseStatusBar
 	int hud_money_target;
 	int hud_money_lerp;
 	
+	TSP_BHHandler handler_bh;
+	
 	TSP_PlayerPawn_ZSCBase tsp_player;
 	
 	double mTraitAlpha;
@@ -84,6 +86,9 @@ Class TSP_StatusBar : BaseStatusBar
 	override void Tick()
 	{
 		super.Tick();
+		
+		if ( !handler_bh ) handler_bh = TSP_BHHandler( EventHandler.Find("TSP_BHHandler") );
+		
 		mHealthInterpolator.Update(CPlayer.health);
 		mShieldInterpolator.Update(CPlayer.mo.CountInv("TSP_PlayerPawn_Shield"));
 		//mMoneyInterpolator.Update(CPlayer.mo.CountInv("TSP_GlobalDollars"));
@@ -602,6 +607,13 @@ Class TSP_StatusBar : BaseStatusBar
 					DrawString(mSmallFont, playerObj.pp_notification, (0,-36), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW|DI_SCREEN_CENTER_BOTTOM, Font.CR_GREEN);
 					Centering = false;
 				}
+				
+			// DO the OBunty HUnters HSTUFff!!!!
+			
+			if ( handler_bh )
+			{
+				handler_bh.BH_DrawHud(0.0);
+			}
 			
 			//================
 			// Pickup Log
