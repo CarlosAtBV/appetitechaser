@@ -300,6 +300,7 @@ DoomEdNums
 	24701 = TSP_Prop_PlanetSphere
 	
 	24800 = TSP_BountyHunters_EnemySpawn
+	24801 = TSP_DeathPlane
 }
 
 DamageType TSP_NoDamage

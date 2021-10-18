@@ -125,7 +125,7 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyLeft[0] = "Kills:";
 				ss_tallyLeft[1] = "Max. Combo:";
 				ss_tallyLeft[2] = "Time Left:";
-				ss_tallyLeft[3] = "Score:";
+				ss_tallyLeft[3] = "----:";
 				ss_tallyRight[0] = ""..ss_player.tsp_bh_kills;
 				ss_tallyRight[1] = ""..ss_player.tsp_bh_maxcombo;
 				ss_tallyRight[2] = ""..ss_hours..":"..ss_minutes..":"..ss_seconds;

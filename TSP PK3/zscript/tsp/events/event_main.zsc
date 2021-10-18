@@ -1,22 +1,26 @@
+Class TSP_DeathPlane : Actor
+{
+	//$Arg0 Z Position
+}
 
+Class TSP_ComeBackUpSpot : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		+NOBLOCKMAP
+	}
+}
 
 Class TSP_EventHandler : EventHandler
 {
 	ui bool tsp_shopmusic;
 	
 	bool gameover;
-	int spawndelay;
-	int hunters_wave;
-	int hunters_monsterMax;
 	
-	int hunters_score;
-	
-	int hunters_time;
-	
-	int hunters_endtimer;
-	
-	int hunters_combo;
-	int hunters_combotime;
+	Array<Actor > eh_livingThings;
+	bool eh_hasDeathPlane;
+	int eh_deathZ;
 	
 	bool tsp_meleeonly;
 	
@@ -42,6 +46,14 @@ Class TSP_EventHandler : EventHandler
 		{
 			Console.Printf("balls");
 			dynlights.Push(mo);
+		}
+		
+		ThinkerIterator findDeathPlane = ThinkerIterator.Create("TSP_DeathPlane");
+		mo = Actor(findDeathPlane.Next());
+		if ( mo )
+		{
+			eh_hasDeathPlane = true;
+			eh_deathZ = mo.args[0];
 		}
 		
 		Shader.SetEnabled(players[consoleplayer], "TSP_TitleShader", (gamestate == GS_TITLELEVEL));
@@ -70,8 +82,56 @@ Class TSP_EventHandler : EventHandler
 		}
 	}*/
 	
+	override void WorldTick()
+	{
+		if ( eh_hasDeathPlane )
+		{
+			for ( int i = 0; i < eh_livingThings.Size(); i++ )
+			{
+				let daFeller = eh_livingThings[i];
+				if ( !daFeller )
+				{
+					eh_livingThings.delete(i, 1);
+					i--;
+					continue;
+				}
+				
+				if ( daFeller.pos.z < eh_deathZ )
+				{
+					daFeller.A_Die("Falling");
+				}
+			}
+			
+			if ( players[0].mo.pos.z < eh_deathZ )
+			{
+				ThinkerIterator findGoodSpot = ThinkerIterator.Create("TSP_BountyHunters_EnemySpawn");
+				Actor curSpot = null;
+				TSP_BountyHunters_EnemySpawn mo;
+				int curDist = -1;
+				
+				while ( mo = TSP_BountyHunters_EnemySpawn(findGoodSpot.Next()) )
+				{
+					if ( curDist == -1 || ( players[0].mo.Distance3D(mo) < curDist && mo.CheckSpaceFree() ) )
+					{
+						curSpot = mo;
+					}
+				}
+				
+				if ( curSpot )
+				{
+					players[0].mo.SetOrigin(curSpot.pos, false);
+				}
+			}
+		}
+	}
+	
 	override void WorldThingSpawned(WorldEvent e)
 	{
+		if ( eh_hasDeathPlane && e.Thing.bIsMonster )
+		{
+			eh_livingThings.Push(e.Thing);
+		}
+		
 		if(tsp_meleeonly && e.Thing is "Ammo")
 		{
 			e.Thing.Destroy();
