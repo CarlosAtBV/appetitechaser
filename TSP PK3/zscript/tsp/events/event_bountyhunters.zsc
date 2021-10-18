@@ -428,6 +428,11 @@ Class TSP_BHHandler : EventHandler
 			{
 				bh_enemies.Delete(checkList, 1);
 				bh_kills += 1;
+				
+				if ( bh_kills >= bh_killgoal )
+				{
+					BH_GameOver(false);
+				}
 			}
 			
 			if ( e.Thing.target == players[0].mo )
