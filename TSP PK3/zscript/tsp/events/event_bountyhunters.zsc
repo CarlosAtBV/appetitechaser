@@ -273,8 +273,9 @@ Class TSP_BHHandler : EventHandler
 		
 		double killMult = bh_kills / double(bh_killgoal);
 		double timeBonus = died ? 0 : bh_roundTimer/120.;
+		double comboBonus = bh_maxCombo / double(bh_killgoal);
 		
-		double finalScore = killMult + timeBonus;
+		double finalScore = killMult + timeBonus + comboBonus;
 		
 		thePlayer.tsp_bh_maxcombo = bh_maxCombo;
 		thePlayer.tsp_bh_timeleft = bh_roundTimer;
