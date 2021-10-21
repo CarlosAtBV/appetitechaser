@@ -301,6 +301,8 @@ DoomEdNums
 	
 	24800 = TSP_BountyHunters_EnemySpawn
 	24801 = TSP_DeathPlane
+	
+	24851 = TSP_BountyHunters_ComboCrystal
 }
 
 DamageType TSP_NoDamage

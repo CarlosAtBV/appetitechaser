@@ -38,7 +38,6 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 					debris.vel = (daX * cos(randangle), daX * sin(randangle), daY) * frandom(4,12);
 					debris.roll = (yerAngle)-90;
 				}
-				CrystalDeathMoment();
 			}
 			Stop;
 	}
@@ -70,24 +69,73 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
-		/*if(mod!='Melee')
-		{
-			return 0;
-		}*/
-		
 		if(dmgDone<15)
 		{
 			dmgDone += damage;
 			if(dmgDone>=15)
 			{
 				target = source;
+				CrystalDeathMoment();
 				SetStateLabel("Death");
 			}
 		}
 		return 0;
-		//Console.Printf("FUCK");
-		
-		//return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+	}
+}
+
+Class TSP_BountyHunters_ComboCrystal : TSP_BountyHunters_TimeExtCrystal
+{
+	Default
+	{
+		+SHOOTABLE
+		+NOBLOOD
+	}
+	
+	States
+	{
+		Spawn:
+			BHCS ABCDEFGHIJKLMNOP 2;
+			Loop;
+		Death:
+			BHCC A 0
+			{
+				if(target==null)
+				{
+					return;
+				}
+				A_FaceTarget();
+				int daAngle = angle+90;
+				for ( int i = 0; i < 16; i++ )
+				{
+					int yerAngle = i*(360/16);
+					double daX = cos(yerAngle);
+					double daY = sin(yerAngle);
+					Actor debris = Spawn("TSP_BountyHunters_ComboCrystal_Debris", pos + (0, 0, 48) + (daX * cos(daAngle), daX * sin(daAngle), daY) * 12);
+					double randangle = daAngle + frandom(-25,25);
+					debris.vel = (daX * cos(randangle), daX * sin(randangle), daY) * frandom(4,12);
+					debris.roll = (yerAngle)-90;
+				}
+			}
+			Stop;
+	}
+	
+	override void CrystalDeathMoment()
+	{
+		let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
+		if(event)
+		{
+			event.BH_AddTime(30);
+			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
+		}
+	}
+	
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if ( other.player || other.target is "PlayerPawn" )
+		{
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -117,6 +165,23 @@ Class TSP_BountyHunters_TimeExtCrystal_Debris : Actor
 		Spawn:
 			BHTF A 0;
 			BHTF A -1
+			{
+				frame = random(0,14);
+			}
+			Stop;
+		Death:
+			"----" A 1 A_FadeOut(0.05);
+			Loop;
+	}
+}
+
+Class TSP_BountyHunters_ComboCrystal_Debris : TSP_BountyHunters_TimeExtCrystal_Debris
+{
+	States
+	{
+		Spawn:
+			BHCF A 0;
+			BHCF A -1
 			{
 				frame = random(0,14);
 			}
