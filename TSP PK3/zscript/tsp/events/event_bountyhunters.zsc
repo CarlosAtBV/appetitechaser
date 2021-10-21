@@ -546,7 +546,7 @@ Class TSP_BHHandler : EventHandler
 	
 	clearscope int BH_GetKillsLeft()
 	{
-		return bh_killgoal - bh_kills;
+		return max(bh_killgoal - bh_kills, 0);
 	}
 	
 	ui void BH_DrawHud(float ticFrac)
@@ -593,8 +593,9 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_curNote )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-fnt_big.GetHeight()-4, bh_curNote.text);
-			screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2)+4, bh_curNote.subtext);
+			float alpha = min(bh_curNote.tics / 35., 1.0);
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-fnt_big.GetHeight()-4, bh_curNote.text, DTA_Alpha, alpha);
+			screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2)+4, bh_curNote.subtext, DTA_Alpha, alpha);
 		}
 	}
 		
@@ -604,9 +605,13 @@ Class TSP_BHHandler : EventHandler
 	
 	override void NetworkProcess(ConsoleEvent e)
 	{
-		if ( e.Name == "SHUTTHEFUCKUPMYMONEYBITCH" )
+		if ( e.Name == "DEBUG_FORCEEND" )
 		{
 			BH_GameOver(e.args[0]);
+		}
+		else if ( e.Name == "DEBUG_SETKILLS" )
+		{
+			bh_kills = e.args[0];
 		}
 	}
 }
