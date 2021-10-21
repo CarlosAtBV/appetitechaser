@@ -325,6 +325,7 @@ Class TSP_BHHandler : EventHandler
 		thePlayer.tsp_bh_maxcombo = bh_maxCombo;
 		thePlayer.tsp_bh_timeleft = bh_roundTimer;
 		thePlayer.tsp_bh_rating = finalScore;
+		thePlayer.tsp_bh_killgoal = bh_killgoal;
 		
 		bh_roundTimer = 0;
 	}
