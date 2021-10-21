@@ -2,9 +2,6 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 {
 	Default
 	{
-		//+SHOOTABLE
-		-COUNTKILL
-		+NOBLOOD
 		Health 15;
 		Height 56;
 		+FLOATBOB
@@ -41,15 +38,19 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 					debris.vel = (daX * cos(randangle), daX * sin(randangle), daY) * frandom(4,12);
 					debris.roll = (yerAngle)-90;
 				}
-				let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
-				if(event)
-				{
-					event.BH_AddTime(30);
-					TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
-
-				}
+				CrystalDeathMoment();
 			}
 			Stop;
+	}
+	
+	virtual void CrystalDeathMoment()
+	{
+		let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
+		if(event)
+		{
+			event.BH_AddTime(30);
+			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
+		}
 	}
 	
 	override bool CanCollideWith(Actor other, bool passive)

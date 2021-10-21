@@ -157,8 +157,8 @@ Class TSP_BHHandler : EventHandler
 	int bh_roundTimer;
 	int bh_endtimer;
 	
-	int bh_comboTier;
-	int bh_comboTime;
+	int bh_spreeTier;
+	int bh_spreeTime;
 	
 	Array<TSP_BountyHunters_EnemySpawn > bh_spawns;
 	Array<Actor > bh_enemies;
@@ -167,6 +167,9 @@ Class TSP_BHHandler : EventHandler
 	int bh_maxCombo;
 	int bh_kills;
 	int bh_killgoal;
+	
+	int bh_comboTime;
+	int bh_comboKills;
 	
 	bool bh_wonRound;
 	bool bh_overkill;
@@ -315,12 +318,13 @@ Class TSP_BHHandler : EventHandler
 		}
 		
 		thePlayer.tsp_bh_kills = bh_kills;
+		thePlayer.tsp_bh_combokills = bh_comboKills;
 		
-		double killMult = bh_kills / double(bh_killgoal);
-		double timeBonus = epicfail ? 0 : bh_roundTimer/120.;
+		double killMult = ( bh_kills + bh_comboKills ) / double(bh_killgoal);
+		double timeBonus = 0.0;//epicfail ? 0 : bh_roundTimer/120.;
 		double comboBonus = bh_maxCombo / double(bh_killgoal);
 		
-		double finalScore = killMult + timeBonus + comboBonus;
+		double finalScore = killMult + comboBonus;
 		
 		thePlayer.tsp_bh_maxcombo = bh_maxCombo;
 		thePlayer.tsp_bh_timeleft = bh_roundTimer;
@@ -411,12 +415,12 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_backgroundTimer++;
 		
-		if ( bh_comboTime > 0 )
+		if ( bh_spreeTime > 0 )
 		{
-			bh_comboTime--;
-			if ( bh_comboTime == 0 )
+			bh_spreeTime--;
+			if ( bh_spreeTime == 0 )
 			{
-				bh_comboTier = 0;
+				bh_spreeTier = 0;
 			}
 		}
 		
@@ -496,6 +500,11 @@ Class TSP_BHHandler : EventHandler
 				bh_enemies.Delete(checkList, 1);
 				bh_kills += 1;
 				
+				if ( bh_comboTime > 0 )
+				{
+					bh_comboKills++;
+				}
+				
 				if ( !bh_overkill && bh_kills >= bh_killgoal )
 				{
 					bh_overkill = true;
@@ -508,14 +517,14 @@ Class TSP_BHHandler : EventHandler
 			
 			if ( e.Thing.target == players[0].mo )
 			{
-				bh_comboTier++;
-				if ( bh_comboTier > bh_maxCombo )
+				bh_spreeTier++;
+				if ( bh_spreeTier > bh_maxCombo )
 				{
-					bh_maxCombo = bh_comboTier;
+					bh_maxCombo = bh_spreeTier;
 				}
-				bh_comboTime = 35*10;
+				bh_spreeTime = 35*10;
 				
-				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_comboTier;
+				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_spreeTier;
 			}
 			
 			double healthDropMult = 1.0 - clamp(players[0].mo.health / 75., 0.0, 1.0);
@@ -570,9 +579,9 @@ Class TSP_BHHandler : EventHandler
 		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
 		screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(""..BH_GetKillsLeft())/2, 102, ""..BH_GetKillsLeft());
 		
-		if ( bh_comboTime > 0 )
+		if ( bh_spreeTime > 0 )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 1258 - fnt_big.StringWidth(bh_comboTier.."x"), 296, bh_comboTier.."x");
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 1258 - fnt_big.StringWidth(bh_spreeTier.."x"), 296, bh_spreeTier.."x");
 		}
 		
 		if ( bh_readyFrame != -1 )
