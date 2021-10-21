@@ -159,6 +159,7 @@ Class TSP_BHHandler : EventHandler
 	
 	int bh_spreeTier;
 	int bh_spreeTime;
+	float bh_spreeScale;
 	
 	Array<TSP_BountyHunters_EnemySpawn > bh_spawns;
 	Array<Actor > bh_enemies;
@@ -498,6 +499,11 @@ Class TSP_BHHandler : EventHandler
 		{
 			bh_curNote.Tick();
 		}
+		
+		if ( bh_spreeScale > 0.0 )
+		{
+			bh_spreeScale /= 2;
+		}
 	}
 	
 	override void WorldThingDied(WorldEvent e)
@@ -513,6 +519,8 @@ Class TSP_BHHandler : EventHandler
 			{
 				bh_enemies.Delete(checkList, 1);
 				bh_kills += 1;
+				
+				bh_spreeScale += 0.5;
 				
 				if ( bh_comboTime > 0 )
 				{
@@ -595,7 +603,9 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_spreeTime > 0 )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, screen.GetWidth() - 20 - fnt_big.StringWidth(bh_spreeTier.."x"), 296, bh_spreeTier.."x");
+			float spreeScaleTarg = (bh_spreeScale / 2);
+			float spreeScale = 1.0 + ( bh_spreeScale + (spreeScaleTarg - bh_spreeScale) * ticFrac );
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, screen.GetWidth() - 20 - fnt_big.StringWidth(bh_spreeTier.."x") * spreeScale, 296, bh_spreeTier.."x", DTA_ScaleX, spreeScale, DTA_ScaleY, spreeScale);
 		}
 		
 		if ( bh_comboTime > 0 )
