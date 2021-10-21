@@ -140,7 +140,13 @@ Class TSP_BHHandler : EventHandler
 	int bh_kills;
 	int bh_killgoal;
 	
+	bool bh_wonRound;
+	
 	bool bh_roundStarted;
+	
+	float bh_readyFrame;
+	float bh_goFrame;
+	float bh_gameSetFrame;
 	
 	Array<String > bh_spawnList;
 	
@@ -217,6 +223,7 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_readyFrame = -1;
 		bh_goFrame = -1;
+		bh_gameSetFrame = -1;
 	}
 	
 	override void WorldThingSpawned(WorldEvent e)
@@ -255,8 +262,13 @@ Class TSP_BHHandler : EventHandler
 	void BH_GameOver(bool died = false)
 	{
 		TSP_PlayerPawn_ZSCBase thePlayer = TSP_PlayerPawn_ZSCBase(players[0].mo);
+		bh_wonRound = !died;
+		bh_gameSetFrame = 1;
+		bh_readyFrame = -1;
+		bh_goFrame = -1;
 		
-		S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
+		S_Sound("announcer/hunters/ailene/gameover", CHAN_VOICE);
+		
 		level.setFrozen(true);
 		players[0].mo.vel = (0,0,0);
 		players[0].mo.viewbob = 0;
@@ -281,11 +293,8 @@ Class TSP_BHHandler : EventHandler
 		thePlayer.tsp_bh_timeleft = bh_roundTimer;
 		thePlayer.tsp_bh_rating = finalScore;
 		
-		S_Sound("announcer/hunters/ailene/gameover",CHAN_VOICE);
 		bh_roundTimer = 0;
 	}
-	
-	float bh_readyFrame; float bh_goFrame;
 	
 	override void WorldTick()
 	{
@@ -324,6 +333,18 @@ Class TSP_BHHandler : EventHandler
 			if ( bh_goFrame == 12 )
 			{
 				bh_goFrame = -1;
+			}
+		}
+		
+		if ( bh_gameSetFrame != -1 && bh_gameSetFrame < 13 )
+		{
+			if ( bh_gameSetFrame >= 6 && bh_gameSetFrame < 7 )
+			{
+				bh_gameSetFrame+=0.05;
+			}
+			else
+			{
+				bh_gameSetFrame++;
 			}
 		}
 		
@@ -518,6 +539,14 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_goFrame != -1 )
 		{
 			string texName = String.Format("graphics/bh/BH_GO%02d.png", bh_goFrame);
+			let getReadyTex = TexMan.CheckForTexture(texName);
+			Screen.DrawTexture(getReadyTex, false, 0, 0,
+				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+		}
+		
+		if ( bh_gameSetFrame != -1 )
+		{
+			string texName = String.Format("graphics/bh/BH_WIN%02d.png", bh_gameSetFrame);
 			let getReadyTex = TexMan.CheckForTexture(texName);
 			Screen.DrawTexture(getReadyTex, false, 0, 0,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
