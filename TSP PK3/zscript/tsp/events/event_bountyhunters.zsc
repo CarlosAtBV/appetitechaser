@@ -601,7 +601,8 @@ Class TSP_BHHandler : EventHandler
 			int xBottom = firstHalf ? screen.GetWidth() - ease_outExpo(daTime) * screen.GetWidth()/2 : screen.GetWidth()/2 - (ease_inExpo(daTime) * screen.GetWidth()/2);
 			
 			screen.DrawText(daBigFont, Font.CR_UNTRANSLATED, xTop - daBigFont.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-daBigFont.GetHeight(), bh_curNote.text);
-			screen.DrawText(daSmallFont, Font.FindFontColor("TSPYeller"), xBottom - daSmallFont.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2), bh_curNote.subtext);
+			screen.DrawText(daSmallFont, Font.CR_UNTRANSLATED, xBottom - daSmallFont.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2), bh_curNote.subtext,
+				DTA_Color, Color(255, 155, 255, 220));
 		}
 	}
 		
