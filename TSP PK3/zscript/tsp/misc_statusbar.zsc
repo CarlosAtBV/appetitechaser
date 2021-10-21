@@ -612,7 +612,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if ( handler_bh )
 			{
-				handler_bh.BH_DrawHud(0.0);
+				handler_bh.BH_DrawHud(TicFrac);
 			}
 			
 			//================
