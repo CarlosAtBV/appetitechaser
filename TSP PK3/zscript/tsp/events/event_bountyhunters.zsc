@@ -208,7 +208,7 @@ Class TSP_BHHandler : EventHandler
 	void BH_AddComboTime(int amt)
 	{
 		S_Sound(bh_comboTime > 0 ? "announcer/hunters/ailene/combotime/add" : "announcer/hunters/ailene/combotime/on",CHAN_VOICE);
-		bh_comboTime += amt;
+		bh_comboTime += amt * 35;
 		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
 	}
 	
@@ -478,11 +478,11 @@ Class TSP_BHHandler : EventHandler
 					BH_GameOver(false);
 				}
 			}
+		}
 			
-			if ( bh_comboTime > 0 )
-			{
-				bh_comboTime--;
-			}
+		if ( bh_comboTime > 0 )
+		{
+			bh_comboTime--;
 		}
 		
 		if ( bh_roundTimer <= 0 )
@@ -600,7 +600,7 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_comboTime > 0 )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 20, 296, ""..bh_comboTime);
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 20, 296, ""..int(ceil(bh_comboTime/35.)));
 		}
 		
 		if ( bh_readyFrame != -1 )
