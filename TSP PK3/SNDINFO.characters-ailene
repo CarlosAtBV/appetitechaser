@@ -60,6 +60,9 @@ announcer/hunters/ailene/hunt "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart
 announcer/hunters/ailene/ready "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart02.ogg"
 announcer/hunters/ailene/go "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart03.ogg"
 
+announcer/hunters/ailene/combotime/on "sounds/announcer/ailene/bh/vo_bh_ailene_combotime02.ogg"
+announcer/hunters/ailene/combotime/add "sounds/announcer/ailene/bh/vo_bh_ailene_combotime01.ogg"
+
 $random announcer/hunters/ailene/gameover { ailene/gameover01 ailene/gameover02 ailene/gameover03 }
 ailene/gameover01 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover01.ogg"
 ailene/gameover02 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover02.ogg"

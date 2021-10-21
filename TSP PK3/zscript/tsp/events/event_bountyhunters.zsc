@@ -205,6 +205,13 @@ Class TSP_BHHandler : EventHandler
 		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
 	}
 	
+	void BH_AddComboTime(int amt)
+	{
+		S_Sound(bh_comboTime > 0 ? "announcer/hunters/ailene/combotime/add" : "announcer/hunters/ailene/combotime/on",CHAN_VOICE);
+		bh_comboTime += amt;
+		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
+	}
+	
 	override void OnRegister()
 	{
 		if ( tsp_gamemode != 1 )
@@ -450,24 +457,31 @@ Class TSP_BHHandler : EventHandler
 				Console.Printf("No deathmatch spawns found.");
 			}
 		}
-		
-		if( bh_roundTimer > 0 && bh_backgroundTimer % 35 == 0 ) //a second has passed!!!
+		if ( bh_backgroundTimer % 35 == 0 ) //a second has passed!!!
 		{
-			bh_roundTimer--;
-			switch(bh_roundTimer)
+			if( bh_roundTimer > 0 )
 			{
-				case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
-				case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
-				case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
-				case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
-				case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
-				case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
-				case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+				bh_roundTimer--;
+				switch(bh_roundTimer)
+				{
+					case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
+					case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
+					case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
+					case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
+					case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
+					case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
+					case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+				}
+				
+				if ( bh_roundTimer == 0 )
+				{
+					BH_GameOver(false);
+				}
 			}
 			
-			if ( bh_roundTimer == 0 )
+			if ( bh_comboTime > 0 )
 			{
-				BH_GameOver(false);
+				bh_comboTime--;
 			}
 		}
 		
@@ -581,7 +595,12 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_spreeTime > 0 )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 1258 - fnt_big.StringWidth(bh_spreeTier.."x"), 296, bh_spreeTier.."x");
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, screen.GetWidth() - 20 - fnt_big.StringWidth(bh_spreeTier.."x"), 296, bh_spreeTier.."x");
+		}
+		
+		if ( bh_comboTime > 0 )
+		{
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 20, 296, ""..bh_comboTime);
 		}
 		
 		if ( bh_readyFrame != -1 )

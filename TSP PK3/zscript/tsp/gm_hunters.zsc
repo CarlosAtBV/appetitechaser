@@ -124,7 +124,7 @@ Class TSP_BountyHunters_ComboCrystal : TSP_BountyHunters_TimeExtCrystal
 		let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
 		if(event)
 		{
-			event.BH_AddTime(30);
+			event.BH_AddComboTime(30);
 			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
 		}
 	}
