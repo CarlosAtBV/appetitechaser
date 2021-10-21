@@ -259,10 +259,12 @@ Class TSP_BHHandler : EventHandler
 		return theReturn;
 	}
 	
-	void BH_GameOver(bool died = false)
+	void BH_GameOver(bool epicfail = false)
 	{
 		TSP_PlayerPawn_ZSCBase thePlayer = TSP_PlayerPawn_ZSCBase(players[0].mo);
-		bh_wonRound = !died;
+		
+		bh_startWait = 0;
+		bh_wonRound = !epicfail;
 		bh_gameSetFrame = 1;
 		bh_readyFrame = -1;
 		bh_goFrame = -1;
@@ -284,7 +286,7 @@ Class TSP_BHHandler : EventHandler
 		thePlayer.tsp_bh_kills = bh_kills;
 		
 		double killMult = bh_kills / double(bh_killgoal);
-		double timeBonus = died ? 0 : bh_roundTimer/120.;
+		double timeBonus = epicfail ? 0 : bh_roundTimer/120.;
 		double comboBonus = bh_maxCombo / double(bh_killgoal);
 		
 		double finalScore = killMult + timeBonus + comboBonus;
@@ -336,7 +338,7 @@ Class TSP_BHHandler : EventHandler
 			}
 		}
 		
-		if ( bh_gameSetFrame != -1 && bh_gameSetFrame < 13 )
+		if ( bh_gameSetFrame != -1 && bh_gameSetFrame < 14 )
 		{
 			if ( bh_gameSetFrame >= 6 && bh_gameSetFrame < 7 )
 			{
@@ -345,6 +347,10 @@ Class TSP_BHHandler : EventHandler
 			else
 			{
 				bh_gameSetFrame++;
+			}
+			if ( bh_gameSetFrame >= 14 )
+			{
+				bh_gameSetFrame = -1;
 			}
 		}
 		
@@ -546,7 +552,7 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_gameSetFrame != -1 )
 		{
-			string texName = String.Format("graphics/bh/BH_WIN%02d.png", bh_gameSetFrame);
+			string texName = String.Format(bh_wonRound ? "graphics/bh/BH_WIN%02d.png" : "graphics/bh/BH_END%02d.png", bh_gameSetFrame);
 			let getReadyTex = TexMan.CheckForTexture(texName);
 			Screen.DrawTexture(getReadyTex, false, 0, 0,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
@@ -561,7 +567,7 @@ Class TSP_BHHandler : EventHandler
 	{
 		if ( e.Name == "SHUTTHEFUCKUPMYMONEYBITCH" )
 		{
-			BH_GameOver(false);
+			BH_GameOver(e.args[0]);
 		}
 	}
 }
