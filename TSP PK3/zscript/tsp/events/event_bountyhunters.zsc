@@ -121,6 +121,26 @@ Class TSP_BH_AmmoZooper : TSP_BH_Zooper
 	}
 }
 
+Class TSP_BH_HudNotifcation
+{
+	string text;
+	string subtext;
+	int tics;
+	
+	void Tick()
+	{
+		if ( tics > 0 )
+		{
+			tics--;
+		}
+		
+		if ( tics <= 0 )
+		{
+			Destroy();
+		}
+	}
+}
+
 Class TSP_BHHandler : EventHandler
 {
 	int spawnDelay;
@@ -141,12 +161,15 @@ Class TSP_BHHandler : EventHandler
 	int bh_killgoal;
 	
 	bool bh_wonRound;
+	bool bh_overkill;
 	
 	bool bh_roundStarted;
 	
 	float bh_readyFrame;
 	float bh_goFrame;
 	float bh_gameSetFrame;
+	
+	TSP_BH_HudNotifcation bh_curNote;
 	
 	Array<String > bh_spawnList;
 	
@@ -194,7 +217,7 @@ Class TSP_BHHandler : EventHandler
 			}
 		}
 		
-		bh_killgoal = 50;//bh_spawnList.size();
+		bh_killgoal = 60;//50;//bh_spawnList.size();
 		
 		/*for ( int i = 0; i < 35; i++ )
 		{
@@ -443,6 +466,11 @@ Class TSP_BHHandler : EventHandler
 				players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
 			}
 		}
+		
+		if ( bh_curNote )
+		{
+			bh_curNote.Tick();
+		}
 	}
 	
 	override void WorldThingDied(WorldEvent e)
@@ -459,9 +487,14 @@ Class TSP_BHHandler : EventHandler
 				bh_enemies.Delete(checkList, 1);
 				bh_kills += 1;
 				
-				if ( bh_kills >= bh_killgoal )
+				if ( !bh_overkill && bh_kills >= bh_killgoal )
 				{
-					BH_GameOver(false);
+					bh_overkill = true;
+					bh_curNote = new("TSP_BH_HudNotifcation");
+					bh_curNote.text = "Kill Goal Reached!";
+					bh_curNote.subtext = "Additional kills reward you with additional points!";
+					bh_curNote.tics = 4*35;
+					//BH_GameOver(false);
 				}
 			}
 			
@@ -556,6 +589,12 @@ Class TSP_BHHandler : EventHandler
 			let getReadyTex = TexMan.CheckForTexture(texName);
 			Screen.DrawTexture(getReadyTex, false, 0, 0,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+		}
+		
+		if ( bh_curNote )
+		{
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-fnt_big.GetHeight()-4, bh_curNote.text);
+			screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2)+4, bh_curNote.subtext);
 		}
 	}
 		
