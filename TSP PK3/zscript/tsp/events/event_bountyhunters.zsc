@@ -125,16 +125,16 @@ Class TSP_BH_HudNotifcation
 {
 	string text;
 	string subtext;
-	int tics;
+	float time;
 	
 	void Tick()
 	{
-		if ( tics > 0 )
+		if ( time < 1.0 )
 		{
-			tics--;
+			time+=0.01;
 		}
 		
-		if ( tics <= 0 )
+		if ( time >= 1.0 )
 		{
 			Destroy();
 		}
@@ -493,7 +493,6 @@ Class TSP_BHHandler : EventHandler
 					bh_curNote = new("TSP_BH_HudNotifcation");
 					bh_curNote.text = "Kill Goal Reached!";
 					bh_curNote.subtext = "Additional kills reward you with additional points!";
-					bh_curNote.tics = 4*35;
 					//BH_GameOver(false);
 				}
 			}
@@ -593,9 +592,16 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_curNote )
 		{
-			float alpha = min(bh_curNote.tics / 35., 1.0);
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-fnt_big.GetHeight()-4, bh_curNote.text, DTA_Alpha, alpha);
-			screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2)+4, bh_curNote.subtext, DTA_Alpha, alpha);
+			Font daBigFont = "tsp_bold";
+			Font daSmallFont = "tsp_small";
+			
+			bool firstHalf = (bh_curNote.time < 0.5);
+			float daTime = firstHalf ? bh_curNote.time / 0.5 : (bh_curNote.time - 0.5) / 0.5;
+			int xTop = firstHalf ? ease_outExpo(daTime) * screen.GetWidth()/2 : screen.GetWidth()/2 + (ease_inExpo(daTime) * screen.GetWidth()/2);
+			int xBottom = firstHalf ? screen.GetWidth() - ease_outExpo(daTime) * screen.GetWidth()/2 : screen.GetWidth()/2 - (ease_inExpo(daTime) * screen.GetWidth()/2);
+			
+			screen.DrawText(daBigFont, Font.CR_UNTRANSLATED, xTop - daBigFont.StringWidth(bh_curNote.text)/2, (screen.GetHeight()/2)-daBigFont.GetHeight(), bh_curNote.text);
+			screen.DrawText(daSmallFont, Font.FindFontColor("TSPYeller"), xBottom - daSmallFont.StringWidth(bh_curNote.subtext)/2, (screen.GetHeight()/2), bh_curNote.subtext);
 		}
 	}
 		

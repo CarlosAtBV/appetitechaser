@@ -4,12 +4,12 @@ Mixin Class TSP_HiResBase
 	Vector2 screenSize;
 	Vector2 viewportPos;
 	
-	double ease_inQuart (double x)
+	clearscope double ease_inQuart (double x)
 	{
 		return x * x * x * x;
 	}
 	
-	double ease_outBack (double x)
+	clearscope double ease_outBack (double x)
 	{
 		float c1 = 1.70158;
 		float c3 = c1 + 1.0;
@@ -17,12 +17,22 @@ Mixin Class TSP_HiResBase
 		return 1.0 + c3 * ((x - 1.0) ** 3) + c1 * ((x - 1.0) ** 2);
 	}
 	
-	double ease_inBack (double x)
+	clearscope double ease_inBack (double x)
 	{
 		float c1 = 1.70158;
 		float c3 = c1 + 1;
 
 		return c3 * x * x * x - c1 * x * x;
+	}
+	
+	clearscope double ease_outExpo (double x)
+	{
+		return x == 1 ? 1 : 1 - ( 2 ** (-10 * x) );
+	}
+	
+	clearscope double ease_inExpo (double x)
+	{
+		return x == 0 ? 0 : ( 2 ** (10 * x - 10) );
 	}
 	
 	enum ETSPHiResAlignment
