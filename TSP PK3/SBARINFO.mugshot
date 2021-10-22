@@ -48,5 +48,9 @@
 	{
 	OUCH0 35;
 	}
-
+	
+	mugshot "Death"
+	{
+	ST53 -1;
+	}
 
