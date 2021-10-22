@@ -356,6 +356,7 @@ Class TSP_StatusBar : BaseStatusBar
 				}
 			}
 			
+/*
 			//================
 			// Keys
 			//================
@@ -373,6 +374,7 @@ Class TSP_StatusBar : BaseStatusBar
 						roww = max(roww, size.X);
 					}
 				}
+*/
 
 			// RIGHT HAND SIDE
 			
@@ -397,19 +399,27 @@ Class TSP_StatusBar : BaseStatusBar
 			int maxCharge;
 			
 			// BARE KNUCKLE - Stasis Uppercut
-			if(CPlayer.mo.FindInventory("MelMelee") && CPlayer.mo.CountInv("TSPPrimaryCombo")==1)
+			if(CPlayer.mo.FindInventory("MelMeleeTest"))
 			{
 				maxCharge = 9;
 			}
 			
-			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelMelee")
+			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelMeleeTest")
 			{
-				DrawBar("MEL_HAGF", "MEL_HAGE", shield, maxShield, (HUDRIGHT_X+3, HUDRIGHT_Y+37), 0, 1, DI_ITEM_OFFSETS);
-				DrawBar("MEL_HCHB", "MEL_HCHE", charge, maxCharge, (HUDRIGHT_X+3, HUDRIGHT_Y+46), 0, 1, DI_ITEM_OFFSETS);
+				DrawBar("HUD_MELB", "HUD_MELE", charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			}
 			
+			if(CPlayer.mo.CountInv("TSP_Upgrade_Powerbank")==1)
+			{
+				if(maxCharge == 9)
+				{
+				DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				}
+				
+			}
 			
+/*
 			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelChargeStyle")
 			{
 				if(CPlayer.mo.CountInv("TSPPrimaryCombo")==1)
@@ -433,7 +443,7 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawBar("MEL_HCHC", "MEL_HCHE", charge, maxCharge, (HUDRIGHT_X+3, HUDRIGHT_Y+46), 0, 1, DI_ITEM_OFFSETS);
 				DrawImage("MEL_WEPC", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			}
-		
+*/
 
 			//================
 			// WEAPON BASE
