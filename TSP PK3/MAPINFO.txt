@@ -132,11 +132,13 @@ map TSP_BH01 "Neoscape - Battle Zone"
 	lightmode = 0
 }
 
+/*
 map TSP_BH02 "Space Orbital Neos - Multitier"
 {
 	music = "music/TSP_BH02.ogg"
 	lightmode = 0
 }
+*/
 
 map BH_SKIF "flyin lmao"
 {
