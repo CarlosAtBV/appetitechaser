@@ -112,7 +112,7 @@ Actor MeleeButtonActor : CustomInventory
 	MelMeleeButton:
 		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelMeleeSwitch")
 		TNT1 A 0 A_JumpIfInventory("MelChargeToken", 1, "MelChargeSwitch")
-		TNT1 A 0 A_SelectWeapon("MelMeleeTest")
+		TNT1 A 0 A_SelectWeapon("MelBareKnuckle")
 		Fail
 	MelChargeSwitch:
 		TNT1 A 0 A_SelectWeapon("MelChargeStyle")

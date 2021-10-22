@@ -1,6 +1,6 @@
 //===========================================================================
 //
-// Mel's Melee Style
+// Bare Knuckle (called Streets of Rage in Japan)
 //
 // by Cardboard Marty
 // ZScripted by DrPyspy
@@ -10,7 +10,7 @@
 //
 //===========================================================================
 
-Class MelMeleeTest : TSP_Mel_BaseWeapon
+Class MelBareKnuckle : TSP_Mel_BaseWeapon
 {
 	Default
 	{

@@ -399,12 +399,12 @@ Class TSP_StatusBar : BaseStatusBar
 			int maxCharge;
 			
 			// BARE KNUCKLE - Stasis Uppercut
-			if(CPlayer.mo.FindInventory("MelMeleeTest"))
+			if(CPlayer.mo.FindInventory("MelBareKnuckle"))
 			{
 				maxCharge = 9;
 			}
 			
-			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelMeleeTest")
+			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelBareKnuckle")
 			{
 				DrawBar("HUD_MELB", "HUD_MELE", charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), 0, 0, DI_ITEM_OFFSETS);
 				DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
@@ -412,7 +412,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.mo.CountInv("TSP_Upgrade_Powerbank")==1)
 			{
-				if(maxCharge == 9)
+				if(charge > 9)
 				{
 				DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 				}
