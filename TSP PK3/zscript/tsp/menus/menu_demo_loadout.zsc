@@ -9,10 +9,16 @@ Class TSP_CharacterMenu_Demo_LoadoutButton
 	double sizeMult;
 	bool selected;
 	
+	Array<string > ld_weapons;
+	
 	void Tick()
 	{
 		float targ = selected ? 1.0 : 0.0;
 		sizeMult = sizeMult + ( targ - sizeMult ) / 2;
+		if ( abs(targ - sizeMult) < 0.25 )
+		{
+			sizeMult = targ;
+		}
 	}
 	
 	Vector2 GetPos()
@@ -23,6 +29,11 @@ Class TSP_CharacterMenu_Demo_LoadoutButton
 	Vector2 GetSize()
 	{
 		return size + ( 16 * sizeMult, 16 * sizeMult );
+	}
+	
+	void AddLoadoutItem(string newThing)
+	{
+		ld_weapons.Push(newThing);
 	}
 }
 
@@ -42,11 +53,15 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
 		newButton.name = "\cgBurst\c- Kit";
 		newButton.desc = "A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSPBHGrad]Bounty Hunters\c-.";
+		newButton.AddLoadoutItem("graphics/loadout/nikki_spitfire.png");
+		newButton.AddLoadoutItem("graphics/loadout/suzu_shotgun.png");
 		loadoutButtons.Push(newButton);
 		
 		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
 		newButton.name = "\cnZoom\c- Kit";
 		newButton.desc = "A loadout consisting of completely \ckunmodded\c- weapons.\nThese are \c[MEL]Melody's\c- Slot 2 and Slot 3 weapons in the \c[TSPStandardGrad]standard modes\c-.";
+		newButton.AddLoadoutItem("graphics/loadout/nikki_unmodded.png");
+		newButton.AddLoadoutItem("graphics/loadout/suzu_scope.png");
 		loadoutButtons.Push(newButton);
 		
 		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
@@ -150,6 +165,26 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 			Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice.png", 24);
 			
 			DrawText("tsp_small", pos.x +size.x / 2, pos.y + boxPadding, button.name.MakeUpper(), centered: true);
+			
+			int iconsHeight = size.y * 0.75;
+			
+			if ( button.ld_weapons.Size() == 0 ) continue;
+			
+			int slotSize = iconsHeight / button.ld_weapons.Size();
+			int yCenter = floor(pos.y) + ((size.y - iconsHeight) / 2);
+			
+			for ( int wep = 0; wep < button.ld_weapons.Size(); wep++ )
+			{
+				int yOff = slotSize / 2 + (slotSize * wep);
+				int yPos = yCenter + yOff;
+				
+				TextureID tex = TexMan.CheckForTexture(button.ld_weapons[wep]);
+				screen.DrawTexture(tex, false, pos.x + size.x / 2, yPos,
+					DTA_CenterOffset, true,
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+			}
 		}
 		
 		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
