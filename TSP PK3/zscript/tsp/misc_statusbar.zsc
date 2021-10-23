@@ -475,6 +475,8 @@ Class TSP_StatusBar : BaseStatusBar
 			// MAIN HUD GRAPHIC (RIGHT)
 			DrawImage("graphics/hud/hud_rightbit_behindweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
+			float finalWeaponoffset = hud_weaponport_offsetLast + ( hud_weaponport_offset - hud_weaponport_offsetLast ) * TicFrac;
+			
 			if ( getWeapon )
 			{
 				for ( int i = 0; i < 2; i++ )
@@ -484,7 +486,7 @@ Class TSP_StatusBar : BaseStatusBar
 					int clipW = i == 0 ? 233 : 9;
 					int clipH = i == 0 ? 108 : 96;
 					SetClipRect(HUDRIGHT_X+clipX, HUDRIGHT_Y+clipY, clipW, clipH);
-					DrawImage(getWeapon.tspw_portrait, (HUDRIGHT_X + 135 + hud_weaponport_offset, HUDRIGHT_Y + 25 + hud_weaponport_offset), DI_ITEM_OFFSETS);
+					DrawImage(getWeapon.tspw_portrait, (HUDRIGHT_X + 135 + finalWeaponoffset, HUDRIGHT_Y + 25 + finalWeaponoffset), DI_ITEM_OFFSETS);
 				}
 				
 				ClearClipRect();

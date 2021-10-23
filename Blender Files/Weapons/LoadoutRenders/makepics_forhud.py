@@ -17,6 +17,14 @@ charDefs = [
 		"name": "nikki_spitfire",
 		"pic": "nikki_spitfire",
 	},
+	{
+		"name": "suzu_scope",
+		"pic": "suzu_scope",
+	},
+	{
+		"name": "suzu_shotgun",
+		"pic": "suzu_shotgun",
+	},
 ];
 
 for doWeapon in charDefs:

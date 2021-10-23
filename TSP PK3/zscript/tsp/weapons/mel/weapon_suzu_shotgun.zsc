@@ -9,6 +9,7 @@ Class MelSMGA : MelSMG
 		-TSP_Weapon_Core.HOLDDOWNFORMOD
 		-TSP_Weapon_Core.MODFIREZOOMS
 		TSP_Weapon_Core.SpriteNameBase "132";
+		TSP_Weapon_Core.Portrait "graphics/hud/weapons/suzu_shotgun.png";
 	}
 	
 	States
