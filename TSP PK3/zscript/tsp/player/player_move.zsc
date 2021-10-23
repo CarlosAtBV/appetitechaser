@@ -10,7 +10,17 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	bool tsp_crouching;
 	double tsp_viewheight_mult;
 	
+	int tsp_deadstart;
+	int tsp_deadend;
+	
 	bool tsp_cooluifreeze;
+	
+	override void Die(Actor source, Actor inflictor, int dmgflags, Name meansofdeath)
+	{
+		tsp_deadstart = level.maptime;
+		tsp_deadend = tsp_deadstart + 35 * 1;
+		super.Die(source, inflictor, dmgflags, meansofdeath);
+	}
 	
 	//
 	// MovePlayer()
@@ -133,6 +143,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		double viewBob = 3 * cos(level.maptime * 16) * (vel.length() / 8);
 		double newViewheight = viewheight * tsp_viewheight_mult;
 		
+		if ( health <= 0 )
+		{
+			float getThatShit = (level.maptime - tsp_deadstart) / double(tsp_deadend - tsp_deadstart);
+			player.viewz = pos.Z + viewheight - (viewheight * TSP_EasingFunctions.easeOutBounce(clamp(getThatShit, 0.0, 1.0)));
+			Console.Printf(player.viewz.."");
+			return;
+		}
+		
 		if ( tsp_crouchSliding )
 		{
 			player.viewz = pos.Z + 24;
@@ -142,6 +160,17 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			player.viewz = pos.Z + (newViewheight * player.crouchfactor) + viewBob;
 			//super.CalcHeight();
 		}
+	}
+	
+	float tsp_deathroll;
+	
+	float TSP_GetDeathRoll()
+	{
+		if ( tsp_deadstart == tsp_deadend ) return 0;
+		
+		float getThatShit = clamp((level.maptime - tsp_deadstart) / double(tsp_deadend - tsp_deadstart), 0.0, 1.0);
+		tsp_deathroll += sin(getThatShit*180);
+		return tsp_deathroll;
 	}
 	
 	override void CheckCrouch (bool totallyfrozen)

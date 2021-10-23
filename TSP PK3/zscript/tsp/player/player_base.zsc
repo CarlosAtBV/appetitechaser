@@ -396,7 +396,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TickLogMessages();
 		TSP_TickCasings();
 		
-		A_SetViewRoll(tsp_crouchSliding ? 2 : 0, SPF_INTERPOLATE);
+		A_SetViewRoll((tsp_crouchSliding ? 2 : 0) + TSP_GetDeathRoll(), SPF_INTERPOLATE);
 		
 		if ( pp_hitMult > 0 )
 		{
