@@ -28,6 +28,12 @@ HardwareShader Texture "graphics/menu/common/border/border_bg_green.png"
 	Texture "texBorder" "graphics/menu/common/border/border.png"
 }
 
+HardwareShader Texture "graphics/demo/char_slice_glow.png"
+{
+	Shader "shaders/glsl/menuscan_noborder.fp"
+	Texture "texScanline" "graphics/menu/common/scanlines.png"
+}
+
 HardwareShader Texture "CYBAB"
 {
 	Shader "shaders/glsl/fakemirror.fp"

@@ -116,7 +116,7 @@ Mixin Class TSP_HiResBase
 		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
 	}
 	
-	void Draw9Slice(int x, int y, int width, int height, string bgPic = "graphics/menu/tsp_menuborder0.png", int cornerSize = 5)
+	void Draw9Slice(int x, int y, int width, int height, string bgPic = "graphics/menu/tsp_menuborder0.png", int cornerSize = 5, bool additive = false)
 	{
 		TextureID tex = TexMan.CheckForTexture(bgPic);
 		
@@ -127,6 +127,7 @@ Mixin Class TSP_HiResBase
 		screen.DrawTexture(tex, false, x, y,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -136,6 +137,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, texSize.X-cornerSize,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -145,6 +147,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcY, texSize.Y-cornerSize,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -154,6 +157,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, texSize.X-cornerSize, DTA_SrcY, texSize.Y-cornerSize,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -165,6 +169,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, cornerSize,
 			DTA_DestWidth, width - (cornerSize*2), DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, texSize.X - (cornerSize*2), DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -174,6 +179,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, cornerSize, DTA_SrcY, texSize.y-cornerSize,
 			DTA_DestWidth, width - (cornerSize*2), DTA_DestHeight, cornerSize,
 			DTA_SrcWidth, texSize.X - (cornerSize*2), DTA_SrcHeight, cornerSize,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -183,6 +189,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcY, cornerSize,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, height - (cornerSize*2),
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, texSize.Y - (cornerSize*2),
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -192,6 +199,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, texSize.x-cornerSize, DTA_SrcY, cornerSize,
 			DTA_DestWidth, cornerSize, DTA_DestHeight, height - (cornerSize*2),
 			DTA_SrcWidth, cornerSize, DTA_SrcHeight, texSize.Y - (cornerSize*2),
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
@@ -203,6 +211,7 @@ Mixin Class TSP_HiResBase
 			DTA_SrcX, cornerSize, DTA_SrcY, cornerSize,
 			DTA_DestWidth, width-cornerSize*2, DTA_DestHeight, height-cornerSize*2,
 			DTA_SrcWidth, texSize.X-cornerSize*2, DTA_SrcHeight, texSize.Y-cornerSize*2,
+			DTA_LegacyRenderStyle, additive ? STYLE_Add : STYLE_Normal,
 			
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),

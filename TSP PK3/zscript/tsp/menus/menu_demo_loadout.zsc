@@ -107,6 +107,18 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
 		Vector2 mousePos = ConvertMousePos((x, y));
 		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			if ( CheckMousePos(mousePos, loadoutButtons[i].GetPos(), loadoutButtons[i].GetSize()) )
+			{
+				if ( i != ld_selected )
+				{
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				ld_selected = i;
+			}
+		}
+		
 		if ( type == Menu.MOUSE_Release )
 		{
 			MenuEvent(MKEY_Enter,false);
@@ -166,6 +178,10 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 			Vector2 size = button.GetSize();
 			
 			Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice.png", 24);
+			if ( button.selected )
+			{
+				Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice_glow.png", 24, additive: true);
+			}
 			
 			DrawText("tsp_small", pos.x +size.x / 2, pos.y + boxPadding, button.name.MakeUpper(), centered: true);
 			
