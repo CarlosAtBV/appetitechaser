@@ -60,23 +60,29 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		return resolveState(null);
 	}
 	
-	action State A_TSP_MeleeReady()
+	action void A_TSP_MeleeReady()
 	{
-		A_WeaponReady(WRF_NOFIRE);
+		invoker.owner.player.attackdown = false;
 		
 		if ( invoker.TSP_IsFirePressed() )
 		{
 			//Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
-			return invoker.GetAtkState(false);
+			
+			invoker.owner.player.attackdown = true;
+			PlayerPawn(invoker.owner).FireWeapon(invoker.GetAtkState(false));
 		}
 		
 		if ( invoker.TSP_IsAltFirePressed() )
 		{
 			//Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
-			return invoker.GetAltAtkState(false);
+			invoker.owner.player.attackdown = true;
+			PlayerPawn(invoker.owner).FireWeapon(invoker.GetAltAtkState(false));
+			//invoker.GetAltAtkState(false);
 		}
 		
-		return resolveState(null);
+		A_WeaponReady(WRF_NOFIRE);
+		
+		//return resolveState(null);
 	}
 	
 	States
@@ -306,7 +312,8 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 				{
 					return resolveState("ChargeUppercut");
 				}
-				return A_TSP_MeleeReady();
+				A_TSP_MeleeReady();
+				return resolveState(null);
 			}
 		Punch1End: //You'll return to this state if you don't continue with the uppercut!
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0);
