@@ -10,6 +10,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		+DONTTHRUST
 		+BRIGHT
 		+SOLID
+		+NOBLOOD
 	}
 	
 	int dmgDone;
@@ -88,7 +89,6 @@ Class TSP_BountyHunters_ComboCrystal : TSP_BountyHunters_TimeExtCrystal
 	Default
 	{
 		+SHOOTABLE
-		+NOBLOOD
 	}
 	
 	States
