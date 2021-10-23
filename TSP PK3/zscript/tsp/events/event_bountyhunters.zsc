@@ -664,7 +664,7 @@ Class TSP_BHHandler : EventHandler
 			{
 				if ( i == 1 )
 				{
-					screen.SetClipRect(0, spree_posY + posHeight - (posHeight * heightMult), 1280, posHeight * heightMult);
+					screen.SetClipRect(0, spree_posY + posHeight - (posHeight * heightMult), screen.GetWidth(), posHeight * heightMult);
 				}
 				screen.DrawText(fnt_combo, Font.CR_UNTRANSLATED, screen.GetWidth() - 16 + numPos, spree_posY, bh_spreeTier.."", DTA_ScaleX, spreeScale, DTA_ScaleY, spreeScale,
 					DTA_Color, i == 0 ? Color(255, 128, 128, 64) : Color(255, 255, 221, 17));
