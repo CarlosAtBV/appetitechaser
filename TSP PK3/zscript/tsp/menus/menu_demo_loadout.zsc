@@ -166,20 +166,28 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 			
 			DrawText("tsp_small", pos.x +size.x / 2, pos.y + boxPadding, button.name.MakeUpper(), centered: true);
 			
-			int iconsHeight = size.y * 0.75;
+			float iconsHeight = size.y * 0.75;
 			
 			if ( button.ld_weapons.Size() == 0 ) continue;
 			
-			int slotSize = iconsHeight / button.ld_weapons.Size();
-			int yCenter = floor(pos.y) + ((size.y - iconsHeight) / 2);
+			float slotSize = iconsHeight / button.ld_weapons.Size();
+			float yCenter = floor(pos.y) + ((size.y - iconsHeight) / 2);
 			
 			for ( int wep = 0; wep < button.ld_weapons.Size(); wep++ )
 			{
-				int yOff = slotSize / 2 + (slotSize * wep);
-				int yPos = yCenter + yOff;
+				float yOff = slotSize / 2 + (slotSize * wep);
+				float yPos = yCenter + yOff;
+				
+				int mainOffset = -1 + -2 * button.sizeMult;
+				int shadowOffset = 1 + 2 * button.sizeMult;
 				
 				TextureID tex = TexMan.CheckForTexture(button.ld_weapons[wep]);
-				screen.DrawTexture(tex, false, pos.x + size.x / 2, yPos,
+				screen.DrawTexture(tex, false, shadowOffset + pos.x + size.x / 2, shadowOffset + yPos,
+					DTA_CenterOffset, true, DTA_Color, Color(255, 0, 0, 0), DTA_Alpha, 0.5,
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				screen.DrawTexture(tex, false, mainOffset + pos.x + size.x / 2, mainOffset + yPos,
 					DTA_CenterOffset, true,
 					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
