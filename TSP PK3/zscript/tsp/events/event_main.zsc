@@ -3,15 +3,6 @@ Class TSP_DeathPlane : Actor
 	//$Arg0 Z Position
 }
 
-Class TSP_ComeBackUpSpot : Actor
-{
-	Default
-	{
-		+NOINTERACTION
-		+NOBLOCKMAP
-	}
-}
-
 Class TSP_EventHandler : EventHandler
 {
 	ui bool tsp_shopmusic;
@@ -130,11 +121,10 @@ Class TSP_EventHandler : EventHandler
 					ThinkerIterator findGoodSpot = ThinkerIterator.Create("TSP_BountyHunters_EnemySpawn");
 					Actor curSpot = null;
 					TSP_BountyHunters_EnemySpawn mo;
-					int curDist = -1;
 					
 					while ( mo = TSP_BountyHunters_EnemySpawn(findGoodSpot.Next()) )
 					{
-						if ( curDist == -1 || ( players[0].mo.Distance3D(mo) < curDist && mo.CheckSpaceFree() ) )
+						if ( curSpot == null || ( players[0].mo.Distance3D(mo) < players[0].mo.Distance3D(curSpot) && mo.CheckSpaceFree() ) )
 						{
 							curSpot = mo;
 						}
