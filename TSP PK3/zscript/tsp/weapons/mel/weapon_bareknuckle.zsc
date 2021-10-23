@@ -62,6 +62,8 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 	
 	action State A_TSP_MeleeReady()
 	{
+		A_WeaponReady(WRF_NOFIRE);
+		
 		if ( invoker.TSP_IsFirePressed() )
 		{
 			//Console.Printf("YES! I PRESSED THE FIRE STATE IN THE MELEE!!!!");
@@ -73,8 +75,6 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			//Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
 			return invoker.GetAltAtkState(false);
 		}
-		
-		A_WeaponReady(WRF_NOFIRE);
 		
 		return resolveState(null);
 	}

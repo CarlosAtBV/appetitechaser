@@ -139,39 +139,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		Console.Printf("\c[TSPGreen]APPLYING BOUNTY HUNTER LOADOUT TEST");
 	}
 	
-	void CheckWeaponFire ()
-	{
-		let player = self.player;
-		let weapon = player.ReadyWeapon;
-
-		if (weapon == NULL)
-			return;
-
-		// Check for fire. Some weapons do not auto fire.
-		if ((player.WeaponState & WF_WEAPONREADY) && (player.cmd.buttons & BT_ATTACK))
-		{
-			if (!player.attackdown || !weapon.bNoAutofire)
-			{
-				player.attackdown = true;
-				FireWeapon (NULL);
-				return;
-			}
-		}
-		else if ((player.WeaponState & WF_WEAPONREADYALT) && (player.cmd.buttons & BT_ALTATTACK))
-		{
-			if (!player.attackdown || !weapon.bNoAutofire)
-			{
-				player.attackdown = true; //this was commented out before for somer eason so pelase beocm epeic
-				FireWeaponAlt (NULL);
-				return;
-			}
-		}
-		else
-		{
-			player.attackdown = false;
-		}
-	}
-	
 	override void FireWeaponAlt (State stat)
 	{
 		/*if (player.Bot == null && bot_observer)
