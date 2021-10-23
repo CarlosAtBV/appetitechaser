@@ -42,6 +42,8 @@ title/swoosh "sounds/ui_titleswoosh.ogg"
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 
 misc/meleekill "sounds/weapon fx/meleekill.ogg"
+ui/felldown "sounds/ui/fall_teleport.ogg"
+$volume ui/felldown 0.5
 
 //Slip Dash
 ability/slipdash/start "sounds/general/player/sfx_general_slipdash_start.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
