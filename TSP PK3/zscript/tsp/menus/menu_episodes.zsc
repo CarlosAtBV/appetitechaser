@@ -59,9 +59,18 @@ Class TSP_EpisodeMenu : GenericMenu
 			//SetMenu("SkillMenu",episodes[episodes.Size()-1].id);
 			//CVar.GetCVar("tsp_internal_bhepisode", players[0]).SetInt(episodes[episodes.Size()-1].id);
 			Menu father = Menu.GetCurrentMenu().mParentMenu;
-			SetMenu("TSP_BountyHuntersMapMenu");
-			Menu.GetCurrentMenu().mParentMenu = father;
-			TSP_BountyHuntersMapMenu(Menu.GetCurrentMenu()).episodeID = episodes[episodes.Size()-1].id;
+			//SetMenu("TSP_BountyHuntersMapMenu");
+			for ( int i = 0; i < episodes.size(); i++ )
+			{
+				if ( episodes[i].name == "TSPSpecialMapWarp" )
+				{
+					SetMenu("SkillMenu", i);
+					Menu.GetCurrentMenu().mParentMenu = father;
+					return;
+				}
+			}
+			//TSP_BountyHuntersMapMenu(Menu.GetCurrentMenu()).episodeID = episodes[episodes.Size()-1].id;
+			return;
 		}
 		
 		for(int i = 0;i<episodes.Size();i++)

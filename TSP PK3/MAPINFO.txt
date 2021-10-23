@@ -117,7 +117,7 @@ map TSP_DHUB "Demoscape - Unknown Sector"
 episode TSP_BH
 {
 	name = "TSPSpecialMapWarp"
-	noskillmenu
+	//noskillmenu
 }
 
 map TSP_BH "INTERMISSION"
