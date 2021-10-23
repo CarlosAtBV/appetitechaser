@@ -627,6 +627,8 @@ Class TSP_BHHandler : EventHandler
 		return max(bh_killgoal - bh_kills, 0);
 	}
 	
+	const CLR_COMBOCLOCK = Color(255, 159, 255, 99);
+	
 	ui void BH_DrawHud(float ticFrac)
 	{
 		Font fnt_big = "tsp_bh_big";
@@ -649,8 +651,8 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_comboTime > 0 )
 		{
 			let bhClock = TexMan.CheckForTexture("graphics/bh/comboclock.png");
-			screen.DrawTexture(bhClock, false, 16,  296);
-			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)));
+			screen.DrawTexture(bhClock, false, 16,  296, DTA_Color, CLR_COMBOCLOCK);
+			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)), DTA_Color, CLR_COMBOCLOCK);
 		}
 		
 		if ( bh_readyFrame != -1 )
