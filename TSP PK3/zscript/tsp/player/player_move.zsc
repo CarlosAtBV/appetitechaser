@@ -147,7 +147,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			float getThatShit = (level.maptime - tsp_deadstart) / double(tsp_deadend - tsp_deadstart);
 			player.viewz = pos.Z + viewheight - (viewheight * TSP_EasingFunctions.easeOutBounce(clamp(getThatShit, 0.0, 1.0)));
-			Console.Printf(player.viewz.."");
+			//Console.Printf(player.viewz.."");
 			return;
 		}
 		
