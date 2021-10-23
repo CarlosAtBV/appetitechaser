@@ -15,3 +15,8 @@
 "LANGUAGE.shop-melretro"
 "sounds/weapons/melretro/*"
 "sounds/weapons/shenmi/*"
+"textures/demo/*"
+"textures/indigo/*"
+"textures/terrain/*"
+"textures/tsp/*"
+"graphics/store/*"
