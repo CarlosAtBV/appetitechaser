@@ -9,6 +9,10 @@ MELRETRONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPYeller]Retro\c[TSPGray])";
 MELRETROROBONAME = "\c[Mel]Mel \cc(\cfRetro\cc \c[RoboMel]Robo\cc)";
 MELRETROROBONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPYeller]Retro\cc \c[RoboMel]Robo\c[TSPGray])";
 
+MelLoadoutBurst = "\cgBurst\c- Kit";
+MelLoadoutZoom = "\cnZoom\c- Kit";
+MelLoadoutMelee = "\c[MEL]Melee\c- Only";
+
 ////////////////
 //WEAPON PICKUPS
 ////////////////

@@ -64,10 +64,15 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 				case 0:
 					GiveInventory("MelSMGA",1);
 					GiveInventory("MelPistolA",1);
+					TSP_SetLoadoutName("$MelLoadoutBurst");
 					break;
 				case 1:
 					GiveInventory("MelSMG",1);
 					GiveInventory("MelPistol",1);
+					TSP_SetLoadoutName("$MelLoadoutZoom");
+					break;
+				case 2:
+					TSP_SetLoadoutName("$MelLoadoutMelee");
 					break;
 			}
 			

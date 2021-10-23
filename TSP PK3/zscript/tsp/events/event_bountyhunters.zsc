@@ -339,6 +339,7 @@ Class TSP_BHHandler : EventHandler
 		
 		double finalScore = killMult + comboBonus;
 		
+		thePlayer.tsp_bh_completed = bh_wonRound;
 		thePlayer.tsp_bh_maxcombo = bh_maxCombo;
 		thePlayer.tsp_bh_timeleft = bh_roundTimer;
 		thePlayer.tsp_bh_rating = finalScore;

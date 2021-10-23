@@ -136,11 +136,11 @@ Class TSP_StatusScreen : StatusScreen
 				break;
 		}
 		
-		ss_missionStatus = "Mission Complete!";
-		if(players[0].mo.health<0)
+		ss_missionStatus = "\c[TSPLimeGreen1]Mission Completed \cjas "..ss_player.TSP_GetLoadoutName();
+		if ( !ss_player.tsp_bh_completed )
 		{
 			ss_missionFailed = true;
-			ss_missionStatus = "Mission Failed!";
+			ss_missionStatus = "\c[TSPHudRed]Mission Failed \cjas "..ss_player.TSP_GetLoadoutName();
 		}
 	}
 	
@@ -338,7 +338,8 @@ Class TSP_StatusScreen : StatusScreen
 		double titleSlamScale = (1.0 + (1.0 - ease_inQuart(ss_mapNameAlpha)) * 1);
 		//double statusSlamScale = (1.0 + 1.0 - ease_inQuart(ss_missionStatusAlpha));
 		DrawStringHack("tsp_bold", ease_inQuart(ss_partOffset[0]) * -1280 + 160, shakeOffsetHeader + 58, ss_levelName, alpha: ss_mapNameAlpha, scale: (titleSlamScale, titleSlamScale));
-		DrawStringHack("tsp_small", ease_inQuart(ss_partOffset[0]) * -1280 + 160 + 32, shakeOffsetHeader + 104, ss_missionStatus, color: ss_missionFailed ? Color(255, 232, 71, 71) : Color(255, 72, 234, 126), alpha: ss_missionStatusAlpha);
+		//, color: ss_missionFailed ? Color(255, 232, 71, 71) : Color(255, 72, 234, 126)
+		DrawStringHack("tsp_small", ease_inQuart(ss_partOffset[0]) * -1280 + 160 + 32, shakeOffsetHeader + 104, ss_missionStatus, alpha: ss_missionStatusAlpha);
 		
 		//screen.DrawText(BigFont, Font.CR_WHITE, 16, 18, ss_levelName, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);
 		//screen.DrawText(SmallFont, secondColor, 24, 20+BigFont.GetHeight()+2, ss_missionStatus, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, ss_mapNameAlpha);

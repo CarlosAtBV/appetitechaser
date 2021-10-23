@@ -29,6 +29,18 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	int tsp_bh_timeleft;
 	int tsp_bh_killgoal;
 	int tsp_bh_combokills;
+	int tsp_bh_completed;
+	string tsp_bh_loadout;
+	
+	void TSP_SetLoadoutName(string name)
+	{
+		tsp_bh_loadout = name;
+	}
+	
+	string TSP_GetLoadoutName()
+	{
+		return StringTable.Localize(GetPrintableDisplayName(GetClass())).." \cj("..StringTable.Localize(tsp_bh_loadout).."\cj)";
+	}
 	
 	int tsp_airtime;
 	double tsp_airtime_mult;
