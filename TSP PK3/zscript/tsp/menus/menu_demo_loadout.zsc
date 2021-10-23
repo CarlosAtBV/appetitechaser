@@ -171,6 +171,8 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		int maxLoadout = loadoutButtons.size();
 		int boxPadding = 16;
 		
+		screen.Dim("#000000", 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
+		
 		for ( int i = 0; i < maxLoadout; i++ )
 		{
 			let button = loadoutButtons[i];

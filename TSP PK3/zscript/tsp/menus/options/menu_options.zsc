@@ -177,6 +177,8 @@ Class TSP_OptionMenu : OptionMenu
 	{
 		super.Init(parent, desc);
 		
+		DontDim = true;
+		
 		TSP_OptionMenu_Item newButton;
 		
 		int y = 0;
@@ -392,6 +394,8 @@ Class TSP_OptionMenu : OptionMenu
 	override void Drawer ()
 	{
 		UpdateViewport();
+		
+		screen.Dim("#000000", 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
 		
 		Font fnt = "tsp_small";
 		

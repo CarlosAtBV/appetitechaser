@@ -270,6 +270,7 @@ Class TSP_MenuBase : GenericMenu
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
+		DontDim = true;
 	}
 	
 	Vector2 debugMouse;
