@@ -7,6 +7,14 @@ HardwareShader PostProcess Screen
 	Enabled
 }
 
+HardwareShader PostProcess Scene
+{
+	Name "TSP_Muted"
+	Shader "shaders/pp/muted.fp" 330
+	Texture "rampTex" "graphics/colorramp.png"
+	Uniform float fadeAmount
+}
+
 HardwareShader Texture "graphics/menu/common/header_top_green.png"
 {
 	Shader "shaders/glsl/menuscan.fp"

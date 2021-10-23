@@ -172,6 +172,7 @@ Class TSP_BHHandler : EventHandler
 	int bh_comboTime;
 	int bh_comboKills;
 	
+	bool bh_roundOver;
 	bool bh_wonRound;
 	bool bh_overkill;
 	
@@ -180,6 +181,8 @@ Class TSP_BHHandler : EventHandler
 	float bh_readyFrame;
 	float bh_goFrame;
 	float bh_gameSetFrame;
+	float bh_muteFade;
+	float bh_flashAmount;
 	
 	TSP_BH_HudNotifcation bh_curNote;
 	
@@ -257,7 +260,7 @@ Class TSP_BHHandler : EventHandler
 	
 	override void WorldLoaded(WorldEvent e)
 	{
-		Console.Printf("do start shit");
+		Shader.SetEnabled(players[consoleplayer], "TSP_Muted", false);
 		
 		if ( tsp_gamemode != 1 )
 		{	
@@ -308,8 +311,19 @@ Class TSP_BHHandler : EventHandler
 	
 	void BH_GameOver(bool epicfail = false)
 	{
+		Shader.SetUniform1f(players[consoleplayer], "TSP_Muted", "fadeAmount", 0.0);
+		Shader.SetEnabled(players[consoleplayer], "TSP_Muted", true);
+		
+		bh_flashAmount = 1.0;
+		
+		if ( bh_roundOver )
+		{
+			return;
+		}
+		
 		TSP_PlayerPawn_ZSCBase thePlayer = TSP_PlayerPawn_ZSCBase(players[0].mo);
 		
+		bh_roundOver = true;
 		bh_startWait = 0;
 		bh_wonRound = !epicfail;
 		bh_gameSetFrame = 1;
@@ -318,15 +332,20 @@ Class TSP_BHHandler : EventHandler
 		
 		S_Sound("announcer/hunters/ailene/gameover", CHAN_VOICE);
 		
-		level.setFrozen(true);
-		players[0].mo.vel = (0,0,0);
-		players[0].mo.viewbob = 0;
-		for ( int i = -200; i < 200; i++ )
+		if ( bh_wonRound )
 		{
-			let pSprite = players[0].GetPSprite(i);
-			if ( pSprite != null )
+			thePlayer.bINVULNERABLE = true;
+			thePlayer.tsp_cooluifreeze = true;
+			level.setFrozen(true);
+			players[0].mo.vel = (0,0,0);
+			players[0].mo.viewbob = 0;
+			for ( int i = -200; i < 200; i++ )
 			{
-				pSprite.Tics = -1;
+				let pSprite = players[0].GetPSprite(i);
+				if ( pSprite != null )
+				{
+					pSprite.Tics = -1;
+				}
 			}
 		}
 		
@@ -354,6 +373,11 @@ Class TSP_BHHandler : EventHandler
 		{	
 			Destroy();
 			return;
+		}
+		
+		if ( bh_flashAmount > 0.0 )
+		{
+			bh_flashAmount -= 0.1;
 		}
 		
 		if ( bh_readyFrame != -1 && bh_readyFrame < 14 )
@@ -392,7 +416,7 @@ Class TSP_BHHandler : EventHandler
 		{
 			if ( bh_gameSetFrame >= 6 && bh_gameSetFrame < 7 )
 			{
-				bh_gameSetFrame+=0.05;
+				bh_gameSetFrame+=0.03;
 			}
 			else
 			{
@@ -402,6 +426,15 @@ Class TSP_BHHandler : EventHandler
 			{
 				bh_gameSetFrame = -1;
 			}
+		}
+		
+		if ( bh_roundOver )
+		{
+			if ( bh_muteFade < 1.0 )
+			{
+				bh_muteFade += 0.01;
+			}
+			Shader.SetUniform1f(players[consoleplayer], "TSP_Muted", "fadeAmount", bh_muteFade);
 		}
 		
 		if ( bh_startWait > 0 ) 
@@ -495,7 +528,7 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_roundTimer <= 0 )
 		{
 			bh_endtimer++;
-			if( bh_endtimer >= (35*5) || players[0].cmd.buttons & BT_USE )
+			if( bh_endtimer >= (35*3) || players[0].cmd.buttons & BT_USE )
 			{
 				players[0].mo.ACS_ScriptCall("TSP_GotoNextLevel");
 			}
@@ -660,6 +693,10 @@ Class TSP_BHHandler : EventHandler
 		
 	override void RenderOverlay(RenderEvent e)
 	{
+		if ( bh_flashAmount )
+		{
+			screen.Dim("#36DCA0", bh_flashAmount, 0, 0, screen.GetWidth(), screen.GetHeight());
+		}
 	}
 	
 	override void NetworkProcess(ConsoleEvent e)
