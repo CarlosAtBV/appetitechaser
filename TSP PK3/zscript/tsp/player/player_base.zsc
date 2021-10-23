@@ -129,7 +129,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		PickWeapon(pp_meleestart,true);
 		
-		Console.Printf(""..GetClassName());
+		//Console.Printf(""..GetClassName());
 	}
 	
 	virtual void OnStandardLoadout()
