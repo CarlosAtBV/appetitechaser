@@ -33,6 +33,7 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		+TSP_Weapon_Core.NoModSwitch
 		
 		TSP_Weapon_Core.HudColor "#B6D84D";
+		TSP_Weapon_Core.Portrait "graphics/hud/weapons/mel_pawnch.png";
 	}
 	
 	int combo_mach;

@@ -494,6 +494,11 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			DrawImage("graphics/hud/hud_rightbit_infrontofweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
+			if ( getWeapon )
+			{
+				DrawString(fnt_ammoTag, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			}
+			
 			// Draw Weapon Slots
 			
 			int slotCount = 0;
@@ -559,8 +564,6 @@ Class TSP_StatusBar : BaseStatusBar
 				if(CPlayer.ReadyWeapon is "TSP_Weapon_Core")
 				{
 					TSP_Weapon_Core wepon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
-					
-					DrawString(fnt_ammoTag, wepon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 				
 					if(wepon.tspw_clipsize>0)
 					{
