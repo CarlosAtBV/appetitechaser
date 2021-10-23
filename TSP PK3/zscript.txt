@@ -37,13 +37,13 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 			TNT1 A 0;
 			TNT1 A 0
 			{
-				int srcx = target.x;//+(cos(target.angle));
-				int srcy = target.y;//+(sin(target.angle));
-				int srcz = target.z+32;
+				int srcx = target.pos.x;//+(cos(target.angle));
+				int srcy = target.pos.y;//+(sin(target.angle));
+				int srcz = target.pos.z+32;
 				int dist = Vec2To(target).Length();
 				
-				int angler = atan2(y-srcy,x-srcx);
-				int pitcher = atan2(z-srcz,dist);
+				int angler = atan2(pos.y-srcy,pos.x-srcx);
+				int pitcher = atan2(pos.z-srcz,dist);
 				
 				let tracer = TSP_HitscanTracer_Enemy(Spawn("TSP_HitscanTracer_Enemy",(srcx,srcy,srcz)));
 				//tracer.A_SetSize(4,8);

@@ -12,7 +12,7 @@ Class TSP_EnemyBase : Actor
 		{
 			int tracerAngle = invoker.angle+frandom(-hspread,hspread);
 			int tracerPitch = -invoker.pitch+frandom(-vspread,vspread);
-			let tracer = TSP_HitscanTracer_Enemy(Spawn("TSP_HitscanTracer_Enemy",(invoker.x,invoker.y,invoker.z+32)));
+			let tracer = TSP_HitscanTracer_Enemy(Spawn("TSP_HitscanTracer_Enemy",(invoker.pos.x,invoker.pos.y,invoker.pos.z+32)));
 			tracer.tracerDamage = bulletDamage;
 			tracer.target = invoker;
 			tracer.angle = tracerAngle;

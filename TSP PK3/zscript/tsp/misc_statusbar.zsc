@@ -70,8 +70,8 @@ Class TSP_StatusBar : BaseStatusBar
 		SetSize(0, 1280, 720);
 
 		// Create the font used for the fullscreen HUD
-		Font fnt = "TSP_HUDFONT";
-		mHUDFont = HUDFont.Create(fnt,1,false);
+		//Font fnt = "TSP_HUDFONT";
+		//mHUDFont = HUDFont.Create(fnt,1,false);
 		mSmallFont = HUDFont.Create("tsp_small");
 		mTinyFont = HUDFont.Create("TINYFONT",0,Mono_off,1,1);
 		mAmountFont = HUDFont.Create("INDEXFONT");
