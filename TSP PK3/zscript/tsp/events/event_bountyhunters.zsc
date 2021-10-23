@@ -655,24 +655,24 @@ Class TSP_BHHandler : EventHandler
 		{
 			string texName = String.Format("graphics/bh/BH_RDY%02d.png", bh_readyFrame);
 			let getReadyTex = TexMan.CheckForTexture(texName);
-			Screen.DrawTexture(getReadyTex, false, 0, 0,
-				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+			Screen.DrawTexture(getReadyTex, false, screen.GetWidth()/2, screen.GetHeight()/2,
+				DTA_CenterOffset, true);
 		}
 		
 		if ( bh_goFrame != -1 )
 		{
 			string texName = String.Format("graphics/bh/BH_GO%02d.png", bh_goFrame);
 			let getReadyTex = TexMan.CheckForTexture(texName);
-			Screen.DrawTexture(getReadyTex, false, 0, 0,
-				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+			Screen.DrawTexture(getReadyTex, false, screen.GetWidth()/2, screen.GetHeight()/2,
+				DTA_CenterOffset, true);
 		}
 		
 		if ( bh_gameSetFrame != -1 )
 		{
 			string texName = String.Format(bh_wonRound ? "graphics/bh/BH_WIN%02d.png" : "graphics/bh/BH_END%02d.png", bh_gameSetFrame);
 			let getReadyTex = TexMan.CheckForTexture(texName);
-			Screen.DrawTexture(getReadyTex, false, 0, 0,
-				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720);
+			Screen.DrawTexture(getReadyTex, false, screen.GetWidth()/2, screen.GetHeight()/2,
+				DTA_CenterOffset, true);
 		}
 		
 		if ( bh_curNote )
