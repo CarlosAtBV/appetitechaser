@@ -34,7 +34,7 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 		TNT1 A 0 A_SetBlend("39 99 0", 0.4, 15);
 		TNT1 A 0 A_Quake(1,15,0,5,"");
 		1105 J 1 A_TSP_Grapple;
-		1105 KLLMNO 1;
+		1105 KLMNO 1;
 		TNT1 A 0 A_GiveInventory("ComboCoolDown", 1);
 		TNT1 A 6;
 		TNT1 AAAAAAAAAAAAA 1 A_WeaponReady;
