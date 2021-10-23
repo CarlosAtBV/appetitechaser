@@ -213,7 +213,7 @@ Class TSP_BHHandler : EventHandler
 	{
 		S_Sound(bh_comboTime > 0 ? "announcer/hunters/ailene/combotime/add" : "announcer/hunters/ailene/combotime/on",CHAN_VOICE);
 		bh_comboTime += amt * 35;
-		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
+		S_Sound("bountyhunters/combocrystal",CHAN_AUTO);
 	}
 	
 	void BH_GiveMoney(int amt)
@@ -523,6 +523,10 @@ Class TSP_BHHandler : EventHandler
 		if ( bh_comboTime > 0 )
 		{
 			bh_comboTime--;
+			if ( bh_comboTime == 1 )
+			{
+				S_Sound("bountyhunters/combocrystaldone", CHAN_BODY);
+			}
 		}
 		
 		if ( bh_roundTimer <= 0 )
@@ -650,9 +654,10 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_comboTime > 0 )
 		{
+			float comboAlpha = bh_comboTime <= (35*5) ? abs(sin((level.maptime + ticFrac) * 10)) : 1.0;
 			let bhClock = TexMan.CheckForTexture("graphics/bh/comboclock.png");
 			screen.DrawTexture(bhClock, false, 16,  296, DTA_Color, CLR_COMBOCLOCK);
-			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)), DTA_Color, CLR_COMBOCLOCK);
+			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)), DTA_Color, CLR_COMBOCLOCK, DTA_Alpha, comboAlpha);
 		}
 		
 		if ( bh_readyFrame != -1 )
