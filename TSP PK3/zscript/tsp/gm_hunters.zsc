@@ -125,7 +125,7 @@ Class TSP_BountyHunters_ComboCrystal : TSP_BountyHunters_TimeExtCrystal
 		if(event)
 		{
 			event.BH_AddComboTime(30);
-			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
+			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$ComboCrystal",30);
 		}
 	}
 	
