@@ -1,18 +1,34 @@
+Class TSP_CharacterMenu_Demo_LoadoutButton
+{
+	Vector2 pos;
+	Vector2 size;
+	
+	string name;
+	string desc;
+	
+	double sizeMult;
+	bool selected;
+	
+	void Tick()
+	{
+		float targ = selected ? 1.0 : 0.0;
+		sizeMult = sizeMult + ( targ - sizeMult ) / 2;
+	}
+	
+	Vector2 GetPos()
+	{
+		return pos - ( 8 * sizeMult, 8 * sizeMult );
+	}
+	
+	Vector2 GetSize()
+	{
+		return size + ( 16 * sizeMult, 16 * sizeMult );
+	}
+}
+
 Class TSP_CharacterMenu_Demo : TSP_MenuBase
 {
-	static const string loadoutNames[] =
-	{
-		"\cgBurst\c- Kit",
-		"\cnZoom\c- Kit",
-		"\c[MEL]Melee\c- Only"
-	};
-	
-	static const string loadoutDescs[] =
-	{
-		"A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSPBHGrad]Bounty Hunters\c-.",
-		"A loadout consisting of completely \ckunmodded\c- weapons.\nThese are \c[MEL]Melody's\c- Slot 2 and Slot 3 weapons in the \c[TSPStandardGrad]standard modes\c-.",
-		"Slappers only!"
-	};
+	Array<TSP_CharacterMenu_Demo_LoadoutButton> loadoutButtons;
 	
 	int ld_selected;
 	
@@ -20,11 +36,52 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 	{
 		Super.Init(parent);
 		S_Sound("ailene/bountyhunters01", CHAN_UI);
+		
+		TSP_CharacterMenu_Demo_LoadoutButton newButton;
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\cgBurst\c- Kit";
+		newButton.desc = "A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSPBHGrad]Bounty Hunters\c-.";
+		loadoutButtons.Push(newButton);
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\cnZoom\c- Kit";
+		newButton.desc = "A loadout consisting of completely \ckunmodded\c- weapons.\nThese are \c[MEL]Melody's\c- Slot 2 and Slot 3 weapons in the \c[TSPStandardGrad]standard modes\c-.";
+		loadoutButtons.Push(newButton);
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\c[MEL]Melee\c- Only";
+		newButton.desc = "\ckSlappers only!\c- Arm yourself with nothing but \c[MEL]Melody's\c- powerful \cgmelee moves.\c-";
+		loadoutButtons.Push(newButton);
+		
+		int spaceWidth = 768/2;
+		int boxWidth = 256;
+		int boxHeight = 384;
+		int maxLoadout = loadoutButtons.size();
+		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			int baseX = (1280 - (spaceWidth * maxLoadout)) / 2;
+			int baseY = 720 / 2;
+			
+			for ( int i = 0; i < maxLoadout; i++ )
+			{
+				loadoutButtons[i].size = (boxWidth, boxHeight);
+				loadoutButtons[i].pos.x = (baseX + (spaceWidth * i) + (spaceWidth/2)) - boxWidth/2;
+				loadoutButtons[i].pos.y = baseY - boxHeight/2;
+			}
+		}
 	}
 	
 	override void Ticker()
 	{
 		super.Ticker();
+		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			loadoutButtons[i].selected = ( ld_selected == i );
+			loadoutButtons[i].Tick();
+		}
 	}
 	
 	override bool MouseEvent(int type, int x, int y)
@@ -49,13 +106,13 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 				ld_selected -= 1;
 				if ( ld_selected < 0 )
 				{
-					ld_selected = loadoutNames.size()-1;
+					ld_selected = loadoutButtons.size()-1;
 				}
 				S_Sound("menu/cursor",CHAN_UI);
 				break;
 			case MKEY_Right:
 				ld_selected += 1;
-				if ( ld_selected > loadoutNames.size()-1 )
+				if ( ld_selected > loadoutButtons.size()-1 )
 				{
 					ld_selected = 0;
 				}
@@ -81,30 +138,23 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 	
 	override void TSP_MenuDrawer()
 	{
-		//Draw9Slice(213*3, 34*3, 161*3, 134*3, "graphics/menu/common/border/border_bg_green.png", 8);
-		int spaceWidth = 768/2;
-		int boxWidth = 256;
-		int boxHeight = 384;
+		int maxLoadout = loadoutButtons.size();
 		int boxPadding = 16;
-		int maxLoadout = loadoutNames.size();
-		
-		int baseX = (1280 - (spaceWidth * maxLoadout)) / 2;
-		int baseY = 720 / 2;
 		
 		for ( int i = 0; i < maxLoadout; i++ )
 		{
-			int exWidth = boxWidth + ( ld_selected == i ? 16 : 0 );
-			int exHeight = boxHeight + ( ld_selected == i ? 16 : 0 );
-			int posX = baseX + (spaceWidth * i) + (spaceWidth/2);
-			int posY = baseY;
-			Draw9Slice(posX-(exWidth/2), posY-(exHeight/2), exWidth, exHeight, "graphics/demo/char_slice.png", 24);
+			let button = loadoutButtons[i];
+			Vector2 pos = button.GetPos();
+			Vector2 size = button.GetSize();
 			
-			DrawText("tsp_small", posX, posY - (exHeight / 2) + boxPadding, loadoutNames[i].MakeUpper(), centered: true);
+			Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice.png", 24);
+			
+			DrawText("tsp_small", pos.x +size.x / 2, pos.y + boxPadding, button.name.MakeUpper(), centered: true);
 		}
 		
 		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		DrawText("tsp_bold", 1280/2, 74, "Select Loadout", centered: true);
 		
-		DrawText("tsp_small", 1280/2, 720-74-32, loadoutDescs[ld_selected], centered: true, breakWidth: 1280);
+		DrawText("tsp_small", 1280/2, 720-74-32, loadoutButtons[ld_selected].desc, centered: true, breakWidth: 1280);
 	}
 }
