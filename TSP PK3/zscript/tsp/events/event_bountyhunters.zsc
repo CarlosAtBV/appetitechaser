@@ -282,7 +282,6 @@ Class TSP_BHHandler : EventHandler
 	{
 		if ( e.Thing is "TSP_BountyHunters_EnemySpawn" )
 		{
-			Console.Printf("Made new spawn");
 			bh_spawns.Push(TSP_BountyHunters_EnemySpawn(e.Thing));
 			return;
 		}

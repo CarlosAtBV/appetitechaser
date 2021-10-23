@@ -159,7 +159,10 @@ Class TSP_Weapon_Core : DoomWeapon
 		super.PostBeginPlay();
 		if(tspw_curclip==0) tspw_curclip = GetClipCapacity();
 		tspw_animations.Clear();
-		Console.Printf("initializing animations");
+		if ( tsp_debug )
+		{
+			Console.Printf("initializing animations");
+		}
 		TSP_InitAnimations();
 	}
 	
