@@ -257,6 +257,7 @@ skill TSPnightmare
 }
 */
 
+/*
 skill TSPNotFinished
 {
   damagefactor = 2.0
@@ -269,7 +270,6 @@ skill TSPNotFinished
   Key = "0"
 }
 
-/*
 skill TSPSurvivor
 {
   damagefactor = 2.0

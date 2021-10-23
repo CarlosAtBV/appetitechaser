@@ -1,6 +1,6 @@
 [enu default]
 
-QUITMSG = "\cnEmpty your mind, be formless. Shapeless, like water.";
+QUITMSG = "\cnEmpty your mind. Be formless, shapeless, like water.";
 QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
 QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";
 QUITMSG3 = "\cnThere is no finish line. When you reach one goal, find a new one.";

@@ -68,7 +68,7 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		
 		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
 		newButton.name = "\c[MEL]Melee\c- Only";
-		newButton.desc = "\ckSlappers only!\c- Arm yourself with nothing but \c[MEL]Melody's\c- powerful \cgmelee moves.\c-";
+		newButton.desc = "\ckSlappers only!\c- Arm yourself with nothing but \c[MEL]Melody's\c- powerful \cgmelee moves\c-.";
 		newButton.AddLoadoutItem("graphics/loadout/mel_melee.png");
 		loadoutButtons.Push(newButton);
 		
