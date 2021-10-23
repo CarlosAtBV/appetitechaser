@@ -13,3 +13,5 @@
 "TSPCODEX.txt"
 "LANGUAGE.shop-mel"
 "LANGUAGE.shop-melretro"
+"sounds/weapons/melretro/*"
+"sounds/weapons/shenmi/*"
