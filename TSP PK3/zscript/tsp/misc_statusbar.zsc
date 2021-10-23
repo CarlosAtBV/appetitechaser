@@ -680,7 +680,7 @@ Class TSP_StatusBar : BaseStatusBar
 			// Debug Shit
 			//================
 			
-				//if(isDebug)
+				if(isDebug)
 				{
 					string fuckBalls = CPlayer.attackdown ? "YES" : "no...";
 					DrawString(mSmallFont, "\ccAttackDown: \c-"..fuckBalls, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
