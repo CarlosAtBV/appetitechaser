@@ -648,7 +648,9 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( bh_comboTime > 0 )
 		{
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, 20, 296, ""..int(ceil(bh_comboTime/35.)));
+			let bhClock = TexMan.CheckForTexture("graphics/bh/comboclock.png");
+			screen.DrawTexture(bhClock, false, 16,  296);
+			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)));
 		}
 		
 		if ( bh_readyFrame != -1 )
