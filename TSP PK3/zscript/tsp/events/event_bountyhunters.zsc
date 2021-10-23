@@ -213,6 +213,11 @@ Class TSP_BHHandler : EventHandler
 		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
 	}
 	
+	void BH_GiveMoney(int amt)
+	{
+		players[0].mo.GiveInventory("TSP_GlobalDollars", amt);
+	}
+	
 	override void OnRegister()
 	{
 		if ( tsp_gamemode != 1 )
@@ -545,8 +550,6 @@ Class TSP_BHHandler : EventHandler
 					bh_maxCombo = bh_spreeTier;
 				}
 				bh_spreeTime = 35*10;
-				
-				players[0].mo.score += e.Thing.GetSpawnHealth() * bh_spreeTier;
 			}
 			
 			double healthDropMult = 1.0 - clamp(players[0].mo.health / 75., 0.0, 1.0);
@@ -566,6 +569,9 @@ Class TSP_BHHandler : EventHandler
 				let zooper = Actor.Spawn("TSP_BH_AmmoZooper", e.Thing.pos + (frandom(-3,3), frandom(-3,3), frandom(0,6)));
 				zooper.vel = (frandom(-6,6), frandom(-6,6), frandom(3,9));
 			}
+			
+			float doMult = bh_comboTime ? 2.0 : 1.0;
+			BH_GiveMoney(e.Thing.GetSpawnHealth() * doMult);
 		}
 	}
 	

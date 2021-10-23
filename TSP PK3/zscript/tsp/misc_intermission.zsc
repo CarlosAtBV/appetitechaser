@@ -34,6 +34,7 @@ Class TSP_StatusScreen : StatusScreen
 	string ss_tallyAlphaScore[4];
 	
 	const RANK_A = 5;
+	const RANK_B = 4;
 	
 	static const string ss_ranks[] =
 	{
@@ -125,13 +126,13 @@ Class TSP_StatusScreen : StatusScreen
 				ss_tallyLeft[0] = "Kills:";
 				ss_tallyLeft[1] = "Max. Spree:";
 				ss_tallyLeft[2] = "Combo Time Kills:";//"Time Left:";
-				ss_tallyLeft[3] = "----:";
+				ss_tallyLeft[3] = "Final Payment:";
 				ss_tallyRight[0] = ""..ss_player.tsp_bh_kills.." / "..ss_player.tsp_bh_killgoal;
 				ss_tallyRight[1] = ""..ss_player.tsp_bh_maxcombo;
 				ss_tallyRight[2] = ""..ss_player.tsp_bh_combokills;//ss_minutes..":"..ss_seconds;
-				ss_tallyRight[3] = "----";
+				ss_tallyRight[3] = " $"..ss_player.CountInv("TSP_GlobalDollars");
 				
-				ss_rankCalc = ss_player.tsp_bh_rating * RANK_A;
+				ss_rankCalc = ss_player.tsp_bh_rating * RANK_B;
 				break;
 		}
 		
