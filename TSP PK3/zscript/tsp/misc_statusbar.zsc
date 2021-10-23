@@ -15,6 +15,7 @@ Class TSP_StatusBar : BaseStatusBar
 	HUDFont fnt_ammoBig;
 	HUDFont fnt_ammoSmall;
 	HUDFont fnt_ammoTag;
+	HUDFont fnt_pickupLog;
 	
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
@@ -76,6 +77,7 @@ Class TSP_StatusBar : BaseStatusBar
 		fnt_ammoSmall = HUDFont.Create("tsp_ammo_small");
 		fnt_ammoTag = HUDFont.Create("tsp_ammo_tag");
 		fnt_bold = HUDFont.Create("tsp_bold");
+		fnt_pickupLog = HUDFont.Create("tsp_pickup");
 		
 		diparms = InventoryBarState.Create();
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
@@ -647,7 +649,10 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						alpher = thisone.timeleft/12.; //whoosh
 					}
-					DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+					
+					TSP_DrawString(fnt_pickupLog, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+130, HUDLEFT_Y+20-(12*i)+yoff), alpha: alpher);
+					//TSP_DrawString(fnt_pickupLog, "buh"..String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+					//DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
 			
 			//================
@@ -705,7 +710,7 @@ Class TSP_StatusBar : BaseStatusBar
 		}
 	}
 	
-	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, double alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
 	{
 		int xOff = 0;
 		
@@ -728,7 +733,7 @@ Class TSP_StatusBar : BaseStatusBar
 			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);*/
 	}
 	
-	void TSP_DrawText (Font fnt, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, double alpha = 1.0)
+	void TSP_DrawText (Font fnt, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0)
 	{
 		int xOff = 0;
 		int baseX = pos.x;
