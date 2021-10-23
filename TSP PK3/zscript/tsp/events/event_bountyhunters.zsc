@@ -551,7 +551,6 @@ Class TSP_BHHandler : EventHandler
 			
 			double healthDropMult = 1.0 - clamp(players[0].mo.health / 75., 0.0, 1.0);
 			double ammoDropMult = 1.0 - clamp(players[0].mo.Distance3D(e.Thing) / 512., 0.0, 1.0);
-			Console.Printf(""..ammoDropMult);
 			
 			int getHealth = e.Thing.health*healthDropMult;
 			while ( getHealth < 0 )
