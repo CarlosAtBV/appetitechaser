@@ -11,3 +11,5 @@
 "TSP_BH0X.wad"
 "TSP_DHUB.wad"
 "TSPCODEX.txt"
+"LANGUAGE.shop-mel"
+"LANGUAGE.shop-melretro"
