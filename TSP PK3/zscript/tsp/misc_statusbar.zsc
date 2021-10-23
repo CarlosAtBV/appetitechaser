@@ -424,15 +424,6 @@ Class TSP_StatusBar : BaseStatusBar
 				DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			}
 			
-			if(CPlayer.mo.CountInv("TSP_Upgrade_Powerbank")==1)
-			{
-				if(charge > 9)
-				{
-				DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-				}
-				
-			}
-			
 /*
 			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelChargeStyle")
 			{
@@ -497,6 +488,16 @@ Class TSP_StatusBar : BaseStatusBar
 			if ( getWeapon )
 			{
 				DrawString(fnt_ammoTag, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			}
+
+			// POWERBANK
+			if(CPlayer.mo.CountInv("TSP_Upgrade_Powerbank")==1)
+			{
+				if(charge > 9)
+				{
+				DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				}
+				
 			}
 			
 			// Draw Weapon Slots
