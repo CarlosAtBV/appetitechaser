@@ -133,6 +133,11 @@ Class TSP_StatusBar : BaseStatusBar
 	{
 		Super.Draw (state, TicFrac);
 		
+		if ( level.mapname == "TSP_BH" )
+		{
+			return;
+		}
+		
 		let curWeapon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
 		
 		if ( curWeapon )
