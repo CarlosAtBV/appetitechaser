@@ -3,7 +3,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	Default
 	{
 		Health 15;
-		Height 56;
+		Height 68;
 		+FLOATBOB
 		+ROLLSPRITE
 		+ROLLCENTER
