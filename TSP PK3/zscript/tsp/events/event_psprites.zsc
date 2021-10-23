@@ -20,6 +20,8 @@ Extend Class TSP_EventHandler
 	
 	override void RenderUnderlay(RenderEvent e)
 	{
+		if ( !r_drawplayersprites ) return;
+		
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 					
