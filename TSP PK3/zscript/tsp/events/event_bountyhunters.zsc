@@ -1,3 +1,5 @@
+const BH_SPREETIMEMAX = 35*10;
+
 Class TSP_BountyHunters_EnemySpawn : Actor
 {	
 	Default
@@ -587,7 +589,7 @@ Class TSP_BHHandler : EventHandler
 				{
 					bh_maxCombo = bh_spreeTier;
 				}
-				bh_spreeTime = 35*10;
+				bh_spreeTime = BH_SPREETIMEMAX;
 			}
 			
 			double healthDropMult = 1.0 - clamp(players[0].mo.health / 75., 0.0, 1.0);
@@ -636,7 +638,11 @@ Class TSP_BHHandler : EventHandler
 	ui void BH_DrawHud(float ticFrac)
 	{
 		Font fnt_big = "tsp_bh_big";
+		Font fnt_combo = "tsp_bold";
+		Font fnt_spree = "tsp_small";
 		Font fnt_small = "tsp_bh_small";
+		
+		float spree_posY = (screen.GetHeight()/2) - 21;
 		
 		let bhHudTex = TexMan.CheckForTexture("graphics/hud/HUD_BH.png");
 		Screen.DrawTexture(bhHudTex, false, 640,  14 + (116/2),
@@ -645,19 +651,36 @@ Class TSP_BHHandler : EventHandler
 		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
 		screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(""..BH_GetKillsLeft())/2, 102, ""..BH_GetKillsLeft());
 		
-		if ( bh_spreeTime > 0 )
+		if ( bh_spreeTime > 0 && bh_spreeTier > 1 )
 		{
 			float spreeScaleTarg = (bh_spreeScale / 2);
 			float spreeScale = 1.0 + ( bh_spreeScale + (spreeScaleTarg - bh_spreeScale) * ticFrac );
-			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, screen.GetWidth() - 20 - fnt_big.StringWidth(bh_spreeTier.."x") * spreeScale, 296, bh_spreeTier.."x", DTA_ScaleX, spreeScale, DTA_ScaleY, spreeScale);
+			
+			int posHeight = 42;
+			float numPos = -(fnt_spree.StringWidth("SPREE!") + 4 + fnt_combo.StringWidth(bh_spreeTier.."")) * spreeScale;
+			float spreePos = -fnt_spree.StringWidth("SPREE!") * spreeScale;
+			float heightMult = (bh_spreeTime / float(BH_SPREETIMEMAX));
+			
+			for ( int i = 0; i < 2; i++ )
+			{
+				if ( i == 1 )
+				{
+					screen.SetClipRect(0, spree_posY + posHeight - (posHeight * heightMult), 1280, posHeight * heightMult);
+				}
+				screen.DrawText(fnt_combo, Font.CR_UNTRANSLATED, screen.GetWidth() - 16 + numPos, spree_posY, bh_spreeTier.."", DTA_ScaleX, spreeScale, DTA_ScaleY, spreeScale,
+					DTA_Color, i == 0 ? Color(255, 128, 128, 64) : Color(255, 255, 221, 17));
+				screen.DrawText(fnt_spree, Font.CR_UNTRANSLATED, screen.GetWidth() - 16 + spreePos, spree_posY+15, "SPREE!", DTA_ScaleX, spreeScale, DTA_ScaleY, spreeScale,
+					DTA_Color, i == 0 ? Color(255, 128, 128, 64) : Color(255, 255, 221, 17));
+			}
+			screen.ClearClipRect();
 		}
 		
 		if ( bh_comboTime > 0 )
 		{
 			float comboAlpha = bh_comboTime <= (35*5) ? abs(sin((level.maptime + ticFrac) * 10)) : 1.0;
 			let bhClock = TexMan.CheckForTexture("graphics/bh/comboclock.png");
-			screen.DrawTexture(bhClock, false, 16,  296, DTA_Color, CLR_COMBOCLOCK);
-			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, 296, ""..int(ceil(bh_comboTime/35.)), DTA_Color, CLR_COMBOCLOCK, DTA_Alpha, comboAlpha);
+			screen.DrawTexture(bhClock, false, 16, spree_posY, DTA_Color, CLR_COMBOCLOCK);
+			screen.DrawText("tsp_bold", Font.CR_UNTRANSLATED, 16 + 48, spree_posY, ""..int(ceil(bh_comboTime/35.)), DTA_Color, CLR_COMBOCLOCK, DTA_Alpha, comboAlpha);
 		}
 		
 		if ( bh_readyFrame != -1 )
