@@ -5,6 +5,8 @@ Class MelPistolA : MelPistol
 		TSP_Weapon_Core.ModTag "Spitfire" ;
 		+WEAPON.CHEATNOTWEAPON
 		//-TSP_Weapon_Core.HOLDDOWNFORMOD
+		
+		TSP_Weapon_Core.Portrait "graphics/hud/weapons/nikki_spitfire.png";
 		TSP_Weapon_Core.SpriteNameBase "122";
 		
 		MelPistol.FireSound "nikki/spitfire/fire";

@@ -24,6 +24,8 @@ Class TSP_StatusBar : BaseStatusBar
 	
 	int hud_money_target;
 	int hud_money_lerp;
+	float hud_weaponport_offset;
+	float hud_weaponport_offsetLast;
 	
 	TSP_BHHandler handler_bh;
 	
@@ -124,6 +126,11 @@ Class TSP_StatusBar : BaseStatusBar
 				tsp_notifs.Delete(i);
 			}
 		}
+		
+		hud_weaponport_offsetLast = hud_weaponport_offset;
+		string weaponName = CPlayer.PendingWeapon ? CPlayer.PendingWeapon.GetClassName().."" : "NIL";
+		float targ = weaponName != "Object" ? 72.0 : 0.0;
+		hud_weaponport_offset = hud_weaponport_offset + ( targ - hud_weaponport_offset ) / 3;
 	}
 	
 	const HUDLEFT_X = 0;
@@ -457,6 +464,7 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			
 			Inventory a1 = GetCurrentAmmo();
+			let getWeapon = TSP_Weapon_Core(CPlayer.ReadyWeapon);
 			
 			// MAIN HUD GRAPHIC (AMMO)
 			if (a1 != null)
@@ -465,7 +473,24 @@ Class TSP_StatusBar : BaseStatusBar
 			}				
 
 			// MAIN HUD GRAPHIC (RIGHT)
-			DrawImage("HUD_RBAS", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			DrawImage("graphics/hud/hud_rightbit_behindweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			
+			if ( getWeapon )
+			{
+				for ( int i = 0; i < 2; i++ )
+				{
+					int clipX = i == 0 ? 0 : 233;
+					int clipY = 0;
+					int clipW = i == 0 ? 233 : 9;
+					int clipH = i == 0 ? 108 : 96;
+					SetClipRect(HUDRIGHT_X+clipX, HUDRIGHT_Y+clipY, clipW, clipH);
+					DrawImage(getWeapon.tspw_portrait, (HUDRIGHT_X + 135 + hud_weaponport_offset, HUDRIGHT_Y + 25 + hud_weaponport_offset), DI_ITEM_OFFSETS);
+				}
+				
+				ClearClipRect();
+			}
+			
+			DrawImage("graphics/hud/hud_rightbit_infrontofweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
 			
 			// Draw Weapon Slots
 			
@@ -583,7 +608,6 @@ Class TSP_StatusBar : BaseStatusBar
 						DTA_CenterOffset, true);
 				}
 			}
-			
 			
 			// EASY AUTO ACTIVATED
 			/*if(CVar.GetCVar("tsp_easyauto", players[0]).GetBool()) //Auto-Assist Enabled

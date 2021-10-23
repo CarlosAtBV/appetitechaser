@@ -36,6 +36,8 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		
 		MelPistol.FireSound "nikki/default/fire";
 		
+		TSP_Weapon_Core.Portrait "graphics/hud/weapons/nikki_unmodded.png";
+		
 		TSP_Weapon_Core.SpriteNameBase "121";
 	}
 	

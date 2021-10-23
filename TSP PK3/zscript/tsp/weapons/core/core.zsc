@@ -57,6 +57,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	Array<TSP_PyAnim> tspw_animations;
 	Vector3 tspw_recoilPos;
 	
+	string tspw_portrait;
+	property Portrait : tspw_portrait;
+	
 	action void A_TSP_ZoomFactor (double scale = 1.0)
 	{
 		let tspOwner = TSP_PlayerPawn_ZSCBase(invoker.owner);
