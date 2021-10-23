@@ -24,11 +24,20 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	void AddLogMessage(string whatugot, int howmany)
 	{
-		TSP_PlayerPawn_LogMessage newlog = new("TSP_PlayerPawn_LogMessage");
-		newlog.whatugot = String.format(StringTable.Localize(whatugot), howmany);
-		newlog.howmany = howmany;
-		newlog.timeleft = 4*35;
-		int new = tsp_logs.Size()-1;
+		if( tsp_logs.Size() > 0 && StringTable.Localize(whatugot) == tsp_logs[0].whatugot )
+		{
+			tsp_logs[0].howmany += howmany;
+			tsp_logs[0].timeleft = 4*35;
+		}
+		else
+		{
+			TSP_PlayerPawn_LogMessage newlog = new("TSP_PlayerPawn_LogMessage");
+			newlog.whatugot = StringTable.Localize(whatugot);
+			newlog.howmany = howmany;
+			newlog.timeleft = 4 * 35;
+			tsp_logs.Push(newlog);
+		}
+		/*
 		if(tsp_logs.Size()>0 && tsp_logs[new].whatugot==newlog.whatugot)
 		{
 			newlog.Destroy();
@@ -38,6 +47,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		else
 		{
 			tsp_logs.Push(newlog);
-		}
+		}*/
 	}
 }

@@ -24,21 +24,6 @@ Class TSP_PlayerPawn_BonusShield : Inventory
 	}
 }
 
-Class TSP_PlayerPawn_IPlaySounds : Actor
-{
-	Default
-	{
-		RenderStyle "None";
-	}
-	
-	States
-	{
-		Spawn:
-			TNT1 A -1;
-			Stop;
-	}
-}
-
 Class TSP_AngleChecker : Actor
 {
 	Default

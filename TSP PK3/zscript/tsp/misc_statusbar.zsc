@@ -650,7 +650,7 @@ Class TSP_StatusBar : BaseStatusBar
 						alpher = thisone.timeleft/12.; //whoosh
 					}
 					
-					TSP_DrawString(fnt_pickupLog, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+130, HUDLEFT_Y+20-(12*i)+yoff), alpha: alpher);
+					TSP_DrawString(fnt_pickupLog, String.Format(thisone.whatugot, thisone.howmany), (HUDLEFT_X+130, HUDLEFT_Y+20-(16*i)+yoff), alpha: alpher);
 					//TSP_DrawString(fnt_pickupLog, "buh"..String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 					//DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
