@@ -20,3 +20,6 @@
 "textures/terrain/*"
 "textures/tsp/*"
 "graphics/store/*"
+"sprites/weapons/melretro/AB50/*"
+"sprites/weapons/melretro/922a/*"
+"sprites/weapons/melretro/MP40/*"
