@@ -10,7 +10,7 @@ gameinfo
 	finalepage = "tsp_flat"
 	finaleflat = "tsp_flat"
 	finalemusic = "tsp_read"
-	PlayerClasses = "TSP_MelPlayer", "TSP_MelRetroPlayer", "TSP_ShenMiPlayer", "TSP_DummyPlayer"
+	PlayerClasses = "TSP_MelPlayer"
 	armoricons = "FLRMA0", 0.5, "PSRMA0"
 	pausesign = "SP_PAUSE"
 	cursorpic = "M_SPCRS"
