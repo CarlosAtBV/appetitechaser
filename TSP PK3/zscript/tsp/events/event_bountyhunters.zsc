@@ -645,7 +645,7 @@ Class TSP_BHHandler : EventHandler
 		float spree_posY = (screen.GetHeight()/2) - 21;
 		
 		let bhHudTex = TexMan.CheckForTexture("graphics/hud/HUD_BH.png");
-		Screen.DrawTexture(bhHudTex, false, 640,  14 + (116/2),
+		Screen.DrawTexture(bhHudTex, false, screen.GetWidth()/2,  14 + (116/2),
 			DTA_CenterOffset, true);
 		
 		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
