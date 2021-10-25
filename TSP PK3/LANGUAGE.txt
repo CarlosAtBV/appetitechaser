@@ -165,12 +165,12 @@ OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 
 //Startup
 STARTUP1 = "\ccWelcome to\c- \c[TSPGREEN]The Space Pirate!";
-STARTUP2 = "\cpVersion 0.1 - \c[Sapphire]First Hunt Demo";
+STARTUP2 = "\cpVersion 0.1a - \c[Sapphire]First Hunt Demo";
 STARTUP3 = "Chat with us at \cdhttps://www.bluevertigo.org/discord";
 STARTUP4 = "\c[Sapphire]LET THE HUNT BEGIN.";
 
 //VERSION
-VERSION = "\cuv0.1 - \c[Sapphire]First Hunt Demo";
+VERSION = "\cuv0.1a - \c[Sapphire]First Hunt Demo";
 
 //Difficult
 SKILLNONFINISH = "\ccThis mode is currently unfinished!";
