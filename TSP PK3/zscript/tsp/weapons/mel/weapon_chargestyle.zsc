@@ -1,0 +1,42 @@
+//===========================================================================
+//
+// Charge Style
+//
+// by Cardboard Marty
+// Sprites by Cardboard Marty
+// Bases by Blox, Scuba Steve, Banjo Entertainment, PrettyFist
+// 
+//
+//===========================================================================
+
+Class MelBareKnuckle : TSP_Mel_BaseWeapon
+{
+	Default
+	{
+		Inventory.PickupMessage "You relearned your fighting style you apparently dropped [Class: Melee, Slot 1]";
+		Obituary "%o learned why %k is the king of the iron fist.";
+		Weapon.Kickback 100;
+		Weapon.BobStyle "Alpha";
+		Weapon.BobSpeed 1.5;
+		Weapon.BobRangeY 1.0;
+		Weapon.BobRangeX 0.5;
+		Tag "$MelChargeTag";
+		
+		+WEAPON.WIMPY_WEAPON
+		+WEAPON.MELEEWEAPON
+		+WEAPON.NOALERT
+		+WEAPON.NOAUTOAIM
+		+WEAPON.NOAUTOFIRE
+		+NOEXTREMEDEATH
+		+INVENTORY.UNDROPPABLE
+		+TSP_Weapon_Core.NoModSwitch
+		
+		TSP_Weapon_Core.HudColor "#d600d6";
+		TSP_Weapon_Core.Portrait "graphics/hud/weapons/mel_pawnch.png";
+	}
+	
+	int combo_mach;
+	int combo_alt;
+	int combo_primary;
+	
+	int combo_held;
