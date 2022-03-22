@@ -56,9 +56,9 @@ robomelretro/jump01 "sounds/characters/melretro/robo/vo_mel_retro_robo_jump01.og
 robomelretro/jump02 "sounds/characters/melretro/robo/vo_mel_retro_robo_jump02.ogg"
 
 $random robomelretro/land { robomelretro/land1 robomelretro/land2 robomelretro/land3 }
-robomelretro/land1 "sounds/characters/melretro/robo/vo_mel_retro_robo_land1.ogg"
-robomelretro/land2 "sounds/characters/melretro/robo/vo_mel_retro_robo_land2.ogg"
-robomelretro/land3 "sounds/characters/melretro/robo/vo_mel_retro_robo_land3.ogg"
+robomelretro/land1 "sounds/characters/melretro/robo/vo_mel_retro_robo_land01.ogg"
+robomelretro/land2 "sounds/characters/melretro/robo/vo_mel_retro_robo_land02.ogg"
+robomelretro/land3 "sounds/characters/melretro/robo/vo_mel_retro_robo_land03.ogg"
 
 robomel/land "sounds/general/player/sfx_mel_retro_robo_land01.ogg"
 

@@ -11,7 +11,7 @@ $playeralias	MelRetro      male  	*xdeath				melretro/xdeath
 $playeralias	MelRetro      male  	*gibbed				melretro/xdeath
 $playeralias	MelRetro      male  	*grunt				melretro/land
 $playeralias	MelRetro	  male  	*jump				melretro/jump
-$playeralias    MelRetro	  male      *land				mel/land //defined in SNDINFO.characters-mel
+$playeralias    MelRetro	  male      *land				mel/landing //defined in SNDINFO.characters-mel
 $playeralias    MelRetro	  male      *usefail			melretro/usefail
 $playeralias	MelRetro   	  male  	*smallmelee			melretro/smallmelee
 $playeralias	MelRetro      male  	*mediummelee		melretro/smallmelee
@@ -61,9 +61,9 @@ melretro/jump01 "sounds/characters/melretro/default/vo_mel_retro_jump01.ogg"
 melretro/jump02 "sounds/characters/melretro/default/vo_mel_retro_jump02.ogg"
 
 $random melretro/land { melretro/land1 melretro/land2 melretro/land3 }
-melretro/land1 "sounds/characters/melretro/default/vo_mel_retro_land1.ogg"
-melretro/land2 "sounds/characters/melretro/default/vo_mel_retro_land2.ogg"
-melretro/land3 "sounds/characters/melretro/default/vo_mel_retro_land3.ogg"
+melretro/land1 "sounds/characters/melretro/default/vo_mel_retro_land01.ogg"
+melretro/land2 "sounds/characters/melretro/default/vo_mel_retro_land02.ogg"
+melretro/land3 "sounds/characters/melretro/default/vo_mel_retro_land03.ogg"
 
 $random melretro/usefail { melretro/unf1 melretro/unf2 }
 melretro/unf1 "sounds/characters/melretro/default/vo_mel_retro_usefail1.ogg"

@@ -15,7 +15,7 @@ $playeralias	Mel      male  	*xdeath				mel/xdeath
 $playeralias	Mel      male  	*gibbed				mel/xdeath
 $playeralias	Mel      male  	*grunt				mel/land
 $playeralias	Mel	     male  	*jump				mel/jump
-$playeralias    Mel	     male   *land				mel/land
+$playeralias    Mel	     male   *land				mel/landing
 $playeralias    Mel	     male   *usefail			mel/usefail
 $playeralias	Mel   	 male  	*smallmelee			mel/smallmelee
 $playeralias	Mel   	 male  	*mediummelee		mel/mediummelee
@@ -94,7 +94,7 @@ mel/land5 "sounds/characters/mel/vo_mel_land5.ogg"
 mel/land6 "sounds/characters/mel/vo_mel_land6.ogg"
 mel/land7 "sounds/characters/mel/vo_mel_land7.ogg"
 
-mel/land "sounds/general/player/sfx_mel_land01.ogg"
+mel/landing "sounds/general/player/sfx_mel_land01.ogg"
 
 $random mel/usefail { mel/unf1 mel/unf2 mel/unf3 mel/unf4 mel/unfvo1 mel/unfvo2 mel/unfvo3 }
 mel/unf1 "sounds/characters/mel/vo_mel_usefail1.ogg"
