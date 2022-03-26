@@ -85,6 +85,13 @@ shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
 shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Devil May Cry 4: Special Edition, Mortal Kombat X, Super Monday Night Combat
 
 // GENERAL
+$random general/land { general/land01 general/land02 general/land03 general/land04 general/land05 }
+general/land01 "sounds/general/player/sfx_general_land01.ogg" 
+general/land02 "sounds/general/player/sfx_general_land02.ogg" 
+general/land03 "sounds/general/player/sfx_general_land03.ogg" 
+general/land04 "sounds/general/player/sfx_general_land04.ogg" 
+general/land05 "sounds/general/player/sfx_general_land05.ogg" 
+
 mantle "sounds/general/player/sfx_general_mantle.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Devil May Cry 4: Special Edition
 money/pickup "sounds/shop/ui_gbd_sm.ogg"
 $volume money/pickup 0.5

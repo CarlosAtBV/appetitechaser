@@ -11,7 +11,7 @@ $playeralias	MelRetro      male  	*xdeath				melretro/xdeath
 $playeralias	MelRetro      male  	*gibbed				melretro/xdeath
 $playeralias	MelRetro      male  	*grunt				melretro/land
 $playeralias	MelRetro	  male  	*jump				melretro/jump
-$playeralias    MelRetro	  male      *land				mel/landing //defined in SNDINFO.characters-mel
+$playeralias    MelRetro	  male      *land				mel/landing
 $playeralias    MelRetro	  male      *usefail			melretro/usefail
 $playeralias	MelRetro   	  male  	*smallmelee			melretro/smallmelee
 $playeralias	MelRetro      male  	*mediummelee		melretro/smallmelee
@@ -59,6 +59,8 @@ $volume melretro/xdeath 0.7
 $random melretro/jump { melretro/jump01 melretro/jump02 null null null null }
 melretro/jump01 "sounds/characters/melretro/default/vo_mel_retro_jump01.ogg"
 melretro/jump02 "sounds/characters/melretro/default/vo_mel_retro_jump02.ogg"
+
+mel/landing "sounds/general/player/sfx_mel_land01.ogg"
 
 $random melretro/land { melretro/land1 melretro/land2 melretro/land3 }
 melretro/land1 "sounds/characters/melretro/default/vo_mel_retro_land01.ogg"
