@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -2503.222f;
+		viewpositionx = -3190.203f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -50,80 +50,12 @@ maps
 		overridebottomtexture = true;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 3153.938f;
+		viewpositiony = 5368.932f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
 		overridemiddletexture = true;
 		custombrightness = 196;
 		viewscale = 0.3028731f;
-		
-		fieldtypes
-		{
-			
-			linedef
-			{
-				renderstyle = 2;
-			}
-			
-			sidedef
-			{
-				offsetx_mid = 1;
-				offsety_mid = 1;
-				offsetx_bottom = 1;
-				offsety_bottom = 1;
-				offsetx_top = 1;
-				offsety_top = 1;
-				light = 0;
-				scaley_mid = 1;
-			}
-			
-			sector
-			{
-				floorglowcolor = 0;
-				ceilingglowcolor = 0;
-				rotationceiling = 1;
-				rotationfloor = 1;
-				ypanningfloor = 1;
-				lightfloorabsolute = 3;
-				lightfloor = 0;
-				xpanningfloor = 1;
-				xpanningceiling = 1;
-				ypanningceiling = 1;
-				floorglowheight = 1;
-				color_wallbottom = 0;
-				lightceilingabsolute = 3;
-				fogdensity = 0;
-				xscaleceiling = 1;
-				yscaleceiling = 1;
-				xscalefloor = 1;
-				yscalefloor = 1;
-				color_floor = 0;
-			}
-		}
-		
-		scriptdocuments
-		{
-			
-			document0
-			{
-				filename = "DIALOGUE";
-				hash = 3588187714;
-				resource;
-				tabtype = 0;
-				scripttype = 18;
-			}
-			
-			document1
-			{
-				filename = "SCRIPTS";
-				hash = 3469170009;
-				resource;
-				tabtype = 0;
-				scripttype = 1;
-				caretposition = 10;
-				activetab = true;
-			}
-		}
 		
 		reloadresourceprecommand
 		{
@@ -151,6 +83,30 @@ maps
 			autocloseonsuccess = true;
 			exitcodeiserror = true;
 			stderriserror = true;
+		}
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 65;
+				activetab = true;
+			}
 		}
 	}
 }

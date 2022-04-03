@@ -132,13 +132,13 @@ map TSP_BH01 "Neoscape - Battle Zone"
 	lightmode = 0
 }
 
-/*
+
 map TSP_BH02 "Neoscape - Battle Zone X"
 {
 	music = "music/bountyhunters_battlezonex.ogg"
 	lightmode = 0
 }
-*/
+
 
 map BH_SKIF "flyin lmao"
 {

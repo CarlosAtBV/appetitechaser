@@ -1,11 +1,11 @@
 [enu default]
 
 MENU_MODE_STANDARD = "\c[TSP_Green]Standard";
-MENU_MODE_STANDARD_SUB = "\c[TSP_Green]Standard gameplay mode\c-\nPlay through the game normally.";
+MENU_MODE_STANDARD_SUB = "(\c[TSP_Green]STANDARD GAMEPLAY MODE\c-)\nPlay through the game normally.";
 MENU_MODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
-MENU_MODE_HUNTERS_SUB = "\c[TSP_BountyPink]Score attack mode\c-\nTake down as many enemies as you can!";
+MENU_MODE_HUNTERS_SUB = "(\c[TSP_BountyPink]SCORE ATTACK MODE\c-)\nTake down as many enemies as you can!";
 MENU_MODE_TRAINING = "\c[TSP_Teal]Training";
-MENU_MODE_TRAINING_SUB = "\c[TSP_Teal]Practice mode\c-\nHone your skills and sharpen your senses!";
+MENU_MODE_TRAINING_SUB = "(\c[TSP_Teal]PRACTICE MODE\c-)\nHone your skills and sharpen your senses!";
 
 TSP_GAMEMODE_STANDARD = "\c[TSP_Green]Standard Mode";
 TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
@@ -28,7 +28,7 @@ TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c
 
 // DIFFICULTY MENUS
 TSPDIF_CASUAL = "\c[TSP_LightBlue]Easy Peasy";
-TSPDIF_CASUAL_SUB = "(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_Blue]less\c- damage.";
+TSPDIF_CASUAL_SUB = "(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_LightBlue]less\c- damage.";
 TSPDIF_NORMAL = "\c[TSP_LightGreen]Bring it On!";
 TSPDIF_NORMAL_SUB = "(\c[TSP_LightGreen]NORMAL\c-) A moderate challenge.\nStandard difficulty for most privateers.";
 TSPDIF_HARD = "\c[TSP_Orange]High Intensity!!";
