@@ -172,10 +172,10 @@ script "TSPArmorScript" (void)
   }
   else
   {
-    TakeInventory("TSPGreenDamageReduction",1);
-    TakeInventory("TSPGreenArmorDamage",1);
-    TakeInventory("TSPBlueDamageReduction",1);
-    TakeInventory("TSPBlueArmorDamage",1);
+    TakeInventory("TSP_GreenDamageReduction",1);
+    TakeInventory("TSP_GreenArmorDamage",1);
+    TakeInventory("TSP_BlueDamageReduction",1);
+    TakeInventory("TSP_BlueArmorDamage",1);
     Terminate;
   }
 } */

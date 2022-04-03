@@ -148,7 +148,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				GiveInventory(fucker,1);
 			}
 		}
-		Console.Printf("\c[TSPGreen]APPLYING BOUNTY HUNTER LOADOUT TEST");
+		Console.Printf("\c[TSP_Green]APPLYING BOUNTY HUNTER LOADOUT TEST");
 	}
 	
 	override void FireWeaponAlt (State stat)

@@ -248,7 +248,7 @@ Class TSP_Weapon_Core : DoomWeapon
 					if(!invoker.tspw_traitmode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
 					{
 						invoker.tspw_altmode = !invoker.tspw_altmode;
-						string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
+						string onoff = invoker.tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
 						//A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
 						TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 						if(invoker.tspw_altmode)
@@ -268,7 +268,7 @@ Class TSP_Weapon_Core : DoomWeapon
 						{
 							if(curWeapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("Switch"));
 							//A_PlaySound("weapon/mod/on", CHAN_5);
-							/*string onoff = "\c[TSPGreen]On";
+							/*string onoff = "\c[TSP_Green]On";
 							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);*/
 						}
 						invoker.tspw_altmode = true;
@@ -279,7 +279,7 @@ Class TSP_Weapon_Core : DoomWeapon
 						{
 							if(curWeapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON,curWeapon.FindState("ModSwitch"));
 							//A_PlaySound("weapon/mod/off", CHAN_5);
-							/*string onoff = "\c[TSPRed]Off";
+							/*string onoff = "\c[TSP_Red]Off";
 							TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);*/
 						}
 						invoker.tspw_altmode = false;
@@ -291,7 +291,7 @@ Class TSP_Weapon_Core : DoomWeapon
 		/*if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
 		{
 			invoker.tspw_altmode = !invoker.tspw_altmode;
-			string onoff = invoker.tspw_altmode ? "\c[TSPGreen]On" : "\c[TSPRed]Off";
+			string onoff = invoker.tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
 			A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
 			TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
 		}*/

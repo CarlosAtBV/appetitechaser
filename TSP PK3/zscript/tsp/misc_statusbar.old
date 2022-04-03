@@ -235,7 +235,7 @@ Class TSP_StatusBar : BaseStatusBar
 						Color ammoColor;
 						if(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip<ammoRed)
 						{
-							ammoColor = Font.FindFontColor("TSPRed");
+							ammoColor = Font.FindFontColor("TSP_Red");
 						}
 						else
 						{
@@ -310,7 +310,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						targetName = playerobj.theZoop.GetClassName();
 					}
-					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
+					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSP_Green"));
 				}
 				
 				if(playerobj.pp_nextModSwitch != null)

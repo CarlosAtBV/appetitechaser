@@ -136,11 +136,11 @@ Class TSP_StatusScreen : StatusScreen
 				break;
 		}
 		
-		ss_missionStatus = "\c[TSPLimeGreen1]Mission Completed \cjas "..ss_player.TSP_GetLoadoutName();
+		ss_missionStatus = "\c[TSP_Green]Mission Completed \cjas "..ss_player.TSP_GetLoadoutName();
 		if ( !ss_player.tsp_bh_completed )
 		{
 			ss_missionFailed = true;
-			ss_missionStatus = "\c[TSPHudRed]Mission Failed \cjas "..ss_player.TSP_GetLoadoutName();
+			ss_missionStatus = "\c[TSP_Red]Mission Failed \cjas "..ss_player.TSP_GetLoadoutName();
 		}
 	}
 	
@@ -293,7 +293,7 @@ Class TSP_StatusScreen : StatusScreen
 	const BOX_HEIGHT = 216;
 	const BOX_PADDING = 24;
 	
-	const CLR_TSPGREEN = Color(255, 0, 206, 148);
+	const CLR_TSP_Green = Color(255, 0, 206, 148);
 	
 	override void Drawer (void)
 	{
@@ -311,12 +311,12 @@ Class TSP_StatusScreen : StatusScreen
 		TextureID stagebg = TexMan.CheckForTexture("graphics/bh/maps/banner_battlezone.png", TexMan.Type_MiscPatch);
 		TextureID melbg = TexMan.CheckForTexture("graphics/intermission/int_melody.png", TexMan.Type_MiscPatch);
 		
-		Color secondColor = Font.FindFontColor("TSPGreen");
+		Color secondColor = Font.FindFontColor("TSP_Green");
 		
 		int finalRank = clamp(ss_rankCalc, 0, ss_ranks.size()-1);
 		/*if(ss_missionFailed)
 		{
-			secondColor = Font.FindFontColor("TSPRed");
+			secondColor = Font.FindFontColor("TSP_Red");
 		}*/
 		
 		screen.DrawTexture (spacebg, true, 160+ss_bgPos.x, 0+ss_bgPos.y, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_CenterOffset, true);
@@ -348,13 +348,13 @@ Class TSP_StatusScreen : StatusScreen
 		
 		for(int i = 0;i<4;i++)
 		{
-			DrawStringHack("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], color: CLR_TSPGREEN, alpha: ss_tallyAlphaLeft[i]);
+			DrawStringHack("tsp_small", BOX_X + BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyLeft[i], color: CLR_TSP_Green, alpha: ss_tallyAlphaLeft[i]);
 			DrawStringHack("tsp_small", BOX_X + BOX_WIDTH - BOX_PADDING, boxY + BOX_PADDING + 24 * i, ss_tallyRight[i], alpha: ss_tallyAlphaRight[i], hAlign: TSP_ALIGN_RIGHT);
 		}
 		
 		int rankY = boxY + BOX_HEIGHT - BOX_PADDING - boldFont.GetHeight();
 		
-		DrawStringHack("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", color: CLR_TSPGREEN, alpha: ss_textAlpha);//"Rank:");
+		DrawStringHack("tsp_bold", boxX + BOX_PADDING, rankY, "Rank:", color: CLR_TSP_Green, alpha: ss_textAlpha);//"Rank:");
 		
 		double rankSlamScale = (1.0 + (1.0 - ease_inQuart(ss_rankLerp)) * 4);
 		DrawStringHack("tsp_bold", boxX + BOX_WIDTH - BOX_PADDING, rankY, ss_ranks[finalRank], alpha: ss_rankLerp, scale: (rankSlamScale, rankSlamScale), hAlign: TSP_ALIGN_RIGHT);

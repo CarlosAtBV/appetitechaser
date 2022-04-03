@@ -18,7 +18,8 @@ LISTMENU "MainMenu"
 	StaticPatch 103, 39, "SP_MAIN"
 	Position 88, 15
 	Linespacing 29
-		
+	
+	//TSP_MenuItem_GamemodeItem "$MENU_MODE_STANDARD", "D", "TSP_CharacterMenu_Demo", "$MENU_MODE_STANDARD_SUB", 0
 	TSP_MenuItem_GamemodeItem "$MENU_MODE_HUNTERS", "B", "TSP_CharacterMenu_Demo", "$MENU_MODE_HUNTERS_SUB", 1
 	//TextItem "$TSPMNU_MENU_STARTGAME", "n", "TSP_GameModeMenu"
 	TextItem "$TSPMNU_MENU_OPTIONS", "o", "TSP_OptionsMenu"
@@ -69,7 +70,7 @@ ListMenu "PlayerclassMenu"
 		NetgameMessage "$NEWGAME"
 		
 		StaticPatch 103, 39, "SP_CSLT"
-		Font "DBIGFONT", "TSPGreen1"
+		Font "DBIGFONT", "TSP_Green1"
 		Position 32, 18
 		Linespacing 18
 		PlayerDisplay 226, 51, "20 00 00", "80 00 40"
@@ -314,7 +315,7 @@ OptionValue "Gender"
 
 ListMenu "TSPPlayerMenu"
 {
-    Font "DBIGFONT", "TSPBLUE"
+    Font "DBIGFONT", "TSP_Blue"
 	StaticTextCentered 160, 6, "Character Setup"
 	Font "SmallFont"
 	Linespacing 14

@@ -1,14 +1,14 @@
 [enu default]
 
 //ITEMS
-ShieldPickup = "\cc[+\c[TSPShieldOrange]%i Shield\cc]";
-HealthPickup = "\cc[+\c[TSPHealthBlue]%i HP\cc]";
-MegaspherePickup = "\cc[\c[TSPHealthBlue]MAX HEALTH\cc] + [\c[TSPShieldOrange]+50 SHIELD\c-\cc]";
+ShieldPickup = "\cc[+\c[TSP_Orange]%i Shield\cc]";
+HealthPickup = "\cc[+\c[TSP_Blue]%i HP\cc]";
+MegaspherePickup = "\cc[\c[TSP_Blue]MAX HEALTH\cc] + [\c[TSP_Orange]+50 SHIELD\c-\cc]";
 
 //BH
-TimeCrystal = "\cc[\cfTime Extension!\cc +\c[TSP_Yellow]%i Seconds\cc]";
-ComboCrystal = "\cc[\c[TSPLimeGreen]Combo Time!\cc]";
-ComboCrystalEnd = "\cc[\c[DarkRed]Combo Time Over!\cc]";
+TimeCrystal = "\cc[\c[TSP_Gold]Time Extension!\cc +\c[TSP_Yellow]%i Seconds\cc]";
+ComboCrystal = "\cc[\c[TSP_LightGreen]Combo Time!\cc]";
+ComboCrystalEnd = "\cc[\c[TSP_Red]]Combo Time Over!\cc]";
 
 //AMMO
 PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";
@@ -16,10 +16,10 @@ SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
 BACKPACKPICKUP = "\cc[\cfExpanded Ammo Capacity!\cc]";
 
 //UPGRADES (General)
-ShieldUpgradeA = "\cc[\cfShield Upgrade!\cc +\c[TSPShieldOrange]25 Max Shield\cc]";
+ShieldUpgradeA = "\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
 
 //UPGRADES (ARC*STAR)
-TankUpgrade = "\cc[\cfShield Upgrade!\cc +\c[TSPShieldOrange]25 Max Shield\cc]";
+TankUpgrade = "\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
 
 ////////////////
 // SHEN MI

@@ -537,7 +537,7 @@ Class TSP_StatusBar : BaseStatusBar
 					{
 						targetName = playerobj.theZoop.GetClassName();
 					}
-					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPGreen"));
+					DrawString(mSmallFont, "\ccTarget: \c-"..targetName, (-2, 2), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSP_Green"));
 				}*/
 				
 				if(playerobj.pp_nextModSwitch != null)

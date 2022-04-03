@@ -4,7 +4,7 @@
 // Sprites by Sangelothi, BloodyAcid, Infirnex, and Cardboard Marty
 //===========================================================================
 
-ACTOR TSPGreenArmorPickup : TSP_CustomInventory Replaces GreenArmor
+ACTOR TSP_GreenArmorPickup : TSP_CustomInventory Replaces GreenArmor
 {
 	Radius 20
 	Height 16
@@ -28,7 +28,7 @@ ACTOR TSPGreenArmorPickup : TSP_CustomInventory Replaces GreenArmor
 }
 
 
-ACTOR TSPBlueArmorPickup : TSP_CustomInventory Replaces BlueArmor
+ACTOR TSP_BlueArmorPickup : TSP_CustomInventory Replaces BlueArmor
 {
 	Radius 20
 	Height 16
@@ -69,11 +69,11 @@ ACTOR TSPArmorBonusDrop Replaces ArmorBonus
 		Stop
 	EasySpawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("TSP_RedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	SpawnRedBonus:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("TSPRedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("TSP_RedArmorBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -99,7 +99,7 @@ ACTOR TSPArmorBonus : TSP_CustomInventory
 	}
 }
 
-ACTOR TSPRedArmorBonus : TSP_CustomInventory
+ACTOR TSP_RedArmorBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16
@@ -224,11 +224,11 @@ ACTOR TSPHealthBonusDrop Replaces HealthBonus
 		Stop
 	EasySpawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("TSP_RedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	SpawnRedHealth:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx("TSPRedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SpawnItemEx("TSP_RedHealthBonus",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
@@ -251,7 +251,7 @@ ACTOR TSPHealthBonus : TSP_CustomInventory
 	}
 }
 
-ACTOR TSPRedHealthBonus : TSP_CustomInventory
+ACTOR TSP_RedHealthBonus : TSP_CustomInventory
 {
 	Radius 20
 	Height 16

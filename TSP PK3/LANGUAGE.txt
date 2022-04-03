@@ -6,13 +6,13 @@ QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LI
 QUITMSG3 = "\cnThere is no finish line. When you reach one goal, find a new one.";
 QUITMSG4 = "\cnNo one's gonna draw you a map.\n\n\ckYou have to walk your own path.";
 QUITMSG5 = "\cnBelieve in yourself and create your own destiny.\n\n\crDon't fear fate.";
-QUITMSG6 = "\cnTHE ADVENTURE NEVER ENDS.\nWE'LL SET OFF ON A JOURNEY\nSOMETIME SOMEWHERE\nTO THE STARS AGAIN.\n\n\c[TSPGREEN]AND THE NEW ADVENTURES WILL BEGIN.";
+QUITMSG6 = "\cnTHE ADVENTURE NEVER ENDS.\nWE'LL SET OFF ON A JOURNEY\nSOMETIME SOMEWHERE\nTO THE STARS AGAIN.\n\n\c[TSP_Green]AND THE NEW ADVENTURES WILL BEGIN.";
 QUITMSG7 = "\cnCheck out\c- \c[MEL]Mel\c- \cnand many others in \n\cjDrPyspy's\c- \cfTomb\c- \ctFetus\c-\cn!\c-\n\n\cjComing soon!\c-";
 QUITMSG8 = "\cnGrab what you want and rip through the dark\nas you run \cgThrough The Night!";
 QUITMSG9 = "\cnAre you gonna just keep running away?";
 QUITMSG10 = "\cnMake sure to grab a bag of cheebos\c-\n\cnfor \cgThi\c- \cnon the way out.\c-\n\n\cgShe's very hungry.";
 QUITMSG11 = "\cnThere is no \ckknowledge\cn that is not \c-power\cn.";
-QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSPGREEN]The Space Pirate\cn!";
+QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSP_Green]The Space Pirate\cn!";
 QUITMSG13 = "\cnThe very essence of martial arts is the thirst for knowledge and the truth about ourselves.";
 QUITMSG14 = "\cnWhaddya doing in our mod? Get outta here.\n\n...\c-GET OUTTA HERE!";
 DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
@@ -104,8 +104,8 @@ TSPMouseOptions = "\c[TSP_Yellow]MOUSE OPTIONS\c-";
 TSPControllerOptions = "\c[TSP_Yellow]CONTROLLER OPTIONS\c-";
 
 //TSP Menu Options
-TSPMENU1 = "\c[TSPGREEN]The Space Pirate\c- \cjModifiers\c-";
-TSPMENU2 = "\c[TSPMODGOLD]MODIFIERS\c-";
+TSPMENU1 = "\c[TSP_Green]The Space Pirate\c- \cjModifiers\c-";
+TSPMENU2 = "\c[TSP_Gold]MODIFIERS\c-";
 TSPGAMEPLAY1 = "\cjGAMEPLAY MODIFIERS\c-";
 TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)\c-";
 TSPGRAPHICS1 = "\cjGRAPHIC MODIFIERS\c-";
@@ -128,8 +128,8 @@ SMASHMELEESND = "\ckSmash\c-";
 
 
 //Character Setup
-CSMenuOption = "\c[TSPBLUE]Character Setup\c-";
-CSCharacter = "\c[TSPGREEN]Character\c-"; 
+CSMenuOption = "\c[TSP_Blue]Character Setup\c-";
+CSCharacter = "\c[TSP_Green]Character\c-"; 
 CSName = "\chName\c-";
 CSGender = "\ccGender\c-";
 CSSkin = "\ccCostume\c-";
@@ -147,7 +147,7 @@ OPTVAL_MALE					= "\cyMale";
 OPTVAL_FEMALE				= "\caFemale";
 OPTVAL_NEUTRAL				= "\ckNeutral";
 OPTVAL_OTHER				= "\cjObject";
-MK2TSP = "\c[TSPGREEN]TSP MK2\c-";
+MK2TSP = "\c[TSP_Green]TSP MK2\c-";
 
 //Controls Menu
 CONFIGHEADER = "\c[TSP_Yellow]CONFIGURATION\c-";
@@ -164,7 +164,7 @@ MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
 OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 
 //Startup
-STARTUP1 = "\ccWelcome to\c- \c[TSPGREEN]The Space Pirate!";
+STARTUP1 = "\ccWelcome to\c- \c[TSP_Green]The Space Pirate!";
 STARTUP2 = "\cpVersion 0.1a - \c[Sapphire]First Hunt Demo";
 STARTUP3 = "Chat with us at \cdhttps://www.bluevertigo.org/discord";
 STARTUP4 = "\c[Sapphire]LET THE HUNT BEGIN.";

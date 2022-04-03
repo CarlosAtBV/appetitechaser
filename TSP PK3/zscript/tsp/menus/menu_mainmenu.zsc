@@ -97,10 +97,10 @@ Class TSP_ListMenuHiRes : ListMenu
 			}
 		}
 		/*AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSP_Yellow"));
-		AddButton("Codex", "Explore Mel's information database.", "TSP_OptionsMenu", Font.FindFontColor("TSPBlue"));
+		AddButton("Codex", "Explore Mel's information database.", "TSP_OptionsMenu", Font.FindFontColor("TSP_Blue"));
 		AddButton("Load Game", "Load a saved game.", "LoadGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
-		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSPRed"));*/
+		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSP_Red"));*/
 		
 		if ( tsp_buttons.Size() > 0 )
 		{

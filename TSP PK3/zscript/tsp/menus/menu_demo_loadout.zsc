@@ -52,7 +52,7 @@ Class TSP_CharacterMenu_Demo : TSP_MenuBase
 		
 		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
 		newButton.name = "\cgBurst\c- Kit";
-		newButton.desc = "A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSPBHGrad]Bounty Hunters\c-.";
+		newButton.desc = "A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSP_BountyPink]Bounty Hunters\c-.";
 		newButton.AddLoadoutItem("graphics/loadout/mel_melee.png");
 		newButton.AddLoadoutItem("graphics/loadout/nikki_spitfire.png");
 		newButton.AddLoadoutItem("graphics/loadout/suzu_shotgun.png");

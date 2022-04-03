@@ -1,4 +1,31 @@
+// GREYSCALE
+TSP_Gray
+{
+	#000000  #000000    0  1    // BLACK OUTLINE
+	#5a5a5a  #5a5a5a    2  127  // DARKEST PART OF THE GRADIENT
+	#7e7e7e  #eeeeee  128  256
+}
+
+TSPWhite
+{
+	#000000  #000000    0  1
+	#5f5f5f  #d9d9d9    2  127  // DARKEST PART OF THE GRADIENT
+	#f8f8f8  #ffffff  128  256
+}
+
+TSPVantaBlack
+{
+	#000000  #000000
+}
+
 // PURPLE
+TSP_Purple
+{
+	#000000  #000000    0  1
+	#3b1460  #3b1460    2  127
+	#43176b  #8834d8  128  256
+}
+
 TSP_UltimatePurple
 {
 	#000000  #000000	0  1
@@ -17,16 +44,51 @@ TSP_DantePurple
 TSP_Blue
 {
 	#000000  #000000	0  1
+	#061753  #002d89	2  127
+	#003c9b  #0073d0	128  256
+}
+
+TSP_LightBlue
+{
+	#000000  #000000	0  1
 	#1c4768  #4180b1	2  127
 	#529cd5  #b6dfff	128  256
 }
 
+TSP_Teal
+{
+	#000000  #000000	0  1
+	#102b41  #114f70	2  127
+	#126182  #179fb2	128  256
+}
+
 // GREEN
+TSP_Green
+{
+	#000000  #000000	0  1
+	#286b14  #62b00c	2  127
+	#7dc50e  #cbef4a	128  256
+}
+
 TSP_LightGreen
 {
 	#000000  #000000	0  1
 	#294c30  #498c52	2  127
 	#66a861  #d7e776	128  256
+}
+
+TSP_LogoGreen
+{
+	#000000  #000000	0  1
+	#14334e  #2e9584	2  127
+	#2ea889  #31c59b	128  256
+}
+
+TSP_YellowGreen
+{
+	#000000  #000000	0  1
+	#595c1f  #999e2b	2  127
+	#afb53a  #e6ee98	128  256
 }
 
 // YELLOW
@@ -37,6 +99,12 @@ TSP_Yellow
 	#735024  #ddd05c  128  256
 }
 
+TSP_Gold
+{
+	#000000  #000000    0  1
+	#7f5f28  #7f5f28    2  127
+	#9e8538  #f9f5b3  128  256
+}
 
 // ORANGE
 TSP_Orange
@@ -54,234 +122,13 @@ TSP_Red
 	#6d0202  #bc1d1d	128  256
 }
 
-TSPLogoColor
-{
-	#1f0a1b  #1f4a5a    0  127
-	#1f4a5a  #3fc2b0  128  256
-}
-
-TSPGreen
-{
-	#1d3948  #84bb9b
-Console:
-	#223b44  #2a3f4b    0  127
-	#5da590  #add0a5  128  256
-Flat:
-	#5da590
-}
-
-TSPGreen1 //Outlined
-{
-	#000000  #000000    0  1    // BLACK OUTLINE
-	#39505c  #39505c    2  127 
-	#395f68  #398382  128  210
-	#469990  #b8d7b1  211  256
-Console:
-	#223b44  #2a3f4b    0  127
-	#5da590  #add0a5  128  256
-Flat:
-	#5da590
-}
-
-//MENU (MAIN)
-TSPStartGreen // OUTLINE
+TSP_BountyPink
 {
 	#000000  #000000    0  1
-	#396649  #396649    2  127
-	#48714c  #d6d562  128  256
+	#600037  #a9004b    2  127
+	#be0d5c  #e35ea8  128  256
 }
 
-TSPMenuGreen // OUTLINE
-{
-	#000000  #000000    0  1    // BLACK OUTLINE
-	#1b485b  #1b485b  2  127
-	#205563  #34c597  128  255
-}
-
-TSPMenuGreen1 // NO OUTLINE
-{
-	#1b485b  #1b485b  0  127
-	#205563  #34c597  128  255
-}
-
-TSPLoadGreen // OUTLINE
-{
-	#000000  #000000    0  1
-	#1e3925  #1e3925    2  127
-	#21402c  #b2c495  128  256
-}
-
-
-//MENU (GAME MODES)
-TSPStandardGrad // OUTLINE
-{
-	#000000  #000000    0  1
-	#34701d  #34701d    2  127
-	#448118  #b4d94d  128  256
-}
-
-TSPBHGrad // OUTLINE
-{
-	#000000  #000000    0  1
-	#60003c  #60003c    2  127
-	#780040  #e3a574  128  256
-}
-
-// MENU (OPTIONS)
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-TSPVideoBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#257fa9  #257fa9   2  127
-	#3289b0  #aae3ef 128  256
-}
-
-TSPAudioGreen // OUTLINE
-{
-	#000000  #000000    0  1
-	#1a3d21  #1a3d21    2  127
-	#1a4622  #b7c756  128  256
-}
-
-TSPOtherModsPurple // OUTLINE
-{
-	#000000  #000000    0  1
-	#3b1460  #3b1460    2  127
-	#43176b  #8834d8  128  256
-}
-
-TSPGZDoomOptionsGray // OUTLINE
-{
-	#000000  #000000    0  1
-	#262626  #262626    2  127
-	#343434  #afafaf  128  256
-}
-
-//MENU (DIFFICULTY)
-TSPSkill1Blue // OUTLINE
-{
-	#000000  #000000    0  1
-	#1c4768  #1c4768    2  127
-	#27577c  #b6dfff	128  256
-}
-
-TSPSkill1Sub // OUTLINE
-{
-	#005696  #006fb7   0    127
-	#0078c3  #00b3ff	128  256
-}
-
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-
-TSPGray // OUTLINE
-{
-	#000000  #000000    0  1    // BLACK OUTLINE
-	#5a5a5a  #5a5a5a    2  127  // DARKEST PART OF THE GRADIENT
-	#7e7e7e  #eeeeee  128  256
-Console:
-	#272727  #8B8B8B    0 127
-	#505050  #FFFFFF  128 256
-Flat:
-	#CCCCCC
-}
-TSPWhite
-{
-	#000000  #000000    0  1
-	#5f5f5f  #d9d9d9    2  127  // DARKEST PART OF THE GRADIENT
-	#f8f8f8  #ffffff  128  256
-}
-
-
-TSPRed
-{
-	#000000  #000000    0  1
-	#460b0b  #c72424	2  256
-}
-TSPHudRed
-{
-	#000000  #000000    0  1
-	#3F0000  #FF0000    2  256
-}
-TSPRed2 // NO OUTLINE
-{
-	#460b0b  #c72424	0  256
-}
-
-TSPBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#1e3b69  #1e3b69    2  127
-	#244273  #5d8ede  128  256
-}
-TSPHealthBlue // OUTLINE
-{
-	#000000  #000000    0  1
-	#004c5e  #007490    2  127
-	#007f9d  #53cfed  128  256
-}
-TSPVantaBlack
-{
-	#000000  #000000
-}
-TSPLimeGreen 
-{
-	#172702  #B9DE7F
-}
-TSPLimeGreen1 // OUTLINE
-{
-	#000000  #000000    0  1
-	#172702  #B9DE7F   2  256
-}
-
-TSPOrange // OUTLINE
-{
-	#000000  #000000    0  1
-	#7C2009  #FFB03A   2  256
-}
-
-TSPHudYeller // OUTLINE
-{
-	#000000  #000000    0  1
-	#68431e  #68431e    2  127
-	#735024  #e6c77a  128  256
-}
-
-TSPGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#ab8016  #cea02d    2  127
-	#d5a93b  #e2bf69  128  256
-}
-TSPHealthGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#732B00  #FFFF73    2  256
-}
-
-TSPShieldOrange // OUTLINE
-{
-	#000000  #000000    0  1
-	#b25f04  #ffd381    2  256
-}
 
 Mel
 {

@@ -445,7 +445,7 @@ Class TSP_ShopMenu : GenericMenu
 						dd_name = "\cm-SOLD OUT-";
 					}
 					
-					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSPRed"), sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_WHITE : Font.FindFontColor("TSP_Red"), sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					if(sm_itemSelected==i)
 					{
 						screen.DrawText(SmallFont, Font.CR_GREEN, sx, sy, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_Alpha, abs(sin(MenuTime()*5)));
@@ -460,7 +460,7 @@ Class TSP_ShopMenu : GenericMenu
 					{
 						price = "\cm---";
 					}
-					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSPRed"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					screen.DrawText(SmallFont, dd_canBuy ? Font.CR_GREEN : Font.FindFontColor("TSP_Red"), sx+SHOP_ITEMWIDTH-SmallFont.StringWidth(price), sy, price, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 					
 					if(sm_moveMode == 2 && sm_itemHovered == i)
 					{
@@ -471,7 +471,7 @@ Class TSP_ShopMenu : GenericMenu
 				{
 					TSP_ShopHeader dd_curItem = TSP_ShopHeader(dd_curTab.itemlist[i]);
 					string headText = "\cc[ \c-"..dd_curItem.name.."\cc ]";
-					screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), 160+80-SmallFont.StringWidth(headText)/2, sy, headText, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+					screen.DrawText(SmallFont, Font.FindFontColor("TSP_Green"), 160+80-SmallFont.StringWidth(headText)/2, sy, headText, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 				}
 				
 				sy+=SHOP_ITEMHEIGHT+SHOP_ITEMPADDING;
@@ -487,8 +487,8 @@ Class TSP_ShopMenu : GenericMenu
 			int c = tabDesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPVantaBlack"), 160+4, sy+SmallFont.GetHeight()+5+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 160+3, sy+SmallFont.GetHeight()+4+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSP_VantaBlack"), 160+4, sy+SmallFont.GetHeight()+5+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSP_Green"), 160+3, sy+SmallFont.GetHeight()+4+(sm_TinyFont.GetHeight()+1)*g, tabDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
 			DrawButton("Accept",(curTab.employ.pos.x,curTab.employ.pos.y),(64,22),false,sm_moveMode==2);//210
@@ -524,7 +524,7 @@ Class TSP_ShopMenu : GenericMenu
 			}
 			else
 			{
-				dd_name = "\c[TSPRed]-SOLD OUT-";
+				dd_name = "\c[TSP_Red]-SOLD OUT-";
 			}
 			screen.DrawText(SmallFont, Font.CR_WHITE, 8, 183, dd_name, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
@@ -543,19 +543,19 @@ Class TSP_ShopMenu : GenericMenu
 			for (int g = 0; g < c; g++)
 			{
 				screen.DrawText("TinyFont", Font.CR_WHITE, 13, 196+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240, DTA_FillColor, Font.CR_BLACK);
-				screen.DrawText("TinyFont", Font.FindFontColor("TSPGreen"), 12, 195+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText("TinyFont", Font.FindFontColor("TSP_Green"), 12, 195+(SmallFont.GetHeight()*g), curDesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 			
 			if(!dd_validItem)
 			{
-				screen.DrawText(SmallFont, Font.FindFontColor("TSPRed"), 80-SmallFont.StringWidth(dd_errorMessage)/2, 100, dd_errorMessage, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				screen.DrawText(SmallFont, Font.FindFontColor("TSP_Red"), 80-SmallFont.StringWidth(dd_errorMessage)/2, 100, dd_errorMessage, DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}
 		}
 			
 			/*int c = dd_curItem.brokendesc.Count();
 			for (int g = 0; g < c; g++)
 			{
-				Screen.DrawText(SmallFont, Font.FindFontColor("TSPGreen"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				Screen.DrawText(SmallFont, Font.FindFontColor("TSP_Green"), sx, sy+SmallFont.GetHeight()+(SmallFont.GetHeight()*g), dd_curItem.brokendesc.StringAt(g), DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			}*/
 	}
 }
