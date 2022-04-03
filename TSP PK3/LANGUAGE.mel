@@ -5,9 +5,9 @@ TSP_MEL_BIO = "In the age of space exploration, none were more eager to set sail
 MELNAME = "\c[Mel]Mel\c-";
 MELNAMECS = "\c[Mel2]Mel\c-";
 MELRETRONAME = "\c[Mel]Mel \cc(\cfRetro\cc)";
-MELRETRONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPYeller]Retro\c[TSPGray])";
+MELRETRONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSP_Yellow]Retro\c[TSPGray])";
 MELRETROROBONAME = "\c[Mel]Mel \cc(\cfRetro\cc \c[RoboMel]Robo\cc)";
-MELRETROROBONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSPYeller]Retro\cc \c[RoboMel]Robo\c[TSPGray])";
+MELRETROROBONAMECS = "\c[Mel2]Mel \c[TSPGray](\c[TSP_Yellow]Retro\cc \c[RoboMel]Robo\c[TSPGray])";
 
 MelLoadoutBurst = "\cgBurst\c- Kit";
 MelLoadoutZoom = "\cnZoom\c- Kit";

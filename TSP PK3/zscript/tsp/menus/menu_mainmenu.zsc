@@ -96,7 +96,7 @@ Class TSP_ListMenuHiRes : ListMenu
 				AddButton(menuitem.mText, menuitem.mText.."_SUB", ListMenuItemSelectable(mDesc.mItems[i]), Font.FindFontColor("TSPMenuGreen"));
 			}
 		}
-		/*AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSPYeller"));
+		/*AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSP_Yellow"));
 		AddButton("Codex", "Explore Mel's information database.", "TSP_OptionsMenu", Font.FindFontColor("TSPBlue"));
 		AddButton("Load Game", "Load a saved game.", "LoadGameMenu", Font.FindFontColor("TSPMenuGreen"));
 		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));

@@ -147,7 +147,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 			
 		string bTitle = "MAP SELECT";
-		screen.DrawText(BigFont, Font.FindFontColor("TSPYeller"), 160-BigFont.StringWidth(bTitle)/2, 12, bTitle,
+		screen.DrawText(BigFont, Font.FindFontColor("TSP_Yellow"), 160-BigFont.StringWidth(bTitle)/2, 12, bTitle,
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 		/*for(int i = 0;i<hardcoded_maps.Size();i++)
 		{

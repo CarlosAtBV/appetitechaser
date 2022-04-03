@@ -99,9 +99,9 @@ MELRUBY = "\cgRuby\c-";
 //Menu Junk
 MNU_CHOOSECLASS		= "CHARACTER SELECT";
 MNU_CHOOSESKILL		= "DIFFICULTY SELECT";
-TSPCustomControls = "\c[TSPYELLER]CUSTOMIZE CONTROLS\c-";
-TSPMouseOptions = "\c[TSPYELLER]MOUSE OPTIONS\c-";
-TSPControllerOptions = "\c[TSPYELLER]CONTROLLER OPTIONS\c-";
+TSPCustomControls = "\c[TSP_Yellow]CUSTOMIZE CONTROLS\c-";
+TSPMouseOptions = "\c[TSP_Yellow]MOUSE OPTIONS\c-";
+TSPControllerOptions = "\c[TSP_Yellow]CONTROLLER OPTIONS\c-";
 
 //TSP Menu Options
 TSPMENU1 = "\c[TSPGREEN]The Space Pirate\c- \cjModifiers\c-";
@@ -150,8 +150,8 @@ OPTVAL_OTHER				= "\cjObject";
 MK2TSP = "\c[TSPGREEN]TSP MK2\c-";
 
 //Controls Menu
-CONFIGHEADER = "\c[TSPYeller]CONFIGURATION\c-";
-CUSTOMERCONTROLS1 = "\c[TSPYeller]Customize Controls\c-";
+CONFIGHEADER = "\c[TSP_Yellow]CONFIGURATION\c-";
+CUSTOMERCONTROLS1 = "\c[TSP_Yellow]Customize Controls\c-";
 CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
 CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
 MOVEMENTCONTROL = "\ccMovement Controls\c-";

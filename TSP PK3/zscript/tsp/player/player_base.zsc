@@ -135,7 +135,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	virtual void OnStandardLoadout()
 	{
 		ClearInventory();
-		Console.Printf("\c[TSPYeller]APPLYING STANDARD LOADOUT TEST");
+		Console.Printf("\c[TSP_Yellow]APPLYING STANDARD LOADOUT TEST");
 	}
 	virtual void OnBountyHunterLoadout()
 	{

@@ -243,7 +243,7 @@ Class TSP_StatusBar : BaseStatusBar
 						}
 						DrawString(mHUDFont, FormatNumber(TSP_Weapon_Core(CPlayer.ReadyWeapon).tspw_curclip, 3), (HUDRIGHT_X+133, HUDRIGHT_Y+25), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, ammoColor);
 						alpha = 0.6;
-						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+132, HUDRIGHT_Y+41), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSPYeller"));
+						DrawString(mSmallFont, FormatNumber(a1.Amount, 3), (HUDRIGHT_X+132, HUDRIGHT_Y+41), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.FindFontColor("TSP_Yellow"));
 					}
 				}
 			}

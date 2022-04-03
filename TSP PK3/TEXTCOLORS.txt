@@ -1,3 +1,58 @@
+// PURPLE
+TSP_UltimatePurple
+{
+	#000000  #000000	0  1
+	#3c021b  #7a0436	2  127
+	#8f0540  #c40757	128  256
+}
+
+TSP_DantePurple
+{
+	#000000  #000000	0  1
+	#22016d  #420ba8	2  127
+	#4c12b1  #6422c5	128  256
+}
+
+// BLUE
+TSP_Blue
+{
+	#000000  #000000	0  1
+	#1c4768  #4180b1	2  127
+	#529cd5  #b6dfff	128  256
+}
+
+// GREEN
+TSP_LightGreen
+{
+	#000000  #000000	0  1
+	#294c30  #498c52	2  127
+	#66a861  #d7e776	128  256
+}
+
+// YELLOW
+TSP_Yellow
+{
+	#000000  #000000    0  1
+	#68431e  #68431e    2  127
+	#735024  #ddd05c  128  256
+}
+
+
+// ORANGE
+TSP_Orange
+{
+	#000000  #000000	0  1
+	#882501  #bf5d0e	2  127
+	#d27e14  #f3e055	128  256
+}
+
+// RED
+TSP_Red
+{
+	#000000  #000000	0  1
+	#370000  #590000	2  127
+	#6d0202  #bc1d1d	128  256
+}
 
 TSPLogoColor
 {
@@ -136,27 +191,6 @@ TSPModGold // OUTLINE
 	#9e8538  #f9f5b3  128  256
 }
 
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
-TSPModGold // OUTLINE
-{
-	#000000  #000000    0  1
-	#7f5f28  #7f5f28    2  127
-	#9e8538  #f9f5b3  128  256
-}
-
 
 TSPGray // OUTLINE
 {
@@ -216,13 +250,6 @@ TSPLimeGreen1 // OUTLINE
 {
 	#000000  #000000    0  1
 	#172702  #B9DE7F   2  256
-}
-
-TSPYeller // OUTLINE
-{
-	#000000  #000000    0  1
-	#68431e  #68431e    2  127
-	#735024  #ddd05c  128  256
 }
 
 TSPOrange // OUTLINE

@@ -133,7 +133,7 @@ Class TSP_EpisodeMenu : GenericMenu
 					bTitle = episodes[iterator].name;
 					bSub = episodes[iterator].sub;
 				}
-				screen.DrawText(BigFont, em_itemSelected == iterator ? Font.FindFontColor("TSPYeller") : Font.FindFontColor("TSPGreen1"), sx, sy, bTitle, DTA_Clean, true);
+				screen.DrawText(BigFont, em_itemSelected == iterator ? Font.FindFontColor("TSP_Yellow") : Font.FindFontColor("TSPGreen1"), sx, sy, bTitle, DTA_Clean, true);
 				sy += BigFont.GetHeight()+3;
 				screen.DrawText(SmallFont, Font.CR_WHITE, sx+2, sy, bSub, DTA_Clean, true);
 				sy += SmallFont.GetHeight()+1;

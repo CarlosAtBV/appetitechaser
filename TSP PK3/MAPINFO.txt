@@ -16,7 +16,7 @@ gameinfo
 	cursorpic = "M_SPCRS"
 	menufontcolor_title = "TSPGRAY"
 	menufontcolor_label = "TSPGREEN"
-	menufontcolor_value = "GRAY"
+	menufontcolor_value = "TSPGRAY"
 	menufontcolor_action = "TSPGREEN"
 	menufontcolor_header = "WHITE"
 	menufontcolor_highlight = "Blue"
@@ -128,14 +128,14 @@ map TSP_BH "INTERMISSION"
 map TSP_BH01 "Neoscape - Battle Zone"
 {
     //sky1 = "SPACE", -0.1
-	music = "music/TSP_BH01.ogg"
+	music = "music/bountyhunters_battlezone.ogg"
 	lightmode = 0
 }
 
 /*
-map TSP_BH02 "Space Orbital Neos - Multitier"
+map TSP_BH02 "Neoscape - Battle Zone X"
 {
-	music = "music/TSP_BH02.ogg"
+	music = "music/bountyhunters_battlezonex.ogg"
 	lightmode = 0
 }
 */
@@ -147,153 +147,77 @@ map BH_SKIF "flyin lmao"
 	eventhandlers = "TSP_EventHandler_Skiff"
 }
 
+////////////////
+// SKILL SELECT
+////////////////
+
 clearskills
 
-skill TSPbaby
+skill TSPCasual
 {
-  AutoUseHealth
-  AmmoFactor = 2
-  DamageFactor = 0.5
-  EasyBossBrain
-  SpawnFilter = Baby
-  //PicName = "SPSKILL1"
-  Name = "$TSPDIF_EASYPEASY"
-  ACSReturn = 0
-  Key = "1"
+  		Name = "$TSPDIF_CASUAL"
+		SpawnFilter = Baby
+		ACSReturn = 0
+		Key = "1"
+		DamageFactor = 0.5
+		EasyBossBrain
+		MonsterHealth = 0.5
+}
+
+skill TSPNormal
+{
+		Name = "$TSPDIF_NORMAL"
+		DefaultSkill
+		SpawnFilter = Normal
+		ACSReturn = 1
+		Key = "2"
+}
+
+skill TSPHard
+{
+		Name = "$TSPDIF_HARD"
+		SpawnFilter = Hard
+		ACSReturn = 2
+		Key = "3"
+}
+
+skill TSPExtreme
+{
+		Name = "$TSPDIF_EXTREME"
+		SpawnFilter = Hard
+		ACSReturn = 3
+		Key = "4"
+		Aggressiveness = 0.5
+		InstantReaction
+		MonsterHealth =  1.5
+}
+
+skill TSPUltimate
+{
+		Name = "$TSPDIF_ULTIMATE"
+		SpawnFilter = Hard
+		ACSReturn = 4
+		Key = "5"
+		Aggressiveness = 1.0
+		DamageFactor = 2.0
+		InstantReaction
+		MonsterHealth =  2.0
+		NoInfighting
 }
 
 /*
-skill TSPnormal
+skill TSPHeavenorHell
 {
-  ReplaceActor = "ZombieMan","TSPZombieSpawner" 
-  ReplaceActor = "ShotgunGuy","ShotgunguySpawner" 
-  ReplaceActor = "Chaingunguy","ChaingunnerSpawner" 
-  ReplaceActor = "DoomImp","ImpSpawner" 
-  ReplaceActor = "Archvile","ArchvileSpawner"
-  ReplaceActor = "LostSoul","LostSoulSpawner"
-  ReplaceActor = "Cacodemon","CacodemonSpawner"
-  ReplaceActor = "BaronOfHell","BaronOfHellSpawner"
-  ReplaceActor = "HellKnight","HellKnightSpawner"
-  ReplaceActor = "Demon","DemonSpawner"
-  ReplaceActor = "Spectre","SpectreSpawner"
-  ReplaceActor = "Fatso","FatsoSpawner"
-  ReplaceActor = "PainElemental","PainElementalSpawner"
-  ReplaceActor = "Revenant","RevenantSpawner"
-  ReplaceActor = "Arachnotron","ArachnotronSpawner"
-  ReplaceActor = "Cyberdemon","CyberdemonSpawner"
-  ReplaceActor = "SpiderMastermind","SpiderMastermindSpawner"
-  ReplaceActor = "WolfensteinSS","WolfensteinSSSpawner"
-  SpawnFilter = Normal
-//  PicName = "SP_HURT"
-  Key = "2"
-  Name = "Slightly Tense"
-  ACSReturn = 1
-}
-*/
-
-skill TSPMedium
-{
-  DefaultSkill
-  SpawnFilter = Normal
-  //PicName = "SPSKILL2"
-  Name = "$TSPDIF_BRINGITON"
-  ACSReturn = 1
-  Key = "2"
-}
-
-skill TSPhard
-{
-  SpawnFilter = Hard
-  //PicName = "SPSKILL3"
-  Name = "$TSPDIF_HIGHINTENSITY"
-  ACSReturn = 2
-  Key = "3"
-}
-
-skill TSPhardest
-{
-  Aggressiveness = 0.5
-  MonsterHealth =  1.5
-  //MustConfirm
-  SpawnFilter = Hard
-  //PicName = "SPSKILL4"
-  Name = "$TSPDIF_DARKESTHELL"
-  //Name = "Purest, Darkest Hell"
-  ACSReturn = 3
-  Key = "4"
-}
-
-/*
-skill TSPnightmare
-{
-  ReplaceActor = "ZombieMan","TSPZombieSpawnerHard"  
-  ReplaceActor = "ShotgunGuy","ShotgunguySpawnerHard"  
-  ReplaceActor = "Chaingunguy","ChaingunnerSpawnerHard"  
-  ReplaceActor = "DoomImp","ImpSpawnerHard"  
-  ReplaceActor = "Archvile","ArchvileSpawnerHard" 
-  ReplaceActor = "LostSoul","LostSoulSpawnerHard" 
-  ReplaceActor = "Cacodemon","CacodemonSpawnerHard" 
-  ReplaceActor = "BaronOfHell","BaronOfHellSpawnerHard" 
-  ReplaceActor = "HellKnight","HellKnightSpawnerHard" 
-  ReplaceActor = "Demon","DemonSpawnerHard" 
-  ReplaceActor = "Spectre","SpectreSpawnerHard" 
-  ReplaceActor = "Fatso","FatsoSpawnerHard" 
-  ReplaceActor = "PainElemental","PainElementalSpawnerHard" 
-  ReplaceActor = "Revenant","RevenantSpawnerHard" 
-  ReplaceActor = "Arachnotron","ArachnotronSpawnerHard" 
-  ReplaceActor = "Cyberdemon","CyberdemonSpawnerHard" 
-  ReplaceActor = "SpiderMastermind","SpiderMastermindSpawnerHard" 
-  ReplaceActor = "WolfensteinSS","WolfensteinSSSpawnerHard" 
-  AmmoFactor = 2
-  FastMonsters
-  DisableCheats
-  RespawnTime = 12
-  SpawnFilter = Nightmare
-  PicName = "SP_NMARE"
-  Name = "$SKILL_NIGHTMARE"
-  MustConfirm
-  ACSReturn = 5
-  Key = "n"
-}
-*/
-
-/*
-skill TSPNotFinished
-{
-  damagefactor = 2.0
-  monsterhealth = 2.0
-  spawnfilter = Hard
-  //PicName = "SPSKILLX"
-  Name = "???"
-  //mustconfirm = "$SKILLNONFINISH"
-  ACSReturn = 999
-  Key = "0"
-}
-
-skill TSPSurvivor
-{
-  damagefactor = 2.0
-  monsterhealth = 2.0
-  spawnfilter = Hard
-  PicName = "SPSKILL6"
-  mustconfirm = "Stranded on a base with limited supplies and now all Hell is breaking loose. Can you survive the horror?"
-  ACSReturn = 5
-  Key = "6"
-}
-
-skill TSPdante
-{
-  damagefactor = 255
-  monsterhealth = 0.001
-  spawnfilter = Hard
-  PicName = "SPSKILLD"
-  name = "Death to Pirates"
-  mustconfirm = "$SKILLNONFINISH"
-  ACSReturn = 4
-  Key = "5"
-}
-*/
-
+		Name = "$TSPDIF_HeavenorHell"
+		SpawnFilter = Hard
+		ACSReturn = 5
+		Key = "6"
+		Aggressiveness = 1.0
+		DamageFactor = 255
+		InstantReaction
+		MonsterHealth =  0.001
+		NoInfighting
+}*/
 
 
 DoomEdNums

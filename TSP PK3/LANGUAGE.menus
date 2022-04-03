@@ -1,21 +1,12 @@
 [enu default]
 
-TSPDIF_EASYPEASY = "\c[TSPSkill1Blue]Easy Peasy";
-TSPDIF_EASYPEASY_SUB = "(EASY) Stress-free piracy!";
-TSPDIF_BRINGITON = "Bring it On!";
-TSPDIF_BRINGITON_SUB = "(MEDIUM) A moderate challenge.";
-TSPDIF_HIGHINTENSITY = "\c[TSPOrange]High Intensity!!";
-TSPDIF_HIGHINTENSITY_SUB = "(HARD) Tough opposition lies ahead!";
-TSPDIF_DARKESTHELL = "\c[TSPRed]Blood n' Bone!!!";
-TSPDIF_DARKESTHELL_SUB = "(EXTREME) The toughest challenge yet!";
-
 TSP_GAMEMODE_STANDARD = "Standard Mode";
 TSP_GAMEMODE_HUNTERS = "Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "Training Mode";
 
-TSPMNU_MENU_STARTGAME = "\c[TSPStartGreen]Start Game";
+TSPMNU_MENU_STARTGAME = "\c[TSP_LightGreen]Start Game";
 TSPMNU_MENU_STARTGAME_SUB = "Start a \c[TSPLimeGreen]new game\c-!";
-TSPMNU_MENU_OPTIONS = "\c[TSPYeller]Options";
+TSPMNU_MENU_OPTIONS = "\c[TSP_Yellow]Options";
 TSPMNU_MENU_OPTIONS_SUB = "Adjust game settings and customize controls.";
 TSPMNU_MENU_CODEX = "\c[TSPBlue]Codex";
 TSPMNU_MENU_CODEX_SUB = "Explore the Indigo Skyline's database.";
@@ -25,14 +16,29 @@ TSPMNU_MENU_SAVE = "\c[TSPLoadGreen]Save Game";
 TSPMNU_MENU_SAVE_SUB = "Save current progress.";
 TSPMNU_MENU_QUIT = "\c[TSPRed]Shut Down";
 //TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-.";
-TSPMNU_MENU_QUIT_SUB = "\c[TSPRed2]Exit \c[TSPLogoColor]The Space Pirate\c-: \c[TSPSkill1Blue]First Hunt \c[TSPRed2]Demo\c-.";
+TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSPLogoColor]The Space Pirate\c-: \c[TSPSkill1Blue]First Hunt \c[TSPRed2]Demo\c-.";
 
 MENU_MODE_STANDARD = "\c[TSPStandardGrad]Standard";
 MENU_MODE_STANDARD_SUB = "Play through the game normally.";
 MENU_MODE_HUNTERS = "\c[TSPBHGrad]Bounty Hunters";
-MENU_MODE_HUNTERS_SUB = "Take down as many enemies as you can!";
-MENU_MODE_TRAINING = "\c[TSPBlue]Training";
+MENU_MODE_HUNTERS_SUB = "\c[TSPBHGrad]Score attack mode\c-!\nTake down as many enemies as you can!";
+MENU_MODE_TRAINING = "\c[TSP_Blue]Training";
 MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
+
+// DIFFICULTY MENUS
+TSPDIF_CASUAL = "\c[TSP_Blue]Easy Peasy";
+TSPDIF_CASUAL_SUB = "(\c[TSP_Blue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_Blue]less\c- damage.";
+TSPDIF_NORMAL = "\c[TSP_LightGreen]Bring it On!";
+TSPDIF_NORMAL_SUB = "(\c[TSP_LightGreen]NORMAL\c-) A moderate challenge.\nStandard difficulty for most privateers.";
+TSPDIF_HARD = "\c[TSP_Orange]High Intensity!!";
+TSPDIF_HARD_SUB = "(\c[TSP_Orange]HARD\c-) Tough opposition lies ahead!\nLarger enemy presence, more \c[TSP_Orange]danger\c-! For veteran pirates!";
+TSPDIF_EXTREME = "\c[TSP_Red]Blood and Bone!!!";
+TSPDIF_EXTREME_SUB = "(\c[TSP_Red]EXTREME\c-) Unrelenting pressure!\nHighly \c[TSP_Red]aggressive\c- opponents. For master raiders!";
+TSPDIF_ULTIMATE = "\c[TSP_UltimatePurple]Riches or Ruin!!!!";
+TSPDIF_ULTIMATE_SUB = "(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odds!\nIncredibly bloodthirsty enemies deal \c[TSP_UltimatePurple]double\c- damage! For super pirates!";
+TSPDIF_HEAVENORHELL = "\c[TSP_DantePurple]Death to Pirates!!!!!";
+TSPDIF_HEAVENORHELL_SUB = "(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
+
 
 TSPMNU_MNU_MODIFIERS = "\c[TSPModGold]Modifiers";
 TSPMNU_MNU_MODIFIERS_SUB = "Tweak gameplay options and parameters.";
@@ -70,7 +76,7 @@ TSPMAP_TEST_DESC = "Digital Testing Grounds";
 
 TSPMAP_DEMOHUB_NAME = "Demoscape";
 TSPMAP_DEMOHUB_DESC = "First Hunt Demo Hub";
-TSPMAP_DEMOHUB_NAME2 = "\c[TSPYeller]Welcome to \c[TSPMenuGreen]Demoscape\c[TSPYeller]!";
+TSPMAP_DEMOHUB_NAME2 = "\c[TSP_Yellow]Welcome to \c[TSPMenuGreen]Demoscape\c[TSP_Yellow]!";
 TSPMAP_DEMOHUB_DESC2 = "\ccEnjoy your stay!";
 TSPMAP_DEMOHUB_DESC3 = "\c[TSPGreen]TIP\cc: Be on the lookout for \c[Gold]secrets\cc!";
 
