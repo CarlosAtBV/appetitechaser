@@ -1,29 +1,30 @@
 [enu default]
 
+MENU_MODE_STANDARD = "\c[TSP_Green]Standard";
+MENU_MODE_STANDARD_SUB = "\c[TSP_Green]Standard gameplay mode\c-\nPlay through the game normally.";
+MENU_MODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
+MENU_MODE_HUNTERS_SUB = "\c[TSP_BountyPink]Score attack mode\c-\nTake down as many enemies as you can!";
+MENU_MODE_TRAINING = "\c[TSP_Teal]Training";
+MENU_MODE_TRAINING_SUB = "\c[TSP_Teal]Practice mode\c-\nHone your skills and sharpen your senses!";
+
 TSP_GAMEMODE_STANDARD = "\c[TSP_Green]Standard Mode";
 TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "\c[TSP_Teal]Training Mode";
 
+// MAIN MENU
 TSPMNU_MENU_STARTGAME = "\c[TSP_Green]Start Game";
 TSPMNU_MENU_STARTGAME_SUB = "Start a \c[TSP_Green]new game\c-!";
 TSPMNU_MENU_OPTIONS = "\c[TSP_Yellow]Options";
-TSPMNU_MENU_OPTIONS_SUB = "Adjust game settings and customize controls.";
+TSPMNU_MENU_OPTIONS_SUB = "Adjust \c[TSP_Yellow]game settings\c- and \c[TSP_Yellow]customize controls\c-.";
 TSPMNU_MENU_CODEX = "\c[TSP_Blue]Codex";
 TSPMNU_MENU_CODEX_SUB = "Explore the \c[TSP_Blue]Indigo Skyline\c-'\c[TSP_Blue]s\c- database.";
-TSPMNU_MENU_LOAD = "\c[TSP_YellowGreen]Load Game";
-TSPMNU_MENU_LOAD_SUB = "Load a previously saved game.";
-TSPMNU_MENU_SAVE = "\c[TSP_YellowGreen]Save Game";
-TSPMNU_MENU_SAVE_SUB = "Save current progress.";
+TSPMNU_MENU_LOAD = "\c[TSP_LightGreen]Load Game";
+TSPMNU_MENU_LOAD_SUB = "\c[TSP_LightGreen]Load\c- a previously saved game.";
+TSPMNU_MENU_SAVE = "\c[TSP_LightGreen]Save Game";
+TSPMNU_MENU_SAVE_SUB = "\c[TSP_LightGreen]Save\c- your current progress.";
 TSPMNU_MENU_QUIT = "\c[TSP_Red]Shut Down";
 //TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
 TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_LightBlue]First Hunt \c[TSP_Yellow]Demo\c-.";
-
-MENU_MODE_STANDARD = "\c[TSP_Green]Standard";
-MENU_MODE_STANDARD_SUB = "Play through the game normally.";
-MENU_MODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
-MENU_MODE_HUNTERS_SUB = "\c[TSP_BountyPink]Score attack mode\c-!\nTake down as many enemies as you can!";
-MENU_MODE_TRAINING = "\c[TSP_Teal]Training";
-MENU_MODE_TRAINING_SUB = "Hone your skills and sharpen your senses!";
 
 // DIFFICULTY MENUS
 TSPDIF_CASUAL = "\c[TSP_LightBlue]Easy Peasy";
@@ -39,11 +40,11 @@ TSPDIF_ULTIMATE_SUB = "(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odd
 TSPDIF_HEAVENORHELL = "\c[TSP_DantePurple]Death to Pirates!!!!!";
 TSPDIF_HEAVENORHELL_SUB = "(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
 
-
+// OPTIONS
 TSPMNU_MNU_MODIFIERS = "\c[TSP_Gold]Modifiers";
-TSPMNU_MNU_MODIFIERS_SUB = "Tweak gameplay options and parameters.";
+TSPMNU_MNU_MODIFIERS_SUB = "\c[TSP_Gold]Tweak\c- various gameplay options and parameters.";
 TSPMNU_MNU_CONFIG = "\c[TSP_Orange]Config";
-TSPMNU_MNU_CONFIG_SUB = "Configure key bindings.";
+TSPMNU_MNU_CONFIG_SUB = "\c[TSP_Orange]Configure\c- key and button bindings.";
 TSPMNU_MNU_VIDEO = "\c[TSP_LightBlue]Video";
 TSPMNU_MNU_VIDEO_SUB = "Adjust \c[TSP_LightBlue]video\c- options and set screen resolution.";
 TSPMNU_MNU_VIDEO_HEAD = "\c[TSP_LightBlue]VIDEO SETTINGS";
@@ -53,7 +54,7 @@ TSPMNU_MNU_AUDIO_HEAD = "\c[TSP_LightGreen]AUDIO SETTINGS";
 TSPMNU_MNU_OTHERMODOPTIONS = "\c[TSP_Purple]Other Mod Options";
 TSPMNU_MNU_OTHERMODOPTIONS_SUB = "Settings for other \c[TSP_Purple]compatible mods\c-.";
 TSPMNU_MNU_GZDOOMMENU = "\c[TSP_Gray]GZDOOM Options";
-TSPMNU_MNU_GZDOOMMENU_SUB = "Default GZDoom options menu";
+TSPMNU_MNU_GZDOOMMENU_SUB = "Default \c[TSP_Gray]GZDoom\c- options menu";
 
 TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
 TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";
