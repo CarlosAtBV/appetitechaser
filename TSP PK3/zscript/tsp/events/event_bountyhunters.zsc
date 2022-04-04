@@ -164,7 +164,8 @@ Class TSP_BHHandler : EventHandler
 	float bh_spreeScale;
 	
 	Array<TSP_BountyHunters_EnemySpawn > bh_spawns;
-	Array<Actor > bh_enemies;
+	//Array<Actor > bh_enemies;
+	int bh_enemies;
 	TSP_BountyHunters_EnemySpawn bh_prevSpawn;
 	
 	int bh_maxCombo;
@@ -231,7 +232,7 @@ Class TSP_BHHandler : EventHandler
 		}
 		
 		bh_spawns.Clear();
-		bh_enemies.Clear();
+		bh_enemies = 0;
 		
 		bh_spawnList.Clear();
 		
@@ -486,7 +487,7 @@ Class TSP_BHHandler : EventHandler
 		{
 			spawndelay = 35;
 			
-			if ( bh_enemies.Size() >= TSP_MAXMONSTERS_BH ) return;
+			if ( bh_enemies >= TSP_MAXMONSTERS_BH ) return;
 			
 			let spawnHere = getCloseSpawn(players[0].mo);
 			
@@ -494,7 +495,7 @@ Class TSP_BHHandler : EventHandler
 			{
 				Actor enemy = Actor.Spawn(Actor.GetReplacement(bh_spawnList[0]), spawnHere.pos, ALLOW_REPLACE);
 				Actor.Spawn("TeleportFog", spawnHere.pos, ALLOW_REPLACE);
-				bh_enemies.Push(enemy);
+				bh_enemies++;
 				bh_spawnList.Delete(0,1);
 			}
 			else
@@ -562,27 +563,26 @@ Class TSP_BHHandler : EventHandler
 		}
 		else
 		{
-			let checkList = bh_enemies.Find(e.Thing);
-			if ( checkList >= 0 )
+			if ( e.Thing.bCOUNTKILL )
 			{
-				bh_enemies.Delete(checkList, 1);
+				bh_enemies--;
 				bh_kills += 1;
-				
-				bh_spreeScale += 0.5;
-				
+			
 				if ( bh_comboTime > 0 )
 				{
 					bh_comboKills++;
 				}
-				
-				if ( !bh_overkill && bh_kills >= bh_killgoal )
-				{
-					bh_overkill = true;
-					bh_curNote = new("TSP_BH_HudNotifcation");
-					bh_curNote.text = "Kill Goal Reached!";
-					bh_curNote.subtext = "Additional kills reward you with additional points!";
-					//BH_GameOver(false);
-				}
+			}
+			
+			bh_spreeScale += 0.5;
+			
+			if ( !bh_overkill && bh_kills >= bh_killgoal )
+			{
+				bh_overkill = true;
+				bh_curNote = new("TSP_BH_HudNotifcation");
+				bh_curNote.text = "Kill Goal Reached!";
+				bh_curNote.subtext = "Additional kills reward you with additional points!";
+				//BH_GameOver(false);
 			}
 			
 			if ( e.Thing.target == players[0].mo )
