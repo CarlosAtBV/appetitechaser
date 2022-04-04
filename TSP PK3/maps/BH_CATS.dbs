@@ -38,10 +38,10 @@ maps
 			}
 		}
 		defaultfloortexture = "textures/tsp/ikati/ikati_grass_1.png";
-		defaultceiltexture = "CEIL1_1";
-		defaulttoptexture = "STARTAN2";
-		defaultwalltexture = "STARTAN2";
-		defaultbottomtexture = "STARTAN2";
+		defaultceiltexture = "F_SKY1";
+		defaulttoptexture = "textures/DEV_128W.png";
+		defaultwalltexture = "textures/DEV_128W.png";
+		defaultbottomtexture = "textures/DEV_128W.png";
 		custombrightness = 196;
 		customfloorheight = 0;
 		customceilheight = 128;
@@ -54,9 +54,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = true;
-		viewpositionx = 198.1428f;
-		viewpositiony = -28.823f;
-		viewscale = 0.6499985f;
+		viewpositionx = 272.4367f;
+		viewpositiony = 900.835f;
+		viewscale = 1.85646f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
