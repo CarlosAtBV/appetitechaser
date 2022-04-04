@@ -25,6 +25,28 @@ Class TSP_BountyHunters_EnemySpawn : Actor
 	}
 }
 
+Class TSP_BountyHunters_MonsterSpawnHandler : Thinker
+{
+	Actor target;
+	
+	override void Tick()
+	{
+		super.Tick();
+		if ( !target )
+		{
+			Destroy();
+			return;
+		}
+		if ( target.CurState.sprite != 0 )
+		{
+			target.target = players[0].mo;
+			target.SetState(target.FindState("See"));
+			Destroy();
+			return;
+		}
+	}
+}
+
 Class TSP_BH_Zooper : Actor
 {
 	Default
@@ -289,8 +311,8 @@ Class TSP_BHHandler : EventHandler
 		
 		if ( e.Thing && e.Thing.bIsMonster )
 		{
-			e.Thing.target = players[0].mo;
-			e.Thing.SetState(e.Thing.FindState("See"));
+			TSP_BountyHunters_MonsterSpawnHandler handler = new("TSP_BountyHunters_MonsterSpawnHandler");
+			handler.target = e.Thing;
 		}
 		
 		if ( bh_roundStarted == true && e.Thing is "TSP_CustomInventory" )
