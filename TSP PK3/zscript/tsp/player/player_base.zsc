@@ -127,19 +127,17 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			GiveInventory("TSP_HealingSyringe",1);
 		}
 		
-		PickWeapon(pp_meleestart,true);
+		//A_SelectWeapon("MelPistol");
 		
-		//Console.Printf(""..GetClassName());
+		//Console.Printf(""..PickWeapon(2, false));
 	}
 	
 	virtual void OnStandardLoadout()
 	{
-		ClearInventory();
 		Console.Printf("\c[TSP_Yellow]APPLYING STANDARD LOADOUT TEST");
 	}
 	virtual void OnBountyHunterLoadout()
 	{
-		ClearInventory();
 		for (int i = 0; i < AllActorClasses.Size(); i++)
 		{
 			let fucker = (Class<Inventory>)(AllActorClasses[i]);
