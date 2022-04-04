@@ -129,7 +129,15 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		//A_SelectWeapon("MelPistol");
 		
-		//Console.Printf(""..PickWeapon(2, false));
+		Inventory item;
+		for ( item = Inv; item != null; item = item.Inv )
+		{
+			if ( item is "Weapon" )
+			{
+				A_SelectWeapon(item.GetClassName());
+				break;
+			}
+		}
 	}
 	
 	virtual void OnStandardLoadout()
