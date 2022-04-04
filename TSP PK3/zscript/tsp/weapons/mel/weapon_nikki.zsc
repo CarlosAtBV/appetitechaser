@@ -290,8 +290,16 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				TSP_PlayerPawn_ZSCBase(invoker.owner).TSP_SpawnCasing(ResolveState("Casing"), (160, 134), frandom(-5,-25)-20, 52*1.25);
 				A_GunFlash("AltFlash");
 			}
-			121A B 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 10+frandom(0,2), 1);
-			121A C 1 A_TSP_WeaponRecoilDir(90+random(-2,2), 2+frandom(0,2), 1);
+			121A B 1 
+			{
+				A_Light1();
+				A_TSP_WeaponRecoilDir(90+random(-2,2), 10+frandom(0,2), 1);
+			}
+			121A C 1
+			{
+				A_Light0();
+				A_TSP_WeaponRecoilDir(90+random(-2,2), 2+frandom(0,2), 1);
+			}
 			121A C 1 A_TSP_WeaponReady(WRF_NOBOB);
 			121A A 3 A_TSP_WeaponReady(WRF_NOBOB);
 			121A A 3 A_TSP_WeaponReady(WRF_NOBOB);

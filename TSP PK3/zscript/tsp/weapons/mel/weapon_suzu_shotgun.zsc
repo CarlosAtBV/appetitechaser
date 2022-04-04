@@ -85,9 +85,10 @@ Class MelSMGA : MelSMG
 			}
 			132A E 1
 			{
+				A_Light1();
 				A_TSP_WeaponRecoilDir(random(35,55),frandom(40,48),1);
 			}
-			132A E 4;
+			132A E 4 A_Light0;
 			132A F 2;
 			132A D 3;
 			132A DFE 1 A_TSP_WeaponRecoilDir(45,-2,1);
