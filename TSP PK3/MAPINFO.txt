@@ -133,9 +133,9 @@ map TSP_BH01 "Neoscape - Battle Zone"
 }
 
 
-map TSP_BH02 "Neoscape - Battle Zone X"
+map TSP_BH02 "Neoscape - Battle Zone 2"
 {
-	music = "music/bountyhunters_battlezonex.ogg"
+	music = "music/bountyhunters_battlezone2.ogg"
 	lightmode = 0
 }
 
