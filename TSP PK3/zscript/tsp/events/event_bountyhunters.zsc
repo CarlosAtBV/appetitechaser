@@ -761,15 +761,16 @@ Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
 					SetThingFlags(i, MTF_SINGLE);
 					continue;
 				}
-			}
-			// get rid of enemy spawns
-			switch(GetThingEdNum(i))
-			{
-				case 3004:
-				case 9:
-				case 3001:
-					SetThingEdNum(i, 0);
-					break;
+				// get rid of enemy spawns
+				switch(GetThingEdNum(i))
+				{
+					case 3004:
+					case 9:
+					case 3001:
+						SetThingEdNum(i, 24800);
+						SetThingFlags(i, MTF_SINGLE);
+						break;
+				}
 			}
 		}
 	}
