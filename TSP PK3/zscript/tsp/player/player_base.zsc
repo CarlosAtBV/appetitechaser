@@ -127,7 +127,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			GiveInventory("TSP_HealingSyringe",1);
 		}
 		
-		//A_SelectWeapon("MelPistol");
+		// Select the most recently added(?) weapon
 		
 		Inventory item;
 		for ( item = Inv; item != null; item = item.Inv )
