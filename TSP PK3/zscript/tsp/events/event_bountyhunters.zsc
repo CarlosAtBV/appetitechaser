@@ -758,6 +758,7 @@ Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
 				if (GetThingEdNum(i) == 11)
 				{
 					SetThingEdNum(i, 24800);
+					SetThingFlags(i, MTF_SINGLE);
 				}
 			}
 		}
