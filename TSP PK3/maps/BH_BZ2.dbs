@@ -5,7 +5,7 @@ strictpatches = 0;
 maps
 {
 	
-	TSP_BH01
+	BH_BZ2
 	{
 		defaultceiltexture = "F_SKY1";
 		overridefloorheight = false;

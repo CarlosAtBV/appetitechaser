@@ -125,17 +125,17 @@ map TSP_BH "INTERMISSION"
 	EventHandlers = "TSP_EventHandler_GotoBHMap"
 }
 
-map TSP_BH01 "Neoscape - Battle Zone"
+map BH_BZ "Neoscape - Battle Zone"
 {
     //sky1 = "SPACE", -0.1
-	music = "music/bountyhunters_battlezone.ogg"
+	music = "music/bountyhunters/battlezone.ogg"
 	lightmode = 0
 }
 
 
-map TSP_BH02 "Neoscape - Battle Zone 2"
+map BH_BZ2 "Neoscape - Battle Zone 2"
 {
-	music = "music/bountyhunters_battlezone2.ogg"
+	music = "music/bountyhunters/battlezone2.ogg"
 	lightmode = 0
 }
 

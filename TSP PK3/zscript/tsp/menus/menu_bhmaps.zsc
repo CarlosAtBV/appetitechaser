@@ -10,8 +10,8 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 {
 	static const string hardcoded_maps[] =
 	{
-		"TSP_BH01",
-		"TSP_BH02",
+		"BH_BZ",
+		"BH_BZ",
 		"MAP32"
 	};
 	
@@ -50,7 +50,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		
 		newMap = new("TSP_BountyHuntersMap");
 		newMap.name = StringTable.Localize("$TSPMAP_BATTLEZONE_NAME");
-		newMap.maplump = "TSP_BH01";
+		newMap.maplump = "BH_BZ";
 		bhmaps.Push(newMap);
 		newMap = new("TSP_BountyHuntersMap");
 		newMap.name = StringTable.Localize("$TSPMAP_ELEGIA_NAME");

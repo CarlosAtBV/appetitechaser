@@ -1,4 +1,4 @@
-addmap TSP_BH01
+addmap BH_BZ
 {
 	name = "Neoscape - Brawl Zone";
 	desc = "This is the map";
