@@ -7,7 +7,7 @@ maps
 	
 	BH_BZ2
 	{
-		defaultceiltexture = "F_SKY1";
+		defaultceiltexture = "CYBB";
 		overridefloorheight = false;
 		customfloorheight = 0;
 		uselongtexturenames = false;
@@ -26,12 +26,12 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -3136.207f;
+		viewpositionx = -3604.408f;
 		defaulttoptexture = "CYBA";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
 		overridebrightness = false;
-		overridefloortexture = true;
+		overridefloortexture = false;
 		
 		grid
 		{
@@ -46,16 +46,16 @@ maps
 			background = "";
 			backoffsety = 0;
 		}
-		overridetoptexture = true;
-		overridebottomtexture = true;
+		overridetoptexture = false;
+		overridebottomtexture = false;
 		defaultbottomtexture = "CYBA";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 3831.521f;
+		viewpositiony = 3421.382f;
 		defaultwalltexture = "CYBA";
 		customceilheight = 128;
-		overridemiddletexture = true;
+		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.04826777f;
+		viewscale = 0.05255082f;
 		
 		reloadresourceprecommand
 		{
@@ -96,80 +96,6 @@ maps
 				tabtype = 0;
 				scripttype = 18;
 			}
-			
-			document1
-			{
-				filename = "SCRIPTS";
-				hash = 3469170009;
-				resource;
-				tabtype = 0;
-				scripttype = 1;
-				caretposition = 65;
-				activetab = true;
-			}
-		}
-	}
-	
-	TSP_BH02
-	{
-		defaultwalltexture = "CYBA";
-		overridemiddletexture = false;
-		defaultceiltexture = "CYBB";
-		overrideceiltexture = false;
-		custombrightness = 196;
-		scriptcompiler = "zdoom_acs.cfg";
-		
-		resources
-		{
-			
-			resource0
-			{
-				type = 1;
-				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
-				option1 = 0;
-				option2 = 0;
-				notfortesting = 0;
-			}
-		}
-		viewpositiony = 3544.658f;
-		viewpositionx = -2791.499f;
-		
-		testprecommand
-		{
-			autocloseonsuccess = true;
-			exitcodeiserror = true;
-			stderriserror = true;
-		}
-		customceilheight = 128;
-		customfloorheight = 0;
-		
-		grid
-		{
-			backoffsetx = 0;
-			backsource = 0;
-			gridoriginy = 0;
-			backscaley = 100;
-			gridrotate = 0;
-			backscalex = 100;
-			gridoriginx = 0;
-			gridsize = 32;
-			background = "";
-			backoffsety = 0;
-		}
-		viewscale = 0.428673f;
-		
-		reloadresourceprecommand
-		{
-			autocloseonsuccess = true;
-			exitcodeiserror = true;
-			stderriserror = true;
-		}
-		defaulttoptexture = "CYBA";
-		overridebottomtexture = false;
-		defaultbottomtexture = "CYBA";
-		
-		scriptdocuments
-		{
 			
 			document1
 			{
@@ -181,36 +107,6 @@ maps
 				caretposition = 188;
 				activetab = true;
 			}
-			
-			document0
-			{
-				filename = "DIALOGUE";
-				hash = 3588187714;
-				resource;
-				tabtype = 0;
-				scripttype = 18;
-			}
-		}
-		defaultfloortexture = "CYBA";
-		overrideceilheight = false;
-		overridebrightness = false;
-		
-		testpostcommand
-		{
-			autocloseonsuccess = true;
-			exitcodeiserror = true;
-			stderriserror = true;
-		}
-		overridefloorheight = false;
-		overridetoptexture = false;
-		uselongtexturenames = false;
-		overridefloortexture = false;
-		
-		reloadresourcepostcommand
-		{
-			autocloseonsuccess = true;
-			exitcodeiserror = true;
-			stderriserror = true;
 		}
 	}
 }
