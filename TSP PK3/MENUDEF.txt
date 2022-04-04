@@ -207,16 +207,17 @@ OptionMenu "TSP_EnemiesMenu"
 
 OptionMenu "OtherModOptions"
 {
-    Title "$TSPMNU_MNU_OTHERMODOPTIONS"
+	Title "$TSPMNU_MNU_OTHERMODOPTIONS"
 	StaticText "Options for other compatible mods"
 	StaticText ""
-	//Submenu "WV Monsters Options", "WVMSettings"
+	SubMenu "Champions Options", "mk_ChampionMenu"
+	SubMenu "Colourful Hell Options",		"Colourful Hell"
 	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
-	SubMenu "Rampancy Options",	"Rampancy"
 	SubMenu "Legion of Bones Options",		"Legion of Bones"
-	SubMenu "Champion Options", "mk_ChampionMenu"
+	SubMenu "Rampancy Options",				"Rampancy"
+	//Submenu "WV Monsters Options", "WVMSettings"
 	//SubMenu "Bratwurst Options", "BratwurstSettings"
-	SubMenu "CH Options",		"Colourful Hell"
+
 }
 
 //=======================
