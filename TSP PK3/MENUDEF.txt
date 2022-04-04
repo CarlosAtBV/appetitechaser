@@ -216,6 +216,7 @@ OptionMenu "OtherModOptions"
 	SubMenu "Legion of Bones Options",		"Legion of Bones"
 	Submenu "No Ultra-Violence Options", 	"Monster Deaths"
 	SubMenu "Rampancy Options",				"Rampancy"
+	Submenu "Shades of Doom Settings",		"CyanMenu"
 	//Submenu "WV Monsters Options", "WVMSettings"
 	//SubMenu "Bratwurst Options", "BratwurstSettings"
 
