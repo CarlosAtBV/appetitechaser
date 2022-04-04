@@ -286,6 +286,12 @@ Class TSP_BHHandler : EventHandler
 			return;
 		}
 		
+		if ( e.Thing && e.Thing.bIsMonster )
+		{
+			e.Thing.target = players[0].mo;
+			e.Thing.SetState(e.Thing.FindState("See"));
+		}
+		
 		if ( bh_roundStarted == true && e.Thing is "TSP_CustomInventory" )
 		{
 			e.Thing.Destroy();
@@ -486,9 +492,7 @@ Class TSP_BHHandler : EventHandler
 			
 			if ( spawnHere != null && bh_spawnList.Size() > 0 )
 			{
-				Actor enemy = Actor.Spawn(bh_spawnList[0], spawnHere.pos, ALLOW_REPLACE);
-				enemy.target = players[0].mo;
-				enemy.SetStateLabel("See");
+				Actor enemy = Actor.Spawn(Actor.GetReplacement(bh_spawnList[0]), spawnHere.pos, ALLOW_REPLACE);
 				Actor.Spawn("TeleportFog", spawnHere.pos, ALLOW_REPLACE);
 				bh_enemies.Push(enemy);
 				bh_spawnList.Delete(0,1);
