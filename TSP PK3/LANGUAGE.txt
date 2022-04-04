@@ -33,7 +33,7 @@ STSTR_BEHOLDX = "\cfUse this wisely!";
 STSTR_CHOPPERS = "\cgA chainsaw? What's with you and brutality, anyway?";
 TXT_BUDDHAON = "\cjYou have this strange sense of invulnerability...";
 TXT_BUDDHAOFF = "But now it looks like that feeling is gone.";
-TXT_DEFAULTPICKUPMSG = "\caGET OUTTA HERE!";
+TXT_DEFAULTPICKUPMSG = "\caCall BV and say OOPSY WHOOPSY!";
 
 OB_SUICIDE = "%o took matters into %p own hands.";
 OB_FALLING = "%o took a lesson in gravity.";
