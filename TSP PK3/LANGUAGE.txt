@@ -91,7 +91,7 @@ SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
 
 //Character
 SHENNAME = "\c[Shen]Shen Mi\c-";
-SHENNAMECS = "\c[Shen2]Shen Mi\c-";
+SHENNAMECS = "\c[ShenOutline]Shen Mi\c-";
 ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
 
 MELRUBY = "\cgRuby\c-";
