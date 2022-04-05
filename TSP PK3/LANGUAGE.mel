@@ -3,11 +3,11 @@
 
 TSP_MEL_BIO = "In the age of space exploration, none were more eager to set sail for the stars than Melody Crosswell. The daughter of a prestigious ARC*STAR researcher and a Kei Pirate assassin, Mel’s troubled childhood pushed her to look to the vast ocean of space as a means of escape. At sixteen, Mel stole her mother’s spacecraft, “The Indigo Skyline”, and has since walked the path of an outlaw. Thanks to the nature of her work, Mel has made enemies on both the side of the law and the side of the lawless, and trustworthy allies are unfortunately far and few between.";
 MELNAME = "\c[Mel]Mel\c-";
-MELNAMECS = "\c[Mel2]Mel\c-";
+MELNAMECS = "\c[MelOutline]Mel\c-";
 MELRETRONAME = "\c[Mel]Mel \cc(\cfRetro\cc)";
-MELRETRONAMECS = "\c[Mel2]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\c[TSP_Gray])";
+MELRETRONAMECS = "\c[MelOutline]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\c[TSP_Gray])";
 MELRETROROBONAME = "\c[Mel]Mel \cc(\cfRetro\cc \c[RoboMel]Robo\cc)";
-MELRETROROBONAMECS = "\c[Mel2]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\cc \c[RoboMel]Robo\c[TSP_Gray])";
+MELRETROROBONAMECS = "\c[MelOutline]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\cc \c[RoboMel]Robo\c[TSP_Gray])";
 
 MelLoadoutBurst = "\cgBurst\c- Kit";
 MelLoadoutZoom = "\cnZoom\c- Kit";
