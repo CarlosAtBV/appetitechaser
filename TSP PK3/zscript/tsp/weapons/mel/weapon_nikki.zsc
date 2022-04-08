@@ -228,7 +228,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 3
 			{
 				A_StartSound("nikki/idle01", 5);
-				A_WeaponReady;
+				A_WeaponReady();
 			}
 			
 			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "I");
@@ -286,7 +286,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			{
 				A_TakeInventory("TSPIdle", 99999);
 				A_TSP_JumpIfClipEmpty("Empty");
-				A_AlertMonsters;
+				A_AlertMonsters();
 			}
 			121A A 1 BRIGHT
 			{
