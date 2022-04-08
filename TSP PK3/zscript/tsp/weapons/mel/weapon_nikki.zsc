@@ -19,13 +19,13 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		Weapon.AmmoUse 1;
 		Inventory.Icon "121PA0";
 
-			TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0;
-			TSP_Weapon_Core.ClipSize 15; //Initial starting size of clip
-			TSP_Weapon_Core.FirstPickupLine "mel/nikkipickup"; //AAAAGH
-			+TSP_Weapon_Core.MODFIREMODE
-			+TSP_Weapon_Core.MODFIREZOOMS
-			+TSP_Weapon_Core.HOLDDOWNFORMOD
-			TSP_Weapon_Core.HudColor "#0FA4F1";
+		TSP_Weapon_Core.AmmoMult 1.35, 1.7, 2.0;
+		TSP_Weapon_Core.ClipSize 15; //Initial starting size of clip
+		TSP_Weapon_Core.FirstPickupLine "mel/nikkipickup"; //AAAAGH
+		+TSP_Weapon_Core.MODFIREMODE
+		+TSP_Weapon_Core.MODFIREZOOMS
+		+TSP_Weapon_Core.HOLDDOWNFORMOD
+		TSP_Weapon_Core.HudColor "#0FA4F1";
 
 		Tag "$MELPISTOLTAG";
 		+Weapon.NOAUTOFIRE
