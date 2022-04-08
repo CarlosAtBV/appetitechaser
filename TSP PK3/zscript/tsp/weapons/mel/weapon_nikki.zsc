@@ -41,6 +41,18 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		TSP_Weapon_Core.SpriteNameBase "121";
 	}
 	
+	/*
+	==========================================================================
+	A_TSP_MelPistol_Fire
+	
+	Fire the pistol bullet! Takes ammo from clip and also alerts monsters.
+	
+	Parameters:
+		xoff (int)
+			Horizontal offset to fire the hitscan from. Used for the tracer as well. Very useful for changing the horizontal position between ADS and non-ADS firing modes.
+	==========================================================================
+	*/
+	
 	action void A_TSP_MelPistol_Fire(int xoff = 4)
 	{
 		A_AlertMonsters();
@@ -111,16 +123,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 5;
 			"----" A 0 A_Raise;
 			Goto Ready;
-			/*122S BBBBB 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);
-			/*122S A 1
-			{
-				A_StartSound("nikki/upgrade/spitfire", 5);
-				A_TSP_WeaponReady(WRF_ALLOWRELOAD);
-			}
-			122S AAAA 1;
-			122S AAAAA 1 A_TSP_WeaponReady(WRF_ALLOWRELOAD);*/
-			122G A 1 A_Raise;
-			Goto Ready;
+			
 		Deselect:
 			"----" A 0
 			{
@@ -320,8 +323,6 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				A_OverlayScale(PSP_WEAPON, 1.0);
 			}
 			"----" A 0 A_TSP_ZoomFactor(1.0);
-			//121S B 1;
-			//121S A 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(random(1,5), 4, 1);
 		ReloadFinish:
 			"----" A 0
@@ -330,11 +331,9 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				invoker.anim_reloadStart_gun.PlayAnim();
 				invoker.anim_reloadStart_hand.PlayAnim();
 			}
-			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
-			"####" A 6;
-			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
-			"####" A 2;
-			//"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
+			"####" A 6 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
+			"####" A 2 A_TSP_SetSpriteFrame(PSP_WEAPON, "R");
+			
 			"####" C 4;
 			"####" C 1 A_StartSound("nikki/eject", 6);
 			"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
