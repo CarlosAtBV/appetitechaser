@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -195.8079f;
+		viewpositionx = 48.22232f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -49,55 +49,13 @@ maps
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = -701.4481f;
+		viewpositiony = -599.5648f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 1.900483f;
-		
-		fieldtypes
-		{
-			
-			linedef
-			{
-				alpha = 1;
-				renderstyle = 2;
-			}
-			
-			sidedef
-			{
-				offsetx_mid = 1;
-				offsety_mid = 1;
-				offsetx_top = 1;
-				offsetx_bottom = 1;
-				offsety_top = 1;
-				offsety_bottom = 1;
-				scaley_mid = 1;
-				light = 0;
-				lightabsolute = 3;
-				scalex_mid = 1;
-			}
-			
-			sector
-			{
-				xpanningfloor = 1;
-				ypanningfloor = 1;
-				rotationfloor = 1;
-				rotationceiling = 1;
-				xpanningceiling = 1;
-				floor_reflect = 1;
-				ypanningceiling = 1;
-				xscaleceiling = 1;
-				yscaleceiling = 1;
-				xscalefloor = 1;
-				yscalefloor = 1;
-				desaturation = 1;
-				lightcolor = 0;
-				fadecolor = 0;
-			}
-		}
+		viewscale = 1.124545f;
 		
 		scriptdocuments
 		{
@@ -122,6 +80,34 @@ maps
 				firstvisibleline = 47;
 				activetab = true;
 			}
+		}
+		
+		reloadresourceprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		reloadresourcepostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testpostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
 		}
 	}
 }

@@ -188,14 +188,20 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if ( !totallyfrozen )
 			{
 				tsp_crouching = (cmd.buttons & BT_CROUCH);
-				A_SetSize(-1, 56/2);
 			}
 		}
 		else
 		{
 			tsp_crouching = false;
-			A_SetSize(-1, 56);
 		} 
+		
+		bool doSizeChange = A_SetSize(-1, tsp_crouching ? 56/2 : 56, true);
+		
+		if ( !doSizeChange && !tsp_crouching )
+		{
+			tsp_crouching = true;
+			A_SetSize(-1, 56/2);
+		}
 	}
 	
 	override void CheckPitch()
