@@ -9,7 +9,7 @@
 //
 //===========================================================================
 
-Class MelBareKnuckle : TSP_Mel_BaseWeapon
+Class MelChargeStyleZ : TSP_Mel_BaseWeapon
 {
 	Default
 	{
@@ -34,9 +34,4 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		TSP_Weapon_Core.HudColor "#d600d6";
 		TSP_Weapon_Core.Portrait "graphics/hud/weapons/mel_pawnch.png";
 	}
-	
-	int combo_mach;
-	int combo_alt;
-	int combo_primary;
-	
-	int combo_held;
+}
