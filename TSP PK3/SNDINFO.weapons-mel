@@ -58,6 +58,8 @@ magpunch/wall1 "sounds/weapons/mel/magtrait/sfx_mag_wall01.ogg"
 magpunch/wall2 "sounds/weapons/mel/magtrait/sfx_mag_wall02.ogg"
 magpunch/wall3 "sounds/weapons/mel/magtrait/sfx_mag_wall03.ogg"
 
+powerbank/activate "sounds/weapons/mel/magtrait/sfx_mag_powerbank.ogg"
+
 //////////////////////
 // Mel's Style Change
 //////////////////////
