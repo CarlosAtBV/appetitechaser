@@ -92,7 +92,7 @@ map TSP03 "Neoscape - Crash Course"
 map TSP_TEST "Neoscape - Test Sector"
 {
     sky1 = "SPACE", -0.1
-	music = "TSP_READ"
+	music = "ENDING"
 	lightmode = 0
 }
 
