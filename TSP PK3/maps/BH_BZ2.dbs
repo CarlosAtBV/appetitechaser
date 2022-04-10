@@ -26,8 +26,8 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -2672.924f;
-		defaulttoptexture = "CYBA";
+		viewpositionx = -2197.796f;
+		defaulttoptexture = "CYBB";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
 		overridebrightness = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 32;
+			gridsize = 0.5;
 			background = "";
 			backoffsety = 0;
 		}
 		overridetoptexture = false;
 		overridebottomtexture = false;
-		defaultbottomtexture = "CYBA";
+		defaultbottomtexture = "CYBB";
 		defaultfloortexture = "CYBA";
-		viewpositiony = 5549.817f;
-		defaultwalltexture = "CYBA";
+		viewpositiony = 2966.287f;
+		defaultwalltexture = "CYBB";
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.1154541f;
+		viewscale = 0.3297472f;
 		
 		reloadresourceprecommand
 		{
@@ -83,6 +83,32 @@ maps
 			autocloseonsuccess = true;
 			exitcodeiserror = true;
 			stderriserror = true;
+		}
+		
+		plugins
+		{
+			
+			threedfloormode
+			{
+				
+				controlsectorarea
+				{
+					usecustomtagrange = false;
+					outerleft = -512;
+					outerright = 0;
+					outertop = 512;
+					outerbottom = 0;
+				}
+			}
+		}
+		
+		fieldtypes
+		{
+			
+			sector
+			{
+				user_slopedatasector = 3;
+			}
 		}
 		
 		scriptdocuments

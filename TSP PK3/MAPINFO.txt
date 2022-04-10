@@ -135,6 +135,7 @@ map BH_BZ "Neoscape - Battle Zone"
 
 map BH_BZ2 "Neoscape - Battle Zone 2"
 {
+    sky1 = "SPACE", -0.1
 	music = "music/bountyhunters/battlezone2.ogg"
 	lightmode = 0
 }
