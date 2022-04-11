@@ -92,3 +92,40 @@ texture CYBF00
 	pic CYBF06 tics 3
 	pic CYBF07 tics 3
 	
+// Water Texture by elend
+// Edited by Cardboard Marty
+texture BGWTR01
+	pic BGWTR01 Tics 4
+	pic BGWTR02 Tics 4
+	pic BGWTR03 Tics 4
+	pic BGWTR04 Tics 4
+	pic BGWTR05 Tics 4
+	pic BGWTR06 Tics 4
+	pic BGWTR07 Tics 4
+	pic BGWTR08 Tics 4
+	pic BGWTR09 Tics 4
+	pic BGWTR10 Tics 4
+	pic BGWTR11 Tics 4
+	pic BGWTR12 Tics 4
+	pic BGWTR13 Tics 4
+	pic BGWTR14 Tics 4
+	pic BGWTR15 Tics 4
+	pic BGWTR16 Tics 4
+	
+	warp2 flat BGWTR01
+	warp2 flat BGWTR02
+	warp2 flat BGWTR03
+	warp2 flat BGWTR04
+	warp2 flat BGWTR05
+	warp2 flat BGWTR06
+	warp2 flat BGWTR07
+	warp2 flat BGWTR08
+	warp2 flat BGWTR09
+	warp2 flat BGWTR10
+	warp2 flat BGWTR11
+	warp2 flat BGWTR12
+	warp2 flat BGWTR13
+	warp2 flat BGWTR14
+	warp2 flat BGWTR15
+	warp2 flat BGWTR16
+	
