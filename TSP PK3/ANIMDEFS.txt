@@ -93,6 +93,8 @@ texture CYBF00
 	pic CYBF07 tics 3
 	
 // Water Texture by elend
+// SOURCE: Water caustics created with Caustics Generator Free version by Dual Heights
+// Additional water texture to add depth from textures101.com (Blue Water (Seamless))
 // Edited by Cardboard Marty
 texture BGWTR01
 	pic BGWTR01 Tics 4
@@ -129,3 +131,13 @@ texture BGWTR01
 	warp2 flat BGWTR15
 	warp2 flat BGWTR16
 	
+// Jump Pad Rings
+// By Cardboard Marty
+texture CYBJU0
+    pic CYBJU0 tics 1
+	pic CYBJU1 tics 1
+	pic CYBJU2 tics 1
+	pic CYBJU3 tics 1
+	pic CYBJU4 tics 1
+	pic CYBJU5 tics 1
+	pic CYBJU6 tics 1
