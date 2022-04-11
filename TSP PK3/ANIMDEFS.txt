@@ -82,38 +82,14 @@ texture MELOBYPA
 
 // Textures by Arvell
 // From Diabolus Ex
-texture CYBF00
-    pic CYBF00 tics 3
-	pic CYBF01 tics 3
-	pic CYBF02 tics 3
-	pic CYBF03 tics 3
-	pic CYBF04 tics 3
-	pic CYBF05 tics 3
-	pic CYBF06 tics 3
-	pic CYBF07 tics 3
-	
+texture CYBF00 range CYBF07 tics 3
+
 // Water Texture by elend
 // SOURCE: Water caustics created with Caustics Generator Free version by Dual Heights
 // Additional water texture to add depth from textures101.com (Blue Water (Seamless))
 // Edited by Cardboard Marty
-texture BGWTR01
-	pic BGWTR01 Tics 4
-	pic BGWTR02 Tics 4
-	pic BGWTR03 Tics 4
-	pic BGWTR04 Tics 4
-	pic BGWTR05 Tics 4
-	pic BGWTR06 Tics 4
-	pic BGWTR07 Tics 4
-	pic BGWTR08 Tics 4
-	pic BGWTR09 Tics 4
-	pic BGWTR10 Tics 4
-	pic BGWTR11 Tics 4
-	pic BGWTR12 Tics 4
-	pic BGWTR13 Tics 4
-	pic BGWTR14 Tics 4
-	pic BGWTR15 Tics 4
-	pic BGWTR16 Tics 4
-	
+texture BGWTR01 range BGWTR16 tics 4
+
 	warp2 flat BGWTR01
 	warp2 flat BGWTR02
 	warp2 flat BGWTR03
