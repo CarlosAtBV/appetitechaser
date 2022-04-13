@@ -37,21 +37,12 @@ defaultmap
 	ForceFakeContrast
 }
 
-map TITLEMAP "First Hunt"
+map TITLEMAP "Second Attack"
 {
     sky1 = "SPACE", -0.1
-	music = "TSP_FHTL"
+	music = "music/title_secondattack.ogg"
 	EventHandlers = "TSP_TitleHandler"
 }
-
-/*
-map TITLEMAP "Into Burning Space"
-{
-    sky1 = "SPACE", -0.1
-	music = "TSPTITLE"
-	EventHandlers = "TSP_TitleHandler"
-}
-*/
 
 /////////////////
 // TRAINING MAPS
