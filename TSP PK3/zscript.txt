@@ -254,12 +254,31 @@ Class TSP_NPC_Fish01 : Actor
 		-SHOOTABLE
 		+FLOAT
 		+NOGRAVITY
-        Speed 8;
+		+FLOATBOB
+        Speed 2;
     }
     States
     {
         Spawn:
             FISH A 2 A_Wander();
+            Loop;
+    }
+}
+
+Class TSP_NPC_Fish02 : Actor
+{
+    Default
+    {
+		-SHOOTABLE
+		+FLOAT
+		+NOGRAVITY
+		+FLOATBOB
+        Speed 2;
+    }
+    States
+    {
+        Spawn:
+            FISH B 2 A_Wander();
             Loop;
     }
 }
