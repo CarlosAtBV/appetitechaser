@@ -1,2 +1,2 @@
-STARTUPTITLE = "The Space Pirate: First Hunt Demo (v0.2)"
-STARTUPCOLORS = "31ccb0", "3459a9"
+STARTUPTITLE = "The Space Pirate: Second Attack Demo (v0.2)"
+STARTUPCOLORS = "f5ecd7", "a42458"

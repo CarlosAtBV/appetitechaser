@@ -82,7 +82,10 @@ TSP_LogoGreen
 	#000000  #000000	0  1
 	#14334e  #2e9584	2  127
 	#2ea889  #31c59b	128  256
+Flat:
+	#2b9882
 }
+
 
 TSP_YellowGreen
 {
@@ -127,6 +130,8 @@ TSP_BountyPink
 	#000000  #000000    0  1
 	#600037  #a9004b    2  127
 	#be0d5c  #e35ea8  128  256
+Flat:
+	#d8506d
 }
 
 // CHARACTER COLORS
