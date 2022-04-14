@@ -246,3 +246,20 @@ Class TSP_Prop_PlanetSphere : Actor
 			Stop;
 	}
 }
+
+Class TSP_NPC_Fish01 : Actor
+{
+    Default
+    {
+		-SHOOTABLE
+		+FLOAT
+		+NOGRAVITY
+        Speed 8;
+    }
+    States
+    {
+        Spawn:
+            FISH A 2 A_Wander();
+            Loop;
+    }
+}

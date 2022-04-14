@@ -227,6 +227,8 @@ skill TSPHeavenorHell
 
 DoomEdNums
 {
+	21001 = TSP_NPC_Fish01
+	
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
 	
