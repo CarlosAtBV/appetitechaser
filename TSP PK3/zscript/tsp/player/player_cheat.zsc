@@ -20,6 +20,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			giveall = ALL_YESYES;
 		}
+		
+		if ( tsp_gamemode == 1 )
+		{
+			return;
+		}
 
 		if (name ~== "health")
 		{
