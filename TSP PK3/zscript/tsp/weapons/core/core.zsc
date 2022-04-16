@@ -230,6 +230,12 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	action void A_TSP_WeaponReady(int flags = 0)
 	{	
+		if ( TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting )
+		{
+			player.SetPSprite(PSP_WEAPON, invoker.FindState("Taunt"));
+			return;
+		}
+		
 		int oldFlags = flags;
 		flags ^= WRF_ALLOWRELOAD;
 		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())

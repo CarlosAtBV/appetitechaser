@@ -5,6 +5,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Vector3 tsp_fb_recoilPos;
 	Vector3 tsp_fb_recoilLast;
 	
+	bool tsp_taunting;
+	
 	override void AddInventory (Inventory item)
 	{
 		if(item is "TSP_Weapon_Core")
@@ -412,6 +414,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				pp_hitMult = 0;
 			}
 		}
+		
+		if ( tsp_taunting ) tsp_taunting = false;
 		
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}

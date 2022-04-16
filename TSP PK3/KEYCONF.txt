@@ -10,7 +10,7 @@ defaultbind h BV_SwitchMod
 alias BV_SwitchMod "netevent tsp_switchmod"
 
 defaultbind f BV_Taunt
-alias BV_Taunt "give tauntpressed; wait 15; take tauntpressed"
+alias BV_Taunt "netevent tsp_event:taunt"
 
 alias BV_MSwitch "use MeleeButtonActor" 
 
