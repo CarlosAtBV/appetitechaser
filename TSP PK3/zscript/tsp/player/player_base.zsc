@@ -5,7 +5,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Vector3 tsp_fb_recoilPos;
 	Vector3 tsp_fb_recoilLast;
 	
-	bool tsp_taunting;
+	int tsp_taunting;
 	
 	override void AddInventory (Inventory item)
 	{
@@ -415,7 +415,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 			}
 		}
 		
-		if ( tsp_taunting ) tsp_taunting = false;
+		if ( tsp_taunting > 0 ) tsp_taunting--;
 		
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}

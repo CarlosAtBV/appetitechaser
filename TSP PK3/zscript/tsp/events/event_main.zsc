@@ -345,7 +345,7 @@ Class TSP_EventHandler : EventHandler
 				e.Name.Split(tspevent, ":");
 				if ( tspevent[1] ~== "taunt")
 				{
-					TSP_PlayerPawn_ZSCBase(players[0].mo).tsp_taunting = true;
+					TSP_PlayerPawn_ZSCBase(players[0].mo).tsp_taunting = 2;
 				}
 				return;
 			}

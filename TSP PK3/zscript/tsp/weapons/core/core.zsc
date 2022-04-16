@@ -217,6 +217,17 @@ Class TSP_Weapon_Core : DoomWeapon
 			return;
 		}
 		
+		if ( TSP_PlayerPawn_ZSCBase(owner).tsp_taunting )
+		{
+			if ( FindState("Taunt") )
+			{
+				TSP_PlayerPawn_ZSCBase(owner).tsp_taunting = false;
+				owner.player.SetPSprite(PSP_WEAPON, FindState("Taunt"));
+				input_weaponReady = -1;
+				return;
+			}
+		}
+		
 		if ( owner.player.cmd.buttons & BT_RELOAD )
 		{
 			if( !(input_weaponFlags & TSPWRF_NORELOAD) && tspw_curclip < GetClipCapacity() && canReload() )
@@ -383,16 +394,6 @@ Class TSP_Weapon_Core : DoomWeapon
 		/*
 		
 		bool reloadHacking = (player.FindPSprite(PSP_TSP_RELOADHACK) != null);
-		
-		if ( TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting )
-		{
-			if ( invoker.FindState("Taunt") )
-			{
-				TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting = false;
-				player.SetPSprite(PSP_WEAPON, invoker.FindState("Taunt"));
-				return;
-			}
-		}
 		
 		Weapon curWeapon = player.ReadyWeapon;
 		bool continueWithReady = true;
