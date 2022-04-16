@@ -3,6 +3,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	const PSP_TSP_UNDERGUN = -10;
 	const PSP_TSP_RELOADHAND = -5;
 	const PSP_TSP_UPPERHAND = 5;
+	const PSP_TSP_RELOADHACK = 50;
 	
 	bool tspw_traitmode;
 	
@@ -193,6 +194,14 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 	}
 	
+	void TSP_StopAllAnims()
+	{
+		for ( int i = 0; i < tspw_animations.Size(); i++ )
+		{
+			tspw_animations[i].Reset();
+		}
+	}
+	
 	bool canReload()
 	{
 		return (owner.CountInv(ammo1.GetClass())>0);
@@ -228,8 +237,31 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 	}
 	
-	action void A_TSP_WeaponReady(int flags = 0)
-	{	
+	enum ETSPWeaponReadyFlags
+	{ 
+		TSPWRF_NORELOAD = 1,
+		TSPWRF_NOFIRE = 2,
+	}
+	
+	void TSP_ClearWeaponExtras()
+	{
+		for ( int i = -250; i < 250; i++ )
+		{
+			if ( i == PSP_WEAPON ) continue;
+			owner.player.SetPSprite(i, resolveState(null));
+		}
+		TSP_StopAllAnims();
+	}
+	
+	action void A_TSP_WeaponReady(int tspflags = 0)
+	{
+		if ( invoker.owner.player.PendingWeapon != WP_NOCHANGE )
+		{
+			invoker.TSP_ClearWeaponExtras();
+			player.SetPSprite(PSP_WEAPON, invoker.FindState("Deselect"));
+			return;
+		}
+		
 		if ( TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting )
 		{
 			if ( invoker.FindState("Taunt") )
@@ -238,13 +270,6 @@ Class TSP_Weapon_Core : DoomWeapon
 				player.SetPSprite(PSP_WEAPON, invoker.FindState("Taunt"));
 				return;
 			}
-		}
-		
-		int oldFlags = flags;
-		flags ^= WRF_ALLOWRELOAD;
-		if(oldFlags & WRF_ALLOWRELOAD && invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())
-		{
-			flags |= WRF_ALLOWRELOAD;
 		}
 		
 		Weapon curWeapon = player.ReadyWeapon;
@@ -298,30 +323,44 @@ Class TSP_Weapon_Core : DoomWeapon
 			}
 		}
 		
-		/*if(!invoker.tspw_traitmode && invoker.bModFireMode && invoker.owner.player.cmd.buttons & BT_ALTATTACK && !(invoker.owner.player.oldbuttons & BT_ALTATTACK))
+		//int oldFlags = flags;
+		//flags ^= WRF_ALLOWRELOAD;
+		if ( invoker.owner.player.cmd.buttons & BT_RELOAD )
 		{
-			invoker.tspw_altmode = !invoker.tspw_altmode;
-			string onoff = invoker.tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
-			A_PlaySound(invoker.tspw_altmode ? "weapon/mod/on" : "weapon/mod/off", CHAN_5);
-			TSP_PlayerPawn_ZSCBase(invoker.owner).notifyMessage(invoker.tspw_altname.." "..onoff);
-		}*/
-		if(continueWithReady)
+			if( !(tspflags & TSPWRF_NORELOAD) && invoker.tspw_curclip<invoker.GetClipCapacity() && invoker.canReload())
+			{
+				player.SetPSprite(PSP_WEAPON, curWeapon.FindState("Reload"));
+				return;
+			}
+		}
+		
+		if ( invoker.TSP_IsClipEmpty() )
 		{
-			//A_WeaponReady(flags);
-			if(invoker.bModFireMode && !invoker.tspw_traitmode)
+			if ( player.FindPSprite(PSP_TSP_RELOADHACK) )
 			{
-				A_WeaponReady(flags|WRF_NOBOB|WRF_NOSECONDARY);
+				A_WeaponReady(WRF_NOFIRE);
+				return;
 			}
-			else
-			{
-				A_WeaponReady(flags|WRF_NOBOB);
-			}
+		}
+		
+		if(invoker.bModFireMode && !invoker.tspw_traitmode)
+		{
+			A_WeaponReady(WRF_NOBOB|WRF_NOSECONDARY);
+		}
+		else
+		{
+			A_WeaponReady(WRF_NOBOB);
 		}
 	}
 	
 	action state A_TSP_GotoReadyState()
 	{
 		return invoker.GetReadyState();
+	}
+	
+	bool TSP_IsClipEmpty()
+	{
+		return (tspw_curclip == 0);
 	}
 	
 	action state A_TSP_JumpIfClipEmpty(StateLabel state)
@@ -537,5 +576,8 @@ Class TSP_Weapon_Core : DoomWeapon
 				}
 			}
 			Loop;
+		ReloadReadyHack:
+			TNT1 A 1 A_TSP_WeaponReady(TSPWRF_NORELOAD);
+			Wait;
 	}
 }

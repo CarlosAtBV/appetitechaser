@@ -8,6 +8,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_fb_zoom;
 	double tsp_fb_zoomlerp;
 	
+	override void FireWeapon (State stat)
+	{
+		let daWeapon = TSP_Weapon_Core(player.ReadyWeapon);
+		if ( daWeapon )
+		{
+			daWeapon.TSP_ClearWeaponExtras();
+		}
+		super.FireWeapon(stat);
+	}
+	
 	override Weapon PickNextWeapon()
 	{
 		if(pp_switchingmod) return player.ReadyWeapon;

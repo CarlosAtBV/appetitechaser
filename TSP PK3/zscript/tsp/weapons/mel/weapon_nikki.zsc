@@ -265,10 +265,10 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				A_Light0();
 				A_TSP_WeaponRecoilDir(random(50,60), 12+frandom(0,2), 1);
 			}
-			"####" C 1 A_TSP_WeaponReady(WRF_NOBOB);
-			"####" D 3 A_TSP_WeaponReady(WRF_NOBOB);
-			"####" E 3 A_TSP_WeaponReady(WRF_NOBOB);
-			"####" AA 1 A_TSP_WeaponReady(WRF_NOBOB);
+			"####" C 1 A_TSP_WeaponReady();
+			"####" D 3 A_TSP_WeaponReady();
+			"####" E 3 A_TSP_WeaponReady();
+			"####" AA 1 A_TSP_WeaponReady();
 			"####" A 0 A_TSP_GotoReadyState;
 			Goto Ready;
 		
@@ -326,6 +326,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 		ReloadFinish:
 			"----" A 0
 			{
+				A_Overlay(PSP_TSP_RELOADHACK, "ReloadReadyHack");
 				A_Overlay(PSP_TSP_RELOADHAND, "ReloadHand");
 				invoker.anim_reloadStart_gun.PlayAnim();
 				invoker.anim_reloadStart_hand.PlayAnim();
@@ -394,5 +395,5 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			121G A 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(random(1,5), 4, 1);
 			Goto Ready;
-	  }
+	}
 }
