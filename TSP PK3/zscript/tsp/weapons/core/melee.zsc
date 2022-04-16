@@ -43,6 +43,7 @@ Extend Class TSP_Weapon_Core
 			
 			invoker.owner.player.attackdown = true;
 			PlayerPawn(invoker.owner).FireWeapon(invoker.GetAtkState(false));
+			return;
 		}
 		
 		if ( invoker.TSP_IsAltFirePressed() )
@@ -50,10 +51,11 @@ Extend Class TSP_Weapon_Core
 			//Console.Printf("YES! I PRESSED THE ALTFIRE STATE IN THE MELEE!!!!");
 			invoker.owner.player.attackdown = true;
 			PlayerPawn(invoker.owner).FireWeapon(invoker.GetAltAtkState(false));
+			return;
 			//invoker.GetAltAtkState(false);
 		}
 		
-		A_WeaponReady(WRF_NOFIRE);
+		A_TSP_WeaponReady(WRF_NOFIRE);
 		
 		//return resolveState(null);
 	}

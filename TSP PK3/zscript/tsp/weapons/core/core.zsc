@@ -232,8 +232,12 @@ Class TSP_Weapon_Core : DoomWeapon
 	{	
 		if ( TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting )
 		{
-			player.SetPSprite(PSP_WEAPON, invoker.FindState("Taunt"));
-			return;
+			if ( invoker.FindState("Taunt") )
+			{
+				TSP_PlayerPawn_ZSCBase(invoker.owner).tsp_taunting = false;
+				player.SetPSprite(PSP_WEAPON, invoker.FindState("Taunt"));
+				return;
+			}
 		}
 		
 		int oldFlags = flags;
