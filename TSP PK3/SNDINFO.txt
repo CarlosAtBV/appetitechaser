@@ -34,8 +34,8 @@ quit8 quit8
 quit9 quit9
 
 //Startup
-$random misc/startupdone { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
-$volume misc/startupdone 0.5
+$alias                startuptick           intermission/tick
+misc/startupdone	GAMELOAD
 item/pickupls            PCKUPLS
 title/swoosh "sounds/ui_titleswoosh.ogg"
 
