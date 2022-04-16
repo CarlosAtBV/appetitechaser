@@ -174,6 +174,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	}
 	
 	int input_weaponReady;
+	int input_weaponReadyType;
 	int input_weaponFlags;
 	
 	override void Tick()
@@ -206,8 +207,6 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	void WeaponTick()
 	{
-		Console.Printf(""..input_weaponReady);
-		
 		if ( input_weaponReady < 1 ) return;
 		
 		if ( owner.player.PendingWeapon != WP_NOCHANGE )
@@ -228,18 +227,80 @@ Class TSP_Weapon_Core : DoomWeapon
 			}
 		}
 		
-		if ( TSP_IsFireJustPressed() )
+		if ( bModFireMode )
 		{
-			if ( !TSP_IsClipEmpty() )
+			switch(bHoldDownForMod)
 			{
-				TSP_ClearWeaponExtras();
-				owner.player.SetPSprite(PSP_WEAPON, FindState("Fire"));
+				case false:
+					if ( tspw_traitmode && owner.player.cmd.buttons & BT_ALTATTACK && !(owner.player.oldbuttons & BT_ALTATTACK) )
+					{
+						tspw_altmode = !tspw_altmode;
+						string onoff = tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
+						TSP_PlayerPawn_ZSCBase(owner).notifyMessage(tspw_altname.." "..onoff);
+						if ( tspw_altmode )
+						{
+							if(FindState("Switch")) owner.player.SetPSprite(PSP_WEAPON, FindState("Switch"));
+						}
+						else
+						{
+							if(FindState("ModSwitch")) owner.player.SetPSprite(PSP_WEAPON, FindState("ModSwitch"));
+						}
+					}
+					break;
+				case true:
+					if ( tspw_traitmode && owner.player.cmd.buttons & BT_ALTATTACK)
+					{
+						if( !tspw_altmode )
+						{
+							if(FindState("Switch")) owner.player.SetPSprite(PSP_WEAPON, FindState("Switch"));
+							//A_PlaySound("weapon/mod/on", CHAN_5);
+						}
+						tspw_altmode = true;
+					}
+					else
+					{
+						if ( tspw_altmode )
+						{
+							if(FindState("ModSwitch")) owner.player.SetPSprite(PSP_WEAPON, FindState("ModSwitch"));
+							//A_PlaySound("weapon/mod/off", CHAN_5);
+						}
+						tspw_altmode = false;
+					}
+					break;
+			}
+		}
+		
+		if ( input_weaponReadyType == 0 )
+		{
+			if ( TSP_IsFireJustPressed() )
+			{
+				if ( !TSP_IsClipEmpty() )
+				{
+					TSP_ClearWeaponExtras();
+					owner.player.SetPSprite(PSP_WEAPON, GetAtkState(false));
+					input_weaponReady = -1;
+					return;
+				}
+				else if ( !owner.player.FindPSprite(PSP_TSP_RELOADHACK) )
+				{
+					owner.player.SetPSprite(PSP_WEAPON, FindState("Empty"));
+					input_weaponReady = -1;
+					return;
+				}
+			}
+		}
+		else
+		{
+			if ( TSP_IsFirePressed() )
+			{
+				owner.player.SetPSprite(PSP_WEAPON, GetAtkState(false));
 				input_weaponReady = -1;
 				return;
 			}
-			else if ( !owner.player.FindPSprite(PSP_TSP_RELOADHACK) )
+			
+			if ( TSP_IsAltFirePressed() )
 			{
-				owner.player.SetPSprite(PSP_WEAPON, FindState("Empty"));
+				owner.player.SetPSprite(PSP_WEAPON, GetAltAtkState(false));
 				input_weaponReady = -1;
 				return;
 			}
@@ -301,11 +362,23 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	action void A_TSP_WeaponReady(int tspflags = 0)
 	{
+		invoker.input_weaponReadyType = 0;
 		if ( invoker.input_weaponReady < 1 )
 		{
 			invoker.input_weaponReady++;
 		}
 		invoker.input_weaponFlags = tspflags;
+	}
+	
+	action void A_TSP_MeleeReady(int tspflags = 0)
+	{
+		invoker.input_weaponReadyType = 1;
+		if ( invoker.input_weaponReady < 1 )
+		{
+			invoker.input_weaponReady++;
+		}
+		invoker.input_weaponFlags = tspflags;
+	}
 		
 		/*
 		
@@ -390,7 +463,6 @@ Class TSP_Weapon_Core : DoomWeapon
 		{
 			A_WeaponReady(WRF_NOBOB);
 		}*/
-	}
 	
 	action state A_TSP_GotoReadyState()
 	{
