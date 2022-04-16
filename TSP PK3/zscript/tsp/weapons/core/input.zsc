@@ -45,4 +45,9 @@ Extend Class TSP_Weapon_Core
 	{
 		return ( tsp_input_altfirebuffer != 0 && tsp_input_altfirebuffer < 5 );
 	}
+	
+	bool TSP_IsFireJustPressed()
+	{
+		return ( tsp_input_firebuffer == 1 );
+	}
 }
