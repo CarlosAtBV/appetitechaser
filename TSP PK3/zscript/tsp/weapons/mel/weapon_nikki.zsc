@@ -151,7 +151,6 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				if ( CountInv("MeleePressed") ) return resolveState("SPMelee");
 				if ( CountInv("TraitPressed") ) return resolveState("SPTrait");
 				if ( CountInv("TSPIdle") >= 1575 ) return resolveState("Idle");
-				if ( CountInv("TauntPressed") ) return resolveState("Taunt");
 				
 				A_GiveInventory("TSPIdle", 1);
 				A_SetCrosshair(0);
