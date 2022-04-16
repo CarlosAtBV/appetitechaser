@@ -16,7 +16,7 @@ QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSP_LogoGreen]The S
 QUITMSG13 = "\cnThe very essence of martial arts is the thirst for knowledge and the truth about ourselves.";
 QUITMSG14 = "\cnWhaddya doing in our mod? Get outta here.\n\n...\c-GET OUTTA HERE!";
 
-QUITMSG15 = "\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross.\n\n\cgBut it's not for the timid.";
+QUITMSG15 = "\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross...\n\n\cg...but it's not for the timid.";
 QUITMSG16 = "\cnIt is possible to commit no mistakes and still lose.\n\n\ckThat is not a sign of weakness; that is life.";
 QUITMSG17 = "\cnThe test of the warrior is not without; it is \ckwithin.";
 
