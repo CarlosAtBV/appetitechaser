@@ -30,6 +30,8 @@ gameinfo
 		
 	PrecacheClasses = "MelPistol", "MelPistolA",
 		"MelSMG", "MelSMGA"
+		
+	AddQuitMessages = "$QUITMSG15", "$QUITMSG16", "$QUITMSG17"
 }
 
 defaultmap
