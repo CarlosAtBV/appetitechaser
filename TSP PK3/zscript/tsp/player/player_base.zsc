@@ -122,10 +122,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		GiveInventory("TSP_GlobalDollars",TSP_STARTINGMONEY);
 		GiveInventory("MeleeButtonActor",1);
 		
-		if(Object.G_SkillPropertyInt(SKILLP_ACSReturn)==0)
+		/*if(Object.G_SkillPropertyInt(SKILLP_ACSReturn)==0)
 		{
 			GiveInventory("TSP_HealingSyringe",1);
-		}
+		}*/
 		
 		// Select the most recently added(?) weapon
 		
