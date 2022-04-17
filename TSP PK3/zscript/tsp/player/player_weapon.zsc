@@ -80,6 +80,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			
 		if ( !player.WeaponState & WF_WEAPONREADY ) return;
 		
+		bool isReloadHacking = (player.FindPSprite(weapon.PSP_TSP_RELOADHACK) != null);
+		
 		if ( tsp_taunting )
 		{
 			if ( weapon.FindState("Taunt") && !weapon.InStateSequence(player.FindPSprite(PSP_WEAPON).CurState, weapon.FindState("Taunt")) )
@@ -105,7 +107,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			}
 		}
 		
-		if ( weapon.bModFireMode )
+		if ( !isReloadHacking && weapon.bModFireMode )
 		{
 			switch(weapon.bHoldDownForMod)
 			{
@@ -117,10 +119,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 						notifyMessage(weapon.tspw_altname.." "..onoff);
 						if ( weapon.tspw_altmode )
 						{
+							weapon.TSP_ClearWeaponExtras();
 							if(weapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("Switch"));
 						}
 						else
 						{
+							weapon.TSP_ClearWeaponExtras();
 							if(weapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("ModSwitch"));
 						}
 					}
@@ -130,6 +134,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 					{
 						if( !weapon.tspw_altmode )
 						{
+							weapon.TSP_ClearWeaponExtras();
 							if(weapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("Switch"));
 							//A_PlaySound("weapon/mod/on", CHAN_5);
 						}
@@ -139,6 +144,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 					{
 						if ( weapon.tspw_altmode )
 						{
+							weapon.TSP_ClearWeaponExtras();
 							if(weapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("ModSwitch"));
 							//A_PlaySound("weapon/mod/off", CHAN_5);
 						}
