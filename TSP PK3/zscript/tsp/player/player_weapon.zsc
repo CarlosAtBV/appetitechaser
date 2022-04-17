@@ -18,6 +18,174 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		super.FireWeapon(stat);
 	}
 	
+	override void TickPSprites()
+	{
+		let player = self.player;
+		let pspr = player.psprites;
+		while (pspr)
+		{
+			// Destroy the psprite if it's from a weapon that isn't currently selected by the player
+			// or if it's from an inventory item that the player no longer owns. 
+			if ((pspr.Caller == null ||
+				(pspr.Caller is "Inventory" && Inventory(pspr.Caller).Owner != pspr.Owner.mo) ||
+				(pspr.Caller is "Weapon" && pspr.Caller != pspr.Owner.ReadyWeapon)))
+			{
+				pspr.Destroy();
+			}
+			else
+			{
+				pspr.Tick();
+			}
+
+			pspr = pspr.Next;
+		}
+
+		if ((health > 0) || (player.ReadyWeapon != null && !player.ReadyWeapon.bNoDeathInput))
+		{
+			if (player.ReadyWeapon == null)
+			{
+				if (player.PendingWeapon != WP_NOCHANGE)
+					player.mo.BringUpWeapon();
+			}
+			else
+			{
+				CheckWeaponChange();
+				if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT) )
+				{
+					TSP_CheckWeapon();
+				}
+			}
+		}
+	}
+	
+	// this weapon chode
+	
+	ui void TSP_DrawPlayerDebug()
+	{
+		Font fnt = "smallfont";
+		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 0, 0,
+			(player.WeaponState & WF_WEAPONSWITCHOK) ? "Weapon Switch OK!" : "Weapon Switch FUCKED!",
+			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+	}
+	
+	void TSP_CheckWeapon()
+	{
+		let player = self.player;
+		let weapon = TSP_Weapon_Core(player.ReadyWeapon);
+
+		if (weapon == NULL)
+			return;
+			
+		player.attackdown = ( !player.WeaponState & WF_WEAPONREADY );
+			
+		if ( !player.WeaponState & WF_WEAPONREADY ) return;
+		
+		if ( tsp_taunting )
+		{
+			if ( weapon.FindState("Taunt") && !weapon.InStateSequence(player.FindPSprite(PSP_WEAPON).CurState, weapon.FindState("Taunt")) )
+			{
+				tsp_taunting = false;
+				weapon.TSP_ClearWeaponExtras();
+				player.SetPSprite(PSP_WEAPON, weapon.FindState("Taunt"));
+				player.WeaponState &= ~WF_WEAPONBOBBING;
+				//input_weaponReady = -1;
+				return;
+			}
+		}
+		
+		if ( player.cmd.buttons & BT_RELOAD )
+		{
+			if( !(weapon.input_weaponFlags & weapon.TSPWRF_NORELOAD) && weapon.tspw_curclip < weapon.GetClipCapacity() && weapon.canReload() )
+			{
+				weapon.TSP_ClearWeaponExtras();
+				player.SetPSprite(PSP_WEAPON, weapon.FindState("Reload"));
+				player.WeaponState &= ~WF_WEAPONBOBBING;
+				//input_weaponReady = -1;
+				return;
+			}
+		}
+		
+		if ( weapon.bModFireMode )
+		{
+			switch(weapon.bHoldDownForMod)
+			{
+				case false:
+					if ( weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK && !(player.oldbuttons & BT_ALTATTACK) )
+					{
+						weapon.tspw_altmode = !weapon.tspw_altmode;
+						string onoff = weapon.tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
+						notifyMessage(weapon.tspw_altname.." "..onoff);
+						if ( weapon.tspw_altmode )
+						{
+							if(weapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("Switch"));
+						}
+						else
+						{
+							if(weapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("ModSwitch"));
+						}
+					}
+					break;
+				case true:
+					if ( weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK )
+					{
+						Console.Printf("sclungus");
+						if( !weapon.tspw_altmode )
+						{
+							if(weapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("Switch"));
+							//A_PlaySound("weapon/mod/on", CHAN_5);
+						}
+						weapon.tspw_altmode = true;
+					}
+					else
+					{
+						if ( weapon.tspw_altmode )
+						{
+							if(weapon.FindState("ModSwitch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("ModSwitch"));
+							//A_PlaySound("weapon/mod/off", CHAN_5);
+						}
+						weapon.tspw_altmode = false;
+					}
+					break;
+			}
+		}
+		
+		if ( weapon.input_weaponReadyType == 0 )
+		{
+			if ( player.cmd.buttons & BT_ATTACK )
+			{
+				if ( !(player.oldbuttons & BT_ATTACK) )
+				{
+					if ( !weapon.TSP_IsClipEmpty() )
+					{
+						weapon.TSP_ClearWeaponExtras();
+						FireWeapon(weapon.GetAtkState(false));
+						return;
+					}
+					else if ( !player.FindPSprite(weapon.PSP_TSP_RELOADHACK) )
+					{
+						weapon.TSP_ClearWeaponExtras();
+						FireWeapon(weapon.FindState("Empty"));
+						return;
+					}
+				}
+			}
+		}
+		else
+		{
+			if ( weapon.TSP_IsFirePressed() )
+			{
+				FireWeapon(weapon.GetAtkState(false));
+				return;
+			}
+			
+			if ( weapon.TSP_IsAltFirePressed() )
+			{
+				FireWeapon(weapon.GetAltAtkState(false));
+				return;
+			}
+		}
+	}
+	
 	override Weapon PickNextWeapon()
 	{
 		if(pp_switchingmod) return player.ReadyWeapon;

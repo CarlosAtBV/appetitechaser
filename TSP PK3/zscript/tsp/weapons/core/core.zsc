@@ -82,12 +82,13 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	action void A_TSP_DeselectLogic()
 	{
+		invoker.TSP_ClearWeaponExtras();
 		A_TSP_ZoomFactor(1.0);
 		invoker.tspw_altmode = false;
-		for ( int i = 0; i < invoker.tspw_animations.Size(); i++ )
+		/*for ( int i = 0; i < invoker.tspw_animations.Size(); i++ )
 		{
 			invoker.tspw_animations[i].Reset();
-		}
+		}*/
 	}
 	
 	action void A_TSP_AnimLayer (int layer, double x, double y, double angle, bool interpolate = true)
@@ -199,7 +200,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			}
 			
 			InputTick();
-			WeaponTick();
+			//WeaponTick();
 			//A_SetCrosshair(16);
 			//FOVScale = 1.0 - 0.4 * (tspw_altmode && bModFireZooms && tspw_canZoom);
 		}
@@ -209,113 +210,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		if ( input_weaponReady < 1 ) return;
 		
-		if ( owner.player.PendingWeapon != WP_NOCHANGE )
-		{
-			TSP_ClearWeaponExtras();
-			owner.player.SetPSprite(PSP_WEAPON, FindState("Deselect"));
-			input_weaponReady = -1;
-			return;
-		}
 		
-		if ( TSP_PlayerPawn_ZSCBase(owner).tsp_taunting )
-		{
-			if ( FindState("Taunt") )
-			{
-				TSP_PlayerPawn_ZSCBase(owner).tsp_taunting = false;
-				owner.player.SetPSprite(PSP_WEAPON, FindState("Taunt"));
-				input_weaponReady = -1;
-				return;
-			}
-		}
-		
-		if ( owner.player.cmd.buttons & BT_RELOAD )
-		{
-			if( !(input_weaponFlags & TSPWRF_NORELOAD) && tspw_curclip < GetClipCapacity() && canReload() )
-			{
-				owner.player.SetPSprite(PSP_WEAPON, FindState("Reload"));
-				input_weaponReady = -1;
-				return;
-			}
-		}
-		
-		if ( bModFireMode )
-		{
-			switch(bHoldDownForMod)
-			{
-				case false:
-					if ( tspw_traitmode && owner.player.cmd.buttons & BT_ALTATTACK && !(owner.player.oldbuttons & BT_ALTATTACK) )
-					{
-						tspw_altmode = !tspw_altmode;
-						string onoff = tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
-						TSP_PlayerPawn_ZSCBase(owner).notifyMessage(tspw_altname.." "..onoff);
-						if ( tspw_altmode )
-						{
-							if(FindState("Switch")) owner.player.SetPSprite(PSP_WEAPON, FindState("Switch"));
-						}
-						else
-						{
-							if(FindState("ModSwitch")) owner.player.SetPSprite(PSP_WEAPON, FindState("ModSwitch"));
-						}
-					}
-					break;
-				case true:
-					if ( tspw_traitmode && owner.player.cmd.buttons & BT_ALTATTACK)
-					{
-						if( !tspw_altmode )
-						{
-							if(FindState("Switch")) owner.player.SetPSprite(PSP_WEAPON, FindState("Switch"));
-							//A_PlaySound("weapon/mod/on", CHAN_5);
-						}
-						tspw_altmode = true;
-					}
-					else
-					{
-						if ( tspw_altmode )
-						{
-							if(FindState("ModSwitch")) owner.player.SetPSprite(PSP_WEAPON, FindState("ModSwitch"));
-							//A_PlaySound("weapon/mod/off", CHAN_5);
-						}
-						tspw_altmode = false;
-					}
-					break;
-			}
-		}
-		
-		if ( input_weaponReadyType == 0 )
-		{
-			if ( TSP_IsFireJustPressed() )
-			{
-				if ( !TSP_IsClipEmpty() )
-				{
-					TSP_ClearWeaponExtras();
-					owner.player.SetPSprite(PSP_WEAPON, GetAtkState(false));
-					input_weaponReady = -1;
-					return;
-				}
-				else if ( !owner.player.FindPSprite(PSP_TSP_RELOADHACK) )
-				{
-					owner.player.SetPSprite(PSP_WEAPON, FindState("Empty"));
-					input_weaponReady = -1;
-					return;
-				}
-			}
-		}
-		else
-		{
-			if ( TSP_IsFirePressed() )
-			{
-				owner.player.SetPSprite(PSP_WEAPON, GetAtkState(false));
-				input_weaponReady = -1;
-				return;
-			}
-			
-			if ( TSP_IsAltFirePressed() )
-			{
-				owner.player.SetPSprite(PSP_WEAPON, GetAltAtkState(false));
-				input_weaponReady = -1;
-				return;
-			}
-		}
 	}
 	
 	void TSP_StopAllAnims()
@@ -373,22 +268,26 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	action void A_TSP_WeaponReady(int tspflags = 0)
 	{
+		int flags;
+		//if ( tspflags & TSPWRF_NOFIRE ) flags &= WRF_NOFIRE;
+		A_WeaponReady();
 		invoker.input_weaponReadyType = 0;
-		if ( invoker.input_weaponReady < 1 )
-		{
-			invoker.input_weaponReady++;
-		}
 		invoker.input_weaponFlags = tspflags;
 	}
 	
 	action void A_TSP_MeleeReady(int tspflags = 0)
 	{
+		int flags;
+		//if ( tspflags & TSPWRF_NOFIRE ) flags &= WRF_NOFIRE;
+		A_WeaponReady();
 		invoker.input_weaponReadyType = 1;
+		invoker.input_weaponFlags = tspflags;
+		/*invoker.input_weaponReadyType = 1;
 		if ( invoker.input_weaponReady < 1 )
 		{
 			invoker.input_weaponReady++;
 		}
-		invoker.input_weaponFlags = tspflags;
+		invoker.input_weaponFlags = tspflags;*/
 	}
 		
 		/*
