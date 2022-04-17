@@ -20,7 +20,7 @@ maps
 				notfortesting = 0;
 			}
 		}
-		defaultfloortexture = "FLOOR0_1";
+		defaultfloortexture = "textures/neoblocks/neoblocks_plate.png";
 		defaultceiltexture = "CYBB";
 		defaulttoptexture = "CYBB";
 		defaultwalltexture = "CYBB";
@@ -37,9 +37,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = true;
-		viewpositionx = -199.7355f;
-		viewpositiony = 542.5608f;
-		viewscale = 0.3846141f;
+		viewpositionx = -412.8481f;
+		viewpositiony = 350.5504f;
+		viewscale = 3.211834f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
