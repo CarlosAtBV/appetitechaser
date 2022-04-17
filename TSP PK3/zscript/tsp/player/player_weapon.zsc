@@ -110,7 +110,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			switch(weapon.bHoldDownForMod)
 			{
 				case false:
-					if ( weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK && !(player.oldbuttons & BT_ALTATTACK) )
+					if ( !weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK && !(player.oldbuttons & BT_ALTATTACK) )
 					{
 						weapon.tspw_altmode = !weapon.tspw_altmode;
 						string onoff = weapon.tspw_altmode ? "\c[TSP_Green]On" : "\c[TSP_Red]Off";
@@ -126,9 +126,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 					}
 					break;
 				case true:
-					if ( weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK )
+					if ( !weapon.tspw_traitmode && player.cmd.buttons & BT_ALTATTACK )
 					{
-						Console.Printf("sclungus");
 						if( !weapon.tspw_altmode )
 						{
 							if(weapon.FindState("Switch")) player.SetPSprite(PSP_WEAPON, weapon.FindState("Switch"));
