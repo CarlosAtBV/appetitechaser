@@ -22,6 +22,8 @@ Extend Class TSP_EventHandler
 	{
 		if ( !r_drawplayersprites ) return;
 		
+		if ( automapactive ) return;
+		
 		let psprite = players[consoleplayer].psprites;
 		let character = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo);
 					
