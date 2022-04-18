@@ -5,6 +5,7 @@ Class TSP_BountyHunters_EnemySpawn : Actor
 	Default
 	{
 		+NOINTERACTION
+		Radius 64;
 	}
 	
 	bool CheckSpaceFree()
