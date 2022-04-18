@@ -6,17 +6,21 @@ Class TSP_Mel_SlamHandler : Inventory
 	}
 	
 	Actor inflictor;
+	bool oldGravity;
 	
 	override void AttachToOwner (Actor other)
 	{
 		super.AttachToOwner(other);
+		oldGravity = owner.bNoGravity;
+		
+		owner.vel = (0, 0, -32);
 	}
 	
 	override void DoEffect()
 	{
 		owner.A_SetTics(-1);
 		owner.bTHRUACTORS = true;
-		owner.vel = (0, 0, 0);
+		owner.bNoGravity = true;
 		
 		let fx = TSP_Mel_SlamAfterImage(Spawn("TSP_Mel_SlamAfterImage", owner.pos));
 		if ( fx )
@@ -25,9 +29,9 @@ Class TSP_Mel_SlamHandler : Inventory
 			fx.Initialize();
 		}
 		
-		if ( !owner.Warp(owner, 0, 0, -32, 0, 0, 0, 0, 0) )
+		if ( vel.z == 0 )
 		{
-			owner.Warp(owner, 0, 0, 0, 0, WARPF_TOFLOOR, 0, 0, 0);
+			owner.bNoGravity = oldGravity;
 			
 			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(owner, 512, 0);
 			
@@ -51,7 +55,11 @@ Class TSP_Mel_SlamHandler : Inventory
 			owner.A_QuakeEx(4, 4, 4, 5, 0, 1024, rollintensity: 4);
 			
 			owner.TakeInventory("TSP_Mel_SlamHandler", 1);
+			
+			return;
 		}
+		
+		owner.vel = (0, 0, -32);
 	}
 	
 	override void DetachFromOwner ()
