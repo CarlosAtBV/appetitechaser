@@ -129,7 +129,8 @@ Extend Class TSP_Weapon_Core
 					{
 						for(int i = 0;i<3;i++)
 						{
-							Actor blood = mo.Spawn("Blood",mo.pos+(0,0,mo.Height/2));
+							Class<Actor> bloodType = mo.BloodType;
+							Actor blood = mo.Spawn(bloodType, mo.pos+(0,0,mo.Height/2));
 							blood.vel = (frandom(-2,2),frandom(-2,2),frandom(2,6));
 						}
 					}
