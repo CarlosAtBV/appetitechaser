@@ -14,6 +14,7 @@ Class TSP_Mel_SlamHandler : Inventory
 		oldGravity = owner.bNoGravity;
 		
 		owner.vel = (0, 0, -32);
+		owner.A_StartSound("magslam/down", 50);
 	}
 	
 	override void DoEffect()
@@ -53,6 +54,8 @@ Class TSP_Mel_SlamHandler : Inventory
 			owner.DamageMobj(inflictor, inflictor, 400, 'MagSlam', DMG_FORCED);
 			
 			owner.A_QuakeEx(4, 4, 4, 5, 0, 1024, rollintensity: 4);
+			
+			owner.A_StartSound("magslam/impact", 50);
 			
 			owner.TakeInventory("TSP_Mel_SlamHandler", 1);
 			
