@@ -175,8 +175,8 @@ maps
 				notfortesting = 0;
 			}
 		}
-		viewpositiony = 1042.242f;
-		viewpositionx = -683.0647f;
+		viewpositiony = -785.755f;
+		viewpositionx = -1006.937f;
 		
 		testprecommand
 		{
@@ -200,7 +200,7 @@ maps
 			background = "";
 			backoffsety = 0;
 		}
-		viewscale = 0.7081846f;
+		viewscale = 1.714342f;
 		
 		reloadresourceprecommand
 		{
@@ -223,7 +223,7 @@ maps
 		}
 		overridefloorheight = false;
 		overridetoptexture = false;
-		uselongtexturenames = false;
+		uselongtexturenames = true;
 		overridefloortexture = false;
 		
 		reloadresourcepostcommand
