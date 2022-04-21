@@ -117,3 +117,16 @@ texture CYBJU0
 	pic CYBJU4 tics 1
 	pic CYBJU5 tics 1
 	pic CYBJU6 tics 1
+	
+// Enemy Field (literally a recolored version of the above)
+// By Cardboard Marty
+texture CYBEF0
+    pic CYBEF0 tics 1
+	pic CYBEF1 tics 1
+	pic CYBEF2 tics 1
+	pic CYBEF3 tics 1
+	pic CYBEF4 tics 1
+	pic CYBEF5 tics 1
+	pic CYBEF6 tics 1
+	
+cameratexture TSPCAMTX 256 128
