@@ -130,3 +130,21 @@ texture CYBEF0
 	pic CYBEF6 tics 1
 	
 cameratexture TSPCAMTX 256 128
+cameratexture TSPCAM01 64 64
+cameratexture TSPCAM02 64 64
+cameratexture TSPCAM03 64 64
+cameratexture TSPCAM04 64 64
+cameratexture TSPCAM05 64 64
+cameratexture TSPCAM06 64 64
+cameratexture TSPCAM07 64 64
+cameratexture TSPCAM08 64 64
+cameratexture TSPCAM09 64 64
+cameratexture TSPCAM10 64 64
+cameratexture TSPCAM11 64 64
+cameratexture TSPCAM12 64 64
+cameratexture TSPCAM13 64 64
+cameratexture TSPCAM14 64 64
+cameratexture TSPCAM15 64 64
+cameratexture TSPCAM16 64 64
+cameratexture TSPCAM17 64 64
+cameratexture TSPCAM18 64 64
