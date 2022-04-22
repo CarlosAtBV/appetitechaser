@@ -10,7 +10,7 @@ maps
 		defaultceiltexture = "TSPFL1";
 		overridefloorheight = false;
 		customfloorheight = 0;
-		uselongtexturenames = true;
+		uselongtexturenames = false;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		resources
@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -1389.975f;
+		viewpositionx = -2891.523f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 0.125;
+			gridsize = 64;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = -2512.214f;
+		viewpositiony = -1037.096f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.2021742f;
+		viewscale = 1.506543f;
 		
 		reloadresourceprecommand
 		{
