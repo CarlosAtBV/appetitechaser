@@ -7,10 +7,10 @@ maps
 	
 	TSP_TEST
 	{
-		defaultceiltexture = "TSPFL1";
+		defaultceiltexture = "F_SKY1";
 		overridefloorheight = false;
 		customfloorheight = 0;
-		uselongtexturenames = false;
+		uselongtexturenames = true;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		resources
@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -3872f;
+		viewpositionx = -2443.494f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 64;
+			gridsize = 1;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = -2464f;
+		viewpositiony = -1833.354f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 1.506543f;
+		viewscale = 5.021862f;
 		
 		reloadresourceprecommand
 		{
