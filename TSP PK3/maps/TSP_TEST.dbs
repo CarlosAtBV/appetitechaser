@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -2161.88f;
+		viewpositionx = -527.9935f;
 		defaulttoptexture = "TSPCL2";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 0.125;
+			gridsize = 1;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "TSPCL2";
 		defaultfloortexture = "TSPFL1";
-		viewpositiony = -3226.571f;
+		viewpositiony = -629.9135f;
 		defaultwalltexture = "TSPCL2";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.8367506f;
+		viewscale = 1.758289f;
 		
 		reloadresourceprecommand
 		{
