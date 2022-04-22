@@ -1,94 +1,138 @@
+ailene/appear "sounds/characters/ailene/sfx_ailene_appear.ogg"
+
 ////////////////
 // MENU
 ////////////////
 $random ailene/bluevertigo { ailene/bluevertigo01 ailene/bluevertigo02 }
-ailene/bluevertigo01 "sounds/announcer/ailene/menu/vo_menu_ailene_bluevertigo01.ogg"
-ailene/bluevertigo02 "sounds/announcer/ailene/menu/vo_menu_ailene_bluevertigo02.ogg"
+ailene/bluevertigo01 "sounds/characters/ailene/menu/vo_menu_ailene_bluevertigo01.ogg"
+ailene/bluevertigo02 "sounds/characters/ailene/menu/vo_menu_ailene_bluevertigo02.ogg"
+
 $random ailene/bv10 { ailene/bv1001 ailene/bv1002 }
-ailene/bv1001 "sounds/announcer/ailene/menu/vo_menu_ailene_bv1001.ogg" 
-ailene/bv1002 "sounds/announcer/ailene/menu/vo_menu_ailene_bv1002.ogg" 
+ailene/bv1001 "sounds/characters/ailene/menu/vo_menu_ailene_bv1001.ogg" 
+ailene/bv1002 "sounds/characters/ailene/menu/vo_menu_ailene_bv1002.ogg" 
+
 $random ailene/title { ailene/title01 ailene/title02 }
-ailene/title01 "sounds/announcer/ailene/menu/vo_menu_ailene_title01.ogg" 
-ailene/title02 "sounds/announcer/ailene/menu/vo_menu_ailene_title02.ogg" 
+ailene/title01 "sounds/characters/ailene/menu/vo_menu_ailene_title01.ogg" 
+ailene/title02 "sounds/characters/ailene/menu/vo_menu_ailene_title02.ogg" 
+
 $random ailene/titledemo { ailene/titledemo01 ailene/titledemo02 }
-ailene/titledemo01 "sounds/announcer/ailene/menu/vo_menu_ailene_titledemo01.ogg" 
-ailene/titledemo02 "sounds/announcer/ailene/menu/vo_menu_ailene_titledemo02.ogg" 
+ailene/titledemo01 "sounds/characters/ailene/menu/vo_menu_ailene_titledemo01.ogg" 
+ailene/titledemo02 "sounds/characters/ailene/menu/vo_menu_ailene_titledemo02.ogg" 
 
 $random ailene/standard { ailene/standard01 ailene/standard02 }
-ailene/standard01 "sounds/announcer/ailene/menu/vo_menu_ailene_standard01.ogg" 
-ailene/standard02 "sounds/announcer/ailene/menu/vo_menu_ailene_standard02.ogg" 
-ailene/bountyhunters01 "sounds/announcer/ailene/menu/vo_menu_ailene_bountyhunters01.ogg" 
+ailene/standard01 "sounds/characters/ailene/menu/vo_menu_ailene_standard01.ogg" 
+ailene/standard02 "sounds/characters/ailene/menu/vo_menu_ailene_standard02.ogg" 
+
+ailene/bountyhunters01 "sounds/characters/ailene/menu/vo_menu_ailene_bountyhunters01.ogg" 
+
 $random ailene/usermaps { ailene/usermaps01 ailene/usermaps02 }
-ailene/usermaps01 "sounds/announcer/ailene/menu/vo_menu_ailene_usermaps01.ogg" 
-ailene/usermaps02 "sounds/announcer/ailene/menu/vo_menu_ailene_usermaps02.ogg"   
+ailene/usermaps01 "sounds/characters/ailene/menu/vo_menu_ailene_usermaps01.ogg" 
+ailene/usermaps02 "sounds/characters/ailene/menu/vo_menu_ailene_usermaps02.ogg"   
+
 $random ailene/arcade { ailene/arcade01 ailene/arcade02 }
-ailene/arcade01 "sounds/announcer/ailene/menu/vo_menu_ailene_arcade01.ogg" 
-ailene/arcade02 "sounds/announcer/ailene/menu/vo_menu_ailene_arcade02.ogg" 
+ailene/arcade01 "sounds/characters/ailene/menu/vo_menu_ailene_arcade01.ogg" 
+ailene/arcade02 "sounds/characters/ailene/menu/vo_menu_ailene_arcade02.ogg" 
 
 $random ailene/css/mel { ailene/css/mel01 ailene/css/mel02 }
-ailene/css/mel01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel01.ogg" 
-ailene/css/mel02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel02.ogg" 
+ailene/css/mel01 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel01.ogg" 
+ailene/css/mel02 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel02.ogg" 
+
 $random ailene/css/melretro { ailene/css/melretro01 ailene/css/melretro02 }
-ailene/css/melretro01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro01.ogg" 
-ailene/css/melretro02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro02.ogg" 
-ailene/css/melretro03 "sounds/announcer/ailene/menu/vo_menu_ailene_css_mel_retro03.ogg" // "Retro Mel"
-ailene/css/shen01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_shen01.ogg"
+ailene/css/melretro01 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro01.ogg" 
+ailene/css/melretro02 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro02.ogg" 
+ailene/css/melretro03 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro03.ogg" // "Retro Mel"
+
+ailene/css/shen01 "sounds/characters/ailene/menu/vo_menu_ailene_css_shen01.ogg"
+
 $random ailene/css/zane { ailene/css/zane01 ailene/css/zane02 }
-ailene/css/zane01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_zane01.ogg" 
-ailene/css/zane02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_zane02.ogg"   
-ailene/css/maeve01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_maeve01.ogg" 
-ailene/css/nagi01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_nagi01.ogg" 
-ailene/css/thi01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_thi01.ogg" 
+ailene/css/zane01 "sounds/characters/ailene/menu/vo_menu_ailene_css_zane01.ogg" 
+ailene/css/zane02 "sounds/characters/ailene/menu/vo_menu_ailene_css_zane02.ogg"  
+ 
+ailene/css/maeve01 "sounds/characters/ailene/menu/vo_menu_ailene_css_maeve01.ogg" 
+
+ailene/css/nagi01 "sounds/characters/ailene/menu/vo_menu_ailene_css_nagi01.ogg" 
+
+ailene/css/thi01 "sounds/characters/ailene/menu/vo_menu_ailene_css_thi01.ogg" 
+
 $random ailene/css/robomel { ailene/css/robomel01 ailene/css/robomel02 }
-ailene/css/robomel01 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel01.ogg" 
-ailene/css/robomel02 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel02.ogg" 
-ailene/css/robomel03 "sounds/announcer/ailene/menu/vo_menu_ailene_css_robomel03.ogg" // "AILENE"                      
+ailene/css/robomel01 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel01.ogg" 
+ailene/css/robomel02 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel02.ogg" 
+ailene/css/robomel03 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel03.ogg" // "AILENE"                      
+
+////////////////
+// TUTORIAL/TEST
+////////////////
+$random ailene/tutorial/goodmorning { ailene/tutorial/goodmorning01 ailene/tutorial/goodmorning02 ailene/tutorial/goodmorning04 ailene/tutorial/goodmorning04 }
+ailene/tutorial/goodmorning01	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning01.ogg"
+ailene/tutorial/goodmorning02	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning02.ogg"
+ailene/tutorial/goodmorning03	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning03.ogg"
+ailene/tutorial/goodmorning04	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning04.ogg"
+
+ailene/tutorial/goodluck	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodluck.ogg"
+
+ailene/tutorial/helpprompt { ailene/tutorial/helpprompt01 ailene/tutorial/helpprompt02 ailene/tutorial/helpprompt03 ailene/tutorial/helpprompt04 }
+ailene/tutorial/helpprompt01	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt01.ogg"
+ailene/tutorial/helpprompt02	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt02.ogg"
+ailene/tutorial/helpprompt03	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt03.ogg"
+ailene/tutorial/helpprompt04	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt04.ogg"
+
+// ABILITIES
+ailene/tutorial/slipdash	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_slipdash.ogg"
+ailene/tutorial/walljump	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_walljump.ogg"
+
+// MEL-SPECIFIC
+ailene/tutorial/mel/intro	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_intro.ogg"
+ailene/tutorial/mel/maggrapple	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_maggrapple.ogg"
+ailene/tutorial/mel/stasisuppercut	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_stasisuppercut.ogg"
+ailene/tutorial/mel/powerbank	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_powerbank.ogg"
+
 
 ////////////////
 // MISC
 ////////////////
-$random announcer/hunters/ailene/goodmorning { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
-ailene/goodmorning01 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning01.ogg"
-ailene/goodmorning02 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning02.ogg"
-ailene/goodmorning03 "sounds/announcer/ailene/misc/vo_misc_ailene_goodmorning03.ogg"
+$random ailene/goodmorning { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03 }
+ailene/goodmorning01 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning01.ogg"
+ailene/goodmorning02 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning02.ogg"
+ailene/goodmorning03 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning03.ogg"
 
 ////////////////
 // BOUNTY HUNTERS
 ////////////////
+ailene/bh/hunt "sounds/characters/ailene/bh/vo_bh_ailene_gamestart01.ogg"
+ailene/bh/ready "sounds/characters/ailene/bh/vo_bh_ailene_gamestart02.ogg"
+ailene/bh/go "sounds/characters/ailene/bh/vo_bh_ailene_gamestart03.ogg"
 
-announcer/hunters/ailene/hunt "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart01.ogg"
-announcer/hunters/ailene/ready "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart02.ogg"
-announcer/hunters/ailene/go "sounds/announcer/ailene/bh/vo_bh_ailene_gamestart03.ogg"
+ailene/bh/combotime/on "sounds/characters/ailene/bh/vo_bh_ailene_combotime02.ogg"
+ailene/bh/combotime/add "sounds/characters/ailene/bh/vo_bh_ailene_combotime01.ogg"
 
-announcer/hunters/ailene/combotime/on "sounds/announcer/ailene/bh/vo_bh_ailene_combotime02.ogg"
-announcer/hunters/ailene/combotime/add "sounds/announcer/ailene/bh/vo_bh_ailene_combotime01.ogg"
+$random ailene/bh/gameover { ailene/bh/gameover01 ailene/bh/gameover02 ailene/bh/gameover03 }
+ailene/bh/gameover01 "sounds/characters/ailene/bh/vo_bh_ailene_gameover01.ogg"
+ailene/bh/gameover02 "sounds/characters/ailene/bh/vo_bh_ailene_gameover02.ogg"
+ailene/bh/gameover03 "sounds/characters/ailene/bh/vo_bh_ailene_gameover03.ogg"
 
-$random announcer/hunters/ailene/gameover { ailene/gameover01 ailene/gameover02 ailene/gameover03 }
-ailene/gameover01 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover01.ogg"
-ailene/gameover02 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover02.ogg"
-ailene/gameover03 "sounds/announcer/ailene/bh/vo_bh_ailene_gameover03.ogg"
+ailene/bh/30secs "sounds/characters/ailene/bh/vo_bh_ailene_30sec.ogg"
+ailene/bh/10secs "sounds/characters/ailene/bh/vo_bh_ailene_10sec.ogg"
+ailene/bh/5secs "sounds/characters/ailene/bh/vo_bh_ailene_countdown5.ogg"
+ailene/bh/4secs "sounds/characters/ailene/bh/vo_bh_ailene_countdown4.ogg"
+ailene/bh/3secs "sounds/characters/ailene/bh/vo_bh_ailene_countdown3.ogg"
+ailene/bh/2secs "sounds/characters/ailene/bh/vo_bh_ailene_countdown2.ogg"
+ailene/bh/1secs "sounds/characters/ailene/bh/vo_bh_ailene_countdown1.ogg"
 
-announcer/hunters/ailene/30secs "sounds/announcer/ailene/bh/vo_bh_ailene_30sec.ogg"
-announcer/hunters/ailene/10secs "sounds/announcer/ailene/bh/vo_bh_ailene_10sec.ogg"
-announcer/hunters/ailene/5secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown5.ogg"
-announcer/hunters/ailene/4secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown4.ogg"
-announcer/hunters/ailene/3secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown3.ogg"
-announcer/hunters/ailene/2secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown2.ogg"
-announcer/hunters/ailene/1secs "sounds/announcer/ailene/bh/vo_bh_ailene_countdown1.ogg"
+$random ailene/bh/timeext { ailene/bh/timeext01 ailene/bh/timeext02 ailene/bh/timeext03 ailene/bh/timeext04 ailene/bh/timeext05 ailene/bh/timeext06 ailene/bh/timeext07 ailene/bh/timeext08 ailene/bh/timeext09 ailene/bh/timeext10 ailene/bh/timeext11 ailene/bh/timeext12 ailene/bh/timeext13 ailene/bh/timeext14 ailene/bh/timeext15 }
+ailene/bh/timeext01 "sounds/characters/ailene/bh/vo_bh_ailene_timeext01.ogg"
+ailene/bh/timeext02 "sounds/characters/ailene/bh/vo_bh_ailene_timeext02.ogg"
+ailene/bh/timeext03 "sounds/characters/ailene/bh/vo_bh_ailene_timeext03.ogg"
+ailene/bh/timeext04 "sounds/characters/ailene/bh/vo_bh_ailene_timeext04.ogg"
+ailene/bh/timeext05 "sounds/characters/ailene/bh/vo_bh_ailene_timeext05.ogg"
+ailene/bh/timeext06 "sounds/characters/ailene/bh/vo_bh_ailene_timeext06.ogg"
+ailene/bh/timeext07 "sounds/characters/ailene/bh/vo_bh_ailene_timeext07.ogg"
+ailene/bh/timeext08 "sounds/characters/ailene/bh/vo_bh_ailene_timeext08.ogg"
+ailene/bh/timeext09 "sounds/characters/ailene/bh/vo_bh_ailene_timeext09.ogg"
+ailene/bh/timeext10 "sounds/characters/ailene/bh/vo_bh_ailene_timeext10.ogg"
+ailene/bh/timeext11 "sounds/characters/ailene/bh/vo_bh_ailene_timeext11.ogg"
+ailene/bh/timeext12 "sounds/characters/ailene/bh/vo_bh_ailene_timeext12.ogg"
+ailene/bh/timeext13 "sounds/characters/ailene/bh/vo_bh_ailene_timeext13.ogg"
+ailene/bh/timeext14 "sounds/characters/ailene/bh/vo_bh_ailene_timeext14.ogg"
+ailene/bh/timeext15 "sounds/characters/ailene/bh/vo_bh_ailene_timeext15.ogg"
 
-$random announcer/hunters/ailene/timeext { announcer/hunters/ailene/timeext01 announcer/hunters/ailene/timeext02 announcer/hunters/ailene/timeext03 announcer/hunters/ailene/timeext04 announcer/hunters/ailene/timeext05 announcer/hunters/ailene/timeext06 announcer/hunters/ailene/timeext07 announcer/hunters/ailene/timeext08 announcer/hunters/ailene/timeext09 announcer/hunters/ailene/timeext10 announcer/hunters/ailene/timeext11 announcer/hunters/ailene/timeext12 announcer/hunters/ailene/timeext13 announcer/hunters/ailene/timeext14 announcer/hunters/ailene/timeext15 }
-announcer/hunters/ailene/timeext01 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext01.ogg"
-announcer/hunters/ailene/timeext02 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext02.ogg"
-announcer/hunters/ailene/timeext03 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext03.ogg"
-announcer/hunters/ailene/timeext04 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext04.ogg"
-announcer/hunters/ailene/timeext05 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext05.ogg"
-announcer/hunters/ailene/timeext06 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext06.ogg"
-announcer/hunters/ailene/timeext07 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext07.ogg"
-announcer/hunters/ailene/timeext08 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext08.ogg"
-announcer/hunters/ailene/timeext09 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext09.ogg"
-announcer/hunters/ailene/timeext10 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext10.ogg"
-announcer/hunters/ailene/timeext11 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext11.ogg"
-announcer/hunters/ailene/timeext12 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext12.ogg"
-announcer/hunters/ailene/timeext13 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext13.ogg"
-announcer/hunters/ailene/timeext14 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext14.ogg"
-announcer/hunters/ailene/timeext15 "sounds/announcer/ailene/bh/vo_bh_ailene_timeext15.ogg"
+ailene/bh/battlezoneintro "sounds/characters/ailene/bh/vo_bh_ailene_battlezone_intro.ogg"

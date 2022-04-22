@@ -232,12 +232,12 @@ Class TSP_BHHandler : EventHandler
 	{
 		bh_roundTimer += amt;
 		S_Sound("bountyhunters/timecrystal",CHAN_AUTO);
-		S_Sound("announcer/hunters/ailene/timeext",CHAN_VOICE);
+		S_Sound("ailene/bh/timeext",CHAN_VOICE);
 	}
 	
 	void BH_AddComboTime(int amt)
 	{
-		S_Sound(bh_comboTime > 0 ? "announcer/hunters/ailene/combotime/add" : "announcer/hunters/ailene/combotime/on",CHAN_VOICE);
+		S_Sound(bh_comboTime > 0 ? "ailene/bh/combotime/add" : "ailene/bh/combotime/on",CHAN_VOICE);
 		bh_comboTime += amt * 35;
 		S_Sound("bountyhunters/combocrystal",CHAN_AUTO);
 	}
@@ -361,7 +361,7 @@ Class TSP_BHHandler : EventHandler
 		bh_readyFrame = -1;
 		bh_goFrame = -1;
 		
-		S_Sound("announcer/hunters/ailene/gameover", CHAN_VOICE);
+		S_Sound("ailene/bh/gameover", CHAN_VOICE);
 		
 		if ( bh_wonRound )
 		{
@@ -474,15 +474,15 @@ Class TSP_BHHandler : EventHandler
 			switch(bh_startWait)
 			{
 				case 100:
-					S_Sound("announcer/hunters/ailene/hunt", CHAN_VOICE);
+					S_Sound("ailene/bh/hunt", CHAN_VOICE);
 					break;
 				case 35:
-					S_Sound("announcer/hunters/ailene/ready", CHAN_VOICE);
+					S_Sound("ailene/bh/ready", CHAN_VOICE);
 					S_Sound("bountyhunters/readysound", CHAN_BODY);
 					bh_readyFrame = 0;
 					break;
 				case 0:
-					S_Sound("announcer/hunters/ailene/go", CHAN_VOICE);
+					S_Sound("ailene/bh/go", CHAN_VOICE);
 					S_Sound("bountyhunters/gosound", CHAN_BODY);
 					bh_goFrame = 0;
 					bh_roundStarted = true;
@@ -533,13 +533,13 @@ Class TSP_BHHandler : EventHandler
 				bh_roundTimer--;
 				switch(bh_roundTimer)
 				{
-					case 30: S_Sound("announcer/hunters/ailene/30secs",CHAN_VOICE); break;
-					case 10: S_Sound("announcer/hunters/ailene/10secs",CHAN_VOICE); break;
-					case 5: S_Sound("announcer/hunters/ailene/5secs",CHAN_VOICE); break;
-					case 4: S_Sound("announcer/hunters/ailene/4secs",CHAN_VOICE); break;
-					case 3: S_Sound("announcer/hunters/ailene/3secs",CHAN_VOICE); break;
-					case 2: S_Sound("announcer/hunters/ailene/2secs",CHAN_VOICE); break;
-					case 1: S_Sound("announcer/hunters/ailene/1secs",CHAN_VOICE); break;
+					case 30: S_Sound("ailene/bh/30secs",CHAN_VOICE); break;
+					case 10: S_Sound("ailene/bh/10secs",CHAN_VOICE); break;
+					case 5: S_Sound("ailene/bh/5secs",CHAN_VOICE); break;
+					case 4: S_Sound("ailene/bh/4secs",CHAN_VOICE); break;
+					case 3: S_Sound("ailene/bh/3secs",CHAN_VOICE); break;
+					case 2: S_Sound("ailene/bh/2secs",CHAN_VOICE); break;
+					case 1: S_Sound("ailene/bh/1secs",CHAN_VOICE); break;
 				}
 				
 				if ( bh_roundTimer == 0 )
