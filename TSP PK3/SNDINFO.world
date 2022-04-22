@@ -4,3 +4,7 @@ ambience/fridge/open "sounds/ambience/fridge_open.ogg"
 ambience/fridge/close "sounds/ambience/fridge_close.ogg"
 ambience/fridge/loop "sounds/ambience/fridge_loop.ogg"
 $rolloff ambience/fridge/loop 200 312
+
+// Switches
+world/switch01/on "sounds/ambience/switch01_on.ogg"
+world/switch01/off "sounds/ambience/switch01_off.ogg"

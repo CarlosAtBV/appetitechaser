@@ -148,3 +148,11 @@ cameratexture TSPCAM15 64 64
 cameratexture TSPCAM16 64 64
 cameratexture TSPCAM17 64 64
 cameratexture TSPCAM18 64 64
+
+// Enemy Spawn Switch
+// By Cardboard Marty
+switch TSPSPWNA
+	on sound world/switch01/on
+	pic TSPSPWNB tics 0
+	off sound world/switch01/off
+	pic TSPSPWNA tics 0
