@@ -88,6 +88,7 @@ texture CYBF00 range CYBF07 tics 3
 // SOURCE: Water caustics created with Caustics Generator Free version by Dual Heights
 // Additional water texture to add depth from textures101.com (Blue Water (Seamless))
 // Edited by Cardboard Marty
+// BZ2 Purple Water
 texture BZ2WTR00 range BZ2WTR15 tics 4
 
 	warp2 flat BZ2WTR00
@@ -106,6 +107,30 @@ texture BZ2WTR00 range BZ2WTR15 tics 4
 	warp2 flat BZ2WTR13
 	warp2 flat BZ2WTR14
 	warp2 flat BZ2WTR15
+	
+texture BZ2WTRF0 range BZ2WTRF3 tics 4
+
+// Demoscape Green Water
+texture DHBWTR00 range DHBWTR15 tics 4
+
+	warp2 flat DHBWTR00
+	warp2 flat DHBWTR01
+	warp2 flat DHBWTR02
+	warp2 flat DHBWTR03
+	warp2 flat DHBWTR04
+	warp2 flat DHBWTR05
+	warp2 flat DHBWTR06
+	warp2 flat DHBWTR07
+	warp2 flat DHBWTR08
+	warp2 flat DHBWTR09
+	warp2 flat DHBWTR10
+	warp2 flat DHBWTR11
+	warp2 flat DHBWTR12
+	warp2 flat DHBWTR13
+	warp2 flat DHBWTR14
+	warp2 flat DHBWTR15
+	
+texture DHBWTRF0 range DHBWTRF3 tics 4
 	
 // Jump Pad Rings
 // By Cardboard Marty
