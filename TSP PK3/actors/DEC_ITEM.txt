@@ -120,6 +120,18 @@ ACTOR TSP_RedArmorBonus : TSP_CustomInventory
 	}
 }
 
+ACTOR TSPArmorBonusShow : TSPArmorBonus 20002
+{
+	Radius 2
+	Height 2
+}
+
+ACTOR TSP_RedArmorBonusShow : TSP_RedArmorBonus 20003
+{
+	Radius 2
+	Height 2
+}
+
 //===========================================================================
 // Health
 //
@@ -267,6 +279,18 @@ ACTOR TSP_RedHealthBonus : TSP_CustomInventory
 		TNT1 A 0 A_GiveInventory("HealthBonus",2)
 		Stop
 	}
+}
+
+ACTOR TSPHealthBonusShow : TSPHealthBonus 20004
+{
+	Radius 2
+	Height 2
+}
+
+ACTOR TSP_RedHealthBonusShow : TSP_RedHealthBonus 20005
+{
+	Radius 2
+	Height 2
 }
 
 ACTOR Over100Health : Inventory

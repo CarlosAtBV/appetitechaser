@@ -26,8 +26,8 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = 1387.189f;
-		defaulttoptexture = "TSPCL2";
+		viewpositionx = -368.3098f;
+		defaulttoptexture = "textures/dex/CYBB.png";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
 		overridebrightness = false;
@@ -42,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 64;
+			gridsize = 8;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
-		defaultbottomtexture = "TSPCL2";
-		defaultfloortexture = "TSPFL1";
-		viewpositiony = -3030.344f;
-		defaultwalltexture = "TSPCL2";
+		defaultbottomtexture = "textures/dex/CYBB.png";
+		defaultfloortexture = "F_SKY1";
+		viewpositiony = 733.6259f;
+		defaultwalltexture = "textures/dex/CYBB.png";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.1060445f;
+		viewscale = 0.1792157f;
 		
 		reloadresourceprecommand
 		{
@@ -104,7 +104,8 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 72;
+				caretposition = 4495;
+				firstvisibleline = 171;
 				activetab = true;
 			}
 		}

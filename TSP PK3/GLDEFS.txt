@@ -1,3 +1,5 @@
+#include brightmaps/textures/textures.bm
+
 //===========================================================================
 // Megasphere
 //===========================================================================
@@ -43,4 +45,19 @@ GRAV_S
 GRAV_W
 GRAV_T
 GRAV_B
+}
+
+// By Jockum Skoglund aka hipshot
+// hipshot@zfight.com
+// www.zfight.com
+// Stockholm, 2005 08 25
+// Modified by Cardboard Marty
+skybox DEMO fliptop
+{
+DEMO_N
+DEMO_E
+DEMO_S
+DEMO_W
+DEMO_T
+DEMO_B
 }

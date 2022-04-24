@@ -108,7 +108,7 @@ texture BZ2WTR00 range BZ2WTR15 tics 4
 	warp2 flat BZ2WTR14
 	warp2 flat BZ2WTR15
 	
-texture BZ2WTRF0 range BZ2WTRF3 tics 4
+texture BZ2WTRF0 range BZ2WTRF3 tics 2
 
 // Demoscape Green Water
 texture DHBWTR00 range DHBWTR15 tics 4
@@ -130,7 +130,7 @@ texture DHBWTR00 range DHBWTR15 tics 4
 	warp2 flat DHBWTR14
 	warp2 flat DHBWTR15
 	
-texture DHBWTRF0 range DHBWTRF3 tics 4
+texture DHBWTRF0 range DHBWTRF3 tics 2
 	
 // Jump Pad Rings
 // By Cardboard Marty
@@ -153,6 +153,18 @@ texture CYBEF0
 	pic CYBEF4 tics 1
 	pic CYBEF5 tics 1
 	pic CYBEF6 tics 1
+	
+// Healing Field (literally a recolored version of the above)
+// By Cardboard Marty
+texture CYBAF0
+    pic CYBAF0 tics 1
+	pic CYBAF1 tics 1
+	pic CYBAF2 tics 1
+	pic CYBAF3 tics 1
+	pic CYBAF4 tics 1
+	pic CYBAF5 tics 1
+	pic CYBAF6 tics 1
+	
 	
 cameratexture TSPCAMTX 256 128
 cameratexture TSPCAMT1 256 128 fit 128 64
@@ -183,3 +195,19 @@ switch TSPSPWNA
 	pic TSPSPWNB tics 0
 	off sound world/switch01/off
 	pic TSPSPWNA tics 0
+	
+// Weapon/Item Switch
+// By Cardboard Marty
+switch TSPSPWN0
+	on sound world/switch01/on
+	pic TSPSPWN1 tics 1
+	off sound world/switch01/off
+	pic TSPSPWN0 tics 1
+
+// Switch 1
+// By Cardboard Marty
+switch TSPSPWN2
+	on sound world/switch01/on
+	pic TSPSPWN3 tics 1
+	off sound world/switch01/off
+	pic TSPSPWN2 tics 1

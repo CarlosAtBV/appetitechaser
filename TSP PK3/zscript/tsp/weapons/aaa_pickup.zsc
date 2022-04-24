@@ -100,6 +100,8 @@ Class TSP_WeaponPickup : CustomInventory
 	}
 }
 
+// PISTOLS
+
 Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 {
 	override bool FunnyWeaponToGive(Actor toucher)
@@ -136,7 +138,7 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	}
 }
 
-Class TSP_Pickup_MelRetroPistolA : TSP_WeaponPickup
+Class TSP_Pickup_PistolA : TSP_WeaponPickup replaces Pistol
 {
 	override bool FunnyWeaponToGive(Actor toucher)
 	{
@@ -145,10 +147,7 @@ Class TSP_Pickup_MelRetroPistolA : TSP_WeaponPickup
 		switch(toucher.GetClassName())
 		{
 			case 'TSP_MelPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelPistolA",30);
-				break;
-			case 'TSP_MelRetroPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistolA",30);
+				thingGiven = GiveTSPWeapon(toucher,"MelPistolA",15);
 				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
@@ -164,13 +163,49 @@ Class TSP_Pickup_MelRetroPistolA : TSP_WeaponPickup
 			121P A -1;
 			Stop;
 		TSP_MelRetroPlayer:
-			221P A -1;
+			919P A -1;
 			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;
 			Stop;
 	}
 }
+
+/*
+Class TSP_Pickup_PistolB : TSP_WeaponPickup replaces Pistol
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelPistolB",15);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		TSP_MelPlayer:
+			121P A -1;
+			Stop;
+		TSP_MelRetroPlayer:
+			919P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}
+*/
+
 
 Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 {
@@ -182,6 +217,66 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 		{
 			case 'TSP_MelPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"MelSMG",16);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		TSP_MelPlayer:
+			131P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_ShotgunA : TSP_WeaponPickup
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelSMGA",16);
+				break;
+			case 'TSP_DummyPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
+				break;
+		}
+		
+		return thingGiven;
+	}
+	
+	States
+	{
+		TSP_MelPlayer:
+			131P A -1;
+			Stop;
+		TSP_DummyPlayer:
+			BFUG A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_ShotgunB : TSP_WeaponPickup
+{
+	override bool FunnyWeaponToGive(Actor toucher)
+	{
+		bool thingGiven;
+		
+		switch(toucher.GetClassName())
+		{
+			case 'TSP_MelPlayer':
+				thingGiven = GiveTSPWeapon(toucher,"MelSMGB",16);
 				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);

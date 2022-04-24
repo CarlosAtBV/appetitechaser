@@ -68,9 +68,7 @@ ailene/tutorial/goodmorning02	"sounds/characters/ailene/tutorial/vo_tutorial_ail
 ailene/tutorial/goodmorning03	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning03.ogg"
 ailene/tutorial/goodmorning04	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorning04.ogg"
 
-ailene/tutorial/goodluck	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodluck.ogg"
-
-ailene/tutorial/helpprompt { ailene/tutorial/helpprompt01 ailene/tutorial/helpprompt02 ailene/tutorial/helpprompt03 ailene/tutorial/helpprompt04 }
+$random ailene/tutorial/helpprompt { ailene/tutorial/helpprompt01 ailene/tutorial/helpprompt02 ailene/tutorial/helpprompt03 ailene/tutorial/helpprompt04 }
 ailene/tutorial/helpprompt01	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt01.ogg"
 ailene/tutorial/helpprompt02	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt02.ogg"
 ailene/tutorial/helpprompt03	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt03.ogg"
@@ -85,6 +83,7 @@ ailene/tutorial/mel/intro	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_
 ailene/tutorial/mel/maggrapple	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_maggrapple.ogg"
 ailene/tutorial/mel/stasisuppercut	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_stasisuppercut.ogg"
 ailene/tutorial/mel/powerbank	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_powerbank.ogg"
+ailene/tutorial/mel/goodluck	"sounds/characters/ailene/tutorial/vo_tutorial_ailene_mel_goodluck.ogg"
 
 
 ////////////////

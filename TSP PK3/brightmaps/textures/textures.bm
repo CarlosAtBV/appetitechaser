@@ -1,0 +1,12 @@
+// Test Map/Tutorial (Demoscape)
+brightmap texture "textures/test/test_spawner_roomtrim.png"  { map "brightmaps/textures/test/test_spawner_roomtrim.png" }
+brightmap texture "textures/test/test_spawner_roomtrim_long.png"  { map "brightmaps/textures/test/test_spawner_roomtrim_long.png" }
+brightmap texture "textures/test/test_spawner_top.png"  { map "brightmaps/textures/test/test_spawner_roomtrim.png" }
+brightmap texture "textures/test/test_spawner_room_biglight.png"  { map "brightmaps/textures/test/test_spawner_room_biglight.png" }
+brightmap texture "textures/test/test_spawner_room_biglightside.png"  { map "brightmaps/textures/test/test_spawner_room_biglightside.png" }
+brightmap texture TSPSPWNA  { map "brightmaps/textures/test/TSPSPWNA.png" }
+brightmap texture TSPSPWNB  { map "brightmaps/textures/test/TSPSPWNA.png" }
+brightmap texture TSPSPWN0  { map "brightmaps/textures/test/TSPSPWN0.png" }
+brightmap texture TSPSPWN1  { map "brightmaps/textures/test/TSPSPWN0.png" }
+brightmap texture TSPSPWN2  { map "brightmaps/textures/test/TSPSPWN2.png" }
+brightmap texture TSPSPWN3  { map "brightmaps/textures/test/TSPSPWN3.png" }
