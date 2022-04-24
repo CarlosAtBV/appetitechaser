@@ -83,14 +83,14 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		Ready:
 			TNT1 A 0 A_JumpIfInventory("TSP_Upgrade_ChargeStyle", 1, "CompleteReady");
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
-			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
+			TNT1 A 0 A_JumpIfInventory("TSPIdle", 3000, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			111G A 1 A_TSP_MeleeReady();
 			Loop;
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch");
-			TNT1 A 0 A_JumpIfInventory("TSPIdle", 1575, "Idle");
+			TNT1 A 0 A_JumpIfInventory("TSPIdle", 3000, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			111G A 1 A_TSP_MeleeReady();
 			Loop;

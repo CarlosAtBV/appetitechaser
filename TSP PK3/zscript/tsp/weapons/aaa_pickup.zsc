@@ -138,7 +138,7 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	}
 }
 
-Class TSP_Pickup_PistolA : TSP_WeaponPickup replaces Pistol
+Class TSP_Pickup_PistolA : TSP_WeaponPickup
 {
 	override bool FunnyWeaponToGive(Actor toucher)
 	{
