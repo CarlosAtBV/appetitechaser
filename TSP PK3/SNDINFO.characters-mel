@@ -71,7 +71,7 @@ mel/xdeath02 "sounds/characters/mel/vo_mel_death_xdeath02.ogg"
 $volume mel/xdeath 0.7
 
 
-$random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump08 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
+$random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
 mel/jump01 "sounds/characters/mel/vo_mel_jump01.ogg"
 mel/jump02 "sounds/characters/mel/vo_mel_jump02.ogg"
 mel/jump03 "sounds/characters/mel/vo_mel_jump03.ogg"
@@ -154,12 +154,18 @@ $random mel/magdunk { mel/dunk2 mel/dunk3 null null null null null null null nul
 mel/dunk2 "sounds/characters/mel/melee/vo_mel_magslam2.ogg"
 mel/dunk3 "sounds/characters/mel/melee/vo_mel_magslam3.ogg"
 
-$random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 null null null null null null }
-meltemp1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic01.ogg" 
+$random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 meltemp6 meltemp7 meltemp8 meltemp9 meltemp10 meltemp11 null null null null null null }
+meltemp1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic03.ogg" 
 meltemp2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
 meltemp3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic05.ogg"
-meltemp4 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
-meltemp5 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+meltemp4 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic06.ogg"
+meltemp5 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
+meltemp6 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic11.ogg"
+meltemp7 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic12.ogg"
+meltemp8 "sounds/characters/mel/money/vo_mel_gbd03.ogg"
+meltemp9 "sounds/characters/mel/money/vo_mel_gbd06.ogg"
+meltemp10 "sounds/characters/mel/melee/vo_mel_maggrapple4.ogg"
+meltemp11 "sounds/characters/mel/melee/vo_mel_maggrapple5.ogg"
 
 ////////////////////
 //Mel's Pickup Lines
@@ -202,7 +208,7 @@ mel/casterpickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster2.ogg
 mel/casterpickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster3.ogg"
 
 //GENERIC
-$random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10}
+$random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10 mel/genericpickup11 mel/genericpickup12 }
 mel/genericpickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic01.ogg"
 mel/genericpickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic02.ogg"
 mel/genericpickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic03.ogg"
@@ -213,3 +219,5 @@ mel/genericpickup7 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic07.
 mel/genericpickup8 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic08.ogg"
 mel/genericpickup9 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic09.ogg"
 mel/genericpickup10 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic10.ogg"
+mel/genericpickup11 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic11.ogg"
+mel/genericpickup12 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic12.ogg"
