@@ -17,13 +17,14 @@ vec4 Process(vec4 color)
 	baseUV.x = (texUV.y + newTimer * SPEED);
 	baseUV.y = (texUV.x + newTimer * SPEED);
 	
-	vec2 waves = sin(pi * 2.0 * baseUV) * 0.1;
+	vec2 waves = sin(pi * 3.0 * baseUV) * 0.05;
+	waves.y += -newTimer / 4;
 	
 	vec2 rippleUV = texUV.st + waves;
 	
     vec2 p = floor(pixelpos.xz) / 512;
-	p.x += newTimer / 5;
-	p.y += newTimer / 10;
+	p.x += newTimer / 30;
+	p.y += newTimer / 30;
 	p *= 512;
 	p = floor(p);
 	p /= 512;
