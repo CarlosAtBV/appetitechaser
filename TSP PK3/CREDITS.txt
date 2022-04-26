@@ -1,0 +1,344 @@
+
+                       ,▄mP█U                                   ,▄
+          ,╓▄A▀▀█▄Æ▀█▀'    ▐▌                            ,▄▄█▀▀▀▐█
+    ▄▄Æ▀███▀█       █  j█  ▐▌                    ,▄▄▄███▀└      j█
+    █∩     ,█   █   █   ▀   █             ,▄▄▄▀▀▀╙    █▌   ╒▄    █∩
+    ▐▌  ▐▀╙ █∩  █   █    ,▄m█     ,╓▄▄█▀▀▀└▐█         ▐█   j█    █▌
+    ▐▌  ▐▌  ▐▌  █U  █⌐  .   █▄▄█▀██.        █∩   █▌   ▐█    ▀    █▌
+    j█  ▐▌  ▐▌  ▐▌  ▐▌▄▄M▀▀└     ▐█,▄▄&▀    █▌   ██&▀▀▀█       ,▄██
+     █      j█╓▄▐▀▀▀└  █U   ,▄   ▐█└        █▌   ▐█    █⌐   ▀▀▀" ▐█         ,╓▄▄███
+     █,▄▄Æ▀▀██         █▌   ██   ¬█    █L   ██   ▐█    █▌      ,▄▄█  ,▄▄▄▀▀▀╙    ▐█
+     └      ▐█    █▄▄▄▄█▌   ▐█    █⌐   █▌   ▐█         █▌▄▄███▀   ▀▀▀└ █▌    ,    █
+            j█    ▀└   ██   j█    █▌   ▀└   ▐█  ,▄▄▄███████▀▀█       ,▄██   ▐█    █U
+             █∩        ▐█    █    █▌     ,▄▄████████▀▀╙      █    ██▀└ ▐█    █    █▌
+             ██▄▀▀██   j█        ,██▄▀▀▀████▀▀▀└  ██  ,╓▄    █µ   █▌   ▐█         █▌
+             █▌         █⌐   ▄██████    █⌐        ▐█▀▀╙      █▌   ▐█   j█    ▄▄▀▀▀██
+             ██    ¿▄▄█▀█▌▄▄Æ▀▀▀└ ▐█▄▀▀▀█U   █▌   ▐█    ▄    █▌   ▐█    █U        ▐█
+             ▐██▀▀▀"    █▌        ¬█    █▌       ,▄█    █▌   ▐█    ▀    █▌ ,▄▄▄█▀▀▀"
+                        █▌   ▐█    █U   █▌   }▀▀▀╙└█∩   █▌   ▐█     ,▄▄█▀▀▀╙
+                        ▐█   j█    █▌   ▐█         █▌       ,▐█▄█▀▀▀└
+                        ▐█    █∩   █▌   ▐█    █∩   █▌,▄▄▄▀▀▀╙
+                        j█    █▌   ██   j█    █▄▄█▀▀▀└
+                         █∩   ╙    ▐█ ,▄▄██▀▀▀'
+                         █▌    ,▄▄█▀▀▀╙
+                         █▌   ▐█
+                         ██▀▀▀└
+    
+	
+						A GAMEPLAY MOD BY BLUE VERTIGO
+
+=====================================================================================
+
+[PLACES YOU CAN FIND TSP]:
+
+https://bluevertigo.org/thespacepirate - TSP on itch.io
+https://forum.zdoom.org/viewtopic.php?f=43&t=73662 - TSP on the ZDoom Forums
+https://www.moddb.com/mods/the-space-pirate - TSP on ModDB
+
+=====================================================================================
+
+[TEAM TSP]:
+Carlos Sanchez/Cardboard Marty - Project Lead
+https://twitter.com/CardboardMarty
+
+DrPyspy - Project Lead
+https://twitter.com/DrPyspy
+
+Ana Grol - Lead Artist, Character Design
+https://twitter.com/ByAnaGroL
+
+peach_pxl - Promotional Materials Artist, Character Design
+https://twitter.com/peach_pxl
+
+VOICE CAST:
+Melody Crosswell - Krystal LaPorte (https://twitter.com/WowSuchKrystal)
+AILENE - Shanaura Marie (https://twitter.com/ShanauraMarie)
+Zane Doran - CJ Heineman (https://twitter.com/CJ_Heineman)
+
+MUSIC by Blue Vertigo
+Available for purchase and streaming at https://bluevertigo.bandcamp.com/
+
+=====================================================================================
+
+CREDITS (SOUNDS)
+Please give credit to Blue Vertigo and the following authors if any audio assets from
+The Space Pirate are used in your own projects. Items that were unmodified from their
+original sources are denoted with an *. Audio files located in the .PK3 have also been
+tagged with proper credits. 
+
+VOICE SAMPLES AND MUSIC RECORDED FOR THE SPACE PIRATE MAY NOT BE USED IN YOUR OWN PROJECTS.
+For any questions, reach out to Cardboard Marty or DrPyspy.
+
+[AMBIENCE]
+	FRIDGE SOUNDS
+	- Stachekip
+
+	SWITCHES
+	- Buttons and Switches Bible by Cinematic
+	- Hybrid Game Sounds by Cinematic
+	- Industry Vol. 2 by Cinematic
+	- Sci-Fi Vol. 4 by Cinematic
+	- Sounds of Coney Island by Cinematic
+
+[CHARACTERS]
+	AILENE
+	- Voiced by Shanaura Marie
+	- Manipulated by Carlos Sanchez
+	MELODY CROSSWELL
+	- Voiced by Krystal LaPorte
+	MELODY CROSSWELL (RETROGRADE)
+	- Voiced by Krystal LaPorte
+	- Robo version manipulated by torridgristle
+	
+[GENERAL - ITEMS]
+	BOUNTY HUNTER CRYSTAL
+	- PlanetSide 2
+	- Street Fighter II
+	- Street Fighter V
+	- Mortal Kombat (2011)
+	- Mortal Kombat X
+	- Tribes Ascend
+
+	WEAPON PICKUP
+	- Super Monday Night Combat
+	- Mortal Kombat X
+	- Resident Evil 4
+	
+[GENERAL - PLAYER]
+	LANDING
+	- Wolfenstein: The New Order *
+
+	MANTLE
+	- Devil May Cry 4: Special Edition
+	- Chronicles of Riddick: Assault on Dark Athena
+
+	SHIELD (DEPLETE)
+	- Devil May Cry 4: Special Edition
+	- Mortal Kombat X
+	- Super Monday Night Combat
+
+	SHIELD (HIT)
+	- Mortal Kombat X
+
+	SLIPDASH
+	- Chronicles of Riddick: Assault on Dark Athena
+	- Mortal Kombat X
+	- Super Monday Night Combat
+
+[MENU]
+	BOUNTY HUNTERS INTRO
+	- Nemesis - War of the Gods by Cinematic
+	- Wooshes by Cinematic
+
+	LOGO INTRO SWOOSH
+	- Chronicles of Riddck: Assault on Dark Athena
+
+	MENU/UI SOUNDS
+	- Pokken Tournament *
+
+	QUIT SOUNDS
+		QUIT 1
+		- Pokken Tournament *
+		QUIT 2
+		- Arin Hanson (Game Grumps) *
+		QUIT 3
+		- Jill Of The Jungle Original Soundtrack * (This was borrowed from SgtShivers and Yholl's Laundry 3 project)
+		QUIT 4
+		- Carlos Sanchez *
+		QUIT 5
+		- Windows 95 *
+		QUIT 6
+		- Bomberman Hero, Jun Chikuma * (Slightly sped up!)
+		QUIT 7
+		- DrPyspy *
+		QUIT 8
+		- Mortal Kombat 2 *
+		QUIT 9
+		- Shanaura Marie *
+
+[SHOP]
+	GBD SHOP UI
+	- GDC 2018 Audio Bundle
+	- No Heroes Allowed VR, Kamen Rider Battride War
+	- Resident Evil 4
+
+	GBD SHOP UNLOCK
+	- Super Smash Bros. Brawl *
+
+	GLOBAL DOLLAR PICKUP (SMALL)
+	- Mortal Kombat: Deadly Alliance *
+
+[UI]
+	FALL/TELEPORT
+	- Doom Eternal *
+
+	INTERMISSION RATING
+	- Doom Eternal *
+	
+[WEAPON FX]
+	MELEE KILL
+	- DrPyspy
+
+[WEAPONS]
+	MEL (GENERAL)
+		EQUIP HAND
+		- GDC 2018 Audio Bundle
+		- Mortal Kombat (2011)
+		- PlanetSide 2
+
+		IDLE, STYLE CHANGE, TRAIT CHANGE
+		- GDC 2018 Audio Bundle
+		- Mortal Kombat (2011)
+		- Mortal Kombat X
+		
+	MEL (MAG MANUEVERS)
+	- Dying Light: Enhanced Edition
+	- Hybrid Game Sounds by Cinematic
+	- Mortal Kombat vs DC Universe
+	- Mortal Kombat (2011)
+	- Mortal Kombat X
+	- Super Monday Night Combat
+	- Wolfenstein (2009)
+
+	MEL (MAG MANUEVERS [RETROGRADE])
+	- Chronicles of Riddick: Assault on Dark Athena
+	- GDC 2018 Audio Bundle
+	- Jedi Knight II: Jedi Outcast
+	- Mortal Kombat (2011)
+	- Mortal Kombat X
+	- Quake III Arena
+			
+	DARLING NIKKI
+		DEFAULT (FIRING)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Devil May Cry 4: Special Edition
+		- PlanetSide 2
+		- Sniper Elite 3
+
+		DEFAULT (ADS TOGGLE)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Insurgency
+		- Mortal Kombat (2011)
+		- PlanetSide 2
+
+		SPITFIRE (FIRING)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Devil May Cry 4: Special Edition
+		- PlanetSide 2
+		- Sniper Elite 3
+
+		SPITFIRE (ADS TOGGLE)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Insurgency
+		- Mortal Kombat (2011)
+		- PlanetSide 2
+
+		WHISPER (FIRING)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Devil May Cry 4: Special Edition
+		- GDC 2018 Audio Bundle
+		- PlanetSide 2
+		- Sniper Elite 3
+
+		TREASURED (FIRING)
+		- Devil May Cry 4: Special Edition
+		- PlanetSide 2
+		- Super Monday Night Combat
+
+		GENERAL/HANDLING
+		- Chronicles of Riddick: Assault on Dark Athena
+		- GDC 2018 Audio Bundle
+		- Halo Reach
+		- Insurgency
+		- Mortal Kombat (2011)
+		- PlanetSide 2
+		- Sniper Elite III
+		- Super Monday Night Combat
+
+		UPGRADE/MOD SWAP
+		- Chronicles of Riddick: Assault on Dark Athena
+		- GDC 2018 Audio Bundle
+		
+	SUZUKA
+		DEFAULT (FIRING)
+		- Alien vs Predator 2
+		- DOOM (2016)
+		- Halo Reach
+		- Left 4 Dead
+		- PlanetSide 2
+
+		DEFAULT (ADS TOGGLE)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Insurgency
+		- PlanetSide 2
+		- Wolfenstein (2009)
+
+		SHOTGUN (FIRING)
+		- Alien vs Predator 2
+		- DOOM (2016)
+		- Dying Light: Enhanced Edition
+		- Left 4 Dead
+
+		SHOTGUN (TOGGLE)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Halo Reach
+		- Insurgency
+		- Mortal Kombat X
+		- PlanetSide 2
+		- Wolfenstein (2009)
+
+		NAILGUN (FIRING)
+		- Alien vs Predator 2
+		- Chronicles of Riddick: Assault on Dark Athena
+		- DOOM (2016)
+		- Left 4 Dead
+		- Mortal Kombat X
+		- PlanetSide 2
+
+		NAILGUN (TOGGLE)
+		- Alien vs Predator 2
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Mortal Kombat X
+		- PlanetSide 2
+		- Wolfenstein (2009) 
+
+		GRENADE (FIRING)
+		- Alien vs Predator 2
+		- Chronicles of Riddick: Assault on Dark Athena
+		- DOOM (2016)
+		- Left 4 Dead
+
+		SNIPER (FIRING)
+		- Alien vs Predator 2
+		- DOOM (2016)
+		- Wolfenstein (2009)
+
+		SNIPER (TOGGLE)
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Insurgency
+		- PlanetSide 2
+		- Wolfenstein (2009)
+
+		GENERAL/HANDLING
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Dying Light: Enhanced Edition
+		- Halo Reach
+		- Insurgency
+		- Left 4 Dead
+		- Super Monday Night Combat
+
+		UPGRADE/MOD SWAP
+		- Alien Breed: Impact
+		- Chronicles of Riddick: Assault on Dark Athena
+		- Insurgency
+		
+	MELEE (CHARGE)
+	- Mortal Kombat (2011)
+	- Mortal Kombat X
+	- RTFX Generator
+
+	MELEE (METAL)
+	- Mortal Kombat X
+
+	MELEE (UNIVERSAL)
+	- Mortal Kombat X
