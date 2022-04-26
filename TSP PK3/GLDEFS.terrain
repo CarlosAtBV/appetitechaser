@@ -4,3 +4,12 @@ hardwareshader texture "textures/terrain/tsp_terraintest.png"
 	texture "mixTex1" "textures/terrain/cat/tsp_cat_grass.png"
 	texture "mixTex2" "textures/terrain/cat/tsp_cat_dirt.png"
 }
+
+hardwareshader texture "textures/tsp/test/watertest.png"
+{
+	shader "shaders/glsl/flowingwater.fp"
+	texture "texRipples" "shaders/glsl/water/water_ripples.png"
+	texture "texRipples2" "shaders/glsl/water/water_ripples2.png"
+	texture "texClouds" "shaders/glsl/water/water_clouds.png"
+	texture "texRamp" "shaders/glsl/water/water_ramp_bastetia.png"
+}
