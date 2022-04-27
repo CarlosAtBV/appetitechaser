@@ -24,18 +24,9 @@ maps
 				option2 = 0;
 				notfortesting = 0;
 			}
-			
-			resource1
-			{
-				type = 0;
-				location = "E:\\Temp Doom Stuff\\Projects\\Resources\\Fog.WAD";
-				option1 = 0;
-				option2 = 0;
-				notfortesting = 0;
-			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = -432.7336f;
+		viewpositionx = -747.5813f;
 		defaulttoptexture = "textures/test/test_blank_pink.png";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -51,20 +42,20 @@ maps
 			gridrotate = 0;
 			backscalex = 100;
 			gridoriginx = 0;
-			gridsize = 8;
+			gridsize = 16;
 			background = "";
 			backoffsety = 0;
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "textures/test/test_blank_pink.png";
 		defaultfloortexture = "F_SKY1";
-		viewpositiony = -509.0769f;
+		viewpositiony = -714.6779f;
 		defaultwalltexture = "textures/test/test_blank_pink.png";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.6654143f;
+		viewscale = 0.3937358f;
 		
 		reloadresourceprecommand
 		{

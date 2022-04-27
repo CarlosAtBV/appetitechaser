@@ -73,12 +73,18 @@ For any questions, reach out to Cardboard Marty or DrPyspy.
 	FRIDGE SOUNDS
 	- Stachekip
 
+	NEOSCAPE AMBIENCE
+	- Sunrise * (ripped from a video by crysknife007)
+
 	SWITCHES
 	- Buttons and Switches Bible by Cinematic
 	- Hybrid Game Sounds by Cinematic
 	- Industry Vol. 2 by Cinematic
 	- Sci-Fi Vol. 4 by Cinematic
 	- Sounds of Coney Island by Cinematic
+	
+	WATERFALL
+	- Ancient Game by Cinematic *
 
 [CHARACTERS]
 	AILENE
