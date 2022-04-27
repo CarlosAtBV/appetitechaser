@@ -8,3 +8,7 @@ $rolloff ambience/fridge/loop 200 312
 // Switches
 world/switch01/on "sounds/ambience/switch01_on.ogg"
 world/switch01/off "sounds/ambience/switch01_off.ogg"
+
+// Waterfall
+ambience/waterfall/normal "sounds/ambience/sfx_ambient_waterfall_normal_loop.ogg"
+$ambient 55 ambience/waterfall/normal point continuous 1.0
