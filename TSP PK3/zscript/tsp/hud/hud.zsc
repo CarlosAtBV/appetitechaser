@@ -17,6 +17,10 @@ Class TSP_StatusBar : BaseStatusBar
 	HUDFont fnt_ammoTag;
 	HUDFont fnt_pickupLog;
 	
+	const FONT_AMMOTAG = "tsp_ammo_tag";
+	const FONT_AMMOBIG = "tsp_ammo_big";
+	const FONT_AMMOSMALL = "tsp_ammo_small";
+	
 	InventoryBarState diparms;
 	LinearValueInterpolator mHealthInterpolator;
 	LinearValueInterpolator mShieldInterpolator;
@@ -136,9 +140,7 @@ Class TSP_StatusBar : BaseStatusBar
 	const HUDLEFT_X = 0;
 	const HUDLEFT_Y = 720-140;//-140;
 	const HUDRIGHT_X = -270;
-	const HUDRIGHT_Y = -140;
-	
-	const FONT_AMMOTAG = "tsp_ammo_tag";
+	const HUDRIGHT_Y = 720-140;
 	
 	double hud_scale;
 
@@ -173,6 +175,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			Vector2 hudScale = GetHUDScale();
 			hud_scale = screen.GetHeight() / 720.0;
+			
 			screenSize = ( screen.GetWidth()/hudScale.x, screen.GetHeight()/hudScale.y );
 			
 			TSP_DrawImage("graphics/testoby_wipswell.png", (0, 0));
@@ -365,21 +368,24 @@ Class TSP_StatusBar : BaseStatusBar
 				switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 				{
 					case 1: 
-						DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Green Sparks (Default Mel)
+						TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Green Sparks (Default Mel)
+						break;
 					case 2:
-						DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Green Sparks (Retrograde Mel)
+						TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Green Sparks (Retrograde Mel)
+						break;
 					case 3: 
-						DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break; // Pink Sparks  (Retro/Robo Mel)
+						TSP_DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Pink Sparks  (Retro/Robo Mel)
+						break;
 					default:
-								if(CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2) // Are you Robo/Retro Mel?
-								{
-								DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); // Pink Sparks
-								}
-								else // You are not a robot
-								{
-								DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); // Green Sparks
-								}
-							
+						if ( CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2 ) // Are you Robo/Retro Mel?
+						{
+							TSP_DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12)); // Pink Sparks
+						}
+						else // You are not a robot
+						{
+							TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); // Green Sparks
+						}
+						break;
 				}
 			}
 			
@@ -412,14 +418,14 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			
 			// SHADOW
-			DrawImage("HUD_RBG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			TSP_DrawImage("HUD_RBG", (HUDRIGHT_X, HUDRIGHT_Y));
 			
 			//================
 			// TRAIT
 			//================
 			
-			DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
-			DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS, mTraitAlpha);
+			TSP_DrawImage("MEL_TRTE", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
+			TSP_DrawImage("MEL_TRTF", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT, mTraitAlpha);
 			
 			
 			// MEL SHENANIGANS
@@ -434,7 +440,7 @@ Class TSP_StatusBar : BaseStatusBar
 			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelBareKnuckle")
 			{
 				DrawBar("HUD_MELB", "HUD_MELE", charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), 0, 0, DI_ITEM_OFFSETS);
-				DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				TSP_DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 			}
 			
 /*
@@ -473,34 +479,35 @@ Class TSP_StatusBar : BaseStatusBar
 			// MAIN HUD GRAPHIC (AMMO)
 			if (a1 != null)
 			{
-				DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+				TSP_DrawImage("HUD_RBGW", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 			}				
 
 			// MAIN HUD GRAPHIC (RIGHT)
-			DrawImage("graphics/hud/hud_rightbit_behindweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			TSP_DrawImage("graphics/hud/hud_rightbit_behindweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 			
 			float finalWeaponoffset = hud_weaponport_offsetLast + ( hud_weaponport_offset - hud_weaponport_offsetLast ) * TicFrac;
 			
 			if ( getWeapon )
 			{
+				Vector2 clipPos, clipSize;
 				for ( int i = 0; i < 2; i++ )
 				{
-					int clipX = i == 0 ? 0 : 233;
-					int clipY = 0;
-					int clipW = i == 0 ? 233 : 9;
-					int clipH = i == 0 ? 108 : 96;
-					SetClipRect(HUDRIGHT_X+clipX, HUDRIGHT_Y+clipY, clipW, clipH);
-					DrawImage(getWeapon.tspw_portrait, (HUDRIGHT_X + 135 + finalWeaponoffset, HUDRIGHT_Y + 25 + finalWeaponoffset), DI_ITEM_OFFSETS);
+					clipPos.x = i == 0 ? 0 : 233;
+					clipPos.y = 0;
+					clipSize.x = i == 0 ? 233 : 9;
+					clipSize.y = i == 0 ? 112 : 98;
+					TSP_SetClipRect(HUDRIGHT_X+clipPos.x, HUDRIGHT_Y+clipPos.y, clipSize.x, clipSize.y);
+					TSP_DrawImage(getWeapon.tspw_portrait, (HUDRIGHT_X + 135 + finalWeaponoffset, HUDRIGHT_Y + 25 + finalWeaponoffset), TDF_HUDRIGHT);
 				}
 				
 				ClearClipRect();
 			}
 			
-			DrawImage("graphics/hud/hud_rightbit_infrontofweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+			TSP_DrawImage("graphics/hud/hud_rightbit_infrontofweapon.png", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 			
 			if ( getWeapon )
 			{
-				//DrawString(FONT_AMMOTAG, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+				TSP_DrawString(FONT_AMMOTAG, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), TDF_ALIGN_RIGHT, Font.CR_UNTRANSLATED);
 			}
 
 			// POWERBANK
@@ -508,9 +515,8 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				if(charge > 9)
 				{
-				DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), DI_ITEM_OFFSETS);
+					TSP_DrawImage("HUD_RCHG", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 				}
-				
 			}
 			
 			// Draw Weapon Slots
@@ -607,17 +613,17 @@ Class TSP_StatusBar : BaseStatusBar
 						string clipString = string.format("%03d", clipAmount);
 						for ( int i; i < clipString.length(); i++ )
 						{
-							/*TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW,
+							TSP_DrawString(FONT_AMMOBIG, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), TDF_HUDRIGHT,
 								a1.amount == 0 ? CLR_AMMO_LOW : clipColor,
-								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);*/
+								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 						
 						int ammoAmount = a1.amount;
 						string ammoString = string.format("%03d", ammoAmount);
 						for ( int i; i < ammoString.length(); i++ )
 						{
-							/*TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
-								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);*/
+							TSP_DrawString(FONT_AMMOSMALL, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), TDF_HUDRIGHT, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
+								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);
 						}
 					}
 					

@@ -1,23 +1,45 @@
 Extend Class TSP_StatusBar
 {
+	enum TSPDrawTextureFlags
+	{
+		TDF_HUDLEFT = 0,
+		TDF_HUDRIGHT = 0x1,
+	}
+	
 	enum TSPDrawTextFlags
 	{
 		TDF_ALIGN_LEFT = 0,
-		TDF_ALIGN_RIGHT = 0x1,
-		TDF_ALIGN_CENTER = 0x2,
-	}
-
-	void TSP_DrawImage (String image, Vector2 pos)
-	{
-		let tex = TexMan.CheckForTexture(image);
-		TSP_DrawTexture(tex, pos);
+		TDF_ALIGN_RIGHT = 0x01,
+		TDF_ALIGN_CENTER = 0x02,
 	}
 	
-	void TSP_DrawTexture (TextureID tex, Vector2 pos)
+	void TSP_SetClipRect(int x, int y, int width, int height, int flags = 0)
+	{
+		float fx = x * hud_scale;
+		if ( flags & TDF_HUDRIGHT )
+		{
+			fx += screen.GetWidth();
+		}
+		SetClipRect(fx, (y * hud_scale), (width * hud_scale), (height * hud_scale));
+	}
+
+	void TSP_DrawImage (String image, Vector2 pos, int flags = 0, float alpha = 1.0)
+	{
+		let tex = TexMan.CheckForTexture(image);
+		TSP_DrawTexture(tex, pos, flags, alpha);
+	}
+	
+	void TSP_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0)
 	{
 		pos *= hud_scale;
 		pos += drawOffset;
-		screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);
+		if ( flags & TDF_HUDRIGHT )
+		{
+			pos.x += screen.GetWidth();
+		}
+		screen.DrawTexture(tex, true, pos.x, pos.y,
+			DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale,
+			DTA_Alpha, alpha);
 	}
 	
 	void TSP_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
@@ -43,11 +65,17 @@ Extend Class TSP_StatusBar
 		pos *= hud_scale;
 		pos += drawOffset;
 		
+		if ( flags & TDF_HUDRIGHT )
+		{
+			pos.x += screen.GetWidth();
+		}
+		
 		for ( int i = 0; i < string.Length(); i++ )
 		{
 			string charTex = "fonts/"..getFont.."/"..(String.Format("%04x", string.ByteAt(i)))..".png";
 			TextureID tex = TexMan.CheckForTexture(charTex);
-			screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);
+			screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale,
+				DTA_Alpha, alpha, DTA_Color, color);
 			pos.x += ( fnt.GetCharWidth(string.ByteAt(i)) + kerning ) * hud_scale;
 		}
 		

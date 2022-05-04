@@ -1,11 +1,21 @@
 HardwareShader Texture "graphics/testoby_wipswell.png" { Shader "shaders/glsl/bilinear.fp" }
 
+// Left HUD
 HardwareShader Texture "HUD_LBAS" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "HUD_LMON" { Shader "shaders/glsl/bilinear.fp" }
+
+// Right HUD
+HardwareShader Texture "graphics/hud/hud_rightbit_behindweapon.png" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "graphics/hud/hud_rightbit_infrontofweapon.png" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "MEL_TRTE" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "MEL_TRTF" { Shader "shaders/glsl/bilinear.fp" }
 
 HardwareShader Texture "MC1ST01" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "MC1ST02" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "MC1ST03" { Shader "shaders/glsl/bilinear.fp" }
+
+// Weapons
+HardwareShader Texture "graphics/hud/weapons/nikki_unmodded.png" { Shader "shaders/glsl/bilinear.fp" }
 
 HardwareShader Texture "fonts/tsp_ammo_tag/0030.png" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "fonts/tsp_ammo_tag/0031.png" { Shader "shaders/glsl/bilinear.fp" }
