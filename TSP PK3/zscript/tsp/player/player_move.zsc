@@ -1,6 +1,7 @@
 Extend Class TSP_PlayerPawn_ZSCBase
 {	
 	bool tsp_crouchSliding;
+	bool tsp_firstSlideBoost;
 	bool tsp_slidingOnGround;
 	
 	double tsp_bob;
@@ -33,10 +34,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		if ( vel.z == 0 && oldVelZ < 0 )
 		{
 			tsp_landpunch = oldVelZ/3;
-			/*if ( oldVelZ < -5 )
-			{
-				tsp_landpitch = oldVelZ/3;
-			}*/
 		}
 		tsp_landpitch = tsp_landpitch + ( tsp_landpunch/5 - tsp_landpitch ) / 5;
 		
@@ -76,6 +73,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( isSlidingOnGround )
 		{
+			if ( !tsp_firstSlideBoost )
+			{
+				tsp_firstSlideBoost = true;
+				double boostAngle = angle + DeltaAngle(angle, atan2(vel.y, vel.x))/2;
+				vel.xy = (cos(boostAngle), sin(boostAngle)) * vel.xy.Length() * 1.5;
+			}
 			if ( !tsp_slidingOnGround )
 			{
 				A_StartSound("ability/slipdash/start", 98);
@@ -95,12 +98,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
 		{
+			tsp_firstSlideBoost = false;
 			tsp_crouchSliding = false;
 		}
 		else if ( player.cmd.buttons & BT_CROUCH )
 		{
 			if ( !(player.oldbuttons & BT_CROUCH) && tsp_crouchSliding ) // press crouch to cancel out of slide
 			{
+				tsp_firstSlideBoost = false;
 				tsp_crouchSliding = false;
 			}
 			else if ( !player.onground )
@@ -108,7 +113,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				if ( !tsp_crouchSliding )
 				{
 					vel.z -= 4;
-					vel.xy += (cos(angle), sin(angle)) * 6;
+					vel.xy += (cos(angle), sin(angle)) * 1.5;
 				}
 				tsp_crouchSliding = true;
 			}
@@ -118,7 +123,20 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( tsp_crouchSliding && player.onground )
 		{
-			vel.xy *= 0.98;
+			int forwardZ = GetZAt(vel.xy.Length(), 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
+			if ( forwardZ > pos.z )
+			{
+				COnsole.Printf("FUCK YOU");
+				vel.xy *= (pos.z / forwardZ) / 2;
+			}
+			else if ( vel.xy.Length() < 8 )
+			{
+				vel.xy *= 0.875;
+			}
+			else
+			{
+				vel.xy *= 0.975;
+			}
 		}
 		else if ( player.onground )
 		{
@@ -152,6 +170,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				vel.xy *= cos(pitch);
 			}
 		}
+		
+		MaxStepHeight = tsp_crouchsliding ? 16 : 24;
 		
 		//int stepFreq = 30 / runspeed;
 		double bobTarg = cos(level.maptime * runspeed * 8) * tsp_bobAmt;//(stepFreq - (level.maptime % stepFreq)) / double(stepFreq) * tsp_bobAmt;
@@ -249,6 +269,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			tsp_crouching = true;
 			A_SetSize(-1, 56/2);
+		}
+		
+		if ( tsp_crouchSliding )
+		{
+			int randomDir = atan2(vel.y, vel.x) + random(25,45) * randompick(-1,1);
+			let smonk = TSP_CrouchSlideSmoke(Spawn("TSP_CrouchSlideSmoke", pos + vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
+			smonk.targAlpha = min((vel.x, vel.y).Length() / 32, 1.0);
 		}
 	}
 	

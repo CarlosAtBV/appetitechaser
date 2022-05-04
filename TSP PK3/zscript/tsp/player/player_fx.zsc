@@ -1,0 +1,24 @@
+Class TSP_CrouchSlideSmoke : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		RenderStyle "Translucent";
+		Alpha 0;
+		+FORCEXYBILLBOARD
+	}
+	
+	float targAlpha;
+	
+	States
+	{
+		Spawn:
+			TSMK AAA 1
+			{
+				alpha += targAlpha / 2;
+				vel.z = 4;
+			}
+			TSMK A 1 A_FadeOut(0.05);
+			Wait;
+	}
+}
