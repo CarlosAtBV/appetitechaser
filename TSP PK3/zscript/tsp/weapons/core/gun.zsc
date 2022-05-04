@@ -38,8 +38,8 @@ Extend Class TSP_Weapon_Core
 			//Console.Printf(numbullets.."");
 			for ( int i = 0; i < abs(numbullets); i++ )
 			{
-				double angle = owner.angle;// + frandom(-spread_xy, spread_xy);
-				double pitch = owner.pitch;// + frandom(-spread_z, spread_z);
+				double angle = owner.angle + frandom(-spread_xy, spread_xy);
+				double pitch = owner.pitch + frandom(-spread_z, spread_z);
 				FLineTraceData traceData;
 				owner.LineTrace(angle, range, pitch, 0, viewz, 0, 0, traceData);
 				let hitFella = traceData.HitActor;
