@@ -261,7 +261,7 @@ Class TSP_StatusBar : BaseStatusBar
 								break;
 							case 2:
 								clipPos = (HUDLEFT_X+128, HUDLEFT_Y+87);
-								clipSize = (125, 6);
+								clipSize = (125, 12);
 								break;
 						}
 						clipPos *= hud_scale;
