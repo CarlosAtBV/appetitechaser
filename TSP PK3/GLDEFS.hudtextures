@@ -19,3 +19,6 @@ HardwareShader Texture "graphics/hud/weapons/nikki_unmodded.png" { Shader "shade
 
 HardwareShader Texture "fonts/tsp_ammo_tag/0030.png" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "fonts/tsp_ammo_tag/0031.png" { Shader "shaders/glsl/bilinear.fp" }
+
+HardwareShader Texture "fonts/tsp_ammo_big/0030.png" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "fonts/tsp_ammo_big/0031.png" { Shader "shaders/glsl/bilinear.fp" }
