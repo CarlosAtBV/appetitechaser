@@ -46,7 +46,8 @@ Extend Class TSP_Weapon_Core
 				
 				if ( hitFella )
 				{
-					hitFella.DamageMobj(owner, owner, damage, 'Hitscan');
+					Spawn(hitFella.BloodType, traceData.HitLocation);
+					hitFella.DamageMobj(owner, owner, fbDamage, 'Hitscan');
 					if ( hitFella.Health > 0 && random(0,255) < hitFella.PainChance )
 					{
 						if ( traceData.HitActor.FindState("Pain") )
