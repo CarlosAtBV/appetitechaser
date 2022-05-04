@@ -462,7 +462,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				//Console.Printf(""..bounceOffAngle);
 				Thrust(14,bounceOffAngle/*angle+(25*sidedir)*/);
 				A_PlaySound("*jump",CHAN_VOICE);
-				vel.z = clamp(12-(ptp_wallJumps/*/1.25*/),0,12);
+				vel.z = clamp(12-(ptp_wallJumps-2),0,12);
 				ptp_wallJumps++;
 			}
 		}
