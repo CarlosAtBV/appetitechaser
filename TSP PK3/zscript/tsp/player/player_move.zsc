@@ -27,6 +27,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_landpunch;
 	double tsp_landpitch;
 	double tsp_slideroll;
+	double tsp_wallroll;
 	float tsp_slidefov;
 	
 	void TSP_HandleViewStuff()
@@ -38,11 +39,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		tsp_landpitch = tsp_landpitch + ( tsp_landpunch/5 - tsp_landpitch ) / 5;
 		
+		tsp_wallroll = tsp_wallroll + ( walljump_dir - tsp_wallroll ) / 3;
+		
 		A_SetViewPitch(-tsp_landpitch, SPF_INTERPOLATE);
 		tsp_slideroll = tsp_slideroll + ((tsp_crouchSliding ? 2 : 0) - tsp_slideroll) / 3;
 		tsp_slidefov = tsp_slidefov + ((tsp_crouchSliding && vel.z == 0 ? 1 : 0) - tsp_slidefov) / 5;
 		double totalRoll = -tsp_landpitch*sin(level.maptime*12);
 		totalRoll += tsp_slideroll + TSP_GetDeathRoll();
+		totalRoll += tsp_wallroll;
 		A_SetViewRoll(totalRoll, SPF_INTERPOLATE);
 	}
 	

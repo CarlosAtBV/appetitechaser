@@ -420,6 +420,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		//A_SoundPitch(CHAN_VOICE,1+sin(level.maptime*5));
 	}
 	
+	int walljump_dir;
+	
 	override void CheckJump()
 	{ 
 		if(oldVelZ==vel.z)
@@ -436,28 +438,30 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		//Console.Printf(""..angley);
 		LineTrace(angley, (radius+24)*abs(sidedir), 0, 0, 26.0, 0.0, 0.0, traceStuff);
 		
+		walljump_dir = 0;
 		if(traceStuff.HitType == TRACE_HitWall && oldVelZ!=vel.z)
 		{
+			walljump_dir = -sidedir;
 			if(!ptp_wallJumpReadySound)
 			{
 				A_PlaySound("mantle",CHAN_BODY);
 				ptp_wallJumpReadySound = true;
 			}
+			vel.z += 0.1;
 			if(player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))
 			{
 				vel = (0,0,0);
 				Line bouncedOffLine = traceStuff.HitLine;
 				int bouncedSide = traceStuff.LineSide;
-				int bounceDir;
 				//Console.Printf(""..traceStuff.LineSide);
 				
 				switch(bouncedSide)
 				{
-					case 0: bounceDir = 1; break;
-					case 1: bounceDir = -1; break;
+					case 0: walljump_dir = 1; break;
+					case 1: walljump_dir = -1; break;
 				}
 				
-				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90*bounceDir;
+				int bounceAngle = atan2(bouncedOffLine.v1.p.y - bouncedOffLine.v2.p.y, bouncedOffLine.v1.p.x - bouncedOffLine.v2.p.x)+90*walljump_dir;
 				int bounceOffAngle = bounceAngle+clamp(DeltaAngle(Normalize180(bounceAngle),angle),-55,55);//-68,68);
 				//Console.Printf(""..bounceOffAngle);
 				Thrust(14,bounceOffAngle/*angle+(25*sidedir)*/);
