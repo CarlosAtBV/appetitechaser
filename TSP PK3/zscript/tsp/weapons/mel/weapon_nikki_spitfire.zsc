@@ -28,7 +28,7 @@ Class MelPistolA : MelPistol
 				invoker.anim_spitFire_on.PlayAnim();
 			}
 			"----" A 0 A_TSP_WeaponRecoilDir(180+random(1,5), 2, 1);
-			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE)
+			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE);
 			Goto ModReady;
 		ModSwitch:
 			"----" A 1

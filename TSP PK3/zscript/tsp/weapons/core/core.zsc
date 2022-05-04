@@ -271,7 +271,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		int flags;
 		//if ( tspflags & TSPWRF_NOFIRE ) flags &= WRF_NOFIRE;
-		A_WeaponReady();
+		A_WeaponReady(WRF_NOBOB);
 		if ( !(tspflags & TSPWRF_RELOADHACK) )
 		{
 			invoker.owner.player.SetPSprite(PSP_TSP_RELOADHACK, resolveState(null));
