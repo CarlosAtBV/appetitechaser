@@ -73,7 +73,7 @@ Class MelSMGA : MelSMG
 				A_StartSound("suzuka/shotgun/altfire", 6);
 				A_AlertMonsters();
 				A_Quake(2,3,0,5,"");
-				A_TSP_FireBullets(6,2,8,7,"TSP_BulletPuff",1,0,"TSP_HitscanTracer", frandom(-3,-1), Spawnofs_xy: frandom(3,5));
+				A_TSP_FireBullets(6,2,8,7,"TSP_BulletPuff",1,0,"TSP_HitscanTracer", frandom(-3,-1), tracerOffset: (frandom(3,5), -3));
 				A_TSP_TakeClip(8);
 				A_SetPitch(pitch - 2.5);
 				A_SetAngle(angle + (frandom(-0.5,0.5)));

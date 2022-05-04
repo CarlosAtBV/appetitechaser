@@ -79,7 +79,7 @@ Class MelSMG : TSP_Mel_LightWeapon
 	action void A_TSP_MelSMG_Fire(int xoff = 4)
 	{
 		A_AlertMonsters();
-		A_TSP_FireBullets(2, 4, -1, 7, "TSP_BulletPuff", 1, Spawnofs_xy: xoff);
+		A_TSP_FireBullets(2, 4, -1, 7, "TSP_BulletPuff", 1, tracerOffset: (xoff, -3));
 		A_TSP_TakeClip(1);
 		invoker.smg_firetime = frandom(1.0,1.35);
 		if ( invoker.tspw_altmode )
