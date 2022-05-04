@@ -507,7 +507,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if ( getWeapon )
 			{
-				TSP_DrawString(FONT_AMMOTAG, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), TDF_ALIGN_RIGHT, Font.CR_UNTRANSLATED);
+				TSP_DrawString(FONT_AMMOTAG, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), TDF_ALIGN_RIGHT);
 			}
 
 			// POWERBANK
