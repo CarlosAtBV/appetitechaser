@@ -39,7 +39,6 @@ Class TSP_EventHandler : EventHandler
 		
 		while ( mo = Actor(findLights.Next()) )
 		{
-			Console.Printf("balls");
 			dynlights.Push(mo);
 		}
 		
