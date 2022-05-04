@@ -47,3 +47,4 @@ Extend Class TSP_StatusBar
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, drawOffset.x+baseX+xOff, drawOffset.y+pos.y, string,
 			DTA_Alpha, alpha, DTA_COLOR, CLR_BH_TIMER);
 	}
+}
