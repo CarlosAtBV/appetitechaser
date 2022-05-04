@@ -286,6 +286,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		//Console.Printf(""..tsp_fb_zoom);
 		double targetZoom = tsp_fb_zoom;//player.DesiredFOV * tsp_fb_zoom;
 		tsp_fb_zoomlerp = tsp_fb_zoomlerp + ( targetZoom - tsp_fb_zoomlerp ) / 2;
-		player.FOV = (player.DesiredFOV * tsp_fb_zoomlerp) + (tsp_crouchSliding ? (vel.xy.Length() / 5) : 0);//tsp_fb_zoom;
+		player.FOV = (player.DesiredFOV * tsp_fb_zoomlerp) + (vel.xy.Length() / 5) * tsp_slidefov;//tsp_fb_zoom;
 	}
 }
