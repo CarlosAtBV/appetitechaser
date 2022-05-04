@@ -190,7 +190,6 @@ Class TSP_StatusBar : BaseStatusBar
 			//LEFT SIDE OF THE HUD (Health, Armor, Armor Pips, Money)
 			
 			// SHADOW
-			//DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			TSP_DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y));
 			
 			// MEL HUD
@@ -198,8 +197,6 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
-			
-			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
 			
 			if(CPlayer.mo.InvSel)
 			{

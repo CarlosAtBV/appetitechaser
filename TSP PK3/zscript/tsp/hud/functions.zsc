@@ -1,6 +1,6 @@
 Extend Class TSP_StatusBar
 {
-	enum TSPDrawtEXTFlags
+	enum TSPDrawTextFlags
 	{
 		TDF_ALIGN_LEFT = 0,
 		TDF_ALIGN_RIGHT = 0x1,
