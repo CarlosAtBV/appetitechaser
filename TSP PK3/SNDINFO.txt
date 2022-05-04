@@ -3,8 +3,8 @@ menu/activate activate
 menu/backup backup
 menu/prompt prompt
 menu/change change
-menu/choose choose
-menu/cursor cursor
+menu/choose "sounds/general/menu/ui_menu_choose.ogg"
+menu/cursor "sounds/general/menu/ui_menu_cursor.ogg"
 menu/invalid invalid
 
 menu/dismiss dismiss
