@@ -439,7 +439,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		LineTrace(angley, (radius+24)*abs(sidedir), 0, 0, 26.0, 0.0, 0.0, traceStuff);
 		
 		walljump_dir = 0;
-		if(traceStuff.HitType == TRACE_HitWall && oldVelZ!=vel.z)
+		if ( traceStuff.HitType == TRACE_HitWall && !player.onground )
 		{
 			walljump_dir = -sidedir;
 			if(!ptp_wallJumpReadySound)
