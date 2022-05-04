@@ -130,6 +130,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			if ( player.onground )
 			{
+				int randomDir = atan2(vel.y, vel.x) + random(25,45) * randompick(-1,1);
+				let smonk = TSP_CrouchSlideSmoke(Spawn("TSP_CrouchSlideSmoke", pos + vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
+				smonk.targAlpha = min((vel.x, vel.y).Length() / 32, 1.0);
 				int forwardZ = GetZAt(vel.xy.Length(), 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
 				if ( forwardZ > pos.z )
 				{
@@ -284,13 +287,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			tsp_crouching = true;
 			A_SetSize(-1, 56/2);
-		}
-		
-		if ( tsp_crouchSliding )
-		{
-			int randomDir = atan2(vel.y, vel.x) + random(25,45) * randompick(-1,1);
-			let smonk = TSP_CrouchSlideSmoke(Spawn("TSP_CrouchSlideSmoke", pos + vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
-			smonk.targAlpha = min((vel.x, vel.y).Length() / 32, 1.0);
 		}
 	}
 	
