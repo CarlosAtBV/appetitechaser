@@ -1,0 +1,7 @@
+HardwareShader Texture "graphics/testoby_wipswell.png" { Shader "shaders/glsl/bilinear.fp" }
+
+HardwareShader Texture "HUD_LBAS" { Shader "shaders/glsl/bilinear.fp" }
+
+HardwareShader Texture "MC1ST01" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "MC1ST02" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "MC1ST03" { Shader "shaders/glsl/bilinear.fp" }

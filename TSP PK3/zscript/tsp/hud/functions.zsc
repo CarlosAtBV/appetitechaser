@@ -1,5 +1,17 @@
 Extend Class TSP_StatusBar
 {
+	void TSP_DrawImage (String image, Vector2 pos)
+	{
+		let tex = TexMan.CheckForTexture(image);
+		TSP_DrawTexture(tex, pos);
+	}
+	
+	void TSP_DrawTexture (TextureID tex, Vector2 pos)
+	{
+		pos *= hud_scale;
+		screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);
+	}
+	
 	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
 	{
 		int xOff = 0;

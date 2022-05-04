@@ -134,9 +134,11 @@ Class TSP_StatusBar : BaseStatusBar
 	}
 	
 	const HUDLEFT_X = 0;
-	const HUDLEFT_Y = -140;
+	const HUDLEFT_Y = 720-140;//-140;
 	const HUDRIGHT_X = -270;
 	const HUDRIGHT_Y = -140;
+	
+	double hud_scale;
 
 	override void Draw (int state, double TicFrac)
 	{
@@ -168,7 +170,10 @@ Class TSP_StatusBar : BaseStatusBar
 			BeginHUD(1.0, true);//,true,320,240);
 			
 			Vector2 hudScale = GetHUDScale();
+			hud_scale = screen.GetHeight() / 720.0;
 			screenSize = ( screen.GetWidth()/hudScale.x, screen.GetHeight()/hudScale.y );
+			
+			TSP_DrawImage("graphics/testoby_wipswell.png", (0, 0));
 			
 			alpha = 1.0;
 			
@@ -183,7 +188,8 @@ Class TSP_StatusBar : BaseStatusBar
 			//LEFT SIDE OF THE HUD (Health, Armor, Armor Pips, Money)
 			
 			// SHADOW
-			DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			//DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			TSP_DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y));
 			
 			// MEL HUD
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
@@ -264,11 +270,12 @@ Class TSP_StatusBar : BaseStatusBar
 			}
 			
 			// MAIN HUD GRAPHIC (LEFT)
-			DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+			TSP_DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y));
+			//DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// MONEY
-			DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
-			//DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+			TSP_DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y));
+			//DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
 			TSP_DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW);
 			
 			
@@ -300,7 +307,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MEL (MEL, RETROGRADE MEL)
 
-			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
+			/*switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
 					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Default Mel
@@ -334,15 +341,17 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					
 
-					if(CPlayer.mo is "TSP_MelPlayer")
+					/*if(CPlayer.mo is "TSP_MelPlayer")
 					{
-						/*if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
+						if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
 						{
 						DrawImage("MCWSTZZ", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
-						}*/
+						}
 					}
 				
-			}
+			}*/
+			
+			TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (20, HUDLEFT_Y-12));
 
 			//================
 			// GOD MODE SPARKS (Mel/Retro Mel)
