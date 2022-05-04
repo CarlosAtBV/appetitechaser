@@ -1,14 +1,18 @@
-//Menu Sounds - From Pokken
-menu/activate activate
-menu/backup backup
-menu/prompt prompt
-menu/change change
-menu/choose "sounds/general/menu/ui_menu_choose.ogg"
-menu/cursor "sounds/general/menu/ui_menu_cursor.ogg"
-menu/invalid invalid
+//Menu Sounds
+menu/activate "sounds/general/ui/ui_menu_activate.ogg"
+menu/advance "sounds/general/ui/ui_menu_advance.ogg"
+menu/backup "sounds/general/ui/ui_menu_backup.ogg"
+menu/change "sounds/general/ui/ui_menu_change.ogg"
+menu/choose "sounds/general/ui/ui_menu_choose.ogg"
+menu/clear 	"sounds/general/ui/ui_menu_clear.ogg"
+menu/cursor "sounds/general/ui/ui_menu_cursor.ogg"
+menu/dismiss "sounds/general/ui/ui_menu_dismiss.ogg"
+menu/invalid "sounds/general/ui/ui_menu_invalid.ogg"
+menu/prompt "sounds/general/ui/ui_menu_prompt.ogg"
 
-menu/dismiss dismiss
-menu/clear clear
+startuptick         "sounds/general/ui/ui_loading_tick.ogg"
+$volume startuptick 0.5
+misc/startupdone	GAMELOAD
 
 //Intermission Sounds
 $alias                intermission/tick             intermission/tick
@@ -18,7 +22,13 @@ $alias                intermission/paststats        menu/choose
 $alias                intermission/pastcoopstats    menu/choose
 $alias                intermission/pastdmstats      menu/active
 
-intermission/tick inttick
+intermission/tick "sounds/general/menu/ui_intermission_tick.ogg"
+
+intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
+$volume intermission/mapname 0.75
+$alias intermission/mapstatus menu/advance
+$alias intermission/tally menu/cursor
+intermission/skillrating "sounds/general/ui/ui_intermission_rating.ogg" // From Doom Eternal
 
 $random menu/quit1 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
 $random menu/quit2 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
@@ -33,16 +43,14 @@ quit7 quit7
 quit8 quit8
 quit9 quit9
 
-//Startup
-$alias                startuptick           intermission/tick
-misc/startupdone	GAMELOAD
+
 item/pickupls            PCKUPLS
 title/swoosh "sounds/ui_titleswoosh.ogg"
 
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 
 misc/meleekill "sounds/weapon fx/meleekill.ogg"
-ui/felldown "sounds/ui/fall_teleport.ogg"
+ui/felldown "sounds/general/player/sfx_fall_teleport.ogg"
 $volume ui/felldown 0.5
 
 //Slip Dash
@@ -124,12 +132,6 @@ bountyhunters/gosound			"sounds/bh_go.ogg"
 
 bh/pickup/ammo "sounds/placeholder/tsp_ammomini.ogg"
 
-//$alias intermission/mapname menu/prompt
-intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
-$volume intermission/mapname 0.75
-$alias intermission/mapstatus menu/prompt
-intermission/tally "sounds/DSRADIO.ogg"
-intermission/skillrating "sounds/ui/intermission_rating.ogg" // From Doom Eternal
 
 world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
 
