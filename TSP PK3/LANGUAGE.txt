@@ -19,8 +19,8 @@ QUITMSG14 = "\cnWhaddya doing in our mod? Get outta here.\n\n...\c-GET OUTTA HER
 QUITMSG15 = "\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross...\n\n\cg...but it's not for the timid.";
 QUITMSG16 = "\cnIt is possible to commit no mistakes and still lose.\n\n\ckThat is not a sign of weakness; that is life.";
 QUITMSG17 = "\cnThe test of the warrior is not without; it is \ckwithin.";
-QUITMSG18 = "\cnYou think I want to go to the stars? I don't even like to fly! I take trains!";
-QUITMSG19 = "\cnEverything that goes wrong here is your fault.\n\n\crIt says so in your contract.";
+QUITMSG18 = "\cnYou think I want to go to the stars? I don't even like to fly!\n\n\chI take TRAINS!";
+QUITMSG19 = "\cnFacing death is the ultimate test of character. I don't want to die, but if I have to...\n\n\ch...I'd like to do it with a little pride.";
 QUITMSG20 = "\cnWe all have scars, of one kind or another.";
 
 DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
