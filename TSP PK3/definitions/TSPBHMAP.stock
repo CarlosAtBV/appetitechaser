@@ -1,13 +1,19 @@
 addmap BH_BZ
 {
-	name = "Neoscape - Brawl Zone";
+	name = "Neoscape - Battle Zone";
 	desc = "This is the map";
 }
 
-addmap TSP_BH02
+addmap BH_BZ2
 {
-	name = "Elegia - Red Hot Research";
-	desc = "This is the lava";
+	name = "Neoscape - Battle Zone 2";
+	desc = "This is the map";
+}
+
+addmap BH_CATS
+{
+	name = "Bastetia - City Outskirts";
+	desc = "This is the map";
 }
 
 addmap MAP32

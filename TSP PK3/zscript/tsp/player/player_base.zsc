@@ -291,8 +291,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override void Tick ()
 	{
-		oldVelZ = vel.z;
-		
 		if (!player || !player.mo || player.mo != self)
 		{
 			Super.Tick();
@@ -332,6 +330,8 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				}
 				vel.xy *= 1.0 - tsp_airtime_mult;
 			}
+		
+		oldVelZ = vel.z;
 		
 		Super.Tick();
 		
@@ -404,7 +404,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		TickLogMessages();
 		TSP_TickCasings();
 		
-		A_SetViewRoll((tsp_crouchSliding ? 2 : 0) + TSP_GetDeathRoll(), SPF_INTERPOLATE);
+		TSP_HandleViewStuff();
 		
 		if ( pp_hitMult > 0 )
 		{
