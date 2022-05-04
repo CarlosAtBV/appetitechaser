@@ -246,15 +246,28 @@ Class TSP_StatusBar : BaseStatusBar
 				if ( health > 0 )
 				{
 					// [Py] just a mini fucked up hack for masking the bars ...
+					Vector2 clipPos, clipSize;
 					for ( int i = 0; i < 3; i++ )
 					{
 						switch ( i )
 						{
-							case 0: SetClipRect(HUDLEFT_X+122, HUDLEFT_Y+75, 123, 6); break;
-							case 1: SetClipRect(HUDLEFT_X+125, HUDLEFT_Y+81, 125, 6); break;
-							case 2: SetClipRect(HUDLEFT_X+128, HUDLEFT_Y+87, 125, 6); break;
+							case 0:
+								clipPos = (HUDLEFT_X+122, HUDLEFT_Y+75);
+								clipSize = (123, 6);
+								break;
+							case 1:
+								clipPos = (HUDLEFT_X+125, HUDLEFT_Y+81);
+								clipSize = (125, 6);
+								break;
+							case 2:
+								clipPos = (HUDLEFT_X+128, HUDLEFT_Y+87);
+								clipSize = (125, 6);
+								break;
 						}
-						DrawImage(healthBarTex, (HUDLEFT_X+121 + (-healthWidth + healthOffset_base), HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
+						clipPos *= hud_scale;
+						clipSize *= hud_scale;
+						SetClipRect(clipPos.x, clipPos.y, clipSize.x, clipSize.y);
+						TSP_DrawImage(healthBarTex, (HUDLEFT_X+121 + (-healthWidth + healthOffset_base), HUDLEFT_Y+75));
 					}
 					ClearClipRect();
 				}
