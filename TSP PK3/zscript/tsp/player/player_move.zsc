@@ -183,6 +183,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		return tsp_deathroll;
 	}
 	
+	int GetHitscanHeight()
+	{
+		return tsp_crouching ? viewheight * tsp_viewheight_mult : viewheight;
+	}
+	
 	override void CheckCrouch (bool totallyfrozen)
 	{
 		let player = self.player;

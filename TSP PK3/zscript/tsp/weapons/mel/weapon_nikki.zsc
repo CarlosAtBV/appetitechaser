@@ -57,7 +57,7 @@ Class MelPistol : TSP_Mel_BaseWeapon
 	{
 		A_AlertMonsters();
 		A_StartSound(invoker.firesound, 6);
-		A_TSP_FireBullets(3,2,-1,8,"TSP_BulletPuff",1, Spawnofs_xy: xoff);
+		A_TSP_FireBullets(3,2,-1,8,"TSP_BulletPuff", tracerOffset: (xoff, -3));
 		A_TSP_TakeClip(1);
 	}
 	

@@ -1,0 +1,91 @@
+Extend Class TSP_Weapon_Core
+{
+	//==========================================================================
+	//
+	// A_TSP_FireBullets()
+	//
+	//==========================================================================
+	
+		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "TSP_BulletPuff", int flags = 1, double range = 0, class<Actor> missile = "TSP_HitscanTracer", double Spawnheight = 0, double Spawnofs_xy = 0, Vector2 tracerOffset = (0,0))
+		{
+			let owner = TSP_PlayerPawn_ZSCBase(invoker.owner);
+			if ( !owner )
+			{
+				return;
+			}
+			
+			int viewz = owner.GetHitscanHeight();
+			Vector3 offsetPos = (cos(owner.angle-90)*tracerOffset.x, sin(owner.angle-90)*tracerOffset.x, viewz+tracerOffset.y);
+		
+			int fbDamage = damageperbullet;
+			switch(invoker.tspw_powerlevel)
+			{
+				 case 1: fbDamage *= (invoker.tspw_powermult1); break;
+				 case 2: fbDamage *= (invoker.tspw_powermult2); break;
+				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
+			}
+			double totalDamage = damageperbullet*abs(numbullets);
+			if(totalDamage<=0 && missile!=null)
+			{
+				totalDamage = GetDefaultByType(missile).damage*numbullets;
+			}
+			
+			//A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags & ~FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy);
+			if ( range == 0 )
+			{
+				range = 4096;
+			}
+			//Console.Printf(numbullets.."");
+			for ( int i = 0; i < abs(numbullets); i++ )
+			{
+				double angle = owner.angle;// + frandom(-spread_xy, spread_xy);
+				double pitch = owner.pitch;// + frandom(-spread_z, spread_z);
+				FLineTraceData traceData;
+				owner.LineTrace(angle, range, pitch, 0, viewz, 0, 0, traceData);
+				let hitFella = traceData.HitActor;
+				
+				if ( hitFella )
+				{
+					hitFella.DamageMobj(owner, owner, damage, 'Hitscan');
+					if ( hitFella.Health > 0 && random(0,255) < hitFella.PainChance )
+					{
+						if ( traceData.HitActor.FindState("Pain") )
+						{
+							traceData.HitActor.SetStateLabel("Pain");
+						}
+						//traceData.HitActor.ReactionTime = 16;
+					}
+				}
+				else
+				{
+					if ( tracedata.HitLine )
+					{
+						let epicLine = tracedata.HitLine;
+						if ( epicLine.special > 0 )
+						{
+							epicLine.Activate(owner, 0, SPAC_Impact);
+						}
+					}
+					Spawn(pufftype, traceData.HitLocation);
+				}
+			
+				let tracer = Spawn(missile, owner.pos + offsetPos);
+				tracer.target = owner;
+				tracer.SetOrigin(tracer.pos + tracedata.HitDir * 16, true);
+				tracer.vel = tracedata.HitDir * tracer.speed;
+				tracer.angle = angle;
+				tracer.pitch = pitch;
+			}
+			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp += totalDamage/10.0;
+		}
+		
+	action void A_TSP_TakeClip(int amt)
+	{
+		if(tsp_unlimitedclip) return;
+		while(amt>0 && invoker.tspw_curclip > 0)
+		{
+			invoker.tspw_curclip--;
+			amt--;
+		}
+	}
+}

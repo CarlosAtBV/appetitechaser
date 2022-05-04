@@ -404,45 +404,6 @@ Class TSP_Weapon_Core : DoomWeapon
 		}
 	}
 		
-	//==========================================================================
-	//
-	// A_TSP_FireBullets()
-	//
-	//==========================================================================
-	
-		action void A_TSP_FireBullets(double spread_xy, double spread_z, int numbullets, int damageperbullet, class<Actor> pufftype = "TSP_BulletPuff", int flags = 1, double range = 0, class<Actor> missile = "TSP_HitscanTracer", double Spawnheight = 0, double Spawnofs_xy = 0)
-		{
-			int fbDamage = damageperbullet;
-			switch(invoker.tspw_powerlevel)
-			{
-				 case 1: fbDamage *= (invoker.tspw_powermult1); break;
-				 case 2: fbDamage *= (invoker.tspw_powermult2); break;
-				 case 3: fbDamage *= (invoker.tspw_powermult3); break;
-			}
-			double totalDamage = damageperbullet*abs(numbullets);
-			if(totalDamage<=0 && missile!=null)
-			{
-				totalDamage = GetDefaultByType(missile).damage*numbullets;
-			}
-			//Console.Printf("\ccLevel "..invoker.tspw_powerlevel..": \c-"..fbDamage);
-			/*if(invoker.tspw_clipsize>0 && invoker.tspw_curclip > 0)
-			{
-				invoker.tspw_curclip--;
-			}*/
-			A_FireBullets(spread_xy,spread_z,numbullets,fbDamage,pufftype,(flags & ~FBF_USEAMMO),range,missile,Spawnheight,Spawnofs_xy);
-			TSP_PlayerPawn_ZSCBase(invoker.owner).pp_punchWarp += totalDamage/10.0;
-		}
-		
-		action void A_TSP_TakeClip(int amt)
-		{
-			if(tsp_unlimitedclip) return;
-			while(amt>0 && invoker.tspw_curclip > 0)
-			{
-				invoker.tspw_curclip--;
-				amt--;
-			}
-		}
-		
 	virtual void TSP_InitAnimations()
 	{
 	}
