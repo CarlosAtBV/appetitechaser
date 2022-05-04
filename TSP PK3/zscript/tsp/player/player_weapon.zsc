@@ -64,7 +64,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	{
 		Font fnt = "smallfont";
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 0, 0,
-			"Slide CD: "..tsp_slideCooldown,
+			"Slide CD: "..tsp_slideCooldown.."\nOn Ground: "..player.onground,
 			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 	}
 	

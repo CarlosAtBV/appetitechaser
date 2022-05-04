@@ -71,8 +71,16 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		UserCmd cmd = player.cmd;
 		
 		Angle += cmd.yaw * (360./65536.);
-
-		player.onground = (pos.z <= floorz) || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
+		
+		//FLineTraceData traceStuff;
+		//LineTrace(0, 2, 90, TRF_THRUACTORS, 1, data: traceStuff);
+		int zoffset = tsp_crouchSliding ? 16 : 1;
+		SetXYZ(pos - (0,0,zoffset));
+		player.onground = !TestMobjLocation() || pos.z <= floorz || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
+		SetXYZ(pos + (0,0,zoffset));
+		
+		//Console.Printf(""..traceStuff.HitType);
+		//player.onground = traceStuff.HitType == FLineTraceData.TRACE_HitFloor;//(pos.z <= floorz) || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
 		
 		if ( pp_hitFreeze>0 || tsp_cooluifreeze )
 		{
@@ -115,19 +123,20 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		tsp_slidingOnGround = isSlidingOnGround;
 		
-		if ( player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
+		if ( tsp_crouchSliding )
 		{
-			tsp_firstSlideBoost = false;
-			tsp_crouchSliding = false;
-		}
-		else if ( player.cmd.buttons & BT_CROUCH )
-		{
-			if ( !(player.oldbuttons & BT_CROUCH) && tsp_crouchSliding ) // press crouch to cancel out of slide
+			bool uncrouch = player.cmd.buttons & BT_CROUCH && !(player.oldbuttons & BT_CROUCH);
+			if ( uncrouch || player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
 			{
 				tsp_firstSlideBoost = false;
 				tsp_crouchSliding = false;
+				vel.xy *= 0.75;
 			}
-			else if ( !player.onground )
+		}
+		
+		if ( player.cmd.buttons & BT_CROUCH )
+		{
+			if ( !player.onground )
 			{
 				if ( !tsp_crouchSliding )
 				{
@@ -147,11 +156,17 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				int randomDir = atan2(vel.y, vel.x) + random(25,45) * randompick(-1,1);
 				let smonk = TSP_CrouchSlideSmoke(Spawn("TSP_CrouchSlideSmoke", pos + vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
 				smonk.targAlpha = min((vel.x, vel.y).Length() / 32, 1.0);
-				int forwardZ = GetZAt(vel.xy.Length(), 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
+				int forwardZ = GetZAt(32, 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
+				//Console.Printf(pos.z.." ~~~ "..forwardZ);
 				if ( forwardZ > pos.z )
 				{
-					COnsole.Printf("FUCK YOU");
-					vel.xy *= (pos.z / forwardZ) / 2;
+					//COnsole.Printf("SLOW DOWN MAURICE");
+					vel.xy *= (pos.z / forwardZ);
+				}
+				else if ( forwardZ < pos.z )
+				{
+					//COnsole.Printf("I WANNA GO FAST");
+					vel.xy *= 1.0;
 				}
 				else if ( vel.xy.Length() < 8 )
 				{
