@@ -161,7 +161,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				if ( forwardZ > pos.z )
 				{
 					//COnsole.Printf("SLOW DOWN MAURICE");
-					vel.xy *= (pos.z / forwardZ);
+					vel.xy *= 0.75;
 				}
 				else if ( forwardZ < pos.z )
 				{
