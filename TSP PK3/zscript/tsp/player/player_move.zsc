@@ -73,7 +73,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		}
 		else if ( player.cmd.buttons & BT_CROUCH )
 		{
-			if ( !player.onground )
+			if ( !(player.oldbuttons & BT_CROUCH) && tsp_crouchSliding ) // press crouch to cancel out of slide
+			{
+				tsp_crouchSliding = false;
+			}
+			else if ( !player.onground )
 			{
 				if ( !tsp_crouchSliding )
 				{
