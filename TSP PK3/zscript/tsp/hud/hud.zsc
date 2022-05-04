@@ -89,6 +89,8 @@ Class TSP_StatusBar : BaseStatusBar
 		mHealthInterpolator = LinearValueInterpolator.Create(0, 8);
 		mShieldInterpolator = LinearValueInterpolator.Create(0, 8);
 		mChargeInterpolator = LinearValueInterpolator.Create(0, 1);
+		
+		InitTextColors();
 	}
 	
 	override void Tick()

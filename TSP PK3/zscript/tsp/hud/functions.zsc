@@ -1,5 +1,7 @@
 Extend Class TSP_StatusBar
 {
+	Dictionary hud_textColors;
+	
 	enum TSPDrawTextureFlags
 	{
 		TDF_HUDLEFT = 0,
@@ -72,7 +74,7 @@ Extend Class TSP_StatusBar
 			pos.x += screen.GetWidth();
 		}
 		
-		int newColor = color;
+		Color newColor = color;
 		
 		for ( int i = 0; i < string.Length(); i++ )
 		{
@@ -88,7 +90,9 @@ Extend Class TSP_StatusBar
 						bt++;
 					}
 					bt -= startPos;
-					newColor = TSP_GetErrorColor();//Color(255, 124, 183, 255);
+					newColor = Color(hud_textColors.At(string.Mid(startPos, bt)));
+					newColor = Color(255, newColor.r, newColor.g, newColor.b);
+					//newColor = TSP_GetErrorColor();//Color(255, 124, 183, 255);
 					i = startPos+bt;
 					continue;
 				}

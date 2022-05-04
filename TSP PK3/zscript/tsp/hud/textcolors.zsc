@@ -1,0 +1,117 @@
+Extend Class TSP_StatusBar
+{
+	string StripWhitespace(string inString)
+	{
+		while ( ( inString.Left(1) ~== " " ) || ( inString.Left(1) ~== "\t" ) )
+		{
+			inString = inString.Mid(1);
+		}
+		if ( inString.ByteAt(inString.Length()-1) == 13 )
+		{
+			inString = inString.Left(inString.Length()-1);
+		}
+		return inString;
+	}
+	
+	bool isWhitespace(int thisChar)
+	{
+		switch (thisChar)
+		{
+			case 0:
+			case 9:
+			case 10:
+			case 13:
+			case 32:
+				return true;
+		}
+		return false;
+	}
+	
+	void SplitLines(out Array<string> inputArray, string text, string separator, int flags = TOK_KEEPEMPTY)
+	{
+		inputArray.Clear();
+		text.Split(inputArray, separator, flags);
+	}
+	
+	void CutWhitespace(out Array<string> inputArray, string text, string separator, int flags = TOK_KEEPEMPTY)
+	{
+		inputArray.Clear();
+		for ( int i = 0; i < text.Length(); i++ )
+		{
+			if ( !isWhitespace(text.ByteAt(i)) )
+			{
+				string addString = "";
+				while ( !isWhitespace(text.ByteAt(i)) )
+				{
+					addString = addString..text.Mid(i,1);
+					i++;
+				}
+				//Console.Printf("Adding string "..addstring);
+				inputArray.Push(addString);
+			}
+		}
+		//text.Split(array, separator, flags);
+	}
+	
+	void InitTextColors()
+	{
+		hud_textColors = Dictionary.Create();
+		
+		for ( int i = 0; i < Wads.GetNumLumps(); i++ )
+		{
+			if ( Wads.GetLumpName(i).Left(8) ~== "TEXTCOLO")
+			{
+				Console.Printf("Reading "..Wads.GetLumpFullName(i));
+				
+				string colorData = Wads.ReadLump(i);
+				Array<string> splitLines;
+				SplitLines(splitLines, colorData, "\n");
+				
+				for ( int line = 0; line < splitLines.Size(); line++ )
+				{
+					string thisLine = StripWhitespace(splitLines[line]);
+					
+					if ( thisLine.left(2) != "//" && !isWhitespace(thisLine.ByteAt(0)) )
+					{
+						//Console.Printf("Defining "..thisLine.." ("..thisLine.ByteAt(0)..")");
+						string colorName = thisLine;
+						string colorColor = "";
+						
+						for ( int colorLine = line+1; colorLine < splitLines.Size(); colorLine++ )
+						{
+							thisLine = StripWhitespace(splitLines[colorLine]);
+							if ( thisLine.Left(1) == "}" )
+							{
+								line = colorLine;
+								break;
+							}
+							else if ( thisLine.Left(1) == "#" )
+							{
+								Array<string> colorLine;
+								CutWhitespace(colorLine, thisLine, " ", TOK_KEEPEMPTY);
+								for ( int colorDef = 0; colorDef < colorLine.Size(); colorDef++ )
+								{
+									//Console.Printf(colorLine[colorDef]);
+									if ( colorLine[colorDef].Left(1) == "#" )
+									{
+										colorColor = colorLine[colorDef];
+										//Console.Printf("it do be "..colorColor);
+									}
+								}
+							}
+						}
+						
+						hud_textColors.Insert(colorName, colorColor.MakeUpper());
+					}
+				}
+			}
+		}
+		
+		Console.Printf("Text colors:");
+		DictionaryIterator i = DictionaryIterator.Create(hud_textColors);
+		while ( i.Next() )
+		{
+			Console.Printf("\c[%s]%s:\c- %s", i.Key(), i.Key(), i.Value());
+		}
+	}
+}
