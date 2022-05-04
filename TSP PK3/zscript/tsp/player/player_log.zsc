@@ -24,10 +24,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	void AddLogMessage(string whatugot, int howmany)
 	{
-		if( tsp_logs.Size() > 0 && StringTable.Localize(whatugot) == tsp_logs[0].whatugot )
+		if( tsp_logs.Size() > 0 && StringTable.Localize(whatugot) == tsp_logs[tsp_logs.Size()-1].whatugot )
 		{
-			tsp_logs[0].howmany += howmany;
-			tsp_logs[0].timeleft = 4*35;
+			tsp_logs[tsp_logs.Size()-1].howmany += howmany;
+			tsp_logs[tsp_logs.Size()-1].timeleft = 4*35;
 		}
 		else
 		{
