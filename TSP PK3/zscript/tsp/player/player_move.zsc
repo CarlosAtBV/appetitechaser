@@ -140,6 +140,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	override void CalcHeight()
 	{
+		double lastViewZ = player.viewz;
 		double viewBob = 3 * cos(level.maptime * 16) * (vel.length() / 8);
 		double newViewheight = viewheight * tsp_viewheight_mult;
 		
@@ -159,6 +160,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			player.viewz = pos.Z + (newViewheight * player.crouchfactor) + viewBob;
 			//super.CalcHeight();
+		}
+		
+		if ( abs(vel.z) <= 0.1 && abs(Prev.z - pos.z) <= 16 )
+		{
+			player.viewz = lastViewZ + ( player.viewz - lastViewZ ) / 4;
 		}
 	}
 	
