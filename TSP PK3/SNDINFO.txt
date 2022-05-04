@@ -1,16 +1,16 @@
 //Menu Sounds
-menu/activate "sounds/general/ui/ui_menu_activate.ogg"
-menu/advance "sounds/general/ui/ui_menu_advance.ogg"
-menu/backup "sounds/general/ui/ui_menu_backup.ogg"
-menu/change "sounds/general/ui/ui_menu_change.ogg"
-menu/choose "sounds/general/ui/ui_menu_choose.ogg"
-menu/clear 	"sounds/general/ui/ui_menu_clear.ogg"
-menu/cursor "sounds/general/ui/ui_menu_cursor.ogg"
-menu/dismiss "sounds/general/ui/ui_menu_dismiss.ogg"
-menu/invalid "sounds/general/ui/ui_menu_invalid.ogg"
-menu/prompt "sounds/general/ui/ui_menu_prompt.ogg"
+menu/activate	"sounds/general/ui/ui_menu_activate.ogg"
+menu/advance	"sounds/general/ui/ui_menu_advance.ogg"
+menu/backup		"sounds/general/ui/ui_menu_backup.ogg"
+menu/change		"sounds/general/ui/ui_menu_change.ogg"
+menu/choose		"sounds/general/ui/ui_menu_choose.ogg"
+menu/clear		"sounds/general/ui/ui_menu_clear.ogg"
+menu/cursor		"sounds/general/ui/ui_menu_cursor.ogg"
+menu/dismis		"sounds/general/ui/ui_menu_dismiss.ogg"
+menu/invalid	"sounds/general/ui/ui_menu_invalid.ogg"
+menu/prompt		"sounds/general/ui/ui_menu_prompt.ogg"
 
-startuptick         "sounds/general/ui/ui_loading_tick.ogg"
+startuptick		"sounds/general/ui/ui_loading_tick.ogg"
 $volume startuptick 0.5
 misc/startupdone	GAMELOAD
 
