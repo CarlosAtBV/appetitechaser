@@ -64,7 +64,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	{
 		Font fnt = "smallfont";
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, 0, 0,
-			(player.FindPSprite(TSP_Weapon_Core.PSP_TSP_RELOADHACK) != null) ? "Reload YES!" : "Reload FUCKED!",
+			"Slide CD: "..tsp_slideCooldown,
 			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 	}
 	

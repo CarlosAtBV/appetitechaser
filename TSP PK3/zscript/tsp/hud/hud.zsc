@@ -166,7 +166,10 @@ Class TSP_StatusBar : BaseStatusBar
 		
 		if ( tsp_player )
 		{
-			//tsp_player.TSP_DrawPlayerDebug();
+			if ( isDebug )
+			{
+				tsp_player.TSP_DrawPlayerDebug();
+			}
 			float hitTime = tsp_player.pp_hitMult;
 			drawOffset = (hitTime > 0) ? (round(frandom(-5,5) * hitTime), round(frandom(-5,5) * hitTime)) : (0, 0);
 		}

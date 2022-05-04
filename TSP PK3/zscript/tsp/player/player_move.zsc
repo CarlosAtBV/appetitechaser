@@ -3,6 +3,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	bool tsp_crouchSliding;
 	bool tsp_firstSlideBoost;
 	bool tsp_slidingOnGround;
+	int tsp_slideCooldown;
 	
 	double tsp_bob;
 	double tsp_lastbob;
@@ -76,14 +77,18 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if ( !tsp_firstSlideBoost )
 			{
 				tsp_firstSlideBoost = true;
-				double boostAngle = angle + DeltaAngle(angle, atan2(vel.y, vel.x))/2;
-				vel.xy = (cos(boostAngle), sin(boostAngle)) * vel.xy.Length() * 1.5;
+				double boostAngle = angle + DeltaAngle(angle, atan2(vel.y, vel.x))/4;
+				float boostMult = 1.5 * clamp(1 - ((tsp_slideCooldown-15.0)/105.0), 0.0, 1.0);
+				vel.xy = (cos(boostAngle), sin(boostAngle)) * vel.xy.Length() * boostMult;
+				Console.Printf(""..boostMult);
+				tsp_slideCooldown = min(tsp_slideCooldown+35, 105);
 			}
 			if ( !tsp_slidingOnGround )
 			{
 				A_StartSound("ability/slipdash/start", 98);
-				A_StartSound("ability/crouchsliding", 99);
+				A_StartSound("ability/crouchsliding", 99, startTime: frandom(0.0,1.0));
 			}
+			A_SoundVolume(99, min(vel.xy.Length()/32, 0.25));
 		}
 		else
 		{
@@ -121,26 +126,36 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		bNOFRICTION = tsp_crouchSliding;
 		
-		if ( tsp_crouchSliding && player.onground )
+		if ( tsp_crouchSliding )
 		{
-			int forwardZ = GetZAt(vel.xy.Length(), 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
-			if ( forwardZ > pos.z )
+			if ( player.onground )
 			{
-				COnsole.Printf("FUCK YOU");
-				vel.xy *= (pos.z / forwardZ) / 2;
+				int forwardZ = GetZAt(vel.xy.Length(), 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
+				if ( forwardZ > pos.z )
+				{
+					COnsole.Printf("FUCK YOU");
+					vel.xy *= (pos.z / forwardZ) / 2;
+				}
+				else if ( vel.xy.Length() < 8 )
+				{
+					vel.xy *= 0.875;
+				}
+				else
+				{
+					vel.xy *= 0.97;
+				}
 			}
-			else if ( vel.xy.Length() < 8 )
+		}
+		else
+		{
+			if ( tsp_slideCooldown > 0 )
+			{
+				tsp_slideCooldown--;
+			}
+			if ( player.onground )
 			{
 				vel.xy *= 0.875;
 			}
-			else
-			{
-				vel.xy *= 0.975;
-			}
-		}
-		else if ( player.onground )
-		{
-			vel.xy *= 0.875;
 		}
 		
 		if ( isFloating )
