@@ -9,10 +9,15 @@ frame_names = [
 	"131FB0",
 	"131FC0",
 	"131FD0",
+	
 	"132FA0",
 	"132FB0",
 	"132FC0",
 	"132FD0",
+	
+	"132FE0",
+	"132FF0",
+	"132FG0",
 ];
 
 render_fetus2021.set_offsets((159, 50+32));

@@ -136,6 +136,25 @@ Class MelSMGA : MelSMG
 		Flash4:
 			132F D 1 BRIGHT;
 			Stop;
+			
+		ModFlash:
+			"----" A 0
+			{
+				A_OverlayFlags(PSP_FLASH,PSPF_RENDERSTYLE,true);
+				A_OverlayRenderstyle(PSP_FLASH,STYLE_Add);
+				A_OverlayScale(PSP_FLASH, 1.0);
+			}
+			121F A 0 A_Jump(256,"ModFlash1","ModFlash2","ModFlash3");
+			Stop;
+		ModFlash1:
+			132F E 1 BRIGHT;
+			Stop;
+		ModFlash2:
+			132F F 1 BRIGHT;
+			Stop;
+		ModFlash3:
+			132F G 1 BRIGHT;
+			Stop;
 		
 		SpriteStore:
 			132R A 0;
