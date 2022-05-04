@@ -1,5 +1,12 @@
 Extend Class TSP_StatusBar
 {
+	enum TSPDrawtEXTFlags
+	{
+		TDF_ALIGN_LEFT = 0,
+		TDF_ALIGN_RIGHT = 0x1,
+		TDF_ALIGN_CENTER = 0x2,
+	}
+
 	void TSP_DrawImage (String image, Vector2 pos)
 	{
 		let tex = TexMan.CheckForTexture(image);
@@ -9,30 +16,43 @@ Extend Class TSP_StatusBar
 	void TSP_DrawTexture (TextureID tex, Vector2 pos)
 	{
 		pos *= hud_scale;
+		pos += drawOffset;
 		screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);
 	}
 	
-	void TSP_DrawString (HUDFont doFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	void TSP_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
 	{
 		int xOff = 0;
+		Font fnt = Font.GetFont(getFont);
+		if ( fnt == null ) ThrowAbortException("Unknown font: '"..getFont.."'");
+		int kerning = fnt.GetDefaultKerning();
 		
 		bool manualPos = flags & DI_SCREEN_HCENTER;
 		
-		if ( flags & DI_TEXT_ALIGN_RIGHT )
+		if ( flags & TDF_ALIGN_RIGHT )
 		{
-			xOff = -(doFont.mFont.StringWidth(string));
+			pos.x -= fnt.StringWidth(string);
+			//pos.x -= fnt.GetCharWidth(string.ByteAt(0));
 		}
 		else if ( flags & DI_TEXT_ALIGN_CENTER )
 		{
-			xOff = -(doFont.mFont.StringWidth(string))/2;
+			pos.x -= (fnt.StringWidth(string))/2;
+			//pos.x -= fnt.GetCharWidth(string.ByteAt(0)) / 2;
 		}
 		
-		screen.DrawText(doFont.mFont, Font.CR_UNTRANSLATED, drawOffset.x+pos.x+xOff, drawOffset.y+pos.y, string,
-			DTA_Alpha, alpha, DTA_COLOR, color,
-			DTA_HUDRules, manualPos ? BaseStatusBar.HUD_HorizCenter : BaseStatusBar.HUD_NORMAL);
-		/*let tex = TexMan.CheckForTexture("HUD_LBAS");
-		screen.DrawTexture(tex, false, HUDLEFT_X, HUDLEFT_Y,
-			DTA_HUDRules, BaseStatusBar.HUD_NORMAL);*/
+		pos *= hud_scale;
+		pos += drawOffset;
+		
+		for ( int i = 0; i < string.Length(); i++ )
+		{
+			string charTex = "fonts/"..getFont.."/"..(String.Format("%04x", string.ByteAt(i)))..".png";
+			TextureID tex = TexMan.CheckForTexture(charTex);
+			screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);
+			pos.x += ( fnt.GetCharWidth(string.ByteAt(i)) + kerning ) * hud_scale;
+		}
+		
+		/*screen.DrawText(fnt, Font.CR_UNTRANSLATED, pos.x+xOff, pos.y-16, string,
+			DTA_Alpha, alpha, DTA_COLOR, color, DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale);*/
 	}
 	
 	void TSP_DrawText (Font fnt, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0)

@@ -1,7 +1,11 @@
 HardwareShader Texture "graphics/testoby_wipswell.png" { Shader "shaders/glsl/bilinear.fp" }
 
 HardwareShader Texture "HUD_LBAS" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "HUD_LMON" { Shader "shaders/glsl/bilinear.fp" }
 
 HardwareShader Texture "MC1ST01" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "MC1ST02" { Shader "shaders/glsl/bilinear.fp" }
 HardwareShader Texture "MC1ST03" { Shader "shaders/glsl/bilinear.fp" }
+
+HardwareShader Texture "fonts/tsp_ammo_tag/0030.png" { Shader "shaders/glsl/bilinear.fp" }
+HardwareShader Texture "fonts/tsp_ammo_tag/0031.png" { Shader "shaders/glsl/bilinear.fp" }

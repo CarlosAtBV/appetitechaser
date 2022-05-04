@@ -77,7 +77,7 @@ Class TSP_StatusBar : BaseStatusBar
 		mAmountFont = HUDFont.Create("INDEXFONT");
 		fnt_ammoBig = HUDFont.Create("tsp_ammo_big");
 		fnt_ammoSmall = HUDFont.Create("tsp_ammo_small");
-		fnt_ammoTag = HUDFont.Create("tsp_ammo_tag");
+		//FONT_AMMOTAG = HUDFont.Create("tsp_ammo_tag");
 		fnt_bold = HUDFont.Create("tsp_bold");
 		fnt_pickupLog = HUDFont.Create("tsp_pickup");
 		
@@ -137,6 +137,8 @@ Class TSP_StatusBar : BaseStatusBar
 	const HUDLEFT_Y = 720-140;//-140;
 	const HUDRIGHT_X = -270;
 	const HUDRIGHT_Y = -140;
+	
+	const FONT_AMMOTAG = "tsp_ammo_tag";
 	
 	double hud_scale;
 
@@ -271,34 +273,27 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MAIN HUD GRAPHIC (LEFT)
 			TSP_DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y));
-			//DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			
 			// MONEY
 			TSP_DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y));
-			//DrawImage("HUD_LMON", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); // Money Box
-			TSP_DrawString(fnt_ammoTag, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW);
-			
-			
-			//DrawString(mSmallFont, "Test", (HUDLEFT_X+224, HUDLEFT_Y+2), DI_NOSHADOW, Font.CR_UNTRANSLATED);
-			//TSP_DrawString(mSmallFont,  "Test", (HUDLEFT_X+224, HUDLEFT_Y+2), DI_NOSHADOW, Font.CR_UNTRANSLATED);
-			//DrawString(mSmallFont, FormatNumber(money, 180000), (HUDLEFT_X, HUDLEFT_Y+25), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE); //Money Stuff
+			TSP_DrawString(FONT_AMMOTAG, ""..money, (HUDLEFT_X+224, HUDLEFT_Y+49), TDF_ALIGN_RIGHT);
 			
 			// SHIELD PIPS
 			if(CPlayer.mo is "TSP_MelPlayer")
 			{
-				DrawImage("SHD_3A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				TSP_DrawImage("SHD_3A", (HUDLEFT_X, HUDLEFT_Y));
 			}
 			if(CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("SHD_2A", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				TSP_DrawImage("SHD_2A", (HUDLEFT_X, HUDLEFT_Y));
 			}
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 1: DrawImage("SHD_1B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 2: DrawImage("SHD_2B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 3: DrawImage("SHD_3B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 4: DrawImage("SHD_4B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
-				case 5: DrawImage("SHD_5B", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS); break;
+				case 1: TSP_DrawImage("SHD_1B", (HUDLEFT_X, HUDLEFT_Y)); break;
+				case 2: TSP_DrawImage("SHD_2B", (HUDLEFT_X, HUDLEFT_Y)); break;
+				case 3: TSP_DrawImage("SHD_3B", (HUDLEFT_X, HUDLEFT_Y)); break;
+				case 4: TSP_DrawImage("SHD_4B", (HUDLEFT_X, HUDLEFT_Y)); break;
+				case 5: TSP_DrawImage("SHD_5B", (HUDLEFT_X, HUDLEFT_Y)); break;
 			}
 			
 			//================
@@ -307,16 +302,16 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			// MEL (MEL, RETROGRADE MEL)
 
-			/*switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
+			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
 			{
 				case 1: 
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Default Mel
+					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Default Mel
 				case 2:
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Retrograde Mel
+					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Retrograde Mel
 				case 3: 
-					DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;// Retro/Robo Mel
+					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Retro/Robo Mel
 				case 4: 
-					DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS); break;							   // Meloby
+					TSP_DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12)); break;							   // Meloby
 				default:		
 					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
 					{
@@ -337,7 +332,7 @@ Class TSP_StatusBar : BaseStatusBar
 					}
 					else // Draw default player mugshot
 					{
-						DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
+						TSP_DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12));
 					}
 					
 
@@ -347,11 +342,9 @@ Class TSP_StatusBar : BaseStatusBar
 						{
 						DrawImage("MCWSTZZ", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
 						}
-					}
+					}*/
 				
-			}*/
-			
-			TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (20, HUDLEFT_Y-12));
+			}
 
 			//================
 			// GOD MODE SPARKS (Mel/Retro Mel)
@@ -497,7 +490,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if ( getWeapon )
 			{
-				DrawString(fnt_ammoTag, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
+				//DrawString(FONT_AMMOTAG, getWeapon.tspw_altname, (HUDRIGHT_X+149, HUDRIGHT_Y+98), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, Font.CR_UNTRANSLATED);
 			}
 
 			// POWERBANK
@@ -604,17 +597,17 @@ Class TSP_StatusBar : BaseStatusBar
 						string clipString = string.format("%03d", clipAmount);
 						for ( int i; i < clipString.length(); i++ )
 						{
-							TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW,
+							/*TSP_DrawString(fnt_ammoBig, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW,
 								a1.amount == 0 ? CLR_AMMO_LOW : clipColor,
-								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);
+								alpha = (clipAmount == 0 || (""..clipAmount).length() < 3-i) ? 0.25 : 1.0);*/
 						}
 						
 						int ammoAmount = a1.amount;
 						string ammoString = string.format("%03d", ammoAmount);
 						for ( int i; i < ammoString.length(); i++ )
 						{
-							TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
-								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);
+							/*TSP_DrawString(fnt_ammoSmall, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 10*i, HUDRIGHT_Y+83), DI_TEXT_ALIGN_RIGHT|DI_NOSHADOW, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
+								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);*/
 						}
 					}
 					
@@ -690,8 +683,8 @@ Class TSP_StatusBar : BaseStatusBar
 						alpher = thisone.timeleft/12.; //whoosh
 					}
 					
-					TSP_DrawString(fnt_pickupLog, String.Format(thisone.whatugot, thisone.howmany), (HUDLEFT_X+130, HUDLEFT_Y+20-(16*i)+yoff), alpha: alpher);
-					//TSP_DrawString(fnt_pickupLog, "buh"..String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
+					//TSP_DrawString(fnt_pickupLog, String.Format(thisone.whatugot, thisone.howmany), (HUDLEFT_X+130, HUDLEFT_Y+20-(16*i)+yoff), alpha: alpher);
+					////TSP_DrawString(fnt_pickupLog, "buh"..String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 					//DrawString(mTinyFont, String.Format(thisone.whatugot,thisone.howmany), (HUDLEFT_X+140, HUDLEFT_Y+33-(8*i)+yoff), DI_TEXT_ALIGN_LEFT, Font.CR_UNTRANSLATED, alpher);
 				}
 			
