@@ -35,13 +35,18 @@ Class TSP_WaterfallMist : Actor
 		XScale 1.25;
 	}
 	
+	override void Tick()
+	{
+		super.Tick();
+		vel.z -= 0.5;
+	}
+	
 	States
 	{
 		Spawn:
 			TSMK AAAAAA 1
 			{
 				alpha += 0.1;
-				vel.z = 0.5;
 			}
 			TSMK A 1 A_FadeOut(0.05);
 			Wait;
@@ -71,6 +76,7 @@ Class TSP_WaterfallMistGenerator : Actor
 					float colorMult = frandom(0.75,1.25);
 					Color newColor = Color(255, int(fillcolor.r * colorMult), int(fillcolor.g * colorMult), int(fillcolor.b * colorMult));
 					mist.SetShade(newColor);
+					mist.vel.z = 2;
 				}
 			}
 			Loop;
