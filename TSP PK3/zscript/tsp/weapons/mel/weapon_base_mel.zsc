@@ -38,10 +38,12 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 				{
 					Console.Printf("mAG STASISEDD");
 					A_StartSound("magslam", 6);
+					A_StartSound("mel/magslam", CHAN_VOICE);
 					return;
 				}
 			}
 			A_StartSound("maggrapple", 6);
+			A_StartSound("mel/maggrapple", CHAN_VOICE);
 		}
 		1105 ABCDEFGHI 1;
 		TNT1 A 0 A_SetBlend("39 99 0", 0.9, 15);
