@@ -302,7 +302,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			if ( !totallyfrozen )
 			{
-				tsp_crouching = (cmd.buttons & BT_CROUCH);
+				tsp_crouching = tsp_crouchSliding || (cmd.buttons & BT_CROUCH);
 			}
 		}
 		else
