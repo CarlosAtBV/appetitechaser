@@ -35,8 +35,7 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 			while ( MonsterFinder.Next() )
 			{
 				Actor mo = Actor(MonsterFinder.thing);
-				if ( mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<512) && mo.Health > 0
-				&& mo.bShootable && !mo.bDontThrust && invoker.owner.CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),invoker.owner.angle))<45)
+				if ( mo.FindInventory("TSP_Mel_StasisHandler") )
 				{
 					Console.Printf("I piss myself I cry");
 					A_StartSound("magslam", 6);
