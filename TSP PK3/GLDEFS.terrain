@@ -14,3 +14,13 @@ hardwareshader texture "textures/tsp/test/watertest.png"
 	texture "texRamp" "shaders/glsl/water/water_ramp_bastetia2.png"
 	texture "texUnder" "textures/tsp/ikati/ikati_stone_1.png"
 }
+
+hardwareshader texture "textures/tsp/test/waterfalltest.png"
+{
+	shader "shaders/glsl/waterfall.fp"
+	texture "texRipples" "shaders/glsl/water/waterfall_ripples.png"
+	texture "texRipples2" "shaders/glsl/water/water_ripples2.png"
+	texture "texClouds" "shaders/glsl/water/water_clouds_half.png"
+	texture "texRamp" "shaders/glsl/water/water_ramp_bastetia2.png"
+	texture "texUnder" "textures/tsp/ikati/ikati_stone_1.png"
+}
