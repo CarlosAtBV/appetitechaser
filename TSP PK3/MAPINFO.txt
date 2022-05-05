@@ -233,6 +233,8 @@ DoomEdNums
 	21001 = TSP_NPC_Fish01
 	21002 = TSP_NPC_Fish02
 	
+	22000 = TSP_WaterfallMistGenerator
+	
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
 	

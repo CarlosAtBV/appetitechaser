@@ -22,3 +22,57 @@ Class TSP_CrouchSlideSmoke : Actor
 			Wait;
 	}
 }
+
+Class TSP_WaterfallMist : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+		RenderStyle "Shaded";
+		Alpha 0;
+		+FORCEXYBILLBOARD
+		+ROLLSPRITE
+		XScale 1.25;
+	}
+	
+	States
+	{
+		Spawn:
+			TSMK AAAAAA 1
+			{
+				alpha += 0.1;
+				vel.z = 0.5;
+			}
+			TSMK A 1 A_FadeOut(0.05);
+			Wait;
+	}
+}
+
+Class TSP_WaterfallMistGenerator : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	
+	int user_length;
+	
+	States
+	{
+		Spawn:
+			TNT1 A 4
+			{
+				for ( int dist = 0; dist < user_length; dist += 8 )
+				{
+					let mist = Spawn("TSP_WaterfallMist", pos + (cos(angle),sin(angle),0) * dist + (0,0,frandom(0,2)));
+					mist.scale.x *= frandom(0.95,1.2);
+					mist.scale.y = mist.scale.x;
+					mist.roll = random(0,360);
+					float colorMult = frandom(0.75,1.25);
+					Color newColor = Color(255, int(fillcolor.r * colorMult), int(fillcolor.g * colorMult), int(fillcolor.b * colorMult));
+					mist.SetShade(newColor);
+				}
+			}
+			Loop;
+	}
+}
