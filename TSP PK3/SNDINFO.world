@@ -16,3 +16,8 @@ world/switch01/off "sounds/ambience/switch01_off.ogg"
 // Waterfall
 ambience/waterfall/normal "sounds/ambience/sfx_ambient_waterfall_normal_loop.ogg"
 $ambient 55 ambience/waterfall/normal point continuous 1.0
+
+ambience/waterfall/cave "sounds/ambience/sfx_ambient_waterfall_cave_loop.ogg"
+$ambient 56 ambience/waterfall/cave point continuous 1.0
+
+ambience/waterfall/exit "sounds/ambience/sfx_ambient_waterfall_exit.ogg"

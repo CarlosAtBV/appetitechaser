@@ -7,7 +7,7 @@ maps
 	
 	TSP_TEST
 	{
-		defaultceiltexture = "F_SKY1";
+		defaultceiltexture = "textures/test/test_rocks.png";
 		overridefloorheight = false;
 		customfloorheight = 0;
 		uselongtexturenames = true;
@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = 3181.083f;
+		viewpositionx = 2315.85f;
 		defaulttoptexture = "textures/test/test_blank_pink.png";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -48,14 +48,14 @@ maps
 		}
 		overridebottomtexture = false;
 		defaultbottomtexture = "textures/test/test_blank_pink.png";
-		defaultfloortexture = "F_SKY1";
-		viewpositiony = -2574.978f;
+		defaultfloortexture = "textures/test/test_rocks.png";
+		viewpositiony = -4210.663f;
 		defaultwalltexture = "textures/test/test_blank_pink.png";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 0.08157302f;
+		viewscale = 0.08157263f;
 		
 		reloadresourceprecommand
 		{
@@ -85,6 +85,15 @@ maps
 			stderriserror = true;
 		}
 		
+		fieldtypes
+		{
+			
+			thing
+			{
+				user_length = 0;
+			}
+		}
+		
 		scriptdocuments
 		{
 			
@@ -104,8 +113,8 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 4495;
-				firstvisibleline = 171;
+				caretposition = 4744;
+				firstvisibleline = 186;
 				activetab = true;
 			}
 		}
