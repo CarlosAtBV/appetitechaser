@@ -70,7 +70,7 @@ Class TSP_WaterfallMistGenerator : Actor
 				for ( int dist = 0; dist < user_length; dist += 8 )
 				{
 					let mist = Spawn("TSP_WaterfallMist", pos + (cos(angle),sin(angle),0) * dist + (0,0,frandom(0,2)));
-					mist.scale.x *= frandom(0.95,1.2);
+					mist.scale.x *= frandom(0.95,1.5);
 					mist.scale.y = mist.scale.x;
 					mist.roll = random(0,360);
 					float colorMult = frandom(0.75,1.25);
