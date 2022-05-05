@@ -147,10 +147,8 @@ mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02_short.ogg"
 mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03_short.ogg"
 mel/xlmelee4 "sounds/characters/mel/melee/vo_mel_melee_xl04.ogg"
 
-$random mel/chargedunk { mel/magslam1 null null null null null null null null null null null null null }
+$random mel/magslam { mel/magslam1 mel/magslam2 mel/magslam3 null null null null null null null null null null null null }
 mel/magslam1 "sounds/characters/mel/melee/vo_mel_magslam1.ogg"
-
-$random mel/magslam { mel/magslam2 mel/magslam3 null null null null null null null null null null null null null null null null null null null }
 mel/magslam2 "sounds/characters/mel/melee/vo_mel_magslam2.ogg"
 mel/magslam3 "sounds/characters/mel/melee/vo_mel_magslam3.ogg"
 
