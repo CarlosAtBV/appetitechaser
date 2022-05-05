@@ -69,16 +69,32 @@ Extend Class TSP_Weapon_Core
 	//
 	//==========================================================================
 	
-		action void A_TSP_Grapple(int range = 512)
+	Array<Actor> mag_fellas;
+	
+		action void A_TSP_GetPeopleToGrapple(int range = 512)
 		{
+			invoker.mag_fellas.Clear();
+			
 			ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
 			
 			Actor mo;
 			
 			while (mo = Actor(MonsterFinder.Next()))
 			{
-				if(mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
-				&& mo.bShootable && !mo.bDontThrust && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<45)
+				if ( mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<range) && mo.Health>0
+				&& mo.bShootable && !mo.bDontThrust && CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),self.angle))<45 )
+				{
+					invoker.mag_fellas.Push(mo);
+				}
+			}
+		}
+	
+		action void A_TSP_Grapple()
+		{
+			for ( int i = 0; i < invoker.mag_fellas.Size(); i++ )
+			{
+				Actor mo = invoker.mag_fellas[i];
+				if ( mo && mo.Health > 0 && mo.bShootable && !mo.bDontThrust )
 				{
 					int myMaxHealth = mo.GetSpawnHealth();
 					double stuntime;
@@ -109,6 +125,8 @@ Extend Class TSP_Weapon_Core
 					}
 				}
 			}
+			
+			invoker.mag_fellas.Clear();
 		}
 	
 	//==========================================================================

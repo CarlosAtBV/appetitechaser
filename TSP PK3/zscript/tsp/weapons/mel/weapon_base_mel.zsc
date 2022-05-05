@@ -30,18 +30,18 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 	TraitFireCont:
 		"----" A 0
 		{
-			A_StartSound("maggrapple", 6);
-			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(invoker.owner, 512, 0);
-			while ( MonsterFinder.Next() )
+			A_TSP_GetPeopleToGrapple(512);
+			for ( int i = 0; i < invoker.mag_fellas.Size(); i++ )
 			{
-				Actor mo = Actor(MonsterFinder.thing);
+				Actor mo = invoker.mag_fellas[i];
 				if ( mo.FindInventory("TSP_Mel_StasisHandler") )
 				{
-					Console.Printf("I piss myself I cry");
+					Console.Printf("mAG STASISEDD");
 					A_StartSound("magslam", 6);
-					break;
+					return;
 				}
 			}
+			A_StartSound("maggrapple", 6);
 		}
 		1105 ABCDEFGHI 1;
 		TNT1 A 0 A_SetBlend("39 99 0", 0.9, 15);
