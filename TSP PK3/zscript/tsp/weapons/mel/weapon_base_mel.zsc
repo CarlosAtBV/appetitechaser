@@ -28,7 +28,22 @@ class TSP_Mel_BaseWeapon : TSP_Weapon_Core
 		Loop;
 	TraitFire:
 	TraitFireCont:
-		1105 A 0 A_StartSound("*maggrapple", 6);
+		"----" A 0
+		{
+			A_StartSound("maggrapple", 6);
+			BlockThingsIterator MonsterFinder = BlockThingsIterator.Create(invoker.owner, 512, 0);
+			while ( MonsterFinder.Next() )
+			{
+				Actor mo = Actor(MonsterFinder.thing);
+				if ( mo!=invoker.owner && (invoker.owner.Distance3D(mo)-mo.radius<512) && mo.Health > 0
+				&& mo.bShootable && !mo.bDontThrust && invoker.owner.CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),invoker.owner.angle))<45)
+				{
+					Console.Printf("I piss myself I cry");
+					A_StartSound("magslam", 6);
+					break;
+				}
+			}
+		}
 		1105 ABCDEFGHI 1;
 		TNT1 A 0 A_SetBlend("39 99 0", 0.9, 15);
 		TNT1 A 0 A_Quake(2,15,0,5,"");
