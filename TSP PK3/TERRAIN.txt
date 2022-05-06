@@ -1,0 +1,7 @@
+terrain BastetiaWater
+{
+	footclip 4
+	liquid
+}
+
+floor "textures/tsp/test/watertest.png" BastetiaWater

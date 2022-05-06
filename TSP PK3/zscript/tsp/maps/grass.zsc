@@ -1,0 +1,38 @@
+Class TSP_GrassIkati : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	
+	States
+	{
+		Spawn:
+			GRS0 A 0 NoDelay
+			{
+				frame = random(0,2);
+				scale.x *= frandom(0.9,1.2);
+				if ( random(0,1) )
+				{
+					scale.x *= -1;
+				}
+				scale.y *= frandom(0.9,1.2);
+			}
+			"----" A -1;
+			Stop;
+	}
+}
+
+Class TSP_Ikati_Doorway : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+}

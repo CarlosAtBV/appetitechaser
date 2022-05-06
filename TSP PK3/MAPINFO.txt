@@ -234,9 +234,11 @@ DoomEdNums
 	21002 = TSP_NPC_Fish02
 	
 	22000 = TSP_WaterfallMistGenerator
+	22100 = TSP_GrassIkati
 	
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
+	22750 = TSP_Ikati_Doorway
 	
 	24800 = TSP_BountyHunters_EnemySpawn
 	24801 = TSP_DeathPlane
