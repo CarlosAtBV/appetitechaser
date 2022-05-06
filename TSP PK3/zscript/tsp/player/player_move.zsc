@@ -259,6 +259,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			//super.CalcHeight();
 		}
 		
+		if ( floorclip && player.playerstate != PST_DEAD && pos.Z <= floorz )
+		{
+			player.viewz -= floorclip;
+		}
+		
+		
 		if ( level.maptime <= 1 )
 		{
 			return;
