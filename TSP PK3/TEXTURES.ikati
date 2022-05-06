@@ -34,41 +34,6 @@ Texture "textures/tsp/ikati/ikati_cliffstone_0", 256, 256
 	}
 }
 
-Texture "textures/tsp/ikati/ikati_doorway_0", 112, 96
-{
-	Patch "textures/tsp/ikati/ikati_wall_0.png", 0, 0
-	Patch "patches/tsp/misc/grime_1.png", 0, 32
-	{
-		Style Subtract
-		Alpha 0.25
-	}
-	Patch "patches/tsp/misc/shadow_0.png", 0, 92
-	{
-		Style Subtract
-		Alpha 0.1
-	}
-}
-
-Texture "textures/tsp/ikati/ikati_darkway_0", 112, 96
-{
-	Patch "textures/tsp/ikati/ikati_wall_0.png", 0, 0
-	Patch "patches/tsp/misc/grime_1.png", 0, 32
-	{
-		Style Subtract
-		Alpha 0.25
-	}
-	Patch "patches/tsp/misc/shadow_0.png", 0, 92
-	{
-		Style Subtract
-		Alpha 0.1
-	}
-	Patch "patches/tsp/misc/blacksquare256.png", 0, 0
-	{
-		Style Translucent
-		Alpha 0.15
-	}
-}
-
 Texture "textures/tsp/ikati/ikati_building_0", 256, 256
 {
 	Patch "textures/tsp/ikati/ikati_wall_0.png", 0, 0
@@ -89,6 +54,11 @@ Texture "textures/tsp/ikati/ikati_building_0", 256, 256
 		Alpha 0.1
 		FlipY
 	}
+	Patch "patches/tsp/misc/shadow_0.png", 0, 124
+	{
+		Style Subtract
+		Alpha 0.025
+	}
 	Patch "patches/tsp/misc/grime_1.png", 0, 192
 	{
 		Style Subtract
@@ -102,5 +72,30 @@ Texture "textures/tsp/ikati/ikati_building_0", 256, 256
 	Patch "patches/tsp/ikati/ikati_stonelets_0.png", 0, 0
 	{
 		Style Overlay
+	}
+	Patch "patches/tsp/ikati/ikati_stonelets_0.png", 0, 128
+	{
+		Style Overlay
+	}
+}
+
+Texture "textures/tsp/ikati/ikati_treehouse_0", 256, 128
+{
+	Patch "textures/tsp/ikati/ikati_wood_0.png", 0, 0
+	Patch "patches/tsp/misc/grime_1.png", 0, 0
+	{
+		Style Subtract
+		Alpha 0.15
+		FlipY
+	}
+	Patch "patches/tsp/misc/grime_1.png", 0, 64
+	{
+		Style Subtract
+		Alpha 0.15
+	}
+	Patch "patches/tsp/misc/shadow_0.png", 0, 124
+	{
+		Style Subtract
+		Alpha 0.1
 	}
 }

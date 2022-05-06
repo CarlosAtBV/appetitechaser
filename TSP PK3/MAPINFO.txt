@@ -238,7 +238,7 @@ DoomEdNums
 	
 	24700 = TSP_Prop_ShipMonitors
 	24701 = TSP_Prop_PlanetSphere
-	22750 = TSP_Ikati_Doorway
+	22750 = TSP_Ikati_GrassRoof
 	
 	24800 = TSP_BountyHunters_EnemySpawn
 	24801 = TSP_DeathPlane

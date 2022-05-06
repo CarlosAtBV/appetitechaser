@@ -23,7 +23,7 @@ Class TSP_GrassIkati : Actor
 	}
 }
 
-Class TSP_Ikati_Doorway : Actor
+Class TSP_Ikati_GrassRoof : Actor
 {
 	Default
 	{

@@ -16,11 +16,21 @@ maps
 				
 				controlsectorarea
 				{
-					usecustomtagrange = false;
-					outerleft = -512;
-					outerright = 0;
-					outertop = 512;
-					outerbottom = 0;
+					usecustomtagrange = true;
+					firsttag = 100;
+					lasttag = 500;
+					outerleft = -3712;
+					outerright = -2240;
+					outertop = 3136;
+					outerbottom = -2304;
+				}
+			}
+			
+			stairsectorbuilder
+			{
+				
+				prefabs
+				{
 				}
 			}
 		}
@@ -54,9 +64,9 @@ maps
 		overrideceilheight = false;
 		overridebrightness = false;
 		uselongtexturenames = true;
-		viewpositionx = 168.4057f;
-		viewpositiony = 316.6595f;
-		viewscale = 1.856416f;
+		viewpositionx = -42.70617f;
+		viewpositiony = 371.8393f;
+		viewscale = 1.428009f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -103,6 +113,11 @@ maps
 		
 		fieldtypes
 		{
+			
+			sector
+			{
+				user_managed_3d_floor = 3;
+			}
 			
 			thing
 			{

@@ -1,7 +1,7 @@
-Model TSP_Ikati_Doorway
+Model TSP_Ikati_GrassRoof
 {
 	Path "models/tsp/props/ikati/" 
-	MODEL 0 "doorway.obj"
+	MODEL 0 "grassroof.obj"
 	AngleOffset 90
 	Scale 1.0 1.0 1.2
 	
