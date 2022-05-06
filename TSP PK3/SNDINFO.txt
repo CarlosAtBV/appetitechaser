@@ -6,6 +6,7 @@ menu/change		"sounds/general/ui/ui_menu_change.ogg"
 menu/choose		"sounds/general/ui/ui_menu_choose.ogg"
 menu/clear		"sounds/general/ui/ui_menu_clear.ogg"
 menu/cursor		"sounds/general/ui/ui_menu_cursor.ogg"
+$volume menu/cursor 0.5
 menu/dismis		"sounds/general/ui/ui_menu_dismiss.ogg"
 menu/invalid	"sounds/general/ui/ui_menu_invalid.ogg"
 menu/prompt		"sounds/general/ui/ui_menu_prompt.ogg"
