@@ -79,7 +79,7 @@ Texture "textures/tsp/ikati/ikati_building_0", 256, 256
 	}
 }
 
-Texture "textures/tsp/ikati/ikati_treehouse_0", 256, 128
+Texture "textures/tsp/ikati/ikati_treehouse_0", 256, 96
 {
 	Patch "textures/tsp/ikati/ikati_wood_0.png", 0, 0
 	Patch "patches/tsp/misc/grime_1.png", 0, 0
@@ -88,12 +88,12 @@ Texture "textures/tsp/ikati/ikati_treehouse_0", 256, 128
 		Alpha 0.15
 		FlipY
 	}
-	Patch "patches/tsp/misc/grime_1.png", 0, 64
+	Patch "patches/tsp/misc/grime_1.png", 0, 32
 	{
 		Style Subtract
 		Alpha 0.15
 	}
-	Patch "patches/tsp/misc/shadow_0.png", 0, 124
+	Patch "patches/tsp/misc/shadow_0.png", 0, 92
 	{
 		Style Subtract
 		Alpha 0.1
