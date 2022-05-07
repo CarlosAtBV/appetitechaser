@@ -1,0 +1,107 @@
+Class TSP_UIButton
+{
+	Vector2 pos;
+	Vector2 size;
+	string text;
+}
+
+Mixin Class TSP_UIDrawMixin
+{
+	enum TSPDrawTextureFlags
+	{
+		TDF_ANCHOR_LEFT = 0,
+		TDF_ANCHOR_RIGHT = 0x1,
+	}
+	
+	enum TSPDrawTextFlags
+	{
+		TDF_ALIGN_LEFT = 0,
+		TDF_ALIGN_RIGHT = 0x10,
+		TDF_ALIGN_CENTER = 0x20,
+	}
+	
+	double ui_scale;
+	Vector2 ui_offset;
+	
+	void UpdateScaling()
+	{
+		ui_scale = screen.GetHeight() / 720.0;
+	}
+	
+	Vector2 ConvertMousePos(Vector2 mouse)
+	{
+		Vector2 getPos = mouse * ui_scale;
+		return getPos;
+	}
+	
+	bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)
+	{
+		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
+	}
+	
+	void UI_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = Color(255,255,255,255), float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	{
+		Font fnt = Font.GetFont(getFont);
+		if ( fnt == null ) ThrowAbortException("Unknown font: '"..getFont.."'");
+		int kerning = fnt.GetDefaultKerning();
+		
+		if ( flags & TDF_ALIGN_RIGHT )
+		{
+			pos.x -= fnt.StringWidth(string);
+			//pos.x -= fnt.GetCharWidth(string.ByteAt(0));
+		}
+		else if ( flags & TDF_ALIGN_CENTER )
+		{
+			pos.x -= (fnt.StringWidth(string))/2;
+			//pos.x -= fnt.GetCharWidth(string.ByteAt(0)) / 2;
+		}
+		
+		pos *= ui_scale;
+		pos += ui_offset;
+		
+		if ( flags & TDF_ANCHOR_RIGHT )
+		{
+			pos.x += screen.GetWidth();
+		}
+		
+		Color newColor = color;
+		
+		for ( int i = 0; i < string.Length(); i++ )
+		{
+			if ( string.ByteAt(i) == 28 )
+			{
+				if ( string.ByteAt(i+1) == 91 )
+				{
+					//Console.Printf("~ [] Color Type");
+					int startPos = i+2;
+					int bt = startPos;
+					while( bt < string.Length() && string.ByteAt(bt) != 93 )
+					{
+						bt++;
+					}
+					bt -= startPos;
+					/*newColor = Color(hud_textColors.At(string.Mid(startPos, bt)));
+					newColor = Color(255, newColor.r, newColor.g, newColor.b);*/
+					//newColor = TSP_GetErrorColor();//Color(255, 124, 183, 255);
+					i = startPos+bt;
+					continue;
+				}
+				else
+				{
+					//Console.Printf("~ c Color Type");
+					//newColor = Color(255, 255, 255, 255);
+					i += 1;
+					continue;
+				}
+			}
+			string charTex = "fonts/"..getFont.."/"..(String.Format("%04x", string.ByteAt(i)))..".png";
+			TextureID tex = TexMan.CheckForTexture(charTex);
+			screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
+				DTA_Alpha, alpha, DTA_Color, newColor);
+			pos.x += ( fnt.GetCharWidth(string.ByteAt(i)) + kerning ) * ui_scale;
+		}
+		
+		/*screen.DrawText(fnt, Font.CR_UNTRANSLATED, pos.x, pos.y-16, string,
+			DTA_Alpha, alpha, DTA_COLOR, color, DTA_ScaleX, ui_scale, DTA_ScaleY, hud_scale);*/
+	}
+}

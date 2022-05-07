@@ -18,7 +18,8 @@ server bool tsp_supersecret = false;
 
 server noarchive int tsp_gamemode = 0;
 server noarchive bool tsp_debug = false;
-server noarchive string tsp_internal_bhmap = "BH_BZ";
+server noarchive string _tsp_bhmap = "BH_BZ";
+server noarchive int _tsp_skill = -1;
 server noarchive int tsp_internal_bhepisode = -1;
 
 server bool tsp_enemies_doom = true;

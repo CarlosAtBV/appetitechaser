@@ -58,13 +58,15 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 	}
 }
 
-#include "zscript/tsp/misc/misc_tokenizer.zsc"
+//#include "zscript/tsp/misc/misc_tokenizer.zsc"
 #include "zscript/tsp/misc/misc_animsystem.zsc"
+#include "zscript/tsp/misc/misc_filehandler.zsc"
 
 #include "zscript/tsp/items_gbd.zsc"
 #include "zscript/tsp/items/items_custom.zsc"
 #include "zscript/tsp/items/items_syringe.zsc"
 
+#include "zscript/tsp/menus/menu_base.zsc"
 #include "zscript/tsp/menus/menu_episodes.zsc"
 #include "zscript/tsp/menus/menu_characters_bh.zsc"
 #include "zscript/tsp/menus/menu_demo_loadout.zsc"
@@ -77,7 +79,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 
 #include "zscript/tsp/menus/options/menu_options.zsc"
 
-#include "zscript/tsp/menus/codex/codex_main.zsc"
+//#include "zscript/tsp/menus/codex/codex_main.zsc"
 #include "zscript/tsp/menu_items.zsc"
 #include "zscript/tsp/misc_intermission.zsc"
 /*#include "zscript/tsp/store/store_core.zsc"

@@ -54,7 +54,7 @@ Class TSP_EpisodeMenu : GenericMenu
 		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
 		int selHeight = BigFont.GetHeight()+3+SmallFont.GetHeight()+1;
 		
-		if(gamemode == 1)
+		if ( gamemode == 1 )
 		{
 			//SetMenu("SkillMenu",episodes[episodes.Size()-1].id);
 			//CVar.GetCVar("tsp_internal_bhepisode", players[0]).SetInt(episodes[episodes.Size()-1].id);
@@ -64,12 +64,13 @@ Class TSP_EpisodeMenu : GenericMenu
 			{
 				if ( episodes[i].name == "TSPSpecialMapWarp" )
 				{
-					SetMenu("SkillMenu", i);
+					SetMenu("TSP_BountyHuntersMapMenu", i);
 					Menu.GetCurrentMenu().mParentMenu = father;
+					Console.Printf("Set that gotdamn episode to "..episodes[episodes.Size()-1].id);
+					TSP_BountyHuntersMapMenu(Menu.GetCurrentMenu()).episodeID = episodes[episodes.Size()-1].id;
 					return;
 				}
 			}
-			//TSP_BountyHuntersMapMenu(Menu.GetCurrentMenu()).episodeID = episodes[episodes.Size()-1].id;
 			return;
 		}
 		

@@ -8,7 +8,7 @@ Class TSP_PyAnim_Keyframe
 
 Class TSP_PyAnimBrain play
 {
-	static TSP_PyAnim PA_ParseAnimFile (string findFile)
+	/*static TSP_PyAnim PA_ParseAnimFile (string findFile)
 	{
 		int getFile = Wads.CheckNumForFullName(findFile);
 		
@@ -58,20 +58,8 @@ Class TSP_PyAnimBrain play
 			}
 		}
 		
-		/*for ( int i = 0; i < fileTokens.tokens.Size(); i++ )
-		{
-			let thisToken = fileTokens.TK_GetToken(i);
-			Console.Printf(thisToken.type.." ~ "..thisToken.value);
-		}*/
-		
-		/*Console.Printf("yuh");
-		for ( int i = 0; i < curAnim.keyframes.Size(); i++ )
-		{
-			Console.Printf(curAnim.keyframes[i].frame.." ~ "..curAnim.keyframes[i].pos);
-		}*/
-		
 		return curAnim;
-	}
+	}*/
 }
 
 Class TSP_PyAnim

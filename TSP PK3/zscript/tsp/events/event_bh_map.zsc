@@ -1,7 +1,8 @@
 Class TSP_EventHandler_GotoBHMap : EventHandler
 {
-	override void WorldLoaded(WorldEvent e)
+	override void WorldTick()
 	{
-		CallACS("TSP_GotoThisMap");
+		level.ChangeLevel(_tsp_bhmap, 0, CHANGELEVEL_NOINTERMISSION, -1);
+		//CallACS("TSP_GotoThisMap");
 	}
 }

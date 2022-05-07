@@ -1,0 +1,184 @@
+Struct TSP_FileTextHandler
+{
+	static string StripWhitespace(string inString)
+	{
+		while ( ( inString.Left(1) ~== " " ) || ( inString.Left(1) ~== "\t" ) )
+		{
+			inString = inString.Mid(1);
+		}
+		if ( inString.ByteAt(inString.Length()-1) == 13 )
+		{
+			inString = inString.Left(inString.Length()-1);
+		}
+		return inString;
+	}
+	
+	static string TextStringToString(string inString)
+	{
+		if ( inString.ByteAt(0) == 34 )
+		{
+			inString = inString.Mid(1);
+		}
+		if ( inString.ByteAt(inString.Length()-2) == 34 )
+		{
+			inString = inString.Left(inString.Length()-2);
+		}
+		if ( inString.ByteAt(inString.Length()-1) == 59 )
+		{
+			inString = inString.Left(inString.Length()-1);
+		}
+		return inString;
+	}
+	
+	static bool isWhitespace(int thisChar)
+	{
+		switch (thisChar)
+		{
+			case 0:
+			case 9:
+			case 10:
+			case 13:
+			case 32:
+				return true;
+		}
+		return false;
+	}
+	
+	static bool isDigit(int cc)
+    {
+        //int cc = c.CharCodeAt(0);
+        return cc <= 57 && cc >= 48 || cc == 45 || cc == 46;
+    }
+	
+	static void SplitLines(out Array<string> inputArray, string text, string separator, int flags = TOK_KEEPEMPTY)
+	{
+		inputArray.Clear();
+		text.Split(inputArray, separator, flags);
+	}
+}
+
+enum E_TSPTokens
+{
+	TSPT_Identifier,
+	TSPT_Number,
+	TSPT_String,
+	TSPT_EOF,
+	TSPT_Comma,
+    TSPT_Minus,
+    TSPT_ParenO,
+    TSPT_ParenC,
+    TSPT_BraceO,
+    TSPT_BraceC,
+    TSPT_BrackO,
+    TSPT_BrackC,
+	TSPT_Slash,
+	TSPT_Colon,
+	TSPT_Semicolon,
+    TSPT_Unknown,
+}
+
+Class TSP_Token
+{
+    E_TSPTokens type;
+    string value;
+}
+
+Class TSP_Tokenizer
+{
+	Array<TSP_Token> tokens;
+	int pos;
+	
+	static TSP_Tokenizer Init(string textInput)
+	{
+		TSP_Tokenizer newTokenizer = new("TSP_Tokenizer");
+		
+		int i = 0;
+		
+		for ( int i = 0; i < textInput.Length(); i++ )
+		{
+			if ( TSP_FileTextHandler.isWhitespace(textInput.ByteAt(i)) )
+			{
+				continue;
+			}
+		
+			let token = new("TSP_Token");
+			token.type = TSPT_Unknown;
+			
+			switch ( textInput.ByteAt(i) )
+			{
+				case 123:
+					token.type = TSPT_BraceO;
+					break;
+				case 125:
+					token.type = TSPT_BraceC;
+					break;
+				case 44:
+					token.type = TSPT_Comma;
+					break;
+				case 58:
+					token.type = TSPT_Colon;
+					break;
+				case 91:
+					token.type = TSPT_BrackO;
+					break;
+				case 93:
+					token.type = TSPT_BrackC;
+					break;
+				case 34:
+					token.type = TSPT_String;
+					i++;
+					while ( i < textInput.Length() && textInput.ByteAt(i) != 34 )
+					{
+						token.value = token.value..textInput.Mid(i, 1);
+						i++;
+					}
+					break;
+				default:
+					if ( TSP_FileTextHandler.isDigit(textInput.ByteAt(i)) )
+					{
+						token.type = TSPT_Number;
+						while ( TSP_FileTextHandler.isDigit(textInput.ByteAt(i)) && i < textInput.Length() )
+						{
+							token.value = token.value..textInput.Mid(i, 1);
+							if ( !TSP_FileTextHandler.isDigit(textInput.ByteAt(i+1)) )
+							{
+								break;
+							}
+							i++;
+						}
+					}
+					else
+					{
+						token.type = TSPT_Identifier;
+						while ( !TSP_FileTextHandler.isWhitespace(textInput.ByteAt(i)) && i < textInput.Length() )
+						{
+							token.value = token.value..textInput.Mid(i, 1);
+							i++;
+						}
+					}
+					break;
+			}
+			
+			newTokenizer.tokens.Push(token);
+		}
+		
+		newTokenizer.pos = -1;
+		
+		return newTokenizer;
+	}
+	
+	TSP_Token Next()
+	{
+		pos++;
+		if ( pos >= tokens.Size() )
+		{
+			return null;
+		}
+		return tokens[pos];
+	}
+	
+	TSP_Token Current()
+	{
+		return tokens[pos];
+	}
+}

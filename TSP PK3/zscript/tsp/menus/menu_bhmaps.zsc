@@ -15,17 +15,18 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		"MAP32"
 	};
 	
+	mixin TSP_UIDrawMixin;
+	
 	Vector2 mapListPos;
 	
 	int curSelection;
 	int episodeID;
 	
-	TSP_PSXHandler psxHandler;
-	
 	const BUTTONHEIGHT = 12;
 	const BUTTONDIST = 1;
 	
 	Array<TSP_BountyHuntersMap > bhmaps;
+	Array<TSP_UIButton> bh_buttons;
 	
 	/*override void Ticker()
 	{
@@ -36,45 +37,70 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		}
 	}*/
 	
+	const MAPLIST_X = 128;
+	const MAPLIST_Y = 128;
+	
 	override void Init(Menu parent)
 	{
 		Super.Init(parent);
-		
-		psxHandler = TSP_PSXHandler(StaticEventHandler.Find("TSP_PSXHandler"));
-		
-		mapListPos = (20, 44);
 		
 		bhmaps.Clear();
 		
 		TSP_BountyHuntersMap newMap;
 		
-		newMap = new("TSP_BountyHuntersMap");
-		newMap.name = StringTable.Localize("$TSPMAP_BATTLEZONE_NAME");
-		newMap.maplump = "BH_BZ";
-		bhmaps.Push(newMap);
-		newMap = new("TSP_BountyHuntersMap");
-		newMap.name = StringTable.Localize("$TSPMAP_ELEGIA_NAME");
-		newMap.maplump = "TSP_BH02";
-		bhmaps.Push(newMap);
-		newMap = new("TSP_BountyHuntersMap");
-		newMap.name = StringTable.Localize("$TSPMAP_GROSSE_NAME");
-		newMap.maplump = "MAP32";
-		bhmaps.Push(newMap);
+		for ( int i = 0; i < Wads.GetNumLumps(); i++ )
+		{
+			if ( Wads.GetLumpFullName(i).Left("resources/tsp_bhmaps".Length()) ~== "resources/tsp_bhmaps")
+			{
+				Console.Printf("Found new lump");
+				string mapData = Wads.ReadLump(i);
+				TSP_Tokenizer mapTokens = TSP_Tokenizer.Init(mapData);
+				
+				while ( mapTokens.Next() )
+				{
+					if ( mapTokens.Current().type == TSPT_Identifier )
+					{
+						if ( mapTokens.Current().value == "addmap" ) // New map discovered
+						{
+							newMap = new("TSP_BountyHuntersMap");
+							mapTokens.Next();
+							newMap.maplump = mapTokens.Current().value;
+							while ( mapTokens.Next() && mapTokens.Current().type != TSPT_BraceC )
+							{
+								if ( mapTokens.Current().type == TSPT_Identifier )
+								{
+									if ( mapTokens.Current().value == "name" ) // Map name
+									{
+										while ( mapTokens.Next().type != TSPT_String ) {}
+										newMap.name = mapTokens.Current().value;
+									}
+									/*else if ( mapTokens.Current().value == "desc" ) // Map description
+									{
+										while ( mapTokens.Next().type != TSPT_String ) {}
+										newMap.name = mapTokens.Current().value;
+									}*/
+								}
+							}
+							bhmaps.Push(newMap);
+							TSP_UIButton newButton = new("TSP_UIButton");
+							newButton.pos = (MAPLIST_X, MAPLIST_Y + 48 * bh_buttons.Size());
+							newButton.size = (256, 32);
+							bh_buttons.Push(newButton);
+							Console.Printf("Defined new map: '"..newMap.name.."' ("..newMap.maplump..")");
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	override bool MouseEvent(int type, int x, int y)
 	{
-		if ( psxHandler.tsp_psxFadeOut ) return true;
+		Vector2 mousePos = ConvertMousePos((x, y));
 		
-		int sel = -1;
-
-		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
-		Vector2 mousePos = TSP_MenuCommon.ConvertMousePos((x, y));
-		
-		Vector2 mapPos = mapListPos;
-		for( int i = 0; i<bhmaps.Size(); i++ )
+		for ( int i = 0; i < bh_buttons.Size(); i++ )
 		{
-			if ( TSP_MenuCommon.CheckMousePos(mousePos, mapPos, (128, BUTTONHEIGHT)) )
+			if ( CheckMousePos(mousePos, bh_buttons[i].pos, bh_buttons[i].size) )
 			{
 				if ( i != curSelection )
 				{
@@ -82,7 +108,6 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 				}
 				curSelection = i;
 			}
-			mapPos.y += BUTTONHEIGHT+BUTTONDIST;
 		}
 		
 		if ( type == Menu.MOUSE_Release )
@@ -96,8 +121,6 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	override bool MenuEvent (int mkey, bool fromcontroller)
 	{
-		if ( psxHandler.tsp_psxFadeOut ) return true;
-		
 		switch (mkey)
 		{
 			case MKEY_Up:
@@ -118,9 +141,10 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 			case MKEY_Enter:
 				if ( curSelection != -1 )
 				{
-					//psxHandler.tsp_psxFadeOut = true;
 					S_Sound("menu/choose",CHAN_UI);
-					CVar.GetCVar("tsp_internal_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
+					if ( tsp_debug ) Console.Printf("[BH] Setting map to "..bhmaps[curSelection].maplump);
+					CVar.GetCVar("_tsp_bhmap", players[0]).SetString(bhmaps[curSelection].maplump);
+					Console.Printf(""..episodeID);
 					SetMenu("SkillMenu",episodeID);
 				}
 				return true;
@@ -130,6 +154,8 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	override void Drawer()
 	{
+		UpdateScaling();
+		
 		//TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
 		
 		//screen.DrawTexture (bg, true, 103, 39, DTA_Clean, true);
@@ -149,6 +175,8 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		string bTitle = "MAP SELECT";
 		screen.DrawText(BigFont, Font.FindFontColor("TSP_Yellow"), 160-BigFont.StringWidth(bTitle)/2, 12, bTitle,
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+				
+		UI_DrawString("tsp_bh_big", "Map Select", (640,32), TDF_ALIGN_CENTER);
 		/*for(int i = 0;i<hardcoded_maps.Size();i++)
 		{
 			for(int v = 0;v<6;v++)
@@ -159,13 +187,15 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		}*/
 		
 		Vector2 mapPos = mapListPos;
-		for( int i = 0; i<bhmaps.Size(); i++ )
+		for ( int i = 0; i < bhmaps.Size(); i++ )
 		{
 			int buttonWidth = SmallFont.StringWidth(bhmaps[i].name);
-			TSP_MenuCommon.Draw9Slice(mapPos.x + 1 * (i == curSelection), mapPos.y, buttonWidth + 10, BUTTONHEIGHT);
+			UI_DrawString("tsp_bold", bhmaps[i].name, bh_buttons[i].pos + (i == curSelection ? 8 : 0, 0),
+				color: i == curSelection ? Color(255,255,255,0) : Color(255,255,255,255));
+			/*TSP_MenuCommon.Draw9Slice(mapPos.x + 1 * (i == curSelection), mapPos.y, buttonWidth + 10, BUTTONHEIGHT);
 			screen.DrawText(SmallFont, i == curSelection ? Font.CR_YELLOW : Font.CR_WHITE, mapPos.x + 5 + 1 * (i == curSelection), mapPos.y + 2, bhmaps[i].name,
 				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			mapPos.y += BUTTONHEIGHT+BUTTONDIST;
+			mapPos.y += BUTTONHEIGHT+BUTTONDIST;*/
 		}
 	}
 }

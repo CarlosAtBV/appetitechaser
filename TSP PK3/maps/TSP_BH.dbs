@@ -14,7 +14,7 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "E:\\Temp Doom Stuff\\Projects\\TSP\\appetitechaser\\TSP PK3";
+				location = "D:\\Projects\\TheSpacePirate\\TSP Git\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
@@ -38,9 +38,9 @@ maps
 		overridebrightness = false;
 		uselongtexturenames = false;
 		useresourcesinreadonlymode = false;
-		viewpositionx = 0f;
-		viewpositiony = 31.15384f;
-		viewscale = 0.65f;
+		viewpositionx = -40.47757f;
+		viewpositiony = 9.134653f;
+		viewscale = 1.42805f;
 		scriptcompiler = "zdoom_acs.cfg";
 		
 		grid
@@ -55,30 +55,6 @@ maps
 			gridrotate = 0;
 			gridoriginx = 0;
 			gridoriginy = 0;
-		}
-		
-		scriptdocuments
-		{
-			
-			document0
-			{
-				filename = "DIALOGUE";
-				hash = 3588187714;
-				resource;
-				tabtype = 0;
-				scripttype = 18;
-			}
-			
-			document1
-			{
-				filename = "SCRIPTS";
-				hash = 3469170009;
-				resource;
-				tabtype = 0;
-				scripttype = 1;
-				caretposition = 67;
-				activetab = true;
-			}
 		}
 		
 		reloadresourceprecommand
@@ -107,6 +83,30 @@ maps
 			autocloseonsuccess = true;
 			exitcodeiserror = true;
 			stderriserror = true;
+		}
+		
+		scriptdocuments
+		{
+			
+			document0
+			{
+				filename = "DIALOGUE";
+				hash = 3588187714;
+				resource;
+				tabtype = 0;
+				scripttype = 18;
+			}
+			
+			document1
+			{
+				filename = "SCRIPTS";
+				hash = 3469170009;
+				resource;
+				tabtype = 0;
+				scripttype = 1;
+				caretposition = 67;
+				activetab = true;
+			}
 		}
 	}
 }
