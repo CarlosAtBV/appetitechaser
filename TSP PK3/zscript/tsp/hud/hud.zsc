@@ -6,6 +6,8 @@ Class TSP_NotificationLogger
 
 Class TSP_StatusBar : BaseStatusBar
 {
+	TSP_TextColorBrain ui_textcolors;
+	
 	HUDFont mHUDFont;
 	HUDFont mSmallFont;
 	HUDFont mAmountFont;
@@ -149,6 +151,11 @@ Class TSP_StatusBar : BaseStatusBar
 	override void Draw (int state, double TicFrac)
 	{
 		Super.Draw (state, TicFrac);
+		
+		if ( ui_textcolors == null )
+		{
+			ui_textcolors = ui_textcolors.Get();
+		}
 		
 		if ( level.mapname == "TSP_BH" )
 		{

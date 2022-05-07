@@ -90,7 +90,7 @@ Extend Class TSP_StatusBar
 						bt++;
 					}
 					bt -= startPos;
-					newColor = Color(hud_textColors.At(string.Mid(startPos, bt)));
+					newColor = Color(ui_textcolors.colors.At(string.Mid(startPos, bt)));
 					newColor = Color(255, newColor.r, newColor.g, newColor.b);
 					//newColor = TSP_GetErrorColor();//Color(255, 124, 183, 255);
 					i = startPos+bt;
