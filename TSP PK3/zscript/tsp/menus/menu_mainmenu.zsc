@@ -159,7 +159,6 @@ Class TSP_ListMenuHiRes : ListMenu
 	
 	override bool MouseEvent(int type, int x, int y)
 	{
-		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
 		Vector2 mousePos = ConvertMousePos((x, y));
 		
 		TSP_MenuBase_ListButton newSel = null;
@@ -177,7 +176,8 @@ Class TSP_ListMenuHiRes : ListMenu
 			if ( newSel != null )
 			{
 				newSel.flash = 1.0;
-				S_Sound("menu/cursor",CHAN_UI);
+				//S_Sound("menu/cursor",CHAN_UI);
+				S_StartSound("menu/cursor", CHAN_UI);
 			}
 		}
 		mb_curSelection = newSel;
@@ -209,7 +209,7 @@ Class TSP_ListMenuHiRes : ListMenu
 					mb_curSelection = mb_curSelection.buttonUp;
 				}
 				mb_curSelection.flash = 1.0;
-				S_Sound("menu/cursor",CHAN_UI);
+				S_StartSound("menu/cursor", CHAN_UI);
 				return true;
 				
 			case MKEY_Down:
@@ -271,7 +271,7 @@ Class TSP_ListMenuHiRes : ListMenu
 		{
 			let button = tsp_buttons[i];
 			button.Tick(ui_delta, button == mb_curSelection);
-			UI_DrawString("tsp_bold", button.text, menuOffset + button.GetPos());
+			UI_DrawMenuButton(button.text, menuOffset + button.GetPos(), button == mb_curSelection);
 		}
 		
 		if ( mb_curSelection )

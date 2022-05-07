@@ -93,9 +93,16 @@ Mixin Class TSP_UIDrawMixin
 			DTA_Alpha, alpha);
 	}
 	
-	void UI_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = Color(255,255,255,255), float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	void UI_DrawMenuButton (string text, Vector2 pos, bool active)
 	{
-		string = StringTable.Localize(string);
+		UI_DrawString("tsp_bold", text, pos);
+		
+		if ( active ) UI_DrawString("tsp_bold", text, pos, style: STYLE_Add);
+	}
+	
+	void UI_DrawString (String getFont, String text, Vector2 pos, int flags = 0, Color color = Color(255,255,255,255), float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
+	{
+		text = StringTable.Localize(text);
 		
 		Font fnt = Font.GetFont(getFont);
 		if ( fnt == null ) ThrowAbortException("Unknown font: '"..getFont.."'");
@@ -103,12 +110,12 @@ Mixin Class TSP_UIDrawMixin
 		
 		if ( flags & TDF_ALIGN_RIGHT )
 		{
-			pos.x -= fnt.StringWidth(string);
+			pos.x -= fnt.StringWidth(text);
 			//pos.x -= fnt.GetCharWidth(string.ByteAt(0));
 		}
 		else if ( flags & TDF_ALIGN_CENTER )
 		{
-			pos.x -= (fnt.StringWidth(string))/2;
+			pos.x -= (fnt.StringWidth(text))/2;
 			//pos.x -= fnt.GetCharWidth(string.ByteAt(0)) / 2;
 		}
 		
@@ -122,22 +129,22 @@ Mixin Class TSP_UIDrawMixin
 		
 		Color newColor = color;
 		
-		for ( int i = 0; i < string.Length(); i++ )
+		for ( int i = 0; i < text.Length(); i++ )
 		{
-			if ( string.ByteAt(i) == 28 )
+			if ( text.ByteAt(i) == 28 )
 			{
-				if ( string.ByteAt(i+1) == 91 )
+				if ( text.ByteAt(i+1) == 91 )
 				{
 					//Console.Printf("~ [] Color Type");
 					int startPos = i+2;
 					int bt = startPos;
-					while( bt < string.Length() && string.ByteAt(bt) != 93 )
+					while( bt < text.Length() && text.ByteAt(bt) != 93 )
 					{
 						bt++;
 					}
 					bt -= startPos;
-					newColor = Color(ui_textcolors.colors.At(string.Mid(startPos, bt)));
-					Console.Printf(string.Mid(startPos, bt).." "..newColor);
+					newColor = Color(ui_textcolors.colors.At(text.Mid(startPos, bt)));
+					Console.Printf(text.Mid(startPos, bt).." "..newColor);
 					newColor = Color(255, newColor.r, newColor.g, newColor.b);
 					//newColor = Color(255, int(127+127*sin(level.maptime*12)), 0, 0);
 					i = startPos+bt;
@@ -151,16 +158,13 @@ Mixin Class TSP_UIDrawMixin
 					continue;
 				}
 			}
-			string charTex = "fonts/"..getFont.."/"..(String.Format("%04x", string.ByteAt(i)))..".png";
+			string charTex = "fonts/"..getFont.."/"..(String.Format("%04x", text.ByteAt(i)))..".png";
 			TextureID tex = TexMan.CheckForTexture(charTex);
-			/*screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
-				DTA_Alpha, alpha, DTA_Color, Color(255, newColor.r / 2, newColor.g / 4, newColor.b / 6));
-			screen.DrawTexture(tex, true, pos.x, pos.y, DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
-				DTA_Alpha, alpha, DTA_FillColor, newColor, DTA_AlphaChannel, true);*/
 			screen.DrawTexture(tex, true, pos.x, pos.y,
 				DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
-				DTA_Alpha, alpha, DTA_Color, newColor);
-			pos.x += ( fnt.GetCharWidth(string.ByteAt(i)) + kerning ) * ui_scale;
+				DTA_Alpha, alpha, DTA_Color, newColor,
+				DTA_LegacyRenderStyle, style);
+			pos.x += ( fnt.GetCharWidth(text.ByteAt(i)) + kerning ) * ui_scale;
 		}
 		
 		/*TextureID tex = TexMan.CheckForTexture("fonts/tsp_bold/003F.png");
