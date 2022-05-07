@@ -1,8 +1,32 @@
+const TSP_MENUHEADERY = 74;
+
 Class TSP_UIButton
 {
 	Vector2 pos;
 	Vector2 size;
 	string text;
+	
+	Vector2 vis_offset;
+	Vector2 vis_offset_targ;
+	Vector2 vis_offset_lerp;
+	
+	void Tick(float delta, int state)
+	{
+		vis_offset = vis_offset + ( vis_offset_targ - vis_offset ) * (delta * 12);
+		if ( state == 1 )
+		{
+			vis_offset_targ = (16,0);
+		}
+		else
+		{
+			vis_offset_targ = (0,0);
+		}
+	}
+	
+	Vector2 GetPos()
+	{
+		return pos + vis_offset;
+	}
 }
 
 Mixin Class TSP_UIDrawMixin
@@ -22,10 +46,15 @@ Mixin Class TSP_UIDrawMixin
 	
 	double ui_scale;
 	Vector2 ui_offset;
+	float ui_delta;
+	float ui_prevMS;
 	
 	void UpdateScaling()
 	{
 		ui_scale = screen.GetHeight() / 720.0;
+		ui_delta = (Menu.GetCurrentMenu().MSTime() - ui_prevMS) / 1000.;
+		ui_prevMS = Menu.MSTime();
+		Console.Printf(""..ui_delta);
 	}
 	
 	Vector2 ConvertMousePos(Vector2 mouse)

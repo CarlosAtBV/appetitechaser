@@ -38,7 +38,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	}*/
 	
 	const MAPLIST_X = 128;
-	const MAPLIST_Y = 128;
+	const MAPLIST_Y = 192;
 	
 	override void Init(Menu parent)
 	{
@@ -171,31 +171,16 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		
 		screen.DrawTexture(bg, true, 320-20-160, 44,
 			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			
-		string bTitle = "MAP SELECT";
-		screen.DrawText(BigFont, Font.FindFontColor("TSP_Yellow"), 160-BigFont.StringWidth(bTitle)/2, 12, bTitle,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 				
-		UI_DrawString("tsp_bh_big", "Map Select", (640,32), TDF_ALIGN_CENTER);
-		/*for(int i = 0;i<hardcoded_maps.Size();i++)
-		{
-			for(int v = 0;v<6;v++)
-			{
-				int sX = (80+160*i)-160*curSelection;
-				screen.DrawTexture (bg, true, sX, 39, DTA_Clean, true);
-			}
-		}*/
+		UI_DrawString("tsp_bold", "MAP SELECT", (640, TSP_MENUHEADERY), TDF_ALIGN_CENTER);
 		
 		Vector2 mapPos = mapListPos;
 		for ( int i = 0; i < bhmaps.Size(); i++ )
 		{
+			bh_buttons[i].Tick(ui_delta, i == curSelection);
 			int buttonWidth = SmallFont.StringWidth(bhmaps[i].name);
-			UI_DrawString("tsp_bold", bhmaps[i].name, bh_buttons[i].pos + (i == curSelection ? 8 : 0, 0),
+			UI_DrawString("tsp_bold", bhmaps[i].name, bh_buttons[i].GetPos(),
 				color: i == curSelection ? Color(255,255,255,0) : Color(255,255,255,255));
-			/*TSP_MenuCommon.Draw9Slice(mapPos.x + 1 * (i == curSelection), mapPos.y, buttonWidth + 10, BUTTONHEIGHT);
-			screen.DrawText(SmallFont, i == curSelection ? Font.CR_YELLOW : Font.CR_WHITE, mapPos.x + 5 + 1 * (i == curSelection), mapPos.y + 2, bhmaps[i].name,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
-			mapPos.y += BUTTONHEIGHT+BUTTONDIST;*/
 		}
 	}
 }
