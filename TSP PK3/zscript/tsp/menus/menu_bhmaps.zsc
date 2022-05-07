@@ -3,6 +3,8 @@ Class TSP_BountyHuntersMap
 	TextureID preview;
 	string name;
 	string maplump;
+	string desc;
+	TextureID image_menu;
 	bool isSelected;
 }
 
@@ -37,7 +39,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		}
 	}*/
 	
-	const MAPLIST_X = 128;
+	const MAPLIST_X = 72;
 	const MAPLIST_Y = 192;
 	
 	override void Init(Menu parent)
@@ -69,16 +71,21 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 							{
 								if ( mapTokens.Current().type == TSPT_Identifier )
 								{
-									if ( mapTokens.Current().value == "name" ) // Map name
+									switch(Name(mapTokens.Current().value))
 									{
-										while ( mapTokens.Next().type != TSPT_String ) {}
-										newMap.name = mapTokens.Current().value;
+										case 'name':
+											while ( mapTokens.Next().type != TSPT_String ) {}
+											newMap.name = mapTokens.Current().value;
+											break;
+										case 'desc':
+											while ( mapTokens.Next().type != TSPT_String ) {}
+											newMap.desc = mapTokens.Current().value;
+											break;
+										case 'image_menu':
+											while ( mapTokens.Next().type != TSPT_String ) {}
+											newMap.image_menu = TexMan.CheckForTexture(mapTokens.Current().value);
+											break;
 									}
-									/*else if ( mapTokens.Current().value == "desc" ) // Map description
-									{
-										while ( mapTokens.Next().type != TSPT_String ) {}
-										newMap.name = mapTokens.Current().value;
-									}*/
 								}
 							}
 							bhmaps.Push(newMap);
@@ -169,8 +176,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 				
 		TSP_MenuCommon.Draw9Slice(12, 38, 320 - 24, 240 - 38 * 2);
 		
-		screen.DrawTexture(bg, true, 320-20-160, 44,
-			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
+		UI_DrawTexture(bhmaps[curSelection].image_menu, (640, MAPLIST_Y));
 				
 		UI_DrawString("tsp_bold", "MAP SELECT", (640, TSP_MENUHEADERY), TDF_ALIGN_CENTER);
 		
@@ -181,6 +187,13 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 			int buttonWidth = SmallFont.StringWidth(bhmaps[i].name);
 			UI_DrawString("tsp_bold", bhmaps[i].name, bh_buttons[i].GetPos(),
 				color: i == curSelection ? Color(255,255,255,0) : Color(255,255,255,255));
+		}
+		
+		Font fnt = "tsp_small";
+		BrokenLines desc = fnt.BreakLines(bhmaps[curSelection].desc, 580);
+		for ( int i = 0; i < desc.Count(); i++ )
+		{
+			UI_DrawString("tsp_small", desc.StringAt(i), (640, 560+i*fnt.GetHeight()), TDF_ALIGN_LEFT);
 		}
 	}
 }

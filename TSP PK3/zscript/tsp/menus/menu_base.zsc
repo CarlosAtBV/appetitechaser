@@ -54,18 +54,37 @@ Mixin Class TSP_UIDrawMixin
 		ui_scale = screen.GetHeight() / 720.0;
 		ui_delta = (Menu.GetCurrentMenu().MSTime() - ui_prevMS) / 1000.;
 		ui_prevMS = Menu.MSTime();
-		Console.Printf(""..ui_delta);
+		//Console.Printf(""..ui_delta);
 	}
 	
 	Vector2 ConvertMousePos(Vector2 mouse)
 	{
-		Vector2 getPos = mouse * ui_scale;
+		Vector2 getPos = mouse / ui_scale;
 		return getPos;
 	}
 	
 	bool CheckMousePos(Vector2 mousePos, Vector2 start, Vector2 size)
 	{
 		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
+	}
+
+	void UI_DrawImage (String image, Vector2 pos, int flags = 0, float alpha = 1.0)
+	{
+		let tex = TexMan.CheckForTexture(image);
+		UI_DrawTexture(tex, pos, flags, alpha);
+	}
+	
+	void UI_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0)
+	{
+		pos *= ui_scale;
+		pos += ui_offset;
+		if ( flags & TDF_ANCHOR_RIGHT )
+		{
+			pos.x += screen.GetWidth();
+		}
+		screen.DrawTexture(tex, true, pos.x, pos.y,
+			DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
+			DTA_Alpha, alpha);
 	}
 	
 	void UI_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = Color(255,255,255,255), float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)

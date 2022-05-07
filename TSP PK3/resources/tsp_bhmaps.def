@@ -1,23 +1,28 @@
 addmap BH_BZ
 {
 	name = "Battle Zone";
-	desc = "This is the map";
+	planet = "Neoscape";
+	desc = "Mel's custom made Neoscape training arena.";
 }
 
 addmap BH_BZ2
 {
 	name = "Battle Zone II";
-	desc = "This is the map";
+	planet = "Neoscape";
+	desc = "N/A";
 }
 
 addmap BH_CATS
 {
 	name = "City Outskirts";
-	desc = "This is the map";
+	planet = "Bastetia";
+	image_menu = "graphics/placeholder/bastetia.png";
+	desc = "Just outside the Ikatian city of Q'ritas is where Bastetia's beauty is on full display... Try not to get too much lead in the water.";
 }
 
 addmap MAP32
 {
-	name = "Red Hot Research";
+	name = "Grosse";
+	planet = "Castle Wolfenstein";
 	desc = "GUTEN TAG";
 }
