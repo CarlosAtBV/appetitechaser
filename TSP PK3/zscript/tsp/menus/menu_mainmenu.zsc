@@ -100,6 +100,8 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		tsp_bgDim = (mParentMenu == null) ? 0.0 : 1.0;
 		tsp_storedMenu = null;
+		
+		animated = true;
 	}
 	
 	override void OnReturn()
@@ -149,7 +151,7 @@ Class TSP_ListMenuHiRes : ListMenu
 			{
 				newSel.flash = 1.0;
 				//S_Sound("menu/cursor",CHAN_UI);
-				S_StartSound("menu/cursor", CHAN_UI);
+				MenuSound("menu/cursor");
 			}
 		}
 		mb_curSelection = newSel;
@@ -181,7 +183,7 @@ Class TSP_ListMenuHiRes : ListMenu
 					mb_curSelection = mb_curSelection.buttonUp;
 				}
 				mb_curSelection.flash = 1.0;
-				S_StartSound("menu/cursor", CHAN_UI);
+				MenuSound("menu/cursor");
 				return true;
 				
 			case MKEY_Down:
