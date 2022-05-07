@@ -113,10 +113,10 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		if ( tsp_storedMenu == null && isQuitting == false )
 		{
-			if ( tsp_lerpX < 1.0 )
+			/*if ( tsp_lerpX < 1.0 )
 			{
 				tsp_lerpX += 0.05;
-			}
+			}*/
 			
 			if ( mParentMenu == null && tsp_bgDim < 1.0 )
 			{
@@ -127,34 +127,6 @@ Class TSP_ListMenuHiRes : ListMenu
 				}
 			}
 		}
-		/*else if ( tsp_lerpX > 0.0 )
-		{
-			
-			if ( tsp_lerpX > 0.0 )
-			{
-				tsp_lerpX -= 0.1;
-			}
-			
-			if ( (mParentMenu == null && isQuitting) && tsp_bgDim > 0.0 )
-			{
-				tsp_bgDim -= 0.1;
-			}
-			
-			if ( tsp_lerpX <= 0 )
-			{
-				if ( isQuitting )
-				{
-					Close();
-					let m = GetCurrentMenu();
-					MenuSound(m != null ? "menu/backup" : "menu/clear");
-					if (!m) menuDelegate.MenuDismissed();
-				}
-				else
-				{
-					tsp_storedMenu.Activate();
-				}
-			}
-		}*/
 	}
 	
 	override bool MouseEvent(int type, int x, int y)
@@ -251,8 +223,16 @@ Class TSP_ListMenuHiRes : ListMenu
 	}
 	
 	override void Drawer()
-	{
+	{	
 		UpdateMenuStuff();
+		
+		if ( tsp_storedMenu == null && isQuitting == false )
+		{
+			if ( tsp_lerpX < 1.0 )
+			{
+				tsp_lerpX += ui_delta*2;
+			}
+		}
 		
 		Vector2 menuOffset = (-640 + 640 * easeOutExpo(tsp_lerpX), 0);
 		

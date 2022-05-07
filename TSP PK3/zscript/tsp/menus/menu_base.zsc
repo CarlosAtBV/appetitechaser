@@ -58,8 +58,12 @@ Mixin Class TSP_UIDrawMixin
 			ui_textcolors = ui_textcolors.Get();
 		}
 		ui_scale = screen.GetHeight() / 720.0;
-		ui_delta = (Menu.GetCurrentMenu().MSTime() - ui_prevMS) / 1000.;
-		ui_prevMS = Menu.MSTime();
+		if ( ui_prevMS == 0 )
+		{
+			ui_prevMS = MSTime();
+		}
+		ui_delta = (MSTime() - ui_prevMS) / 1000.;
+		ui_prevMS = MSTime();
 		//Console.Printf(""..ui_delta);
 	}
 	
