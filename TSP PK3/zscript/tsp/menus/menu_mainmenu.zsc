@@ -1,11 +1,8 @@
-Class TSP_MenuBase_ListButton
+Class TSP_MenuBase_ListButton : TSP_UIButton
 {
-	string text;
 	string desc;
 	ListMenuItemSelectable item;
 	Font fnt;
-	Vector2 pos;
-	Vector2 size;
 	bool isSelected;
 	double flash;
 	Color color;
@@ -13,21 +10,20 @@ Class TSP_MenuBase_ListButton
 	TSP_MenuBase_ListButton buttonUp;
 	TSP_MenuBase_ListButton buttonDown;
 	
-	Vector2 offset;
-	
-	void Tick()
+	/*void Tick(float delta)
 	{
 		offset.x = offset.x + ((isSelected ? 35 : 0) - offset.x) / 4;
 		if ( flash > 0.0 )
 		{
 			flash -= 0.2;
 		}
-	}
+	}*/
 }
 
 Class TSP_ListMenuHiRes : ListMenu
 {
-	mixin TSP_HiResBase;
+	//mixin TSP_HiResBase;
+	mixin TSP_UIDrawMixin;
 	
 	Array<TSP_MenuBase_ListButton> tsp_buttons;
 	
@@ -61,7 +57,7 @@ Class TSP_ListMenuHiRes : ListMenu
 	{
 		TSP_MenuBase_ListButton newButton;
 		newButton = new("TSP_MenuBase_ListButton");
-		newButton.text = StringTable.Localize(name).MakeUpper();
+		newButton.text = StringTable.Localize(name);//.MakeUpper();
 		newButton.desc = desc;
 		newButton.item = item;
 		newButton.fnt = "tsp_bold";
@@ -96,11 +92,6 @@ Class TSP_ListMenuHiRes : ListMenu
 				AddButton(menuitem.mText, menuitem.mText.."_SUB", ListMenuItemSelectable(mDesc.mItems[i]), Font.FindFontColor("TSPMenuGreen"));
 			}
 		}
-		/*AddButton("Options", "Adjust game settings.", "TSP_OptionsMenu", Font.FindFontColor("TSP_Yellow"));
-		AddButton("Codex", "Explore Mel's information database.", "TSP_OptionsMenu", Font.FindFontColor("TSP_Blue"));
-		AddButton("Load Game", "Load a saved game.", "LoadGameMenu", Font.FindFontColor("TSPMenuGreen"));
-		AddButton("Save Game", "Save your current progress.", "SaveGameMenu", Font.FindFontColor("TSPMenuGreen"));
-		AddButton("Shut Down", "Exit The Space Pirate.", "QuitMenu", Font.FindFontColor("TSP_Red"));*/
 		
 		if ( tsp_buttons.Size() > 0 )
 		{
@@ -164,12 +155,6 @@ Class TSP_ListMenuHiRes : ListMenu
 				}
 			}
 		}*/
-		
-		for( int i = 0; i < tsp_buttons.Size(); i++ )
-		{
-			tsp_buttons[i].isSelected = ( tsp_buttons[i] == mb_curSelection );
-			tsp_buttons[i].Tick();
-		}
 	}
 	
 	override bool MouseEvent(int type, int x, int y)
@@ -267,7 +252,7 @@ Class TSP_ListMenuHiRes : ListMenu
 	
 	override void Drawer()
 	{
-		UpdateViewport();
+		UpdateMenuStuff();
 		
 		Vector2 menuOffset = (-640 + 640 * easeOutExpo(tsp_lerpX), 0);
 		
@@ -285,28 +270,17 @@ Class TSP_ListMenuHiRes : ListMenu
 		for ( int i = 0; i < tsp_buttons.Size(); i++ )
 		{
 			let button = tsp_buttons[i];
-			
-			screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x + 4, button.pos.y, button.text,
-				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
-				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
-				
-			if ( button.flash > 0.0 )
-			{
-				screen.DrawText(fnt, button.color, menuOffset.x + button.pos.x + button.offset.x + 4, button.pos.y, button.text,
-					DTA_LegacyRenderStyle, STYLE_Add, DTA_Alpha, button.flash,
-					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
-					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
-			}
+			button.Tick(ui_delta, button == mb_curSelection);
+			UI_DrawString("tsp_bold", button.text, menuOffset + button.GetPos());
 		}
 		
 		if ( mb_curSelection )
 		{
-			screen.DrawText("tsp_small", Font.CR_UNTRANSLATED, menuOffset.x + 87, 579, mb_curSelection.desc,
+			UI_DrawString("tsp_small", mb_curSelection.desc, (menuOffset.x + 87, 579));
+			/*screen.DrawText("tsp_small", Font.CR_UNTRANSLATED, menuOffset.x + 87, 579, mb_curSelection.desc,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
 				DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));*/
 		}
 	}
 }

@@ -161,7 +161,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	
 	override void Drawer()
 	{
-		UpdateScaling();
+		UpdateMenuStuff();
 		
 		//TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
 		

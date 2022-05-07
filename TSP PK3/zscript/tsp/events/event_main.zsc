@@ -26,6 +26,11 @@ Class TSP_EventHandler : EventHandler
 	override void OnRegister()
 	{
 		tsp_meleeonly = CVar.GetCVar("tsp_meleesupreme",players[0]).GetBool();
+		
+		if ( TSP_TextColorBrain.Get() == null )
+		{
+			new("TSP_TextColorBrain").Init();
+		}
 	}
 	
 	override void WorldLoaded(WorldEvent e)

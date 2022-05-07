@@ -1,5 +1,7 @@
-Extend Class TSP_StatusBar
+Class TSP_TextColorBrain : Thinker
 {
+	Dictionary colors;
+	
 	string StripWhitespace(string inString)
 	{
 		while ( ( inString.Left(1) ~== " " ) || ( inString.Left(1) ~== "\t" ) )
@@ -52,10 +54,24 @@ Extend Class TSP_StatusBar
 		}
 		//text.Split(array, separator, flags);
 	}
-	
-	void InitTextColors()
+	int testVar;
+
+	static clearscope TSP_TextColorBrain Get()
 	{
-		hud_textColors = Dictionary.Create();
+		ThinkerIterator it = ThinkerIterator.Create("TSP_TextColorBrain", STAT_STATIC);
+		let p = TSP_TextColorBrain(it.Next());
+		/*if ( p == null )
+		{
+			p = new("TSP_TextColorBrain").Init();
+		}*/
+		return p;
+	}
+	
+	TSP_TextColorBrain Init()
+	{
+		ChangeStatNum(STAT_STATIC);
+		
+		colors = Dictionary.Create();
 		
 		for ( int i = 0; i < Wads.GetNumLumps(); i++ )
 		{
@@ -80,7 +96,7 @@ Extend Class TSP_StatusBar
 						for ( int colorLine = line+1; colorLine < splitLines.Size(); colorLine++ )
 						{
 							thisLine = StripWhitespace(splitLines[colorLine]);
-							if ( thisLine.Left(1) == "}" )
+							if ( thisLine.Left(1) == "}" || thisLine.Left(4) ~== "Flat" )
 							{
 								line = colorLine;
 								break;
@@ -101,17 +117,23 @@ Extend Class TSP_StatusBar
 							}
 						}
 						
-						hud_textColors.Insert(colorName, colorColor.MakeUpper());
+						colors.Insert(colorName, colorColor.MakeUpper());
 					}
 				}
 			}
 		}
 		
 		Console.Printf("Text colors:");
-		DictionaryIterator i = DictionaryIterator.Create(hud_textColors);
+		DictionaryIterator i = DictionaryIterator.Create(colors);
 		while ( i.Next() )
 		{
 			Console.Printf("\c[%s]%s:\c- %s", i.Key(), i.Key(), i.Value());
 		}
+		
+		return self;
 	}
+}
+
+Extend Class TSP_StatusBar
+{
 }
