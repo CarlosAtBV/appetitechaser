@@ -260,8 +260,6 @@ Class TSP_ListMenuHiRes : ListMenu
 		UI_DrawString("tsp_bold", tsp_menuTitle, (menuOffset.x + 87, 114));
 		
 		UI_DrawImage("graphics/menu/menu_listbg.png", (menuOffset.x, 0));
-		
-		//screen.Dim("#00FF00", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
 			
 		/*screen.DrawText("tsp_bold", Font.CR_WHITE, 0, 0, ""..CVar.FindCVar("playerclass").GetString(),
 			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
@@ -275,11 +273,11 @@ Class TSP_ListMenuHiRes : ListMenu
 			let button = tsp_buttons[i];
 			button.Tick(ui_delta, button == mb_curSelection);
 			UI_DrawMenuButton(button.text, menuOffset + button.GetPos(), button == mb_curSelection);
+			UI_DrawImage("graphics/menu/menu_listflash.png", button.pos + (16, 35/2), alpha: button.flash / 4, style: STYLE_Add);
 		}
 		
 		if ( mb_curSelection )
 		{
-			UI_DrawImage("graphics/menu/menu_listflash.png", mb_curSelection.pos + (16, 35/2), alpha: mb_curSelection.flash / 4, style: STYLE_Add);
 			UI_DrawString("tsp_small", mb_curSelection.desc, (menuOffset.x + 87, 579));
 			/*screen.DrawText("tsp_small", Font.CR_UNTRANSLATED, menuOffset.x + 87, 579, mb_curSelection.desc,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,

@@ -8,6 +8,24 @@ Class TSP_BountyHuntersMap
 	bool isSelected;
 }
 
+Class TSP_MapButton : TSP_UIButton
+{
+	double flash;
+	
+	override void Tick(float delta, int state)
+	{
+		super.Tick(delta, state);
+		if ( flash > 0 )
+		{
+			flash -= delta*5;
+			if ( flash < 0 )
+			{
+				flash = 0;
+			}
+		}
+	}
+}
+
 Class TSP_BountyHuntersMapMenu : GenericMenu
 {
 	static const string hardcoded_maps[] =
@@ -28,7 +46,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	const BUTTONDIST = 1;
 	
 	Array<TSP_BountyHuntersMap > bhmaps;
-	Array<TSP_UIButton> bh_buttons;
+	Array<TSP_MapButton> bh_buttons;
 	
 	/*override void Ticker()
 	{
@@ -40,7 +58,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 	}*/
 	
 	const MAPLIST_X = 72;
-	const MAPLIST_Y = 192;
+	const MAPLIST_Y = 228;
 	
 	override void Init(Menu parent)
 	{
@@ -89,7 +107,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 								}
 							}
 							bhmaps.Push(newMap);
-							TSP_UIButton newButton = new("TSP_UIButton");
+							TSP_MapButton newButton = new("TSP_MapButton");
 							newButton.pos = (MAPLIST_X, MAPLIST_Y + 48 * bh_buttons.Size());
 							newButton.size = (256, 32);
 							bh_buttons.Push(newButton);
@@ -112,6 +130,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 				if ( i != curSelection )
 				{
 					S_Sound("menu/cursor",CHAN_UI);
+					bh_buttons[i].flash = 1.0;
 				}
 				curSelection = i;
 			}
@@ -136,6 +155,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 					curSelection--;
 				}
 				S_Sound("menu/cursor",CHAN_UI);
+				bh_buttons[curSelection].flash = 1.0;
 				return true;
 			case MKEY_Down:
 				if(curSelection<bhmaps.Size()-1)
@@ -143,6 +163,7 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 					curSelection++;
 				}
 				S_Sound("menu/cursor",CHAN_UI);
+				bh_buttons[curSelection].flash = 1.0;
 				return true;
 				
 			case MKEY_Enter:
@@ -159,41 +180,50 @@ Class TSP_BountyHuntersMapMenu : GenericMenu
 		return super.MenuEvent(mkey, fromcontroller);
 	}
 	
+	double easeOutExpo (double x)
+	{
+		return (x == 1) ? 1 : 1 - ((2) ** (-10 * x));
+	}
+	
+	double tsp_lerpX;
+	
 	override void Drawer()
 	{
 		UpdateMenuStuff();
+		
+		if ( tsp_lerpX < 1.0 )
+		{
+			tsp_lerpX += ui_delta*2;
+		}
+		
+		Vector2 menuOffset = (-1280 + 1280 * easeOutExpo(tsp_lerpX), 0);
 		
 		//TextureID bg = TexMan.CheckForTexture("SPSKILL",TexMan.Type_MiscPatch);
 		
 		//screen.DrawTexture (bg, true, 103, 39, DTA_Clean, true);
 		
-		TextureID bg = TexMan.CheckForTexture("graphics/placeholder/sickomode.png",TexMan.Type_MiscPatch);
+		UI_DrawImage("graphics/menu/menu_mapbg.png", (menuOffset.x, 0));
 		
-		/*string curName = bhmaps[curSelection];
-		Font fnt = "SmallFont";
-		screen.DrawText(SmallFont, Font.CR_WHITE, 160-fnt.StringWidth(curName)/2, 180, curName,
-				DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);*/
+		UI_DrawTexture(bhmaps[curSelection].image_menu, (menuOffset.x + 640, MAPLIST_Y));
 				
-		TSP_MenuCommon.Draw9Slice(12, 38, 320 - 24, 240 - 38 * 2);
-		
-		UI_DrawTexture(bhmaps[curSelection].image_menu, (640, MAPLIST_Y));
-				
-		UI_DrawString("tsp_bold", "MAP SELECT", (640, TSP_MENUHEADERY), TDF_ALIGN_CENTER);
+		UI_DrawString("tsp_bold", "MAP SELECT", (menuOffset.x + 640, TSP_MENUHEADERY), TDF_ALIGN_CENTER);
 		
 		Vector2 mapPos = mapListPos;
 		for ( int i = 0; i < bhmaps.Size(); i++ )
 		{
+			let button = bh_buttons[i];
 			bh_buttons[i].Tick(ui_delta, i == curSelection);
 			int buttonWidth = SmallFont.StringWidth(bhmaps[i].name);
-			UI_DrawString("tsp_bold", bhmaps[i].name, bh_buttons[i].GetPos(),
+			UI_DrawString("tsp_bold", bhmaps[i].name, menuOffset + bh_buttons[i].GetPos(),
 				color: i == curSelection ? Color(255,255,255,0) : Color(255,255,255,255));
+			UI_DrawImage("graphics/menu/menu_listflash.png", button.pos + (16, 35/2), alpha: button.flash / 4, style: STYLE_Add);
 		}
 		
 		Font fnt = "tsp_small";
 		BrokenLines desc = fnt.BreakLines(bhmaps[curSelection].desc, 580);
 		for ( int i = 0; i < desc.Count(); i++ )
 		{
-			UI_DrawString("tsp_small", desc.StringAt(i), (640, 560+i*fnt.GetHeight()), TDF_ALIGN_LEFT);
+			UI_DrawString("tsp_small", desc.StringAt(i), (menuOffset.x + 640, 560+i*fnt.GetHeight()), TDF_ALIGN_LEFT);
 		}
 	}
 }
