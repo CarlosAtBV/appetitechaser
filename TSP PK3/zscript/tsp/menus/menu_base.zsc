@@ -78,13 +78,13 @@ Mixin Class TSP_UIDrawMixin
 		return (mousePos.x >= start.x && mousePos.y >= start.y) && (mousePos.x < start.x+size.x && mousePos.y < start.y+size.y);
 	}
 
-	void UI_DrawImage (String image, Vector2 pos, int flags = 0, float alpha = 1.0)
+	void UI_DrawImage (String image, Vector2 pos, int flags = 0, float alpha = 1.0, ERenderStyle style = STYLE_Normal)
 	{
 		let tex = TexMan.CheckForTexture(image);
-		UI_DrawTexture(tex, pos, flags, alpha);
+		UI_DrawTexture(tex, pos, flags, alpha, style);
 	}
 	
-	void UI_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0)
+	void UI_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0,  ERenderStyle style = STYLE_Normal)
 	{
 		pos *= ui_scale;
 		pos += ui_offset;
@@ -94,7 +94,7 @@ Mixin Class TSP_UIDrawMixin
 		}
 		screen.DrawTexture(tex, true, pos.x, pos.y,
 			DTA_ScaleX, ui_scale, DTA_ScaleY, ui_scale,
-			DTA_Alpha, alpha);
+			DTA_Alpha, alpha, DTA_LegacyRenderStyle, style);
 	}
 	
 	void UI_DrawMenuButton (string text, Vector2 pos, bool active)

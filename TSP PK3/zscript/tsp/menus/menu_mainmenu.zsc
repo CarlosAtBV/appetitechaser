@@ -10,14 +10,18 @@ Class TSP_MenuBase_ListButton : TSP_UIButton
 	TSP_MenuBase_ListButton buttonUp;
 	TSP_MenuBase_ListButton buttonDown;
 	
-	/*void Tick(float delta)
+	override void Tick(float delta, int state)
 	{
-		offset.x = offset.x + ((isSelected ? 35 : 0) - offset.x) / 4;
-		if ( flash > 0.0 )
+		super.Tick(delta, state);
+		if ( flash > 0 )
 		{
-			flash -= 0.2;
+			flash -= delta*5;
+			if ( flash < 0 )
+			{
+				flash = 0;
+			}
 		}
-	}*/
+	}
 }
 
 Class TSP_ListMenuHiRes : ListMenu
@@ -236,9 +240,11 @@ Class TSP_ListMenuHiRes : ListMenu
 			}
 		}
 		
-		Vector2 menuOffset = (-640 + 640 * easeOutExpo(tsp_lerpX), 0);
+		Vector2 menuOffset = (-1280 + 1280 * easeOutExpo(tsp_lerpX), 0);
 		
 		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
+		
+		UI_DrawImage("graphics/menu/menu_listbg.png", (menuOffset.x,0));
 		
 		//screen.Dim("#00FF00", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
 			
@@ -258,6 +264,7 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		if ( mb_curSelection )
 		{
+			UI_DrawImage("graphics/menu/menu_listflash.png", mb_curSelection.pos + (16, 35/2), alpha: mb_curSelection.flash / 4, style: STYLE_Add);
 			UI_DrawString("tsp_small", mb_curSelection.desc, (menuOffset.x + 87, 579));
 			/*screen.DrawText("tsp_small", Font.CR_UNTRANSLATED, menuOffset.x + 87, 579, mb_curSelection.desc,
 				DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
