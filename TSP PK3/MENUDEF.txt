@@ -14,6 +14,8 @@ DEFAULTOPTIONMENU
 
 LISTMENU "MainMenu"
 {
+	StaticText 0, 0, "Main Menu"
+	
 	//Class "TSP_ListMenuButFake"
 	StaticPatch 103, 39, "SP_MAIN"
 	Position 88, 15
@@ -59,6 +61,8 @@ LISTMENU "TSP_OptionsMenu"
 
 ListMenu "SkillMenu"
 {
+	StaticText 0, 0, "Skill Select"
+	
 	//Class "TSP_ListMenu_Skill"
 	StaticPatch 103, 39, "SPSKILL"
 	Position 16, 15

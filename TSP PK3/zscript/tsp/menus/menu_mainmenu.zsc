@@ -36,6 +36,7 @@ Class TSP_ListMenuHiRes : ListMenu
 	
 	double tsp_lerpX;
 	double tsp_bgDim;
+	string tsp_menuTitle;
 	
 	ListMenuItemSelectable tsp_storedMenu;
 	bool isQuitting;
@@ -86,6 +87,8 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		tsp_buttons.Clear();
 		
+		tsp_menuTitle = "";
+		
 		Vector2 basePos = (MENUBUTX, MENUBUTY);
 		
 		for( int i = 0; i < mDesc.mItems.Size(); i++ )
@@ -94,6 +97,13 @@ Class TSP_ListMenuHiRes : ListMenu
 			if ( menuitem )
 			{
 				AddButton(menuitem.mText, menuitem.mText.."_SUB", ListMenuItemSelectable(mDesc.mItems[i]), Font.FindFontColor("TSPMenuGreen"));
+				continue;
+			}
+			
+			if ( ListMenuItemStaticText(mDesc.mItems[i]) && tsp_menuTitle == "" )
+			{
+				tsp_menuTitle = ListMenuItemStaticText(mDesc.mItems[i]).mText;
+				continue;
 			}
 		}
 		
@@ -232,6 +242,8 @@ Class TSP_ListMenuHiRes : ListMenu
 	{	
 		UpdateMenuStuff();
 		
+		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
+		
 		if ( tsp_storedMenu == null && isQuitting == false )
 		{
 			if ( tsp_lerpX < 1.0 )
@@ -241,10 +253,13 @@ Class TSP_ListMenuHiRes : ListMenu
 		}
 		
 		Vector2 menuOffset = (-1280 + 1280 * easeOutExpo(tsp_lerpX), 0);
+		Font fnt_header = "tsp_bold";
+		int offset = 192 + fnt_header.StringWidth(tsp_menuTitle);
 		
-		screen.Dim("#000000", tsp_bgDim * 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
+		UI_DrawImage("graphics/menu/menu_listheader.png", (menuOffset.x - 1280 + offset, 0));
+		UI_DrawString("tsp_bold", tsp_menuTitle, (menuOffset.x + 87, 114));
 		
-		UI_DrawImage("graphics/menu/menu_listbg.png", (menuOffset.x,0));
+		UI_DrawImage("graphics/menu/menu_listbg.png", (menuOffset.x, 0));
 		
 		//screen.Dim("#00FF00", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight());
 			
