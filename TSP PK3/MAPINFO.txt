@@ -61,18 +61,18 @@ map TSP_SHIP "The Indigo Skyline"
 {
 	name = "TSPT:Training"
 	noskillmenu
-}*/
+}
 
 map TSP02 "Tian Zhu - Grave of the Dragon"
 {
 	sky1 = "Grave", -0.01
 }
 
-/*episode TSP02
+episode TSP02
 {
 	name = "TSPT:Grave"
 	noskillmenu
-}*/
+}
 
 map TSP03 "Neoscape - Crash Course"
 {
@@ -81,7 +81,7 @@ map TSP03 "Neoscape - Crash Course"
 	lightmode = 0
 }
 
-/*episode TSP03
+episode TSP03
 {
 	name = "TSPT:Obstacle"
 	noskillmenu
@@ -89,18 +89,12 @@ map TSP03 "Neoscape - Crash Course"
 
 map TSP_TEST "Neoscape - Test Sector"
 {
-    sky1 = "DEMO", -0.1
+    UsePlayerStartZ
+	sky1 = "DEMO", -0.1
     sky2 = "SPACE", -0.1
 	music = "ENDING"
 	lightmode = 0
-}
-
-map TSP_DHUB "Demoscape - Unknown Sector"
-{
-	UsePlayerStartZ
-    sky1 = "SPACE", -0.1
-	music = "TSP_SHIP"
-	lightmode = 0
+	AllowRespawn
 }
 
 /*episode TEST
