@@ -92,7 +92,7 @@ map TSP_TEST "Neoscape - Test Sector"
     UsePlayerStartZ
 	sky1 = "DEMO", -0.1
     sky2 = "SPACE", -0.1
-	music = "ENDING"
+	music = "ZIP"
 	lightmode = 0
 	AllowRespawn
 }
