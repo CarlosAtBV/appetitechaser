@@ -1,6 +1,7 @@
 import math, bpy
 
 doCropLeft = True;
+doCropTop = True;
 
 def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 	num_channels=orig_img.channels
@@ -8,10 +9,11 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 	image_size_Y = orig_img.size[1]
 	
 	global doCropLeft;
+	global doCropTop;
 	
 	simpleArray = []
 
-	print("Creating array ...")
+	#print("Creating array ...")
 	
 	for py in range(0, image_size_Y):
 		simpleArray.append([]);
@@ -22,7 +24,7 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 			newPixel = (grabRow[px], grabRow[px+1], grabRow[px+2], grabRow[px+3]);
 			simpleArray[py].append(newPixel);
 
-	print("Image converted to array. Cropping now...")
+	#print("Image converted to array. Cropping now...")
 	
 	crop_right_X = 0;
 	crop_left_X = image_size_X;
@@ -45,9 +47,10 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 				if ( crop_top_Y > iy ):
 					crop_top_Y = iy;
 
-	print("Grabbing modified size ...")
+	#print("Grabbing modified size ...")
 	
 	if ( not doCropLeft ) : crop_left_X = 0;
+	if ( not doCropTop ) : crop_bottom_Y = image_size_Y;
 	
 	final_size_X = crop_right_X - crop_left_X;
 	final_size_Y = crop_bottom_Y - crop_top_Y;
@@ -58,7 +61,7 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 	final_img.use_alpha = True
 	final_img.alpha_mode = 'STRAIGHT'
 	
-	print("Reconstruct the image ...");
+	#print("Reconstruct the image ...");
 	
 	for py in range(0, final_size_Y):
 		startFinal = (final_size_X * py) * 4;
@@ -67,13 +70,13 @@ def crop_image_to_offset(orig_img, origin_x = -1, origin_y = -1):
 		endOriginal = startOriginal + (final_size_X * 4);
 		final_img.pixels[ startFinal : endFinal ] = orig_img.pixels[ startOriginal : endOriginal ];
 	
-	print("COMPLETE!");
+	#print("COMPLETE!");
 	
 	# Now, fix up the origins
 	#print(origin_x);
 	#print(crop_left_X);
 	#print("Crop bottom Y: "+str(crop_bottom_Y));
-	##print("Image size is ("+str(image_size_X)+", "+str(image_size_Y)+")");
+	#print("Image size is ("+str(image_size_X)+", "+str(image_size_Y)+")");
 	#print("Old origin is ("+str(origin_x)+", "+str(origin_y)+")");
 	origin_x = origin_x - crop_left_X;
 	origin_y = origin_y - (image_size_Y - crop_bottom_Y);

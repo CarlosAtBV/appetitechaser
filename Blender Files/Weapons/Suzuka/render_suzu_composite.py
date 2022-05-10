@@ -1,6 +1,6 @@
-import sys, bpy
+import sys, bpy, subprocess
 sys.path.append('../../RenderPipeline/');
-import render_fetus2021
+import render_base
 
 scene = bpy.context.scene
 
@@ -59,9 +59,8 @@ frame_names = [
 ];
 
 for cntmod, mod in enumerate(mods):
-	render_fetus2021.set_offsets((159, 50+32));
-	render_fetus2021.set_path(mod["path"]);
-	
+	offsets = (159, 50+32);
+	path = mod["path"];
 	modnum = int(mod["number"])-1;
 	
 	for i in mods:
@@ -71,7 +70,18 @@ for cntmod, mod in enumerate(mods):
 		scene.timeline_markers.remove(m);
 	
 	for cnt, frame in enumerate(frame_names):
-		scene.timeline_markers.new(frame[modnum].format(mod = mod["number"]), frame=cnt);
+		if ( frame[modnum] == "ignore" ):
+			continue;
+		scene.frame_set(cnt);
+		#framename = frame[int(mod["number"])-1].replace("{mod}",mod["number"]);
+		framename = frame[modnum].format(mod = mod["number"]);
+		scene.render.filepath = path+framename;#+chr(65+cnt-1)+'0';
+		bpy.ops.render.render(write_still = True);
+		origImg = bpy.data.images.load(bpy.context.scene.render.filepath+str('.png'))
+		cropImg, pX, pY = render_base.crop_image(origImg, offsets[0], offsets[1]);
 
-	render_fetus2021.refresh_markers();
-	render_fetus2021.render_frames_by_markers("POSS", "finalrender");
+		cropImg.file_format = 'PNG';
+		cropImg.filepath_raw = scene.render.filepath+str('.png');
+		cropImg.save();
+
+		process = subprocess.Popen(['D:\Projects\RenderPipeline\compresssprite_256colors.bat', str(pX), str(pY), bpy.path.abspath(cropImg.filepath_raw)])
