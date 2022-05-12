@@ -26,7 +26,7 @@ maps
 			}
 		}
 		overrideceiltexture = false;
-		viewpositionx = 1318.413f;
+		viewpositionx = -1187.911f;
 		defaulttoptexture = "textures/test/test_blank_pink.png";
 		overrideceilheight = false;
 		useresourcesinreadonlymode = false;
@@ -49,13 +49,13 @@ maps
 		overridebottomtexture = false;
 		defaultbottomtexture = "textures/test/test_blank_pink.png";
 		defaultfloortexture = "textures/test/test_stone_floor01.png";
-		viewpositiony = -431.93f;
+		viewpositiony = -5246.252f;
 		defaultwalltexture = "textures/test/test_blank_pink.png";
 		overridetoptexture = false;
 		customceilheight = 128;
 		overridemiddletexture = false;
 		custombrightness = 196;
-		viewscale = 2.285741f;
+		viewscale = 0.8003015f;
 		
 		reloadresourceprecommand
 		{
