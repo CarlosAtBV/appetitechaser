@@ -39,7 +39,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		tsp_bh_loadout = name;
 	}
 	
-	string TSP_GetLoadoutName()
+	clearscope string TSP_GetLoadoutName()
 	{
 		return StringTable.Localize(GetPrintableDisplayName(GetClass())).." \cj("..StringTable.Localize(tsp_bh_loadout).."\cj)";
 	}

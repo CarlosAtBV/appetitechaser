@@ -262,10 +262,10 @@ Class TSP_StatusScreen : StatusScreen
 		
 		if ( tsp_ss_endScreen )
 		{
-			psxHandler.tsp_psxFadeProc = true;
+			//psxHandler.tsp_psxFadeProc = true;
 			if ( tsp_ss_endTimer == 24 )
 			{
-				psxHandler.tsp_psxFadeProc = false;
+				//psxHandler.tsp_psxFadeProc = false;
 				End();
 				level.WorldDone();
 			}
