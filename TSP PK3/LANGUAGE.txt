@@ -22,7 +22,7 @@ QUITMSG17 = "\cnThe test of the warrior is not without; it is \ckwithin.";
 QUITMSG18 = "\cnYou think I want to go to the stars? I don't even like to fly!\n\n\cdI take TRAINS!";
 QUITMSG19 = "\cnFacing death is the ultimate test of character. I don't want to die, but if I have to...\n\n\cd...I'd like to do it with a little pride.";
 QUITMSG20 = "\cnWe all have scars, of one kind or another.";
-QUITMSG21 = "\cnI'm gonna miss you... you had such potential.\n\n\caBut then again, all good things...";
+QUITMSG21 = "\cnI'm gonna miss you...you had such potential.\n\n\caBut then again, all good things...";
 
 DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
 TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";

@@ -55,6 +55,15 @@ TSP_LightBlue
 	#529cd5  #b6dfff	128  256
 }
 
+TSP_FirstHuntBlue
+{
+	#000000  #000000	0  1
+	#032c58  #0555ab	2  127
+	#0669d4  #0779f3	128  256
+Flat:
+	#055dff
+}
+
 TSP_Teal
 {
 	#000000  #000000	0  1
