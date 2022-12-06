@@ -31,9 +31,12 @@
 
 [PLACES YOU CAN FIND TSP]:
 
-https://bluevertigo.org/thespacepirate - TSP on itch.io
+https://bluevertigo.org/thespacepirate - Landing page for The Space Pirate
+https://bluevertigo.itch.io/the-space-pirate - TSP on itch.io
 https://forum.zdoom.org/viewtopic.php?f=43&t=73662 - TSP on the ZDoom Forums
 https://www.moddb.com/mods/the-space-pirate - TSP on ModDB
+https://www.twitter.com/bv_tsp - TSP on Twitter
+https://bluevertigo.org/patreon - Blue Vertigo on Patreon
 
 =====================================================================================
 
@@ -140,7 +143,7 @@ For any questions, reach out to Cardboard Marty or DrPyspy.
 	- Chronicles of Riddck: Assault on Dark Athena
 
 	MENU/UI SOUNDS
-	- Pokken Tournament *
+	- Blue Vertigo
 
 	QUIT SOUNDS
 		QUIT 1

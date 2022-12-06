@@ -58,10 +58,10 @@ TSP_LightBlue
 TSP_FirstHuntBlue
 {
 	#000000  #000000	0  1
-	#032c58  #0555ab	2  127
-	#0669d4  #0779f3	128  256
+	#01365d  #02538f	2  127
+	#025ea2  #018af2	128  256
 Flat:
-	#055dff
+	#018af2
 }
 
 TSP_Teal
@@ -85,6 +85,14 @@ TSP_LightGreen
 	#294c30  #498c52	2  127
 	#66a861  #d7e776	128  256
 }
+
+TSP_LoadSaveGreen
+{
+	#000000  #000000	0  1
+	#1e3925  #496549	2  127
+	#7c936e  #aec092	128  256
+}
+
 
 TSP_LogoGreen
 {
