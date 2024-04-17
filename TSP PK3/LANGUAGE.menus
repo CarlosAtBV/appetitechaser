@@ -24,7 +24,7 @@ TSPMNU_MENU_SAVE = "\c[TSP_LoadSaveGreen]Save Game";
 TSPMNU_MENU_SAVE_SUB = "\c[TSP_LoadSaveGreen]Save\c- your current progress.";
 TSPMNU_MENU_QUIT = "\c[TSP_Red]Shut Down";
 //TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
-//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_LightBlue]First Hunt \c[TSP_Yellow]Demo\c-.";
+//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]First Hunt \c[TSP_Yellow]Demo\c-.";
 TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]Second Attack \c[TSP_Yellow]Demo\c-.";
 
 // DIFFICULTY MENUS
@@ -38,6 +38,9 @@ TSPDIF_EXTREME = "\c[TSP_Red]Blood and Bone!!!";
 TSPDIF_EXTREME_SUB = "(\c[TSP_Red]EXTREME\c-) Unrelenting pressure!\nHighly \c[TSP_Red]aggressive\c- opponents. For master raiders!";
 TSPDIF_ULTIMATE = "\c[TSP_UltimatePurple]Riches or Ruin!!!!";
 TSPDIF_ULTIMATE_SUB = "(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odds!\nIncredibly bloodthirsty enemies deal \c[TSP_UltimatePurple]double\c- damage! For super pirates!";
+
+TSPDIF_UNLIMITED = "\c[TSP_Gold]Unlimited Battle";
+TSPDIF_UNLIMITED_SUB = "(\c[TSP_Gold]SPECIALTY\c-) \c[TSP_Gold]An unending battle!\c- The enemies \c[TSP_Gold]don't stop\c- until you \c[TSP_Gold]drop\c-! \c[TSP_Gold]No time limit\c-!";
 TSPDIF_HEAVENORHELL = "\c[TSP_DantePurple]Death to Pirates!!!!!";
 TSPDIF_HEAVENORHELL_SUB = "(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
 

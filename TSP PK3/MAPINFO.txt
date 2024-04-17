@@ -207,6 +207,14 @@ skill TSPUltimate
 		NoInfighting
 }
 
+skill TSPUnlimited
+{
+		Name = "$TSPDIF_UNLIMITED"
+		SpawnFilter = Normal
+		ACSReturn = 5
+		Key = "6"
+}
+
 /*
 skill TSPHeavenorHell
 {

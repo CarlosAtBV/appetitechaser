@@ -53,8 +53,8 @@ LISTMENU "TSP_OptionsMenu"
 		
 	TSP_MenuItem_TextItem "$TSPMNU_MNU_CONFIG", "C", "TSP_ConfigMenu", "$TSPMNU_MNU_CONFIG_SUB"
 	//TSP_MenuItem_TextItem "$TSPMNU_MNU_MODIFIERS", "M", "TSP_Modifiers", "$TSPMNU_MNU_MODIFIERS_SUB"
-	TSP_MenuItem_TextItem "$TSPMNU_MNU_VIDEO", "v", "TSP_VideoMenu"
 	TSP_MenuItem_TextItem "$TSPMNU_MNU_AUDIO", "a", "SoundOptions"
+	TSP_MenuItem_TextItem "$TSPMNU_MNU_VIDEO", "v", "TSP_VideoMenu"
 	TSP_MenuItem_TextItem "$TSPMNU_MNU_OTHERMODOPTIONS", "o", "OtherModOptions", "$TSPMNU_MNU_OTHERMODOPTIONS_SUB"
 	TSP_MenuItem_TextItem "$TSPMNU_MNU_GZDOOMMENU", "G", "OptionsMenu"
 }
@@ -219,10 +219,11 @@ OptionMenu "OtherModOptions"
 	Submenu "DamNums Options",				"DamNumsOptions"
 	SubMenu "LegenDoomLite Options",		"LegenDoomLite"
 	SubMenu "Legion of Bones Options",		"Legion of Bones"
+	SubMenu "NashGore Options",				"NashGoreOptionMenu"
 	Submenu "No Ultra-Violence Options", 	"Monster Deaths"
 	SubMenu "Rampancy Options",				"Rampancy"
-	Submenu "Shades of Doom Settings",		"CyanMenu"
-	//Submenu "WV Monsters Options", "WVMSettings"
+	Submenu "Shades of Doom Options",		"CyanMenu"
+	Submenu "WVerse Options",				"WVerse Options"
 	//SubMenu "Bratwurst Options", "BratwurstSettings"
 
 }
