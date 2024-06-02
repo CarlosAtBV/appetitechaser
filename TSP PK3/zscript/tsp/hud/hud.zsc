@@ -181,7 +181,7 @@ Class TSP_StatusBar : BaseStatusBar
 			drawOffset = (hitTime > 0) ? (round(frandom(-5,5) * hitTime), round(frandom(-5,5) * hitTime)) : (0, 0);
 		}
 
-		if (state == HUD_StatusBar||state == HUD_Fullscreen)
+		if ( state == HUD_StatusBar || state == HUD_Fullscreen )
 		{
 			BeginHUD(1.0, true);//,true,320,240);
 			
@@ -190,7 +190,7 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			screenSize = ( screen.GetWidth()/hudScale.x, screen.GetHeight()/hudScale.y );
 			
-			TSP_DrawImage("graphics/testoby_wipswell.png", (0, 0));
+			//TSP_DrawImage("graphics/testoby_wipswell.png", (0, 0));
 			
 			alpha = 1.0;
 			
@@ -210,12 +210,12 @@ Class TSP_StatusBar : BaseStatusBar
 			// MEL HUD
 			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
 			{
-				DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
+				TSP_DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
 			
 			if(CPlayer.mo.InvSel)
 			{
-				DrawImage("HUD_IBOX", (0, -16), DI_ITEM_CENTER|DI_SCREEN_CENTER_BOTTOM);
+				TSP_DrawImage("HUD_IBOX", (0, -16), DI_ITEM_CENTER|DI_SCREEN_CENTER_BOTTOM);
 				DrawInventoryIcon(CPlayer.mo.InvSel,(0, -16),DI_ITEM_CENTER|DI_SCREEN_CENTER_BOTTOM,0.5);
 				//DrawString(mSmallFont, CPlayer.mo.InvSel.GetTag().." ("..CPlayer.mo.InvSel.Amount..")", (HUDLEFT_X, HUDLEFT_Y-40), DI_TEXT_ALIGN_LEFT|DI_NOSHADOW, Font.CR_WHITE);
 			}
@@ -227,8 +227,6 @@ Class TSP_StatusBar : BaseStatusBar
 				Color hpColor;
 				
 				bool overheal = (health > 100);
-				int healthWidth = 121;
-				int healthOffset_base = ( health / 100. ) * healthWidth;
 				
 				string healthBarTex;
 				
@@ -236,7 +234,6 @@ Class TSP_StatusBar : BaseStatusBar
 				if ( overheal )
 				{
 					healthBarTex = "HUD_VITO";
-					healthOffset_base -= healthWidth;
 				}
 				else if ( health>70 )
 				{
@@ -253,48 +250,53 @@ Class TSP_StatusBar : BaseStatusBar
 				
 				// [Py] Draw the background
 				// [Py] This swaps over to VITF for the overheal so that we only have to write this one line because uhhhhhhh
-				DrawImage(overheal ? "HUD_VITF" : "HUD_VITE", (HUDLEFT_X+122, HUDLEFT_Y+75), DI_ITEM_LEFT_TOP|DI_SCREEN_LEFT_BOTTOM);
 				
-				if ( health > 0 )
-				{
-					// [Py] just a mini fucked up hack for masking the bars ...
-					Vector2 clipPos, clipSize;
-					for ( int i = 0; i < 3; i++ )
-					{
-						switch ( i )
-						{
-							case 0:
-								clipPos = (HUDLEFT_X+122, HUDLEFT_Y+75);
-								clipSize = (123, 6);
-								break;
-							case 1:
-								clipPos = (HUDLEFT_X+125, HUDLEFT_Y+81);
-								clipSize = (125, 6);
-								break;
-							case 2:
-								clipPos = (HUDLEFT_X+128, HUDLEFT_Y+87);
-								clipSize = (125, 12);
-								break;
-						}
-						clipPos *= hud_scale;
-						clipSize *= hud_scale;
-						SetClipRect(clipPos.x, clipPos.y, clipSize.x, clipSize.y);
-						TSP_DrawImage(healthBarTex, (HUDLEFT_X+121 + (-healthWidth + healthOffset_base), HUDLEFT_Y+75));
-					}
-					ClearClipRect();
-				}
+				TSP_DrawBar(overheal ? health-100 : health, 100, (HUDLEFT_X+121, HUDLEFT_Y+75), overheal ? "HUD_VITF" : "HUD_VITE", healthBarTex, 8);
 				
 
 			// SHIELD BAR
+			string shieldTex = "HUD_SHD0";
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
-				case 0: DrawBar("HUD_SHD0", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
-				case 1: DrawBar("HUD_SHD1", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
-				case 2: DrawBar("HUD_SHD2", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
-				case 3: DrawBar("HUD_SHD3", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
-				case 4: DrawBar("HUD_SHD4", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
-				case 5: DrawBar("HUD_SHD5", "HUD_SHDE", shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), 0, 0, DI_ITEM_OFFSETS); break;
+				case 1: shieldTex = "HUD_SHD1"; break;
+				case 2: shieldTex = "HUD_SHD2"; break;
+				case 3: shieldTex = "HUD_SHD3"; break;
+				case 4: shieldTex = "HUD_SHD4"; break;
+				case 5: shieldTex = "HUD_SHD5"; break;
 			}
+			
+			TSP_DrawBar(shield, maxShield, (HUDLEFT_X+122, HUDLEFT_Y+95), "HUD_SHDE", shieldTex, -5);
+			/*int shieldWidth = 121;
+			int shieldWOffset_base = ( shield / float(maxShield) ) * shieldWidth;
+			
+			TSP_DrawImage("HUD_SHDE", (HUDLEFT_X+122, HUDLEFT_Y+95));
+			if ( shield > 0 )
+			{
+				Vector2 clipPos, clipSize;
+				for ( int i = 0; i < 3; i++ )
+				{
+					switch ( i )
+					{
+						case 0:
+							clipPos = (HUDLEFT_X+128, HUDLEFT_Y+95);
+							clipSize = (123, 6);
+							break;
+						case 1:
+							clipPos = (HUDLEFT_X+125, HUDLEFT_Y+95+6);
+							clipSize = (125, 6);
+							break;
+						case 2:
+							clipPos = (HUDLEFT_X+122, HUDLEFT_Y+95+12);
+							clipSize = (125, 12);
+							break;
+					}
+					clipPos *= hud_scale;
+					clipSize *= hud_scale;
+					SetClipRect(clipPos.x, clipPos.y, clipSize.x, clipSize.y);
+					TSP_DrawImage(shieldTex, (HUDLEFT_X+122 + (-shieldWidth + shieldWOffset_base), HUDLEFT_Y+95));
+				}
+				ClearClipRect();
+			}*/
 			
 			// MAIN HUD GRAPHIC (LEFT)
 			TSP_DrawImage("HUD_LBAS", (HUDLEFT_X, HUDLEFT_Y));
@@ -451,7 +453,8 @@ Class TSP_StatusBar : BaseStatusBar
 			
 			if(CPlayer.ReadyWeapon && CPlayer.ReadyWeapon is "MelBareKnuckle")
 			{
-				DrawBar("HUD_MELB", "HUD_MELE", charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), 0, 0, DI_ITEM_OFFSETS);
+				//DrawBar("HUD_MELB", "HUD_MELE", charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), 0, 0, DI_ITEM_OFFSETS);
+				TSP_DrawBar(charge, maxCharge, (HUDRIGHT_X+42, HUDRIGHT_Y+74), "HUD_MELE", "HUD_MELB", -8, TDF_HUDRIGHT);
 				TSP_DrawImage("MEL_WEPB", (HUDRIGHT_X, HUDRIGHT_Y), TDF_HUDRIGHT);
 			}
 			
@@ -544,6 +547,7 @@ Class TSP_StatusBar : BaseStatusBar
 				[wepFound, wepSlot] = CPlayer.weapons.LocateWeapon(CPlayer.ReadyWeapon.GetClass());
 			}
 			
+			let slotTex = TexMan.CheckForTexture("ARM_BOXB");
 			for ( int i = 1; i < 10; i++ )
 			{
 				int slotSize = CPlayer.weapons.SlotSize(i);
@@ -573,21 +577,22 @@ Class TSP_StatusBar : BaseStatusBar
 						}
 					}
 							
-					DrawImage("ARM_BOXB", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM, col: Color(255, slotColor.r, slotColor.g, slotColor.b));
-					DrawImage("ARM_BOXA", (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
-					DrawImage("ARM_NUM"..(i), (xPos, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+					TSP_DrawTexture(slotTex, (xPos, HUDRIGHT_Y + 48), TDF_HUDRIGHT, color: Color(255, slotColor.r, slotColor.g, slotColor.b));
+					TSP_DrawImage("ARM_BOXA", (xPos, HUDRIGHT_Y + 48), TDF_HUDRIGHT);
+					TSP_DrawImage("ARM_NUM"..(i), (xPos, HUDRIGHT_Y + 48), TDF_HUDRIGHT);
 					slot_offset += 1;
 				}
 			}
 			
 			if ( selSlotOffset != -1 )
 			{
-				DrawImage("ARM_BOXD", (selSlotOffset-2, HUDRIGHT_Y + 43), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM, col: Color(255, selSlotColor.r, selSlotColor.g, selSlotColor.b));
-				DrawImage("ARM_BOXC", (selSlotOffset-2, HUDRIGHT_Y + 43), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
-				DrawImage("ARM_NUM"..(wepSlot), (selSlotOffset+1, HUDRIGHT_Y + 45), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+				let slotTex2 = TexMan.CheckForTexture("ARM_BOXD");
+				TSP_DrawTexture(slotTex2, (selSlotOffset-2, HUDRIGHT_Y + 43), TDF_HUDRIGHT, color: Color(255, selSlotColor.r, selSlotColor.g, selSlotColor.b));
+				TSP_DrawImage("ARM_BOXC", (selSlotOffset-2, HUDRIGHT_Y + 43), TDF_HUDRIGHT);
+				TSP_DrawImage("ARM_NUM"..(wepSlot), (selSlotOffset+1, HUDRIGHT_Y + 45), TDF_HUDRIGHT);
 			}
 			
-			DrawImage("ARM_ACCT", (HUDRIGHT_X + 27, HUDRIGHT_Y + 48), DI_ITEM_OFFSETS|DI_SCREEN_RIGHT_BOTTOM);
+			TSP_DrawImage("ARM_ACCT", (HUDRIGHT_X + 27, HUDRIGHT_Y + 48), TDF_HUDRIGHT);
 			
 			// Draw Ammo Numbers
 			

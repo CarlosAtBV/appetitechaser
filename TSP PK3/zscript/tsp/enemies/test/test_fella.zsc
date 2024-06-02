@@ -55,7 +55,7 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 	
 	bool CheckSightAndAngle(Actor mo)
 	{
-		Console.Printf(""..abs(DeltaAngle(AngleTo(mo),angle)));
+		//Console.Printf(""..abs(DeltaAngle(AngleTo(mo),angle)));
 		if(CheckSight(mo) && abs(DeltaAngle(AngleTo(mo),angle))<15)
 		{
 			return true;

@@ -214,6 +214,8 @@ Class TSP_BHHandler : EventHandler
 	
 	Array<String > bh_spawnList;
 	
+	bool bh_foreverMode;
+	
 	mixin TSP_HiResBase;
 	
 	static const string bh_spawnOrder[] =
@@ -225,7 +227,9 @@ Class TSP_BHHandler : EventHandler
 		"HellKnight",
 		"Cacodemon",
 		"Revenant",
-		"Fatso"
+		"Fatso",
+		"Arachnotron",
+		"Archvile"
 	};
 	
 	void BH_AddTime(int amt)
@@ -271,6 +275,8 @@ Class TSP_BHHandler : EventHandler
 		}
 		
 		bh_killgoal = 60;//50;//bh_spawnList.size();
+		
+		bh_foreverMode = G_SkillPropertyInt(SKILLP_ACSReturn) == 4;
 		
 		/*for ( int i = 0; i < 35; i++ )
 		{
@@ -523,12 +529,12 @@ Class TSP_BHHandler : EventHandler
 			}
 			else
 			{
-				Console.Printf("No deathmatch spawns found.");
+				if ( tsp_debug ) Console.Printf("No deathmatch spawns found.");
 			}
 		}
 		if ( bh_backgroundTimer % 35 == 0 ) //a second has passed!!!
 		{
-			if( bh_roundTimer > 0 )
+			if( !bh_foreverMode && bh_roundTimer > 0 )
 			{
 				bh_roundTimer--;
 				switch(bh_roundTimer)
@@ -674,7 +680,16 @@ Class TSP_BHHandler : EventHandler
 		Screen.DrawTexture(bhHudTex, false, screen.GetWidth()/2,  14 + (116/2),
 			DTA_CenterOffset, true);
 		
-		screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
+		if ( bh_foreverMode )
+		{
+			let bhInfinity = TexMan.CheckForTexture("graphics/bh/infinity.png");
+			screen.DrawTexture(bhInfinity, false, screen.GetWidth()/2,  36,
+			DTA_CenterOffset, true, DTA_TopOffset, 0);
+		}
+		else
+		{
+			screen.DrawText(fnt_big, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_big.StringWidth(BH_GetTime())/2, 36, BH_GetTime());
+		}
 		screen.DrawText(fnt_small, Font.CR_UNTRANSLATED, (screen.GetWidth()/2) - fnt_small.StringWidth(""..BH_GetKillsLeft())/2, 102, ""..BH_GetKillsLeft());
 		
 		if ( bh_spreeTime > 0 && bh_spreeTier > 1 )

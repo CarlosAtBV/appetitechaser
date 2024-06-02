@@ -36,7 +36,7 @@ Extend Class TSP_StatusBar
 		TSP_DrawTexture(tex, pos, flags, alpha);
 	}
 	
-	void TSP_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0)
+	void TSP_DrawTexture (TextureID tex, Vector2 pos, int flags = 0, float alpha = 1.0, Color color = CLR_WHITE)
 	{
 		pos *= hud_scale;
 		pos += drawOffset;
@@ -46,7 +46,7 @@ Extend Class TSP_StatusBar
 		}
 		screen.DrawTexture(tex, true, pos.x, pos.y,
 			DTA_ScaleX, hud_scale, DTA_ScaleY, hud_scale,
-			DTA_Alpha, alpha);
+			DTA_Alpha, alpha, DTA_Color, color);
 	}
 	
 	void TSP_DrawString (String getFont, String string, Vector2 pos, int flags = 0, Color color = CLR_WHITE, float alpha = 1.0, int wrapwidth = -1, int linespacing = 4, Vector2 scale = (1,1), int pt = 0, ERenderStyle style = STYLE_Translucent)
@@ -138,5 +138,42 @@ Extend Class TSP_StatusBar
 		
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, drawOffset.x+baseX+xOff, drawOffset.y+pos.y, string,
 			DTA_Alpha, alpha, DTA_COLOR, CLR_BH_TIMER);
+	}
+	
+	void TSP_DrawBar (int value, int max, Vector2 pos, string bg, string fg, int slope = 0, int flags = 0)
+	{
+		let fgTex = TexMan.CheckForTexture(fg);
+		let bgTex = TexMan.CheckForTexture(bg);
+		int texWidth, texHeight;
+		float slopeAbs = max(1,abs(slope));
+		[texWidth, texHeight] = TexMan.GetSize(fgTex);
+		int daValue = ( value / float(max) ) * texWidth;
+		
+		/*if ( (texHeight/slopeAbs)*slopeAbs < texHeight )
+		{
+			texHeight += 1;
+		}*/
+		
+		Vector2 clipPos, clipSize;
+		TSP_DrawTexture(bgTex, pos, flags: flags);
+		for ( int i = 0; i < slopeAbs; i++ )
+		{
+			if ( slope>0 )
+			{
+				clipPos = pos + (i, 0);
+			}
+			else
+			{
+				clipPos = pos + ((slopeAbs-i), 0);
+			}
+			clipPos.y += (texHeight/slopeAbs)*i;
+			clipSize = (texWidth, (texHeight/slopeAbs));
+			clipPos *= hud_scale;
+			clipSize *= hud_scale;
+			SetClipRect(clipPos.x, clipPos.y, clipSize.x, clipSize.y);
+			TSP_DrawTexture(fgTex, (pos.x + (-texWidth + daValue), pos.y), flags);
+			//screen.Dim("#FF0000", 1.0, 0, 0, screen.GetWidth(), screen.GetHeight()); 
+		}
+		ClearClipRect();
 	}
 }

@@ -1,4 +1,4 @@
-STARTUPTITLE = "The Space Pirate: Second Attack Demo (v0.2)"
+STARTUPTITLE = "The Space Pirate: The Second Attack (v0.3)"
 STARTUPCOLORS = "f5ecd7", "a42458"
 STARTUPTYPE = "Hexen"
 STARTUPSONG = "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning_gamestart.ogg"

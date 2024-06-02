@@ -77,7 +77,7 @@ Class TSP_TextColorBrain : Thinker
 		{
 			if ( Wads.GetLumpName(i).Left(8) ~== "TEXTCOLO")
 			{
-				Console.Printf("Reading "..Wads.GetLumpFullName(i));
+				//Console.Printf("Reading "..Wads.GetLumpFullName(i));
 				
 				string colorData = Wads.ReadLump(i);
 				Array<string> splitLines;
@@ -123,11 +123,14 @@ Class TSP_TextColorBrain : Thinker
 			}
 		}
 		
-		Console.Printf("Text colors:");
-		DictionaryIterator i = DictionaryIterator.Create(colors);
-		while ( i.Next() )
+		if ( tsp_debug )
 		{
-			Console.Printf("\c[%s]%s:\c- %s", i.Key(), i.Key(), i.Value());
+			Console.Printf("Text colors:");
+			DictionaryIterator i = DictionaryIterator.Create(colors);
+			while ( i.Next() )
+			{
+				Console.Printf("\c[%s]%s:\c- %s", i.Key(), i.Key(), i.Value());
+			}
 		}
 		
 		return self;
