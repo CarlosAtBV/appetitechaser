@@ -276,7 +276,7 @@ Class TSP_BHHandler : EventHandler
 		
 		bh_killgoal = 60;//50;//bh_spawnList.size();
 		
-		bh_foreverMode = G_SkillPropertyInt(SKILLP_ACSReturn) == 4;
+		bh_foreverMode = G_SkillPropertyInt(SKILLP_ACSReturn) == 5;
 		
 		/*for ( int i = 0; i < 35; i++ )
 		{
