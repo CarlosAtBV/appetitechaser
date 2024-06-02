@@ -24,8 +24,8 @@ TSPMNU_MENU_SAVE = "\c[TSP_LoadSaveGreen]Save Game";
 TSPMNU_MENU_SAVE_SUB = "\c[TSP_LoadSaveGreen]Save\c- your current progress.";
 TSPMNU_MENU_QUIT = "\c[TSP_Red]Shut Down";
 //TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
-//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]First Hunt \c[TSP_Yellow]Demo\c-.";
-TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]Second Attack \c[TSP_Yellow]Demo\c-.";
+//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]The First Hunt\c-.";
+TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]The Second Attack\c-.";
 
 // DIFFICULTY MENUS
 TSPDIF_CASUAL = "\c[TSP_LightBlue]Easy Peasy";
