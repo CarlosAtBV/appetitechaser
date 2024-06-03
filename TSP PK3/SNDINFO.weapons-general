@@ -64,7 +64,7 @@ melee/basic/uppercut/impact5 "sounds/weapons/melee/basic/sfx_melee_basic_uppercu
 
 
 $random melee/kill { melee/kill1 melee/kill2 }
-$volume melee/kill 0.7
+$volume melee/kill 0.8
 melee/kill1 "sounds/weapons/melee/general/sfx_melee_kill_01.ogg"
 melee/kill2 "sounds/weapons/melee/general/sfx_melee_kill_02.ogg"
 
