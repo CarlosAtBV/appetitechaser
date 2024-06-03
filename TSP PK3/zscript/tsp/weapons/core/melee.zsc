@@ -195,7 +195,7 @@ Extend Class TSP_Weapon_Core
 			
 			if ( hasKilled )
 			{
-				invoker.owner.A_StartSound("misc/meleekill", CHAN_BODY, CHANF_OVERLAP);
+				invoker.owner.A_StartSound("melee/kill", CHAN_BODY, CHANF_OVERLAP);
 			}
 		}
 }

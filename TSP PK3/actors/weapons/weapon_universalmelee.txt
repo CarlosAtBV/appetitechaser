@@ -5,8 +5,8 @@
 ACTOR BasicMeleePuff
 { 
 	ActiveSound ""
-	AttackSound "basicmelee/wall"
-	SeeSound "basicmelee/contact"
+	AttackSound "melee/basic/normal/wall"
+	SeeSound "melee/basic/normal/impact"
 	DamageType Melee
 	+NOGRAVITY
 	+NOEXTREMEDEATH
@@ -31,15 +31,15 @@ ACTOR BasicMeleePuff
 
 ACTOR StrongMeleePuff : BasicMeleePuff
 { 
-	AttackSound "strongmelee/wall"
-	SeeSound "strongmelee/contact"
+	AttackSound "melee/basic/strong/wall"
+	SeeSound "melee/basic/strong/impact"
 	DamageType Melee
 	DamageType StrongMelee
 }
 
 ACTOR UppercutMeleePuff : StrongMeleePuff
 { 
-	SeeSound "uppercutmelee/contact"
+	SeeSound "melee/basic/uppercut/impact"
 	DamageType Uppercut
 }
 
@@ -49,20 +49,20 @@ ACTOR UppercutMeleePuff : StrongMeleePuff
 
 ACTOR MetalBasicMeleePuff : BasicMeleePuff
 { 
-	AttackSound "metalbasicmelee/wall"
-	SeeSound "metalbasicmelee/contact"
+	AttackSound "metalmelee/basic/normal/wall"
+	SeeSound "metalmelee/basic/normal/impact"
 }
 
 ACTOR MetalStrongMeleePuff : StrongMeleePuff
 { 
-	AttackSound "metalstrongmelee/wall"
-	SeeSound "metalstrongmelee/contact"
+	AttackSound "metalmelee/basic/strong/wall"
+	SeeSound "metalmelee/basic/strong/impact"
 }
 
 ACTOR MetalUppercutMeleePuff : UppercutMeleePuff
 { 
-	AttackSound "metalstrongmelee/wall"
-	SeeSound "metaluppercutmelee/contact"
+	AttackSound "metalmelee/basic/strong/wall"
+	SeeSound "metalmelee/basic/uppercut/impact"
 }
 
 ///////////////////

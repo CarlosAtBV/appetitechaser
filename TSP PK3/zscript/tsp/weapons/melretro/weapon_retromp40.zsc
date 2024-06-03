@@ -121,7 +121,7 @@ class MelRetroMP40 : TSP_MelRetro_BaseWeapon
 	SPMeleeA:
 		MP4M E 10;
 	SPMeleeStart:
-		TNT1 A 0 A_PlaySound("strongmelee/miss", 5);
+		TNT1 A 0 A_PlaySound("melee/basic/strong/miss", 5);
 		TNT1 A 0 A_PlaySound("*melee", 6);
 		MP4M FG 1;
 		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"SPMeleeBerserk");

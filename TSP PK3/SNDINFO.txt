@@ -50,7 +50,6 @@ title/swoosh "sounds/ui_titleswoosh.ogg"
 
 general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
 
-misc/meleekill "sounds/weapon fx/meleekill.ogg"
 ui/felldown "sounds/general/player/sfx_fall_teleport.ogg"
 $volume ui/felldown 0.5
 

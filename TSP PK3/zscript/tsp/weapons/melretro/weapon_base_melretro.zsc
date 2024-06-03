@@ -70,10 +70,10 @@ class TSP_MelRetro_BaseWeapon : TSP_Weapon_Core
 //DIVEKICK!
 	DeadlyAxe:
 		TNT1 A 6 Thrustthingz(0,40,0,0);
-		TNT1 A 0 A_StartSound("strongmelee/miss", 5, CHAN_OVERLAP);
+		TNT1 A 0 A_StartSound("melee/basic/strong/miss", 5, CHAN_OVERLAP);
 		1126 ABCDDEEEEE 1;
 	    TNT1 A 0 A_StartSound("chargestyle/kick01", 6, CHAN_OVERLAP);
-		TNT1 A 0 A_StartSound("*strongmelee", CHAN_VOICE);
+		TNT1 A 0 A_StartSound("*melee/basic/strong", CHAN_VOICE);
 		TNT1 A 0 A_Recoil(-5);		
 		1126 E 1 ThrustThingZ(0,1,0,1);
 		1126 E 1 ThrustThingZ(0,1,0,1);
