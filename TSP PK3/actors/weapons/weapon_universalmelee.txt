@@ -37,9 +37,18 @@ ACTOR StrongMeleePuff : BasicMeleePuff
 	DamageType StrongMelee
 }
 
+ACTOR FinisherMeleePuff : StrongMeleePuff
+{ 
+	AttackSound "melee/basic/strong/wall"
+	SeeSound "melee/basic/finisher/impact"
+	DamageType Melee
+	DamageType StrongMelee
+}
+
 ACTOR UppercutMeleePuff : StrongMeleePuff
 { 
 	SeeSound "melee/basic/uppercut/impact"
+	DamageType Melee
 	DamageType Uppercut
 }
 

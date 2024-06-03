@@ -55,6 +55,24 @@ melee/basic/strong/miss4 "sounds/weapons/melee/basic/sfx_melee_basic_strong_miss
 melee/basic/strong/miss5 "sounds/weapons/melee/basic/sfx_melee_basic_strong_miss_05.ogg"
 
 
+$random melee/basic/finisher/impact { melee/basic/finisher/impact1 melee/basic/finisher/impact2 melee/basic/finisher/impact3 melee/basic/finisher/impact4 melee/basic/finisher/impact5 }
+$volume melee/basic/finisher/impact 0.8
+melee/basic/finisher/impact1 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_impact_01.ogg"
+melee/basic/finisher/impact2 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_impact_02.ogg"
+melee/basic/finisher/impact3 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_impact_03.ogg"
+melee/basic/finisher/impact4 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_impact_04.ogg"
+melee/basic/finisher/impact5 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_impact_05.ogg"
+
+
+$random melee/basic/finisher/miss { melee/basic/finisher/miss1 melee/basic/finisher/miss2 melee/basic/finisher/miss3 melee/basic/finisher/miss4 melee/basic/finisher/miss5 }
+$volume melee/basic/finisher/miss 0.8
+melee/basic/finisher/miss1 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_miss_01.ogg"
+melee/basic/finisher/miss2 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_miss_02.ogg"
+melee/basic/finisher/miss3 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_miss_03.ogg"
+melee/basic/finisher/miss4 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_miss_04.ogg"
+melee/basic/finisher/miss5 "sounds/weapons/melee/basic/sfx_melee_basic_finisher_miss_05.ogg"
+
+
 $random melee/basic/uppercut/impact { melee/basic/uppercut/impact1 melee/basic/uppercut/impact2 melee/basic/uppercut/impact3 melee/basic/uppercut/impact4 melee/basic/uppercut/impact5 }
 melee/basic/uppercut/impact1 "sounds/weapons/melee/basic/sfx_melee_basic_uppercut_impact_01.ogg"
 melee/basic/uppercut/impact2 "sounds/weapons/melee/basic/sfx_melee_basic_uppercut_impact_02.ogg"
