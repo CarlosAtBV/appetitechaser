@@ -81,53 +81,16 @@ melee/basic/uppercut/impact4 "sounds/weapons/melee/basic/sfx_melee_basic_uppercu
 melee/basic/uppercut/impact5 "sounds/weapons/melee/basic/sfx_melee_basic_uppercut_impact_05.ogg"
 
 
+$random melee/metal/sweetener { melee/metal/sweetener1 melee/metal/sweetener2 melee/metal/sweetener3 melee/metal/sweetener4 melee/metal/sweetener5 }
+$volume melee/metal/sweetener 0.6
+melee/metal/sweetener1 "sounds/weapons/melee/metal/sfx_melee_metal_sweetener_01.ogg"
+melee/metal/sweetener2 "sounds/weapons/melee/metal/sfx_melee_metal_sweetener_02.ogg"
+melee/metal/sweetener3 "sounds/weapons/melee/metal/sfx_melee_metal_sweetener_03.ogg"
+melee/metal/sweetener4 "sounds/weapons/melee/metal/sfx_melee_metal_sweetener_04.ogg"
+melee/metal/sweetener5 "sounds/weapons/melee/metal/sfx_melee_metal_sweetener_05.ogg"
+
+
 $random melee/kill { melee/kill1 melee/kill2 }
 $volume melee/kill 0.8
 melee/kill1 "sounds/weapons/melee/general/sfx_melee_kill_01.ogg"
 melee/kill2 "sounds/weapons/melee/general/sfx_melee_kill_02.ogg"
-
-// Metal Melee Sounds
-// SOUND CREDITS/SOURCES: 
-// - Mortal Kombat X
-
-$random metalmelee/basic/normal/miss { metalmelee/basic/normal/miss1 metalmelee/basic/normal/miss2 metalmelee/basic/normal/miss3 metalmelee/basic/normal/miss4 metalmelee/basic/normal/miss5 }
-metalmelee/basic/normal/miss1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss01.ogg"
-metalmelee/basic/normal/miss2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss02.ogg"
-metalmelee/basic/normal/miss3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss03.ogg"
-metalmelee/basic/normal/miss4 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss04.ogg"
-metalmelee/basic/normal/miss5 "sounds/weapons/melee/metal/sfx_metalmelee_basic_miss05.ogg"
-
-$random metalmelee/basic/normal/impact { metalmelee/basic/normal/impact1 metalmelee/basic/normal/impact2 metalmelee/basic/normal/impact3 metalmelee/basic/normal/impact4 }
-metalmelee/basic/normal/impact1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_impact01.ogg"
-metalmelee/basic/normal/impact2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_impact02.ogg"
-metalmelee/basic/normal/impact3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_impact03.ogg"
-metalmelee/basic/normal/impact4 "sounds/weapons/melee/metal/sfx_metalmelee_basic_impact04.ogg"
-
-$random metalmelee/basic/normal/wall { metalmelee/basic/normal/wall1 metalmelee/basic/normal/wall2 metalmelee/basic/normal/wall3 }
-metalmelee/basic/normal/wall1 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
-metalmelee/basic/normal/wall2 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall02.ogg"
-metalmelee/basic/normal/wall3 "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall03.ogg"
-
-
-$random metalmelee/basic/strong/miss { metalmelee/basic/strong/miss1 metalmelee/basic/strong/miss2 metalmelee/basic/strong/miss3 metalmelee/basic/strong/miss4 metalmelee/basic/strong/miss5 }
-metalmelee/basic/strong/miss1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss01.ogg"
-metalmelee/basic/strong/miss2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss02.ogg"
-metalmelee/basic/strong/miss3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss03.ogg"
-metalmelee/basic/strong/miss4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss04.ogg"
-metalmelee/basic/strong/miss5 "sounds/weapons/melee/metal/sfx_metalmelee_strong_miss05.ogg"
-
-$random metalmelee/basic/strong/impact { metalmelee/basic/strong/impact1 metalmelee/basic/strong/impact2 metalmelee/basic/strong/impact3 metalmelee/basic/strong/impact4 }
-metalmelee/basic/strong/impact1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_impact01.ogg"
-metalmelee/basic/strong/impact2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_impact02.ogg"
-metalmelee/basic/strong/impact3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_impact03.ogg"
-metalmelee/basic/strong/impact4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_impact04.ogg"
-
-$random metalmelee/basic/strong/wall { metalmelee/basic/strong/wall1 metalmelee/basic/strong/wall2 metalmelee/basic/strong/wall3 metalmelee/basic/strong/wall4 }
-metalmelee/basic/strong/wall1 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall01.ogg"
-metalmelee/basic/strong/wall2 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall02.ogg"
-metalmelee/basic/strong/wall3 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall03.ogg"
-metalmelee/basic/strong/wall4 "sounds/weapons/melee/metal/sfx_metalmelee_strong_wall04.ogg"
-
-$random metaluppercutmelee/impact { metaluppercutmelee/impact1 metaluppercutmelee/impact2 }
-metaluppercutmelee/impact1 "sounds/weapons/melee/metal/sfx_metalmelee_uppercut_impact01.ogg"
-metaluppercutmelee/impact2 "sounds/weapons/melee/metal/sfx_metalmelee_uppercut_impact02.ogg"

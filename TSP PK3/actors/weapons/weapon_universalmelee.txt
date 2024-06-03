@@ -52,26 +52,30 @@ ACTOR UppercutMeleePuff : StrongMeleePuff
 	DamageType Uppercut
 }
 
-///////////////////
-//METAL MELEE PUFFS
-///////////////////
-
-ACTOR MetalBasicMeleePuff : BasicMeleePuff
+ACTOR MetalMeleePuff
 { 
-	AttackSound "metalmelee/basic/normal/wall"
-	SeeSound "metalmelee/basic/normal/impact"
-}
-
-ACTOR MetalStrongMeleePuff : StrongMeleePuff
-{ 
-	AttackSound "metalmelee/basic/strong/wall"
-	SeeSound "metalmelee/basic/strong/impact"
-}
-
-ACTOR MetalUppercutMeleePuff : UppercutMeleePuff
-{ 
-	AttackSound "metalmelee/basic/strong/wall"
-	SeeSound "metalmelee/basic/uppercut/impact"
+	ActiveSound ""
+	DamageType Melee
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	Decal "none"
+	States
+	{
+	Spawn:
+	Melee:
+		TNT1 A 0
+		TNT1 A 0 A_StartSound("melee/basic/normal/impact", CHAN_AUTO)
+		TNT1 A 0 A_StartSound("melee/metal/sweetener", CHAN_AUTO)
+		TNT1 A 1
+		Stop
+	Crash:
+		TNT1 A 0
+		TNT1 A 0 A_StartSound("melee/basic/normal/wall", CHAN_AUTO)
+		TNT1 A 0 A_StartSound("melee/metal/sweetener", CHAN_AUTO)
+		TNT1 A 1
+		Stop
+	}
 }
 
 ///////////////////
