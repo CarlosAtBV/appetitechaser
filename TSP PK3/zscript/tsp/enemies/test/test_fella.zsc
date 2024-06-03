@@ -309,3 +309,31 @@ Class TSP_Enemy_TestFella : TSP_EnemyBase
 		}
 	}
 }
+
+Class TSP_Enemy_Showcase : TSP_Enemy_TestFella
+{
+	Default
+	{
+		Health 99999;
+		DamageFactor "Melee", 0.1;
+		DamageFactor "StrongMelee", 0.1;
+		
+		Species "ARCSTAR";
+		+SLIDESONWALLS
+		+NOINFIGHTSPECIES
+	}
+	States
+	{
+		Pain:
+			E0A0 A 4;
+			"----" A 0
+			{
+				A_FaceTarget();
+			}
+			E0A0 BCD 4
+			{
+				Thrust(4, angle+90);
+			}
+			Goto See;
+	}
+}
