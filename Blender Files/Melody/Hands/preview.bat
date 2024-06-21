@@ -4,8 +4,8 @@
 ::	-compose CopyOpacity -composite ^
 ::	preview3.png
 
-magick ^
-	( preview/twohands.png preview/twohands2.png -trim -append ) ^
+magick -background none -gravity center ^
+	( preview/twohands.png preview/twohands2.png preview/twohands3.png -trim -append ) ^
 	-write MPR:orig -alpha off +dither -remap pal2.png ^
 	( MPR:orig -alpha extract -fx round(u) ) ^
 	-compose CopyOpacity -composite ^
