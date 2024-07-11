@@ -17,5 +17,12 @@ magick -background none -gravity center ^
 	-compose CopyOpacity -composite ^
 	-filter point -resize 200%% ^
 	preview/preview.png
+	
+exit /B 0
+
+magick -background none -dispose background ^
+	rendertest/*.png -reverse rendertest/*.png ^
+	-filter point -resize 200%%x240%% ^
+	test.gif
 
 timeout 5
