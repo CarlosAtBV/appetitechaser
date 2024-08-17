@@ -9,6 +9,17 @@ magick pal_base.png ^
 	( -size 1x1 xc:#0A010A xc:#13050B xc:#353030 xc:#4E413F xc:#705445 +append -resize 24x1^! ) ^
 	+append ^
 	pal3.png
+	
+magick -background none -gravity center ^
+	( test.png test2.png -trim -append ) ^
+	-write MPR:orig -alpha off +dither -remap pal3.png ^
+	( MPR:orig -alpha extract -fx round(u) ) ^
+	-compose CopyOpacity -composite ^
+	-filter point -resize 200%%x240%%^! ^
+	preview/paltester.png
+	
+timeout 10
+exit /B 0
 
 magick -background none -gravity center ^
 	( rendertest/*.png -trim -append ) ^
