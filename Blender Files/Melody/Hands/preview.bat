@@ -11,7 +11,7 @@ magick pal_base.png ^
 	pal3.png
 	
 magick -background none -gravity center ^
-	( test.png test2.png -trim -append ) ^
+	( rendertest/0001.png rendertest/0002.png rendertest/0003.png -trim -append ) ^
 	-write MPR:orig -alpha off +dither -remap pal3.png ^
 	( MPR:orig -alpha extract -fx round(u) ) ^
 	-compose CopyOpacity -composite ^
