@@ -425,7 +425,8 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		let origsprite = owner.player.FindPSprite(PSP_WEAPON);
 		
-		Vector2 baseOffset = origsprite ? (origsprite.oldx + (origsprite.x - origsprite.oldx) * ticFrac, origsprite.oldy + (origsprite.y - origsprite.oldy) * ticFrac - 32) : (0,0);
+		//Vector2 baseOffset = origsprite ? (origsprite.oldx + (origsprite.x - origsprite.oldx) * ticFrac, origsprite.oldy + (origsprite.y - origsprite.oldy) * ticFrac - 32) : (0,0);
+		Vector2 baseOffset = origsprite ? (origsprite.x, origsprite.y - 32) : (0,0);
 		double baseRotate = 0;
 		double baseScale = 0;
 		
@@ -440,6 +441,9 @@ Class TSP_Weapon_Core : DoomWeapon
 				baseRotate += tspw_animations[i].GetRot(ticFrac);
 			}
 		}
+		
+		baseOffset.x = floor(baseOffset.x);
+		baseOffset.y = floor(baseOffset.y);
 		
 		return baseOffset, baseRotate;
 	}

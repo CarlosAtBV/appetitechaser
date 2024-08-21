@@ -36,6 +36,8 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		TSP_Weapon_Core.Portrait "graphics/hud/weapons/mel_pawnch.png";
 	}
 	
+	const PSP_OFFHAND = PSP_WEAPON+10;
+	
 	States
 	{
 		Spawn:
@@ -85,12 +87,32 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("TSPIdle", 3000, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
-			TNT1 A 0 A_Overlay(105, "Ready_RightHand");
-			111G ABC 1 A_TSP_MeleeReady();
-			Wait;
-		Ready_RightHand:
-			111G DEF 1;
+			TNT1 A 0
+			{
+				A_Overlay(PSP_OFFHAND, "Ready_Left");
+				invoker.anim_idle_left.PlayAnim();
+				invoker.anim_idle_right.PlayAnim();
+			}
+			Goto Ready_Right;
+			
+		Ready_Left:
+			111G A 8;
+			111G B 3;
+			111G C 9;
+			111G B 4;
+			111G A 7;
 			Loop;
+		Ready_Right:
+			111G D 10;
+			111G E 3;
+			111G F 2;
+			111G E 2;
+			111G F 2;
+			111G E 3;
+			111G D 9;
+			//A_TSP_MeleeReady();
+			Loop;
+			
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("MeleePressed",1,"StyleSwitch");

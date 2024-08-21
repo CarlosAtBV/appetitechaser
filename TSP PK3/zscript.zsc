@@ -97,6 +97,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"
 
 #include "zscript/tsp/weapons/mel/weapon_bareknuckle.zsc"
+#include "zscript/tsp/weapons/mel/anims_bareknuckle.zsc"
 
 #include "zscript/tsp/weapons/mel/weapon_nikki.zsc"
 #include "zscript/tsp/weapons/mel/weapon_nikki_spitfire.zsc"

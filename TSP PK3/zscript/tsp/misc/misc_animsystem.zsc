@@ -66,6 +66,7 @@ Class TSP_PyAnim
 {
 	int id;
 	int tics;
+	bool bLoop;
 		
 	TSP_PyAnim_Keyframe lastKey;
 	TSP_PyAnim_Keyframe nextKey;
@@ -107,7 +108,15 @@ Class TSP_PyAnim
 		
 		if ( tics >= keyframes[keyframes.Size()-1].frame )
 		{
-			tics = -1;
+			if ( bLoop )
+			{
+				tics = 0;
+				
+			}
+			else
+			{
+				tics = -1;
+			}
 			//return false;
 		}
 		

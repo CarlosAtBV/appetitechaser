@@ -1,0 +1,79 @@
+Extend Class MelBareKnuckle
+{
+	TSP_PyAnim anim_idle_left;
+	TSP_PyAnim anim_idle_right;
+	
+	override void TSP_InitAnimations()
+	{   
+		anim_idle_left = CreateNewAnimation();
+		anim_idle_left.bLoop = true;
+		anim_idle_left.AddPSprite(PSP_OFFHAND);
+		anim_idle_left.AddKeyframe(1, 0.00, -0.00);
+		anim_idle_left.AddKeyframe(2, 0.00, 0.12);
+		anim_idle_left.AddKeyframe(3, 0.00, 0.53);
+		anim_idle_left.AddKeyframe(4, 0.00, 1.26);
+		anim_idle_left.AddKeyframe(5, 0.00, 2.17);
+		anim_idle_left.AddKeyframe(6, 0.00, 3.02);
+		anim_idle_left.AddKeyframe(7, -0.08, 3.69);
+		anim_idle_left.AddKeyframe(8, -0.34, 4.19);
+		anim_idle_left.AddKeyframe(9, -0.79, 4.56);
+		anim_idle_left.AddKeyframe(10, -1.38, 4.81);
+		anim_idle_left.AddKeyframe(11, -2.01, 4.96);
+		anim_idle_left.AddKeyframe(12, -2.58, 5.05);
+		anim_idle_left.AddKeyframe(13, -3.04, 5.08);
+		anim_idle_left.AddKeyframe(14, -3.40, 4.82);
+		anim_idle_left.AddKeyframe(15, -3.67, 4.22);
+		anim_idle_left.AddKeyframe(16, -3.86, 3.56);
+		anim_idle_left.AddKeyframe(17, -3.98, 2.97);
+		anim_idle_left.AddKeyframe(18, -4.05, 2.47);
+		anim_idle_left.AddKeyframe(19, -4.07, 2.04);
+		anim_idle_left.AddKeyframe(20, -3.93, 1.67);
+		anim_idle_left.AddKeyframe(21, -3.64, 1.36);
+		anim_idle_left.AddKeyframe(22, -3.29, 1.09);
+		anim_idle_left.AddKeyframe(23, -2.91, 0.87);
+		anim_idle_left.AddKeyframe(24, -2.51, 0.68);
+		anim_idle_left.AddKeyframe(25, -2.11, 0.52);
+		anim_idle_left.AddKeyframe(26, -1.73, 0.38);
+		anim_idle_left.AddKeyframe(27, -1.36, 0.27);
+		anim_idle_left.AddKeyframe(28, -1.01, 0.18);
+		anim_idle_left.AddKeyframe(29, -0.69, 0.11);
+		anim_idle_left.AddKeyframe(30, -0.42, 0.06);
+		anim_idle_left.AddKeyframe(31, -0.20, 0.03);
+
+		anim_idle_right = CreateNewAnimation();
+		anim_idle_right.bLoop = true;
+		anim_idle_right.AddPSprite(PSP_WEAPON);
+
+		anim_idle_right.AddKeyframe(1, 0.00, -0.00);
+		anim_idle_right.AddKeyframe(2, 0.03, 0.01);
+		anim_idle_right.AddKeyframe(3, 0.10, 0.05);
+		anim_idle_right.AddKeyframe(4, 0.21, 0.11);
+		anim_idle_right.AddKeyframe(5, 0.35, 0.21);
+		anim_idle_right.AddKeyframe(6, 0.51, 0.36);
+		anim_idle_right.AddKeyframe(7, 0.68, 0.58);
+		anim_idle_right.AddKeyframe(8, 0.84, 0.89);
+		anim_idle_right.AddKeyframe(9, 1.00, 1.37);
+		anim_idle_right.AddKeyframe(10, 1.14, 2.17);
+		anim_idle_right.AddKeyframe(11, 1.25, 3.52);
+		anim_idle_right.AddKeyframe(12, 1.32, 4.22);
+		anim_idle_right.AddKeyframe(13, 1.35, 4.35);
+		anim_idle_right.AddKeyframe(14, 1.33, 4.35);
+		anim_idle_right.AddKeyframe(15, 1.26, 4.33);
+		anim_idle_right.AddKeyframe(16, 1.17, 4.31);
+		anim_idle_right.AddKeyframe(17, 1.05, 4.27);
+		anim_idle_right.AddKeyframe(18, 0.90, 4.23);
+		anim_idle_right.AddKeyframe(19, 0.75, 4.16);
+		anim_idle_right.AddKeyframe(20, 0.60, 4.08);
+		anim_idle_right.AddKeyframe(21, 0.45, 3.98);
+		anim_idle_right.AddKeyframe(22, 0.30, 3.85);
+		anim_idle_right.AddKeyframe(23, 0.18, 3.69);
+		anim_idle_right.AddKeyframe(24, 0.09, 3.48);
+		anim_idle_right.AddKeyframe(25, 0.02, 3.21);
+		anim_idle_right.AddKeyframe(26, 0.00, 2.85);
+		anim_idle_right.AddKeyframe(27, 0.00, 2.34);
+		anim_idle_right.AddKeyframe(28, 0.00, 1.57);
+		anim_idle_right.AddKeyframe(29, 0.00, 0.70);
+		anim_idle_right.AddKeyframe(30, 0.00, 0.23);
+		anim_idle_right.AddKeyframe(31, 0.00, 0.04);
+	}
+}
