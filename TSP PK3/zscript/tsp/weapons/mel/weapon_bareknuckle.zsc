@@ -85,7 +85,11 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
 			TNT1 A 0 A_JumpIfInventory("TSPIdle", 3000, "Idle");
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
-			111G A 1 A_TSP_MeleeReady();
+			TNT1 A 0 A_Overlay(105, "Ready_RightHand");
+			111G ABC 1 A_TSP_MeleeReady();
+			Wait;
+		Ready_RightHand:
+			111G DEF 1;
 			Loop;
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");
