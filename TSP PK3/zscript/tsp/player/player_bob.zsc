@@ -35,7 +35,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			dlandz = player.jumptics;
 		}
-		double dbobzf = ((pos.z-prev.z)+dlandz*4);
+		double dbobzf = ((pos.z-prev.z)+dlandz*2);
 		d_curBobZ = d_curBobZ + ( dbobzf  - d_curBobZ )/6;
 		
 		d_lastAngle = d_curAngle;

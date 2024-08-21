@@ -38,12 +38,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	
 	void TSP_HandleViewStuff()
 	{
-		tsp_landpunch = tsp_landpunch + ( 0.0 - tsp_landpunch ) / 5;
+		tsp_landpunch = tsp_landpunch + ( 0.0 - tsp_landpunch ) / 3;
 		if ( vel.z == 0 && oldVelZ < 0 )
 		{
-			tsp_landpunch = oldVelZ/3;
+			tsp_landpunch = oldVelZ/6;
 		}
-		tsp_landpitch = tsp_landpitch + ( tsp_landpunch/5 - tsp_landpitch ) / 5;
+		tsp_landpitch = tsp_landpitch + ( tsp_landpunch/5 - tsp_landpitch ) / 2;
 		
 		tsp_wallroll = tsp_wallroll + ( walljump_dir - tsp_wallroll ) / 3;
 		
