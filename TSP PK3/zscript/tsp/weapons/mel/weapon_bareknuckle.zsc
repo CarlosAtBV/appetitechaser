@@ -103,7 +103,7 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 					if ( player.cmd.buttons & BT_ATTACK )
 					{
 						A_Overlay(PSP_LEFTHAND, "AtkStart_Left");
-						A_Overlay(PSP_RIGHTHAND, "RightHook");
+						A_Overlay(PSP_RIGHTHAND, "RightPoke");
 					}
 				}
 			}
@@ -129,6 +129,15 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		AtkStart_Left:
 			111G A 3 { invoker.anim_atkstart_left.PlayAnim(); }
 			Stop;
+			
+		RightPoke:
+			TNT1 A 0 { invoker.anim_testpoke.PlayAnim(); }
+			TNT1 A 0 A_StartSound("*smallmelee", CHAN_VOICE);
+			TNT1 A 0 A_StartSound("melee/basic/normal/miss", 5);
+			111Y A 4;
+			111Y A 1 A_TSP_Melee(10,70,"BasicMeleePuff");
+			111Y A 6;
+			Goto Ready;
 			
 		CompleteReady:
 			TNT1 A 0 A_JumpIfInventory("TraitPressed",1,"SPTraitStart");

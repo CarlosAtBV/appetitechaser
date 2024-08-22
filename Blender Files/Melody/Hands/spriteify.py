@@ -13,6 +13,7 @@ pics = [
 	[ "comp/melee_idle-1-1.png", "weapons/mel/Bare Knuckle/111GD0.png" ],
 	[ "comp/melee_idle-2-1.png", "weapons/mel/Bare Knuckle/111GE0.png" ],
 	[ "comp/melee_idle-3-1.png", "weapons/mel/Bare Knuckle/111GF0.png" ],
+	[ "comp/testpoke-1.png", "weapons/mel/Bare Knuckle/111YA0.png" ],
 ]
 
 for picPair in pics:

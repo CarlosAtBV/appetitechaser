@@ -19,6 +19,9 @@ magick -background none ^
 	( -gravity East render/melee_idle-3.png -extent 396x400 -extent 800x400 ) ^
 	comp/melee_idle-3.png
 	
+magick render/testpoke-1.png ^
+	comp/testpoke-1.png
+	
 ::cd comp
 
 FOR /R %%A IN (comp/*.png) DO (

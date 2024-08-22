@@ -194,9 +194,12 @@ Class TSP_Weapon_Core : DoomWeapon
 			if ( owner.player.ReadyWeapon == self )
 			{
 				crosshair = 16;
-				for ( int i = 0; i < tspw_animations.Size(); i++ )
+				if ( tspw_owner.pp_hitFreeze <= 0 )
 				{
-					tspw_animations[i].Tick();
+					for ( int i = 0; i < tspw_animations.Size(); i++ )
+					{
+						tspw_animations[i].Tick();
+					}
 				}
 			}
 			
