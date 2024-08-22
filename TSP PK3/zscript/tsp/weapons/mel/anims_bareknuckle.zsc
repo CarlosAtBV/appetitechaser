@@ -2,6 +2,7 @@ Extend Class MelBareKnuckle
 {
 	TSP_PyAnim anim_idle_left;
 	TSP_PyAnim anim_idle_right;
+	TSP_PyAnim anim_atkstart_left;
 	
 	override void TSP_InitAnimations()
 	{   
@@ -77,6 +78,11 @@ Extend Class MelBareKnuckle
 		anim_idle_right.AddKeyframe(30, 0.000, 1.405);
 		anim_idle_right.AddKeyframe(31, 0.000, 1.101);
 
-
+		anim_atkstart_left = CreateNewAnimation();
+		anim_atkstart_left.AddPSprite(PSP_LEFTHAND);
+		anim_atkstart_left.AddKeyframe(1, 0.000, -0.000);
+		anim_atkstart_left.AddKeyframe(2, -2.876, 5.641);
+		anim_atkstart_left.AddKeyframe(3, -12.804, 25.118);
+		anim_atkstart_left.AddKeyframe(4, -12.804, 125.118);
 	}
 }
