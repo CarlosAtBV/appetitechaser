@@ -97,9 +97,14 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			}
 			TNT1 A 1
 			{
-				if ( player.cmd.buttons & BT_ATTACK )
+				let righthand = player.FindPSprite(PSP_RIGHTHAND);
+				if ( InStateSequence(righthand.CurState, resolveState("Ready_Right")) )
 				{
-					A_Overlay(PSP_RIGHTHAND, "RightHook");
+					if ( player.cmd.buttons & BT_ATTACK )
+					{
+						A_Overlay(PSP_LEFTHAND, null);
+						A_Overlay(PSP_RIGHTHAND, "RightHook");
+					}
 				}
 			}
 			Wait;
