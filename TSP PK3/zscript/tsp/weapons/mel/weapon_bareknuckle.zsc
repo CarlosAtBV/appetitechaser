@@ -137,6 +137,13 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			111Y A 4;
 			111Y A 1 A_TSP_Melee(10,70,"BasicMeleePuff");
 			111Y A 6;
+			TNT1 A 0
+			{
+				if ( player.cmd.buttons & BT_ATTACK )
+				{
+					A_Overlay(PSP_RIGHTHAND, "RightPoke");
+				}
+			}
 			Goto Ready;
 			
 		CompleteReady:
