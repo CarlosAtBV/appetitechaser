@@ -7,7 +7,7 @@ Extend Class MelBareKnuckle
 	{   
 		anim_idle_left = CreateNewAnimation();
 		anim_idle_left.bLoop = true;
-		anim_idle_left.AddPSprite(PSP_OFFHAND);
+		anim_idle_left.AddPSprite(PSP_LEFTHAND);
 
 		anim_idle_left.AddKeyframe(1, 0.000, -0.000);
 		anim_idle_left.AddKeyframe(2, 0.000, 0.119);
@@ -43,7 +43,7 @@ Extend Class MelBareKnuckle
 
 		anim_idle_right = CreateNewAnimation();
 		anim_idle_right.bLoop = true;
-		anim_idle_right.AddPSprite(PSP_WEAPON);
+		anim_idle_right.AddPSprite(PSP_RIGHTHAND);
 		
 		anim_idle_right.AddKeyframe(1, 0.000, -0.000);
 		anim_idle_right.AddKeyframe(2, 0.027, 0.030);

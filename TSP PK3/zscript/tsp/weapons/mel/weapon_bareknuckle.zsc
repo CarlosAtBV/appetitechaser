@@ -36,7 +36,8 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		TSP_Weapon_Core.Portrait "graphics/hud/weapons/mel_pawnch.png";
 	}
 	
-	const PSP_OFFHAND = PSP_WEAPON+10;
+	const PSP_LEFTHAND = PSP_WEAPON+10;
+	const PSP_RIGHTHAND = PSP_WEAPON+11;
 	
 	States
 	{
@@ -89,11 +90,19 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			TNT1 A 0
 			{
-				A_Overlay(PSP_OFFHAND, "Ready_Left");
+				A_Overlay(PSP_LEFTHAND, "Ready_Left");
+				A_Overlay(PSP_RIGHTHAND, "Ready_Right");
 				invoker.anim_idle_left.PlayAnim();
 				invoker.anim_idle_right.PlayAnim();
 			}
-			Goto Ready_Right;
+			TNT1 A 1
+			{
+				if ( player.cmd.buttons & BT_ATTACK )
+				{
+					A_Overlay(PSP_RIGHTHAND, "RightHook");
+				}
+			}
+			Wait;
 			
 		Ready_Left:
 			111G A 8;
