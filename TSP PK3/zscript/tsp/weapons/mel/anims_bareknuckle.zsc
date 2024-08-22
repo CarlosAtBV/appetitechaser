@@ -4,6 +4,7 @@ Extend Class MelBareKnuckle
 	TSP_PyAnim anim_idle_right;
 	TSP_PyAnim anim_atkstart_left;
 	TSP_PyAnim anim_testpoke;
+	TSP_PyAnim anim_punch1;
 	
 	override void TSP_InitAnimations()
 	{   
@@ -101,6 +102,25 @@ Extend Class MelBareKnuckle
 		anim_testpoke.AddKeyframe(11, 20.259, 23.245);
 		anim_testpoke.AddKeyframe(12, 43.787, 50.243);
 		anim_testpoke.AddKeyframe(13, 85.370, 97.956);
+
+		anim_punch1 = CreateNewAnimation();
+		anim_punch1.AddPSprite(PSP_RIGHTHAND);
+		anim_punch1.AddKeyframe(1, 123.120, 123.840);
+		anim_punch1.AddKeyframe(2, 99.715, 99.844);
+		anim_punch1.AddKeyframe(3, 54.483, 53.725);
+		anim_punch1.AddKeyframe(4, 0.000, -0.000);
+		anim_punch1.AddKeyframe(5, -2.200, -1.415);
+		anim_punch1.AddKeyframe(6, -7.138, -4.245);
+		anim_punch1.AddKeyframe(7, -12.323, -6.372);
+		anim_punch1.AddKeyframe(8, -15.261, -5.675);
+		anim_punch1.AddKeyframe(9, -13.461, -0.035);
+		anim_punch1.AddKeyframe(10, -4.431, 12.669);
+		anim_punch1.AddKeyframe(11, 14.322, 34.557);
+		anim_punch1.AddKeyframe(12, 45.291, 67.748);
+		anim_punch1.AddKeyframe(13, 90.966, 114.362);
+		anim_punch1.AddKeyframe(14, 153.840, 176.520);
+		anim_punch1.AddKeyframe(15, 153.840, 176.520);
+		anim_punch1.AddKeyframe(16, 153.840, 176.520);
 
 	}
 }

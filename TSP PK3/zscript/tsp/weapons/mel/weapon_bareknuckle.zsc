@@ -137,11 +137,27 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			111Y A 4;
 			111Y A 1 A_TSP_Melee(10,70,"BasicMeleePuff");
 			111Y A 6;
+			TNT1 AAAAA 1
+			{
+				if ( player.cmd.buttons & BT_ATTACK )
+				{
+					A_Overlay(PSP_RIGHTHAND, "Punch1");
+				}
+			}
+			Goto Ready;
+		Punch1:
+			TNT1 A 0 { invoker.anim_punch1.PlayAnim(); }
+			TNT1 A 0 A_StartSound("*smallmelee", CHAN_VOICE);
+			TNT1 A 0 A_StartSound("melee/basic/normal/miss", 5);
+			111P A 3;
+			111P B 1 A_TSP_Melee(10,70,"BasicMeleePuff");
+			111P B 6;
+			111P C 5;
 			TNT1 A 0
 			{
 				if ( player.cmd.buttons & BT_ATTACK )
 				{
-					A_Overlay(PSP_RIGHTHAND, "RightPoke");
+					A_Overlay(PSP_RIGHTHAND, "Punch1");
 				}
 			}
 			Goto Ready;
@@ -297,7 +313,7 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 				return resolveState("Punch1");
 			}
 			Stop;
-		
+	/*	
 	// P DEFAULT
 		Punch1:
 			TNT1 A 0 A_StartSound("*smallmelee", CHAN_VOICE);
@@ -324,7 +340,7 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 		Punch1End: //You'll return to this state if you don't continue with the uppercut!
 			TNT1 A 0 ACS_NamedExecute("PlayerSpeed",0,100,0,0);
 			TNT1 AAAAAAAAAAA 1 A_TSP_MeleeReady();
-			Goto AfterMelee;
+			Goto AfterMelee;*/
 		
 	// DEFAULT P-P
 		RightHook:

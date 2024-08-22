@@ -13,6 +13,11 @@ pics = [
 	[ "comp/melee_idle-1-1.png", "weapons/mel/Bare Knuckle/111GD0.png" ],
 	[ "comp/melee_idle-2-1.png", "weapons/mel/Bare Knuckle/111GE0.png" ],
 	[ "comp/melee_idle-3-1.png", "weapons/mel/Bare Knuckle/111GF0.png" ],
+    
+	[ "comp/punch_1-1.png", "weapons/mel/Bare Knuckle/111PA0.png" ],
+	[ "comp/punch_1-2.png", "weapons/mel/Bare Knuckle/111PB0.png" ],
+	[ "comp/punch_1-3.png", "weapons/mel/Bare Knuckle/111PC0.png" ],
+    
 	[ "comp/testpoke-1.png", "weapons/mel/Bare Knuckle/111YA0.png" ],
 ]
 

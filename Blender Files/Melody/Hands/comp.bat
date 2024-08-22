@@ -22,6 +22,13 @@ magick -background none ^
 magick render/testpoke-1.png ^
 	comp/testpoke-1.png
 	
+magick render/punch_1-1.png ^
+	comp/punch_1-1.png
+magick render/punch_1-2.png ^
+	comp/punch_1-2.png
+magick render/punch_1-3.png ^
+	comp/punch_1-3.png
+	
 ::cd comp
 
 FOR /R %%A IN (comp/*.png) DO (
