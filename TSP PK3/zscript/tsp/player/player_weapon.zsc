@@ -22,6 +22,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	{
 		let player = self.player;
 		let pspr = player.psprites;
+		let weapon = TSP_Weapon_Core(player.ReadyWeapon);
+		
 		while (pspr)
 		{
 			// Destroy the psprite if it's from a weapon that isn't currently selected by the player

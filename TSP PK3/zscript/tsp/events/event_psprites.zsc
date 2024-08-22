@@ -18,7 +18,7 @@ Extend Class TSP_EventHandler
 		lightLevel_current = lightLevel_current + (targ - lightLevel_current) / 4;
 	}
 	
-	override void RenderUnderlay(RenderEvent e)
+	/*override void RenderUnderlay(RenderEvent e)
 	{
 		if ( !r_drawplayersprites ) return;
 		
@@ -88,10 +88,7 @@ Extend Class TSP_EventHandler
 					
 					Vector2 weaponOldPos = (psprite.oldx, psprite.oldy);
 					Vector2 weaponNewPos = (psprite.x, psprite.y);
-					Vector2 weaponPos;/* = (
-						lerp(weaponOldPos.x, weaponNewPos.x, e.FracTic),
-						lerp(weaponOldPos.y, weaponNewPos.y, e.FracTic)
-					);*/
+					Vector2 weaponPos;
 					
 					if ( weapon != null )
 					{
@@ -181,5 +178,5 @@ Extend Class TSP_EventHandler
 		{
 			screen.Dim("#000000", eh_telefadeout, 0, 0, screen.GetWidth(), screen.GetHeight());
 		}
-	}
+	}*/
 }

@@ -421,6 +421,14 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_InitAnimations();
 	}
 	
+	override Vector2 ModifyBobLayer(Vector2 bob, int layer, double ticfrac)
+	{
+		let pos = self.TSP_GetWeaponOffsets(layer, ticfrac);
+		//pos.x = round(pos.x);
+		//pos.y = round(pos.y);
+		return bob + pos;
+	}
+	
 	ui Vector2, double TSP_GetWeaponOffsets(int psprite, double ticFrac)
 	{
 		let origsprite = owner.player.FindPSprite(PSP_WEAPON);
