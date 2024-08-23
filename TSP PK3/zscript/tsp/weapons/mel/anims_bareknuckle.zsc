@@ -8,7 +8,7 @@ Extend Class MelBareKnuckle
 	
 	override void TSP_InitAnimations()
 	{   
-		anim_idle_left = CreateNewAnimation();
+		anim_idle_left = CreateNewAnimation("idle_left");
 		anim_idle_left.bLoop = true;
 		anim_idle_left.AddPSprite(PSP_LEFTHAND);
 
@@ -44,7 +44,7 @@ Extend Class MelBareKnuckle
 		anim_idle_left.AddKeyframe(30, -0.422, 0.062);
 		anim_idle_left.AddKeyframe(31, -0.204, 0.027);
 
-		anim_idle_right = CreateNewAnimation();
+		anim_idle_right = CreateNewAnimation("idle_right");
 		anim_idle_right.bLoop = true;
 		anim_idle_right.AddPSprite(PSP_RIGHTHAND);
 		
@@ -80,14 +80,14 @@ Extend Class MelBareKnuckle
 		anim_idle_right.AddKeyframe(30, 0.000, 1.405);
 		anim_idle_right.AddKeyframe(31, 0.000, 1.101);
 
-		anim_atkstart_left = CreateNewAnimation();
+		anim_atkstart_left = CreateNewAnimation("atkstart_left");
 		anim_atkstart_left.AddPSprite(PSP_LEFTHAND);
 		anim_atkstart_left.AddKeyframe(1, 0.000, -0.000);
 		anim_atkstart_left.AddKeyframe(2, -2.876, 5.641);
 		anim_atkstart_left.AddKeyframe(3, -12.804, 25.118);
 		anim_atkstart_left.AddKeyframe(4, -12.804, 125.118);
 		
-		anim_testpoke = CreateNewAnimation();
+		anim_testpoke = CreateNewAnimation("testpoke");
 		anim_testpoke.AddPSprite(PSP_RIGHTHAND);
 		anim_testpoke.AddKeyframe(1, 123.120, 123.840);
 		anim_testpoke.AddKeyframe(2, 103.882, 104.490);

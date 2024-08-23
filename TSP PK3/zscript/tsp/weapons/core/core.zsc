@@ -23,6 +23,9 @@ Class TSP_Weapon_Core : DoomWeapon
 	flagdef ModFireZooms: tspw_weaponflags, 2;
 	flagdef NoModSwitch: tspw_weaponflags, 4;
 	property ModTag : tspw_altname;
+	
+	Map<String, TSP_PyAnim> sp_animations;
+	TSP_PyAnim sp_currentAnim;
 
 	int tspw_powerlevel;
 	int tspw_maxpowerlevel;
@@ -62,7 +65,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	Weapon tsp_desiredModSwitch;
 	
-	Array<TSP_PyAnim> tspw_animations;
+	//Array<TSP_PyAnim> tspw_animations;
 	Vector3 tspw_recoilPos;
 	
 	string tspw_portrait;
@@ -167,7 +170,7 @@ Class TSP_Weapon_Core : DoomWeapon
 	{
 		super.PostBeginPlay();
 		if(tspw_curclip==0) tspw_curclip = GetClipCapacity();
-		tspw_animations.Clear();
+		sp_animations.Clear();
 		if ( tsp_debug )
 		{
 			Console.Printf("initializing animations");
@@ -196,9 +199,9 @@ Class TSP_Weapon_Core : DoomWeapon
 				crosshair = 16;
 				if ( tspw_owner.pp_hitFreeze <= 0 )
 				{
-					for ( int i = 0; i < tspw_animations.Size(); i++ )
+					foreach ( anim : sp_animations )
 					{
-						tspw_animations[i].Tick();
+						anim.Tick();
 					}
 				}
 			}
@@ -216,12 +219,28 @@ Class TSP_Weapon_Core : DoomWeapon
 		
 		
 	}
+		
+	virtual void TSP_InitAnimations()
+	{
+	}
+	
+	TSP_PyAnim CreateNewAnimation (String name = "FIXTHIS")
+	{
+		TSP_PyAnim newAnim = TSP_PyAnim.Init();
+		//tspw_animations.Push(newAnim);
+		sp_animations.Insert(name, newAnim);
+		return newAnim;
+	}
 	
 	void TSP_StopAllAnims()
 	{
-		for ( int i = 0; i < tspw_animations.Size(); i++ )
+		/*for ( int i = 0; i < sp_animations.Size(); i++ )
 		{
 			tspw_animations[i].Reset();
+		}*/
+		foreach ( v : sp_animations )
+		{
+			v.Reset();
 		}
 	}
 	
@@ -406,17 +425,6 @@ Class TSP_Weapon_Core : DoomWeapon
 			}
 		}
 	}
-		
-	virtual void TSP_InitAnimations()
-	{
-	}
-	
-	TSP_PyAnim CreateNewAnimation()
-	{
-		TSP_PyAnim newAnim = TSP_PyAnim.Init();
-		tspw_animations.Push(newAnim);
-		return newAnim;
-	}
 	
 	override void AttachToOwner (Actor other)
 	{
@@ -426,7 +434,16 @@ Class TSP_Weapon_Core : DoomWeapon
 	
 	override Vector2 ModifyBobLayer(Vector2 bob, int layer, double ticfrac)
 	{
-		let pos = self.TSP_GetWeaponOffsets(layer, ticfrac);
+		let player = TSP_PlayerPawn_ZSCBase(owner);
+		Vector2 pos;
+		if ( player.pp_hitFreeze > 0 )
+		{
+			pos = self.TSP_GetWeaponOffsets(layer, 1.0);
+		}
+		else
+		{
+			pos = self.TSP_GetWeaponOffsets(layer, ticfrac);
+		}
 		//pos.x = round(pos.x);
 		//pos.y = round(pos.y);
 		return bob + pos;
@@ -443,13 +460,13 @@ Class TSP_Weapon_Core : DoomWeapon
 		
 		baseOffset.y += tspw_owner.tsp_lastbob + (tspw_owner.tsp_bob - tspw_owner.tsp_lastbob) * ticFrac;
 		
-		for ( int i = 0; i < tspw_animations.Size(); i++ )
+		foreach ( anim : sp_animations )
 		{
 			//Console.Printf("uhhh the find is "..tspw_animations[i].psprites.Find(psprite));
-			if ( tspw_animations[i].psprites.Find(psprite) != tspw_animations[i].psprites.Size() )
+			if ( anim.psprites.Find(psprite) != anim.psprites.Size() )
 			{
-				baseOffset += tspw_animations[i].GetPos(ticFrac);
-				baseRotate += tspw_animations[i].GetRot(ticFrac);
+				baseOffset += anim.GetPos(ticFrac);
+				baseRotate += anim.GetRot(ticFrac);
 			}
 		}
 		

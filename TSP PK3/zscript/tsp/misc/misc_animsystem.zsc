@@ -101,21 +101,15 @@ Class TSP_PyAnim
 	
 	void Tick()
 	{
-		if ( tics >= 0 )
-		{
-			tics++;
-		}
-		
 		if ( tics >= keyframes[keyframes.Size()-1].frame )
 		{
 			if ( bLoop )
 			{
 				tics = 0;
-				
 			}
 			else
 			{
-				tics = -1;
+				return;
 			}
 			//return false;
 		}
@@ -125,15 +119,15 @@ Class TSP_PyAnim
 			return;
 		}
 		
+		//lastKey = keyframes[max(0, tics-1)];
+		//nextKey = tics + 1 < keyframes[keyframes.Size()-1].frame ? keyframes[tics+1] : lastKey;
 		lastKey = keyframes[tics];
 		nextKey = tics + 1 < keyframes[keyframes.Size()-1].frame ? keyframes[tics+1] : lastKey;
-		/*for ( int i = 0; i < keyframes.size(); i++ )
+		
+		if ( tics >= 0 )
 		{
-			if ( keyframes[i].frame <= tics )
-			{
-				lastKey = keyframes[i];
-			}
-		}*/
+			tics++;
+		}
 		
 		/*for ( int i = 0; i < keyframes.size(); i++ )
 		{
@@ -179,7 +173,7 @@ Class TSP_PyAnim
 	{
 		if ( tics == -1 || !lastKey || !nextKey )
 		{
-			return(0,0);
+			return (0,0);
 		}
 		
 		double finalDiff = fracTic;//(fracTic + timeDiff) / double(keyDiff);

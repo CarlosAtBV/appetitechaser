@@ -19,7 +19,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 					return;
 				}
 			}
-			pp_haveTheseWeapons.Push(item.GetClass());
+			pp_haveTheseWeapons.Push((Class<TSP_Weapon_Core>)(item.GetClass()));
 		}
 		super.AddInventory(item);
 		return;

@@ -90,6 +90,7 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			TNT1 A 0 A_GiveInventory("TSPIdle", 1);
 			TNT1 A 0
 			{
+				invoker.TSP_StopAllAnims();
 				A_Overlay(PSP_LEFTHAND, "Ready_Left");
 				A_Overlay(PSP_RIGHTHAND, "Ready_Right");
 				invoker.anim_idle_left.PlayAnim();
@@ -146,13 +147,17 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 			}
 			Goto Ready;
 		Punch1:
-			TNT1 A 0 { invoker.anim_punch1.PlayAnim(); }
+			TNT1 A 0
+			{
+				invoker.anim_testpoke.Reset();
+				invoker.anim_punch1.PlayAnim();
+			}
 			TNT1 A 0 A_StartSound("*smallmelee", CHAN_VOICE);
 			TNT1 A 0 A_StartSound("melee/basic/normal/miss", 5);
 			111P A 3;
 			111P B 1 A_TSP_Melee(10,70,"BasicMeleePuff");
 			111P B 6;
-			111P C 5;
+			111P C 6;
 			TNT1 A 0
 			{
 				if ( player.cmd.buttons & BT_ATTACK )

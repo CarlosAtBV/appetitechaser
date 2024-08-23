@@ -148,7 +148,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 						int checkSlot;
 						int checkIndex;
 						[checkFound, checkSlot, checkIndex] = player.weapons.LocateWeapon(type);
-						if(checkFound && checkIndex==0 && pp_haveTheseWeapons.Find(type)==pp_haveTheseWeapons.Size())
+						/*if(checkFound && checkIndex==0 && pp_haveTheseWeapons.Find(type)==pp_haveTheseWeapons.Size())
 						{
 							Console.Printf("giving a "..type.GetClassName());
 							readonly<Weapon> def = GetDefaultByType (type);
@@ -156,11 +156,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 							{
 								GiveInventory(type, 1, true);
 							}
-						}
-						if(type is "TSP_Weapon_Core" && pp_haveTheseWeapons.Find(type)==pp_haveTheseWeapons.Size())
+						}*/
+						/*if(type is "TSP_Weapon_Core" && pp_haveTheseWeapons.Find(type)==pp_haveTheseWeapons.Size())
 						{
 							pp_haveTheseWeapons.Push(type);
-						}
+						}*/
 					}
 				}
 			}

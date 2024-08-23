@@ -770,7 +770,8 @@ Class TSP_StatusBar : BaseStatusBar
 					for(int i = 0;i<slotMax;i++)
 					{
 						//let fucker = GetDefaultByType(CPlayer.weapons.GetWeapon(slot,i));
-						bool hasIt = playerobj.pp_haveTheseWeapons.Find(CPlayer.weapons.GetWeapon(slot,i))!=playerobj.pp_haveTheseWeapons.Size();
+						//bool hasIt = playerobj.pp_haveTheseWeapons.Find(CPlayer.weapons.GetWeapon(slot,i)) != playerobj.pp_haveTheseWeapons.Size();
+						bool hasIt = false;
 						DrawImage("graphics/HUD3.0/weapons/weapon_mod_ph.png", (( ((-iconWidth*slotMax)/2)+iconWidth*i)+iconWidth/2 , -58), DI_SCREEN_CENTER_BOTTOM|DI_ITEM_CENTER, hasIt ? 1.0 : 0.5, (-1,-1), index==i ? (0.75,0.75) : (0.5,0.5));
 							//DTA_DestWidth, 32, DTA_DestHeight, 32, DTA_TranslationIndex, hasIt ? -1 : Translation.GetID('TSP_Shop_Darken'));
 					}
