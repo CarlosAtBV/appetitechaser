@@ -29,6 +29,13 @@ magick render/punch_1-2.png ^
 magick render/punch_1-3.png ^
 	comp/punch_1-3.png
 	
+magick render/nikki-1.png ^
+	comp/nikki-1.png
+magick render/nikki-2.png ^
+	comp/nikki-2.png
+magick render/nikki-3.png ^
+	comp/nikki-3.png
+	
 ::cd comp
 
 FOR /R %%A IN (comp/*.png) DO (
