@@ -21,12 +21,13 @@ Class MelPistolA : MelPistol
 			122I A 0;
 			Stop;
 		Switch:
-			"----" A 1
+			"----" A 0
 			{
 				A_StartSound("nikki/spitfire/aim01", 5);
 				A_TSP_ZoomFactor(0.9);
 				invoker.anim_spitFire_on.PlayAnim();
 			}
+			"----" A 1;
 			"----" A 0 A_TSP_WeaponRecoilDir(180+random(1,5), 2, 1);
 			//131S B 1 A_WeaponOffset(-12,32,WOF_INTERPOLATE);
 			Goto ModReady;
@@ -36,8 +37,10 @@ Class MelPistolA : MelPistol
 				A_StartSound("nikki/spitfire/aim02", 5);
 				A_TSP_ZoomFactor(1.0);
 				invoker.anim_spitFire_on.PlayAnim();
+				
 			}
-			"----" A 0 A_TSP_WeaponRecoilDir(random(1,5), 2, 1);
+			122G A 1 A_TSP_WeaponRecoilDir(random(1,5), 2, 1);
+			122D E 1 A_TSP_WeaponRecoilDir(15+random(1,5), 4, 1);
 			Goto Ready;
 		
 		Flash:
