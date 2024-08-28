@@ -106,6 +106,10 @@ Class MelBareKnuckle : TSP_Mel_BaseWeapon
 						A_Overlay(PSP_LEFTHAND, "AtkStart_Left");
 						A_Overlay(PSP_RIGHTHAND, "RightPoke");
 					}
+					else
+					{
+						A_WeaponReady(WRF_NOFIRE);
+					}
 				}
 			}
 			Wait;

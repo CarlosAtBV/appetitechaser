@@ -12,6 +12,12 @@ pics = [
 	[ "0002.png", "weapons/mel/Darling Nikki/Spitfire/122GC0.png" ],
 	[ "0003.png", "weapons/mel/Darling Nikki/Spitfire/122GD0.png" ],
 	[ "0004.png", "weapons/mel/Darling Nikki/Spitfire/122GE0.png" ],
+    
+	[ "0025.png", "weapons/mel/Darling Nikki/Spitfire/122DA0.png" ],
+	[ "0026.png", "weapons/mel/Darling Nikki/Spitfire/122DB0.png" ],
+	[ "0027.png", "weapons/mel/Darling Nikki/Spitfire/122DC0.png" ],
+	[ "0028.png", "weapons/mel/Darling Nikki/Spitfire/122DD0.png" ],
+	[ "0029.png", "weapons/mel/Darling Nikki/Spitfire/122DE0.png" ],
 ]
 
 for picPair in pics:
