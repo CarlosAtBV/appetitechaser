@@ -3,11 +3,11 @@ import subprocess, math
 
 scene = bpy.context.scene
 actions = [
-    #[ "test", 1, 1 ],
-    #[ "testpoke", 1, 1 ],
-    #[ "melee_idle", 1, 3 ],
-    #[ "punch_1", 1, 3 ],
-    [ "nikki", 1, 3 ],
+    [ "test", 1, 1 ],
+    [ "testpoke", 1, 1 ],
+    [ "melee_idle", 1, 3 ],
+    [ "punch_1", 1, 3 ],
+    [ "nikki", 1, 5 ],
 ]
 
 for action in actions:

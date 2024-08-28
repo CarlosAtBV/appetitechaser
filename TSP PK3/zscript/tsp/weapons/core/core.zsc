@@ -136,6 +136,8 @@ Class TSP_Weapon_Core : DoomWeapon
 		TSP_Weapon_Core.ModTag "Default";
 		TSP_Weapon_Core.HudColor "#FF00FF";
 		
+		Weapon.WeaponScaleY 1.0;
+		
 		TSP_Weapon_Core.Crosshair "graphics/crosshairs/crosshair_nikki.png";
 	}
 	

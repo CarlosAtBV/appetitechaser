@@ -35,6 +35,10 @@ magick render/nikki-2.png ^
 	comp/nikki-2.png
 magick render/nikki-3.png ^
 	comp/nikki-3.png
+magick render/nikki-4.png ^
+	comp/nikki-4.png
+magick render/nikki-5.png ^
+	comp/nikki-5.png
 	
 ::cd comp
 

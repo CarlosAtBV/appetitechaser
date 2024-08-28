@@ -1,1 +1,3 @@
-C:\Users\legow\Desktop\Games\devgz\gzdoom.exe -iwad DOOM2.wad -file "D:\Projects\TheSpacePirate\TSP Git\TSP PK3" +tsp_debug 1 -nomusic +tsp_gamemode 1 +map BH_BZ2
+C:\Users\legow\OneDrive\Desktop\GZDoom\gzdoom.exe -iwad DOOM2.wad -file "D:\Projects\TheSpacePirate\TSP Git\TSP PK3" +map TSP_TEST +tsp_debug 1 -nomusic +tsp_gamemode 1 +map BH_BZ2
+
+timeout 4

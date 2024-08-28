@@ -23,7 +23,7 @@ for picPair in pics:
 	daSize = toConvert.size
 	toConvert = toConvert.crop(daBox)
 	offX = -(daBox[0] - daSize[0]) - (daSize[0]/2) - 160
-	offY = -(daBox[1] - daSize[1]) - (daSize[1]/2) - 100 + 32
+	offY = -(daBox[1] - daSize[1]) - (daSize[1]/2) - 120 + 72
 	
 	picPath = gamePath+path
 	print(picPath)
