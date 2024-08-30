@@ -345,10 +345,11 @@ Class MelPistol : TSP_Mel_BaseWeapon
 				A_TSP_ReloadAmmo();
 			}
 			"####" F 2;
-			"####" E 10;
-			"####" D 3;
-			"####" A 2;
-			"####" E 2 A_TSP_SetSpriteFrame(PSP_WEAPON, "D");
+			"####" G 8;
+			"####" F 3;
+			"####" E 2;
+			"####" D 2 A_TSP_SetSpriteFrame(PSP_WEAPON, "D");
+			"####" E 2;
 			"####" A 6 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
 			Goto Ready;
 			

@@ -1,0 +1,224 @@
+Class TSP_CharacterMenu_Demo_LoadoutButton
+{
+	Vector2 pos;
+	Vector2 size;
+	
+	string name;
+	string desc;
+	
+	double sizeMult;
+	bool selected;
+	
+	Array<string > ld_weapons;
+	
+	void Tick()
+	{
+		float targ = selected ? 1.0 : 0.0;
+		sizeMult = sizeMult + ( targ - sizeMult ) / 2;
+		if ( abs(targ - sizeMult) < 0.25 )
+		{
+			sizeMult = targ;
+		}
+	}
+	
+	Vector2 GetPos()
+	{
+		return pos - ( 8 * sizeMult, 8 * sizeMult );
+	}
+	
+	Vector2 GetSize()
+	{
+		return size + ( 16 * sizeMult, 16 * sizeMult );
+	}
+	
+	void AddLoadoutItem(string newThing)
+	{
+		ld_weapons.Push(newThing);
+	}
+}
+
+Class TSP_CharacterMenu_Demo : TSP_MenuBase
+{
+	Array<TSP_CharacterMenu_Demo_LoadoutButton> loadoutButtons;
+	
+	int ld_selected;
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		S_Sound("ailene/bountyhunters01", CHAN_UI);
+		
+		TSP_CharacterMenu_Demo_LoadoutButton newButton;
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\cgBurst\c- Kit";
+		newButton.desc = "A loadout consisting of \ckmods\c- that deal a ton of \cgdamage\c- in a short amount of time.\nThis is \c[MEL]Melody's\c- default loadout in \c[TSP_BountyPink]Bounty Hunters\c-.";
+		newButton.AddLoadoutItem("graphics/loadout/mel_melee.png");
+		newButton.AddLoadoutItem("graphics/loadout/nikki_spitfire.png");
+		newButton.AddLoadoutItem("graphics/loadout/suzu_shotgun.png");
+		loadoutButtons.Push(newButton);
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\cnZoom\c- Kit";
+		newButton.desc = "A loadout consisting of completely \ckunmodded\c- weapons.\nThese are \c[MEL]Melody's\c- Slot 2 and Slot 3 weapons in the \c[TSPStandardGrad]standard modes\c-.";
+		newButton.AddLoadoutItem("graphics/loadout/mel_melee.png");
+		newButton.AddLoadoutItem("graphics/loadout/nikki_unmodded.png");
+		newButton.AddLoadoutItem("graphics/loadout/suzu_scope.png");
+		loadoutButtons.Push(newButton);
+		
+		newButton = new("TSP_CharacterMenu_Demo_LoadoutButton");
+		newButton.name = "\c[MEL]Melee\c- Only";
+		newButton.desc = "\ckSlappers only!\c- Arm yourself with nothing but \c[MEL]Melody's\c- powerful \cgmelee moves\c-.";
+		newButton.AddLoadoutItem("graphics/loadout/mel_melee.png");
+		loadoutButtons.Push(newButton);
+		
+		int spaceWidth = 768/2;
+		int boxWidth = 256;
+		int boxHeight = 384;
+		int maxLoadout = loadoutButtons.size();
+		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			int baseX = (1280 - (spaceWidth * maxLoadout)) / 2;
+			int baseY = 720 / 2;
+			
+			for ( int i = 0; i < maxLoadout; i++ )
+			{
+				loadoutButtons[i].size = (boxWidth, boxHeight);
+				loadoutButtons[i].pos.x = (baseX + (spaceWidth * i) + (spaceWidth/2)) - boxWidth/2;
+				loadoutButtons[i].pos.y = baseY - boxHeight/2;
+			}
+		}
+	}
+	
+	override void Ticker()
+	{
+		super.Ticker();
+		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			loadoutButtons[i].selected = ( ld_selected == i );
+			loadoutButtons[i].Tick();
+		}
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
+		Vector2 mousePos = ConvertMousePos((x, y));
+		
+		for ( int i = 0; i < loadoutButtons.Size(); i++ )
+		{
+			if ( CheckMousePos(mousePos, loadoutButtons[i].GetPos(), loadoutButtons[i].GetSize()) )
+			{
+				if ( i != ld_selected )
+				{
+					S_Sound("menu/cursor",CHAN_UI);
+				}
+				ld_selected = i;
+			}
+		}
+		
+		if ( type == Menu.MOUSE_Release )
+		{
+			MenuEvent(MKEY_Enter,false);
+			return true;
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool MenuEvent (int mkey, bool fromcontroller)
+	{
+		switch (mkey)
+		{
+			case MKEY_Left:
+				ld_selected -= 1;
+				if ( ld_selected < 0 )
+				{
+					ld_selected = loadoutButtons.size()-1;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				break;
+			case MKEY_Right:
+				ld_selected += 1;
+				if ( ld_selected > loadoutButtons.size()-1 )
+				{
+					ld_selected = 0;
+				}
+				S_Sound("menu/cursor",CHAN_UI);
+				return true;
+				
+			case MKEY_Enter:
+				CVar doLoadout = CVar.GetCVar("tsp_demo_loadout", players[consoleplayer]);
+				doLoadout.SetInt(ld_selected);
+				S_Sound("menu/choose",CHAN_UI);
+				for ( int i = 0; i < PlayerClasses.Size(); i++ )
+				{
+					if ( PlayerClasses[i].Type == "TSP_MelPlayer" )
+					{
+						Menu.SetMenu("EpisodeMenu", i);
+						return true;
+					}
+				}
+				return true;
+		}
+		return super.MenuEvent(mkey, fromcontroller);
+	}
+	
+	override void TSP_MenuDrawer()
+	{
+		int maxLoadout = loadoutButtons.size();
+		int boxPadding = 16;
+		
+		screen.Dim("#000000", 0.5, 0, 0, screen.GetWidth(), screen.GetHeight());
+		
+		for ( int i = 0; i < maxLoadout; i++ )
+		{
+			let button = loadoutButtons[i];
+			Vector2 pos = button.GetPos();
+			Vector2 size = button.GetSize();
+			
+			Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice.png", 24);
+			if ( button.selected )
+			{
+				Draw9Slice(pos.x, pos.y, size.x, size.y, "graphics/demo/char_slice_glow.png", 24, additive: true);
+			}
+			
+			DrawText("tsp_small", pos.x +size.x / 2, pos.y + boxPadding, button.name.MakeUpper(), centered: true);
+			
+			float iconsHeight = size.y * 0.75;
+			
+			if ( button.ld_weapons.Size() == 0 ) continue;
+			
+			float slotSize = iconsHeight / button.ld_weapons.Size();
+			float yCenter = floor(pos.y) + ((size.y - iconsHeight) / 2);
+			
+			for ( int wep = 0; wep < button.ld_weapons.Size(); wep++ )
+			{
+				float yOff = slotSize / 2 + (slotSize * wep);
+				float yPos = yCenter + yOff;
+				
+				int mainOffset = -1 + -2 * button.sizeMult;
+				int shadowOffset = 1 + 2 * button.sizeMult;
+				
+				TextureID tex = TexMan.CheckForTexture(button.ld_weapons[wep]);
+				screen.DrawTexture(tex, false, shadowOffset + pos.x + size.x / 2, shadowOffset + yPos,
+					DTA_CenterOffset, true, DTA_Color, Color(255, 0, 0, 0), DTA_Alpha, 0.5,
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+				screen.DrawTexture(tex, false, mainOffset + pos.x + size.x / 2, mainOffset + yPos,
+					DTA_CenterOffset, true,
+					DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
+					DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
+					DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));
+			}
+		}
+		
+		//int gamemode = Cvar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		DrawText("tsp_bold", 1280/2, 74, "Select Loadout", centered: true);
+		
+		DrawText("tsp_small", 1280/2, 720-74-32, loadoutButtons[ld_selected].desc, centered: true, breakWidth: 1280);
+	}
+}

@@ -21,19 +21,21 @@ pics = [
 	[ "0008.png", "weapons/mel/Darling Nikki/Spitfire/122RD0.png" ],
 	[ "0009.png", "weapons/mel/Darling Nikki/Spitfire/122RE0.png" ],
 	[ "0010.png", "weapons/mel/Darling Nikki/Spitfire/122RF0.png" ],
+	[ "0011.png", "weapons/mel/Darling Nikki/Spitfire/122RG0.png" ],
     
-	[ "0011.png", "weapons/mel/Darling Nikki/Spitfire/122RQ0.png" ],
-	[ "0012.png", "weapons/mel/Darling Nikki/Spitfire/122RR0.png" ],
-	[ "0013.png", "weapons/mel/Darling Nikki/Spitfire/122RS0.png" ],
-	[ "0014.png", "weapons/mel/Darling Nikki/Spitfire/122RT0.png" ],
+	[ "0012.png", "weapons/mel/Darling Nikki/Spitfire/122RQ0.png" ],
+	[ "0013.png", "weapons/mel/Darling Nikki/Spitfire/122RR0.png" ],
+	[ "0014.png", "weapons/mel/Darling Nikki/Spitfire/122RS0.png" ],
+	[ "0015.png", "weapons/mel/Darling Nikki/Spitfire/122RT0.png" ],
+	[ "0016.png", "weapons/mel/Darling Nikki/Spitfire/122RU0.png" ],
     
-	[ "0025.png", "weapons/mel/Darling Nikki/Spitfire/122DA0.png" ],
-	[ "0026.png", "weapons/mel/Darling Nikki/Spitfire/122DB0.png" ],
-	[ "0027.png", "weapons/mel/Darling Nikki/Spitfire/122DC0.png" ],
-	[ "0028.png", "weapons/mel/Darling Nikki/Spitfire/122DD0.png" ],
-	[ "0029.png", "weapons/mel/Darling Nikki/Spitfire/122DE0.png" ],
+	[ "0026.png", "weapons/mel/Darling Nikki/Spitfire/122DA0.png" ],
+	[ "0027.png", "weapons/mel/Darling Nikki/Spitfire/122DB0.png" ],
+	[ "0028.png", "weapons/mel/Darling Nikki/Spitfire/122DC0.png" ],
+	[ "0029.png", "weapons/mel/Darling Nikki/Spitfire/122DD0.png" ],
+	[ "0030.png", "weapons/mel/Darling Nikki/Spitfire/122DE0.png" ],
     
-	[ "0017.png", "weapons/mel/Darling Nikki/Spitfire/122AC0.png" ],
+	[ "0018.png", "weapons/mel/Darling Nikki/Spitfire/122AC0.png" ],
 ]
 
 for picPair in pics:
