@@ -13,6 +13,20 @@ pics = [
 	[ "0003.png", "weapons/mel/Darling Nikki/Spitfire/122GD0.png" ],
 	[ "0004.png", "weapons/mel/Darling Nikki/Spitfire/122GE0.png" ],
     
+    # reload frames
+    
+	[ "0005.png", "weapons/mel/Darling Nikki/Spitfire/122RA0.png" ],
+	[ "0006.png", "weapons/mel/Darling Nikki/Spitfire/122RB0.png" ],
+	[ "0007.png", "weapons/mel/Darling Nikki/Spitfire/122RC0.png" ],
+	[ "0008.png", "weapons/mel/Darling Nikki/Spitfire/122RD0.png" ],
+	[ "0009.png", "weapons/mel/Darling Nikki/Spitfire/122RE0.png" ],
+	[ "0010.png", "weapons/mel/Darling Nikki/Spitfire/122RF0.png" ],
+    
+	[ "0011.png", "weapons/mel/Darling Nikki/Spitfire/122RQ0.png" ],
+	[ "0012.png", "weapons/mel/Darling Nikki/Spitfire/122RR0.png" ],
+	[ "0013.png", "weapons/mel/Darling Nikki/Spitfire/122RS0.png" ],
+	[ "0014.png", "weapons/mel/Darling Nikki/Spitfire/122RT0.png" ],
+    
 	[ "0025.png", "weapons/mel/Darling Nikki/Spitfire/122DA0.png" ],
 	[ "0026.png", "weapons/mel/Darling Nikki/Spitfire/122DB0.png" ],
 	[ "0027.png", "weapons/mel/Darling Nikki/Spitfire/122DC0.png" ],

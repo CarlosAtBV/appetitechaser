@@ -467,6 +467,7 @@ Class TSP_Weapon_Core : DoomWeapon
 			//Console.Printf("uhhh the find is "..tspw_animations[i].psprites.Find(psprite));
 			if ( anim.psprites.Find(psprite) != anim.psprites.Size() )
 			{
+				//Console.Printf("PLAY ANIM");
 				baseOffset += anim.GetPos(ticFrac);
 				baseRotate += anim.GetRot(ticFrac);
 			}

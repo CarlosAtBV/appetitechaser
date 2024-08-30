@@ -8,6 +8,11 @@ actions = [
     [ "melee_idle", 1, 3 ],
     [ "punch_1", 1, 3 ],
     [ "nikki", 1, 5 ],
+    [ "nikki_clip", 1, 1 ],
+]
+
+actions = [
+    [ "nikki_clip", 1, 5 ],
 ]
 
 for action in actions:
