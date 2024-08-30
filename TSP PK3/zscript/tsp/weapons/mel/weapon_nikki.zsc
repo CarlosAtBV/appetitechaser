@@ -350,17 +350,6 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			"####" A 2;
 			"####" E 2 A_TSP_SetSpriteFrame(PSP_WEAPON, "D");
 			"####" A 6 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
-			
-			/*"####" C 4;
-			"####" C 1 A_StartSound("nikki/eject", 6);
-			"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, "ReloadUnderGun");
-			
-			"####" D 22;
-			"####" C 28;
-			"----" A 0 A_Overlay(PSP_TSP_UNDERGUN, null);
-			"####" A 2;//"####" E 9;
-			"----" A 0 A_TSP_SetSpriteFrame(PSP_WEAPON, "G");
-			"####" AAAAAAAAAAA 1 A_TSP_WeaponReady(WRF_NOBOB);*/
 			Goto Ready;
 			
 		ReloadLeft:
@@ -375,10 +364,6 @@ Class MelPistol : TSP_Mel_BaseWeapon
 			TNT1 R 3;
 			TNT1 S 3;
 			122R T 22;
-			Stop;
-			
-		ReloadUpperHand:
-			120H C 15;
 			Stop;
 			
 		Switch:
