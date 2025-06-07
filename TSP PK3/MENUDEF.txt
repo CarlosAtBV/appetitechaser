@@ -14,7 +14,7 @@ DEFAULTOPTIONMENU
 
 LISTMENU "MainMenu"
 {
-	StaticText 0, 0, "Main Menu"
+	StaticText 0, 0, "$TSPMNU_MENU_MAINMENU"
 	
 	//Class "TSP_ListMenuButFake"
 	StaticPatch 103, 39, "SP_MAIN"
@@ -47,6 +47,8 @@ ListMenu "TSP_GameModeMenu"
 
 LISTMENU "TSP_OptionsMenu"
 {
+	StaticText 0, 0, "$TSPMNU_MENU_OPTIONS"
+
 	StaticPatch 103, 39, "SPOPTION"
 	Position 16, 15
 	Linespacing 29
@@ -214,6 +216,7 @@ OptionMenu "OtherModOptions"
 	Title "$TSPMNU_MNU_OTHERMODOPTIONS"
 	StaticText "Options for other compatible mods"
 	StaticText ""
+	SubMenu "Monster Sounds EX Options", "Monster Sounds EX Options"
 	SubMenu "Champions Options", "mk_ChampionMenu"
 	SubMenu "Colourful Hell Options",		"Colourful Hell"
 	Submenu "DamNums Options",				"DamNumsOptions"

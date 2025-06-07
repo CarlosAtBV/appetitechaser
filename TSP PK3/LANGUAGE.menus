@@ -12,6 +12,7 @@ TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
 TSP_GAMEMODE_TRAINING = "\c[TSP_Teal]Training Mode";
 
 // MAIN MENU
+TSPMNU_MENU_MAINMENU = "\c[TSP_LogoGreen]Main Menu";
 TSPMNU_MENU_STARTGAME = "\c[TSP_Green]Start Game";
 TSPMNU_MENU_STARTGAME_SUB = "Start a \c[TSP_Green]new game\c-!";
 TSPMNU_MENU_OPTIONS = "\c[TSP_Yellow]Options";
