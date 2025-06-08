@@ -29,37 +29,30 @@
 
 =====================================================================================
 
-[PLACES YOU CAN FIND TSP]:
+RELEASED: 10/24/2021
+LAST UPDATED: 06/07/2025
+VERSION: 0.2b (FIRST HUNT DEMO)
 
-https://bluevertigo.org/thespacepirate - Landing page for The Space Pirate
-https://bluevertigo.itch.io/the-space-pirate - TSP on itch.io
-https://forum.zdoom.org/viewtopic.php?f=43&t=73662 - TSP on the ZDoom Forums
-https://www.moddb.com/mods/the-space-pirate - TSP on ModDB
-https://www.twitter.com/bv_tsp - TSP on Twitter
-https://bluevertigo.org/patreon - Blue Vertigo on Patreon
+	TEAM TSP:
+	• Carlos Sanchez (Cardboard Marty)  - Project Lead
+	• DrPyspy - Project Lead
+	• Ana GroL - Lead Artist, Character Design
+	• peach_pxl - Promotional Materials Artist, Character Design
 
-=====================================================================================
+	CAST:
+	• MELODY CROSSWELL - Krystal LaPorte
+	• AILENE - Shanaura Marie
+	• ZANE DORAN - CJ Heineman
 
-[TEAM TSP]:
-Carlos Sanchez/Cardboard Marty - Project Lead
-https://twitter.com/CardboardMarty
-
-DrPyspy - Project Lead
-https://twitter.com/DrPyspy
-
-Ana Grol - Lead Artist, Character Design
-https://twitter.com/ByAnaGroL
-
-peach_pxl - Promotional Materials Artist, Character Design
-https://twitter.com/peach_pxl
-
-VOICE CAST:
-Melody Crosswell - Krystal LaPorte (https://twitter.com/WowSuchKrystal)
-AILENE - Shanaura Marie (https://twitter.com/ShanauraMarie)
-Zane Doran - CJ Heineman (https://twitter.com/CJ_Heineman)
-
-MUSIC by Blue Vertigo
-Available for purchase and streaming at https://bluevertigo.bandcamp.com/
+	SOCIALS:
+	▪ WEBSITE: bluevertigo.org/thespacepirate
+	▪ BSKY: bsky.app/profile/thespacepirate.bluevertigo.org
+	▪ BLUE VERTIGO: bluevertigo.org
+	▪ PATREON: patreon.com/bluevertigo
+	▪ DISCORD: bluevertigo.org/discord
+	
+	• MUSIC by BLUE VERTIGO
+	Available for purchase and streaming at music.bluevertigo.org
 
 =====================================================================================
 

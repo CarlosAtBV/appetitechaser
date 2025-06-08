@@ -1,0 +1,135 @@
+
+                       ,▄mP█U                                   ,▄
+          ,╓▄A▀▀█▄Æ▀█▀'    ▐▌                            ,▄▄█▀▀▀▐█
+    ▄▄Æ▀███▀█       █  j█  ▐▌                    ,▄▄▄███▀└      j█
+    █∩     ,█   █   █   ▀   █             ,▄▄▄▀▀▀╙    █▌   ╒▄    █∩
+    ▐▌  ▐▀╙ █∩  █   █    ,▄m█     ,╓▄▄█▀▀▀└▐█         ▐█   j█    █▌
+    ▐▌  ▐▌  ▐▌  █U  █⌐  .   █▄▄█▀██.        █∩   █▌   ▐█    ▀    █▌
+    j█  ▐▌  ▐▌  ▐▌  ▐▌▄▄M▀▀└     ▐█,▄▄&▀    █▌   ██&▀▀▀█       ,▄██
+     █      j█╓▄▐▀▀▀└  █U   ,▄   ▐█└        █▌   ▐█    █⌐   ▀▀▀" ▐█         ,╓▄▄███
+     █,▄▄Æ▀▀██         █▌   ██   ¬█    █L   ██   ▐█    █▌      ,▄▄█  ,▄▄▄▀▀▀╙    ▐█
+     └      ▐█    █▄▄▄▄█▌   ▐█    █⌐   █▌   ▐█         █▌▄▄███▀   ▀▀▀└ █▌    ,    █
+            j█    ▀└   ██   j█    █▌   ▀└   ▐█  ,▄▄▄███████▀▀█       ,▄██   ▐█    █U
+             █∩        ▐█    █    █▌     ,▄▄████████▀▀╙      █    ██▀└ ▐█    █    █▌
+             ██▄▀▀██   j█        ,██▄▀▀▀████▀▀▀└  ██  ,╓▄    █µ   █▌   ▐█         █▌
+             █▌         █⌐   ▄██████    █⌐        ▐█▀▀╙      █▌   ▐█   j█    ▄▄▀▀▀██
+             ██    ¿▄▄█▀█▌▄▄Æ▀▀▀└ ▐█▄▀▀▀█U   █▌   ▐█    ▄    █▌   ▐█    █U        ▐█
+             ▐██▀▀▀"    █▌        ¬█    █▌       ,▄█    █▌   ▐█    ▀    █▌ ,▄▄▄█▀▀▀"
+                        █▌   ▐█    █U   █▌   }▀▀▀╙└█∩   █▌   ▐█     ,▄▄█▀▀▀╙
+                        ▐█   j█    █▌   ▐█         █▌       ,▐█▄█▀▀▀└
+                        ▐█    █∩   █▌   ▐█    █∩   █▌,▄▄▄▀▀▀╙
+                        j█    █▌   ██   j█    █▄▄█▀▀▀└
+                         █∩   ╙    ▐█ ,▄▄██▀▀▀'
+                         █▌    ,▄▄█▀▀▀╙
+                         █▌   ▐█
+                         ██▀▀▀└
+    
+	
+						A GAMEPLAY MOD BY BLUE VERTIGO
+
+=====================================================================================
+
+RELEASED: 10/24/2021
+LAST UPDATED: 06/07/2025
+VERSION: 0.2b (FIRST HUNT DEMO)
+
+	TEAM TSP:
+	• Carlos Sanchez (Cardboard Marty)  - Project Lead
+	• DrPyspy - Project Lead
+	• Ana GroL - Lead Artist, Character Design
+	• peach_pxl - Promotional Materials Artist, Character Design
+
+	CAST:
+	• MELODY CROSSWELL - Krystal LaPorte
+	• AILENE - Shanaura Marie
+	• ZANE DORAN - CJ Heineman
+
+	SOCIALS:
+	▪ WEBSITE: bluevertigo.org/thespacepirate
+	▪ BSKY: bsky.app/profile/thespacepirate.bluevertigo.org
+	▪ BLUE VERTIGO: bluevertigo.org
+	▪ PATREON: patreon.com/bluevertigo
+	▪ DISCORD: bluevertigo.org/discord
+	
+	• MUSIC by BLUE VERTIGO
+	Available for purchase and streaming at music.bluevertigo.org
+	
+	[ADDITIONAL CREDITS CAN BE FOUND IN THE .PK3]
+
+=====================================================================================
+
+	 ██████ ██   ██  █████  ███    ██  ██████  ███████ ██       ██████   ██████  
+	██      ██   ██ ██   ██ ████   ██ ██       ██      ██      ██    ██ ██       
+	██      ███████ ███████ ██ ██  ██ ██   ███ █████   ██      ██    ██ ██   ███ 
+	██      ██   ██ ██   ██ ██  ██ ██ ██    ██ ██      ██      ██    ██ ██    ██ 
+	 ██████ ██   ██ ██   ██ ██   ████  ██████  ███████ ███████  ██████   ██████  
+	 
+	◆ = New feature/major change
+	◇ = Misc. change/update/feature
+	⊖ = Bugfix
+
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+	▮▶▶▶ 0.2b (FIRST HUNT DEMO) | 06/07/2025
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+
+		[SYSTEM]
+			◇ Updated version number in start up
+			◇ Changed main menu header color
+			◇ Added missing "Options" menu header
+			⊖ Updated code preventing TSP from launching in the latest GZDoom build
+
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+	▮▶▶▶ 0.2a (FIRST HUNT DEMO) | 08/29/2024
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+
+		[SYSTEM]
+			⊖ Removed code used for an unimplemented map that stopped TSP from running in the latest GZDoom build
+
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+	▮▶▶▶ 0.2 (FIRST HUNT DEMO) | 12/12/2022
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+
+		[SYSTEM]
+			◆ CUSTOM MONSTERS ARE FULLY OPERATIONAL! Load up and fight against your favorite adversaries such as Malefactors, Legion of Bones, Iron Snail, and more!
+			◆ UNLIMITED BATTLE MODE: Available in the difficulty selection menu, fight until your last breath with no time limit!
+			◆ New UI sounds
+			◆ Changes to SLIPDASH functionality:
+				↪ Slipdash is now more responsive, with new visual effects (slight view tilt, smoke)
+				↪ Consecutive slipdashes have lowered momentum
+				↪ Press crouch again while in the middle of slipdash to cancel out of it
+			◆ Changes to WALLJUMP trajectory to make consecutive jumps easier, as well as a slight view tilt
+			◆ Menu and HUD now scale and look better in resolutions that aren't 16:9 or 1280x720 specifically
+			◆ Bilinear filter added to many graphics for better scalability
+			⊖ Removed code used for a future map that stopped TSP from running in the latest GZDoom build
+			⊖ Clearing your .ini file is no longer necessary to start TSP
+			⊖ Changed how monsters are spawned to accommodate not only custom maps but also custom monsters
+			⊖ Weapon sprites are no longer drawn over the automap
+			⊖ Fixed melee attacks not using the blood type of the monster
+			⊖ Crouching now works correctly, with tracer heights being changed to reflect player height
+			◇ Updates to Other Mods Menu menu list including new compatible mod sub-menus.
+			◇ Changed general verbiage in menus
+			◇ New menu animations
+			◇ New quit messages
+
+		[CHARACTER - Melody Crosswell]
+			◆ MAG SPEAR is now performed by pressing TRAIT + ALTERNATE FIRE while in-air, allowing you to do the STASIS SLAM when off the ground
+			◆ New Mel voice lines for using MAG GRAPPLE and STASIS SLAM
+			◆ New sounds for STASIS SLAM being activated/impact
+			◆ New taunt voice lines added in the rotation
+			◆ Reloads can be interrupted
+			◆ Sound cue for Power Bank being activated
+			◆ New landing sounds
+			⊖ Proper A_Light usage for Mel's weapons
+
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+	▮▶▶▶ 0.1a (FIRST HUNT DEMO) | 10/23/2021
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+
+		[SYSTEM]
+			⊖ Removed code used for unfinished enemy replacement causing GZDoom to crash
+			
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+	▮▶▶▶ 0.1 (FIRST HUNT DEMO) | 10/23/2021
+	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
+
+		[INITIAL RELEASE]
