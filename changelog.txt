@@ -100,7 +100,6 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 			◆ Changes to WALLJUMP trajectory to make consecutive jumps easier, as well as a slight view tilt
 			◆ Menu and HUD now scale and look better in resolutions that aren't 16:9 or 1280x720 specifically
 			◆ Bilinear filter added to many graphics for better scalability
-			⊖ Removed code used for a future map that stopped TSP from running in the latest GZDoom build
 			◇ New UI sounds
 			◇ Updates to Other Mods Options menu list to include additional compatible mod sub-menus.
 			◇ Changed general verbiage in menus
