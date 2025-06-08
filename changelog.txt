@@ -73,7 +73,8 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 
 		[SYSTEM]
-			◇ Updated version number in start up
+			◇ Added Monster Sounds EX to the "Other Mod Options" menu
+			◇ Updated version number in start up message
 			◇ Changed main menu header color
 			◇ Added missing "Options" menu header
 			⊖ Updated code preventing TSP from launching in the latest GZDoom build
@@ -90,9 +91,8 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 
 		[SYSTEM]
-			◆ CUSTOM MONSTERS ARE FULLY OPERATIONAL! Load up and fight against your favorite adversaries such as Malefactors, Legion of Bones, Iron Snail, and more!
 			◆ UNLIMITED BATTLE MODE: Available in the difficulty selection menu, fight until your last breath with no time limit!
-			◆ New UI sounds
+			◆ CUSTOM MONSTERS ARE FULLY OPERATIONAL! Load up and fight against your favorite adversaries such as Malefactors, Legion of Bones, Iron Snail, and more!
 			◆ Changes to SLIPDASH functionality:
 				↪ Slipdash is now more responsive, with new visual effects (slight view tilt, smoke)
 				↪ Consecutive slipdashes have lowered momentum
@@ -101,15 +101,16 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 			◆ Menu and HUD now scale and look better in resolutions that aren't 16:9 or 1280x720 specifically
 			◆ Bilinear filter added to many graphics for better scalability
 			⊖ Removed code used for a future map that stopped TSP from running in the latest GZDoom build
-			⊖ Clearing your .ini file is no longer necessary to start TSP
-			⊖ Changed how monsters are spawned to accommodate not only custom maps but also custom monsters
-			⊖ Weapon sprites are no longer drawn over the automap
-			⊖ Fixed melee attacks not using the blood type of the monster
-			⊖ Crouching now works correctly, with tracer heights being changed to reflect player height
-			◇ Updates to Other Mods Menu menu list including new compatible mod sub-menus.
+			◇ New UI sounds
+			◇ Updates to Other Mods Options menu list to include additional compatible mod sub-menus.
 			◇ Changed general verbiage in menus
 			◇ New menu animations
 			◇ New quit messages
+			⊖ Clearing your .ini file is no longer necessary to start TSP
+			⊖ Changed how monsters are spawned to accommodate not only custom maps, but also custom monsters
+			⊖ Weapon sprites are no longer drawn over the automap
+			⊖ Fixed melee attacks not using the blood type of the monster
+			⊖ Crouching now works correctly, with tracer heights being changed to reflect player height
 
 		[CHARACTER - Melody Crosswell]
 			◆ MAG SPEAR is now performed by pressing TRAIT + ALTERNATE FIRE while in-air, allowing you to do the STASIS SLAM when off the ground
