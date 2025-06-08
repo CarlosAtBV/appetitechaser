@@ -66,7 +66,7 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 	 
 	◆ = New feature/major change
 	◇ = Misc. change/update/feature
-	⊖ = Bugfix
+	☢ = Bugfix
 
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 	▮▶▶▶ 0.2b (FIRST HUNT DEMO) | 06/07/2025
@@ -77,14 +77,14 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 			◇ Updated version number in start up message
 			◇ Changed main menu header color
 			◇ Added missing "Options" menu header
-			⊖ Updated code preventing TSP from launching in the latest GZDoom build
+			☢ Updated code preventing TSP from launching in the latest GZDoom build
 
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 	▮▶▶▶ 0.2a (FIRST HUNT DEMO) | 08/29/2024
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 
 		[SYSTEM]
-			⊖ Removed code used for an unimplemented map that stopped TSP from running in the latest GZDoom build
+			☢ Removed code used for an unimplemented map that stopped TSP from running in the latest GZDoom build
 
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 	▮▶▶▶ 0.2 (FIRST HUNT DEMO) | 12/12/2022
@@ -105,11 +105,11 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 			◇ Changed general verbiage in menus
 			◇ New menu animations
 			◇ New quit messages
-			⊖ Clearing your .ini file is no longer necessary to start TSP
-			⊖ Changed how monsters are spawned to accommodate not only custom maps, but also custom monsters
-			⊖ Weapon sprites are no longer drawn over the automap
-			⊖ Fixed melee attacks not using the blood type of the monster
-			⊖ Crouching now works correctly, with tracer heights being changed to reflect player height
+			☢ Clearing your .ini file is no longer necessary to start TSP
+			☢ Changed how monsters are spawned to accommodate not only custom maps, but also custom monsters
+			☢ Weapon sprites are no longer drawn over the automap
+			☢ Fixed melee attacks not using the blood type of the monster
+			☢ Crouching now works correctly, with tracer heights being changed to reflect player height
 
 		[CHARACTER - Melody Crosswell]
 			◆ MAG SPEAR is now performed by pressing TRAIT + ALTERNATE FIRE while in-air, allowing you to do the STASIS SLAM when off the ground
@@ -119,14 +119,14 @@ VERSION: 0.2b (FIRST HUNT DEMO)
 			◆ Reloads can be interrupted
 			◆ Sound cue for Power Bank being activated
 			◆ New landing sounds
-			⊖ Proper A_Light usage for Mel's weapons
+			☢ Proper A_Light usage for Mel's weapons
 
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 	▮▶▶▶ 0.1a (FIRST HUNT DEMO) | 10/23/2021
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 
 		[SYSTEM]
-			⊖ Removed code used for unfinished enemy replacement causing GZDoom to crash
+			☢ Removed code used for unfinished enemy replacement causing GZDoom to crash
 			
 	▮▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▮
 	▮▶▶▶ 0.1 (FIRST HUNT DEMO) | 10/23/2021
