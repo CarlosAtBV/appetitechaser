@@ -208,7 +208,7 @@ Class TSP_StatusBar : BaseStatusBar
 			TSP_DrawImage("HUD_LBG", (HUDLEFT_X, HUDLEFT_Y));
 			
 			// MEL HUD
-			if(CPlayer.mo is "TSP_MelPlayer" ||CPlayer.mo is "TSP_MelRetroPlayer")
+			if(CPlayer.mo is "TSP_MelPlayer")
 			{
 				TSP_DrawImage("HUD_LMEL", (HUDLEFT_X, HUDLEFT_Y), DI_ITEM_OFFSETS);
 			}
@@ -310,10 +310,6 @@ Class TSP_StatusBar : BaseStatusBar
 			{
 				TSP_DrawImage("SHD_3A", (HUDLEFT_X, HUDLEFT_Y));
 			}
-			if(CPlayer.mo is "TSP_MelRetroPlayer")
-			{
-				TSP_DrawImage("SHD_2A", (HUDLEFT_X, HUDLEFT_Y));
-			}
 			switch(CPlayer.mo.CountInv("TSP_Upgrade_Shield"))
 			{
 				case 1: TSP_DrawImage("SHD_1B", (HUDLEFT_X, HUDLEFT_Y)); break;
@@ -326,82 +322,17 @@ Class TSP_StatusBar : BaseStatusBar
 			//================
 			// MUGSHOTS
 			//================
-			
-			// MEL (MEL, RETROGRADE MEL)
 
-			switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
-			{
-				case 1: 
-					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MC1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Default Mel
-				case 2:
-					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "MR1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Retrograde Mel
-				case 3: 
-					TSP_DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12)); break;// Retro/Robo Mel
-				case 4: 
-					TSP_DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12)); break;							   // Meloby
-				default:		
-					if(CPlayer.mo is "TSP_MelRetroPlayer") //RETROGRADE MEL
-					{
-						if(cplayer.getgender()==2) // Are you a robot?
-						{
-						DrawTexture(GetMugShot(6, MugShot.CUSTOM, "RR1"), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
-						}
-						else // You are not a robot
-						{
-						DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
-						}
-					}
-					
-					else if(CPlayer.mo is "TSP_DummyPlayer") // Are you a dummy?
-					{
-						DrawImage("MELOBYPA", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
-						//DrawString(mSmallFont, "DUMMY", (HUDLEFT_X+35, HUDLEFT_Y+30), DI_TEXT_ALIGN_CENTER|DI_NOSHADOW, Font.CR_YELLOW);
-					}
-					else // Draw default player mugshot
-					{
-						TSP_DrawTexture(GetMugShot(6), (HUDLEFT_X+20, HUDLEFT_Y-12));
-					}
-					
-
-					/*if(CPlayer.mo is "TSP_MelPlayer")
-					{
-						if(CVar.GetCVar("tsp_supersecret", players[0]).GetBool())
-						{
-						DrawImage("MCWSTZZ", (HUDLEFT_X+20, HUDLEFT_Y-12), DI_ITEM_OFFSETS);
-						}
-					}*/
-				
-			}
+			TSP_DrawTexture(GetMugShot(6), (HUDLEFT_X + 20, HUDLEFT_Y - 12));
 
 			//================
-			// GOD MODE SPARKS (Mel/Retro Mel)
+			// GOD MODE SPARKS
 			//================
-			
-			if(CPlayer.cheats & (CF_GODMODE | CF_GODMODE2) || CPlayer.mo.bInvulnerable)
+			if (CPlayer.cheats & (CF_GODMODE | CF_GODMODE2) || CPlayer.mo.bInvulnerable)
 			{
-				switch(CVar.GetCVar("tsp_melhudmod", players[0]).GetInt())
-				{
-					case 1: 
-						TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Green Sparks (Default Mel)
-						break;
-					case 2:
-						TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Green Sparks (Retrograde Mel)
-						break;
-					case 3: 
-						TSP_DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12)); break; // Pink Sparks  (Retro/Robo Mel)
-						break;
-					default:
-						if ( CPlayer.mo is "TSP_MelRetroPlayer" && cplayer.getgender()==2 ) // Are you Robo/Retro Mel?
-						{
-							TSP_DrawImage("HUDSPB0", (HUDLEFT_X+20, HUDLEFT_Y-12)); // Pink Sparks
-						}
-						else // You are not a robot
-						{
-							TSP_DrawImage("HUDSPA0", (HUDLEFT_X+20, HUDLEFT_Y-12)); // Green Sparks
-						}
-						break;
-				}
+				TSP_DrawImage("HUDSPA0", (HUDLEFT_X + 20, HUDLEFT_Y - 12)); // Green Sparks
 			}
+
 			
 /*
 			//================
@@ -628,7 +559,7 @@ Class TSP_StatusBar : BaseStatusBar
 							int(lowColor.B + (baseColor.B - lowColor.B) * clipLeft)
 						);
 						string clipString = string.format("%03d", clipAmount);
-						for ( int i; i < clipString.length(); i++ )
+						for ( uint i; i < clipString.length(); i++ )
 						{
 							TSP_DrawString(FONT_AMMOBIG, clipString.mid(i, 1), (HUDRIGHT_X+72-4 + 21*i, HUDRIGHT_Y+75), TDF_ALIGN_RIGHT|TDF_HUDRIGHT,
 								a1.amount == 0 ? CLR_AMMO_LOW : clipColor,
@@ -637,7 +568,7 @@ Class TSP_StatusBar : BaseStatusBar
 						
 						int ammoAmount = a1.amount;
 						string ammoString = string.format("%03d", ammoAmount);
-						for ( int i; i < ammoString.length(); i++ )
+						for ( uint i; i < ammoString.length(); i++ )
 						{
 							TSP_DrawString(FONT_AMMOSMALL, ammoString.mid(i, 1), (HUDRIGHT_X+128 + 11*i, HUDRIGHT_Y+83), TDF_ALIGN_RIGHT|TDF_HUDRIGHT, a1.amount < maxClip ? CLR_AMMO_LOW : CLR_AMMO_NORMAL,
 								alpha: (ammoAmount == 0 || (""..ammoAmount).length() < 3-i) ? 0.25 : 1.0);

@@ -1,5 +1,0 @@
-[default enu]
-
-    TSP_SHOP_MELRETRO_KEEPAWAYDESC = "\cc(\c[Mel]Melee\cc)\c-\nA new combo string ending with a powerful \c[Mel]Mag Drive\c-!\n\cu(\cyK \cu-> \cu[Hold \cyK\cu] \cu-> \ckP \cu-> \ckP \cu-> \ckP\cu)";
-	TSP_SHOP_MELRETRO_CROSSSABERDESC = "\cc(\c[Mel]Melee\cc)\c-\nA powerful charging attack that slices through the competition!\n\cu(\cyK \cu-> \cyK\ \cu-> \cu[Hold \ckP\cu])";
-	TSP_SHOP_919MMODA = "\cc(\cyAlternate Weapon\cc)\c-\nA complete overhaul! Upgrades \c[Green]magazine size\c- and \c[Green]damage\c- at the cost of \c[Red]accuracy\c- and \c[Red]increased recoil\c-.";

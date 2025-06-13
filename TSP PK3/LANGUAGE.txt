@@ -126,15 +126,8 @@ TSPEASYAUTOHUD = "\cc[\cfAuto\cc]";
 TSPEASYAUTO1 = "\cfAuto-Assist\c-";
 TSPEASYAUTO_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgWeapons \cffire automatically \cgwhen button is held.";
 
-TSPMELHUDMOD1 = "\c[Mel]MEL \cjSPECIFIC";
-TSPMELHUDMOD2 = "\cu(Override Mel's HUD Portrait)\c-";
-
 TSPDEFAULT = "\ccDefault\c-";
 TSPMELEESUPREME_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgNo Weapon\c-\cc or \c-\cgAmmo Drops\c-\cc!\c-";
-CPS1MELEESND = "\ciCPS-1\c-";
-MKMELEESND = "\crKombat\c-";
-SMASHMELEESND = "\ckSmash\c-";
-
 
 //Character Setup
 CSMenuOption = "\c[TSP_Blue]Character Setup\c-";
@@ -172,45 +165,5 @@ CHATCONTROL = "\ccChat\c-";
 MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
 OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 
-//Startup
-STARTUP1 = "\ccWelcome to \c[TSP_LogoGreen]The Space Pirate!";
-STARTUP2 = "\cpVersion 0.2 - \c[TSP_BountyPink]Second Attack Demo";
-STARTUP3 = "Chat with us at \cdhttps://www.bluevertigo.org/discord";
-STARTUP4 = "\c[TSP_BountyPink]PREPARE FOR THE SECOND ATTACK.";
-
-//VERSION
-VERSION = "\cuv0.2 - \c[TSP_BountyPink]Second Attack Demo";
-
-//Difficult
+//DIFFICULTY
 SKILLNONFINISH = "\ccThis mode is currently unfinished!";
-NIGHTMARE = "Welcome to the real deal.\n\n\caElite Class\c- monsters spawn more often\nammo drops are \caless frequent\c-,\nand monsters do \camore damage\c- to you.\n\nYou sure you're ready for this?";
-
-
-//OLD
-RoboMel919Pistol = "\cc[\c-\cyMakoto Type 917\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
-GoldenPistol = "\cc[\c-\cfMakoto Type 919 Gold\c-\cc]\c- \cc[\c-\cjClass:\c- \cyPistol\c-\cj,\c- \cjSlot\c- \cy2\c-\cc]\c-";
-
-ZekeShotgun = "\cc[\c-\cqBlackwood Arms 240 Zeke\c-\cc]\c- \cc[\c-\cjClass:\c- \cqShotgun\c-\cj,\c- \cjSlot\c- \cq3\c-\cc]\c-";
-DahliaCrossbow = "\cc[\c-\cv''Dahlia'' Custom Concealable Weapon\c-\cc]\c- \cc[\c-\cjClass:\c- \cvBow\c-\cj,\c- \cjSlot\c- \cq3\c-\cc]\c-";
-
-AmmoBox50 = "\cc[\c-\ckKurdd & Schaumers AB-50\c-\cc]\c- \cc[\c-\cjClass:\c- \ckAutomatic\c-\cj,\c- \cjSlot\c- \ck4\c-\cc]\c-";
-MP40 = "\cc[\c-\ckMaschinenpistole 40\c-\cc]\c- \cc[\c-\cjClass:\c- \ckAutomatic\c-\cj,\c- \cjSlot\c- \ck4\c-\cc]\c-";
-
-Toolbox = "\cc[\c-\cgMarston Arms RPG-2090 (The Toolbox)\c-\cc]\c- \cc[\c-\cjClass:\c- \cgProjectile Weapon\c-\cj,\c- \cjSlot\c- \ck5\c-\cc]\c-";
-
-//AMMO PICKUPS
-PistolAmmo5 = "Picked up a pistol magazine. \cc[\c-\cd+5\c- \cyPistol Ammo\c-\cc]\c-";
-PistolAmmo10 = "Picked up a pistol magazine. \cc[\c-\cd+10\c- \cyPistol Ammo\c-\cc]\c-";
-PistolAmmo15 = "Picked up a pistol magazine. \cc[\c-\cd+15\c- \cyPistol Ammo\c-\cc]\c-";
-
-SMGAmmo15 = "Picked up machine gun ammo. \cc[\c-\cd+15\c- \ckMachine Gun Ammo\c-\cc]\c-";
-SMGAmmo30 = "Picked up machine gun ammo. \cc[\c-\cd+30\c- \ckMachine Gun Ammo\c-\cc]\c-";
-AmmoCrate = "Found an assorted ammo crate! \cc[\c-\cd+15\c- \cyPistol Ammo\c-\cc]\c- \cc[\c-\cd+50\c- \ckMachine Gun Ammo\c-\cc]\c- \cc[\c-\cd+5\c- \cvBolts\c-\cc]\c-";
-
-BoltsNormal5 = "Picked up a box of crossbow bolts. \cc[\c-\cd+5\c- \cvBolts\c-\cc]\c-";
-BoltsNormal10 = "Picked up a box of crossbow bolts. \cc[\c-\cd+10\c- \cvBolts\c-\cc]\c-";
-BoltsSplode5 = "Picked up a box of explosive bolts. \cc[\c-\cd+5\c- \cgExplosive Bolts\c-\cc]\c-";
-BoltsSplode10 = "Picked up a box of explosive bolts. \cc[\c-\cd+10\c- \cgExplosive Bolts\c-\cc]\c-";
-
-ToolboxRocket1 = "Picked up a rocket. \cc[\c-\cd+1\c- \cgLauncher Ammo\c-\cc]\c-";
-ToolboxRocketBox5 = "Picked up a crate of rockets. \cc[\c-\cd+10\c- \cgLauncher Ammo\c-\cc]\c-";

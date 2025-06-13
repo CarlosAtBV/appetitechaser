@@ -4,10 +4,6 @@
 TSP_MEL_BIO = "In the age of space exploration, none were more eager to set sail for the stars than Melody Crosswell. The daughter of a prestigious ARC*STAR researcher and a Kei Pirate assassin, Mel’s troubled childhood pushed her to look to the vast ocean of space as a means of escape. At sixteen, Mel stole her mother’s spacecraft, “The Indigo Skyline”, and has since walked the path of an outlaw. Thanks to the nature of her work, Mel has made enemies on both the side of the law and the side of the lawless, and trustworthy allies are unfortunately far and few between.";
 MELNAME = "\c[Mel]Mel\c-";
 MELNAMECS = "\c[MelOutline]Mel\c-";
-MELRETRONAME = "\c[Mel]Mel \cc(\cfRetro\cc)";
-MELRETRONAMECS = "\c[MelOutline]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\c[TSP_Gray])";
-MELRETROROBONAME = "\c[Mel]Mel \cc(\cfRetro\cc \c[RoboMel]Robo\cc)";
-MELRETROROBONAMECS = "\c[MelOutline]Mel \c[TSP_Gray](\c[TSP_Yellow]Retro\cc \c[RoboMel]Robo\c[TSP_Gray])";
 
 MelLoadoutBurst = "\cgBurst\c- Kit";
 MelLoadoutZoom = "\cnZoom\c- Kit";
@@ -48,28 +44,3 @@ MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
 //SUZUKA (MODS)
 MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
 MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
-
-////////////////
-// RETRO MEL
-////////////////
-// Trait Purchase Messages
-KeepAwayPickup = "\cc[\c[Mel]Keep Away Combo\cc Acquired!]";
-CrossSaberPickup = "\cc[\c[Mel]Cross Saber\cc Acquired!]";
-
-MelRetroMeleeTag = "\cc[\c[Mel]Melee\cc]";
-
-//919M
-MelRetroPistolPickup = "\cc[\cy919m.0\cc - \cuAuto-Pistol\cc]";
-MelRetroPistolTag = "\cc[\cy919m.0 Pistol\cc]";
-
-//922a
-MelRetroPistolAPickup = "\cc[\cy922a\cc - \cuAuto-Pistol\cc]";
-MelRetroPistolATag = "\cc[\cy922a Pistol\cc]";
-
-//AB50
-MelRetroSMGPickup = "\cc[\ckAB50\cc - \cuSMG\cc]";
-MelRetroSMGTag = "\cc[\ckAB50 SMG\cc]";
-
-//MP40
-MelRetroMP40Pickup = "\cc[\ckMP40\cc - \cuSMG\cc]";
-MelRetroMP40Tag = "\cc[\ckMP40\cc]";

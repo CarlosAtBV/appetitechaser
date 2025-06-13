@@ -76,15 +76,15 @@ Extend Class TSP_StatusBar
 		
 		Color newColor = color;
 		
-		for ( int i = 0; i < string.Length(); i++ )
+		for ( uint i = 0; i < string.Length(); i++ )
 		{
 			if ( string.ByteAt(i) == 28 )
 			{
 				if ( string.ByteAt(i+1) == 91 )
 				{
 					//Console.Printf("~ [] Color Type");
-					int startPos = i+2;
-					int bt = startPos;
+					uint startPos = i+2;
+					uint bt = startPos;
 					while( bt < string.Length() && string.ByteAt(bt) != 93 )
 					{
 						bt++;

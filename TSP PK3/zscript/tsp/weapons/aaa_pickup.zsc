@@ -21,9 +21,6 @@ Class TSP_WeaponPickup : CustomInventory
 			case 'TSP_MelPlayer':
 				Console.Printf("u r mel");
 				break;
-			case 'TSP_MelRetroPlayer':
-				Console.Printf("u r mel (but classic)");
-				break;
 			case 'TSP_DummyPlayer':
 				Console.Printf("u r dummel");
 				break;
@@ -38,9 +35,6 @@ Class TSP_WeaponPickup : CustomInventory
 		{
 			case 'TSP_MelPlayer':
 				SetStateLabel("TSP_MelPlayer");
-				break;
-			case 'TSP_MelRetroPlayer':
-				SetStateLabel("TSP_MelRetroPlayer");
 				break;
 			case 'TSP_DummyPlayer':
 				SetStateLabel("TSP_DummyPlayer");
@@ -113,9 +107,6 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 			case 'TSP_MelPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"MelPistol",15);
 				break;
-			case 'TSP_MelRetroPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelRetroPistol",15);
-				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
 				break;
@@ -128,9 +119,6 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 	{
 		TSP_MelPlayer:
 			121P A -1;
-			Stop;
-		TSP_MelRetroPlayer:
-			919P A -1;
 			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;
@@ -162,9 +150,6 @@ Class TSP_Pickup_PistolA : TSP_WeaponPickup
 		TSP_MelPlayer:
 			121P A -1;
 			Stop;
-		TSP_MelRetroPlayer:
-			919P A -1;
-			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;
 			Stop;
@@ -195,9 +180,6 @@ Class TSP_Pickup_PistolB : TSP_WeaponPickup replaces Pistol
 	{
 		TSP_MelPlayer:
 			121P A -1;
-			Stop;
-		TSP_MelRetroPlayer:
-			919P A -1;
 			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;
@@ -305,9 +287,6 @@ Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
 		
 		switch(toucher.GetClassName())
 		{
-			case 'TSP_MelRetroPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelRetroSMG",15);
-				break;
 			case 'TSP_DummyPlayer':
 				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
 				break;
@@ -318,43 +297,6 @@ Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
 	
 	States
 	{
-		TSP_MelRetroPlayer:
-			ABXP A -1;
-			Stop;
-		TSP_DummyPlayer:
-			BFUG A -1;
-			Stop;
-	}
-}
-
-Class TSP_Pickup_MP40 : TSP_WeaponPickup
-{
-	override bool FunnyWeaponToGive(Actor toucher)
-	{
-		bool thingGiven;
-		
-		switch(toucher.GetClassName())
-		{
-			case 'TSP_MelRetroPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"MelRetroMP40", 0);
-				break;
-			case 'TSP_DummyPlayer':
-				thingGiven = GiveTSPWeapon(toucher,"BFG9000",15);
-				break;
-		}
-		
-		return thingGiven;
-	}
-	
-	Default
-	{
-		Inventory.PickupSound "mp40/pickup";
-	}
-	States
-	{
-		TSP_MelRetroPlayer:
-			MP4P A -1;
-			Stop;
 		TSP_DummyPlayer:
 			BFUG A -1;
 			Stop;

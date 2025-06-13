@@ -133,15 +133,15 @@ Mixin Class TSP_UIDrawMixin
 		
 		Color newColor = color;
 		
-		for ( int i = 0; i < text.Length(); i++ )
+		for ( uint i = 0; i < text.Length(); i++ )
 		{
 			if ( text.ByteAt(i) == 28 )
 			{
 				if ( text.ByteAt(i+1) == 91 )
 				{
 					//Console.Printf("~ [] Color Type");
-					int startPos = i+2;
-					int bt = startPos;
+					uint startPos = i+2;
+					uint bt = startPos;
 					while( bt < text.Length() && text.ByteAt(bt) != 93 )
 					{
 						bt++;

@@ -2,17 +2,10 @@ server bool tsp_zmelee = false;
 server noarchive bool tsp_fistsstart = false;
 server noarchive bool tsp_meleesupreme = false;
 
-server bool tsp_goldenpistol = false;
-server bool tsp_actionmode = false;
-
 user noarchive int tsp_demo_loadout = 0;
 
 server bool tsp_easyauto = false;
 
-server /*noarchive*/ int tsp_melhudmod = 0;
-
-//Hmm
-server bool tsp_supersecret = false;
 
 // [Py] gamemode stuff
 

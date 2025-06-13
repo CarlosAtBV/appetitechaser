@@ -94,7 +94,7 @@ Class TSP_Tokenizer
 		
 		int i = 0;
 		
-		for ( int i = 0; i < textInput.Length(); i++ )
+		for ( uint i = 0; i < textInput.Length(); i++ )
 		{
 			if ( TSP_FileTextHandler.isWhitespace(textInput.ByteAt(i)) )
 			{

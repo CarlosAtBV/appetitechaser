@@ -130,23 +130,6 @@ Actor MeleeButtonActor : CustomInventory
 	    TNT1 A 0 A_SelectWeapon("MelSMGA")
 	    TNT1 A 0 A_SelectWeapon("MelSMGB")
 		Fail
-		
-	// RETRO MEL
-	MelRetroMeleeButton:
-		TNT1 A 0 A_JumpIfInventory("MeleeSelected",1,"MelRetroMeleeSwitch")
-		TNT1 A 0 A_SelectWeapon("MelRetroMelee")
-		Fail
-	MelRetroMeleeSwitch:
-		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",041,"MelRetroSMGSwitch")
-		TNT1 A 0 A_JumpIfInventory("WeaponSelectMemory",021,"MelRetroPistolSwitch")
-		Goto MelRetroPistolSwitch
-	MelRetroPistolSwitch:
-		TNT1 A 0 A_SelectWeapon("MelRetroPistol")
-		TNT1 A 0 A_SelectWeapon("MelRetroPistolA")
-		Fail
-	MelRetroSMGSwitch:
-		TNT1 A 0 A_SelectWeapon("MelRetroSMG")
-		Fail
 	}
 }
 
@@ -177,5 +160,3 @@ Actor MeleeSelected : Boolean {}
 //#include "actors/weapons/mel/DEC_M_WEP3.txt" // SUZUKA
 //#include "actors/weapons/mel/DEC_M_WEP3a.txt" // SUZUKA
 //#include "actors/weapons/mel/DEC_M_WEP3b.txt" // SUZUKA
-
-#include "actors/weapons/melretro/weapon_retromelee.txt" // BARE KNUCKLE (2014)

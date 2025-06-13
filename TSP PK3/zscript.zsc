@@ -111,17 +111,6 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/weapons/mel/trait_stasis.zsc"
 #include "zscript/tsp/weapons/mel/trait_slam.zsc"
 
-// MEL (RETROGADE)
-#include "zscript/tsp/weapons/melretro/weapon_base_melretro.zsc"
-#include "zscript/tsp/weapons/melretro/weapon_retropistol.zsc"
-#include "zscript/tsp/weapons/melretro/weapon_retropistola.zsc"
-//#include "zscript/tsp/weapons/melretro/weapon_retroshotgun.zsc"
-//#include "zscript/tsp/weapons/melretro/weapon_retroshotguna.zsc" // ELECTRIC
-//#include "zscript/tsp/weapons/melretro/weapon_retroshotgunb.zsc" // HELLFIRE
-//#include "zscript/tsp/weapons/melretro/weapon_retroshotgunc.zsc" // TOXIC
-#include "zscript/tsp/weapons/melretro/weapon_retrosmg.zsc"
-#include "zscript/tsp/weapons/melretro/weapon_retromp40.zsc"
-
 #include "zscript/tsp/weapons/test_rotation.zsc"
 
 // SHEN MI
@@ -145,7 +134,6 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 #include "zscript/tsp/events/event_main.zsc"
 
 #include "zscript/tsp/characters/char_mel.zsc"
-#include "zscript/tsp/characters/char_melretro.zsc"
 #include "zscript/tsp/characters/char_shen.zsc"
 #include "zscript/tsp/characters/char_dummy.zsc"
 
