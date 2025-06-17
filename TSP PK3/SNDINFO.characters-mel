@@ -211,7 +211,9 @@ mel/medusapickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_medusa3.ogg
 $random mel/casterpickup { mel/casterpickup1 mel/casterpickup2 mel/casterpickup3 }
 mel/casterpickup1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster1.ogg"
 mel/casterpickup2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster2.ogg"
-mel/casterpickup3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_caster3.ogg"
+
+//SUPER GUN
+mel/supergunpickup "sounds/characters/mel/weaponpickups/vo_mel_pickup_supergun.ogg"
 
 //GENERIC
 $random mel/genericpickup { mel/genericpickup1 mel/genericpickup2 mel/genericpickup3 mel/genericpickup4 mel/genericpickup5 mel/genericpickup6 mel/genericpickup7 mel/genericpickup8 mel/genericpickup9 mel/genericpickup10 mel/genericpickup11 mel/genericpickup12 }
