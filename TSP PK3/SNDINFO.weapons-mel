@@ -2,89 +2,90 @@
 // MEL
 /////////
 
-//////////////////////
-// Mel's Mag Manuevers
-//////////////////////
-// SOUND CREDITS/SOURCES: 
-// - Chronicles of Riddick: Assault on Dark Athena
-// - GDC 2018 Audio Bundle
-// - Jedi Knight II: Jedi Outcast
-// - Mortal Kombat (2011)
-// - Mortal Kombat X
-// - Quake III Arena
-
-///////////////////////////////////////
-// Mel's Mag Manuevers (Modern Version)
-///////////////////////////////////////
-// SOUND CREDITS/SOURCES: 
-// - Mortal Kombat (2011)
-// - Mortal Kombat X
-// - Super Monday Night Combat
+//////////////////
+// Mel's Mag Trait
+//////////////////
+// SOUND CREDITS/SOURCES:  
+// - Chronicles of Riddick: Assault on Dark Athena  
+// - Dying Light: Enhanced Edition  
+// - GDC 2018 Audio Bundle  
+// - Jedi Knight II: Jedi Outcast  
+// - Mortal Kombat (2011)  
+// - Mortal Kombat vs DC Universe  
+// - Mortal Kombat X  
+// - Quake III Arena  
+// - Super Monday Night Combat  
 // - Wolfenstein (2009)
 
-maggrappleretro "sounds/weapons/mel/magtrait/sfx_mag_grapple01.ogg"
-maggrapple 		"sounds/weapons/mel/magtrait/sfx_mag_grapple02.ogg"
-magslam			"sounds/weapons/mel/magtrait/sfx_mag_slam01.ogg"
-magslam/down	"sounds/weapons/mel/magtrait/sfx_mag_slam02.ogg"
-magslam/impact	"sounds/weapons/mel/magtrait/sfx_mag_slam_impact01.ogg"
-magslingretro 	"sounds/weapons/mel/magtrait/sfx_mag_sling01.ogg"
-magsling 		"sounds/weapons/mel/magtrait/sfx_mag_sling02.ogg"
-magdriveretro	"sounds/weapons/mel/magtrait/sfx_mag_drive01.ogg"
-magdrive 		"sounds/weapons/mel/magtrait/sfx_mag_drive02.ogg"
-magphit 		"sounds/weapons/mel/magtrait/sfx_mag_driveimpact01.ogg"
-maghit 			"sounds/weapons/mel/magtrait/sfx_mag_impactbeta01.ogg"
-magloop 		"sounds/weapons/mel/magtrait/sfx_mag_ambloop01.ogg"
+maggrapple			"sounds/weapons/mel/trait/sfx_mag_grapple.ogg"
+magslam				"sounds/weapons/mel/trait/sfx_mag_slam.ogg"
+magslam/down		"sounds/weapons/mel/trait/sfx_mag_slam_down.ogg"
+magslam/impact		"sounds/weapons/mel/trait/sfx_mag_slam_impact.ogg"
+magsling			"sounds/weapons/mel/trait/sfx_mag_sling.ogg"
+magdrive 			"sounds/weapons/mel/trait/sfx_mag_drive.ogg"
+magdrive/impact		"sounds/weapons/mel/trait/sfx_mag_drive_impact.ogg"
+maguppercut 		"sounds/weapons/mel/trait/sfx_mag_uppercut.ogg"
 
-magpunch/charge    "sounds/weapons/mel/magtrait/sfx_mag_uppercutcharge01.ogg"
-magpunch/chargefin "sounds/weapons/mel/magtrait/sfx_mag_uppercutcharge02.ogg"
-maguppercut "sounds/weapons/mel/magtrait/sfx_mag_uppercut01.ogg"
-
-chargestyle/charge01 "sounds/weapons/melee/charge/sfx_mel_charge_start01.ogg"
-chargestyle/charge02 "sounds/weapons/melee/charge/sfx_mel_charge_start02.ogg"
-chargestyle/charge03 "sounds/weapons/melee/charge/sfx_mel_charge_start03.ogg"
-
-chargestyle/kick01 "sounds/weapons/melee/charge/sfx_mel_chargekick01.ogg"
-chargestyle/kick02 "sounds/weapons/melee/charge/sfx_mel_chargekick02.ogg"
+magpunch/charge					"sounds/weapons/mel/trait/sfx_mag_melee_charge.ogg"
+magpunch/charge/finish			"sounds/weapons/mel/trait/sfx_mag_melee_charge_finish.ogg"
+magpunch/charge/finish/super	"sounds/weapons/mel/trait/sfx_mag_melee_charge_finish_super.ogg"
 
 $random magpunch/miss { magpunch/miss1 magpunch/miss2 magpunch/miss3 }
-magpunch/miss1 "sounds/weapons/mel/magtrait/sfx_mag_miss01.ogg"
-magpunch/miss2 "sounds/weapons/mel/magtrait/sfx_mag_miss02.ogg"
-magpunch/miss3 "sounds/weapons/mel/magtrait/sfx_mag_miss03.ogg"
+magpunch/miss1 "sounds/weapons/mel/trait/sfx_mag_melee_miss01.ogg"
+magpunch/miss2 "sounds/weapons/mel/trait/sfx_mag_melee_miss02.ogg"
+magpunch/miss3 "sounds/weapons/mel/trait/sfx_mag_melee_miss03.ogg"
 $random magpunch/contact { magpunch/contact1 magpunch/contact2 }
-magpunch/contact1 "sounds/weapons/mel/magtrait/sfx_mag_physimpact01.ogg"
-magpunch/contact2 "sounds/weapons/mel/magtrait/sfx_mag_physimpact02.ogg"
+magpunch/contact1	"sounds/weapons/mel/trait/sfx_mag_melee_impact01.ogg"
+magpunch/contact2	"sounds/weapons/mel/trait/sfx_mag_melee_impact02.ogg"
 $random magpunch/wall { magpunch/wall1 magpunch/wall2 magpunch/wall3 }
-magpunch/wall1 "sounds/weapons/mel/magtrait/sfx_mag_wall01.ogg"
-magpunch/wall2 "sounds/weapons/mel/magtrait/sfx_mag_wall02.ogg"
-magpunch/wall3 "sounds/weapons/mel/magtrait/sfx_mag_wall03.ogg"
+magpunch/wall1		"sounds/weapons/mel/trait/sfx_mag_wall01.ogg"
+magpunch/wall2		"sounds/weapons/mel/trait/sfx_mag_wall02.ogg"
+magpunch/wall3		"sounds/weapons/mel/trait/sfx_mag_wall03.ogg"
 
-mel/hand/equip	"sounds/weapons/mel/sfx_mel_equip_hand.ogg"
-powerbank/activate "sounds/weapons/mel/magtrait/sfx_mag_powerbank.ogg"
+powerbank/activate	"sounds/weapons/mel/trait/sfx_mag_powerbank.ogg"
 
-//////////////////////
-// Mel's Style Change
-//////////////////////
+mag/traitchange		"sounds/weapons/mel/trait/sfx_mag_trait_change.ogg"
+mag/traitchangebeep	"sounds/weapons/mel/trait/sfx_mag_trait_change_beep.ogg"
+mel/vo/magdrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
+mel/vo/maggrapple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
+mel/vo/magsling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"
 
-melstylevobk   "sounds/characters/mel/weaponpickups/vo_mel_style_bk.ogg"
-melidlebk      "sounds/weapons/mel/sfx_mel_idlebk.ogg"
-melstylebksfx1 "sounds/weapons/mel/sfx_mel_style_bk01.ogg"
-melstylebksfx2 "sounds/weapons/mel/sfx_mel_style_bk02.ogg"
+mel/hand/equip		"sounds/weapons/mel/sfx_equip_hand.ogg"
 
+//////////////////////////////
+// Bare Knuckle + Charge Style
+//////////////////////////////
+// SOUND CREDITS/SOURCES:  
+// - GDC 2018 Audio Bundle
+// - Mortal Kombat (2011)
+// - Mortal Kombat X
+// - RTFX Generator
 
-melstylevocs   "sounds/characters/mel/weaponpickups/vo_mel_style_cs.ogg"
-melidlecs      "sounds/weapons/mel/sfx_mel_idlecs.ogg"
-melstylecssfx1 "sounds/weapons/mel/sfx_mel_style_cs01.ogg"
-melstylecssfx2 "sounds/weapons/mel/sfx_mel_style_cs02.ogg"
+mel/vo/bareknuckle		"sounds/characters/mel/weaponpickups/vo_mel_style_bareknuckle.ogg"
+bareknuckle/idle		"sounds/weapons/mel/bareknuckle/sfx_bareknuckle_idle.ogg"
+bareknuckle/stylechange "sounds/weapons/mel/bareknuckle/sfx_bareknuckle_stylechange.ogg"
+bareknuckle/stylebeep	"sounds/weapons/mel/bareknuckle/sfx_bareknuckle_stylechange_beep.ogg"
 
-//////////////////////
-// Mel's Trait Change
-//////////////////////
+$random bareknuckle/rapidfireinfinite { bareknuckle/rapidfireinfinite01 bareknuckle/rapidfireinfinite02 }
+bareknuckle/rapidfireinfinite01 "sounds/weapons/mel/bareknuckle/sfx_bareknuckle_rapidfire_infinite01.ogg"
+bareknuckle/rapidfireinfinite02 "sounds/weapons/mel/bareknuckle/sfx_bareknuckle_rapidfire_infinite02.ogg"
 
-meltraitvodrive     "sounds/characters/mel/weaponpickups/vo_mel_trait_drive.ogg"
-meltraitvograpple   "sounds/characters/mel/weaponpickups/vo_mel_trait_grapple.ogg"
-meltraitvosling     "sounds/characters/mel/weaponpickups/vo_mel_trait_sling.ogg"
-meltraitchange01    "sounds/weapons/mel/sfx_mel_trait_change01.ogg"
-meltraitchange02    "sounds/weapons/mel/sfx_mel_trait_change02.ogg"
+mel/vo/chargestyle		"sounds/characters/mel/weaponpickups/vo_mel_style_chargestyle.ogg"
+chargestyle/idle		"sounds/weapons/mel/chargestyle/sfx_chargestyle_idle.ogg"
+chargestyle/stylechange "sounds/weapons/mel/chargestyle/sfx_chargestyle_stylechange.ogg"
+chargestyle/stylebeep	"sounds/weapons/mel/chargestyle/sfx_chargestyle_stylechange_beep.ogg"
+
+chargestyle/charge01	"sounds/weapons/mel/chargestyle/sfx_chargestyle_start01.ogg"
+chargestyle/charge02	"sounds/weapons/mel/chargestyle/sfx_chargestyle_start02.ogg"
+chargestyle/charge03	"sounds/weapons/mel/chargestyle/sfx_chargestyle_start03.ogg"
+
+chargestyle/kick01		"sounds/weapons/mel/chargestyle/sfx_chargestyle_kick01.ogg"
+chargestyle/kick02		"sounds/weapons/mel/chargestyle/sfx_chargestyle_kick02.ogg"
+chargestyle/kick03		"sounds/weapons/mel/chargestyle/sfx_chargestyle_kick03.ogg"
+chargestyle/kick04		"sounds/weapons/mel/chargestyle/sfx_chargestyle_kick04.ogg"
+
+chargestyle/dragonfang/miss "sounds/weapons/melee/charge/sfx_chargestyle_dragonfang_miss.ogg"
+chargestyle/dragonfang/impact "sounds/weapons/melee/charge/sfx_chargestyle_dragonfang_impact.ogg"
 
 /////////////////////////
 // Slot 2: DARLING NIKKI
