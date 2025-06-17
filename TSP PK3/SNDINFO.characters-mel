@@ -27,81 +27,81 @@ $playeralias	Mel   	 male  	*magsling			magsling
 $playeralias	Mel   	 male  	*magdrive			magdrive
 
 $random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
-mel/pain1001 "sounds/characters/mel/vo_mel_pain100-1.ogg"
-mel/pain1002 "sounds/characters/mel/vo_mel_pain100-2.ogg"
-mel/pain1003 "sounds/characters/mel/vo_mel_pain100-3.ogg"
-mel/pain1004 "sounds/characters/mel/vo_mel_pain100-4.ogg"
+mel/pain1001 "sounds/characters/mel/player/vo_mel_pain100-1.ogg"
+mel/pain1002 "sounds/characters/mel/player/vo_mel_pain100-2.ogg"
+mel/pain1003 "sounds/characters/mel/player/vo_mel_pain100-3.ogg"
+mel/pain1004 "sounds/characters/mel/player/vo_mel_pain100-4.ogg"
 
 $random mel/pain75 { mel/pain751 mel/pain752 mel/pain753 mel/pain754 }
-mel/pain751 "sounds/characters/mel/vo_mel_pain75-1.ogg"
-mel/pain752 "sounds/characters/mel/vo_mel_pain75-2.ogg"
-mel/pain753 "sounds/characters/mel/vo_mel_pain75-3.ogg"
-mel/pain754 "sounds/characters/mel/vo_mel_pain75-4.ogg"
+mel/pain751 "sounds/characters/mel/player/vo_mel_pain75-1.ogg"
+mel/pain752 "sounds/characters/mel/player/vo_mel_pain75-2.ogg"
+mel/pain753 "sounds/characters/mel/player/vo_mel_pain75-3.ogg"
+mel/pain754 "sounds/characters/mel/player/vo_mel_pain75-4.ogg"
 
 $random mel/pain50 { mel/pain501 mel/pain502 mel/pain503 mel/pain504 }
-mel/pain501 "sounds/characters/mel/vo_mel_pain50-1.ogg"
-mel/pain502 "sounds/characters/mel/vo_mel_pain50-2.ogg"
-mel/pain503 "sounds/characters/mel/vo_mel_pain50-3.ogg"
-mel/pain504 "sounds/characters/mel/vo_mel_pain50-4.ogg"
+mel/pain501 "sounds/characters/mel/player/vo_mel_pain50-1.ogg"
+mel/pain502 "sounds/characters/mel/player/vo_mel_pain50-2.ogg"
+mel/pain503 "sounds/characters/mel/player/vo_mel_pain50-3.ogg"
+mel/pain504 "sounds/characters/mel/player/vo_mel_pain50-4.ogg"
 
 $random mel/pain25 { mel/pain251 mel/pain252 mel/pain253 mel/pain254 }
-mel/pain251 "sounds/characters/mel/vo_mel_pain25-1.ogg"
-mel/pain252 "sounds/characters/mel/vo_mel_pain25-2.ogg"
-mel/pain253 "sounds/characters/mel/vo_mel_pain25-3.ogg"
-mel/pain254 "sounds/characters/mel/vo_mel_pain25-4.ogg"
+mel/pain251 "sounds/characters/mel/player/vo_mel_pain25-1.ogg"
+mel/pain252 "sounds/characters/mel/player/vo_mel_pain25-2.ogg"
+mel/pain253 "sounds/characters/mel/player/vo_mel_pain25-3.ogg"
+mel/pain254 "sounds/characters/mel/player/vo_mel_pain25-4.ogg"
 
 $random mel/death { mel/death01 mel/death02 }
-mel/death01 "sounds/characters/mel/vo_mel_death_normal01.ogg"
-mel/death02 "sounds/characters/mel/vo_mel_death_normal02.ogg"
+mel/death01 "sounds/characters/mel/player/vo_mel_death_normal01.ogg"
+mel/death02 "sounds/characters/mel/player/vo_mel_death_normal02.ogg"
 
-mel/electricdeath "sounds/characters/mel/vo_mel_death_electric01.ogg"
-mel/firedeath     "sounds/characters/mel/vo_mel_death_fire01.ogg"
+mel/electricdeath "sounds/characters/mel/player/vo_mel_death_electric01.ogg"
+mel/firedeath     "sounds/characters/mel/player/vo_mel_death_fire01.ogg"
 $volume mel/firedeath 0.7
-mel/poisondeath   "sounds/characters/mel/vo_mel_death_poison01.ogg"
+mel/poisondeath   "sounds/characters/mel/player/vo_mel_death_poison01.ogg"
 
 $random mel/wimpydeath { mel/wimpydeath01 mel/wimpydeath02 mel/wimpydeath03 mel/wimpydeath04 }
-mel/wimpydeath01 "sounds/characters/mel/vo_mel_death_wimpy01.ogg"
-mel/wimpydeath02 "sounds/characters/mel/vo_mel_death_wimpy02.ogg"
-mel/wimpydeath03 "sounds/characters/mel/vo_mel_death_wimpy03.ogg"
-mel/wimpydeath04 "sounds/characters/mel/vo_mel_death_wimpy04.ogg"
+mel/wimpydeath01 "sounds/characters/mel/player/vo_mel_death_wimpy01.ogg"
+mel/wimpydeath02 "sounds/characters/mel/player/vo_mel_death_wimpy02.ogg"
+mel/wimpydeath03 "sounds/characters/mel/player/vo_mel_death_wimpy03.ogg"
+mel/wimpydeath04 "sounds/characters/mel/player/vo_mel_death_wimpy04.ogg"
 
 $random mel/xdeath { mel/xdeath01 mel/xdeath02 }
-mel/xdeath01 "sounds/characters/mel/vo_mel_death_xdeath01.ogg"
-mel/xdeath02 "sounds/characters/mel/vo_mel_death_xdeath02.ogg"
+mel/xdeath01 "sounds/characters/mel/player/vo_mel_death_xdeath01.ogg"
+mel/xdeath02 "sounds/characters/mel/player/vo_mel_death_xdeath02.ogg"
 $volume mel/xdeath 0.7
 
 
 $random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
-mel/jump01 "sounds/characters/mel/vo_mel_jump01.ogg"
-mel/jump02 "sounds/characters/mel/vo_mel_jump02.ogg"
-mel/jump03 "sounds/characters/mel/vo_mel_jump03.ogg"
-mel/jump04 "sounds/characters/mel/vo_mel_jump04.ogg"
-mel/jump05 "sounds/characters/mel/vo_mel_jump05.ogg"
-mel/jump06 "sounds/characters/mel/vo_mel_jump06.ogg"
-mel/jump07 "sounds/characters/mel/vo_mel_jump07.ogg"
-// mel/jump08 "sounds/characters/mel/vo_mel_jump08.ogg" sounds kinda goofy lol
-mel/jump09 "sounds/characters/mel/vo_mel_jump09.ogg"
-mel/jump10 "sounds/characters/mel/vo_mel_jump10.ogg"
-mel/jump11 "sounds/characters/mel/vo_mel_jump11.ogg"
-mel/jump12 "sounds/characters/mel/vo_mel_jump12.ogg"
+mel/jump01 "sounds/characters/mel/player/vo_mel_jump01.ogg"
+mel/jump02 "sounds/characters/mel/player/vo_mel_jump02.ogg"
+mel/jump03 "sounds/characters/mel/player/vo_mel_jump03.ogg"
+mel/jump04 "sounds/characters/mel/player/vo_mel_jump04.ogg"
+mel/jump05 "sounds/characters/mel/player/vo_mel_jump05.ogg"
+mel/jump06 "sounds/characters/mel/player/vo_mel_jump06.ogg"
+mel/jump07 "sounds/characters/mel/player/vo_mel_jump07.ogg"
+// mel/jump08 "sounds/characters/mel/player/vo_mel_jump08.ogg" sounds kinda goofy lol
+mel/jump09 "sounds/characters/mel/player/vo_mel_jump09.ogg"
+mel/jump10 "sounds/characters/mel/player/vo_mel_jump10.ogg"
+mel/jump11 "sounds/characters/mel/player/vo_mel_jump11.ogg"
+mel/jump12 "sounds/characters/mel/player/vo_mel_jump12.ogg"
 
 $random mel/land { mel/land1 mel/land2 mel/land3 mel/land4 mel/land5 mel/land6 mel/land7 }
-mel/land1 "sounds/characters/mel/vo_mel_land1.ogg"
-mel/land2 "sounds/characters/mel/vo_mel_land2.ogg"
-mel/land3 "sounds/characters/mel/vo_mel_land3.ogg"
-mel/land4 "sounds/characters/mel/vo_mel_land4.ogg"
-mel/land5 "sounds/characters/mel/vo_mel_land5.ogg"
-mel/land6 "sounds/characters/mel/vo_mel_land6.ogg"
-mel/land7 "sounds/characters/mel/vo_mel_land7.ogg"
+mel/land1 "sounds/characters/mel/player/vo_mel_land1.ogg"
+mel/land2 "sounds/characters/mel/player/vo_mel_land2.ogg"
+mel/land3 "sounds/characters/mel/player/vo_mel_land3.ogg"
+mel/land4 "sounds/characters/mel/player/vo_mel_land4.ogg"
+mel/land5 "sounds/characters/mel/player/vo_mel_land5.ogg"
+mel/land6 "sounds/characters/mel/player/vo_mel_land6.ogg"
+mel/land7 "sounds/characters/mel/player/vo_mel_land7.ogg"
 
 $random mel/usefail { mel/unf1 mel/unf2 mel/unf3 mel/unf4 mel/unfvo1 mel/unfvo2 mel/unfvo3 }
-mel/unf1 "sounds/characters/mel/vo_mel_usefail1.ogg"
-mel/unf2 "sounds/characters/mel/vo_mel_usefail2.ogg"
-mel/unf3 "sounds/characters/mel/vo_mel_usefail3.ogg"
-mel/unf4 "sounds/characters/mel/vo_mel_usefail4.ogg"
-mel/unfvo1 "sounds/characters/mel/vo_mel_usefailvc1.ogg"
-mel/unfvo2 "sounds/characters/mel/vo_mel_usefailvc2.ogg"
-mel/unfvo3 "sounds/characters/mel/vo_mel_usefailvc3.ogg"
+mel/unf1 "sounds/characters/mel/player/vo_mel_usefail1.ogg"
+mel/unf2 "sounds/characters/mel/player/vo_mel_usefail2.ogg"
+mel/unf3 "sounds/characters/mel/player/vo_mel_usefail3.ogg"
+mel/unf4 "sounds/characters/mel/player/vo_mel_usefail4.ogg"
+mel/unfvo1 "sounds/characters/mel/player/vo_mel_usefailvc1.ogg"
+mel/unfvo2 "sounds/characters/mel/player/vo_mel_usefailvc2.ogg"
+mel/unfvo3 "sounds/characters/mel/player/vo_mel_usefailvc3.ogg"
 
 //////////////////
 // Mel's Melee
