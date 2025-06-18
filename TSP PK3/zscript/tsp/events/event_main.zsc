@@ -105,7 +105,7 @@ Class TSP_EventHandler : EventHandler
 			{
 				eh_teleback = true;
 				eh_telewait = 15;
-				players[0].mo.A_StartSound("ui/felldown", 69);
+				players[0].mo.A_StartSound("sfx/fallingteleport", 69);
 				players[0].mo.bINVULNERABLE = true;
 			}
 		}
@@ -188,7 +188,7 @@ Class TSP_EventHandler : EventHandler
 		{
 			default:
 				int fuckdamage = e.Damage/5;
-				while(fuckdamage>=5)
+				while(fuckdamage>=10)
 				{
 					Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
 					money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
@@ -221,7 +221,7 @@ Class TSP_EventHandler : EventHandler
 		}
 		while(myHealth>=1)
 		{
-			Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_1",e.Thing.pos);
+			Actor money = e.Thing.Spawn("TSP_GlobalDollarPickup_5",e.Thing.pos);
 			money.vel = e.Thing.vel+(frandom(-4,4),frandom(-4,4),frandom(6,12));
 			myHealth-=1;
 		}

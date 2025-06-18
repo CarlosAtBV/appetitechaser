@@ -1,23 +1,35 @@
-// Fridge sounds from Stachekip
+//////////////////////////////
+// Switches
+//////////////////////////////
+world/switch01/on 						"sounds/world/switch01_on.ogg"
+world/switch01/off 						"sounds/world/switch01_off.ogg"
 
-ambience/fridge/open "sounds/ambience/fridge_open.ogg"
-ambience/fridge/close "sounds/ambience/fridge_close.ogg"
-ambience/fridge/loop "sounds/ambience/fridge_loop.ogg"
-$rolloff ambience/fridge/loop 200 312
-
+//////////////////////////////
 // Neoscape
-ambience/neoscape "sounds/ambience/sfx_ambient_neoscape_loop.ogg"
+//////////////////////////////
+ambience/neoscape 						"sounds/world/sfx_ambient_neoscape_loop.ogg"
 $ambient 54 ambience/neoscape point continuous 1.0
 
-// Switches
-world/switch01/on "sounds/ambience/switch01_on.ogg"
-world/switch01/off "sounds/ambience/switch01_off.ogg"
-
+//////////////////////////////
 // Waterfall
-ambience/waterfall/normal "sounds/ambience/sfx_ambient_waterfall_normal_loop.ogg"
+//////////////////////////////
+ambience/waterfall/normal 				"sounds/world/sfx_ambient_waterfall_normal_loop.ogg"
 $ambient 55 ambience/waterfall/normal point continuous 1.0
-
-ambience/waterfall/cave "sounds/ambience/sfx_ambient_waterfall_cave_loop.ogg"
+ambience/waterfall/cave 				"sounds/world/sfx_ambient_waterfall_cave_loop.ogg"
 $ambient 56 ambience/waterfall/cave point continuous 1.0
+ambience/waterfall/exit 				"sounds/world/sfx_ambient_waterfall_exit.ogg"
 
-ambience/waterfall/exit "sounds/ambience/sfx_ambient_waterfall_exit.ogg"
+//////////////////////////////
+// Fridge
+//////////////////////////////
+world/fridge/open 						"sounds/world/sfx_fridge_open.ogg"
+world/fridge/close 						"sounds/world/sfx_fridge_close.ogg"
+ambience/fridge/loop 					"sounds/world/sfx_fridge_loop.ogg"
+$volume ambience/fridge/loop 0.3
+$rolloff ambience/fridge/loop 100 212
+
+//////////////////////////////
+// Misc
+//////////////////////////////
+world/jumppad "sounds/world/sfx_jumppad.ogg"
+$volume world/jumppad 0.8

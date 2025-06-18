@@ -15,7 +15,7 @@ $playeralias	Mel      male  	*xdeath				mel/xdeath
 $playeralias	Mel      male  	*gibbed				mel/xdeath
 $playeralias	Mel      male  	*grunt				mel/land
 $playeralias	Mel	     male  	*jump				mel/jump
-$playeralias    Mel	     male   *land				general/land // Defined in SNDINFO
+$playeralias    Mel	     male   *land				general/land // Defined in SNDINFO.general
 $playeralias    Mel	     male   *usefail			mel/usefail
 $playeralias	Mel   	 male  	*smallmelee			mel/smallmelee
 $playeralias	Mel   	 male  	*mediummelee		mel/mediummelee
@@ -25,6 +25,8 @@ $playeralias	Mel   	 male  	*xlmelee			mel/xlmelee
 $playeralias	Mel   	 male  	*maggrapple			maggrapple
 $playeralias	Mel   	 male  	*magsling			magsling
 $playeralias	Mel   	 male  	*magdrive			magdrive
+
+$playeralias	Mel   	 male  	*genericpickup		mel/genericpickup
 
 $random mel/pain100 { mel/pain1001 mel/pain1002 mel/pain1003 mel/pain1004 }
 mel/pain1001 "sounds/characters/mel/player/vo_mel_pain100-1.ogg"

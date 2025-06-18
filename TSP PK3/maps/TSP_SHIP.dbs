@@ -59,10 +59,11 @@ maps
 			resource0
 			{
 				type = 1;
-				location = "D:\\Projects\\TheSpacePirate\\TSP Git\\TSP PK3";
+				location = "F:\\000 - Blue Vertigo Projects\\Doom\\Projects\\The Space Pirate\\appetitechaser\\TSP PK3";
 				option1 = 0;
 				option2 = 0;
 				notfortesting = 0;
+				requiredarchives = "";
 			}
 		}
 		defaultfloortexture = "DEV_64F";
@@ -102,41 +103,32 @@ maps
 			gridoriginy = 0;
 		}
 		
-		fieldtypes
+		reloadresourceprecommand
 		{
-			
-			linedef
-			{
-				renderstyle = 2;
-				alpha = 1;
-			}
-			
-			sidedef
-			{
-				offsetx_bottom = 1;
-				offsetx_mid = 1;
-				offsetx_top = 1;
-				offsety_mid = 1;
-				offsety_top = 1;
-				offsety_bottom = 1;
-				light = 0;
-			}
-			
-			sector
-			{
-				rotationfloor = 1;
-				xpanningfloor = 1;
-				ypanningfloor = 1;
-				xpanningceiling = 1;
-				ypanningceiling = 1;
-				rotationceiling = 1;
-				xscaleceiling = 1;
-				yscaleceiling = 1;
-				xscalefloor = 1;
-				yscalefloor = 1;
-				lightcolor = 0;
-				desaturation = 1;
-			}
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		reloadresourcepostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testprecommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
+		}
+		
+		testpostcommand
+		{
+			autocloseonsuccess = true;
+			exitcodeiserror = true;
+			stderriserror = true;
 		}
 		
 		scriptdocuments
@@ -158,7 +150,7 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 344;
+				caretposition = 874;
 				firstvisibleline = 1;
 				activetab = true;
 			}

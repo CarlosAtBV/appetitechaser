@@ -448,7 +448,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				{
 					vel.z = 0.0;
 				}
-				A_PlaySound("mantle",CHAN_BODY);
+				A_PlaySound("sfx/mantle",CHAN_BODY);
 				ptp_wallJumpReadySound = true;
 			}
 			if(player.cmd.buttons & BT_JUMP && !(player.oldbuttons & BT_JUMP))
@@ -469,6 +469,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 				int bounceOffAngle = bounceAngle+clamp(DeltaAngle(Normalize180(bounceAngle),angle),-55,55);//-68,68);
 				//Console.Printf(""..bounceOffAngle);
 				Thrust(14,bounceOffAngle/*angle+(25*sidedir)*/);
+				A_PlaySound("sfx/walljump", CHAN_AUTO);
 				A_PlaySound("*jump",CHAN_VOICE);
 				vel.z = clamp(12-(ptp_wallJumps-2),0,12);
 				ptp_wallJumps++;

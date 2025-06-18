@@ -1,0 +1,17 @@
+//////////////////////////////
+// Bounty Hunters
+//////////////////////////////
+// SOUND CREDITS/SOURCES:
+// - Mortal Kombat (2011)
+// - Mortal Kombat X
+// - PlanetSide 2
+// - Street Fighter II
+// - Street Fighter V
+// - Tribes Ascend
+bountyhunters/readysound			"sounds/bountyhunters/ui_bountyhunters_ready.ogg"
+bountyhunters/gosound				"sounds/bountyhunters/ui_bountyhunters_go.ogg"
+bountyhunters/timecrystal			"sounds/bountyhunters/sfx_bountyhunters_timecrystal_hit.ogg"
+bountyhunters/combocrystal			"sounds/bountyhunters/sfx_bountyhunters_combocrystal_hit.ogg"
+bountyhunters/combocrystaldone		"sounds/bountyhunters/sfx_bountyhunters_combocrystal_timeup.ogg"
+
+bountyhunters/pickup/ammo 			"sounds/bountyhunters/sfx_ammo_small.ogg"

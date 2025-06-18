@@ -131,7 +131,7 @@ Class TSP_BH_AmmoZooper : TSP_BH_Zooper
 		let thePlayer = PlayerPawn(theFella);
 		if ( !thePlayer ) return;
 		
-		thePlayer.A_StartSound("bh/pickup/ammo", 32, CHANF_OVERLAP, 0.5, pitch: frandom(0.8,1.2));
+		thePlayer.A_StartSound("bountyhunters/pickup/ammo", 32, CHANF_OVERLAP, 0.5, pitch: frandom(0.8,1.2));
 		for ( let it = thePlayer.Inv; it != null; it = it.Inv )
 		{
 			if ( it is "Weapon" )

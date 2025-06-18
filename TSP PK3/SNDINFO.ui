@@ -1,0 +1,87 @@
+//////////////////////////////
+// Menu Sounds
+//////////////////////////////
+menu/activate				"sounds/general/ui/ui_menu_activate.ogg"
+menu/advance				"sounds/general/ui/ui_menu_advance.ogg"
+menu/backup					"sounds/general/ui/ui_menu_backup.ogg"
+menu/change					"sounds/general/ui/ui_menu_change.ogg"
+menu/choose					"sounds/general/ui/ui_menu_choose.ogg"
+menu/clear					"sounds/general/ui/ui_menu_clear.ogg"
+menu/cursor					"sounds/general/ui/ui_menu_cursor.ogg"
+$volume menu/cursor 0.5
+menu/dismis					"sounds/general/ui/ui_menu_dismiss.ogg"
+menu/invalid				"sounds/general/ui/ui_menu_invalid.ogg"
+menu/prompt					"sounds/general/ui/ui_menu_prompt.ogg"
+
+title/swoosh "sounds/general/ui/ui_titleswoosh.ogg"
+
+//////////////////////////////
+// Intermission Sounds
+//////////////////////////////
+$alias                intermission/tick             intermission/tick
+$alias                intermission/cooptotal        menu/choose
+$alias                intermission/nextstage        menu/change
+$alias                intermission/paststats        menu/choose
+$alias                intermission/pastcoopstats    menu/choose
+$alias                intermission/pastdmstats      menu/active
+
+intermission/tick 			"sounds/general/menu/ui_intermission_tick.ogg"
+intermission/mapname 		"sounds/general/menu/ui_metalimpact.ogg" // Mortal Kombat X
+$volume intermission/mapname 0.75
+$alias intermission/mapstatus menu/advance
+$alias intermission/tally menu/cursor
+intermission/skillrating 	"sounds/general/ui/ui_intermission_rating.ogg"
+
+//////////////////////////////
+// Quit Sounds
+//////////////////////////////
+$random menu/quit1 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
+$random menu/quit2 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
+quit1 						"sounds/general/ui/ui_quit01.ogg"
+secretmessage 				"sounds/general/ui/ui_quit02.ogg" // Arin Hanson
+quit3 						"sounds/general/ui/ui_quit03.ogg" // Jill Of The Jungle
+quit4 						"sounds/general/ui/ui_quit04.ogg"
+quit5 						"sounds/general/ui/ui_quit05.ogg" // Windows 95
+quit6 						"sounds/general/ui/ui_quit06.ogg" // Bomberman Hero
+quit7 						"sounds/general/ui/ui_quit07.ogg"
+quit8 						"sounds/general/ui/ui_quit08.ogg" // Mortal Kombat II
+quit9 						"sounds/general/ui/ui_quit09.ogg"
+
+//////////////////////////////
+// GBD Shop
+//////////////////////////////
+// SOUND CREDITS/SOURCES: 
+// - GDC 2018 Audio Bundle
+// - Kamen Rider Battride War
+// - No Heroes Allowed VR
+// - Resident Evil 4
+shop/unlock					"sounds/shop/ui_unlock.ogg" // Super Smash Bros. Brawl
+shop/characterupgrade 		"sounds/shop/ui_shop_buy_characterupgrade.ogg"
+shop/weaponupgrade			"sounds/shop/ui_shop_buy_weaponupgrade.ogg"
+shop/weaponmod				"sounds/shop/ui_shop_buy_weaponmod.ogg"
+shop/misc					"sounds/shop/ui_shop_buy_misc.ogg"
+
+gbd/small					"sounds/shop/ui_gbd_small.ogg" // Mortal Kombat: Deadly Alliance
+gbd/medium					"sounds/shop/ui_gbd_medium.ogg"
+gbd/large					"sounds/shop/ui_gbd_large.ogg"
+gbd/deposit					"sounds/shop/ui_gbd_deposit.ogg"
+$volume gdb/small 0.5
+$volume gdb/medium 0.6
+$volume gdb/large 0.6
+$volume gdb/deposit 0.6
+
+//////////////////////////////
+// Bounties
+//////////////////////////////
+bounty/start            	"sounds/general/player/ui_bounty_started.ogg"
+bounty/finish           	"sounds/general/player/ui_bounty_finished.ogg"
+
+//////////////////////////////
+// Misc Sounds
+//////////////////////////////
+misc/chat					"sounds/general/ui/ui_chatmessage.ogg" // The Chronicles of Riddick: Assault on Dark Athena
+misc/chat2					"sounds/general/ui/ui_chatmessage.ogg" // The Chronicles of Riddick: Assault on Dark Athena
+misc/secret					"sounds/general/ui/ui_secret_found.ogg" // Pokken Tournament
+misc/startupdone			"sounds/general/ui/ui_gameload.ogg"
+startuptick					"sounds/general/ui/ui_loading_tick.ogg"
+$volume startuptick 0.5

@@ -1,153 +1,25 @@
-//Menu Sounds
-menu/activate	"sounds/general/ui/ui_menu_activate.ogg"
-menu/advance	"sounds/general/ui/ui_menu_advance.ogg"
-menu/backup		"sounds/general/ui/ui_menu_backup.ogg"
-menu/change		"sounds/general/ui/ui_menu_change.ogg"
-menu/choose		"sounds/general/ui/ui_menu_choose.ogg"
-menu/clear		"sounds/general/ui/ui_menu_clear.ogg"
-menu/cursor		"sounds/general/ui/ui_menu_cursor.ogg"
-$volume menu/cursor 0.5
-menu/dismis		"sounds/general/ui/ui_menu_dismiss.ogg"
-menu/invalid	"sounds/general/ui/ui_menu_invalid.ogg"
-menu/prompt		"sounds/general/ui/ui_menu_prompt.ogg"
-
-startuptick		"sounds/general/ui/ui_loading_tick.ogg"
-$volume startuptick 0.5
-misc/startupdone	GAMELOAD
-
-//Intermission Sounds
-$alias                intermission/tick             intermission/tick
-$alias                intermission/cooptotal        menu/choose
-$alias                intermission/nextstage        menu/change
-$alias                intermission/paststats        menu/choose
-$alias                intermission/pastcoopstats    menu/choose
-$alias                intermission/pastdmstats      menu/active
-
-intermission/tick "sounds/general/menu/ui_intermission_tick.ogg"
-
-intermission/mapname "sounds/weapons/melee/metal/sfx_metalmelee_basic_wall01.ogg"
-$volume intermission/mapname 0.75
-$alias intermission/mapstatus menu/advance
-$alias intermission/tally menu/cursor
-intermission/skillrating "sounds/general/ui/ui_intermission_rating.ogg" // From Doom Eternal
-
-$random menu/quit1 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
-$random menu/quit2 { quit3 quit4 quit5 quit6 secretmessage quit7 quit8 quit9 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 quit1 }
-quit1 quit
-$volume quit1 2.0
-secretmessage quit2
-quit3 quit3
-quit4 quit4
-quit5 quit5
-quit6 quit6
-quit7 quit7
-quit8 quit8
-quit9 quit9
-
-
-item/pickupls            PCKUPLS
-title/swoosh "sounds/ui_titleswoosh.ogg"
-
-general/weaponpickup "sounds/general/items/sfx_general_weaponpickup01.ogg" // From Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
-
-ui/felldown "sounds/general/player/sfx_fall_teleport.ogg"
-$volume ui/felldown 0.5
-
-//Slip Dash
-ability/slipdash/start "sounds/general/player/sfx_general_slipdash_start.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
-ability/slipdash/end "sounds/general/player/sfx_general_slipdash_end.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
-ability/crouchsliding "sounds/placeholder/mel_scrapes_her_knee_on_pavement.ogg" // HL2
-$volume ability/slipdash/start 0.6
-$volume ability/slipdash/end 0.6
-$volume ability/crouchsliding 0.5
-
-//Armor Pickups
-
-armor/lightarmor         larmpck1
-armor/heavyarmor         harmpck1
-armor/armorshard         sarmpck1
-
-//Health Pickups
-
-health/supercharge       SURCHRGE
-health/medkit            MDKPCK1
-health/stimpack          STMPPCK
-health/healthbonus       HLBNPCK
-health/vitalitysphere    VITSPHRE
-
-//Upgrade
-upgrade/normal           UPGDNM
-upgrade/ls               UPGDLS
-
-//Bounties
-bounty/start            BOUNTST
-bounty/finish           BOUNTFIN
-
-//Shield
-
-$random shield/hit { shieldhit1 shieldhit2 shieldhit3 } // From Mortal Kombat X
-shieldhit1 "sounds/general/player/sfx_general_shieldhit1.ogg"
-shieldhit2 "sounds/general/player/sfx_general_shieldhit2.ogg"
-shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
-
-shield/depleted "sounds/general/player/sfx_general_shielddeplete.ogg" // From Devil May Cry 4: Special Edition, Mortal Kombat X, Super Monday Night Combat
-
-// GENERAL
-$random general/land { general/land01 general/land02 general/land03 general/land04 general/land05 }
-general/land01 "sounds/general/player/sfx_general_land01.ogg" 
-general/land02 "sounds/general/player/sfx_general_land02.ogg" 
-general/land03 "sounds/general/player/sfx_general_land03.ogg" 
-general/land04 "sounds/general/player/sfx_general_land04.ogg" 
-general/land05 "sounds/general/player/sfx_general_land05.ogg" 
-
-mantle "sounds/general/player/sfx_general_mantle.ogg" // From Chronicles of Riddick: Assault on Dark Athena, Devil May Cry 4: Special Edition
-money/pickup "sounds/shop/ui_gbd_sm.ogg"
-$volume money/pickup 0.5
-
-// SHOP (Placeholder)
-shop/purchase "sounds/placeholder/shop/PASSGO.wav" // From Monopoly (1995)
-shop/hired "sounds/placeholder/shop/victory.ogg" // From Roblox
-//money/pickup "sounds/placeholder/gibemonie.ogg" // From Age of Empires II: Age of Kings
-
-
-// SHOP
-// SOUND CREDITS/SOURCES: 
-// - GDC 2018 Audio Bundle
-// - Kamen Rider Battride War
-// - No Heroes Allowed VR
-// - Resident Evil 4
-
-shop/unlock					"sounds/shop/ui_unlock.ogg"
-shop/characterupgrade 		"sounds/shop/ui_shop_buy_characterupgrade.ogg"
-shop/weaponupgrade			"sounds/shop/ui_shop_buy_weaponupgrade.ogg"
-shop/weaponmod				"sounds/shop/ui_shop_buy_weaponmod.ogg"
-shop/misc					"sounds/shop/ui_shop_buy_misc.ogg"
-
-
-bountyhunters/timecrystal		"sounds/general/items/sfx_bountyhunters_timecrystal_hit.ogg"
-bountyhunters/combocrystal		"sounds/general/items/sfx_bountyhunters_combocrystal_hit.ogg"
-bountyhunters/combocrystaldone	"sounds/general/items/sfx_bountyhunters_combocrystal_timeup.ogg"
-bountyhunters/readysound		"sounds/bh_ready.ogg"
-bountyhunters/gosound			"sounds/bh_go.ogg"
-
-bh/pickup/ammo "sounds/placeholder/tsp_ammomini.ogg"
-
-
-world/jumppad "sounds/placeholder/jumppad.ogg" // From Tomb Fetus
-
-weapon/mod/on "sounds/placeholder/modon.wav" // From Fortress Forever
-weapon/mod/off "sounds/placeholder/modoff.wav" // From Fortress Forever
-
-mag/fissure/start "sounds/placeholder/d2fissure_start.ogg" //From Dota 2
-mag/fissure/hit "sounds/placeholder/d2fissure_hit.ogg" //From Dota 2
-
-$random hit/flesh { hit/flesh1 hit/flesh2 hit/flesh3 hit/flesh4 hit/flesh5 hit/flesh6 }
-hit/flesh1 "sounds/placeholder/gore/d4fleshhit_1.ogg"
-hit/flesh2 "sounds/placeholder/gore/d4fleshhit_2.ogg"
-hit/flesh3 "sounds/placeholder/gore/d4fleshhit_3.ogg"
-hit/flesh4 "sounds/placeholder/gore/d4fleshhit_4.ogg"
-hit/flesh5 "sounds/placeholder/gore/d4fleshhit_5.ogg"
-hit/flesh6 "sounds/placeholder/gore/d4fleshhit_6.ogg"
-
-$rolloff hit/flesh 200 2000
-$volume hit/flesh 1.0
+//////////////////////////////////////////////////////////////
+// SNDINFO - Directory
+//
+// Credits are contained both within SNDINFO entries, 
+// CREDITS.txt located in the root PK3 folder, and tagged
+// in files directly
+//////////////////////////////////////////////////////////////
+//
+// *SNDINFO.bh					Bounty Hunters game mode
+//
+// *SNDINFO.characters-ailene	AILENE voice lines
+// *SNDINFO.characters-mel		Mel voice lines
+//
+// *SNDINFO.enemies				Enemy voice lines
+//
+// *SNDINFO.general				General (Movement, gore, etc.)
+// *SNDINFO.ui					User interface
+//
+// *SNDINFO.weapons-general		General shared weapon sounds
+// *SNDINFO.weapons-mel			Mel weapon sounds
+// *SNDINFO.weapons-shenmi		Shen Mi weapon sounds
+//
+// *SNDINFO.world				Level, ambient, and world sounds
+//
+//////////////////////////////////////////////////////////////

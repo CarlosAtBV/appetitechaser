@@ -1,0 +1,61 @@
+//////////////////////////////
+// Shield
+//////////////////////////////
+$random shield/hit { shieldhit1 shieldhit2 shieldhit3 } // Mortal Kombat X
+shieldhit1 "sounds/general/player/sfx_general_shieldhit1.ogg"
+shieldhit2 "sounds/general/player/sfx_general_shieldhit2.ogg"
+shieldhit3 "sounds/general/player/sfx_general_shieldhit3.ogg"
+
+shield/depleted 						"sounds/general/player/sfx_general_shielddeplete.ogg" // Devil May Cry 4: Special Edition, Mortal Kombat X, Super Monday Night Combat
+
+//////////////////////////////
+// Landing
+//////////////////////////////
+$random general/land { general/land01 general/land02 general/land03 general/land04 general/land05 } // Wolfenstein: The New Order
+general/land01 							"sounds/general/player/sfx_general_land01.ogg" 
+general/land02 							"sounds/general/player/sfx_general_land02.ogg" 
+general/land03 							"sounds/general/player/sfx_general_land03.ogg" 
+general/land04 							"sounds/general/player/sfx_general_land04.ogg" 
+general/land05 							"sounds/general/player/sfx_general_land05.ogg" 
+
+//////////////////////////////
+// Movement
+//////////////////////////////
+sfx/mantle 								"sounds/general/player/sfx_general_mantle.ogg"
+$volume sfx/mantle 0.4
+$random sfx/walljump					{ sfx/walljump01 sfx/walljump02 sfx/walljump03 }
+sfx/walljump01							"sounds/general/player/sfx_walljump01.ogg"
+sfx/walljump02							"sounds/general/player/sfx_walljump02.ogg"
+sfx/walljump03							"sounds/general/player/sfx_walljump03.ogg"
+$volume sfx/walljump 0.5
+
+sfx/fallingteleport 					"sounds/general/player/sfx_fall_teleport.ogg"
+$volume sfx/fallingteleport 0.5
+
+//////////////////////////////
+// Slipdash
+//////////////////////////////
+ability/slipdash/start					"sounds/general/player/sfx_general_slipdash_start.ogg" // Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
+ability/slipdash/end					"sounds/general/player/sfx_general_slipdash_end.ogg" // Chronicles of Riddick: Assault on Dark Athena, Mortal Kombat X, Super Monday Night Combat
+ability/slipdash/loop					"sounds/general/player/sfx_general_slipdash_loop.ogg"
+$volume ability/slipdash/start 0.6
+$volume ability/slipdash/end 0.6
+$volume ability/slipdash/loop 0.7
+
+//////////////////////////////
+// Gore and Impacts
+//////////////////////////////
+$random hit/flesh { hit/flesh01 hit/flesh02 hit/flesh03 hit/flesh04 hit/flesh05 hit/flesh06 }
+hit/flesh01 								"sounds/general/gore/sfx_flesh_impact01.ogg"
+hit/flesh02 								"sounds/general/gore/sfx_flesh_impact02.ogg"
+hit/flesh03 								"sounds/general/gore/sfx_flesh_impact03.ogg"
+hit/flesh04 								"sounds/general/gore/sfx_flesh_impact04.ogg"
+hit/flesh05 								"sounds/general/gore/sfx_flesh_impact05.ogg"
+hit/flesh06 								"sounds/general/gore/sfx_flesh_impact05.ogg"
+$rolloff hit/flesh 200 2000
+$volume hit/flesh 0.8
+
+//////////////////////////////
+// Misc.
+//////////////////////////////
+general/weaponpickup 					"sounds/general/items/sfx_general_weaponpickup.ogg" // Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
