@@ -44,7 +44,7 @@ ListMenu "SkillMenu"
 	StaticText 0, 0, "Skill Select"
 	
 	//Class "TSP_ListMenu_Skill"
-	StaticPatch 103, 39, "SPSKILL"
+	//StaticPatch 103, 39, "SPSKILL"
 	Position 16, 15
 	Linespacing 29
 }
@@ -53,7 +53,7 @@ ListMenu "PlayerclassMenu"
 {
 		NetgameMessage "$NEWGAME"
 		
-		StaticPatch 103, 39, "SP_CSLT"
+		//StaticPatch 103, 39, "SP_CSLT"
 		Font "DBIGFONT", "TSP_Green1"
 		Position 32, 18
 		Linespacing 18
@@ -65,7 +65,7 @@ ListMenu "EpisodeMenu"
 {
 	Class "TSP_EpisodeMenuButFake"
 	NetgameMessage "$NEWGAME"
-    StaticPatch 103, 39, "SP_EPIS"	
+    //StaticPatch 103, 39, "SP_EPIS"	
 	Font "DBIGFONT", "Red"
 	Position 25, 43
 }
