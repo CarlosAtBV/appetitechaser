@@ -89,10 +89,9 @@ TSP_LightGreen
 TSP_LoadSaveGreen
 {
 	#000000  #000000	0  1
-	#1e3925  #496549	2  127
-	#7c936e  #aec092	128  256
+	#06330b  #2a7917	2  127
+	#67b811  #9dc744	128  256
 }
-
 
 TSP_LogoGreen
 {

@@ -31,5 +31,7 @@ $rolloff ambience/fridge/loop 100 212
 //////////////////////////////
 // Misc
 //////////////////////////////
+ailene/appear "sounds/characters/ailene/sfx_ailene_appear.ogg"
+
 world/jumppad "sounds/world/sfx_jumppad.ogg"
 $volume world/jumppad 0.8

@@ -9,17 +9,6 @@ STARTUP4 = "\c[TSP_BountyPink]PREPARE FOR THE SECOND ATTACK.";
 //VERSION
 VERSION = "\cuv0.3 - \c[TSP_BountyPink]Second Attack Demo";
 
-MENU_MODE_STANDARD = "\c[TSP_Green]Standard";
-MENU_MODE_STANDARD_SUB = "(\c[TSP_Green]STANDARD GAMEPLAY MODE\c-)\nPlay through the game normally.";
-MENU_MODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
-MENU_MODE_HUNTERS_SUB = "(\c[TSP_BountyPink]SCORE ATTACK MODE\c-)\nTake down as many enemies as you can!";
-MENU_MODE_TRAINING = "\c[TSP_Teal]Training";
-MENU_MODE_TRAINING_SUB = "(\c[TSP_Teal]PRACTICE MODE\c-)\nHone your skills and sharpen your senses!";
-
-TSP_GAMEMODE_STANDARD = "\c[TSP_Green]Standard Mode";
-TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
-TSP_GAMEMODE_TRAINING = "\c[TSP_Teal]Training Mode";
-
 // MAIN MENU
 TSPMNU_MENU_MAINMENU = "\c[TSP_LogoGreen]Main Menu";
 TSPMNU_MENU_STARTGAME = "\c[TSP_Green]Start Game";
@@ -37,6 +26,19 @@ TSPMNU_MENU_QUIT = "\c[TSP_Red]Shut Down";
 //TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]The First Hunt\c-.";
 TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]The Second Attack\c-.";
 
+// GAME MODES
+TSPMNU_GAMEMODE_HEADER = "\c[TSP_Green]Select Game Mode";
+TSPMNU_GAMEMODE_STANDARD = "\c[TSP_Green]Standard";
+TSPMNU_GAMEMODE_STANDARD_SUB = "(\c[TSP_Green]STANDARD GAMEPLAY MODE\c-)\nPlay through the game normally.";
+TSPMNU_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
+TSPMNU_GAMEMODE_HUNTERS_SUB = "(\c[TSP_BountyPink]SCORE ATTACK MODE\c-)\nTake down as many enemies as you can!";
+TSPMNU_GAMEMODE_TRAINING = "\c[TSP_Teal]Training";
+TSPMNU_GAMEMODE_TRAINING_SUB = "(\c[TSP_Teal]PRACTICE MODE\c-)\nHone your skills and sharpen your senses!";
+
+TSP_GAMEMODE_STANDARD = "\c[TSP_Green]Standard Mode";
+TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
+TSP_GAMEMODE_TRAINING = "\c[TSP_Teal]Training Mode";
+
 // DIFFICULTY MENUS
 TSPDIF_CASUAL = "\c[TSP_LightBlue]Easy Peasy";
 TSPDIF_CASUAL_SUB = "(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_LightBlue]less\c- damage.";
@@ -53,21 +55,6 @@ TSPDIF_UNLIMITED = "\c[TSP_Gold]Unlimited Battle";
 TSPDIF_UNLIMITED_SUB = "(\c[TSP_Gold]SPECIALTY\c-) \c[TSP_Gold]An unending battle!\c- The enemies \c[TSP_Gold]don't stop\c- until you \c[TSP_Gold]drop\c-! \c[TSP_Gold]No time limit\c-!";
 TSPDIF_HEAVENORHELL = "\c[TSP_DantePurple]Death to Pirates!!!!!";
 TSPDIF_HEAVENORHELL_SUB = "(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
-
-
-//Controls Menu
-CONFIGHEADER = "\c[TSP_Yellow]CONFIGURATION\c-";
-CUSTOMERCONTROLS1 = "\c[TSP_Yellow]Customize Controls\c-";
-CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
-CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
-MOVEMENTCONTROL = "\ccMovement Controls\c-";
-WEAPON1CONTROL = "\ccWeapon Function\c-";
-WEAPON2CONTROL = "\cu(Be sure to bind these!)\c-";
-WEAPONSCONTROL = "\ccWeapons\c-";
-INVENTORYCONTROL = "\ccInventory\c-";
-CHATCONTROL = "\ccChat\c-";
-MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
-OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
 
 //DIFFICULTY
 SKILLNONFINISH = "\ccThis mode is currently unfinished!";
@@ -105,20 +92,46 @@ CSSwitchPickup = "\ccSwitch on Pickup\c-";
 CSAlwaysRun = "\ccAlways Run\c-";
 
 // OPTIONS
-TSPMNU_MNU_MODIFIERS = "\c[TSP_Gold]Modifiers";
-TSPMNU_MNU_MODIFIERS_SUB = "\c[TSP_Gold]Tweak\c- various gameplay options and parameters.";
-TSPMNU_MNU_CONFIG = "\c[TSP_Orange]Config";
-TSPMNU_MNU_CONFIG_SUB = "\c[TSP_Orange]Configure\c- key and button bindings.";
-TSPMNU_MNU_VIDEO = "\c[TSP_LightBlue]Video";
-TSPMNU_MNU_VIDEO_SUB = "Adjust \c[TSP_LightBlue]video\c- options and set screen resolution.";
-TSPMNU_MNU_VIDEO_HEAD = "\c[TSP_LightBlue]VIDEO SETTINGS";
-TSPMNU_MNU_AUDIO = "\c[TSP_LightGreen]Audio";
-TSPMNU_MNU_AUDIO_SUB = "Adjust \c[TSP_LightGreen]audio\c- settings.";
-TSPMNU_MNU_AUDIO_HEAD = "\c[TSP_LightGreen]AUDIO SETTINGS";
-TSPMNU_MNU_OTHERMODOPTIONS = "\c[TSP_Purple]Other Mod Options";
-TSPMNU_MNU_OTHERMODOPTIONS_SUB = "Settings for other \c[TSP_Purple]compatible mods\c-.";
-TSPMNU_MNU_GZDOOMMENU = "\c[TSP_Gray]GZDOOM Options";
-TSPMNU_MNU_GZDOOMMENU_SUB = "Default \c[TSP_Gray]GZDoom\c- options menu";
+TSPMNU_MENU_CONFIG = "\c[TSP_Orange]Config";
+TSPMNU_MENU_CONFIG_SUB = "\c[TSP_Orange]Configure\c- key and button bindings.";
+TSPMNU_MENU_VIDEO = "\c[TSP_LightBlue]Video";
+TSPMNU_MENU_VIDEO_SUB = "Adjust \c[TSP_LightBlue]video\c- options and set screen resolution.";
+TSPMNU_MENU_VIDEO_HEADER = "\c[TSP_LightBlue]Video Settings";
+TSPMNU_MENU_AUDIO = "\c[TSP_LightGreen]Audio";
+TSPMNU_MENU_AUDIO_SUB = "Adjust \c[TSP_LightGreen]audio\c- settings.";
+TSPMNU_MENU_AUDIO_HEADER = "\c[TSP_LightGreen]Audio Settings";
+TSPMNU_MENU_OTHERMODOPTIONS = "\c[TSP_Purple]Other Mod Options";
+TSPMNU_MENU_OTHERMODOPTIONS_SUB = "Settings for other \c[TSP_Purple]compatible mods\c-.";
+TSPMNU_MENU_GZDOOMMENU = "\c[TSP_Gray]GZDoom Options";
+TSPMNU_MENU_GZDOOMMENU_SUB = "Default \c[TSP_Gray]GZDoom\c- options menu.";
+TSPMNU_MENU_MODIFIERS = "\c[TSP_Gold]Modifiers";
+TSPMNU_MENU_MODIFIERS_SUB = "\c[TSP_Gold]Tweak\c- various gameplay options and parameters.";
+
+// CONFIGURE
+TSPMNU_OPT_CONFIG_HEADER = "\c[TSP_Orange]Configuration\c-";
+
+TSPMNU_OPT_BINDINGS = "\c[TSP_Orange]Controls\c-";
+TSPMNU_OPT_BINDINGS_SUB = "Customize \c[TSP_Orange]controls\c- and \c[TSP_Yellow]custom keybinds\c-.";
+	CUSTOMERCONTROLS1 = "\c[TSP_Yellow]Customize Controls\c-";
+	CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
+	CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
+	MOVEMENTCONTROL = "\ccMovement Controls\c-";
+	WEAPON1CONTROL = "\ccWeapon Function\c-";
+	WEAPON2CONTROL = "\cu(Be sure to bind these!)\c-";
+	WEAPONSCONTROL = "\ccWeapons\c-";
+	INVENTORYCONTROL = "\ccInventory\c-";
+	CHATCONTROL = "\ccChat\c-";
+	MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
+	OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
+
+TSPMNU_OPT_MOUSE = "\c[TSP_LightBlue]Mouse Options\c-";
+TSPMNU_OPT_MOUSE_SUB = "Change \c[TSP_LightBlue]mouse\c- settings and configuration.";
+TSPMNU_OPT_CONTROLLER = "\c[TSP_LightGreen]Controller Options\c-";
+TSPMNU_OPT_CONTROLLER_SUB = "Change \c[TSP_LightGreen]controller\c- settings and configuration.";
+TSPMNU_OPT_CHARACTER = "\c[TSP_Gold]Character Setup\c-";
+TSPMNU_OPT_CHARACTER_SUB = "Adjust and customize \c[TSP_Gold]character\c- and \c[TSP_Gold]player\c- options.";
+TSPMNU_OPT_GZDOOM = "\c[TSP_Gray]GZDoom Options";
+TSPMNU_OPT_GZDOOM_SUB = "Default \c[TSP_Gray]GZDoom\c- key bindings menu.";
 
 TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
 TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";

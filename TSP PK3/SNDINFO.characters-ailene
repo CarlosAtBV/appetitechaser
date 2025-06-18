@@ -1,5 +1,3 @@
-ailene/appear "sounds/characters/ailene/sfx_ailene_appear.ogg"
-
 ////////////////
 // MENU
 ////////////////
@@ -23,7 +21,7 @@ $random ailene/standard { ailene/standard01 ailene/standard02 }
 ailene/standard01 "sounds/characters/ailene/menu/vo_menu_ailene_standard01.ogg" 
 ailene/standard02 "sounds/characters/ailene/menu/vo_menu_ailene_standard02.ogg" 
 
-ailene/bountyhunters01 "sounds/characters/ailene/menu/vo_menu_ailene_bountyhunters01.ogg" 
+ailene/bountyhunters "sounds/characters/ailene/menu/vo_menu_ailene_bountyhunters.ogg" 
 
 $random ailene/usermaps { ailene/usermaps01 ailene/usermaps02 }
 ailene/usermaps01 "sounds/characters/ailene/menu/vo_menu_ailene_usermaps01.ogg" 
