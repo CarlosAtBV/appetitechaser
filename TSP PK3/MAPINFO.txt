@@ -2,7 +2,8 @@ gameinfo
 {
 	dimcolor = "#000000"
 	dimamount = "0.5"
-	titlemusic = "TSPTitle"
+	bluramount = "0.5"
+	titlemusic = "music/title_secondattack.ogg"
 	intermissionmusic = "TSP_INT"
 	drawreadthis = true
 	creditpage = "SP_CRED"

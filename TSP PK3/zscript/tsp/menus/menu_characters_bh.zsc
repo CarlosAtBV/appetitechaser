@@ -34,9 +34,9 @@ Class TSP_CharacterMenu_BH : TSP_MenuBase
 	
 	static const string gamemodeNames[] =
 	{
-		"$TSP_GAMEMODE_STANDARD",
-		"$TSP_GAMEMODE_HUNTERS",
-		"$TSP_GAMEMODE_TRAINING"
+		"$TSPMNU_GAMEMODE_STANDARD",
+		"$TSPMNU_GAMEMODE_HUNTERS",
+		"$TSPMNU_GAMEMODE_TRAINING"
 	};
 	
 	override void Init(Menu parent)

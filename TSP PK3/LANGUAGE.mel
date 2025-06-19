@@ -1,13 +1,12 @@
-// MEL + MEL (RETRO)
 [enu default]
 
 TSP_MEL_BIO = "In the age of space exploration, none were more eager to set sail for the stars than Melody Crosswell. The daughter of a prestigious ARC*STAR researcher and a Kei Pirate assassin, Mel’s troubled childhood pushed her to look to the vast ocean of space as a means of escape. At sixteen, Mel stole her mother’s spacecraft, “The Indigo Skyline”, and has since walked the path of an outlaw. Thanks to the nature of her work, Mel has made enemies on both the side of the law and the side of the lawless, and trustworthy allies are unfortunately far and few between.";
-MELNAME = "\c[Mel]Mel\c-";
-MELNAMECS = "\c[MelOutline]Mel\c-";
+MELNAME =								"\c[Mel]Mel";
+MELNAMECS =								"\c[MelOutline]Mel";
 
-MelLoadoutBurst = "\cgBurst\c- Kit";
-MelLoadoutZoom = "\cnZoom\c- Kit";
-MelLoadoutMelee = "\c[MEL]Melee\c- Only";
+MelLoadoutBurst =						"\cgBurst\c- Kit";
+MelLoadoutZoom =						"\cnZoom\c- Kit";
+MelLoadoutMelee =						"\c[MEL]Melee\c- Only";
 
 ////////////////
 //WEAPON PICKUPS
@@ -17,30 +16,30 @@ MelLoadoutMelee = "\c[MEL]Melee\c- Only";
 // MEL
 ////////////////
 // Trait Purchase Messages
-RapidFireInfPickup = "\cc[\c[Mel]Rapid-Fire Combo\cc Upgraded!]";
-ChargeStylePickup = "\cc[\ctCharge Style\cc Acquired!]";
-ChargeDunkPickup = "\cc[\ctCharge Dunk\cc Acquired!]";
-MagSpearPickup = "\cc[\c[Mel]Mag Spear\cc Acquired!]";
-MagSlingPickup = "\cc[\c[Mel]Mag Sling\cc Acquired!]";
-MagPushPickup = "\cc[\c[Mel]Mag Drive\cc Acquired!]";
-PowerBankPickup = "\cc[\c[Mel]Power Bank\cc Acquired!]";
+RapidFireInfPickup =					"\cc[\c[Mel]Rapid-Fire Combo\cc Upgraded!]";
+ChargeStylePickup =						"\cc[\ctCharge Style\cc Acquired!]";
+ChargeDunkPickup =						"\cc[\ctCharge Dunk\cc Acquired!]";
+MagSpearPickup =						"\cc[\c[Mel]Mag Spear\cc Acquired!]";
+MagSlingPickup =						"\cc[\c[Mel]Mag Sling\cc Acquired!]";
+MagPushPickup =							"\cc[\c[Mel]Mag Drive\cc Acquired!]";
+PowerBankPickup =						"\cc[\c[Mel]Power Bank\cc Acquired!]";
 
-MelMeleeTag = "\cc[\c[Mel]Bare Knuckle\cc]";
-MelChargeTag = "\cc[\ctCharge Style\cc]";
+MelMeleeTag =							"\cc[\c[Mel]Bare Knuckle\cc]";
+MelChargeTag =							"\cc[\ctCharge Style\cc]";
 
 //DARLING NIKKI
-MelPistolPickup = "\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
-MelPistolTag = "\cc[\cyDarling Nikki\cc]";
+MelPistolPickup =						"\cc[\cyDarling Nikki\cc - \cuPistol\cc]";
+MelPistolTag =							"\cc[\cyDarling Nikki\cc]";
 
 //DARLING NIKKI (MODS)
-MelPistolATag = "\cc[\cyDarling Nikki\cc](\ciS\cc)";
-MelPistolBTag = "\cc[\cyDarling Nikki\cc](\cuW\cc)";
-MelPistolCTag = "\cc[\cfTreasured Nikki\cc]";
+MelPistolATag =							"\cc[\cyDarling Nikki\cc](\ciS\cc)";
+MelPistolBTag =							"\cc[\cyDarling Nikki\cc](\cuW\cc)";
+MelPistolCTag =							"\cc[\cfTreasured Nikki\cc]";
 
 //SUZUKA
-MelSMGPickup = "\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
-MelSMGTag = "\cc[\cxOS06 Suzuka\cc]";
+MelSMGPickup =							"\cc[\cxOS06 Suzuka\cc - \cuMulti-Purpose SMG\cc]";
+MelSMGTag =								"\cc[\cxOS06 Suzuka\cc]";
 
 //SUZUKA (MODS)
-MelSMGATag = "\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
-MelSMGBTag = "\cc[\cxOS06 Suzuka\cc](\cdN\cc)";
+MelSMGATag =							"\cc[\cxOS06 Suzuka\cc](\ckS\cc)";
+MelSMGBTag =							"\cc[\cxOS06 Suzuka\cc](\cdN\cc)";

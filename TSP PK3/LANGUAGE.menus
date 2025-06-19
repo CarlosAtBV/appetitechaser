@@ -1,203 +1,224 @@
 [enu default]
 
-//STARTUP
-STARTUP1 = "\ccWelcome to \c[TSP_LogoGreen]The Space Pirate!";
-STARTUP2 = "\cpVersion 0.2 - \c[TSP_BountyPink]Second Attack Demo";
-STARTUP3 = "Chat with us at \cdhttps://www.bluevertigo.org/discord";
-STARTUP4 = "\c[TSP_BountyPink]PREPARE FOR THE SECOND ATTACK.";
+//////////////////////////////
+// START UP
+//////////////////////////////
+STARTUP1 =							"\ccWelcome to \c[TSP_LogoGreen]The Space Pirate!";
+STARTUP2 =							"\cpVersion 0.3 - \c[TSP_BountyPink]Second Attack Demo";
+STARTUP3 =							"Chat with us at \cdhttps://www.bluevertigo.org/discord";
+STARTUP4 =							"\c[TSP_BountyPink]PREPARE FOR THE SECOND ATTACK.";
 
-//VERSION
-VERSION = "\cuv0.3 - \c[TSP_BountyPink]Second Attack Demo";
+//////////////////////////////
+// VERSION
+//////////////////////////////
+VERSION =							"\cuv0.3 - \c[TSP_BountyPink]Second Attack Demo";
 
+//////////////////////////////
+// QUIT MESSAGES
+//////////////////////////////
+QUITMSG =							"\cnThank you for playing \c[TSP_LogoGreen]The Space Pirate\cn!";
+
+QUITMSG1 =							"\cnOutlaws never go down easy,\n"
+									"no matter what happens.";
+									
+QUITMSG2 =							"\ckWHAT STRENGTH!\c-\n\n"
+									"\cnBUT DON'T FORGET THERE ARE MANY GUYS\n"
+									"LIKE YOU ALL OVER THE WORLD!";
+									
+QUITMSG3 =							"\cnThere is no finish line. When you reach one goal, find a new one.";
+
+QUITMSG4 =							"\cnNo one's gonna draw you a map.\n"
+									"\ckYou have to walk your own path.";
+									
+QUITMSG5 =							"\cnBelieve in yourself and create your own destiny.\n\n"
+									"\crDon't fear fate.";
+									
+QUITMSG6 =							"\cnTHE ADVENTURE NEVER ENDS.\n"
+									"WE'LL SET OFF ON A JOURNEY\n"
+									"SOMETIME SOMEWHERE\n"
+									"TO THE STARS AGAIN.\n\n"
+									"\c[TSP_Green]AND THE NEW ADVENTURES WILL BEGIN.";
+									
+QUITMSG7 =							"\cnIn the vastness of space, even legends are fleeting.\n\n"
+									"\cgWill yours endure?";
+									
+QUITMSG8 =							"\cnGrab what you want and rip through the dark\n"
+									"as you run \cgThrough The Night!";
+QUITMSG9 =							"\cnAre you gonna just keep running away?";
+
+QUITMSG10 =							"\cnThe engines grow cold…\n\n"
+									"\cgBut the stars still burn.";
+									
+QUITMSG11 =							"\cnThere is no \ckknowledge\cn"
+									"that is not \c-power\cn.";
+QUITMSG12 =							"\cnEmpty your mind. Be formless, shapeless, like water.";
+
+QUITMSG13 =							"\cnThe very essence of martial arts is the thirst for knowledge and the truth about ourselves.";
+
+QUITMSG14 =							"\cnWatch the skies everywhere.\n"
+									"Keep looking.\n\n"
+									"\cgKeep watching the skies.";
+									
+QUITMSG15 =							"\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross...\n\n"
+									"\cg...but it's not for the timid.";
+
+QUITMSG16 =							"\cnIt is possible to commit no mistakes and still lose.\n\n"
+									"\ckThat is not a sign of weakness; \cdthat is life.";
+									
+QUITMSG17 =							"\cnThe test of the warrior is not without; it is \ckwithin.";
+
+QUITMSG18 =							"\cnYou think I want to go to the stars? I don't even like to fly!\n\n"
+									"\cdI take TRAINS!";
+									
+QUITMSG19 =							"\cnFacing death is the ultimate test of character. I don't want to die, but if I have to...\n\n"
+									"\cd...I'd like to do it with a little pride.";
+									
+QUITMSG20 =							"\cnWe all have scars, of one kind or another.";
+									
+QUITMSG21 =							"\cnI'm gonna miss you...you had such potential.\n\n"
+									"\caBut then again, all good things...";
+									
+//////////////////////////////
 // MAIN MENU
-TSPMNU_MENU_MAINMENU = "\c[TSP_LogoGreen]Main Menu";
-TSPMNU_MENU_STARTGAME = "\c[TSP_Green]Start Game";
-TSPMNU_MENU_STARTGAME_SUB = "Start a \c[TSP_Green]new game\c-!";
-TSPMNU_MENU_OPTIONS = "\c[TSP_Yellow]Options";
-TSPMNU_MENU_OPTIONS_SUB = "Adjust \c[TSP_Yellow]game settings\c- and \c[TSP_Yellow]customize controls\c-.";
-TSPMNU_MENU_CODEX = "\c[TSP_Blue]Codex";
-TSPMNU_MENU_CODEX_SUB = "Explore the \c[TSP_Blue]Indigo Skyline\c-'\c[TSP_Blue]s\c- database.";
-TSPMNU_MENU_LOAD = "\c[TSP_LoadSaveGreen]Load Game";
-TSPMNU_MENU_LOAD_SUB = "\c[TSP_LoadSaveGreen]Load\c- a previously saved game.";
-TSPMNU_MENU_SAVE = "\c[TSP_LoadSaveGreen]Save Game";
-TSPMNU_MENU_SAVE_SUB = "\c[TSP_LoadSaveGreen]Save\c- your current progress.";
-TSPMNU_MENU_QUIT = "\c[TSP_Red]Shut Down";
-//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
-//TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]The First Hunt\c-.";
-TSPMNU_MENU_QUIT_SUB = "\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]The Second Attack\c-.";
+//////////////////////////////
+TSPMNU_MAIN_HEADER =				"\c[TSP_LogoGreen]Main Menu";
 
+TSPMNU_MAIN_STARTGAME =				"\c[TSP_Green]Start Game";
+TSPMNU_MAIN_STARTGAME_SUB =			"Start a \c[TSP_Green]new game\c-!";
+
+TSPMNU_MAIN_OPTIONS =				"\c[TSP_Yellow]Options";
+TSPMNU_MAIN_OPTIONS_SUB =			"Adjust \c[TSP_Yellow]game settings\c- and \c[TSP_Yellow]customize controls\c-.";
+
+TSPMNU_MAIN_CODEX =					"\c[TSP_Blue]Codex";
+TSPMNU_MAIN_CODEX_SUB =				"Explore the \c[TSP_Blue]Indigo Skyline\c-'\c[TSP_Blue]s\c- database.";
+
+TSPMNU_MAIN_LOAD = 					"\c[TSP_LoadSaveGreen]Load Game";
+TSPMNU_MAIN_LOAD_SUB = 				"\c[TSP_LoadSaveGreen]Load\c- a previously saved game.";
+
+TSPMNU_MAIN_SAVE = 					"\c[TSP_LoadSaveGreen]Save Game";
+TSPMNU_MAIN_SAVE_SUB = 				"\c[TSP_LoadSaveGreen]Save\c- your current progress.";
+
+TSPMNU_MAIN_QUIT = 					"\c[TSP_Red]Shut Down";
+//TSPMNU_MAIN_QUIT_SUB =			"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
+//TSPMNU_MAIN_QUIT_SUB =			"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]The First Hunt\c-.";
+TSPMNU_MAIN_QUIT_SUB =				"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]The Second Attack\c-.";
+
+//////////////////////////////
 // GAME MODES
-TSPMNU_GAMEMODE_HEADER = "\c[TSP_Green]Select Game Mode";
-TSPMNU_GAMEMODE_STANDARD = "\c[TSP_Green]Standard";
-TSPMNU_GAMEMODE_STANDARD_SUB = "(\c[TSP_Green]STANDARD GAMEPLAY MODE\c-)\nPlay through the game normally.";
-TSPMNU_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters";
-TSPMNU_GAMEMODE_HUNTERS_SUB = "(\c[TSP_BountyPink]SCORE ATTACK MODE\c-)\nTake down as many enemies as you can!";
-TSPMNU_GAMEMODE_TRAINING = "\c[TSP_Teal]Training";
-TSPMNU_GAMEMODE_TRAINING_SUB = "(\c[TSP_Teal]PRACTICE MODE\c-)\nHone your skills and sharpen your senses!";
+//////////////////////////////
+TSPMNU_GAMEMODE_HEADER =			"\c[TSP_Green]Select Game Mode";
 
-TSP_GAMEMODE_STANDARD = "\c[TSP_Green]Standard Mode";
-TSP_GAMEMODE_HUNTERS = "\c[TSP_BountyPink]Bounty Hunters Mode";
-TSP_GAMEMODE_TRAINING = "\c[TSP_Teal]Training Mode";
+TSPMNU_GAMEMODE_STANDARD =			"\c[TSP_Green]Standard";
+TSPMNU_GAMEMODE_STANDARD_SUB =		"(\c[TSP_Green]STANDARD\c-)\nPlay through the game normally.";
+TSPMNU_GAMEMODE_HUNTERS =			"\c[TSP_BountyPink]Bounty Hunters";
+TSPMNU_GAMEMODE_HUNTERS_SUB =		"(\c[TSP_BountyPink]SCORE ATTACK\c-)\nTake down as many enemies as you can!";
 
-// DIFFICULTY MENUS
-TSPDIF_CASUAL = "\c[TSP_LightBlue]Easy Peasy";
-TSPDIF_CASUAL_SUB = "(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_LightBlue]less\c- damage.";
-TSPDIF_NORMAL = "\c[TSP_LightGreen]Bring it On!";
-TSPDIF_NORMAL_SUB = "(\c[TSP_LightGreen]NORMAL\c-) A moderate challenge.\nStandard difficulty for most privateers.";
-TSPDIF_HARD = "\c[TSP_Orange]High Intensity!!";
-TSPDIF_HARD_SUB = "(\c[TSP_Orange]HARD\c-) Tough opposition lies ahead!\nLarger enemy presence, more \c[TSP_Orange]danger\c-! For veteran pirates!";
-TSPDIF_EXTREME = "\c[TSP_Red]Blood and Bone!!!";
-TSPDIF_EXTREME_SUB = "(\c[TSP_Red]EXTREME\c-) Unrelenting pressure!\nHighly \c[TSP_Red]aggressive\c- opponents. For master raiders!";
-TSPDIF_ULTIMATE = "\c[TSP_UltimatePurple]Riches or Ruin!!!!";
-TSPDIF_ULTIMATE_SUB = "(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odds!\nIncredibly bloodthirsty enemies deal \c[TSP_UltimatePurple]double\c- damage! For super pirates!";
+TSPMNU_GAMEMODE_TRAINING =			"\c[TSP_Teal]Training";
+TSPMNU_GAMEMODE_TRAINING_SUB =		"(\c[TSP_Teal]PRACTICE\c-)\nHone your skills and sharpen your senses!";
 
-TSPDIF_UNLIMITED = "\c[TSP_Gold]Unlimited Battle";
-TSPDIF_UNLIMITED_SUB = "(\c[TSP_Gold]SPECIALTY\c-) \c[TSP_Gold]An unending battle!\c- The enemies \c[TSP_Gold]don't stop\c- until you \c[TSP_Gold]drop\c-! \c[TSP_Gold]No time limit\c-!";
-TSPDIF_HEAVENORHELL = "\c[TSP_DantePurple]Death to Pirates!!!!!";
-TSPDIF_HEAVENORHELL_SUB = "(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
+//////////////////////////////
+// DIFFICULTY SELECT
+//////////////////////////////
+TSPDIF_CASUAL =						"\c[TSP_LightBlue]Easy Peasy";
+TSPDIF_CASUAL_SUB =					"(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_LightBlue]less\c- damage.";
 
-//DIFFICULTY
-SKILLNONFINISH = "\ccThis mode is currently unfinished!";
+TSPDIF_NORMAL = 					"\c[TSP_LightGreen]Bring it On!";
+TSPDIF_NORMAL_SUB =					"(\c[TSP_LightGreen]NORMAL\c-) A moderate challenge.\nStandard difficulty for most privateers.";
+
+TSPDIF_HARD =						"\c[TSP_Orange]High Intensity!!";
+TSPDIF_HARD_SUB =					"(\c[TSP_Orange]HARD\c-) Tough opposition lies ahead!\nLarger enemy presence, more \c[TSP_Orange]danger\c-! For veteran pirates!";
+
+TSPDIF_EXTREME =					"\c[TSP_Red]Blood and Bone!!!";
+TSPDIF_EXTREME_SUB =				"(\c[TSP_Red]EXTREME\c-) Unrelenting pressure!\nHighly \c[TSP_Red]aggressive\c- opponents. For master raiders!";
+
+TSPDIF_ULTIMATE =					"\c[TSP_UltimatePurple]Riches or Ruin!!!!";
+TSPDIF_ULTIMATE_SUB =				"(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odds!\nIncredibly bloodthirsty enemies deal \c[TSP_UltimatePurple]double\c- damage! For super pirates!";
+
+TSPDIF_UNLIMITED =					"\c[TSP_Gold]Unlimited Battle";
+TSPDIF_UNLIMITED_SUB =				"(\c[TSP_Gold]SPECIALTY\c-) \c[TSP_Gold]An unending battle!\c- The enemies \c[TSP_Gold]don't stop\c- until you \c[TSP_Gold]drop\c-! \c[TSP_Gold]No time limit\c-!";
+
+TSPDIF_HEAVENORHELL =				"\c[TSP_DantePurple]Death to Pirates!!!!!";
+TSPDIF_HEAVENORHELL_SUB =			"(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
+
+SKILLNONFINISH =					"\ccThis mode is currently unfinished!";
+
+//////////////////////////////
+// OPTIONS
+//////////////////////////////
+TSPMNU_OPT_CONFIG =					"\c[TSP_Yellow]Configuration";
+TSPMNU_OPT_CONFIG_SUB =				"Customize \c[TSP_Yellow]key bindings\c- and \c[TSP_Yellow]controls\c-.";
+
+TSPMNU_OPT_MODIFIERS =				"\c[TSP_Gold]Modifiers";
+TSPMNU_OPT_MODIFIERS_SUB =			"Tweak various \c[TSP_Gold]gameplay options\c- and \c[TSP_Gold]parameters\c-.";
+
+TSPMNU_OPT_AUDIO =					"\c[TSP_LightGreen]Audio";
+TSPMNU_OPT_AUDIO_SUB =				"Adjust \c[TSP_LightGreen]sound settings\c- and \c[TSP_LightGreen]volume\c-.";
+
+TSPMNU_OPT_VIDEO =					"\c[TSP_LightBlue]Video";
+TSPMNU_OPT_VIDEO_SUB =				"Adjust \c[TSP_LightBlue]visual options\c- and \c[TSP_LightBlue]set screen resolution\c-.";
+
+TSPMNU_OPT_OTHERMODOPTIONS =		"\c[TSP_Purple]Other Mod Options";
+TSPMNU_OPT_OTHERMODOPTIONS_SUB =	"Modify settings for \c[TSP_Purple]other compatible mods\c-.";
+
+TSPMNU_OPT_GZDOOMMENU =				"\c[TSP_Gray]GZDoom Options";
+TSPMNU_OPT_GZDOOMMENU_SUB =			"Visit the default \c[TSP_Red]GZDoom\c- options menu.";
+
+//////////////////////////////
+// CONFIGURATION
+//////////////////////////////
+TSPMNU_CFG_BINDINGS = 				"\c[TSP_Orange]Controls";
+TSPMNU_CFG_BINDINGS_SUB = 			"Customize \c[TSP_Orange]controls\c- and \c[TSP_Orange]custom keybinds\c-.";
+	TSPMNU_CFG_BINDINGS_HEAD =	 	"\c[TSP_Orange]Customize Controls";
+	TSPMNU_CFG_CONFIG1 = 			"\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear";
+	TSPMNU_CFG_CONFIG2 =			"\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel";
+	TSPMNU_CFG_MOVEMENT = 			"\ccMovement Controls";
+	TSPMNU_CFG_WEAPON1 =			"\ccWeapon Function";
+	TSPMNU_CFG_WEAPON2 =			"\cu(Be sure to bind these!)";
+	TSPMNU_CFG_WEAPONS_HEAD =		"\ccWeapons";
+	TSPMNU_CFG_INVENTORY =			"\ccInventory";
+	TSPMNU_CFG_CHAT =				"\ccChat";
+	TSPMNU_CFG_MISC =				"\ccMiscellaneous";
+	TSPMNU_CFG_OTHER =				"\ccOther Movement Controls";
+
+TSPMNU_CFG_MOUSE = 					"\c[TSP_LightBlue]Mouse Options";
+TSPMNU_CFG_MOUSE_SUB =				"Change \c[TSP_LightBlue]mouse\c- settings and configuration.";
+
+TSPMNU_CFG_CONTROLLER =				"\c[TSP_LightGreen]Controller Options";
+TSPMNU_CFG_CONTROLLER_SUB =			"Change \c[TSP_LightGreen]controller\c- settings and configuration.";
+
+TSPMNU_CFG_CHARACTER =				"\c[TSP_Gold]Character Setup";
+TSPMNU_CFG_CHARACTER_SUB =			"Adjust and customize \c[TSP_Gold]character\c- and \c[TSP_Gold]player\c- options.";
+
+TSPMNU_CFG_GZDOOM =					"\c[TSP_Gray]GZDoom Options";
+TSPMNU_CFG_GZDOOM_SUB =				"Visit the default \c[TSP_Red]GZDoom\c- key bindings menu.";
 
 //TSP Menu Options
-TSPMENU1 = "\c[TSP_Green]The Space Pirate\c- \cjModifiers\c-";
-TSPMENU2 = "\c[TSP_Gold]MODIFIERS\c-";
-TSPGAMEPLAY1 = "\cjGAMEPLAY MODIFIERS\c-";
-TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)\c-";
-TSPGRAPHICS1 = "\cjGRAPHIC MODIFIERS\c-";
-TSPGRAPHICS2 = "\cu(Adjust graphical settings)\c-";
-TSPCHEATS1 = "\ckCHEATS AND FUN STUFF\c-";
-TSPCHEATS2 = "\cu(Enable cheat options and other shenanigans)\c-";
-
-TSPEASYAUTOHUD = "\cc[\cfAuto\cc]";
-TSPEASYAUTO1 = "\cfAuto-Assist\c-";
-TSPEASYAUTO_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgWeapons \cffire automatically \cgwhen button is held.";
-
-TSPDEFAULT = "\ccDefault\c-";
-TSPMELEESUPREME_ON = "\cc[\c-\cdOn\c-\cc]\c- - \cgNo Weapon\c-\cc or \c-\cgAmmo Drops\c-\cc!\c-";
-
-//Character Setup
-CSMenuOption = "\c[TSP_Blue]Character Setup\c-";
-CSCharacter = "\c[TSP_Green]Character\c-"; 
-CSName = "\chName\c-";
-CSGender = "\ccGender\c-";
-CSSkin = "\ccCostume\c-";
-CSColor = "\ccColor\c-";
-CSRED = "\cgRed\c-";
-CSBLUE = "\chBlue\c-";
-CSGREEN = "\cdGreen\c-";
-CSTeam = "\ccTeam\c-";
-CSAutoAim = "\ccAutoAim\c-";
-CSSwitchPickup = "\ccSwitch on Pickup\c-";
-CSAlwaysRun = "\ccAlways Run\c-";
-
-// OPTIONS
-TSPMNU_MENU_CONFIG = "\c[TSP_Orange]Config";
-TSPMNU_MENU_CONFIG_SUB = "\c[TSP_Orange]Configure\c- key and button bindings.";
-TSPMNU_MENU_VIDEO = "\c[TSP_LightBlue]Video";
-TSPMNU_MENU_VIDEO_SUB = "Adjust \c[TSP_LightBlue]video\c- options and set screen resolution.";
-TSPMNU_MENU_VIDEO_HEADER = "\c[TSP_LightBlue]Video Settings";
-TSPMNU_MENU_AUDIO = "\c[TSP_LightGreen]Audio";
-TSPMNU_MENU_AUDIO_SUB = "Adjust \c[TSP_LightGreen]audio\c- settings.";
-TSPMNU_MENU_AUDIO_HEADER = "\c[TSP_LightGreen]Audio Settings";
-TSPMNU_MENU_OTHERMODOPTIONS = "\c[TSP_Purple]Other Mod Options";
-TSPMNU_MENU_OTHERMODOPTIONS_SUB = "Settings for other \c[TSP_Purple]compatible mods\c-.";
-TSPMNU_MENU_GZDOOMMENU = "\c[TSP_Gray]GZDoom Options";
-TSPMNU_MENU_GZDOOMMENU_SUB = "Default \c[TSP_Gray]GZDoom\c- options menu.";
-TSPMNU_MENU_MODIFIERS = "\c[TSP_Gold]Modifiers";
-TSPMNU_MENU_MODIFIERS_SUB = "\c[TSP_Gold]Tweak\c- various gameplay options and parameters.";
-
-// CONFIGURE
-TSPMNU_OPT_CONFIG_HEADER = "\c[TSP_Orange]Configuration\c-";
-
-TSPMNU_OPT_BINDINGS = "\c[TSP_Orange]Controls\c-";
-TSPMNU_OPT_BINDINGS_SUB = "Customize \c[TSP_Orange]controls\c- and \c[TSP_Yellow]custom keybinds\c-.";
-	CUSTOMERCONTROLS1 = "\c[TSP_Yellow]Customize Controls\c-";
-	CONFIGCONTROLS1 = "\cdENTER\c- \ccto change, \c-\cgBACKSPACE\c- \ccto clear\c-";
-	CONFIGCONTROLS2 = "\ccPress\c- \cdnew key\c- \ccfor control, \c-\cgESC\c- \ccto cancel\c-";
-	MOVEMENTCONTROL = "\ccMovement Controls\c-";
-	WEAPON1CONTROL = "\ccWeapon Function\c-";
-	WEAPON2CONTROL = "\cu(Be sure to bind these!)\c-";
-	WEAPONSCONTROL = "\ccWeapons\c-";
-	INVENTORYCONTROL = "\ccInventory\c-";
-	CHATCONTROL = "\ccChat\c-";
-	MISCELLANEOUSCONTROL = "\ccMiscellaneous\c-";
-	OTHERMOVEMENTCONTROL = "\ccOther Movement Controls\c-";
-
-TSPMNU_OPT_MOUSE = "\c[TSP_LightBlue]Mouse Options\c-";
-TSPMNU_OPT_MOUSE_SUB = "Change \c[TSP_LightBlue]mouse\c- settings and configuration.";
-TSPMNU_OPT_CONTROLLER = "\c[TSP_LightGreen]Controller Options\c-";
-TSPMNU_OPT_CONTROLLER_SUB = "Change \c[TSP_LightGreen]controller\c- settings and configuration.";
-TSPMNU_OPT_CHARACTER = "\c[TSP_Gold]Character Setup\c-";
-TSPMNU_OPT_CHARACTER_SUB = "Adjust and customize \c[TSP_Gold]character\c- and \c[TSP_Gold]player\c- options.";
-TSPMNU_OPT_GZDOOM = "\c[TSP_Gray]GZDoom Options";
-TSPMNU_OPT_GZDOOM_SUB = "Default \c[TSP_Gray]GZDoom\c- key bindings menu.";
+TSPMENU1 = "\c[TSP_Green]The Space Pirate\c- \cjModifiers";
+TSPMENU2 = "\c[TSP_Gold]MODIFIERS";
+TSPGAMEPLAY1 = "\cjGAMEPLAY MODIFIERS";
+TSPGAMEPLAY2 = "\cu(Change up aspects of core gameplay)";
+TSPGRAPHICS1 = "\cjGRAPHIC MODIFIERS";
+TSPGRAPHICS2 = "\cu(Adjust graphical settings)";
+TSPCHEATS1 = "\ckCHEATS AND FUN STUFF";
+TSPCHEATS2 = "\cu(Enable cheat options and other shenanigans)";
 
 TSPMNU_MELMUGOVERRIDE = "HUD Face Override";
 TSPMNU_MELMUGOVERRIDE_SUB = "Who do you want to be today, who do you want to be?";
 
-TSPMNU_MELEESTART = "Melee-Only Start";
-TSPMNU_MELEESTART_SUB = "Start with only your melee weapon. Slappers only!";
-
-QUITMSG = "\cnEmpty your mind. Be formless, shapeless, like water.";
-QUITMSG1 = "\cnOutlaws never go down easy,\n\nno matter what happens.";
-QUITMSG2 = "\ckWHAT STRENGTH!\c-\n\n\cnBUT DON'T FORGET THERE ARE MANY GUYS\n LIKE YOU ALL OVER THE WORLD!";
-QUITMSG3 = "\cnThere is no finish line. When you reach one goal, find a new one.";
-QUITMSG4 = "\cnNo one's gonna draw you a map.\n\n\ckYou have to walk your own path.";
-QUITMSG5 = "\cnBelieve in yourself and create your own destiny.\n\n\crDon't fear fate.";
-QUITMSG6 = "\cnTHE ADVENTURE NEVER ENDS.\nWE'LL SET OFF ON A JOURNEY\nSOMETIME SOMEWHERE\nTO THE STARS AGAIN.\n\n\c[TSP_Green]AND THE NEW ADVENTURES WILL BEGIN.";
-QUITMSG7 = "\cnCheck out\c- \c[MEL]Mel\c- \cnand many others in \n\cjDrPyspy's\c- \cfTomb\c- \ctFetus\c-\cn!\c-\n\n\cjComing soon!\c-";
-QUITMSG8 = "\cnGrab what you want and rip through the dark\nas you run \cgThrough The Night!";
-QUITMSG9 = "\cnAre you gonna just keep running away?";
-QUITMSG10 = "\cnMake sure to grab a bag of cheebos\c-\n\cnfor \cgThi\c- \cnon the way out.\c-\n\n\cgShe's very hungry.";
-QUITMSG11 = "\cnThere is no \ckknowledge\cn that is not \c-power\cn.";
-QUITMSG12 = "\cnThank you for playing \n\chBlue Vertigo's \c[TSP_LogoGreen]The Space Pirate\cn!";
-QUITMSG13 = "\cnThe very essence of martial arts is the thirst for knowledge and the truth about ourselves.";
-QUITMSG14 = "\cnWhaddya doing in our mod? Get outta here.\n\n...\c-GET OUTTA HERE!";
-
-QUITMSG15 = "\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross...\n\n\cg...but it's not for the timid.";
-QUITMSG16 = "\cnIt is possible to commit no mistakes and still lose.\n\n\ckThat is not a sign of weakness; \cdthat is life.";
-QUITMSG17 = "\cnThe test of the warrior is not without; it is \ckwithin.";
-QUITMSG18 = "\cnYou think I want to go to the stars? I don't even like to fly!\n\n\cdI take TRAINS!";
-QUITMSG19 = "\cnFacing death is the ultimate test of character. I don't want to die, but if I have to...\n\n\cd...I'd like to do it with a little pride.";
-QUITMSG20 = "\cnWe all have scars, of one kind or another.";
-QUITMSG21 = "\cnI'm gonna miss you...you had such potential.\n\n\caBut then again, all good things...";
-
-////////////
-// MAP NAMES
-////////////
-
-TSPMAP_TRAINING_NAME = "The Indigo Skyline";
-TSPMAP_TRAINING_DESC = "Mel's home among the stars.";
-TSPMAP_GRAVE_NAME = "Tian Zhu";
-TSPMAP_GRAVE_DESC = "Grave of the Dragon";
-TSPMAP_OBSTACLE_NAME = "Crash Course";
-TSPMAP_OBSTACLE_DESC = "Master movement and combat mechanics!";
-TSPMAP_TEST_NAME = "Test Sector";
-TSPMAP_TEST_DESC = "Digital Testing Grounds";
-
-TSPMAP_DEMOHUB_NAME = "Demoscape";
-TSPMAP_DEMOHUB_DESC = "First Hunt Demo Hub";
-TSPMAP_DEMOHUB_NAME2 = "\c[TSP_Yellow]Welcome to \c[TSPMenuGreen]Demoscape\c[TSP_Yellow]!";
-TSPMAP_DEMOHUB_DESC2 = "\ccEnjoy your stay!";
-TSPMAP_DEMOHUB_DESC3 = "\c[TSP_Green]TIP\cc: Be on the lookout for \c[Gold]secrets\cc!";
+//Character Setup
+CSMenuOption = "\c[TSP_Blue]Character Setup";
+CSCharacter = "\c[TSP_Green]Character"; 
+CSName = "\chName";
+CSGender = "\ccGender";
+CSSkin = "\ccCostume";
+CSColor = "\ccColor";
+CSRED = "\cgRed";
+CSBLUE = "\chBlue";
+CSGREEN = "\cdGreen";
+CSTeam = "\ccTeam";
+CSAutoAim = "\ccAutoAim";
+CSSwitchPickup = "\ccSwitch on Pickup";
+CSAlwaysRun = "\ccAlways Run";
 
 
-TSPMAP_BATTLEZONE_NAME = "Battle Zone";
-TSPMAP_BATTLEZONE_DESC = "Neoscape";
-TSPMAP_ELEGIA_NAME = "Red Hot Rumble";
-TSPMAP_ELEGIA_DESC = "Elegia";
-TSPMAP_GROSSE_NAME = "Grosse";
-TSPMAP_GROSSE_DESC = "The Ultimate Challenge";
 
-TSP_EMPLOYER_MODS = "Mods";
-
-TSP_EMPLOYER_KEI_NAME = "Shi";
-TSP_EMPLOYER_KEI_DESC = "ED 04.23.2245 NX-04963840\n\nTo Whom It May Concern,\n\n\tThe galaxy is a harsh place, and you're stuck on a dreadful dead-end planet, with luxury out of your grasp. Look no further; the Kei Pirate Guild is looking for fresh blood to join our ranks. Smuggling is the name of the game, and if you survive, that luxury will land right in your lap.\n\nYou'll start out with a salary of $500 GBD per hour, but with hard work, dedication, and a sense of self-preservation, you just might feel that wallet get a little heavier.\n\n~ Zheng Shi";
-TSP_EMPLOYER_ARC_NAME = "Quaid";
-TSP_EMPLOYER_ARC_HEAD = "Attention Applicants!";
-TSP_EMPLOYER_ARC_DESC = "ED 05.16.2245 NX-58473029\n\nAttention Applicants!\n\n\tARC*STAR is accepting applicants for a position in our lineup of galactic enforcers. Your objective will be to carry out tasks that are considered morally questionable by the general public. You will be monitored by a supervisor to ensure that you carry out your assigned tasks.\n\n\tYou will be supplied a salary of $500 GBD per hour, and you will have access to an array of defensive options to support you in your assignments.\n\nMiriam Quaid\nARC*STAR Recruitment Center";
-TSP_EMPLOYER_VEX_NAME = "Vexler";
-TSP_EMPLOYER_VEX_DESC = "ED 02.27.2245 NX-\cg%ERROR%\c-\n\nGreetings,\n\n\tI have been keeping an eye on you for quite a while, and you've definitely captured my attention; you exhibit not only an impressive array of skills, but the will and resolve to match, and your participation will be greatly rewarded.\n\n\t$500 GBD will be your starting salary if you so desire, but there will be gifts much greater than mere currency.\n\n\tA galactic genesis is nigh; it would be a shame to waste this oppurtunity.\n\n- Vexler";
-TSP_EMPLOYER_THI_NAME = "Barret";
-TSP_EMPLOYER_THI_DESC = "ED 11.23.2144 NX-04493550\n\nDear Melody,\n\nWhy don't you answer my calls give me back my fucking Cheebos you asshole I will chew on your clit and punch you in the eyelids you fucker\n\nI know where you live,\nThi Barret";

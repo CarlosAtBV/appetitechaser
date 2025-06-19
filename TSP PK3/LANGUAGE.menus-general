@@ -1,0 +1,23 @@
+[enu default]
+
+DOSY =							"\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]";
+TXT_YES =						"\cc[\c-\cdYes\c-\cc]";
+TXT_NO =						"\cc[\c-\cgNo\c-\cc]";
+OPTVAL_ON =						"\cc[\c-\cdOn\c-\cc]";
+OPTVAL_OFF =					"\cc[\c-\cgOff\c-\cc]";
+OPTVAL_AUTO =					"\cc[\c-\cuAuto\c-\cc]";
+
+OPTVAL_MALE	=					"\cyMale";
+OPTVAL_FEMALE =					"\caFemale";
+OPTVAL_NEUTRAL =				"\ckNeutral";
+OPTVAL_OTHER =					"\cjObject";
+
+TSPMNU_MELEESTART =				"Melee-Only Start";
+TSPMNU_MELEESTART_SUB =			"Start with only your melee weapon. Slappers only!";
+
+TSPEASYAUTOHUD =				"\cc[\cfAuto\cc]";
+TSPEASYAUTO1 =					"\cfAuto-Assist";
+TSPEASYAUTO_ON =				"\cc[\c-\cdOn\c-\cc]\c- - \cgWeapons \cffire automatically \cgwhen button is held.";
+
+TSPDEFAULT =					"\ccDefault";
+TSPMELEESUPREME_ON =			"\cc[\c-\cdOn\c-\cc]\c- - \cgNo Weapon\c-\cc or \c-\cgAmmo Drops\c-\cc!";

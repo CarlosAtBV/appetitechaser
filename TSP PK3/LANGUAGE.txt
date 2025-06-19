@@ -1,91 +1,75 @@
 [enu default]
 
-DOSY = "\cc[\c-\cuPress the\c- \cdY\c- \cuKey to exit\c-\cc]\c-";
-TXT_YES = "\cc[\c-\cdYes\c-\cc]\c-";
-TXT_NO = "\cc[\c-\cgNo\c-\cc]\c-";
-OPTVAL_ON = "\cc[\c-\cdOn\c-\cc]\c-";
-OPTVAL_OFF = "\cc[\c-\cgOff\c-\cc]\c-";
-OPTVAL_AUTO = "\cc[\c-\cuAuto\c-\cc]\c-";
+///////////////////
+// Key Pickups
+///////////////////
+SECRETMESSAGE =					"\ccYou've discovered a\c- \cksecret area\c-\cc!";
 
-STSTR_DQDON = "\cfOmni-Shields on!\c- \cc[\c-\cd+\c-\cfInvincibility\c-\cc]\c-";
-STSTR_DQDOFF = "\cuOmni-Shields off.\c- \cc[\c-\cg-\c-\cfInvincibility\c-\cc]\c-";
-STSTR_KFAADDED = "\cfYou've been gifted a hyper space arsenal with\c- \cdkeys\c- \cfto match!\c-";
-STSTR_FAADDED = "\cfYou've been gifted a hyper space arsenal!";
-STSTR_NCON = "\ccTry to save myself, myself keeps slipping away...\c- \cc[\c-\cd+\c-\ctGhost\c-\cc]\c-"; 
-STSTR_NCOFF = "\cuTried to overcome the complications and the catches...\c- \cc[\c-\cg-\c-\ctGhost\c-\cc]\c-";
-STSTR_BEHOLD = "We should be able to beam you down something useful. \cc[\c-\cpR\c- \chI\c- \cdV\c- \cuA\c- \ckL\c- \cgS\c-\cc]\c-"; //jesus christ
-STSTR_BEHOLDX = "\cfUse this wisely!";
-STSTR_CHOPPERS = "\cgA chainsaw? What's with you and brutality, anyway?";
-TXT_BUDDHAON = "\cjYou have this strange sense of invulnerability...";
-TXT_BUDDHAOFF = "But now it looks like that feeling is gone.";
-TXT_DEFAULTPICKUPMSG = "\caCall BV and say OOPSY WHOOPSY!";
+STSTR_DQDON =					"\cfOmni-Shields on!\c- \cc[\c-\cd+\c-\cfInvincibility\c-\cc]";
+STSTR_DQDOFF =					"\cuOmni-Shields off.\c- \cc[\c-\cg-\c-\cfInvincibility\c-\cc]";
+STSTR_KFAADDED =				"\cfYou've been gifted a hyper space arsenal with\c- \cdkeys\c- \cfto match!";
+STSTR_FAADDED =					"\cfYou've been gifted a hyper space arsenal!";
+STSTR_NCON =					"\ccTry to save myself, myself keeps slipping away...\c- \cc[\c-\cd+\c-\ctGhost\c-\cc]"; 
+STSTR_NCOFF =					"\cuTried to overcome the complications and the catches...\c- \cc[\c-\cg-\c-\ctGhost\c-\cc]";
+STSTR_BEHOLD =					"We should be able to beam you down something useful. \cc[\c-\cpR\c- \chI\c- \cdV\c- \cuA\c- \ckL\c- \cgS\c-\cc]"; //jesus christ
+STSTR_BEHOLDX =					"\cfUse this wisely!";
+STSTR_CHOPPERS =				"\cgA chainsaw? What's with you and brutality, anyway?";
+TXT_BUDDHAON =					"\cjYou have this strange sense of invulnerability...";
+TXT_BUDDHAOFF =					"But now it looks like that feeling is gone.";
+TXT_DEFAULTPICKUPMSG =			"\caCall BV and say OOPSY WHOOPSY!";
 
-OB_SUICIDE = "%o took matters into %p own hands.";
-OB_FALLING = "%o took a lesson in gravity.";
-OB_CRUSH = "%o would fit nicely into a thermos now.";
-OB_EXIT = "Hey look everybody! %o tried to exit! That's what happens.";
-OB_WATER = "%o is sleeping with this fishes. RIP %o.";
-OB_SLIME = "%o became radioactive, that can't be good.";
-OB_LAVA = "Fire burns?! Well I'm glad %o found out for the rest of us.";
-OB_BARREL = "%o went KABOOM! Yikes!";
-OB_KILLEDSELF = "%o couldn't take it anymore.";
-OB_VOODOO = "%o attempts to destroy some dimensional anomaly...and failed.";
-OB_MONTELEFRAG = "%o imploded thanks to the unperfected art of teleporting.";
-OB_DEFAULT = "%o fell asleep. FOREVER.";
-OB_FRIENDLY1 = "%k and %o had a bit of a falling out, you see.";
-OB_FRIENDLY2 = "%k took an opportunity to kill %o when they least expected it.";
-OB_FRIENDLY3 = "I'm sure %o would've forgiven %k for that shot.";
-OB_FRIENDLY4 = "%k told %o to get outta here. With lethal force.";
+OB_SUICIDE =					"%o took matters into %p own hands.";
+OB_FALLING =					"%o took a lesson in gravity.";
+OB_CRUSH =						"%o would fit nicely into a thermos now.";
+OB_EXIT =						"Hey look everybody! %o tried to exit! That's what happens.";
+OB_WATER =						"%o is sleeping with this fishes. RIP %o.";
+OB_SLIME =						"%o became radioactive, that can't be good.";
+OB_LAVA =						"Fire burns?! Well I'm glad %o found out for the rest of us.";
+OB_BARREL =						"%o went KABOOM! Yikes!";
+OB_KILLEDSELF =					"%o couldn't take it anymore.";
+OB_VOODOO =						"%o attempts to destroy some dimensional anomaly...and failed.";
+OB_MONTELEFRAG =				"%o imploded thanks to the unperfected art of teleporting.";
+OB_DEFAULT =					"%o fell asleep. FOREVER.";
+OB_FRIENDLY1 =					"%k and %o had a bit of a falling out, you see.";
+OB_FRIENDLY2 =					"%k took an opportunity to kill %o when they least expected it.";
+OB_FRIENDLY3 =					"I'm sure %o would've forgiven %k for that shot.";
+OB_FRIENDLY4 =					"%k told %o to get outta here. With lethal force.";
 
-//Key Pickup Messages
-GOTBLUECARD = "Acquired a \chblue keycard\c-!";
-GOTYELWCARD = "Acquired a \ckyellow keycard\c-!";
-GOTREDCARD = "Acquired a \cgred keycard\c-!";
-GOTBLUESKUL = "Acquired a \chblue skull\c- key!";
-GOTYELWSKUL = "Acquired a \ckyellow skull key\c-!";
-GOTREDSKUL = "Acquired a \cgred skull key\c-!";
-PD_BLUEO = "\chBlue key\c- required to activate this object";
-PD_REDO = "\cgRed key\c- required to activate this object";
-PD_YELLOWO = "\ckYellow key\c- required to activate this object";
-PD_BLUEK = "\chBlue key\c- required to open this door";
-PD_REDK = "\cgRed key\c- required to open this door";
-PD_YELLOWK = "\ckYellow key\c- required to open this door";
-PD_BLUECO = "\chBlue card\c- required to activate this object";
-PD_REDCO = "\cgRed card\c- required to activate this object";
-PD_YELLOWCO = "\ckYellow card\c- required to activate this object";
-PD_BLUESO = "\chBlue skull\c- required to activate this object";
-PD_REDSO = "\cgRed skull\c- required to activate this object";
-PD_YELLOWSO = "\ckYellow skull\- required to activate this object";
+///////////////////
+// Key Pickups
+///////////////////
+GOTBLUECARD =					"Acquired a \chblue keycard\c-!";
+GOTYELWCARD =					"Acquired a \ckyellow keycard\c-!";
+GOTREDCARD =					"Acquired a \cgred keycard\c-!";
+GOTBLUESKUL =					"Acquired a \chblue skull\c- key!";
+GOTYELWSKUL =					"Acquired a \ckyellow skull key\c-!";
+GOTREDSKUL =					"Acquired a \cgred skull key\c-!";
+PD_BLUEO =						"\chBlue key\c- required to activate this object";
+PD_REDO =						"\cgRed key\c- required to activate this object";
+PD_YELLOWO =					"\ckYellow key\c- required to activate this object";
+PD_BLUEK =						"\chBlue key\c- required to open this door";
+PD_REDK =						"\cgRed key\c- required to open this door";
+PD_YELLOWK =					"\ckYellow key\c- required to open this door";
+PD_BLUECO =						"\chBlue card\c- required to activate this object";
+PD_REDCO =						"\cgRed card\c- required to activate this object";
+PD_YELLOWCO =					"\ckYellow card\c- required to activate this object";
+PD_BLUESO =						"\chBlue skull\c- required to activate this object";
+PD_REDSO =						"\cgRed skull\c- required to activate this object";
+PD_YELLOWSO =					"\ckYellow skull\- required to activate this object";
 
-//Boom Key Pickup Messages
-PD_BLUEC = "\chBlue card\c- \ccrequired to open this door\c-";
-PD_REDC = "\cgRed card\c- \ccrequired to open this door\c-";
-PD_YELLOWC = "\ckYellow card\c- \ccrequired to open this door\c-";
-PD_BLUES = "\chBlue skull\c- \ccrequired to open this door\c-";
-PD_REDS = "\cgRed skull\c- \ccrequired to open this door\c-";
-PD_YELLOWS = "\ckYellow skull\c- \ccrequired to open this door\c-";
-PD_ANY = "Any key will open this door";
-PD_ANYOBJ = "\cdAny key\c- will activate this object";
-PD_ALL3 = "You need all three keys to open this door";
-PD_ALL3O = "You need all three keys to activate this object";
-PD_ALL6 = "You need all six keys to open this door";
-PD_ALL6O = "You need all six keys to activate this object";
-PD_ALLKEYS = "You need all the keys";
-
-SECRETMESSAGE = "\ccYou've discovered a\c- \cksecret area\c-\cc!\c-";
-
-//Character
-SHENNAME = "\c[Shen]Shen Mi\c-";
-SHENNAMECS = "\c[ShenOutline]Shen Mi\c-";
-ROBOMELNAME = "\c[RoboMel]Robo-Mel\c-";
-
-MELRUBY = "\cgRuby\c-";
-
-
-
-//Genders
-OPTVAL_MALE					= "\cyMale";
-OPTVAL_FEMALE				= "\caFemale";
-OPTVAL_NEUTRAL				= "\ckNeutral";
-OPTVAL_OTHER				= "\cjObject";
-
+///////////////////
+// BOOM Key Pickups
+///////////////////
+PD_BLUEC =						"\chBlue card\c- \ccrequired to open this door";
+PD_REDC =						"\cgRed card\c- \ccrequired to open this door";
+PD_YELLOWC =					"\ckYellow card\c- \ccrequired to open this door";
+PD_BLUES =						"\chBlue skull\c- \ccrequired to open this door";
+PD_REDS =						"\cgRed skull\c- \ccrequired to open this door";
+PD_YELLOWS =					"\ckYellow skull\c- \ccrequired to open this door";
+PD_ANY =						"Any key will open this door";
+PD_ANYOBJ =						"\cdAny key\c- will activate this object";
+PD_ALL3 =						"You need all three keys to open this door";
+PD_ALL3O =						"You need all three keys to activate this object";
+PD_ALL6 =						"You need all six keys to open this door";
+PD_ALL6O =						"You need all six keys to activate this object";
+PD_ALLKEYS =					"You need all the keys";

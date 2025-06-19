@@ -1,14 +1,31 @@
 [enu default]
 
-
 ///////////////////
 // General Messages
 ///////////////////
+TSP_SHOP_NOTYET =							"Unavailable";
+TSP_SHOP_CANTINV =							"Item Does Not Exist";
+TSP_SHOP_NOMONEY =							"Insufficient Funds";
+TSP_SHOP_MAXAMT =							"Maximum Tier Reached";
+TSP_SHOP_MODSEL =							"Weapon Already Modded";
+TSP_SHOP_MAXCONSUME =						"Maximum Limit Reached";
+TSP_SHOP_NEEDWEP =							"Weapon Unavailable";
 
-TSP_SHOP_NOTYET = "Unavailable";
-TSP_SHOP_CANTINV = "Item Does Not Exist";
-TSP_SHOP_NOMONEY = "Insufficient Funds";
-TSP_SHOP_MAXAMT = "Maximum Tier Reached";
-TSP_SHOP_MODSEL = "Weapon Already Modded";
-TSP_SHOP_MAXCONSUME = "Maximum Limit Reached";
-TSP_SHOP_NEEDWEP = "Weapon Unavailable";
+///////////////////
+// Employers
+///////////////////
+TSP_EMPLOYER_MODS =							"Mods";
+
+TSP_EMPLOYER_KEI_NAME =						"Shih";
+TSP_EMPLOYER_KEI_DESC = "ED 04.23.2245 NX-04963840\n\nTo Whom It May Concern,\n\n\tThe galaxy is a harsh place, and you're stuck on a dreadful dead-end planet, with luxury out of your grasp. Look no further; the Shou Pirate Guild is looking for fresh blood to join our ranks. Smuggling is the name of the game, and if you survive, that luxury will land right in your lap.\n\nYou'll start out with a salary of $500 GBD per hour, but with hard work, dedication, and a sense of self-preservation, you just might feel that wallet get a little heavier.\n\n~ Zheng Shi";
+
+TSP_EMPLOYER_ARC_NAME =						"Quaid";
+
+TSP_EMPLOYER_ARC_HEAD = "Attention Applicants!";
+TSP_EMPLOYER_ARC_DESC = "ED 05.16.2245 NX-58473029\n\nAttention Applicants!\n\n\tARC*STAR is accepting applicants for a position in our lineup of galactic enforcers. Your objective will be to carry out tasks that are considered morally questionable by the general public. You will be monitored by a supervisor to ensure that you carry out your assigned tasks.\n\n\tYou will be supplied a salary of $500 GBD per hour, and you will have access to an array of defensive options to support you in your assignments.\n\nMiriam Quaid\nARC*STAR Recruitment Center";
+
+TSP_EMPLOYER_VEX_NAME =						"Vexler";
+TSP_EMPLOYER_VEX_DESC = "ED 02.27.2245 NX-\cg%ERROR%\c-\n\nGreetings,\n\n\tI have been keeping an eye on you for quite a while, and you've definitely captured my attention; you exhibit not only an impressive array of skills, but the will and resolve to match, and your participation will be greatly rewarded.\n\n\t$500 GBD will be your starting salary if you so desire, but there will be gifts much greater than mere currency.\n\n\tA galactic genesis is nigh; it would be a shame to waste this oppurtunity.\n\n- Vexler";
+
+TSP_EMPLOYER_THI_NAME =						"Barret";
+TSP_EMPLOYER_THI_DESC = "ED 11.23.2144 NX-04493550\n\nDear Melody,\n\nWhy don't you answer my calls give me back my fucking Cheebos you asshole I will chew on your clit and punch you in the eyelids you fucker\n\nI know where you live,\nThi Barret";

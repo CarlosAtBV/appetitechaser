@@ -1,37 +1,44 @@
 [enu default]
 
-//ITEMS
-ShieldPickup = "\cc[+\c[TSP_Orange]%i Shield\cc]";
-HealthPickup = "\cc[+\c[TSP_Blue]%i HP\cc]";
-MegaspherePickup = "\cc[\c[TSP_Blue]MAX HEALTH\cc] + [\c[TSP_Orange]+50 SHIELD\c-\cc]";
+///////////////////
+// Health Pickups
+///////////////////
+ShieldPickup =						"\cc[+\c[TSP_Orange]%i Shield\cc]";
+HealthPickup =						"\cc[+\c[TSP_Blue]%i HP\cc]";
+MegaspherePickup =					"\cc[\c[TSP_Blue]MAX HEALTH\cc] + [\c[TSP_Orange]+50 SHIELD\c-\cc]";
 
-//BH
-TimeCrystal = "\cc[\c[TSP_Gold]Time Extension!\cc +\c[TSP_Yellow]%i Seconds\cc]";
-ComboCrystal = "\cc[\c[TSP_LightGreen]Combo Time!\cc]";
-ComboCrystalEnd = "\cc[\c[TSP_Red]]Combo Time Over!\cc]";
+///////////////////
+// BH Crystals
+///////////////////
+TimeCrystal =						"\cc[\c[TSP_Gold]Time Extension!\cc +\c[TSP_Yellow]%i Seconds\cc]";
+ComboCrystal =						"\cc[\c[TSP_LightGreen]Combo Time!\cc]";
+ComboCrystalEnd =					"\cc[\c[TSP_Red]]Combo Time Over!\cc]";
 
-//AMMO
-PISTOLAMMOPICKUP = "\cc[+\cy%i Pistol \ccAmmo]";
-SMGAMMOPICKUP = "\cc[+\ct%i SMG \ccAmmo]";
-BACKPACKPICKUP = "\cc[\cfExpanded Ammo Capacity!\cc]";
+///////////////////
+// Ammo
+///////////////////
+PISTOLAMMOPICKUP =					"\cc[+\cy%i Pistol \ccAmmo]";
+SMGAMMOPICKUP =						"\cc[+\ct%i SMG \ccAmmo]";
+BACKPACKPICKUP =					"\cc[\cfExpanded Ammo Capacity!\cc]";
 
-//UPGRADES (General)
-ShieldUpgradeA = "\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
+///////////////////
+// Shield Upgrade
+///////////////////
+ShieldUpgradeA =					"\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
 
 //UPGRADES (ARC*STAR)
-TankUpgrade = "\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
+TankUpgrade =						"\cc[\cfShield Upgrade!\cc +\c[TSP_Orange]25 Max Shield\cc]";
 
 ////////////////
 // SHEN MI
 ////////////////
-
 //CHARGE STYLE
-ShenMiChargeTag = "\cc[\c[Shen]Charge Style\cc]";
+ShenMiChargeTag =					"\cc[\c[Shen]Charge Style\cc]";
 
 //SELENA
-ShenMiPistolPickup = "\cc[\c[TSPLimeGreen]Selena\cc - \cuPistol\cc]";
-ShenMiPistolTag = "\cc[\c[TSPLimeGreen]Selena\cc]";
+ShenMiPistolPickup =				"\cc[\c[TSPLimeGreen]Selena\cc - \cuPistol\cc]";
+ShenMiPistolTag =					"\cc[\c[TSPLimeGreen]Selena\cc]";
 
 //SUZUKA CUSTOM
-ShenMiSMGPickup = "\cc[\cxOS06 Suzuka\cc - \c[Shen]Custom Model\cc]";
-ShenMiSMGTag = "\cc[\cxOS06 Suzuka\cc](\c[Shen]Custom\cc)";
+ShenMiSMGPickup =					"\cc[\cxOS06 Suzuka\cc - \c[Shen]Custom Model\cc]";
+ShenMiSMGTag =						"\cc[\cxOS06 Suzuka\cc](\c[Shen]Custom\cc)";
