@@ -83,62 +83,62 @@ QUITMSG21 =							"\cnI'm gonna miss you...you had such potential.\n\n"
 //////////////////////////////
 TSPMNU_MAIN_HEADER =				"\c[TSP_LogoGreen]Main Menu";
 
-TSPMNU_MAIN_STARTGAME =				"\c[TSP_Green]Start Game";
-TSPMNU_MAIN_STARTGAME_SUB =			"Start a \c[TSP_Green]new game\c-!";
+TSPMNU_MAIN_STARTGAME =				"\c[TSP_LimeGreen]Start Game";
+TSPMNU_MAIN_STARTGAME_SUB =			"Start a \c[TSP_LimeGreen]new game\c-!";
 
 TSPMNU_MAIN_OPTIONS =				"\c[TSP_Yellow]Options";
 TSPMNU_MAIN_OPTIONS_SUB =			"Adjust \c[TSP_Yellow]game settings\c- and \c[TSP_Yellow]customize controls\c-.";
 
-TSPMNU_MAIN_CODEX =					"\c[TSP_Blue]Codex";
-TSPMNU_MAIN_CODEX_SUB =				"Explore the \c[TSP_Blue]Indigo Skyline\c-'\c[TSP_Blue]s\c- database.";
+TSPMNU_MAIN_CODEX =					"\c[TSP_SeaBlue]Codex";
+TSPMNU_MAIN_CODEX_SUB =				"Explore the \c[TSP_SeaBlue]Indigo Skyline\c-'\c[TSP_SeaBlue]s\c- database.";
 
-TSPMNU_MAIN_LOAD = 					"\c[TSP_LoadSaveGreen]Load Game";
-TSPMNU_MAIN_LOAD_SUB = 				"\c[TSP_LoadSaveGreen]Load\c- a previously saved game.";
+TSPMNU_MAIN_LOAD = 					"\c[TSP_SeaGreen]Load Game";
+TSPMNU_MAIN_LOAD_SUB = 				"\c[TSP_SeaGreen]Load\c- a previously saved game.";
 
-TSPMNU_MAIN_SAVE = 					"\c[TSP_LoadSaveGreen]Save Game";
-TSPMNU_MAIN_SAVE_SUB = 				"\c[TSP_LoadSaveGreen]Save\c- your current progress.";
+TSPMNU_MAIN_SAVE = 					"\c[TSP_SeaGreen]Save Game";
+TSPMNU_MAIN_SAVE_SUB = 				"\c[TSP_SeaGreen]Save\c- your current progress.";
 
 TSPMNU_MAIN_QUIT = 					"\c[TSP_Red]Shut Down";
 //TSPMNU_MAIN_QUIT_SUB =			"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-.";
-//TSPMNU_MAIN_QUIT_SUB =			"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_FirstHuntBlue]The First Hunt\c-.";
+//TSPMNU_MAIN_QUIT_SUB =			"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_Blue]The First Hunt\c-.";
 TSPMNU_MAIN_QUIT_SUB =				"\c[TSP_Red]Exit \c[TSP_LogoGreen]The Space Pirate\c-: \c[TSP_BountyPink]The Second Attack\c-.";
 
 //////////////////////////////
 // GAME MODES
 //////////////////////////////
-TSPMNU_GAMEMODE_HEADER =			"\c[TSP_Green]Select Game Mode";
+TSPMNU_GAMEMODE_HEADER =			"\c[TSP_LogoGreen]Select Game Mode";
 
-TSPMNU_GAMEMODE_STANDARD =			"\c[TSP_Green]Standard";
-TSPMNU_GAMEMODE_STANDARD_SUB =		"(\c[TSP_Green]STANDARD\c-)\nPlay through the game normally.";
+TSPMNU_GAMEMODE_STANDARD =			"\c[TSP_LimeGreen]Standard";
+TSPMNU_GAMEMODE_STANDARD_SUB =		"(\c[TSP_LimeGreen]STANDARD\c-)\nPlay through the game normally.";
 TSPMNU_GAMEMODE_HUNTERS =			"\c[TSP_BountyPink]Bounty Hunters";
 TSPMNU_GAMEMODE_HUNTERS_SUB =		"(\c[TSP_BountyPink]SCORE ATTACK\c-)\nTake down as many enemies as you can!";
 
-TSPMNU_GAMEMODE_TRAINING =			"\c[TSP_Teal]Training";
-TSPMNU_GAMEMODE_TRAINING_SUB =		"(\c[TSP_Teal]PRACTICE\c-)\nHone your skills and sharpen your senses!";
+TSPMNU_GAMEMODE_TRAINING =			"\c[TSP_Cyan]Training";
+TSPMNU_GAMEMODE_TRAINING_SUB =		"(\c[TSP_Cyan]PRACTICE\c-)\nHone your skills and sharpen your senses!";
 
 //////////////////////////////
 // DIFFICULTY SELECT
 //////////////////////////////
-TSPDIF_CASUAL =						"\c[TSP_LightBlue]Easy Peasy";
-TSPDIF_CASUAL_SUB =					"(\c[TSP_LightBlue]CASUAL\c-) Stress-free piracy!\nMinimal enemy enforcements, enemies deal \c[TSP_LightBlue]less\c- damage.";
+TSPDIF_CASUAL =						"\c[TSP_Blue]Easy Peasy";
+TSPDIF_CASUAL_SUB =					"(\c[TSP_Blue]CASUAL\c-) Stress-free piracy! Minimal enemy enforcements, enemies deal \c[TSP_Blue]less\c- damage.";
 
-TSPDIF_NORMAL = 					"\c[TSP_LightGreen]Bring it On!";
-TSPDIF_NORMAL_SUB =					"(\c[TSP_LightGreen]NORMAL\c-) A moderate challenge.\nStandard difficulty for most privateers.";
+TSPDIF_NORMAL = 					"\c[TSP_Green]Bring it On!";
+TSPDIF_NORMAL_SUB =					"(\c[TSP_Green]NORMAL\c-) A moderate challenge. Standard difficulty for most privateers.";
 
 TSPDIF_HARD =						"\c[TSP_Orange]High Intensity!!";
-TSPDIF_HARD_SUB =					"(\c[TSP_Orange]HARD\c-) Tough opposition lies ahead!\nLarger enemy presence, more \c[TSP_Orange]danger\c-! For veteran pirates!";
+TSPDIF_HARD_SUB =					"(\c[TSP_Orange]HARD\c-) Tough opposition lies ahead! Larger enemy presence, more \c[TSP_Orange]danger\c-! For veteran pirates!";
 
-TSPDIF_EXTREME =					"\c[TSP_Red]Blood and Bone!!!";
-TSPDIF_EXTREME_SUB =				"(\c[TSP_Red]EXTREME\c-) Unrelenting pressure!\nHighly \c[TSP_Red]aggressive\c- opponents. For master raiders!";
+TSPDIF_EXTREME =					"\c[TSP_LightRed]Blood and Bone!!!";
+TSPDIF_EXTREME_SUB =				"(\c[TSP_LightRed]EXTREME\c-) Unrelenting pressure! Highly \c[TSP_LightRed]aggressive\c- opponents. For master raiders!";
 
-TSPDIF_ULTIMATE =					"\c[TSP_UltimatePurple]Riches or Ruin!!!!";
-TSPDIF_ULTIMATE_SUB =				"(\c[TSP_UltimatePurple]ULTIMATE\c-) Fight against all odds!\nIncredibly bloodthirsty enemies deal \c[TSP_UltimatePurple]double\c- damage! For super pirates!";
+TSPDIF_ULTIMATE =					"\c[TSP_Magenta]Riches or Ruin!!!!";
+TSPDIF_ULTIMATE_SUB =				"(\c[TSP_Magenta]ULTIMATE\c-) Fight against all odds! Incredibly bloodthirsty enemies deal \c[TSP_Magenta]double\c- damage! For super pirates!";
 
 TSPDIF_UNLIMITED =					"\c[TSP_Gold]Unlimited Battle";
 TSPDIF_UNLIMITED_SUB =				"(\c[TSP_Gold]SPECIALTY\c-) \c[TSP_Gold]An unending battle!\c- The enemies \c[TSP_Gold]don't stop\c- until you \c[TSP_Gold]drop\c-! \c[TSP_Gold]No time limit\c-!";
 
-TSPDIF_HEAVENORHELL =				"\c[TSP_DantePurple]Death to Pirates!!!!!";
-TSPDIF_HEAVENORHELL_SUB =			"(\c[TSP_DantePurple]SPECIALTY\c-) One shot, one kill!\nEverything dies in \c[TSP_DantePurple]one hit\c-, including \c[TSP_DantePurple]YOU\c-!";
+TSPDIF_HEAVENORHELL =				"\c[TSP_DeadlyRed]Death to Pirates!!!!!";
+TSPDIF_HEAVENORHELL_SUB =			"(\c[TSP_DeadlyRed]SPECIALTY\c-) One shot, one kill! Everything dies in \c[TSP_DeadlyRed]one hit\c-, including \c[TSP_DeadlyRed]YOU\c-!";
 
 SKILLNONFINISH =					"\ccThis mode is currently unfinished!";
 
