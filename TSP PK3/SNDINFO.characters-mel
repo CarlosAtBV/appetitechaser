@@ -73,7 +73,12 @@ mel/xdeath02 "sounds/characters/mel/player/vo_mel_death_xdeath02.ogg"
 $volume mel/xdeath 0.7
 
 
-$random mel/jump { mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05 mel/jump06 mel/jump07 mel/jump09 mel/jump10 mel/jump11 mel/jump12 null null null null null null null null null null null }
+$random mel/jump {  
+    mel/jump01 mel/jump02 mel/jump03 mel/jump04 mel/jump05  
+    mel/jump06 mel/jump07 mel/jump09 mel/jump10 mel/jump11  
+    mel/jump12 null null null null null null null null null  
+    null null  
+} 
 mel/jump01 "sounds/characters/mel/player/vo_mel_jump01.ogg"
 mel/jump02 "sounds/characters/mel/player/vo_mel_jump02.ogg"
 mel/jump03 "sounds/characters/mel/player/vo_mel_jump03.ogg"
@@ -109,7 +114,11 @@ mel/unfvo3 "sounds/characters/mel/player/vo_mel_usefailvc3.ogg"
 // Mel's Melee
 //////////////////
 
-$random mel/smallmelee  { mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5 mel/smallmelee6 mel/smallmelee7 null null null null null null null null null null null null null }
+$random mel/smallmelee {  
+    mel/smallmelee1 mel/smallmelee2 mel/smallmelee3 mel/smallmelee4 mel/smallmelee5  
+    mel/smallmelee6 mel/smallmelee7 null null null null null null
+	null null null null null null null  
+}  
 mel/smallmelee1 "sounds/characters/mel/melee/vo_mel_melee_sm01.ogg"
 mel/smallmelee2 "sounds/characters/mel/melee/vo_mel_melee_sm02.ogg"
 mel/smallmelee3 "sounds/characters/mel/melee/vo_mel_melee_sm03.ogg"
@@ -118,7 +127,13 @@ mel/smallmelee5 "sounds/characters/mel/melee/vo_mel_melee_sm05.ogg"
 mel/smallmelee6 "sounds/characters/mel/melee/vo_mel_melee_sm06.ogg"
 mel/smallmelee7 "sounds/characters/mel/melee/vo_mel_melee_sm07.ogg"
 
-$random mel/mediummelee  { mel/mediummelee1 mel/mediummelee2 mel/mediummelee3 mel/mediummelee4 mel/mediummelee5 mel/mediummelee6 mel/mediummelee7 mel/mediummelee8 mel/mediummelee9 mel/mediummelee10 mel/mediummelee11 mel/mediummelee12 null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null null }
+$random mel/mediummelee {  
+    mel/mediummelee1 mel/mediummelee2 mel/mediummelee3 mel/mediummelee4 mel/mediummelee5  
+    mel/mediummelee6 mel/mediummelee7 mel/mediummelee8 mel/mediummelee9 mel/mediummelee10  
+    mel/mediummelee11 mel/mediummelee12 null null null null null null null null  
+    null null null null null null null null null null null null null null null  
+    null null null null null null null  
+}  
 mel/mediummelee1 "sounds/characters/mel/melee/vo_mel_melee_md01.ogg"
 mel/mediummelee2 "sounds/characters/mel/melee/vo_mel_melee_md02.ogg"
 mel/mediummelee3 "sounds/characters/mel/melee/vo_mel_melee_md03.ogg"
@@ -132,7 +147,11 @@ mel/mediummelee10 "sounds/characters/mel/melee/vo_mel_melee_md10.ogg"
 mel/mediummelee11 "sounds/characters/mel/melee/vo_mel_melee_md11.ogg"
 mel/mediummelee12 "sounds/characters/mel/melee/vo_mel_melee_md12.ogg"
 
-$random mel/largemelee { mel/largemelee1 mel/largemelee2 mel/largemelee3 mel/largemelee4 mel/largemelee5 mel/largemelee6 mel/largemelee7 mel/largemelee8 mel/largemelee9 null null null null null null null null null null }
+$random mel/largemelee {  
+    mel/largemelee1 mel/largemelee2 mel/largemelee3 mel/largemelee4 mel/largemelee5  
+    mel/largemelee6 mel/largemelee7 mel/largemelee8 mel/largemelee9 null  
+    null null null null null null null null null null  
+} 
 mel/largemelee1 "sounds/characters/mel/melee/vo_mel_melee_lg01.ogg"
 mel/largemelee2 "sounds/characters/mel/melee/vo_mel_melee_lg02.ogg"
 mel/largemelee3 "sounds/characters/mel/melee/vo_mel_melee_lg03.ogg"
@@ -143,18 +162,29 @@ mel/largemelee7 "sounds/characters/mel/melee/vo_mel_melee_lg07.ogg"
 mel/largemelee8 "sounds/characters/mel/melee/vo_mel_melee_lg08.ogg"
 mel/largemelee9 "sounds/characters/mel/melee/vo_mel_melee_lg09.ogg"
 
-$random mel/xlmelee { mel/xlmelee1 mel/xlmelee2 mel/xlmelee3 mel/xlmelee4 null null null null null null null null null null null null null null null null null null null }
+$random mel/xlmelee {  
+    mel/xlmelee1 mel/xlmelee2 mel/xlmelee3 mel/xlmelee4 null  
+    null null null null null null null null null null null null null
+	null null null null  
+}  
 mel/xlmelee1 "sounds/characters/mel/melee/vo_mel_melee_xl01_short.ogg"
 mel/xlmelee2 "sounds/characters/mel/melee/vo_mel_melee_xl02_short.ogg"
 mel/xlmelee3 "sounds/characters/mel/melee/vo_mel_melee_xl03_short.ogg"
 mel/xlmelee4 "sounds/characters/mel/melee/vo_mel_melee_xl04.ogg"
 
-$random mel/magslam { mel/magslam1 mel/magslam2 mel/magslam3 null null null null null null null null null null null null }
+$random mel/magslam {  
+    mel/magslam1 mel/magslam2 mel/magslam3 null null null null
+	null null null null null null null null  
+}  
 mel/magslam1 "sounds/characters/mel/melee/vo_mel_magslam1.ogg"
 mel/magslam2 "sounds/characters/mel/melee/vo_mel_magslam2.ogg"
 mel/magslam3 "sounds/characters/mel/melee/vo_mel_magslam3.ogg"
 
-$random mel/maggrapple { mel/maggrapple1 mel/maggrapple2 mel/maggrapple3 mel/maggrapple4 mel/maggrapple5 mel/maggrapple6 null null null null null null null null null null null null null }
+$random mel/maggrapple {  
+    mel/maggrapple1 mel/maggrapple2 mel/maggrapple3 mel/maggrapple4 mel/maggrapple5  
+    mel/maggrapple6 null null null null null null null null null
+	null null null  
+}  
 mel/maggrapple1 "sounds/characters/mel/melee/vo_mel_maggrapple1.ogg"
 mel/maggrapple2 "sounds/characters/mel/melee/vo_mel_maggrapple2.ogg"
 mel/maggrapple3 "sounds/characters/mel/melee/vo_mel_maggrapple3.ogg"
@@ -162,7 +192,11 @@ mel/maggrapple4 "sounds/characters/mel/melee/vo_mel_maggrapple4.ogg"
 mel/maggrapple5 "sounds/characters/mel/melee/vo_mel_maggrapple5.ogg"
 mel/maggrapple6 "sounds/characters/mel/melee/vo_mel_maggrapple6.ogg"
 
-$random meltemp { meltemp1 meltemp2 meltemp3 meltemp4 meltemp5 meltemp6 meltemp7 meltemp8 meltemp9 meltemp10 meltemp11 null null null null null null }
+$random meltemp {  
+    meltemp1 meltemp2 meltemp3 meltemp4 meltemp5  
+    meltemp6 meltemp7 meltemp8 meltemp9 meltemp10  
+    meltemp11 null null null null null null  
+}  
 meltemp1 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic03.ogg" 
 meltemp2 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic04.ogg"
 meltemp3 "sounds/characters/mel/weaponpickups/vo_mel_pickup_generic05.ogg"

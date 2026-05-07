@@ -1,8 +1,8 @@
 //////////////////////////////
 // Switches
 //////////////////////////////
-world/switch01/on 						"sounds/world/switch01_on.ogg"
-world/switch01/off 						"sounds/world/switch01_off.ogg"
+world/switch01/on 						"sounds/world/sfx_switch01_on.ogg"
+world/switch01/off 						"sounds/world/sfx_switch01_off.ogg"
 
 //////////////////////////////
 // Neoscape
@@ -31,7 +31,7 @@ $rolloff ambience/fridge/loop 100 212
 //////////////////////////////
 // Misc
 //////////////////////////////
-ailene/appear "sounds/characters/ailene/sfx_ailene_appear.ogg"
+ailene/appear "sounds/world/sfx_ailene_appear.ogg"
 
 world/jumppad "sounds/world/sfx_jumppad.ogg"
 $volume world/jumppad 0.8
