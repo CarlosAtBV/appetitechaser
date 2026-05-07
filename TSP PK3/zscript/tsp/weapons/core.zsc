@@ -1,0 +1,123 @@
+/*
+	The Space Pirate
+	Weapon Core
+	
+	Weapon essentials! This is what EVERY weapon should inherit from.
+*/
+
+Class TSP_MeleeTracer : LineTracer
+{
+    Actor toFind;
+	bool foundFella;
+
+    override ETraceStatus TraceCallback()
+    {
+        if ( results.HitType == TRACE_HitActor && results.HitActor == toFind )
+        {
+			foundFella = true;
+            return TRACE_Stop;
+        }
+
+        return TRACE_Skip;
+    }
+}
+
+Class TSP_NextMoveInfo
+{
+	State statetarget;
+	int buttons;
+	bool isHeld;
+}
+
+Class TSP_BaseWeapon : Weapon
+{
+	Default
+	{
+		Weapon.WeaponScaleY 1.0;
+	}
+	
+	Array<Actor> melee_victims;
+	//Array<TSP_NextMoveInfo> nextmoves;
+	
+	/*
+		A_TSP_Select()
+		
+		Automatically raises the weapon so you don't gotta deal with A_Raise() shenanigans.
+	*/
+	
+		action void A_TSP_Select()
+		{
+			A_WeaponOffset(0, 32);
+		}
+	
+	/*
+		A_TSP_Deselect()
+		
+		Ditto, but for lowering.
+	*/
+	
+		action void A_TSP_Deselect()
+		{
+			A_Lower(420);
+		}
+	
+	/*
+		A_TSP_SetNextFireState()
+	*/
+	
+	/*
+		action void A_TSP_AddNextState(StateLabel st, int buttons = BT_ATTACK, bool isHeld = false)
+		{
+			let nextmove = new("TSP_NextMoveInfo");
+			nextmove.buttons = buttons;
+			nextmove.statetarget = resolveState(st);
+			nextmove.isHeld = isHeld;
+			invoker.nextmoves.Push(nextmove);
+		}
+	
+		action void A_TSP_ClearNextStates()
+		{
+			invoker.nextmoves.Clear();
+		}
+	*/
+		
+	/*
+		A_TSP_Melee()
+	*/
+	
+		action bool A_TSP_Melee(int dmg, int range = 72, int maxAngle = -1, int flags = 0, Name damageType = 'Melee')
+		{
+			invoker.melee_victims.Clear();
+			
+			BlockThingsIterator it = BlockThingsIterator.Create(self, range);
+			Actor mo;
+			bool hitSomething;
+			
+			Actor src = invoker.owner;
+			
+			let tracer = new('TSP_MeleeTracer');
+			
+			while ( it.Next() )
+			{
+				mo = it.thing;
+				if ( !mo.bShootable || mo.bDormant || mo.Health <= 0 ) continue; // Bro are you even alive... r u breathing???
+				if ( maxAngle != -1 && AbsAngle(src.angle, src.AngleTo(mo)) > maxAngle ) continue; // Within acceptable angles
+				
+				Vector3 diff = mo.pos - src.pos;
+				
+				tracer.toFind = mo;
+				tracer.Trace(src.pos + (0,0,src.height/2), src.cursector, diff.Unit(), range, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, self);
+				let res = tracer.results;
+				
+				if ( res.HitActor == null ) continue;
+				if ( res.HitActor != mo ) continue;
+				
+				mo.DamageMobj(src, src, dmg, damageType);
+				mo.TriggerPainChance(damageType, true);
+				hitSomething = true;
+				invoker.melee_victims.Push(mo);
+			}
+			
+			return hitSomething;
+		}
+}

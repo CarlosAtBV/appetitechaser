@@ -15,7 +15,7 @@ enum ETSPGamemodes
 
 const TSP_TRACERSPEED = 40;
 
-Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
+/*Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 {
 	Default
 	{
@@ -56,7 +56,7 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 			}
 			Stop;
 	}
-}
+}*/
 
 //#include "zscript/tsp/misc/misc_tokenizer.zsc"
 #include "zscript/tsp/misc/misc_animsystem.zsc"
@@ -92,6 +92,11 @@ Class TSP_BulletPuff_Enemy : Actor replaces BulletPuff
 #include "zscript/tsp/gm_hunters.zsc"
 
 #include "zscript/tsp/weapons/core_include.zsc" // [Py] for the sake of organization
+
+#include "zscript/tsp/weapons/core.zsc"
+
+#include "zscript/tsp/weapons/mel/fists.zsc"
+#include "zscript/tsp/weapons/mel/nikki.zsc"
 
 // MEL
 #include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"
