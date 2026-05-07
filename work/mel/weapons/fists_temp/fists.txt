@@ -1,0 +1,8 @@
+load "out/fist0000.png"
+save "sprites/mel/weapons/fists/W000A0.png"
+
+load "out/fist0001.png"
+save "sprites/mel/weapons/fists/W000B0.png"
+
+load "out/fist0002.png"
+save "sprites/mel/weapons/fists/W000C0.png"

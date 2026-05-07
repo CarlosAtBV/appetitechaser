@@ -1,0 +1,11 @@
+load "out/nikki0000.png"
+save "sprites/mel/weapons/nikki/W010A0.png"
+
+load "out/nikki0001.png"
+save "sprites/mel/weapons/nikki/W010B0.png"
+
+load "out/nikki0002.png"
+save "sprites/mel/weapons/nikki/W010C0.png"
+
+load "out/nikki0003.png"
+save "sprites/mel/weapons/nikki/W010D0.png"
