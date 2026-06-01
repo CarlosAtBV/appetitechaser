@@ -135,7 +135,7 @@ Class TSP_BaseWeapon : Weapon
 		action void A_TSP_FireBullets(double spread_h, double spread_v, int amount, int damage)
 		{
 			let owner = PlayerPawn(invoker.owner);
-			Vector3 spawnPos = owner.pos + (0, 0, owner.viewheight);
+			Vector3 spawnPos = (owner.pos.x, owner.pos.y, owner.player.viewz);
 		
 			Quat base = Quat.FromAngles(owner.angle, owner.pitch, owner.roll);
 			Vector3 forward = (1,0,0);
@@ -152,7 +152,8 @@ Class TSP_BaseWeapon : Weapon
 				double aimYaw = atan2(dir.y, dir.x);
 				double aimPitch = -asin(dir.z);
 				
-				LineAttack(aimYaw, PLAYERMISSILERANGE, aimPitch, damage, 'Hitscan', "TSP_BulletPuff");
+				LineAttack(aimYaw, PLAYERMISSILERANGE, aimPitch, damage, 'Hitscan', "TSP_BulletPuff",
+					flags: LAF_ABSPOSITION, offsetz: spawnPos.z, offsetforward: spawnPos.x, offsetside: spawnPos.y);
 			}
 		}
 }
