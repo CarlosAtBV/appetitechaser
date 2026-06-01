@@ -19,7 +19,7 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			W010 A 1 A_WeaponReady();
 			Loop;
 		Fire:
-			W010 B 2 A_FireBullets(0, 0, 1, 10, flags: FBF_NORANDOM);
+			W010 B 2 A_TSP_FireBullets(15, 15, 2, 10);
 			W010 C 2;
 			W010 A 2;
 			Goto Ready;

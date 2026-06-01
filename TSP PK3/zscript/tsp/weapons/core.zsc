@@ -120,4 +120,39 @@ Class TSP_BaseWeapon : Weapon
 			
 			return hitSomething;
 		}
+		
+	/*
+		A_TSP_FireBullets()
+		
+		Standard bullet firing stuff. Compared to the vanilla Doom bullet shenanigans,
+		this one uses quaternions to solve gimbal locking and fires directly
+		from the player's viewpoint. TSP is finally a AAA game...
+		
+		The hitscan itself is purely from the player's viewpoint, but tracers
+		are slightly offset.
+	*/
+	
+		action void A_TSP_FireBullets(double spread_h, double spread_v, int amount, int damage)
+		{
+			let owner = PlayerPawn(invoker.owner);
+			Vector3 spawnPos = owner.pos + (0, 0, owner.viewheight);
+		
+			Quat base = Quat.FromAngles(owner.angle, owner.pitch, owner.roll);
+			Vector3 forward = (1,0,0);
+		
+			for ( int i = 0; i < abs(amount); i++ )
+			{
+				double spreadX = frandom(0, spread_h);
+				double spreadY = frandom(0, spread_v);
+				double rot  = frandom(0, 360);
+				Quat offset = Quat.AxisAngle((0,0,1), spreadX*cos(rot));
+				offset = offset * Quat.AxisAngle((0,1,0), spreadY*sin(rot));
+				Vector3 dir = base * offset * forward;
+				
+				double aimYaw = atan2(dir.y, dir.x);
+				double aimPitch = -asin(dir.z);
+				
+				LineAttack(aimYaw, PLAYERMISSILERANGE, aimPitch, damage, 'Hitscan', "TSP_BulletPuff");
+			}
+		}
 }

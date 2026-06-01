@@ -107,6 +107,7 @@ Class TSP_BulletPuff : Actor
 		+ROLLSPRITE
 		+PUFFGETSOWNER
 		+BRIGHT
+		+FORCEXYBILLBOARD
 	}
 	
 	int timeLeft;
