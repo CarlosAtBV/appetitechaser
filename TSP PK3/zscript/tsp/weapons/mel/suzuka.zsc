@@ -1,0 +1,26 @@
+/*
+	The Space Pirate
+	Suzuka
+	
+	Sub-Machineody Gunswell
+*/
+
+Class TSP_Weapon_Suzuka : TSP_BaseWeapon
+{
+	States
+	{
+		Select:
+			W010 A 1 A_Raise();
+			Wait;
+		Deselect:
+			W010 A 1 A_TSP_Deselect();
+			Wait;
+		Ready:
+			W010 A 1 A_WeaponReady();
+			Loop;
+		Fire:
+			W010 B 1 A_TSP_FireBullets(2, 2, 1, 10);
+			W010 C 1;
+			Goto Ready;
+	}
+}

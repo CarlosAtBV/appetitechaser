@@ -19,7 +19,10 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		Player.Portrait "CSS_MELP";
 		Player.WeaponSlot 1, "TSP_Weapon_MelFists";
 		Player.WeaponSlot 2, "TSP_Weapon_DarlingNikki";
-		Player.WeaponSlot 3, "MelSMG", "MelSMGA", "MelSMGB";
+		Player.WeaponSlot 3, "TSP_Weapon_Suzuka";
+		Player.WeaponSlot 4, "TSP_Weapon_Medusa";
+		Player.WeaponSlot 5, "TSP_Weapon_ShivaGauntlets";
+		Player.WeaponSlot 6, "TSP_Weapon_Caster";
 		Species "Player";
 		+THRUSPECIES
 		+PLAYERPAWN.NOTHRUSTWHENINVUL
