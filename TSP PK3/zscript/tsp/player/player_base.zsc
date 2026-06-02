@@ -7,7 +7,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	int tsp_taunting;
 	
-	override void AddInventory (Inventory item)
+	/*override void AddInventory (Inventory item)
 	{
 		if(item is "TSP_Weapon_Core")
 		{
@@ -23,7 +23,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 		super.AddInventory(item);
 		return;
-	}
+	}*/
 	
 	double tsp_bh_rating;
 	int tsp_bh_kills;
