@@ -19,32 +19,17 @@ Class TSP_Weapon_MelFists : TSP_BaseWeapon
 			W000 A 1 A_WeaponReady();
 			Loop;
 		Fire:
+			W000 E 1 A_WeaponOffset(32,32+32);
+			W000 F 1 A_WeaponOffset(16,32+16);
 			W000 A 0 A_TSP_Melee(10);
-			W000 C 1 A_WeaponOffset(-8,32+8);
-			W000 C 1 A_WeaponOffset(-4,32+4);
-			W000 C 1 A_WeaponOffset(-2,32+2);
-			W000 C 1 A_WeaponOffset(-1,32+1);
-			W000 C 4 A_WeaponOffset(0,32);
-			//"----" A 0 A_TSP_AddNextState("Fire2");
-			W000 C 1 A_WeaponOffset(-1,32+1);
-			W000 C 1 A_WeaponOffset(-2,32+2);
-			W000 C 1 A_WeaponOffset(-4,32+4);
-			W000 C 1 A_WeaponOffset(-8,32+8);
-			//"----" A 0 A_TSP_ClearNextStates();
-			Goto Ready;
-		Fire2:
-			W000 A 0 A_TSP_Melee(10);
-			W000 B 1 A_WeaponOffset(8,32+8);
-			W000 B 1 A_WeaponOffset(4,32+4);
-			W000 B 1 A_WeaponOffset(2,32+2);
-			W000 B 1 A_WeaponOffset(1,32+1);
-			W000 B 4 A_WeaponOffset(0,32);
-			//"----" A 0 A_TSP_AddNextState("Fire");
-			W000 B 1 A_WeaponOffset(1,32+1);
-			W000 B 1 A_WeaponOffset(2,32+2);
-			W000 B 1 A_WeaponOffset(4,32+4);
-			W000 B 1 A_WeaponOffset(8,32+8);
-			//"----" A 0 A_TSP_ClearNextStates();
+			W000 G 1 A_WeaponOffset(-2,32-2);
+			W000 G 1 A_WeaponOffset(1,32+1);
+			W000 G 5 A_WeaponOffset(0,32);
+			W000 G 1 A_WeaponOffset(1,32+1);
+			W000 G 1 A_WeaponOffset(2,32+2);
+			W000 G 1 A_WeaponOffset(4,32+4);
+			W000 G 1 A_WeaponOffset(16,32+16);
+			W000 G 1 A_WeaponOffset(32,32+32);
 			Goto Ready;
 	}
 }
