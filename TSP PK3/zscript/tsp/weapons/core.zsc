@@ -12,6 +12,11 @@ Class TSP_MeleeTracer : LineTracer
 
     override ETraceStatus TraceCallback()
     {
+		if ( toFind == null )
+		{
+            return TRACE_Stop;
+		}
+		
         if ( results.HitType == TRACE_HitActor && results.HitActor == toFind )
         {
 			foundFella = true;
@@ -94,6 +99,7 @@ Class TSP_BaseWeapon : Weapon
 			bool hitSomething;
 			
 			Actor src = invoker.owner;
+			let player = TSP_PlayerPawn_ZSCBase(src);
 			
 			let tracer = new('TSP_MeleeTracer');
 			
@@ -116,6 +122,39 @@ Class TSP_BaseWeapon : Weapon
 				mo.TriggerPainChance(damageType, true);
 				hitSomething = true;
 				invoker.melee_victims.Push(mo);
+			}
+			
+			if ( hitSomething )
+			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.duration = 2;
+				recoil.shake_amount = 1;
+				player.AddRecoil(recoil);
+			}
+			else
+			{
+				tracer.toFind = null;
+				Vector3 spawnPos = (src.pos.x, src.pos.y, src.player.viewz);
+				Quat base = Quat.FromAngles(src.angle, src.pitch, src.roll);
+				Vector3 forward = (1,0,0);
+				tracer.Trace(spawnPos, src.cursector, base * forward, range, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, self);
+				let res = tracer.results;
+				Console.Printf(""..res.HitType);
+				if ( res.HitType != TRACE_HitNone )
+				{
+					let fx = Spawn("TSP_MeleeImpactFX", res.HitPos - res.HitVector*0.5);
+					if ( res.HitType == Trace_HitWall )
+					{
+						fx.bWALLSPRITE = true;
+						let line = res.HitLine;
+						fx.angle = atan2(line.delta.y, line.delta.x)+90;
+					}
+					S_StartSoundAt(res.HitPos, "melee/basic/normal/wall", CHAN_WEAPON);
+					let recoil = new("TSP_ViewRecoil");
+					recoil.duration = 2;
+					recoil.shake_amount = 0.75;
+					player.AddRecoil(recoil);
+				}
 			}
 			
 			return hitSomething;

@@ -94,6 +94,7 @@ const TSP_TRACERSPEED = 40;
 #include "zscript/tsp/weapons/core_include.zsc" // [Py] for the sake of organization
 
 #include "zscript/tsp/weapons/core.zsc"
+#include "zscript/tsp/weapons/fx.zsc"
 
 #include "zscript/tsp/weapons/mel/fists.zsc"
 #include "zscript/tsp/weapons/mel/nikki.zsc"

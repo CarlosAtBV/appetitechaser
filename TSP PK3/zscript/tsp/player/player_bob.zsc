@@ -1,3 +1,14 @@
+Class TSP_ViewRecoil
+{
+	int timer;
+	
+	int duration;
+	int fadein;
+	int fadeout;
+	
+	double shake_amount;
+}
+
 Extend Class TSP_PlayerPawn_ZSCBase
 {
 	double d_bobFactor;
@@ -12,6 +23,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double d_lastPitch;
 	
 	ui int lastTic;
+	
+	Array<TSP_ViewRecoil> recoils;
+	
+	void AddRecoil (TSP_ViewRecoil input)
+	{
+		recoils.push(input);
+	}
 	
 	void TSPBobStuff()
 	{
@@ -45,6 +63,25 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		d_xOff = d_xOff + ((-GetPlayerInput(MODINPUT_YAW)/128)-d_xOff)/6;
 		d_yOff = d_yOff + ((-GetPlayerInput(MODINPUT_PITCH)/128)-d_yOff)/6;
+		
+		Vector3 view_shake = (0,0,0);
+		
+		for ( int i = 0; i < recoils.size(); i++ )
+		{
+			let recoil = recoils[i];
+			if ( recoil.timer > recoil.duration )
+			{
+				recoils.delete(i);
+				i -= 1;
+				continue;
+			}
+			if ( recoil.shake_amount > 0.0 )
+			{
+				view_shake += (frandom(-1,1), frandom(-1,1), frandom(-1,1)) * recoil.shake_amount;
+			}
+			recoil.timer += 1;
+		}
+		SetViewPos(view_shake);
 	}
 	
 	//lerp function by my homie JetPlane the epic one

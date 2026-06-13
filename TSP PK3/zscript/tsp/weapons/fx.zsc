@@ -1,0 +1,30 @@
+/*
+	The Space Pirate
+	Common Weapon FX
+*/
+
+Class TSP_MeleeImpactFX : Actor
+{
+    Default
+	{
+		+NOINTERACTION
+		+NOBLOCKMAP
+		+FORCEXYBILLBOARD
+		Scale 0.01;
+		Alpha 0.5;
+		+BRIGHT
+		RenderStyle "Add";
+	}
+	
+	States
+	{
+		Spawn:
+			SPHS C 1
+			{
+				scale.x = scale.x + (0.75 - scale.x) * 0.25;
+				scale.y = scale.x;
+				A_FadeOut(0.075);
+			}
+			Loop;
+	}
+}
