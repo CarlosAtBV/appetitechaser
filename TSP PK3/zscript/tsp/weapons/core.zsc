@@ -85,6 +85,33 @@ Class TSP_BaseWeapon : Weapon
 			invoker.nextmoves.Clear();
 		}
 	*/
+	
+	/*
+		A_TSP_HitStop()
+	*/
+	
+		action void A_TSP_HitStop(int pausetics, int radius)
+		{
+			BlockThingsIterator it = BlockThingsIterator.Create(self, radius);
+			Actor mo;
+			
+			Actor src = invoker.owner;
+			let player = TSP_PlayerPawn_ZSCBase(src);
+			
+			while ( it.Next() )
+			{
+				mo = it.thing;
+				if ( mo == src ) continue;
+				
+				Vector3 diff = mo.pos - src.pos;
+				if ( diff.length() > radius ) continue;
+				
+				if ( mo.health > 0 && mo.tics > 0 )
+				{
+					mo.tics += pausetics;
+				}
+			}
+		}
 		
 	/*
 		A_TSP_Melee()
@@ -130,6 +157,9 @@ Class TSP_BaseWeapon : Weapon
 				recoil.duration = 2;
 				recoil.shake_amount = 1;
 				player.AddRecoil(recoil);
+				int freezeAmt = clamp(dmg/8.0, 2.0, 8.0);
+				A_TSP_HitStop(freezeAmt, 256);
+				A_StartSound("melee/basic/normal/impact", CHAN_WEAPON);
 			}
 			else
 			{
@@ -149,7 +179,8 @@ Class TSP_BaseWeapon : Weapon
 						let line = res.HitLine;
 						fx.angle = atan2(line.delta.y, line.delta.x)+90;
 					}
-					S_StartSoundAt(res.HitPos, "melee/basic/normal/wall", CHAN_WEAPON);
+					//S_StartSoundAt(res.HitPos, "melee/basic/normal/wall", CHAN_WEAPON);
+					A_StartSound("melee/basic/normal/wall", CHAN_WEAPON);
 					let recoil = new("TSP_ViewRecoil");
 					recoil.duration = 2;
 					recoil.shake_amount = 0.75;
