@@ -42,7 +42,13 @@ Class TSP_BaseWeapon : Weapon
 	}
 	
 	Array<Actor> melee_victims;
-	//Array<TSP_NextMoveInfo> nextmoves;
+	Array<TSP_NextMoveInfo> nextmoves;
+	
+		action void A_TSP_WeaponReady(int flags = 0)
+		{
+			A_TSP_ClearNextStates();
+			A_WeaponReady(flags);
+		}
 	
 	/*
 		A_TSP_Select()
@@ -70,21 +76,19 @@ Class TSP_BaseWeapon : Weapon
 		A_TSP_SetNextFireState()
 	*/
 	
-	/*
-		action void A_TSP_AddNextState(StateLabel st, int buttons = BT_ATTACK, bool isHeld = false)
-		{
-			let nextmove = new("TSP_NextMoveInfo");
-			nextmove.buttons = buttons;
-			nextmove.statetarget = resolveState(st);
-			nextmove.isHeld = isHeld;
-			invoker.nextmoves.Push(nextmove);
-		}
-	
-		action void A_TSP_ClearNextStates()
-		{
-			invoker.nextmoves.Clear();
-		}
-	*/
+	action void A_TSP_AddNextState(StateLabel st, int buttons = BT_ATTACK, bool isHeld = false)
+	{
+		let nextmove = new("TSP_NextMoveInfo");
+		nextmove.buttons = buttons;
+		nextmove.statetarget = resolveState(st);
+		nextmove.isHeld = isHeld;
+		invoker.nextmoves.Push(nextmove);
+	}
+
+	action void A_TSP_ClearNextStates()
+	{
+		invoker.nextmoves.Clear();
+	}
 	
 	/*
 		A_TSP_HitStop()
@@ -111,6 +115,17 @@ Class TSP_BaseWeapon : Weapon
 					mo.tics += pausetics;
 				}
 			}
+		}
+		
+	/*
+		A_TSP_AddRecoil()
+	*/
+	
+		action void A_TSP_AddRecoil (TSP_ViewRecoil newRecoil)
+		{
+			Actor src = invoker.owner;
+			let player = TSP_PlayerPawn_ZSCBase(src);
+			player.AddRecoil(newRecoil);
 		}
 		
 	/*

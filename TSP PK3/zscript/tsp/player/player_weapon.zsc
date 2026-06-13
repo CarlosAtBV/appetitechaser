@@ -11,11 +11,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	override void FireWeapon (State stat)
 	{
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
-		/*if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
+		if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
 		{
 			stat = tsp_weap.nextmoves[0].statetarget;
 			tsp_weap.nextmoves.Clear();
-		}*/
+		}
 		
 		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
 		psprite_weapon.x = 0;
@@ -54,10 +54,10 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			player.WeaponState = player.WeaponState | (WF_WEAPONREADY | WF_WEAPONREADYALT);
 		}
 		
-		/*if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
+		if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
 		{
 			player.WeaponState = player.WeaponState | (WF_WEAPONREADY | WF_WEAPONREADYALT);
-		}*/
+		}
 
 		if ((health > 0) || (player.ReadyWeapon != null && !player.ReadyWeapon.bNoDeathInput))
 		{
@@ -71,7 +71,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				CheckWeaponChange();
 				if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT))
 				{
-					CheckWeaponFire();
+					//CheckWeaponFire();
+					TSP_CheckWeaponFire();
 				}
 				// Check custom buttons
 				CheckWeaponButtons();
@@ -89,7 +90,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			DTA_VirtualWidth, 320, DTA_VirtualHeight, 240);
 	}
 	
-	/*void TSP_CheckWeaponFire()
+	void TSP_CheckWeaponFire()
 	{
 		let player = self.player;
 		let weapon = player.ReadyWeapon;
@@ -120,7 +121,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			player.attackdown = false;
 		}
-	}*/
+	}
 	
 	override Weapon PickNextWeapon()
 	{

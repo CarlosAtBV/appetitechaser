@@ -1,0 +1,26 @@
+load "../hands/render/melee_idle/0001.png"
+save "sprites/mel/weapons/fists/111AA0.png"
+
+load "../hands/render/melee_idle/0001.png"
+save "sprites/mel/weapons/fists/111AB0.png"
+
+load "../hands/render/melee_idle/0001.png"
+save "sprites/mel/weapons/fists/111AC0.png"
+
+load "../hands/render/punch_1/0001.png"
+save "sprites/mel/weapons/fists/111FA0.png"
+
+load "../hands/render/punch_1/0002.png"
+save "sprites/mel/weapons/fists/111FB0.png"
+
+load "../hands/render/punch_1/0003.png"
+save "sprites/mel/weapons/fists/111FC0.png"
+
+load "../hands/render/punch_left/0001.png"
+save "sprites/mel/weapons/fists/111GA0.png"
+
+load "../hands/render/punch_left/0002.png"
+save "sprites/mel/weapons/fists/111GB0.png"
+
+load "../hands/render/punch_left/0003.png"
+save "sprites/mel/weapons/fists/111GC0.png"

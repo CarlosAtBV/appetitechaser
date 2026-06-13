@@ -49,13 +49,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		double totalPitch = tsp_offsetpitch;
 		totalPitch += -tsp_landpitch;
-		A_SetViewPitch(totalPitch, SPF_INTERPOLATE);
+		//A_SetViewPitch(totalPitch, SPF_INTERPOLATE);
 		tsp_slideroll = tsp_slideroll + ((tsp_crouchSliding ? 2 : 0) - tsp_slideroll) / 3;
 		tsp_slidefov = tsp_slidefov + ((tsp_crouchSliding && vel.z == 0 ? 1 : 0) - tsp_slidefov) / 5;
 		double totalRoll = -tsp_landpitch*sin(level.maptime*12);
 		totalRoll += tsp_slideroll + TSP_GetDeathRoll();
 		totalRoll += tsp_wallroll;
-		A_SetViewRoll(totalRoll, SPF_INTERPOLATE);
+		//A_SetViewRoll(totalRoll, SPF_INTERPOLATE);
 		
 		tsp_offsetpitch *= 0.8;
 	}

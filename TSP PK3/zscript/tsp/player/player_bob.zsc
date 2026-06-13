@@ -7,6 +7,16 @@ Class TSP_ViewRecoil
 	int fadeout;
 	
 	double shake_amount;
+	
+	double pitch;
+	double roll;
+	double yaw;
+	double pitch_shake;
+	double roll_shake;
+	double yaw_shake;
+	double pitch_speed;
+	double roll_speed;
+	double yaw_speed;
 }
 
 Extend Class TSP_PlayerPawn_ZSCBase
@@ -65,23 +75,44 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		d_yOff = d_yOff + ((-GetPlayerInput(MODINPUT_PITCH)/128)-d_yOff)/6;
 		
 		Vector3 view_shake = (0,0,0);
+		double view_roll = 0;
+		double view_angle = 0;
 		
 		for ( int i = 0; i < recoils.size(); i++ )
 		{
 			let recoil = recoils[i];
-			if ( recoil.timer > recoil.duration )
+			int totalTime = recoil.fadein + recoil.duration + recoil.fadeout;
+			
+			if ( recoil.timer > totalTime )
 			{
 				recoils.delete(i);
 				i -= 1;
 				continue;
 			}
+			
+			double power = 1.0;
+			double timer = recoil.timer;
+			if ( recoil.timer < recoil.fadein && recoil.fadein > 0 )
+			{
+				power = timer / recoil.fadein;
+			}
+			else if ( recoil.timer >= recoil.fadein+recoil.duration && recoil.fadeout > 0 )
+			{
+				power = 1.0 - (timer-(recoil.fadein+recoil.duration)) / recoil.fadeout;
+			}
+			power = power * power * power;
+			
 			if ( recoil.shake_amount > 0.0 )
 			{
-				view_shake += (frandom(-1,1), frandom(-1,1), frandom(-1,1)) * recoil.shake_amount;
+				view_shake += (frandom(-1,1), frandom(-1,1), frandom(-1,1)) * recoil.shake_amount * power;
 			}
+			view_roll += (recoil.roll + sin(level.maptime * recoil.roll_speed) * recoil.roll_shake) * power;
+			view_angle += (recoil.yaw + sin(level.maptime * recoil.yaw_speed) * recoil.yaw_shake) * power;
 			recoil.timer += 1;
 		}
 		SetViewPos(view_shake);
+		A_SetViewRoll(view_roll, SPF_INTERPOLATE);
+		A_SetViewAngle(view_angle, SPF_INTERPOLATE);
 	}
 	
 	//lerp function by my homie JetPlane the epic one
