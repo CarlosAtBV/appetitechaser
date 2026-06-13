@@ -240,10 +240,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		
-		if(pp_hitFreeze>0)
+		Vector2 shakebert;
+		if ( hit_freeze > 0 )
 		{
-			tsp_shakeashakeashakea.x = 1.0-2.0*(ticFrac>=0.5);
+			shakebert.x = (sin((level.maptime+ticfrac)*200)*1);
+			shakebert.y = (cos((level.maptime+ticfrac)*200)*1);
 		}
-		return p1 * (1. - ticfrac) + p2 * ticfrac + tsp_shakeashakeashakea;
+		return p1 * (1. - ticfrac) + p2 * ticfrac + shakebert;
 	}
 }

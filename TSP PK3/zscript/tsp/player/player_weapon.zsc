@@ -8,6 +8,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_fb_zoom;
 	double tsp_fb_zoomlerp;
 	
+	int hit_freeze;
+	int hit_freezeMax;
+	
 	override void FireWeapon (State stat)
 	{
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
@@ -23,8 +26,19 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		super.FireWeapon(stat);
 	}
 	
+	void SetHitFreeze (int amount)
+	{
+		hit_freezeMax = amount;
+		hit_freeze = amount;
+	}
+	
 	override void TickPSprites()
 	{
+		if ( hit_freeze > 0 )
+		{
+			hit_freeze -= 1;
+			return;
+		}
 		let player = self.player;
 		let pspr = player.psprites;
 		while (pspr)
