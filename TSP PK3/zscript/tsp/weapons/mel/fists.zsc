@@ -24,27 +24,42 @@ Class TSP_Weapon_MelFists : TSP_BaseWeapon
 			Goto PunchRight;
 			
 		PunchRight:
-			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_PunchRight");
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_PunchRight");
+				A_StartSound("melee/basic/normal/miss", 12);
+			}
 			111F A 2;
 			111F B 1;
 			"----" A 0 A_TSP_Melee(10);
 			111F C 6;
 			111F C 6 A_TSP_AddNextState("PunchLeft");
+			TNT1 A 2;
 			Goto Ready;
 		PunchLeft:
-			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_PunchLeft");
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_PunchLeft");
+				A_StartSound("melee/basic/normal/miss", 12);
+			}
 			111G A 2;
 			111G B 1;
 			"----" A 0 A_TSP_Melee(12);
 			111G C 6;
 			111G C 6 A_TSP_AddNextState("PunchOverheadRight");
+			TNT1 A 2;
 			Goto Ready;
 		PunchOverheadRight:
-			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_OverheadRight");
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_OverheadRight");
+				A_StartSound("melee/basic/normal/miss", 12);
+			}
 			111F D 3;
 			111F E 1;
 			"----" A 0 A_TSP_Melee(12);
 			111F F 13;
+			TNT1 A 2;
 			Goto Ready;
 			
 		Anim_PunchRight:

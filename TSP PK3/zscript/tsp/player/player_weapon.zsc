@@ -14,6 +14,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	override void FireWeapon (State stat)
 	{
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
+		
+		bool isActive = player.buttons & BT_ATTACK;
+		bool isHeld = isActive && player.oldbuttons & BT_ATTACK;
+		
+		if ( isHeld ) return;
+		
 		if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
 		{
 			stat = tsp_weap.nextmoves[0].statetarget;

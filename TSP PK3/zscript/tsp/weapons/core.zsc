@@ -229,7 +229,7 @@ Class TSP_BaseWeapon : Weapon
 			{
 				double spreadX = frandom(0, spread_h);
 				double spreadY = frandom(0, spread_v);
-				double rot  = frandom(0, 360);
+				double rot = frandom(0, 360);
 				Quat offset = Quat.AxisAngle((0,0,1), spreadX*cos(rot));
 				offset = offset * Quat.AxisAngle((0,1,0), spreadY*sin(rot));
 				Vector3 dir = base * offset * forward;
