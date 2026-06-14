@@ -5,7 +5,10 @@
 	Punchody fistswell.
 */
 
-const PSP_WEAPONANIM = 67;
+const PSP_OFFHAND = 69;
+
+const PSP_LEFTHAND = 69;
+const PSP_RIGHTHAND = 70;
 
 Class TSP_Weapon_MelFists : TSP_BaseWeapon
 {
@@ -32,33 +35,77 @@ Class TSP_Weapon_MelFists : TSP_BaseWeapon
 			111F A 2;
 			111F B 1;
 			"----" A 0 A_TSP_Melee(10);
-			111F C 6;
-			111F C 6 A_TSP_AddNextState("PunchLeft");
-			TNT1 A 2;
+			111F C 2;
+			"----" A 0 A_TSP_SetNextState("PunchLeft");
+			111F C 10;
 			Goto Ready;
+		PunchRight_GoAway:
+			111F C 0
+			{
+				A_OverlayFlags(OverlayID(), PSPF_ADDWEAPON, false);
+				A_OverlayOffset(OverlayID(), 0, 32, WOF_ADD);
+			}
+			"----" A 1 A_OverlayOffset(OverlayID(), 32, 8, WOF_ADD);
+			"----" A 1 A_OverlayOffset(OverlayID(), 64, 32, WOF_ADD);
+			"----" A 1 A_OverlayOffset(OverlayID(), 144, 96, WOF_ADD);
+			Stop;
+			
 		PunchLeft:
 			"----" A 0
 			{
+				A_Overlay(PSP_OFFHAND, "PunchRight_GoAway");
 				A_Overlay(PSP_WEAPONANIM, "Anim_PunchLeft");
 				A_StartSound("melee/basic/normal/miss", 12);
 			}
 			111G A 2;
 			111G B 1;
 			"----" A 0 A_TSP_Melee(12);
-			111G C 6;
-			111G C 6 A_TSP_AddNextState("PunchOverheadRight");
-			TNT1 A 2;
+			111G C 2;
+			"----" A 0 A_TSP_SetNextState("PunchOverheadRight");
+			111G C 10;
 			Goto Ready;
+		PunchLeft_GoAway:
+			111G C 0
+			{
+				A_OverlayFlags(OverlayID(), PSPF_ADDWEAPON, false);
+				A_OverlayOffset(OverlayID(), 0, 32, WOF_ADD);
+			}
+			"----" A 1 A_OverlayOffset(OverlayID(), -32, 8, WOF_ADD);
+			"----" A 1 A_OverlayOffset(OverlayID(), -64, 32, WOF_ADD);
+			"----" A 1 A_OverlayOffset(OverlayID(), -144, 96, WOF_ADD);
+			Stop;
+			
 		PunchOverheadRight:
 			"----" A 0
 			{
+				A_Overlay(PSP_OFFHAND, "PunchLeft_GoAway");
 				A_Overlay(PSP_WEAPONANIM, "Anim_OverheadRight");
 				A_StartSound("melee/basic/normal/miss", 12);
 			}
-			111F D 3;
+			111F D 2;
 			111F E 1;
 			"----" A 0 A_TSP_Melee(12);
-			111F F 13;
+			111F F 3;
+			"----" A 0 A_TSP_SetNextState("PunchUppercut");
+			111F F 10;
+			TNT1 A 2;
+			Goto Ready;
+			
+		PunchUppercut:
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_Uppercut");
+				A_StartSound("melee/basic/normal/miss", 12);
+			}
+			111U A 2;
+			111U A 1;
+			"----" A 0 
+			{
+				A_TSP_Melee(40);
+				let effect = TSP_HitEffect_Thrust.Create(invoker.owner, (3,0,9));
+				A_TSP_ApplyToVictims(effect);	
+			}
+			111U A 13;
 			TNT1 A 2;
 			Goto Ready;
 			
@@ -146,6 +193,37 @@ Class TSP_Weapon_MelFists : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(-167.82, 102.14);
 			TNT1 A 1 A_WeaponOffset(-189.05, 134.82);
 			TNT1 A 1 A_WeaponOffset(-205.18, 180.45);
+			Stop;
+			
+		Anim_Uppercut:
+			TNT1 A 0
+			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 4;
+				recoil.fadeout = 8;
+				recoil.pitch = -5.0;
+				recoil.yaw = -0.4;
+				recoil.yaw_shake = 0.2;
+				recoil.yaw_speed = 50.0;
+				recoil.roll = -1;
+				recoil.yaw_shake = 0.15;
+				recoil.yaw_speed = 55.0;
+				A_TSP_AddRecoil(recoil);
+			}
+			TNT1 A 1 A_WeaponOffset(-29.00, 230.00);
+			TNT1 A 1 A_WeaponOffset(-15.59, 113.47);
+			TNT1 A 1 A_WeaponOffset(-12.14, 57.68);
+			TNT1 A 1 A_WeaponOffset(-11.40, 37.57);
+			TNT1 A 1 A_WeaponOffset(-11.35, 32.00);
+			TNT1 A 1 A_WeaponOffset(-11.32, 31.21);
+			TNT1 A 1 A_WeaponOffset(-11.32, 30.30);
+			TNT1 A 1 A_WeaponOffset(-11.37, 29.52);
+			TNT1 A 1 A_WeaponOffset(-11.50, 29.01);
+			TNT1 A 1 A_WeaponOffset(-11.78, 28.55);
+			TNT1 A 1 A_WeaponOffset(-12.33, 30.23);
+			TNT1 A 1 A_WeaponOffset(-13.39, 37.33);
+			TNT1 A 1 A_WeaponOffset(-15.43, 52.92);
+			TNT1 A 1 A_WeaponOffset(-18.66, 84.98);
 			Stop;
 	}
 }
