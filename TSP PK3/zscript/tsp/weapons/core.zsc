@@ -68,14 +68,50 @@ Class TSP_BaseWeapon : Weapon
 		Weapon.WeaponScaleY 1.0;
 	}
 	
+	bool alt_active;
+	
 	Array<Actor> melee_victims;
 	Array<TSP_NextMoveInfo> nextmoves;
 	
-		action void A_TSP_WeaponReady(int flags = 0)
+	bool SetAltActive (bool newvalue)
+	{
+		if ( newValue != alt_active )
 		{
-			A_TSP_ClearNextStates();
-			A_WeaponReady(flags);
+			if ( newValue && !FindState('AltReady') )
+			{
+				return false;
+			}
+			alt_active = newValue;
+			return true;
 		}
+		return false;
+	}
+	
+	override State GetReadyState()
+	{
+		let player = owner.player;
+		if ( alt_active && FindState('AltReady') )
+		{
+			return FindState('AltReady');
+		}
+		return FindState('Ready');
+	}
+	
+	override State GetAtkState(bool hold)
+	{
+		let player = owner.player;
+		if ( alt_active && FindState('AltFire') )
+		{
+			return FindState('AltFire');
+		}
+		return FindState('Fire');
+	}
+	
+	action void A_TSP_WeaponReady(int flags = 0)
+	{
+		A_TSP_ClearNextStates();
+		A_WeaponReady(flags);
+	}
 	
 	/*
 		A_TSP_Select()

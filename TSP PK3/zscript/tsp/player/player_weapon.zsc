@@ -11,25 +11,84 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	int hit_freeze;
 	int hit_freezeMax;
 	
-	override void FireWeapon (State stat)
+	/*override void FireWeapon (State stat)
 	{
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
 		
 		bool isActive = player.buttons & BT_ATTACK;
 		bool isHeld = isActive && player.oldbuttons & BT_ATTACK;
 		
-		if ( isHeld ) return;
-		
-		if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
+		if ( !tsp_weap )
 		{
-			stat = tsp_weap.nextmoves[0].statetarget;
-			tsp_weap.nextmoves.Clear();
+			super.FireWeapon(stat);
+			return;
+		}
+		
+		if ( tsp_weap.nextmoves.size() > 0 )
+		{
+			stat = null;
+			for ( int i = 0; i < tsp_weap.nextmoves.size(); i++ )
+			{
+				if ( !tsp_weap.nextmoves[i].isHeld && isHeld ) continue;
+				if ( tsp_weap.nextmoves[i].isHeld && !isHeld ) continue;
+				stat = tsp_weap.nextmoves[i].statetarget;
+				tsp_weap.nextmoves.Clear();
+				break;
+			}
+			if ( stat == null ) return;
 		}
 		
 		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
 		psprite_weapon.x = 0;
 		psprite_weapon.y = 32;
 		super.FireWeapon(stat);
+	}*/
+	override void FireWeapon (State stat)
+	{
+		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
+		psprite_weapon.x = 0;
+		psprite_weapon.y = 32;
+		super.FireWeapon(stat);
+	}
+	
+	bool TSP_TryNextMove()
+	{
+		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
+		
+		if ( !tsp_weap ) return false;
+		Console.Printf(""..tsp_weap.nextmoves.size().." ~ "..level.maptime);
+		
+		if ( tsp_weap.nextmoves.size() <= 0 ) return false;
+		
+		for ( int i = 0; i < tsp_weap.nextmoves.size(); i++ )
+		{
+			int buttons = tsp_weap.nextmoves[i].buttons;
+			
+			bool isActive = player.cmd.buttons & buttons;
+			bool isHeld = isActive && player.oldbuttons & buttons;
+			
+			if ( !isActive ) continue;
+			if ( !tsp_weap.nextmoves[i].isHeld && isHeld ) continue;
+			if ( tsp_weap.nextmoves[i].isHeld && !isHeld ) continue;
+			
+			FireWeapon(tsp_weap.nextmoves[i].statetarget);
+			tsp_weap.nextmoves.Clear();
+			return true;
+		}
+		
+		Console.Printf("It might be gucled");
+		
+		return false;
+	}
+	
+	override void FireWeaponAlt (State stat)
+	{
+		return;
+		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
+		let stat = tsp_weap.FindState("AltFire");
+		
+		FireWeapon(stat);
+		return;
 	}
 	
 	void SetHitFreeze (int amount)
@@ -73,11 +132,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			player.WeaponState = player.WeaponState | (WF_WEAPONREADY | WF_WEAPONREADYALT);
 		}
-		
-		if ( tsp_weap && tsp_weap.nextmoves.Size() > 0 )
-		{
-			player.WeaponState = player.WeaponState | (WF_WEAPONREADY | WF_WEAPONREADYALT);
-		}
 
 		if ((health > 0) || (player.ReadyWeapon != null && !player.ReadyWeapon.bNoDeathInput))
 		{
@@ -89,11 +143,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			else
 			{
 				CheckWeaponChange();
-				if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT))
+				TSP_CheckWeaponFire();
+				/*if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT))
 				{
 					//CheckWeaponFire();
-					TSP_CheckWeaponFire();
-				}
+				}*/
 				// Check custom buttons
 				CheckWeaponButtons();
 			}
@@ -117,6 +171,36 @@ Extend Class TSP_PlayerPawn_ZSCBase
 
 		if (weapon == NULL)
 			return;
+		
+		let tsp_weap = TSP_BaseWeapon(weapon);
+		if ( !tsp_weap )
+		{
+			CheckWeaponFire();
+			return;
+		}
+		
+		if ( player.WeaponState & WF_WEAPONREADY )
+		{
+			if ( player.cmd.buttons & BT_ALTATTACK )
+			{
+				if ( tsp_weap.SetAltActive(true) )
+				{
+					player.SetPSprite(PSP_WEAPON, tsp_weap.GetReadyState());
+				}
+			}
+			else if ( !(player.cmd.buttons & BT_ALTATTACK) )
+			{
+				if ( tsp_weap.SetAltActive(false) )
+				{
+					player.SetPSprite(PSP_WEAPON, tsp_weap.GetReadyState());
+				}
+			}
+		}
+		
+		if ( TSP_TryNextMove() )
+		{
+			return;
+		}
 
 		// Check for fire. Some weapons do not auto fire.
 		if ((player.WeaponState & WF_WEAPONREADY) && (player.cmd.buttons & BT_ATTACK))
@@ -124,11 +208,11 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if (!player.attackdown || !weapon.bNoAutofire)
 			{
 				player.attackdown = true;
-				FireWeapon (NULL);
+				FireWeapon(NULL);
 				return;
 			}
 		}
-		else if ((player.WeaponState & WF_WEAPONREADYALT) && (player.cmd.buttons & BT_ALTATTACK))
+		/*else if ((player.WeaponState & WF_WEAPONREADYALT) && (player.cmd.buttons & BT_ALTATTACK))
 		{
 			if (!player.attackdown || !weapon.bNoAutofire)
 			{
@@ -136,7 +220,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				FireWeaponAlt (NULL);
 				return;
 			}
-		}
+		}*/
 		else
 		{
 			player.attackdown = false;

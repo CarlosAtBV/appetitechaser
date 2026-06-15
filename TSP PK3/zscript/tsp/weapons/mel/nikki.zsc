@@ -29,7 +29,22 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			122G C 2;
 			"----" A 0 A_TSP_SetNextState("Fire");
 			122G DE 2;
+			122G DE 200;
 			Goto Ready;
+		AltReady:
+			122A A 1 A_TSP_WeaponReady();
+			Loop;
+		AltFire:
+			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
+			122A B 2
+			{
+				A_TSP_FireBullets(3, 2, 1, 10);
+				A_StartSound("nikki/default/fire", CHAN_WEAPON);
+			}
+			122A A 1;
+			"----" A 0 A_TSP_SetNextState("AltFire", isHeld: true);
+			122A A 1;
+			Goto AltReady;
 			
 		Flash:
 			122F A 2 BRIGHT
