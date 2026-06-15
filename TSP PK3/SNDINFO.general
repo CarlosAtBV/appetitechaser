@@ -56,6 +56,25 @@ $rolloff hit/flesh 200 2000
 $volume hit/flesh 0.8
 
 //////////////////////////////
+// Items
+//////////////////////////////
+items/health/micro						"sounds/general/items/sfx_items_health_micro_pickup.ogg"
+items/health/microduo					"sounds/general/items/sfx_items_health_micro_duo_pickup.ogg"
+items/health/small						"sounds/general/items/sfx_items_health_small_pickup.ogg"
+items/health/big						"sounds/general/items/sfx_items_health_big_pickup.ogg"
+items/health/mega						"sounds/general/items/sfx_items_health_mega_pickup.ogg"
+
+items/shield/micro						"sounds/general/items/sfx_items_shield_micro_pickup.ogg"
+items/shield/microduo					"sounds/general/items/sfx_items_shield_micro_duo_pickup.ogg"
+items/shield/big						"sounds/general/items/sfx_items_shield_big_pickup.ogg"
+items/shield/mega						"sounds/general/items/sfx_items_shield_mega_pickup.ogg"
+items/shield/upgrade					"sounds/general/items/sfx_items_shield_upgrade_pickup.ogg"
+
+items/miracleorb						"sounds/general/items/sfx_items_powerup_miracleorb.ogg"
+items/vitalityorb						"sounds/general/items/sfx_items_powerup_vitalityorb.ogg"
+items/omnishield						"sounds/general/items/sfx_items_powerup_omnishield.ogg"
+
+//////////////////////////////
 // Misc.
 //////////////////////////////
 general/weaponpickup 					"sounds/general/items/sfx_general_weaponpickup.ogg" // Mortal Kombat X, Resident Evil 4, Super Monday Night Combat
