@@ -2,7 +2,7 @@ Class TSP_EpisodeMenuButFake : ListMenu
 {
 	override void Ticker()
 	{
-		S_Sound("ailene/standard", CHAN_UI);
+		S_Sound("ailene/menu/standard", CHAN_UI);
 		ListMenu sin = self;
 		Menu father = sin.mParentMenu;
 		Array<TSP_EpisodeMenu_Item > episodes;

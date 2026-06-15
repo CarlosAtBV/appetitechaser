@@ -17,9 +17,9 @@ TSPMAP_TEST_DESC =						"Digital Testing Grounds";
 
 TSPMAP_DEMOHUB_NAME =					"Demoscape";
 TSPMAP_DEMOHUB_DESC =					"First Hunt Demo Hub";
-TSPMAP_DEMOHUB_NAME2 =					"\c[TSP_Yellow]Welcome to \c[TSPMenuGreen]Demoscape\c[TSP_Yellow]!";
-TSPMAP_DEMOHUB_DESC2 =					"\ccEnjoy your stay!";
-TSPMAP_DEMOHUB_DESC3 =					"\c[TSP_Green]TIP\cc: Be on the lookout for \c[Gold]secrets\cc!";
+TSPMAP_DEMOHUB_NAME2 =					"\c[SeaGreen]Demoscape";
+TSPMAP_DEMOHUB_DESC2 =					"\c[Blue]NEOSCAPE\c[White]//:\c[Yellow]TEST SECTOR";
+TSPMAP_DEMOHUB_DESC3 =					"\c[Green]TIP\cc: Be on the lookout for \c[Yellow]secrets\cc!";
 
 TSPMAP_BATTLEZONE_NAME =				"Battle Zone";
 TSPMAP_BATTLEZONE_DESC =				"Neoscape";
@@ -29,3 +29,4 @@ TSPMAP_ELEGIA_DESC =					"Elegia";
 
 TSPMAP_GROSSE_NAME =					"Grosse";
 TSPMAP_GROSSE_DESC =					"The Ultimate Challenge";
+

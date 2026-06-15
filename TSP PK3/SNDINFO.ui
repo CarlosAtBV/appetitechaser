@@ -14,11 +14,11 @@ menu/invalid				"sounds/general/ui/ui_menu_invalid.ogg"
 menu/prompt					"sounds/general/ui/ui_menu_prompt.ogg"
 
 title/swoosh "sounds/general/ui/ui_titleswoosh.ogg"
+menu/mapname "sounds/general/ui/ui_mapname.ogg"
 
 //////////////////////////////
 // Intermission Sounds
 //////////////////////////////
-$alias                intermission/tick             intermission/tick
 $alias                intermission/cooptotal        menu/choose
 $alias                intermission/nextstage        menu/change
 $alias                intermission/paststats        menu/choose
@@ -26,7 +26,7 @@ $alias                intermission/pastcoopstats    menu/choose
 $alias                intermission/pastdmstats      menu/active
 
 intermission/tick 			"sounds/general/menu/ui_intermission_tick.ogg"
-intermission/mapname 		"sounds/general/menu/ui_metalimpact.ogg" // Mortal Kombat X
+intermission/mapname 		"sounds/general/menu/ui_metalimpact.ogg"
 $volume intermission/mapname 0.75
 $alias intermission/mapstatus menu/advance
 $alias intermission/tally menu/cursor
@@ -79,9 +79,9 @@ bounty/finish           	"sounds/general/player/ui_bounty_finished.ogg"
 //////////////////////////////
 // Misc Sounds
 //////////////////////////////
-misc/chat					"sounds/general/ui/ui_chatmessage.ogg" // The Chronicles of Riddick: Assault on Dark Athena
-misc/chat2					"sounds/general/ui/ui_chatmessage.ogg" // The Chronicles of Riddick: Assault on Dark Athena
-misc/secret					"sounds/general/ui/ui_secret_found.ogg" // Pokken Tournament
+misc/chat					"sounds/general/ui/ui_chatmessage.ogg"
+misc/chat2					"sounds/general/ui/ui_chatmessage.ogg"
+misc/secret					"sounds/general/ui/ui_secret_found.ogg"
 misc/startupdone			"sounds/general/ui/ui_gameload.ogg"
 startuptick					"sounds/general/ui/ui_loading_tick.ogg"
 $volume startuptick 0.5
