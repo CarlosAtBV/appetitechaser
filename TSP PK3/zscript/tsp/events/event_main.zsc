@@ -35,20 +35,16 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldLoaded(WorldEvent e)
 	{
-		gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
+		//gamemode = CVar.GetCVar("_tsp_gamemode",players[0]).GetInt();
 		
-		dynlights.Clear();
-		
-		ThinkerIterator findLights = ThinkerIterator.Create("DynamicLight");
-		Actor mo;
-		
-		while ( mo = Actor(findLights.Next()) )
+		int check_gm = CVar.GetCVar("_tsp_gamemode",players[0]).GetInt();
+		if ( check_gm == 1 )
 		{
-			dynlights.Push(mo);
+			let gm = new("TSP_GameMode_BountyHunters");
 		}
 		
 		ThinkerIterator findDeathPlane = ThinkerIterator.Create("TSP_DeathPlane");
-		mo = Actor(findDeathPlane.Next());
+		Actor mo = Actor(findDeathPlane.Next());
 		if ( mo )
 		{
 			eh_hasDeathPlane = true;

@@ -1,0 +1,39 @@
+Class TSP_BountyHunterSpawn
+{
+	Class<Actor> monster;
+	int weight;
+}
+
+Class TSP_GameMode_BountyHunters : Thinker
+{
+	Array<TSP_BountyHunterSpawn> spawns;
+	
+	int time_nextspawn;
+	
+	override void PostBeginPlay()
+	{
+		TSP_BountyHunterSpawn spawn;
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "ZombieMan";
+		spawn.weight = 200;
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "DoomImp";
+		spawn.weight = 100;
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "ShotgunGuy";
+		spawn.weight = 50;
+	}
+	
+	override void Tick()
+	{
+		if ( level.maptime >= time_nextspawn )
+		{
+			time_nextspawn += 35*8;
+			Vector3 newSpawn = level.PickDeathmatchStart();
+			Actor.Spawn("ZombieMan", newSpawn);
+		}
+	}
+}
