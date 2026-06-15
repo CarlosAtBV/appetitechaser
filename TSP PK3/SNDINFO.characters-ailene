@@ -1,62 +1,157 @@
 ////////////////
+// CSS
+////////////////
+$random ailene/css/intro { ailene/css/intro01 ailene/css/intro02 ailene/css/intro03 ailene/css/intro04 ailene/css/intro05 ailene/css/intro06 ailene/css/intro07 ailene/css/intro08 ailene/css/intro09 }
+ailene/css/intro01 "sounds/characters/ailene/css/vo_ailene_css_intro01.ogg"
+ailene/css/intro02 "sounds/characters/ailene/css/vo_ailene_css_intro02.ogg"
+ailene/css/intro03 "sounds/characters/ailene/css/vo_ailene_css_intro03.ogg"
+ailene/css/intro04 "sounds/characters/ailene/css/vo_ailene_css_intro04.ogg"
+ailene/css/intro05 "sounds/characters/ailene/css/vo_ailene_css_intro05.ogg"
+ailene/css/intro06 "sounds/characters/ailene/css/vo_ailene_css_intro06.ogg"
+ailene/css/intro07 "sounds/characters/ailene/css/vo_ailene_css_intro07.ogg"
+ailene/css/intro08 "sounds/characters/ailene/css/vo_ailene_css_intro08.ogg"
+ailene/css/intro09 "sounds/characters/ailene/css/vo_ailene_css_intro09.ogg"
+
+$random ailene/css/mel { ailene/css/mel01 ailene/css/mel02 ailene/css/mel03 ailene/css/mel04 }
+ailene/css/mel01 "sounds/characters/ailene/css/vo_ailene_css_mel01.ogg"
+ailene/css/mel02 "sounds/characters/ailene/css/vo_ailene_css_mel02.ogg"
+ailene/css/mel03 "sounds/characters/ailene/css/vo_ailene_css_mel03.ogg"
+ailene/css/mel04 "sounds/characters/ailene/css/vo_ailene_css_mel04.ogg"
+
+$random ailene/css/zane { ailene/css/zane01 ailene/css/zane02 ailene/css/zane03 }
+ailene/css/zane01 "sounds/characters/ailene/css/vo_ailene_css_zane01.ogg"
+ailene/css/zane02 "sounds/characters/ailene/css/vo_ailene_css_zane02.ogg"
+ailene/css/zane03 "sounds/characters/ailene/css/vo_ailene_css_zane03.ogg"
+
+$random ailene/css/maeve { ailene/css/maeve01 ailene/css/maeve02 ailene/css/maeve03 }
+ailene/css/maeve01 "sounds/characters/ailene/css/vo_ailene_css_maeve01.ogg"
+ailene/css/maeve02 "sounds/characters/ailene/css/vo_ailene_css_maeve02.ogg"
+ailene/css/maeve03 "sounds/characters/ailene/css/vo_ailene_css_maeve03.ogg"
+
+$random ailene/css/nagi { ailene/css/nagi01 ailene/css/nagi02 ailene/css/nagi03 }
+ailene/css/nagi01 "sounds/characters/ailene/css/vo_ailene_css_nagi01.ogg"
+ailene/css/nagi02 "sounds/characters/ailene/css/vo_ailene_css_nagi02.ogg"
+ailene/css/nagi03 "sounds/characters/ailene/css/vo_ailene_css_nagi03.ogg"
+
+$random ailene/css/robomel { ailene/css/robomel01 ailene/css/robomel02 ailene/css/robomel03 ailene/css/robomel04 } // Robo-Mel and AILENE!
+ailene/css/robomel01 "sounds/characters/ailene/css/vo_ailene_css_robomel01.ogg"
+ailene/css/robomel02 "sounds/characters/ailene/css/vo_ailene_css_robomel02.ogg"
+ailene/css/robomel03 "sounds/characters/ailene/css/vo_ailene_css_robomel03.ogg"
+ailene/css/robomel04 "sounds/characters/ailene/css/vo_ailene_css_robomel04.ogg"
+
+$random ailene/css/robomel_alt { ailene/css/robomel_alt01 ailene/css/robomel_alt02 ailene/css/robomel_alt03 } // Robo-Mel!
+ailene/css/robomel_alt01 "sounds/characters/ailene/css/vo_ailene_css_robomel_alt01.ogg"
+ailene/css/robomel_alt02 "sounds/characters/ailene/css/vo_ailene_css_robomel_alt02.ogg"
+ailene/css/robomel_alt03 "sounds/characters/ailene/css/vo_ailene_css_robomel_alt03.ogg"
+
+
+$random ailene/css/shenmi { ailene/css/shenmi01 ailene/css/shenmi02 ailene/css/shenmi03 }
+ailene/css/shenmi01 "sounds/characters/ailene/css/vo_ailene_css_shenmi01.ogg"
+ailene/css/shenmi02 "sounds/characters/ailene/css/vo_ailene_css_shenmi02.ogg"
+ailene/css/shenmi03 "sounds/characters/ailene/css/vo_ailene_css_shenmi03.ogg"
+
+$random ailene/css/cadence { ailene/css/cadence01 ailene/css/cadence02 ailene/css/cadence03 }
+ailene/css/cadence01 "sounds/characters/ailene/css/vo_ailene_css_cadence01.ogg"
+ailene/css/cadence02 "sounds/characters/ailene/css/vo_ailene_css_cadence02.ogg"
+ailene/css/cadence03 "sounds/characters/ailene/css/vo_ailene_css_cadence03.ogg"
+
+$random ailene/css/joe { ailene/css/joe01 ailene/css/joe02 ailene/css/joe03 }
+ailene/css/joe01 "sounds/characters/ailene/css/vo_ailene_css_joe01.ogg"
+ailene/css/joe02 "sounds/characters/ailene/css/vo_ailene_css_joe02.ogg"
+ailene/css/joe03 "sounds/characters/ailene/css/vo_ailene_css_joe03.ogg"
+
+$random ailene/css/phirsi { ailene/css/phirsi01 ailene/css/phirsi02 ailene/css/phirsi03 }
+ailene/css/phirsi01 "sounds/characters/ailene/css/vo_ailene_css_phirsi01.ogg"
+ailene/css/phirsi02 "sounds/characters/ailene/css/vo_ailene_css_phirsi02.ogg"
+ailene/css/phirsi03 "sounds/characters/ailene/css/vo_ailene_css_phirsi03.ogg"
+
+$random ailene/css/thi { ailene/css/thi01 ailene/css/thi02 ailene/css/thi03 }
+ailene/css/thi01 "sounds/characters/ailene/css/vo_ailene_css_thi01.ogg"
+ailene/css/thi02 "sounds/characters/ailene/css/vo_ailene_css_thi02.ogg"
+ailene/css/thi03 "sounds/characters/ailene/css/vo_ailene_css_thi03.ogg"
+
+
+////////////////
 // MENU
 ////////////////
-$random ailene/bluevertigo { ailene/bluevertigo01 ailene/bluevertigo02 }
-ailene/bluevertigo01 "sounds/characters/ailene/menu/vo_menu_ailene_bluevertigo01.ogg"
-ailene/bluevertigo02 "sounds/characters/ailene/menu/vo_menu_ailene_bluevertigo02.ogg"
+$random ailene/menu/bluevertigo { ailene/menu/bluevertigo01 ailene/menu/bluevertigo02 ailene/menu/bluevertigo03 }
+ailene/menu/bluevertigo01 "sounds/characters/ailene/menu/vo_ailene_menu_bluevertigo01.ogg"
+ailene/menu/bluevertigo02 "sounds/characters/ailene/menu/vo_ailene_menu_bluevertigo02.ogg"
+ailene/menu/bluevertigo03 "sounds/characters/ailene/menu/vo_ailene_menu_bluevertigo03.ogg"
 
-$random ailene/bv10 { ailene/bv1001 ailene/bv1002 }
-ailene/bv1001 "sounds/characters/ailene/menu/vo_menu_ailene_bv1001.ogg" 
-ailene/bv1002 "sounds/characters/ailene/menu/vo_menu_ailene_bv1002.ogg" 
+$random ailene/menu/title { ailene/menu/title01 ailene/menu/title02 ailene/menu/title03 }
+ailene/menu/title01 "sounds/characters/ailene/menu/vo_ailene_menu_title01.ogg"
+ailene/menu/title02 "sounds/characters/ailene/menu/vo_ailene_menu_title02.ogg"
+ailene/menu/title03 "sounds/characters/ailene/menu/vo_ailene_menu_title03.ogg"
 
-$random ailene/title { ailene/title01 ailene/title02 }
-ailene/title01 "sounds/characters/ailene/menu/vo_menu_ailene_title01.ogg" 
-ailene/title02 "sounds/characters/ailene/menu/vo_menu_ailene_title02.ogg" 
+$random ailene/menu/title_firsthunt { ailene/menu/title_firsthunt01 ailene/menu/title_firsthunt02 ailene/menu/title_firsthunt03 }
+ailene/menu/title_firsthunt01 "sounds/characters/ailene/menu/vo_ailene_menu_title_firsthunt01.ogg"
+ailene/menu/title_firsthunt02 "sounds/characters/ailene/menu/vo_ailene_menu_title_firsthunt02.ogg"
+ailene/menu/title_firsthunt03 "sounds/characters/ailene/menu/vo_ailene_menu_title_firsthunt03.ogg"
 
-$random ailene/titledemo { ailene/titledemo01 ailene/titledemo02 }
-ailene/titledemo01 "sounds/characters/ailene/menu/vo_menu_ailene_titledemo01.ogg" 
-ailene/titledemo02 "sounds/characters/ailene/menu/vo_menu_ailene_titledemo02.ogg" 
+$random ailene/menu/title_secondattack { ailene/menu/title_secondattack01 ailene/menu/title_secondattack02 ailene/menu/title_secondattack03 }
+ailene/menu/title_secondattack01 "sounds/characters/ailene/menu/vo_ailene_menu_title_secondattack01.ogg"
+ailene/menu/title_secondattack02 "sounds/characters/ailene/menu/vo_ailene_menu_title_secondattack02.ogg"
+ailene/menu/title_secondattack03 "sounds/characters/ailene/menu/vo_ailene_menu_title_secondattack03.ogg"
 
-$random ailene/standard { ailene/standard01 ailene/standard02 }
-ailene/standard01 "sounds/characters/ailene/menu/vo_menu_ailene_standard01.ogg" 
-ailene/standard02 "sounds/characters/ailene/menu/vo_menu_ailene_standard02.ogg" 
 
-ailene/bountyhunters "sounds/characters/ailene/menu/vo_menu_ailene_bountyhunters.ogg" 
+$random ailene/menu/selectgamemode { ailene/menu/selectgamemode01 ailene/menu/selectgamemode02 }
+ailene/menu/selectgamemode01 "sounds/characters/ailene/menu/vo_ailene_menu_selectgamemode01.ogg"
+ailene/menu/selectgamemode02 "sounds/characters/ailene/menu/vo_ailene_menu_selectgamemode02.ogg"
 
-$random ailene/usermaps { ailene/usermaps01 ailene/usermaps02 }
-ailene/usermaps01 "sounds/characters/ailene/menu/vo_menu_ailene_usermaps01.ogg" 
-ailene/usermaps02 "sounds/characters/ailene/menu/vo_menu_ailene_usermaps02.ogg"   
+$random ailene/menu/standard { ailene/menu/standard01 ailene/menu/standard02 }
+ailene/menu/standard01 "sounds/characters/ailene/menu/vo_ailene_menu_standard01.ogg"
+ailene/menu/standard02 "sounds/characters/ailene/menu/vo_ailene_menu_standard02.ogg"
+ailene/menu/standard_explain "sounds/characters/ailene/menu/vo_ailene_menu_standard_explain.ogg"
 
-$random ailene/arcade { ailene/arcade01 ailene/arcade02 }
-ailene/arcade01 "sounds/characters/ailene/menu/vo_menu_ailene_arcade01.ogg" 
-ailene/arcade02 "sounds/characters/ailene/menu/vo_menu_ailene_arcade02.ogg" 
+$random ailene/menu/bountyhunters { ailene/menu/bountyhunters01 ailene/menu/bountyhunters02 }
+ailene/menu/bountyhunters01 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter01.ogg"
+ailene/menu/bountyhunters02 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter02.ogg"
+ailene/menu/bountyhunters_explain "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter_explain.ogg"
 
-$random ailene/css/mel { ailene/css/mel01 ailene/css/mel02 }
-ailene/css/mel01 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel01.ogg" 
-ailene/css/mel02 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel02.ogg" 
+$random ailene/menu/demoscape { ailene/menu/demoscape01 ailene/menu/demoscape02 }
+ailene/menu/demoscape01 "sounds/characters/ailene/menu/vo_ailene_menu_demoscape01.ogg"
+ailene/menu/demoscape02 "sounds/characters/ailene/menu/vo_ailene_menu_demoscape02.ogg"
+ailene/menu/demoscape_explain "sounds/characters/ailene/menu/vo_ailene_menu_demoscape_explain.ogg"
 
-$random ailene/css/melretro { ailene/css/melretro01 ailene/css/melretro02 }
-ailene/css/melretro01 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro01.ogg" 
-ailene/css/melretro02 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro02.ogg" 
-ailene/css/melretro03 "sounds/characters/ailene/menu/vo_menu_ailene_css_mel_retro03.ogg" // "Retro Mel"
+$random ailene/menu/variety { ailene/menu/variety01 ailene/menu/variety02 }
+ailene/menu/variety01 "sounds/characters/ailene/menu/vo_ailene_menu_variety01.ogg"
+ailene/menu/variety02 "sounds/characters/ailene/menu/vo_ailene_menu_variety02.ogg"
+ailene/menu/variety_explain "sounds/characters/ailene/menu/vo_ailene_menu_variety_explain.ogg"
 
-ailene/css/shen01 "sounds/characters/ailene/menu/vo_menu_ailene_css_shen01.ogg"
+////////////////
+// TUTORIAL/TEST
+////////////////
+$random ailene/goodmorning { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03  }
+ailene/goodmorning01 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning01.ogg"
+ailene/goodmorning02 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning02.ogg"
+ailene/goodmorning03 "sounds/characters/ailene/misc/vo_misc_ailene_goodmorning03.ogg"
 
-$random ailene/css/zane { ailene/css/zane01 ailene/css/zane02 }
-ailene/css/zane01 "sounds/characters/ailene/menu/vo_menu_ailene_css_zane01.ogg" 
-ailene/css/zane02 "sounds/characters/ailene/menu/vo_menu_ailene_css_zane02.ogg"  
- 
-ailene/css/maeve01 "sounds/characters/ailene/menu/vo_menu_ailene_css_maeve01.ogg" 
+$random ailene/goodmorningcpt { ailene/goodmorningcpt01 ailene/goodmorningcpt02 ailene/goodmorningcpt03  }
+ailene/goodmorningcpt01 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorningcpt01.ogg"
+ailene/goodmorningcpt02 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorningcpt02.ogg"
+ailene/goodmorningcpt03 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_goodmorningcpt03.ogg"
 
-ailene/css/nagi01 "sounds/characters/ailene/menu/vo_menu_ailene_css_nagi01.ogg" 
+$random ailene/goodmorningultimate { ailene/goodmorning01 ailene/goodmorning02 ailene/goodmorning03
+									ailene/goodmorningcpt01 ailene/goodmorningcpt02 ailene/goodmorningcpt03 }
 
-ailene/css/thi01 "sounds/characters/ailene/menu/vo_menu_ailene_css_thi01.ogg" 
+$random ailene/hello { ailene/hello01 ailene/hello02 ailene/hello03 ailene/hello04  }
+ailene/hello01 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_hello01.ogg"
+ailene/hello02 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_hello02.ogg"
+ailene/hello03 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_hello03.ogg"
+ailene/hello04 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_hello04.ogg"
 
-$random ailene/css/robomel { ailene/css/robomel01 ailene/css/robomel02 }
-ailene/css/robomel01 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel01.ogg" 
-ailene/css/robomel02 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel02.ogg" 
-ailene/css/robomel03 "sounds/characters/ailene/menu/vo_menu_ailene_css_robomel03.ogg" // "AILENE"                      
+$random ailene/helpprompt { ailene/helpprompt01 ailene/helpprompt02 ailene/helpprompt03  }
+ailene/helpprompt01 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt01.ogg"
+ailene/helpprompt02 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt02.ogg"
+ailene/helpprompt03 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_helpprompt03.ogg"
 
+$random ailene/neoscapestart { ailene/neoscapestart01 ailene/neoscapestart02 ailene/neoscapestart03  }
+ailene/neoscapestart01 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_neoscapestart01.ogg"
+ailene/neoscapestart02 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_neoscapestart02.ogg"
+ailene/neoscapestart03 "sounds/characters/ailene/tutorial/vo_tutorial_ailene_neoscapestart03.ogg"
+
+/*
 ////////////////
 // TUTORIAL/TEST
 ////////////////
@@ -133,3 +228,4 @@ ailene/bh/timeext14 "sounds/characters/ailene/bh/vo_bh_ailene_timeext14.ogg"
 ailene/bh/timeext15 "sounds/characters/ailene/bh/vo_bh_ailene_timeext15.ogg"
 
 ailene/bh/battlezoneintro "sounds/characters/ailene/bh/vo_bh_ailene_battlezone_intro.ogg"
+*/
