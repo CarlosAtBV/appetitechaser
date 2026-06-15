@@ -208,6 +208,13 @@ Class TSP_BaseWeapon : Weapon
 			let player = TSP_PlayerPawn_ZSCBase(src);
 			player.AddRecoil(newRecoil);
 		}
+	
+		action void A_TSP_AddBumper (TSP_SpriteBumper newBumper)
+		{
+			Actor src = invoker.owner;
+			let player = TSP_PlayerPawn_ZSCBase(src);
+			player.AddBumper(newBumper);
+		}
 		
 	/*
 		A_TSP_Melee()

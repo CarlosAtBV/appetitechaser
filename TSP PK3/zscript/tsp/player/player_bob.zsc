@@ -19,6 +19,18 @@ Class TSP_ViewRecoil
 	double yaw_speed;
 }
 
+Class TSP_SpriteBumper
+{
+	int timer;
+	
+	int duration;
+	int fadein;
+	int fadeout;
+	
+	double bump_amount;
+	double bump_angle;
+}
+
 Extend Class TSP_PlayerPawn_ZSCBase
 {
 	double d_bobFactor;
@@ -35,10 +47,18 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	ui int lastTic;
 	
 	Array<TSP_ViewRecoil> recoils;
+	Array<TSP_SpriteBumper> bumpers;
+	
+	Vector2 bumper_offset;
 	
 	void AddRecoil (TSP_ViewRecoil input)
 	{
 		recoils.push(input);
+	}
+	
+	void AddBumper (TSP_SpriteBumper input)
+	{
+		bumpers.push(input);
 	}
 	
 	void TSPBobStuff()
@@ -112,10 +132,45 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			view_pitch += (recoil.pitch + sin(level.maptime * recoil.pitch_speed) * recoil.pitch_shake) * power;
 			recoil.timer += 1;
 		}
+		
 		SetViewPos(view_shake);
 		A_SetViewRoll(view_roll, SPF_INTERPOLATE);
 		A_SetViewAngle(view_angle, SPF_INTERPOLATE);
 		A_SetViewPitch(view_pitch, SPF_INTERPOLATE);
+		
+		bumper_offset = (0,0);
+		
+		for ( int i = 0; i < bumpers.size(); i++ )
+		{
+			let bumper = bumpers[i];
+			int totalTime = bumper.fadein + bumper.duration + bumper.fadeout;
+			
+			if ( bumper.timer > totalTime )
+			{
+				bumpers.delete(i);
+				i -= 1;
+				continue;
+			}
+			
+			double power = 1.0;
+			double timer = bumper.timer;
+			if ( bumper.timer < bumper.fadein && bumper.fadein > 0 )
+			{
+				power = timer / bumper.fadein;
+			}
+			else if ( bumper.timer >= bumper.fadein+bumper.duration && bumper.fadeout > 0 )
+			{
+				power = 1.0 - (timer-(bumper.fadein+bumper.duration)) / bumper.fadeout;
+			}
+			//power = power * power * power;
+			
+			double bangle = bumper.bump_angle;
+			
+			bumper_offset.x += cos(bangle) * bumper.bump_amount * power;
+			bumper_offset.y += sin(bangle) * bumper.bump_amount * power;
+			
+			bumper.timer += 1;
+		}
 	}
 	
 	//lerp function by my homie JetPlane the epic one
@@ -249,6 +304,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			shakebert.x = (sin((level.maptime+ticfrac)*200)*1);
 			shakebert.y = (cos((level.maptime+ticfrac)*200)*1);
 		}
-		return p1 * (1. - ticfrac) + p2 * ticfrac + shakebert;
+		return p1 * (1. - ticfrac) + p2 * ticfrac + shakebert + bumper_offset;
 	}
 }

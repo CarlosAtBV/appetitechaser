@@ -30,20 +30,42 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			"----" A 0 A_TSP_SetNextState("Fire");
 			122G DE 2;
 			Goto Ready;
+		
 		AltReady:
 			122A A 1 A_TSP_WeaponReady();
 			Loop;
 		AltFire:
-			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
+			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_AltFire");
 			122A B 2
 			{
 				A_TSP_FireBullets(3, 2, 1, 10);
-				A_StartSound("nikki/default/fire", CHAN_WEAPON);
+				A_StartSound("nikki/spitfire/fire", CHAN_WEAPON);
 			}
-			122A A 1;
+			122A C 1;
 			"----" A 0 A_TSP_SetNextState("AltFire", isHeld: true);
-			122A A 1;
+			122A C 1;
 			Goto AltReady;
+		
+		NormalToAlt:
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_ModSwitch");
+				A_StartSound("nikki/spitfire/aim01", 12);
+			}
+			122G A 2;
+			122A D 1;
+			122A A 6;
+			Goto AltReady;
+		AltToNormal:
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_ModSwitch");
+				A_StartSound("nikki/spitfire/aim01", 12);
+			}
+			122A A 2;
+			122A D 1;
+			122G A 6;
+			Goto Ready;
 			
 		Flash:
 			122F A 2 BRIGHT
@@ -86,6 +108,54 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(0.57, 32.54);
 			TNT1 A 1 A_WeaponOffset(0.30, 32.28);
 			TNT1 A 1 A_WeaponOffset(0.13, 32.12);
+			Stop;
+		
+		Anim_AltFire:
+			TNT1 A 0
+			{
+				TSP_ViewRecoil recoil;
+				
+				recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 1;
+				recoil.fadeout = 7;
+				recoil.pitch = -0.15;
+				recoil.yaw = frandom(-0.1,0.1);
+				recoil.roll = frandom(-0.2,0.2);
+				recoil.roll_shake = 0.2;
+				recoil.roll_speed = 50.0;
+				A_TSP_AddRecoil(recoil);
+				
+				recoil = new("TSP_ViewRecoil");
+				recoil.shake_amount = 0.15;
+				recoil.fadeout = 4;
+				A_TSP_AddRecoil(recoil);
+				
+				TSP_SpriteBumper bumper;
+				
+				bumper = new("TSP_SpriteBumper");
+				bumper.fadein = 1;
+				bumper.fadeout = 9;
+				bumper.bump_amount = frandom(2.0,6.0);
+				bumper.bump_angle = 90+frandom(-25.0,25.0);
+				A_TSP_AddBumper(bumper);
+			}
+			Stop;
+			
+		Anim_ModSwitch:
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			TNT1 A 1 A_WeaponOffset(0.00, 49.12);
+			TNT1 A 1 A_WeaponOffset(-0.88, 51.71);
+			TNT1 A 1 A_WeaponOffset(-1.60, 51.35);
+			TNT1 A 1 A_WeaponOffset(-1.20, 50.17);
+			TNT1 A 1 A_WeaponOffset(0.05, 47.96);
+			TNT1 A 1 A_WeaponOffset(1.23, 44.68);
+			TNT1 A 1 A_WeaponOffset(0.84, 40.83);
+			TNT1 A 1 A_WeaponOffset(0.00, 37.33);
+			TNT1 A 1 A_WeaponOffset(0.00, 34.75);
+			TNT1 A 1 A_WeaponOffset(0.00, 33.11);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.25);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
 			Stop;
 	}
 }

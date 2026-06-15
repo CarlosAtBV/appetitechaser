@@ -11,38 +11,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	int hit_freeze;
 	int hit_freezeMax;
 	
-	/*override void FireWeapon (State stat)
-	{
-		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
-		
-		bool isActive = player.buttons & BT_ATTACK;
-		bool isHeld = isActive && player.oldbuttons & BT_ATTACK;
-		
-		if ( !tsp_weap )
-		{
-			super.FireWeapon(stat);
-			return;
-		}
-		
-		if ( tsp_weap.nextmoves.size() > 0 )
-		{
-			stat = null;
-			for ( int i = 0; i < tsp_weap.nextmoves.size(); i++ )
-			{
-				if ( !tsp_weap.nextmoves[i].isHeld && isHeld ) continue;
-				if ( tsp_weap.nextmoves[i].isHeld && !isHeld ) continue;
-				stat = tsp_weap.nextmoves[i].statetarget;
-				tsp_weap.nextmoves.Clear();
-				break;
-			}
-			if ( stat == null ) return;
-		}
-		
-		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
-		psprite_weapon.x = 0;
-		psprite_weapon.y = 32;
-		super.FireWeapon(stat);
-	}*/
 	override void FireWeapon (State stat)
 	{
 		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
@@ -51,12 +19,21 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		super.FireWeapon(stat);
 	}
 	
+	override void FireWeaponAlt (State stat)
+	{
+		return;
+		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
+		let stat = tsp_weap.FindState("AltFire");
+		
+		FireWeapon(stat);
+		return;
+	}
+	
 	bool TSP_TryNextMove()
 	{
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
 		
 		if ( !tsp_weap ) return false;
-		Console.Printf(""..tsp_weap.nextmoves.size().." ~ "..level.maptime);
 		
 		if ( tsp_weap.nextmoves.size() <= 0 ) return false;
 		
@@ -76,19 +53,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			return true;
 		}
 		
-		Console.Printf("It might be gucled");
-		
 		return false;
-	}
-	
-	override void FireWeaponAlt (State stat)
-	{
-		return;
-		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
-		let stat = tsp_weap.FindState("AltFire");
-		
-		FireWeapon(stat);
-		return;
 	}
 	
 	void SetHitFreeze (int amount)
@@ -185,14 +150,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			{
 				if ( tsp_weap.SetAltActive(true) )
 				{
-					player.SetPSprite(PSP_WEAPON, tsp_weap.GetReadyState());
+					player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("NormalToAlt"));
 				}
 			}
 			else if ( !(player.cmd.buttons & BT_ALTATTACK) )
 			{
 				if ( tsp_weap.SetAltActive(false) )
 				{
-					player.SetPSprite(PSP_WEAPON, tsp_weap.GetReadyState());
+					player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("AltToNormal"));
 				}
 			}
 		}
