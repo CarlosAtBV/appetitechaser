@@ -29,7 +29,6 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			122G C 2;
 			"----" A 0 A_TSP_SetNextState("Fire");
 			122G DE 2;
-			122G DE 200;
 			Goto Ready;
 		AltReady:
 			122A A 1 A_TSP_WeaponReady();
