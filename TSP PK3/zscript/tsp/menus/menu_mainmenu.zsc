@@ -261,10 +261,8 @@ Class TSP_ListMenuHiRes : ListMenu
 		
 		UI_DrawImage("graphics/menu/menu_listbg.png", (menuOffset.x, 0));
 			
-		/*screen.DrawText("tsp_bold", Font.CR_WHITE, 0, 0, ""..CVar.FindCVar("playerclass").GetString(),
-			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true,
-			DTA_ViewportX, int(viewportPos.x), DTA_ViewportY, int(viewportPos.y),
-			DTA_ViewportWidth, int(viewportSize.x), DTA_ViewportHeight, int(viewportSize.y));*/
+		screen.DrawText("tsp_large", Font.CR_WHITE, 0, 0, "Test AAAAaaaaa",
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
 		
 		Font fnt = "tsp_bold";
 		String testString = "FUCK";
