@@ -16,7 +16,7 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			122G A 1 A_TSP_Deselect();
 			Wait;
 		Ready:
-			122G A 1 A_TSP_WeaponReady();
+			122G A 1 A_TSP_WeaponReady(WRF_ALLOWZOOM);
 			Loop;
 		Fire:
 			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
@@ -32,7 +32,7 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			Goto Ready;
 		
 		AltReady:
-			122A A 1 A_TSP_WeaponReady();
+			122A A 1 A_TSP_WeaponReady(WRF_ALLOWZOOM);
 			Loop;
 		AltFire:
 			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_AltFire");
@@ -43,7 +43,7 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 				A_GunFlash("AltFlash");
 			}
 			122A C 1;
-			"----" A 0 A_TSP_SetNextState("AltFire", isHeld: true);
+			"----" A 0 A_TSP_SetNextState("AltFire", held_buttons: BT_ATTACK);
 			122A C 1;
 			Goto AltReady;
 		
@@ -68,6 +68,25 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			122A A 2;
 			122A D 1;
 			122G A 2;
+			Goto Ready;
+			
+		Zoom:
+			"----" A 0
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_Melee");
+			}
+			122G A 8;
+			122M A 2;
+			"----" A 0
+			{
+				A_TSP_Melee(10);
+				let effect = TSP_HitEffect_Thrust.Create(invoker.owner, (7,0,1));
+				A_TSP_ApplyToVictims(effect);
+				//let effect = TSP_HitEffect_Stun.Create(invoker.owner, (3,0,1));
+				//A_TSP_ApplyToVictims(effect);
+			}
+			122M A 4;
+			122M A 6 A_TSP_SetNextState("QuickMelee", BT_ATTACK, BT_ZOOM);
 			Goto Ready;
 			
 		Flash:
@@ -167,6 +186,26 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(0.00, 32.25);
 			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
 			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			Stop;
+			
+		Anim_Melee:
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			TNT1 A 1 A_WeaponOffset(47.25, 94.50);
+			TNT1 A 1 A_WeaponOffset(128.00, 157.00);
+			TNT1 A 1 A_WeaponOffset(163.00, -248.00);
+			TNT1 A 1 A_WeaponOffset(153.45, -243.26);
+			TNT1 A 1 A_WeaponOffset(128.21, -228.15);
+			TNT1 A 1 A_WeaponOffset(92.42, -201.38);
+			TNT1 A 1 A_WeaponOffset(51.20, -161.64);
+			TNT1 A 1 A_WeaponOffset(9.68, -107.61);
+			TNT1 A 1 A_WeaponOffset(-27.00, -38.00);
+			TNT1 A 1 A_WeaponOffset(-54.80, 46.13);
+			TNT1 A 1 A_WeaponOffset(-74.02, 134.16);
+			TNT1 A 1 A_WeaponOffset(-86.04, 213.12);
+			TNT1 A 1 A_WeaponOffset(-92.24, 270.02);
+			TNT1 A 1 A_WeaponOffset(-94.00, 291.87);
+			TNT1 A 1 A_WeaponOffset(-94.00, 291.87);
+			TNT1 A 1 A_WeaponOffset(-94.00, 291.87);
 			Stop;
 	}
 }

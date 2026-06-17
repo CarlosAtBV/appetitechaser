@@ -43,13 +43,27 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		for ( int i = 0; i < tsp_weap.nextmoves.size(); i++ )
 		{
 			int buttons = tsp_weap.nextmoves[i].buttons;
+			int held_buttons = tsp_weap.nextmoves[i].held_buttons;
 			
-			bool isActive = player.cmd.buttons & buttons;
-			bool isHeld = isActive && player.oldbuttons & buttons;
+			if ( buttons != 0 )
+			{
+				if ( !(player.cmd.buttons & buttons) )
+				{
+					continue;
+				}
+				if ( (player.oldbuttons & buttons) == buttons )
+				{
+					continue;
+				}
+			}
 			
-			if ( !isActive ) continue;
-			if ( !tsp_weap.nextmoves[i].isHeld && isHeld ) continue;
-			if ( tsp_weap.nextmoves[i].isHeld && !isHeld ) continue;
+			if ( held_buttons != 0 )
+			{
+				if ( !((player.cmd.buttons & held_buttons) == held_buttons) || !((player.oldbuttons & held_buttons) == held_buttons) )
+				{
+					continue;
+				}
+			}
 			
 			FireWeapon(tsp_weap.nextmoves[i].statetarget);
 			tsp_weap.nextmoves.Clear();

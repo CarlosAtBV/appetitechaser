@@ -32,7 +32,7 @@ Class TSP_NextMoveInfo
 {
 	State statetarget;
 	int buttons;
-	bool isHeld;
+	int held_buttons;
 }
 
 Class TSP_HitEffect play
@@ -66,6 +66,17 @@ Class TSP_BaseWeapon : Weapon
 	Default
 	{
 		Weapon.WeaponScaleY 1.0;
+	}
+	
+	States
+	{
+		QuickMelee:
+			TNT1 A 0
+			{
+				A_SelectWeapon("TSP_Weapon_MelFists");
+				return resolveState("Deselect");
+			}
+			Wait;
 	}
 	
 	bool alt_active;
@@ -141,12 +152,12 @@ Class TSP_BaseWeapon : Weapon
 		A_TSP_SetNextFireState()
 	*/
 	
-		action void A_TSP_AddNextState(StateLabel st, int buttons = BT_ATTACK, bool isHeld = false)
+		action void A_TSP_AddNextState(StateLabel st, int buttons = BT_ATTACK, int held_buttons = false)
 		{
 			let nextmove = new("TSP_NextMoveInfo");
 			nextmove.buttons = buttons;
 			nextmove.statetarget = resolveState(st);
-			nextmove.isHeld = isHeld;
+			nextmove.held_buttons = held_buttons;
 			invoker.nextmoves.Push(nextmove);
 		}
 
@@ -155,10 +166,10 @@ Class TSP_BaseWeapon : Weapon
 			invoker.nextmoves.Clear();
 		}
 		
-		action void A_TSP_SetNextState(StateLabel st, int buttons = BT_ATTACK, bool isHeld = false)
+		action void A_TSP_SetNextState(StateLabel st, int buttons = BT_ATTACK, int held_buttons = 0)
 		{
 			A_TSP_ClearNextStates();
-			A_TSP_AddNextState(st, buttons, isHeld);
+			A_TSP_AddNextState(st, buttons, held_buttons);
 		}
 	
 	/*
