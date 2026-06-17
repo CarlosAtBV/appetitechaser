@@ -76,9 +76,28 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 				A_Overlay(PSP_WEAPONANIM, "Anim_Melee");
 			}
 			122G A 8;
+			"----" A 0
+			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 3;
+				recoil.fadeout = 8;
+				recoil.yaw = -0.2;
+				recoil.pitch = 0.1;
+				recoil.yaw_shake = 0.2;
+				recoil.yaw_speed = 50.0;
+				recoil.roll = -0.2;
+				A_TSP_AddRecoil(recoil);
+			}
 			122M A 2;
 			"----" A 0
 			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 2;
+				recoil.fadeout = 12;
+				recoil.pitch = 0.3;
+				recoil.roll = -0.2;
+				A_TSP_AddRecoil(recoil);
+				
 				A_TSP_Melee(10);
 				let effect = TSP_HitEffect_Thrust.Create(invoker.owner, (7,0,1));
 				A_TSP_ApplyToVictims(effect);
