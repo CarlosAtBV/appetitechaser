@@ -20,3 +20,12 @@ save "sprites/mel/weapons/nikki/122AD0.png"
 
 load "muzzle/0001.png"
 save "sprites/mel/weapons/nikki/122FA0.png"
+
+load "muzzle2/0001.png"
+save "sprites/mel/weapons/nikki/122FB0.png"
+load "muzzle2/0002.png"
+save "sprites/mel/weapons/nikki/122FC0.png"
+load "muzzle2/0003.png"
+save "sprites/mel/weapons/nikki/122FD0.png"
+load "muzzle2/0004.png"
+save "sprites/mel/weapons/nikki/122FE0.png"

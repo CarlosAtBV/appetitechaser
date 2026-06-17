@@ -121,6 +121,7 @@ Class TSP_BaseWeapon : Weapon
 	
 		action void A_TSP_Select()
 		{
+			A_TSP_ZoomFactor(1.0);
 			A_WeaponOffset(0, 32);
 		}
 	
@@ -132,6 +133,7 @@ Class TSP_BaseWeapon : Weapon
 	
 		action void A_TSP_Deselect()
 		{
+			A_TSP_ZoomFactor(1.0);
 			A_Lower(420);
 		}
 	
@@ -214,6 +216,17 @@ Class TSP_BaseWeapon : Weapon
 			Actor src = invoker.owner;
 			let player = TSP_PlayerPawn_ZSCBase(src);
 			player.AddBumper(newBumper);
+		}
+		
+	/*
+		A_TSP_ZoomFactor()
+	*/
+	
+		action void A_TSP_ZoomFactor (double scale = 1.0)
+		{
+			Actor src = invoker.owner;
+			let player = TSP_PlayerPawn_ZSCBase(src);
+			player.view_zoom = scale;
 		}
 		
 	/*

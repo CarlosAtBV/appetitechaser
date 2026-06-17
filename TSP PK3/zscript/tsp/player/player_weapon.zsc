@@ -8,6 +8,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	double tsp_fb_zoom;
 	double tsp_fb_zoomlerp;
 	
+	double view_zoom;
+	double view_zoomLerp;
+	
 	int hit_freeze;
 	int hit_freezeMax;
 	
@@ -85,7 +88,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			{
 				pspr.Tick();
 			}
-
+			
 			pspr = pspr.Next;
 		}
 		
@@ -283,10 +286,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	override void CheckFOV()
 	{
 		super.CheckFOV();
-		//super.CheckFOV();
-		//Console.Printf(""..tsp_fb_zoom);
-		double targetZoom = tsp_fb_zoom;//player.DesiredFOV * tsp_fb_zoom;
-		tsp_fb_zoomlerp = tsp_fb_zoomlerp + ( targetZoom - tsp_fb_zoomlerp ) / 2;
-		player.FOV = (player.DesiredFOV * tsp_fb_zoomlerp) + (vel.xy.Length() / 5) * tsp_slidefov;//tsp_fb_zoom;
+		
+		view_zoomLerp = view_zoomLerp + ( view_zoom - view_zoomLerp ) / 2;
+		player.FOV = (player.DesiredFOV * view_zoomLerp);
 	}
 }
