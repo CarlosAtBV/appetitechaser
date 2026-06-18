@@ -147,6 +147,8 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
 		
+		if ( !psprite_weapon || !tsp_weap ) return;
+		
 		// [Py] If we're in the select state, it's free real estate
 		if ( InStateSequence(psprite_weapon.CurState, player.ReadyWeapon.FindState("Select")) )
 		{
