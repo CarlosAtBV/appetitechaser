@@ -27,6 +27,13 @@ save "sprites/mel/weapons/suzuka/132AG0.png"
 load "comp/0013.png"
 save "sprites/mel/weapons/suzuka/132AH0.png"
 
+load "comp/0014.png"
+save "sprites/mel/weapons/suzuka/132MA0.png"
+load "comp/0015.png"
+save "sprites/mel/weapons/suzuka/132MB0.png"
+load "comp/0016.png"
+save "sprites/mel/weapons/suzuka/132MC0.png"
+
 load "muzzle/0001.png"
 save "sprites/mel/weapons/suzuka/132FA0.png"
 load "muzzle/0002.png"          

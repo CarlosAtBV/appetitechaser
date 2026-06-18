@@ -30,16 +30,24 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 	States
 	{
 		Select:
-			132G A 1 A_Raise();
+			132G A 20
+			{
+				A_Overlay(PSP_WEAPONANIM, "Anim_Select");
+				if ( invoker.alt_active )
+				{
+					invoker.owner.player.FindPSprite(OverlayID()).sprite = GetSpriteIndex("132A");
+				}
+			}
+			"----" A 0 A_TSP_GotoReady();
 			Wait;
 		Deselect:
 			132G A 1 A_TSP_Deselect();
 			Wait;
 		Ready:
-			132G A 1 A_TSP_WeaponReady();
+			132G A 1 A_TSP_WeaponReady(WRF_ALLOWZOOM);
 			Loop;
 		AltReady:
-			132A A 1 A_TSP_WeaponReady();
+			132A A 1 A_TSP_WeaponReady(WRF_ALLOWZOOM);
 			Loop;
 		Fire:
 			132G B 2
@@ -81,6 +89,29 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			132A E 3;
 			132A A 1;
 			Goto AltReady;
+			
+		Zoom:
+			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_Melee");
+			132G A 1;
+			132M A 1;
+			132M B 3;
+			"----" A 0
+			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 1;
+				recoil.fadeout = 14;
+				recoil.pitch = -0.1;
+				recoil.roll = -1;
+				recoil.roll_shake = 0.2;
+				recoil.roll_speed = 55;
+				A_TSP_AddRecoil(recoil);
+			}
+			132M C 2;
+			"----" A 0 A_TSP_QuickMelee();
+			132M C 8;
+			132M C 2 A_TSP_SetNextState("QuickMelee", BT_ATTACK, BT_ZOOM);
+			TNT1 A 6;
+			Goto Select;
 		
 		NormalToAlt:
 			"----" A 0
@@ -210,6 +241,48 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(2.66, 34.29);
 			TNT1 A 1 A_WeaponOffset(1.67, 32.96);
 			TNT1 A 1 A_WeaponOffset(0.78, 32.23);
+			Stop;
+			
+		Anim_Melee:
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			TNT1 A 1 A_WeaponOffset(-35.50, 71.49);
+			TNT1 A 1 A_WeaponOffset(-71.00, 144.83);
+			TNT1 A 1 A_WeaponOffset(-26.08, 184.32);
+			TNT1 A 1 A_WeaponOffset(57.36, 151.46);
+			TNT1 A 1 A_WeaponOffset(102.28, 87.19);
+			TNT1 A 1 A_WeaponOffset(-13.13, 43.00);
+			TNT1 A 1 A_WeaponOffset(-27.12, 31.04);
+			TNT1 A 1 A_WeaponOffset(-34.55, 26.63);
+			TNT1 A 1 A_WeaponOffset(-38.00, 26.00);
+			TNT1 A 1 A_WeaponOffset(-40.07, 26.52);
+			TNT1 A 1 A_WeaponOffset(-43.35, 28.32);
+			TNT1 A 1 A_WeaponOffset(-50.29, 31.97);
+			TNT1 A 1 A_WeaponOffset(-62.83, 38.45);
+			TNT1 A 1 A_WeaponOffset(-83.11, 49.80);
+			TNT1 A 1 A_WeaponOffset(-114.33, 70.87);
+			TNT1 A 1 A_WeaponOffset(-162.15, 112.98);
+			Stop;
+			
+		Anim_Select:
+			TNT1 A 1 A_WeaponOffset(-121.28, 180.00);
+			TNT1 A 1 A_WeaponOffset(-119.39, 148.60);
+			TNT1 A 1 A_WeaponOffset(-111.81, 69.92);
+			TNT1 A 1 A_WeaponOffset(-94.90, 43.73);
+			TNT1 A 1 A_WeaponOffset(-71.53, 33.51);
+			TNT1 A 1 A_WeaponOffset(-51.73, 30.73);
+			TNT1 A 1 A_WeaponOffset(-37.40, 32.41);
+			TNT1 A 1 A_WeaponOffset(-26.97, 35.63);
+			TNT1 A 1 A_WeaponOffset(-19.21, 38.32);
+			TNT1 A 1 A_WeaponOffset(-13.36, 39.89);
+			TNT1 A 1 A_WeaponOffset(-8.95, 39.63);
+			TNT1 A 1 A_WeaponOffset(-5.65, 38.13);
+			TNT1 A 1 A_WeaponOffset(-3.24, 36.54);
+			TNT1 A 1 A_WeaponOffset(-1.57, 35.22);
+			TNT1 A 1 A_WeaponOffset(-0.52, 34.18);
+			TNT1 A 1 A_WeaponOffset(0.00, 33.40);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.82);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.41);
+			TNT1 A 1 A_WeaponOffset(0.00, 32.14);
 			Stop;
 	}
 }

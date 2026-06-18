@@ -61,6 +61,23 @@ Class TSP_HitEffect_Thrust : TSP_HitEffect
 	}
 }
 
+Class TSP_HitEffect_Stun : TSP_HitEffect
+{
+	int tics;
+	
+	static TSP_HitEffect Create(Actor newOwner, int newTics)
+	{
+		let newEffect = new("TSP_HitEffect_Stun");
+		newEffect.tics = newTics;
+		return newEffect;
+	}
+	
+	override void DoEffect(Actor victim)
+	{
+		victim.tics += tics;
+	}
+}
+
 Class TSP_BaseWeapon : Weapon
 {
 	int tsp_modflags;
@@ -163,6 +180,17 @@ Class TSP_BaseWeapon : Weapon
 		A_TSP_ClearNextStates();
 		A_WeaponReady(flags);
 	}
+	
+	/*
+		A_TSP_GotoReady()
+		
+		Automatically raises the weapon so you don't gotta deal with A_Raise() shenanigans.
+	*/
+	
+		action State A_TSP_GotoReady()
+		{
+			return invoker.GetReadyState();
+		}
 	
 	/*
 		A_TSP_Select()
@@ -394,4 +422,18 @@ Class TSP_BaseWeapon : Weapon
 					flags: LAF_ABSPOSITION, offsetz: spawnPos.z, offsetforward: spawnPos.x, offsetside: spawnPos.y);
 			}
 		}
+		
+	/*
+	*/
+	
+	action void A_TSP_QuickMelee()
+	{
+		A_TSP_Melee(10);
+		
+		TSP_HitEffect fx_thrust = TSP_HitEffect_Thrust.Create(invoker.owner, (7,0,1));
+		A_TSP_ApplyToVictims(fx_thrust);
+		
+		TSP_HitEffect fx_stun = TSP_HitEffect_Stun.Create(invoker.owner, 4);
+		A_TSP_ApplyToVictims(fx_stun);
+	}
 }
