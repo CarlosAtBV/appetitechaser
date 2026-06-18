@@ -306,12 +306,28 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if (i == 0) p1 = r; else p2 = r;
 		}
 		
+		double speedMult = vel.xy.Length() / 4.0;
+		
+		Vector2 bobOffset = (0,0);
+		
+		double horzOff = cos((level.maptime)*10);
+		double vertOff = cos((level.maptime-12)*10);
+		
+		bobOffset.x = horzOff * 4;
+		bobOffset.y = abs(vertOff*vertOff*vertOff*vertOff*vertOff) * 2;
+		
+		bobOffset *= speedMult;
+		
+		bobOffset.x += d_xOff;
+		bobOffset.y += d_yOff;
+		
 		Vector2 shakebert;
 		if ( hit_freeze > 0 )
 		{
 			shakebert.x = (sin((level.maptime+ticfrac)*200)*1);
 			shakebert.y = (cos((level.maptime+ticfrac)*200)*1);
 		}
-		return p1 * (1. - ticfrac) + p2 * ticfrac + shakebert + bumper_offset;
+		return bobOffset + shakebert + bumper_offset;
+		//return p1 * (1. - ticfrac) + p2 * ticfrac + shakebert + bumper_offset;
 	}
 }
