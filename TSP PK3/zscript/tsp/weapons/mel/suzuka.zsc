@@ -111,6 +111,7 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			132M C 8;
 			132M C 2 A_TSP_SetNextState("QuickMelee", BT_ATTACK, BT_ZOOM);
 			TNT1 A 6;
+			"----" A 0 A_TSP_ClearNextStates();
 			Goto Select;
 		
 		NormalToAlt:
