@@ -163,18 +163,31 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( player.WeaponState & WF_WEAPONREADY )
 		{
-			if ( player.cmd.buttons & BT_ALTATTACK )
+			if ( tsp_weap.bHoldForMod )
 			{
-				if ( tsp_weap.SetAltActive(true) )
+				if ( player.cmd.buttons & BT_ALTATTACK )
 				{
-					player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("NormalToAlt"));
+					if ( tsp_weap.SetAltActive(true) )
+					{
+						player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("NormalToAlt"));
+					}
+				}
+				else if ( !(player.cmd.buttons & BT_ALTATTACK) )
+				{
+					if ( tsp_weap.SetAltActive(false) )
+					{
+						player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("AltToNormal"));
+					}
 				}
 			}
-			else if ( !(player.cmd.buttons & BT_ALTATTACK) )
+			else
 			{
-				if ( tsp_weap.SetAltActive(false) )
+				if ( player.cmd.buttons & BT_ALTATTACK )
 				{
-					player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("AltToNormal"));
+					if ( tsp_weap.ToggleAltActive() )
+					{
+						player.SetPSprite(PSP_WEAPON, tsp_weap.GetModSwapState());
+					}
 				}
 			}
 		}

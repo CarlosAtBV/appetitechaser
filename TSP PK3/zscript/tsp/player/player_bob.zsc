@@ -29,6 +29,11 @@ Class TSP_SpriteBumper
 	
 	double bump_amount;
 	double bump_angle;
+	
+	double h_shake;
+	double v_shake;
+	double h_speed;
+	double v_speed;
 }
 
 Extend Class TSP_PlayerPawn_ZSCBase
@@ -168,6 +173,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			
 			bumper_offset.x += cos(bangle) * bumper.bump_amount * power;
 			bumper_offset.y += sin(bangle) * bumper.bump_amount * power;
+			
+			bumper_offset.x += cos(level.maptime * bumper.h_speed) * bumper.h_shake * power;
+			bumper_offset.y += sin(level.maptime * bumper.v_speed) * bumper.v_shake * power;
 			
 			bumper.timer += 1;
 		}

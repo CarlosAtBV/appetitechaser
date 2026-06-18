@@ -54,7 +54,7 @@ for command in commands:
 		# 41
 		x_off = (cur_image.width/2)-160
 		y_off = ((cur_image.height/2)-120) + 61
-		path_dest = (os.path.dirname(os.path.realpath(path_file)))
+		path_dest = (os.path.dirname(os.path.realpath(path_out)))
 		os.makedirs(path_dest, exist_ok=True)
 		cur_image.save(filename=path_out)
 		#subprocess.Popen(['D:/Projects/RenderPipeline/grabpng.exe', '-grab', str(0), str(61), path_out])
