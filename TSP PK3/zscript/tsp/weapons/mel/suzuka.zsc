@@ -46,6 +46,7 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			{
 				A_TSP_FireBullets(2, 4, 1, 12);
 				A_StartSound("suzuka/default/fire", CHAN_WEAPON, flags: CHANF_OVERLAP);
+				A_GunFlash("Flash");
 				
 				A_SetPitch(pitch - 0.4);
 				A_SetAngle(angle + (frandom(-0.1,0.3)));
@@ -102,6 +103,15 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			132S B 1;
 			132S A 2;
 			Goto Ready;
+		
+		Flash:
+			132F B 1 BRIGHT
+			{
+				A_OverlayFlags(OverlayID(), PSPF_RENDERSTYLE|PSPF_ADDWEAPON, true);
+				A_OverlayRenderstyle(OverlayID(), STYLE_Add);
+				invoker.owner.player.FindPSprite(OverlayID()).frame = random(0,3);
+			}
+			Stop;
 			
 		Anim_Fire:
 			TNT1 A 1
