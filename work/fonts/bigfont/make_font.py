@@ -35,9 +35,7 @@ for ltr in letters:
 	#draw.text((6,3+offY), ltr, fill=(0,0,0), font=font)
 	#draw.text((5,2+offY), ltr, fill=(16,16,16), font=font)
 	#draw.text((4,1+offY), ltr, fill=(32,32,32), font=font)
-	draw.text((5,2+offY), ltr, fill=(0,0,0), font=font)
-	draw.text((4,1+offY), ltr, fill=(32,32,32), font=font)
-	draw.text((3,offY), ltr, fill=(255,255,255), font=font)
+	draw.text((0,0), ltr, fill=(255,255,255), font=font)
 	#img = img.resize((int(img.size[0]*0.95), img.size[1]), Image.Resampling.LANCZOS)
 	bbox = img.getbbox()
 	if ( bbox == None ): continue
