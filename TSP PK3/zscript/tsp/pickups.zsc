@@ -61,3 +61,23 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 			Stop;
 	}
 }
+
+Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
+{
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_RocketLauncher : TSP_WeaponPickup replaces RocketLauncher
+{
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}
