@@ -398,13 +398,16 @@ Class TSP_BaseWeapon : Weapon
 		are slightly offset.
 	*/
 	
-		action void A_TSP_FireBullets(double spread_h, double spread_v, int amount, int damage)
+		action void A_TSP_FireBullets(double spread_h, double spread_v, int amount, int damage, Vector3 tracerOffset = (0,-8,-8))
 		{
 			let owner = PlayerPawn(invoker.owner);
 			Vector3 spawnPos = (owner.pos.x, owner.pos.y, owner.player.viewz);
 		
 			Quat base = Quat.FromAngles(owner.angle, owner.pitch, owner.roll);
 			Vector3 forward = (1,0,0);
+			
+			//Vector3 tracerOffset = (0, -8, -8);
+			Vector3 tracerPos = spawnPos + (base * tracerOffset);
 		
 			for ( int i = 0; i < abs(amount); i++ )
 			{
@@ -418,8 +421,37 @@ Class TSP_BaseWeapon : Weapon
 				double aimYaw = atan2(dir.y, dir.x);
 				double aimPitch = -asin(dir.z);
 				
-				LineAttack(aimYaw, PLAYERMISSILERANGE, aimPitch, damage, 'Hitscan', "TSP_BulletPuff",
+				FLineTraceData tr;
+				owner.LineTrace(aimYaw, PLAYERMISSILERANGE, aimPitch, flags: TRF_ABSPOSITION, offsetz: spawnPos.z, offsetforward: spawnPos.x, offsetside: spawnPos.y, data: tr);
+				
+				bool thruPortal = (tr.NumPortals > 0);
+				
+				Actor puff = LineAttack(aimYaw, PLAYERMISSILERANGE, aimPitch, damage, 'Hitscan', "TSP_BulletPuff",
 					flags: LAF_ABSPOSITION, offsetz: spawnPos.z, offsetforward: spawnPos.x, offsetside: spawnPos.y);
+				
+				let tracer = TSP_HitscanTracerFX(Spawn("TSP_HitscanTracerFX", tracerPos));
+				
+				// [Py] only try to follow the puff IF it's not through a portal. why? agony
+				if ( puff )
+				{
+					if ( !thruPortal )
+					{
+						Vector3 traceDiff = level.Vec3Diff(tracerPos, puff.pos).Unit();
+						aimYaw = atan2(traceDiff.y, traceDiff.x);
+						aimPitch = -asin(traceDiff.z);
+					}
+				}
+				
+				owner.LineTrace(aimYaw, PLAYERMISSILERANGE, aimPitch, flags: TRF_ABSPOSITION, offsetz: tracerPos.z, offsetforward: tracerPos.x, offsetside: tracerPos.y, data: tr);
+				
+				Vector3 moveDir = tr.HitDir;
+				
+				tracer.owner = invoker.owner;
+				tracer.angle = atan2(moveDir.y, moveDir.x);
+				tracer.pitch = -asin(moveDir.z);
+				tracer.moveDir = moveDir;
+				
+				tracer.Init();
 			}
 		}
 		

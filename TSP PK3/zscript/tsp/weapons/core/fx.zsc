@@ -57,6 +57,94 @@ Class TSP_HitSpark_Wave : Actor
 	}
 }
 
+// Tracer
+
+	Class TSP_HitscanLineTracer : LineTracer
+	{
+		Actor ignore;
+
+		override ETraceStatus TraceCallback()
+		{
+			switch ( results.HitType )
+			{
+				case TRACE_HitActor:
+					if ( results.HitActor != ignore )
+					{
+						return TRACE_Stop;
+					}
+					break;
+				case TRACE_CrossingPortal:
+					break;
+				default:
+					return TRACE_Stop;
+					break;
+			}
+
+			return TRACE_Skip;
+		}
+	}
+
+	const TRACER_SPEED = 128;
+
+	Class TSP_HitscanTracerFX : Actor
+	{
+		Vector3 moveDir;
+
+		double dist;
+		double maxDist;
+		double speed;
+		
+		Actor owner;
+		bool goAway;
+		
+		Default
+		{
+			+NOINTERACTION
+			+NOBLOCKMAP
+			+BRIGHT
+			Radius 2;
+			Height 2;
+			RenderStyle "Add";
+		}
+		
+		override void Tick()
+		{
+			if ( goAway )
+			{
+				Destroy();
+				return;
+			}
+			let tracer = new('TSP_HitscanLineTracer');
+			tracer.ignore = owner;
+			tracer.Trace(pos, cursector, moveDir, speed, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, self);
+			
+			let res = tracer.results;
+			
+			if ( res.HitType != TRACE_HitNone )
+			{
+				goAway = true;
+				return;
+			}
+			
+			SetOrigin(res.HitPos, true);
+		}
+		
+		void Init()
+		{
+			speed = TRACER_SPEED*0.75;
+			Tick();
+			Prev = pos;
+			speed = TRACER_SPEED;
+		}
+		
+		States
+		{
+			Spawn:
+				POSS A -1;
+				Stop;
+		}
+	}
+
 Class TSP_HitscanTracer : FastProjectile
 {
 	Default
@@ -75,7 +163,6 @@ Class TSP_HitscanTracer : FastProjectile
 			Stop;
 	}
 }
-
 
 Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
 {

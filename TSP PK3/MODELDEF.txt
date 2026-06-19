@@ -1,0 +1,11 @@
+Model TSP_HitscanTracerFX
+{
+	Path "models/tsp/projectiles" 
+	Model 0 "tracer_new.md3"
+	Skin 0 "tracer_new.png"
+	USEACTORPITCH
+	//AngleOffset -90
+	Scale 1.0 1.0 1.0
+	
+	FrameIndex POSS A 0 0
+}

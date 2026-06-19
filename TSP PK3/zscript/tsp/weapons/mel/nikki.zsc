@@ -43,7 +43,7 @@ Class TSP_Weapon_DarlingNikki : TSP_BaseWeapon
 			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_AltFire");
 			122A B 1
 			{
-				A_TSP_FireBullets(3, 2, 1, 10);
+				A_TSP_FireBullets(3, 2, 1, 10, tracerOffset: (0,0,-8));
 				A_StartSound("nikki/spitfire/fire", CHAN_WEAPON, flags: CHANF_OVERLAP);
 				A_GunFlash("AltFlash");
 				A_SetPitch(pitch - 0.8);
