@@ -1,0 +1,63 @@
+enum ETSPWeaponSlot
+{
+	WEAPONSLOT_FISTS,
+	WEAPONSLOT_PISTOL,
+	WEAPONSLOT_SHOTGUN,
+	WEAPONSLOT_CHAINGUN,
+}
+
+Class TSP_WeaponPickup : Inventory
+{
+	int slottogive;
+	
+	Property SlotToGive : slottogive;
+	
+	Default
+	{
+		Inventory.PickupSound "general/weaponpickup";
+		+INVENTORY.AUTOACTIVATE
+	}
+	
+	override bool Use(bool pickup)
+	{
+		Class<Weapon> findWeap = "TSP_Weapon_Suzuka";
+		bool didHave = (owner.CountInv(findWeap) > 0);
+		bool didGive = owner.GiveInventory(findWeap, 1);
+		
+		if ( !didGive ) return false;
+		if ( owner.player == null ) return false;
+		
+		if ( owner.player.GetNeverSwitch() ) return false;
+		
+		Weapon daWeapon = Weapon(owner.FindInventory(findWeap));
+		
+		if ( !didHave && owner.player.ReadyWeapon != daWeapon )
+		{
+			owner.player.PendingWeapon = daWeapon;
+		}
+		
+		return true;
+	}
+}
+
+// PISTOLS
+
+Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
+{
+	States
+	{
+		Spawn:
+			121P A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
+{
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}

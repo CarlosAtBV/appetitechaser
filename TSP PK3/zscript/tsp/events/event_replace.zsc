@@ -23,9 +23,6 @@ Class TSP_ReplaceHandler : EventHandler
 			case 'HuntingShotgun':
 				e.Replacement = "TSP_Pickup_Shotgun";
 				break;
-			case 'ChaingunPickup':
-				e.Replacement = "TSP_Pickup_Chaingun";
-				break;
 		}
 	}
 }

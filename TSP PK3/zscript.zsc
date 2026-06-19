@@ -159,6 +159,8 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 //#include "zscript/tsp/maps/event_skiff.zsc"
 #include "zscript/tsp/maps/grass.zsc"
 
+#include "zscript/tsp/pickups.zsc"
+
 Class TSP_GlobalVariables : Thinker
 {
 	int tsp_employer;
