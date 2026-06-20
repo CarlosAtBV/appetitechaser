@@ -105,9 +105,9 @@ ailene/menu/standard02 "sounds/characters/ailene/menu/vo_ailene_menu_standard02.
 ailene/menu/standard_explain "sounds/characters/ailene/menu/vo_ailene_menu_standard_explain.ogg"
 
 $random ailene/menu/bountyhunters { ailene/menu/bountyhunters01 ailene/menu/bountyhunters02 }
-ailene/menu/bountyhunters01 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter01.ogg"
-ailene/menu/bountyhunters02 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter02.ogg"
-ailene/menu/bountyhunters_explain "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunter_explain.ogg"
+ailene/menu/bountyhunters01 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunters01.ogg"
+ailene/menu/bountyhunters02 "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunters02.ogg"
+ailene/menu/bountyhunters_explain "sounds/characters/ailene/menu/vo_ailene_menu_bountyhunters_explain.ogg"
 
 $random ailene/menu/demoscape { ailene/menu/demoscape01 ailene/menu/demoscape02 }
 ailene/menu/demoscape01 "sounds/characters/ailene/menu/vo_ailene_menu_demoscape01.ogg"
