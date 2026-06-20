@@ -152,9 +152,27 @@ Class TSP_MoveTrait_Slipdash : TSP_MoveTrait
 					return false;
 				}
 				
-				mo.vel.xy *= min(lengthbert/8, 0.95);
 				mo.TSP_SetViewHeight(0.5);	
-				DoSlipPush(mo);				
+				DoSlipPush(mo);	
+				
+				int randomDir = atan2(mo.vel.y, mo.vel.x) + random(25,45) * randompick(-1,1);
+				let smonk = TSP_CrouchSlideSmoke(Actor.Spawn("TSP_CrouchSlideSmoke", mo.pos + mo.vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
+				smonk.targAlpha = min((mo.vel.x, mo.vel.y).Length() / 32, 1.0);
+				
+				int forwardZ = mo.GetZAt(32, 0, atan2(mo.vel.y,mo.vel.x), GZF_ABSOLUTEANG);
+				if ( forwardZ > mo.pos.z )
+				{
+					mo.vel.xy *= 0.75;
+				}
+				else if ( forwardZ < mo.pos.z )
+				{
+					mo.vel.xy *= 1.0;
+				}
+				else
+				{
+					mo.vel.xy *= min(lengthbert/8, 0.95);
+				}
+				
 				return true;
 				break;
 		}
