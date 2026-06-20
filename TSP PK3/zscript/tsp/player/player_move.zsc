@@ -1,5 +1,15 @@
 Extend Class TSP_PlayerPawn_ZSCBase
 {	
+	Array<TSP_MoveTrait> movetraits;
+	
+	void TSP_AddMoveTrait (Class<TSP_MoveTrait> type)
+	{
+		let newMove = TSP_MoveTrait(new(type));
+		movetraits.Push(newMove);
+		newMove.Init(self);
+		Console.Printf("Movement trait of type "..(type).." loaded.");
+	}
+	
 	bool tsp_crouchSliding;
 	bool tsp_firstSlideBoost;
 	bool tsp_slidingOnGround;
@@ -16,6 +26,17 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	int tsp_deadend;
 	
 	bool tsp_cooluifreeze;
+	
+	override bool CanCollideWith (Actor other, bool passive)
+	{
+		if ( !other.bISMONSTER ) return super.CanCollideWith(other, passive);
+		
+		for ( int i = 0; i < movetraits.Size(); i++ )
+		{
+			if ( !movetraits[i].CollideWithEnemies() ) return false;
+		}
+		return super.CanCollideWith(other, passive);
+	}
 	
 	override void Die(Actor source, Actor inflictor, int dmgflags, Name meansofdeath)
 	{
@@ -134,7 +155,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			}
 		}
 		
-		if ( player.cmd.buttons & BT_CROUCH )
+		/*if ( player.cmd.buttons & BT_CROUCH )
 		{
 			if ( !player.onground )
 			{
@@ -145,54 +166,13 @@ Extend Class TSP_PlayerPawn_ZSCBase
 				}
 				tsp_crouchSliding = true;
 			}
-		}
+		}*/
 		
-		bNOFRICTION = tsp_crouchSliding;
+		bNOFRICTION = true;
 		
-		if ( tsp_crouchSliding )
+		for ( int i = 0; i < movetraits.Size(); i++ )
 		{
-			if ( player.onground )
-			{
-				int randomDir = atan2(vel.y, vel.x) + random(25,45) * randompick(-1,1);
-				let smonk = TSP_CrouchSlideSmoke(Spawn("TSP_CrouchSlideSmoke", pos + vel * 2 + (cos(randomDir), sin(randomDir), 0) * 32));
-				smonk.targAlpha = min((vel.x, vel.y).Length() / 32, 1.0);
-				int forwardZ = GetZAt(32, 0, atan2(vel.y,vel.x), GZF_ABSOLUTEANG);
-				//Console.Printf(pos.z.." ~~~ "..forwardZ);
-				if ( forwardZ > pos.z )
-				{
-					//COnsole.Printf("SLOW DOWN MAURICE");
-					vel.xy *= 0.75;
-				}
-				else if ( forwardZ < pos.z )
-				{
-					//COnsole.Printf("I WANNA GO FAST");
-					vel.xy *= 1.0;
-				}
-				else if ( vel.xy.Length() < 8 )
-				{
-					vel.xy *= 0.875;
-				}
-				else
-				{
-					vel.xy *= 0.97;
-				}
-			}
-		}
-		else
-		{
-			if ( tsp_slideCooldown > 0 )
-			{
-				tsp_slideCooldown--;
-			}
-			if ( player.onground )
-			{
-				vel.xy *= 0.875;
-			}
-		}
-		
-		if ( isFloating )
-		{
-			vel.z *= 0.875;
+			if ( movetraits[i].MovePlayer(self) ) return;
 		}
 		
 		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove) / 6400;
@@ -201,13 +181,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		double runspeed = min(moveDir.Length()*2, 3) * speed;
 		//runspeed *= Speed;
 		
-		bool isMoving = (cmd.forwardmove || cmd.sidemove);
-		
 		if ( cmd.forwardmove || cmd.sidemove )
 		{
-			double finalSpeed = ( !player.onground ? 0.1 : runspeed ) * tsp_viewheight_mult;
+			double finalSpeed = ( !player.onground ? 0.1 : runspeed );// * tsp_viewheight_mult;
+			vel.xy += (cos(moveAngle), sin(moveAngle)) * finalSpeed;
 			
-			if ( !tsp_crouchSliding )
+			/*if ( !tsp_crouchSliding )
 			{
 				vel.xy += (cos(moveAngle), sin(moveAngle)) * finalSpeed;
 			}
@@ -215,19 +194,21 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			{
 				vel.z -= finalSpeed * sin(pitch);
 				vel.xy *= cos(pitch);
-			}
+			}*/
 		}
 		
-		MaxStepHeight = tsp_crouchsliding ? 16 : 24;
-		
-		//int stepFreq = 30 / runspeed;
-		double bobTarg = cos(level.maptime * runspeed * 8) * tsp_bobAmt;//(stepFreq - (level.maptime % stepFreq)) / double(stepFreq) * tsp_bobAmt;
-		tsp_lastbob = tsp_bob;
-		tsp_bob = tsp_bob + ( bobTarg * 2 - tsp_bob ) / 3;
-		tsp_bobamt = tsp_bobamt + ( (isMoving ? 1 : 0) - tsp_bobAmt ) / 4.;
+		if ( player.onground )
+		{
+			vel.xy *= 0.875;
+		}
 		
 		tsp_viewheight_mult = tsp_viewheight_mult + ( (tsp_crouching ? 0.42 : 1.0) - tsp_viewheight_mult ) / 2;
 	}	
+	
+	void TSP_SetViewHeight(double mult)
+	{
+		tsp_viewheight_mult = mult;
+	}
 	
 	//
 	// CalcHeight()

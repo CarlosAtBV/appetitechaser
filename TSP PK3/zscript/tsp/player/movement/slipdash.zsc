@@ -1,0 +1,176 @@
+Class TSP_MoveTrait play
+{
+	virtual void Init(TSP_PlayerPawn_ZSCBase mo)
+	{
+	}
+	
+	virtual bool MovePlayer (TSP_PlayerPawn_ZSCBase mo)
+	{
+		return false;
+	}
+	
+	virtual Vector3, Vector3 ModifyView (TSP_PlayerPawn_ZSCBase mo)
+	{
+		return (0,0,0), (0,0,0);
+	}
+	
+	virtual bool CollideWithEnemies ()
+	{
+		return true;
+	}
+}
+
+Class TSP_MoveTrait_Slipdash : TSP_MoveTrait
+{
+	bool doSlide;
+	bool isSliding;
+	
+	int slideState;
+	double slideAngle;
+	
+	double staleNegation;
+	
+	enum ESlideState
+	{
+		NOT_SLIDING,
+		WILL_SLIDE,
+		SLIDING
+	}
+	
+	double slideRoll;
+	
+	const SLIPDASH_RANGE = 96;
+	
+	Array<Actor> hitFellas;
+	
+	void DoSlipPush(TSP_PlayerPawn_ZSCBase src)
+	{
+		double speedMult = src.vel.xy.Length() / 18.0; 
+		int range = SLIPDASH_RANGE;
+		
+		BlockThingsIterator it = BlockThingsIterator.Create(src, range);
+		Actor mo;
+		bool hitSomething;
+		
+		let player = TSP_PlayerPawn_ZSCBase(src);
+		
+		let tracer = new('TSP_MeleeTracer');
+		
+		while ( it.Next() )
+		{
+			mo = it.thing;
+			if ( !mo.bShootable || mo.bDormant || mo.Health <= 0 ) continue; // Bro are you even alive... r u breathing???
+			if ( src.AbsAngle(slideAngle, src.AngleTo(mo)) > 85 ) continue; // Within acceptable angles
+			if ( hitFellas.Find(mo) < hitFellas.Size() ) continue;
+			
+			Vector3 diff = mo.pos - src.pos;
+			
+			tracer.toFind = mo;
+			tracer.Trace(src.pos + (0,0,src.height/2), src.cursector, diff.Unit(), range, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, src);
+			let res = tracer.results;
+			
+			if ( res.HitActor == null ) continue;
+			if ( res.HitActor != mo ) continue;
+			
+			mo.TriggerPainChance("", true);
+			mo.vel = ((mo.pos - src.pos) + (0,0,12)).Unit() * (speedMult*16);
+			mo.A_StartSound("melee/basic/normal/impact", 67);
+			hitFellas.Push(mo);
+		}
+	}
+	
+	override bool CollideWithEnemies ()
+	{
+		return slideState != SLIDING;
+	}
+	
+	void StopSliding(TSP_PlayerPawn_ZSCBase mo)
+	{
+		hitFellas.Clear();
+		slideState = NOT_SLIDING;
+		mo.A_StartSound("ability/slipdash/end", 98);
+		mo.A_StopSound(97);
+	}
+	
+	override void Init(TSP_PlayerPawn_ZSCBase mo)
+	{
+		slideState = NOT_SLIDING;
+		
+		super.Init(mo);
+	}
+	
+	override bool MovePlayer (TSP_PlayerPawn_ZSCBase mo)
+	{
+		let player = mo.player;
+		int buttons = mo.player.cmd.buttons;
+		
+		switch ( slideState )
+		{
+			case NOT_SLIDING:
+				if ( staleNegation < 1.0 )
+				{
+					staleNegation += 0.02;
+					if ( staleNegation > 1.0 )
+					{
+						staleNegation = 1.0;
+					}
+				}
+				
+				if ( !player.onground && buttons & BT_CROUCH )
+				{
+					mo.vel.z = -8;
+					mo.vel += (cos(mo.angle), sin(mo.angle), 0) * staleNegation;
+					slideState = WILL_SLIDE;
+				}
+				break;
+			case WILL_SLIDE:
+				if ( player.onground )
+				{
+					double lengthbert = mo.vel.xy.Length();
+					slideAngle = mo.angle;
+					mo.vel += (cos(mo.angle), sin(mo.angle), 0) * (lengthbert*1.5) * staleNegation;
+					staleNegation = 0.0;
+					slideState = SLIDING;
+					mo.A_StartSound("ability/slipdash/start", 98);
+					mo.A_StartSound("ability/slipdash/loop", 97, CHANF_LOOPING, startTime: frandom(0.0,1.0));
+				}
+				break;
+			case SLIDING:
+				if ( buttons & BT_JUMP )
+				{
+					StopSliding(mo);
+					mo.vel.xy *= 0.75;
+					mo.vel.z += 1;
+					return false;
+				}
+				
+				double lengthbert = mo.vel.xy.Length();
+				
+				if ( lengthbert < 1 )
+				{
+					StopSliding(mo);
+					return false;
+				}
+				
+				mo.vel.xy *= min(lengthbert/8, 0.95);
+				mo.TSP_SetViewHeight(0.5);	
+				DoSlipPush(mo);				
+				return true;
+				break;
+		}
+			
+		return super.MovePlayer(mo);
+	}
+	
+	override Vector3, Vector3 ModifyView (TSP_PlayerPawn_ZSCBase mo)
+	{
+		double targ;
+		if ( slideState == SLIDING && mo.player.onground )
+		{
+			targ = (mo.DeltaAngle(mo.angle, slideAngle) * 0.05) - 2;
+		}
+		slideRoll = slideRoll + mo.DeltaAngle(slideRoll, targ) * 0.5;
+		
+		return (0,0,0), (0,0,slideRoll);
+	}
+}

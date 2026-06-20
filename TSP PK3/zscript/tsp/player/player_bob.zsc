@@ -138,6 +138,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			recoil.timer += 1;
 		}
 		
+		for ( int i = 0; i < movetraits.Size(); i++ )
+		{
+			Vector3 newPos, newAngles;
+			[newPos, newAngles] = movetraits[i].ModifyView(self);
+			view_shake += newPos;
+			view_roll += newAngles.z;
+		}
+		
 		SetViewPos(view_shake);
 		A_SetViewRoll(view_roll, SPF_INTERPOLATE);
 		A_SetViewAngle(view_angle, SPF_INTERPOLATE);
