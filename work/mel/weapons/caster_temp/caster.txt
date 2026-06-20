@@ -1,0 +1,2 @@
+load "out/caster_temp.png"
+save "sprites/mel/weapons/caster/161GA0.png"

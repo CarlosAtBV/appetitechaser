@@ -100,6 +100,7 @@ const TSP_TRACERSPEED = 40;
 #include "zscript/tsp/weapons/mel/nikki.zsc"
 #include "zscript/tsp/weapons/mel/suzuka.zsc"
 #include "zscript/tsp/weapons/mel/medusa.zsc"
+#include "zscript/tsp/weapons/mel/caster.zsc"
 
 // MEL
 #include "zscript/tsp/weapons/mel/weapon_base_mel.zsc"
