@@ -1,0 +1,14 @@
+load "out/medusa0000.png"
+save "sprites/mel/weapons/shiva/151GA0.png"
+
+load "out/medusa0001.png"
+save "sprites/mel/weapons/shiva/151GB0.png"
+
+load "out/medusa0002.png"
+save "sprites/mel/weapons/shiva/151GC0.png"
+
+load "out/medusa0003.png"
+save "sprites/mel/weapons/shiva/151GD0.png"
+
+load "out/medusa0004.png"
+save "sprites/mel/weapons/shiva/151GE0.png"
