@@ -361,6 +361,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		super.CheckFOV();
 		
 		view_zoomLerp = view_zoomLerp + ( view_zoom - view_zoomLerp ) / 2;
+		
 		player.FOV = (player.DesiredFOV * view_zoomLerp);
+		
+		for ( int i = 0; i < movetraits.Size(); i++ )
+		{
+			player.FOV = movetraits[i].ModifyFOV(player.FOV, self);
+		}
 	}
 }

@@ -14,6 +14,11 @@ Class TSP_MoveTrait play
 		return (0,0,0), (0,0,0);
 	}
 	
+	virtual double ModifyFOV (double oldfov, TSP_PlayerPawn_ZSCBase mo)
+	{
+		return oldfov;
+	}
+	
 	virtual bool CollideWithEnemies ()
 	{
 		return true;
@@ -40,6 +45,8 @@ Class TSP_MoveTrait_Slipdash : TSP_MoveTrait
 	double slideRoll;
 	
 	const SLIPDASH_RANGE = 96;
+	
+	double slideFOV;
 	
 	Array<Actor> hitFellas;
 	
@@ -190,5 +197,13 @@ Class TSP_MoveTrait_Slipdash : TSP_MoveTrait
 		slideRoll = slideRoll + mo.DeltaAngle(slideRoll, targ) * 0.5;
 		
 		return (0,0,0), (0,0,slideRoll);
+	}
+	
+	override double ModifyFOV (double oldfov, TSP_PlayerPawn_ZSCBase mo)
+	{
+		double targ = (slideState == SLIDING) ? (mo.vel.Length()/2) : 0;
+		slideFOV = slideFOV + (targ - slideFOV) / 3;
+		
+		return oldfov + slideFOV;
 	}
 }
