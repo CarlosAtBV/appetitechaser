@@ -80,7 +80,7 @@ Class TSP_MoveTrait_Slipdash : TSP_MoveTrait
 			if ( res.HitActor != mo ) continue;
 			
 			mo.TriggerPainChance("", true);
-			mo.vel = ((mo.pos - src.pos) + (0,0,12)).Unit() * (speedMult*16);
+			mo.vel = ((mo.pos - src.pos) + (0,0,12) + src.vel).Unit() * (speedMult*16);
 			mo.A_StartSound("melee/basic/normal/impact", 67);
 			hitFellas.Push(mo);
 		}
