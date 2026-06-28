@@ -164,25 +164,6 @@ Class TSP_HitscanTracer : FastProjectile
 	}
 }
 
-Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
-{
-	int tracerDamage;
-	
-	override int SpecialMissileHit (Actor victim)
-	{
-		if(victim!=target) victim.DamageMobj(self,target,tracerDamage,'Hitscan');
-		return -1;
-	}
-	
-	States
-	{
-		XDeath:
-			TNT1 A 15 A_PlaySound("hit/flesh");
-			Stop;
-	}
-}
-
-
 Class TSP_BulletPuff : Actor
 {
 	Default

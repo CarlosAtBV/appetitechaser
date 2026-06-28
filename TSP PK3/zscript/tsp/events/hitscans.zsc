@@ -1,0 +1,74 @@
+Extend Class TSP_EventHandler
+{
+	override bool WorldHitscanPreFired (WorldEvent e)
+	{
+		let fudge = TSP_HitscanTracer_Enemy(Actor.Spawn("TSP_HitscanTracer_Enemy", e.thing.pos + (0,0,e.thing.height/2)));
+		fudge.tracerDamage = e.damage;
+		fudge.target = e.thing;
+		fudge.angle = e.AttackAngle;
+		fudge.pitch = e.AttackPitch;
+		fudge.speed = 120;
+		fudge.owner = e.thing;
+		fudge.Vel3DFromAngle(fudge.speed, e.AttackAngle, e.AttackPitch);
+		fudge.moveDir = fudge.vel.Unit();
+		return true;
+	}
+}
+
+Class TSP_HitscanTracer_Enemy : TSP_HitscanTracer
+{
+	Default
+	{
+		RenderStyle "Add";
+		+BRIGHT
+	}
+	
+	Vector3 moveDir;
+
+	double speed;
+	
+	Actor owner;
+	bool goAway;
+	
+	int tracerDamage;
+	
+	override void PostBeginPlay()
+	{
+		A_ChangeModel("TSP_HitscanTracerFX");
+		super.PostBeginPlay();
+	}
+		
+	override void Tick()
+	{
+		if ( goAway )
+		{
+			Destroy();
+			return;
+		}
+		let tracer = new('TSP_HitscanLineTracer');
+		tracer.ignore = owner;
+		tracer.Trace(pos, cursector, moveDir, speed, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, self);
+		
+		let res = tracer.results;
+		
+		if ( res.HitType != TRACE_HitNone )
+		{
+			if ( res.HitType == TRACE_HitActor && res.HitActor.bShootable )
+			{
+				res.HitActor.DamageMobj(self, owner, tracerDamage, 'Hitscan');
+				A_PlaySound("hit/flesh");
+			}
+			goAway = true;
+			return;
+		}
+		
+		SetOrigin(res.HitPos, true);
+	}
+	
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Wait;
+	}
+}
