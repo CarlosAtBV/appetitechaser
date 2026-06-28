@@ -7,7 +7,7 @@ Extend Class TSP_EventHandler
 		fudge.target = e.thing;
 		fudge.angle = e.AttackAngle;
 		fudge.pitch = e.AttackPitch;
-		fudge.speed = 120;
+		fudge.speed = 96;
 		fudge.owner = e.thing;
 		fudge.Vel3DFromAngle(fudge.speed, e.AttackAngle, e.AttackPitch);
 		fudge.moveDir = fudge.vel.Unit();
