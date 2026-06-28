@@ -78,6 +78,55 @@ Class TSP_HitEffect_Stun : TSP_HitEffect
 	}
 }
 
+Class TSP_HitEffect_Cleave : TSP_HitEffect
+{
+	int radius;
+	int damage;
+	Actor og;
+	
+	bool didCleave;
+	
+	static TSP_HitEffect Create(Actor newOwner, int newRadius, int newDamage)
+	{
+		let newEffect = new("TSP_HitEffect_Cleave");
+		newEffect.og = newOwner;
+		newEffect.radius = newRadius;
+		newEffect.damage = newDamage;
+		return newEffect;
+	}
+	
+	override void DoEffect(Actor victim)
+	{
+		if ( didCleave ) return;
+		
+		BlockThingsIterator it = BlockThingsIterator.Create(victim, radius);
+		Actor mo;
+		bool hitSomething;
+		
+		let tracer = new('TSP_MeleeTracer');
+		
+		while ( it.Next() )
+		{
+			mo = it.thing;
+			
+			if ( mo == og ) continue;
+			if ( !mo.bShootable || mo.bDormant || mo.Health <= 0 ) continue;
+			
+			Vector3 diff = mo.pos - og.pos;
+			
+			tracer.Trace(og.pos + (0,0,og.height/2), og.cursector, diff.Unit(), radius, TRACE_HitSky, Line.ML_BLOCKEVERYTHING, false, og);
+			let res = tracer.results;
+				
+			if ( res.HitActor == null ) continue;
+			if ( res.HitActor != mo ) continue;
+			
+			mo.DamageMobj(og, og, damage, 'Explosion');
+			mo.tics += 5;
+			mo.vel = (diff+(0,0,4)).Unit() * 12;
+		}
+	}
+}
+
 Class TSP_BaseWeapon : Weapon
 {
 	int tsp_modflags;
