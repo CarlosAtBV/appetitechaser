@@ -2,6 +2,8 @@ Extend Class TSP_EventHandler
 {
 	override bool WorldHitscanPreFired (WorldEvent e)
 	{
+		if ( e.Thing is "PlayerPawn" ) return false;
+		
 		let fudge = TSP_HitscanTracer_Enemy(Actor.Spawn("TSP_HitscanTracer_Enemy", e.thing.pos + (0,0,e.thing.height/2)));
 		fudge.tracerDamage = e.damage;
 		fudge.target = e.thing;
