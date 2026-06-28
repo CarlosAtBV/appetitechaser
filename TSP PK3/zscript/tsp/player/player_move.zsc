@@ -2,6 +2,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 {	
 	Array<TSP_MoveTrait> movetraits;
 	
+	double moveSpeed;
+	double moveSpeedTarg;
+	
 	void TSP_AddMoveTrait (Class<TSP_MoveTrait> type)
 	{
 		let newMove = TSP_MoveTrait(new(type));
@@ -100,9 +103,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		player.onground = !TestMobjLocation() || pos.z <= floorz || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
 		SetXYZ(pos + (0,0,zoffset));
 		
-		//Console.Printf(""..traceStuff.HitType);
-		//player.onground = traceStuff.HitType == FLineTraceData.TRACE_HitFloor;//(pos.z <= floorz) || bOnMobj || bMBFBouncer || (player.cheats & CF_NOCLIP2);
-		
 		if ( pp_hitFreeze>0 || tsp_cooluifreeze )
 		{
 			A_SetAngle(angle-1,0);
@@ -110,49 +110,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			A_SetPitch(pitch-1,0);
 			A_SetPitch(pitch+1,SPF_INTERPOLATE);
 			return;
-		}
-		
-		bool isSlidingOnGround = (player.onground && tsp_crouchSliding);
-		bool isFloating = ( waterlevel || bNoGravity ) && pitch != 0 && !player.GetClassicFlight();
-		
-		if ( isSlidingOnGround )
-		{
-			if ( !tsp_firstSlideBoost )
-			{
-				tsp_firstSlideBoost = true;
-				double boostAngle = angle + DeltaAngle(angle, atan2(vel.y, vel.x))/4;
-				float boostMult = 1.5 * clamp(1 - ((tsp_slideCooldown-15.0)/105.0), 0.0, 1.0);
-				vel.xy = (cos(boostAngle), sin(boostAngle)) * vel.xy.Length() * boostMult;
-				Console.Printf(""..boostMult);
-				tsp_slideCooldown = min(tsp_slideCooldown+35, 105);
-			}
-			if ( !tsp_slidingOnGround )
-			{
-				A_StartSound("ability/slipdash/start", 98);
-				A_StartSound("ability/slipdash/loop", 99, startTime: frandom(0.0,1.0));
-			}
-			A_SoundVolume(99, min(vel.xy.Length()/32, 0.25));
-		}
-		else
-		{
-			if ( tsp_slidingOnGround )
-			{
-				A_StartSound("ability/slipdash/end", 98);
-				A_StopSound(99);
-			}
-		}
-		
-		tsp_slidingOnGround = isSlidingOnGround;
-		
-		if ( tsp_crouchSliding )
-		{
-			bool uncrouch = player.cmd.buttons & BT_CROUCH && !(player.oldbuttons & BT_CROUCH);
-			if ( uncrouch || player.cmd.buttons & BT_JUMP || ( tsp_crouchSliding && vel.xy.Length() < 2 ) )
-			{
-				tsp_firstSlideBoost = false;
-				tsp_crouchSliding = false;
-				vel.xy *= 0.75;
-			}
 		}
 		
 		/*if ( player.cmd.buttons & BT_CROUCH )
@@ -175,31 +132,61 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			if ( movetraits[i].MovePlayer(self) ) return;
 		}
 		
-		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove) / 6400;
-		double moveAngle = atan2(moveDir.y, moveDir.x) + angle;
+		Vector2 moveDir = (cmd.forwardmove, -cmd.sidemove).Unit();
+		moveDir = RotateVector(moveDir, angle);
+		//double moveAngle = atan2(moveDir.y, moveDir.x) + angle;
 		
 		double runspeed = min(moveDir.Length()*2, 3) * speed;
 		//runspeed *= Speed;
 		
+		double maxSpeed;
+		
+		if ( player.onground )
+		{
+			if ( player.buttons & BT_SPEED )
+			{
+				moveSpeedTarg = 192;
+			}
+			else
+			{
+				moveSpeedTarg = 128;
+			}
+			moveSpeed = moveSpeed + (moveSpeedTarg - moveSpeed) / 3.;
+			maxSpeed = moveSpeed;
+		}
+		else
+		{
+			maxSpeed = 15;
+		}
+		
+		Console.Printf(""..maxSpeed);
+		
 		if ( cmd.forwardmove || cmd.sidemove )
 		{
-			double finalSpeed = ( !player.onground ? 0.1 : runspeed );// * tsp_viewheight_mult;
-			vel.xy += (cos(moveAngle), sin(moveAngle)) * finalSpeed;
+			//double currentSpeed = vel.xy dot moveDir;
+			//Console.Printf(""..currentSpeed);
+			//double finalSpeed = ( !player.onground ? 0.1 : runspeed );
+			//double targSpeed = maxSpeed - currentSpeed;
+			double currentSpeed = vel.xy dot moveDir;
+			double targSpeed = maxSpeed - currentSpeed;
 			
-			/*if ( !tsp_crouchSliding )
+			double delta = (1. / TICRATE);
+			/*if ( targSpeed > 0 )
 			{
-				vel.xy += (cos(moveAngle), sin(moveAngle)) * finalSpeed;
-			}
-			if ( isFloating )
-			{
-				vel.z -= finalSpeed * sin(pitch);
-				vel.xy *= cos(pitch);
+				double accelSpeed = (1 / TICRATE) * maxSpeed;
+				double speedBert = min(accelSpeed, targSpeed);
+				vel.xy += moveDir * targSpeed;
 			}*/
+			
+			Vector2 finalSpeed = moveDir * (targSpeed * delta);
+			
+			vel.x = (vel.x + finalSpeed.x);//, -maxSpeed, maxSpeed);
+			vel.y = (vel.y + finalSpeed.y);//, -maxSpeed, maxSpeed);
 		}
 		
 		if ( player.onground )
 		{
-			vel.xy *= 0.875;
+			vel.xy *= 0.75;
 		}
 		
 		tsp_viewheight_mult = tsp_viewheight_mult + ( (tsp_crouching ? 0.42 : 1.0) - tsp_viewheight_mult ) / 2;
