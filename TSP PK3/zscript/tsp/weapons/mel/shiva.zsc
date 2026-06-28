@@ -25,7 +25,12 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 				A_StartSound("melee/basic/normal/miss", 12);
 			}
 			151G B 5;
-			"----" A 0 A_TSP_Melee(40);
+			"----" A 0
+			{
+				A_TSP_Melee(40);
+				let effect = TSP_HitEffect_Cleave.Create(invoker.owner, 192, 20);
+				A_TSP_ApplyToVictims(effect);	
+			}
 			151G B 10;
 			"----" A 0 A_TSP_SetNextState("Fire2");
 			151G B 10;
@@ -37,7 +42,12 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 				A_StartSound("melee/basic/normal/miss", 12);
 			}
 			151G C 5;
-			"----" A 0 A_TSP_Melee(40);
+			"----" A 0
+			{
+				A_TSP_Melee(40);
+				let effect = TSP_HitEffect_Cleave.Create(invoker.owner, 192, 20);
+				A_TSP_ApplyToVictims(effect);	
+			}
 			151G C 10;
 			"----" A 0 A_TSP_SetNextState("Fire");
 			151G C 10;
