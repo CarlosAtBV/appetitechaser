@@ -1,6 +1,7 @@
 Extend Class TSP_PlayerPawn_ZSCBase
 {	
 	Array<TSP_MoveTrait> movetraits;
+	bool hasTraits;
 	
 	double moveSpeed;
 	double moveSpeedTarg;
@@ -8,8 +9,9 @@ Extend Class TSP_PlayerPawn_ZSCBase
 	void TSP_AddMoveTrait (Class<TSP_MoveTrait> type)
 	{
 		let newMove = TSP_MoveTrait(new(type));
-		movetraits.Push(newMove);
-		newMove.Init(self);
+		let player = TSP_PlayerPawn_ZSCBase(player.mo);
+		player.movetraits.Push(newMove);
+		newMove.Init(player);
 		Console.Printf("Movement trait of type "..(type).." loaded.");
 	}
 	
@@ -158,8 +160,6 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		{
 			maxSpeed = 15;
 		}
-		
-		Console.Printf(""..maxSpeed);
 		
 		if ( cmd.forwardmove || cmd.sidemove )
 		{

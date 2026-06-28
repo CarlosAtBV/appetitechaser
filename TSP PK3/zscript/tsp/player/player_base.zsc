@@ -105,29 +105,15 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		pp_haveTheseWeapons.Clear();
 		
-		pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
-		pp_meleestart = CVar.GetCVar("tsp_fistsstart").GetBool()||CVar.GetCVar("tsp_meleesupreme").GetBool();
 		super.GiveDefaultInventory();
 		
-		if(pp_gamemode==1)
-		{
-			OnBountyHunterLoadout();
-		}
-		else
-		{
-			OnStandardLoadout();
-		}
+		TSP_GiveLoadout(_tsp_gamemode);
 		
 		GiveInventory("TSP_PlayerPawn_Shield",pp_initShield);
 		GiveInventory("TSP_PlayerPawn_MaxShield",pp_initShield);
 		
 		GiveInventory("TSP_GlobalDollars",TSP_STARTINGMONEY);
 		GiveInventory("MeleeButtonActor",1);
-		
-		/*if(Object.G_SkillPropertyInt(SKILLP_ACSReturn)==0)
-		{
-			GiveInventory("TSP_HealingSyringe",1);
-		}*/
 		
 		// Select the most recently added(?) weapon
 		
@@ -142,10 +128,19 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		}
 	}
 	
+	virtual void TSP_GiveLoadout(int gamemode)
+	{
+	}
+	
+	virtual void TSP_GiveMoveTraits(int gamemode)
+	{
+	}
+	
 	virtual void OnStandardLoadout()
 	{
 		Console.Printf("\c[TSP_Yellow]APPLYING STANDARD LOADOUT TEST");
 	}
+	
 	virtual void OnBountyHunterLoadout()
 	{
 		for (int i = 0; i < AllActorClasses.Size(); i++)
@@ -162,7 +157,6 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	override void PostBeginPlay()
 	{
 		super.PostBeginPlay();
-		//pp_gamemode = CVar.GetCVar("tsp_gamemode").GetInt();
 		
 		gvars = TSP_GlobalVariables.Get();
 		gvars.tsp_employer = 0;
@@ -189,19 +183,10 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
-		/*string damageGiver = (inflictor!=null ? inflictor.GetClassName() : 'N/A');
-		string damageSource = (source!=null ? source.GetClassName() : 'N/A');
-		Console.Printf(damageSource.."'s "..damageGiver.." dealt "..damage.." damage.");*/
-		
-		if(FindInventory("TSP_Upgrade_ARC_Tank"))
-		{
-			Console.Printf("hell yea");
-			damage *= 0.75;
-		}
 		
 		pp_shieldHitDelay = 35*5;
 		
-		if(mod!='Suicide' && CountInv("TSP_PlayerPawn_Shield"))
+		if ( mod != 'Suicide' && CountInv("TSP_PlayerPawn_Shield") )
 		{
 			int truDamage = damage;
 			damage = 0;
@@ -220,7 +205,7 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		
 		pp_hitMult = (damage / 25.);
 		
-		return super.DamageMobj(inflictor,source,damage,mod,flags,angle);
+		return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 	}
 	
 	int sign (int numby)
@@ -253,6 +238,12 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		{
 			Super.Tick();
 			return;
+		}
+		
+		if ( !hasTraits )
+		{
+			TSP_GiveMoveTraits(_tsp_gamemode);
+			hasTraits = true;
 		}
 		
 		if(pp_hitFreeze>0)
