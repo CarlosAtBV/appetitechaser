@@ -1,0 +1,27 @@
+Extend Class TSP_EpisodeMenu
+{
+	void BountyHuntersInit()
+	{
+		let header = new("TSP_MenuHeader");
+		header.text = "Bounty Hunters";
+		AddItem(header);
+		
+		for ( int i = 0; i < LevelInfo.GetLevelInfoCount(); i++ )
+		{
+			let info = LevelInfo.GetLevelInfo(i);
+			
+			let button = new("TSP_MenuButton");
+			button.Init();
+			button.text = info.LookupLevelName();
+			button.pos = (480, 32+i*24);
+			button.size = (128, 24);
+			
+			let menuaction = new("TSP_MenuAction");
+			menuaction.type = TSP_MenuAction.RETURN_VALUE;
+			menuaction.value = info.MapName;
+			button.menuaction = menuaction;
+			
+			AddItem(button);
+		}
+	}
+}

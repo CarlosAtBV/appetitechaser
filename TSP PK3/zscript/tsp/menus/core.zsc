@@ -1,0 +1,235 @@
+Struct TSPMenu
+{
+	static int, int, int, int GetViewport()
+	{
+		double scale = Screen.GetAspectRatio() / (16./9.);
+		
+		int height = int(screen.GetHeight() * scale);
+		
+		return 0, (screen.GetHeight() - height)/2, screen.GetWidth(), int(screen.GetHeight() * scale);
+	}
+	
+	static Vector2 GetMousePos(int x, int y)
+	{
+		int vx, vy, vw, vh;
+		[vx, vy, vw, vh] = GetViewport();
+		
+		Vector2 adjustedMPos = (x,y) - (vx, vy);
+		Vector2 virtualMPos = (adjustedMPos.x * 1280 / vw, adjustedMPos.y * 720 / vh);
+		
+		return virtualMPos;
+	}
+	
+	static void DrawText (int x, int y, string text, int size = 24, int align = 1, Color fontColor = Color(255,255,255,255))
+	{
+		int vx, vy, vw, vh;
+		[vx, vy, vw, vh] = GetViewport();
+		double scalar = double(size) / 80.;
+		//Console.Printf(""..scale);
+		Font fnt = "tsp_large";
+		if ( align == 0 )
+		{
+			x -= fnt.StringWidth(text) / 2;
+		}
+		screen.DrawText("tsp_large", Font.CR_UNTRANSLATED, x, y, text,
+			DTA_ScaleX, scalar, DTA_ScaleY, scalar,
+			DTA_ColorOverlay, fontColor,
+			DTA_ViewportX, vx, DTA_ViewportY, vy,
+			DTA_ViewportWidth, vw, DTA_ViewportHeight, vh,
+			DTA_VirtualWidth, 1280, DTA_VirtualHeight, 720, DTA_KeepRatio, true);
+	}
+}
+
+Mixin Class TSP_MenuMixin
+{
+	Array<TSP_MenuItem> items;
+	
+	TSP_MenuItem focus;
+	
+	void AddItem (TSP_MenuItem newItem)
+	{
+		items.Push(newItem);
+	}
+	
+	void DrawItems ()
+	{
+		for ( int i = 0; i < items.Size(); i++ )
+		{
+			items[i].Draw();
+		}
+	}
+	
+	Vector2 mousePos;
+	
+	string UpdateMouse(int type, int x, int y)
+	{
+		mousePos = TSPMenu.GetMousePos(x,y);
+		
+		focus = null;
+		for ( int i = 0; i < items.Size(); i++ )
+		{
+			if ( items[i].CheckHovered(mousePos) )
+			{
+				focus = items[i];
+				if ( type == MOUSE_Click )
+				{
+					return items[i].MouseEvent(TSP_MenuItem.MOUSE_PRESSED);
+				}
+			}
+		}
+		
+		return "";
+	}
+}
+
+Class TSP_MenuAction
+{
+	enum EActionType
+	{
+		GOTO_MAP,
+		RETURN_VALUE,
+	}
+	
+	int type;
+	string value;
+	
+	string Execute()
+	{
+		switch (type)
+		{
+			case GOTO_MAP:
+				level.ChangeLevel(value);
+				break;
+			case RETURN_VALUE:
+				return value;
+				break;
+		}
+		return "";
+	}
+}
+
+Class TSP_MenuItem
+{
+	Vector2 pos;
+	Vector2 size;
+	
+	int item_state;
+	
+	enum EMouseEventType
+	{
+		MOUSE_ENTERED,
+		MOUSE_EXITED,
+		MOUSE_PRESSED,
+	}
+	
+	enum EMouseState
+	{
+		IDLE,
+		HOVERED,
+	}
+	
+	virtual void Init()
+	{
+	}
+	
+	virtual void Tick()
+	{
+	}
+	
+	virtual void Draw()
+	{
+	}
+	
+	virtual string MouseEvent(int type)
+	{
+		switch(type)
+		{
+			case MOUSE_ENTERED:
+				item_state = HOVERED;
+				break;
+			case MOUSE_EXITED:
+				item_state = IDLE;
+				break;
+		}
+		return "";
+	}
+	
+	bool CheckHovered (Vector2 mousePos)
+	{
+		if ( mousePos.x >= pos.x && mousePos.x < pos.x + size.x
+			&&
+			mousePos.y >= pos.y && mousePos.y < pos.y + size.y )
+		{
+			MouseEvent(MOUSE_ENTERED);
+			return true;
+		}
+		else
+		{
+			MouseEvent(MOUSE_EXITED);
+			return false;
+		}
+	}
+}
+
+Class TSP_MenuHeader : TSP_MenuItem
+{
+	string text;
+	
+	override void Draw()
+	{
+		TSPMenu.DrawText(pos.x, pos.y, text, size: 32, fontColor: Color(255,0,255,0));
+	}
+}
+
+Class TSP_MenuButton : TSP_MenuItem
+{
+	string text;
+	int fontsize;
+	
+	Color idleColor;
+	Color hoverColor;
+	
+	TSP_MenuAction menuaction;
+	
+	override void Init()
+	{
+		idleColor = Color(255, 255, 255, 255);
+		hoverColor = Color(255, 255, 255, 0);
+		
+		if ( fontsize == 0 )
+		{
+			fontsize = 24;
+		}
+	}
+	
+	override void Tick()
+	{
+	}
+	
+	override string MouseEvent(int type)
+	{
+		if ( type == MOUSE_PRESSED )
+		{
+			return menuaction.Execute();
+		}
+		return super.MouseEvent(type);
+	}
+	
+	override void Draw()
+	{
+		switch ( item_state )
+		{
+			case HOVERED:
+				TSPMenu.DrawText(pos.x, pos.y, text, size: fontsize, fontColor: hoverColor);
+				break;
+			case IDLE:
+				TSPMenu.DrawText(pos.x, pos.y, text, size: fontsize, fontColor: idleColor);
+				break;
+		}
+	}
+}
+
+Class TSP_MenuTooltipButton : TSP_MenuButton
+{
+	string tooltip;
+}

@@ -148,7 +148,7 @@ Mixin Class TSP_UIDrawMixin
 					}
 					bt -= startPos;
 					newColor = Color(ui_textcolors.colors.At(text.Mid(startPos, bt)));
-					Console.Printf(text.Mid(startPos, bt).." "..newColor);
+					//Console.Printf(text.Mid(startPos, bt).." "..newColor);
 					newColor = Color(255, newColor.r, newColor.g, newColor.b);
 					//newColor = Color(255, int(127+127*sin(level.maptime*12)), 0, 0);
 					i = startPos+bt;

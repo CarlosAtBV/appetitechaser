@@ -1,0 +1,136 @@
+Class TSP_MenuGamemodeHack
+{
+	int gamemode;
+}
+
+Class TSP_Menu_ModeSelect : GenericMenu
+{
+	mixin TSP_MenuMixin;
+	
+	int buttonY;
+	
+	bool waitHack;
+	
+	void ResetGamemode()
+	{
+		let cvar = CVar.GetCVar("_tsp_tempgm");
+		cvar.SetInt(0);
+	}
+	
+	TSP_MenuButton AddButton (string text)
+	{
+		let button = new("TSP_MenuTooltipButton");
+		button.Init();
+		button.text = text;
+		button.pos = (128, buttonY);
+		button.fontsize = 48;
+		button.size = (512, 48);
+		button.tooltip = "Wash your nuts and spank ur sally";
+		buttonY += 48;
+		
+		items.Push(button);
+		
+		return button;
+	}
+	
+	override void Init(Menu parent)
+	{
+		Super.Init(parent);
+		
+		buttonY = 128;
+		
+		TSP_MenuButton button;
+		TSP_MenuAction menuaction;
+		
+		button = AddButton("Standard");
+		menuaction = new("TSP_MenuAction");
+		menuaction.type = TSP_MenuAction.RETURN_VALUE;
+		menuaction.value = "0";
+		button.menuaction = menuaction;
+		
+		button = AddButton("Bounty Scrunters");
+		menuaction = new("TSP_MenuAction");
+		menuaction.type = TSP_MenuAction.RETURN_VALUE;
+		menuaction.value = "1";
+		button.menuaction = menuaction;
+		
+		ResetGamemode();
+	}
+	
+	override void Ticker()
+	{
+		if ( waitHack )
+		{
+			waitHack = false;
+			return;
+		}
+		
+		for ( int i = 0; i < items.size(); i++ )
+		{
+			items[i].Tick();
+		}
+	}
+	
+	override void Drawer()
+	{
+		DrawItems();
+		
+		if ( focus && focus is "TSP_MenuTooltipButton" )
+		{
+			TSPMenu.DrawText(128, 720-256-32, TSP_MenuTooltipButton(focus).tooltip, size: 32, fontColor: Color(255,0,255,0));
+		}
+	}
+	
+	override void OnReturn()
+	{
+		ResetGamemode();
+	}
+	
+	override bool MouseEvent(int type, int x, int y)
+	{
+		if ( waitHack ) return false;
+			
+		string ret = UpdateMouse(type, x, y);
+		
+		if ( ret != "" )
+		{
+			let cvar = CVar.GetCVar("_tsp_tempgm");
+			cvar.SetInt(ret.ToInt());
+			SetMenu("EpisodeMenu");
+			TSP_EpisodeMenu(menu.GetCurrentMenu()).GamemodeHack(ret.ToInt());
+		}
+		
+		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool OnUIEvent(UIEvent ev)
+	{ 
+		bool res = false;
+		int y = ev.MouseY;
+		if (ev.type == UIEvent.Type_LButtonDown)
+		{
+			res |= MouseEvent(MOUSE_Click, ev.MouseX, y);
+			if (res)
+			{
+				SetCapture(true);
+			}
+
+		}
+		else if (ev.type == UIEvent.Type_MouseMove)
+		{
+			if (mMouseCapture || m_use_mouse == 1)
+			{	
+				res |= MouseEvent(MOUSE_Move, ev.MouseX, y);
+			}
+		}
+		else if (ev.type == UIEvent.Type_LButtonUp)
+		{
+			if (mMouseCapture)
+			{
+				SetCapture(false);
+				res |= MouseEvent(MOUSE_Release, ev.MouseX, y);
+			}
+		}
+		return false; 
+	}
+}

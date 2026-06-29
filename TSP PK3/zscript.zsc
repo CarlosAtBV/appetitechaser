@@ -1,4 +1,4 @@
-version "4.12.0"
+version "4.14.3"
 
 const TSP_FIRSTHUNT = 1;
 
@@ -66,6 +66,8 @@ const TSP_TRACERSPEED = 40;
 #include "zscript/tsp/items/items_custom.zsc"
 #include "zscript/tsp/items/items_syringe.zsc"
 
+#include "zscript/tsp/menus/core.zsc"
+#include "zscript/tsp/menus/gamemodes.zsc"
 #include "zscript/tsp/menus/menu_base.zsc"
 #include "zscript/tsp/menus/menu_episodes.zsc"
 #include "zscript/tsp/menus/menu_characters_bh.zsc"
@@ -76,6 +78,7 @@ const TSP_TRACERSPEED = 40;
 #include "zscript/tsp/menus/menu_highrestest.zsc"
 #include "zscript/tsp/menus/menu_mainmenu.zsc"
 #include "zscript/tsp/menus/menu_message.zsc"
+#include "zscript/tsp/menus/menu_bountyhunters.zsc"
 
 #include "zscript/tsp/menus/options/menu_options.zsc"
 
@@ -151,7 +154,7 @@ Class TSP_Hunters_MaxCombo : Inventory { Default { Inventory.MaxAmount 9999; } }
 #include "zscript/tsp/characters/char_shen.zsc"
 #include "zscript/tsp/characters/char_dummy.zsc"
 
-#include "zscript/tsp/events/event_hordetest.zsc"
+#include "zscript/tsp/gamemodes/bountyhunters.zsc"
 #include "zscript/tsp/events/event_replace.zsc"
 #include "zscript/tsp/events/event_bh_map.zsc"
 #include "zscript/tsp/events/event_psx.zsc"

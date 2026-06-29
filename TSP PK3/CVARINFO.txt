@@ -10,6 +10,7 @@ server bool tsp_easyauto = false;
 // [Py] gamemode stuff
 
 server noarchive int _tsp_gamemode = 0;
+server noarchive int _tsp_tempgm = 0;
 
 server noarchive int tsp_gamemode = 0;
 server noarchive bool tsp_debug = false;

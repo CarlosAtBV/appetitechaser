@@ -1,0 +1,169 @@
+Class TSP_BountyHunterSpawn
+{
+	Class<Actor> monster;
+	int weight;
+	
+	int spawn_start;
+	int spawn_end;
+	int spawn_fadein;
+	int spawn_fadeout;
+}
+
+Class TSP_GameModeThinker : Thinker
+{
+	virtual void WorldThingDied (WorldEvent e)
+	{
+	}
+}
+
+Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
+{
+	Array<TSP_BountyHunterSpawn> spawns;
+	
+	int time_nextspawn;
+	
+	int wave;
+	int spawns_left;
+	int monsters_active;
+	int wave_kills;
+	
+	const SPAWNSPERWAVE = 10;
+	const KILLSTOPASS = 5;
+	
+	void TrySpawn()
+	{
+		Array<TSP_BountyHunterSpawn> spawninfo;
+		int maxWeight = 0;
+		for ( int i = 0; i < spawns.Size(); i++ )
+		{
+			if ( spawns[i].spawn_start != 0 && wave < spawns[i].spawn_start )
+			{
+				continue;
+			}
+			if ( spawns[i].spawn_end != 0 && wave >= spawns[i].spawn_end )
+			{
+				continue;
+			}
+			maxWeight += spawns[i].weight;
+			spawninfo.Push(spawns[i]);
+		}
+		
+		int weight = random(0, maxWeight);
+		Console.Printf(""..weight.." / "..maxWeight);
+		
+		for ( int i = 0; i < spawninfo.Size(); i++ )
+		{
+			weight -= spawninfo[i].weight;
+			
+			if ( weight <= 0 )
+			{
+				Vector3 newSpawn = level.PickDeathmatchStart();
+				let foe = Actor.Spawn(spawninfo[i].monster, newSpawn);
+				foe.target = players[0].mo;
+				foe.SetState(foe.SeeState);
+				monsters_active += 1;
+				Console.Printf("Spawning "..spawninfo[i].monster.GetClassName());
+				break;
+			}
+		}
+	}
+	
+	override void PostBeginPlay()
+	{
+		spawns_left = SPAWNSPERWAVE;
+		
+		TSP_BountyHunterSpawn spawn;
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "ZombieMan";
+		spawn.spawn_start = 0;
+		spawn.spawn_end = 7;
+		spawn.weight = 200;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "ShotgunGuy";
+		spawn.spawn_start = 1;
+		spawn.spawn_end = 12;
+		spawn.weight = 100;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "ChaingunGuy";
+		spawn.spawn_start = 5;
+		spawn.weight = 50;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "DoomImp";
+		spawn.spawn_start = 2;
+		spawn.weight = 200;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "Demon";
+		spawn.spawn_start = 3;
+		spawn.weight = 100;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "HellKnight";
+		spawn.spawn_start = 5;
+		spawn.weight = 100;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "Cacodemon";
+		spawn.spawn_start = 7;
+		spawn.weight = 75;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "Revenant";
+		spawn.spawn_start = 8;
+		spawn.weight = 50;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "BaronOfhell";
+		spawn.spawn_start = 9;
+		spawn.weight = 50;
+		spawns.Push(spawn);
+		
+		spawn = new("TSP_BountyHunterSpawn");
+		spawn.monster = "Archvile";
+		spawn.spawn_start = 10;
+		spawn.weight = 25;
+		spawns.Push(spawn);
+	}
+	
+	override void Tick()
+	{
+		if ( level.maptime >= time_nextspawn )
+		{
+			time_nextspawn = level.maptime+35;
+			if ( monsters_active < 15 && spawns_left > 0 )
+			{
+				TrySpawn();
+				spawns_left -= 1;
+			}
+		}
+	}
+	
+	override void WorldThingDied (WorldEvent e)
+	{
+		if ( e.Thing.bCOUNTKILL )
+		{
+			monsters_active -= 1;
+			wave_kills += 1;
+			if ( spawns_left <= 0 && monsters_active <= 5 )
+			{
+				spawns_left = SPAWNSPERWAVE;
+				wave += 1;
+				wave_kills = 0;
+				time_nextspawn = level.maptime + (35*4);
+				Console.Printf("Next wave lel");
+			}
+		}
+	}
+}

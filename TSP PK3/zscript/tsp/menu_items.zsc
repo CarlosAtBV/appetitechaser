@@ -1,4 +1,4 @@
-Class TSP_EpisodeMenuButFake : ListMenu
+/*Class TSP_EpisodeMenuButFake : ListMenu
 {
 	override void Ticker()
 	{
@@ -32,7 +32,7 @@ Class TSP_EpisodeMenuButFake : ListMenu
 		sin.GetCurrentMenu().mParentMenu = father;
 		TSP_EpisodeMenu(sin.GetCurrentMenu()).updateShit();
 	}
-}
+}*/
 
 Class TSP_ListMenu : ListMenu
 {

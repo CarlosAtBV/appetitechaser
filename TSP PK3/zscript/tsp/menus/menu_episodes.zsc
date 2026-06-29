@@ -16,213 +16,130 @@ Class TSP_EpisodeMenu_Item
 	}*/
 }
 
-Class TSP_EpisodeMenu : GenericMenu
+Class TSP_EpisodeMenu : ListMenu
 {
-	Array<TSP_EpisodeMenu_Item > episodes;
+	mixin TSP_MenuMixin;
 	
-	int em_itemSelected;
-	int em_itemHovered;
+	int id_gamemode;
 	
-	static const string numerals[] =
-	{
-		"I",
-		"II",
-		"III",
-		"IV",
-		"V",
-		"VI",
-		"VII",
-		"VIII",
-		"IX",
-		"X",
-		"XI",
-		"XII",
-		"XIII",
-		"XIV",
-		"XV",
-		"XVI",
-		"XVII",
-		"XVII",
-		"XIX"
-	};
-	
-	int maxSize;
-	
-	void updateShit()
-	{
-		maxSize = episodes.Size();
-		int gamemode = CVar.GetCVar("tsp_gamemode",players[0]).GetInt();
-		int selHeight = BigFont.GetHeight()+3+SmallFont.GetHeight()+1;
-		
-		if ( gamemode == 1 )
-		{
-			//SetMenu("SkillMenu",episodes[episodes.Size()-1].id);
-			//CVar.GetCVar("tsp_internal_bhepisode", players[0]).SetInt(episodes[episodes.Size()-1].id);
-			Menu father = Menu.GetCurrentMenu().mParentMenu;
-			//SetMenu("TSP_BountyHuntersMapMenu");
-			for ( int i = 0; i < episodes.size(); i++ )
-			{
-				if ( episodes[i].name == "TSPSpecialMapWarp" )
-				{
-					SetMenu("TSP_BountyHuntersMapMenu", i);
-					Menu.GetCurrentMenu().mParentMenu = father;
-					Console.Printf("Set that gotdamn episode to "..episodes[episodes.Size()-1].id);
-					TSP_BountyHuntersMapMenu(Menu.GetCurrentMenu()).episodeID = episodes[episodes.Size()-1].id;
-					return;
-				}
-			}
-			return;
-		}
-		
-		for(int i = 0;i<episodes.Size();i++)
-		{
-			Console.Printf(""..episodes[i].name);
-			
-			if(episodes[i].name=="TSPSpecialMapWarp")
-			{
-				episodes.Delete(i);
-				i--;
-			}
-		}
-		
-		int sx = 20-3;
-		int sy = 17;
-		for(int i = 0;i<episodes.Size();i++)
-		{
-			if(i==6)
-			{
-				sx += 140;
-				sy = 17;
-			}
-			episodes[i].mXpos = sx;
-			episodes[i].mYpos = sy;
-			episodes[i].mWidth = 160;
-			episodes[i].mHeight = selHeight-2;
-			sy += selHeight;
-		}
-	}
-	
-	override void Drawer()
-	{
-		TextureID bg = TexMan.CheckForTexture("SPMENUG6",TexMan.Type_MiscPatch); //like a g6
-		TextureID header = TexMan.CheckForTexture("SP_EPIS",TexMan.Type_MiscPatch);
-		
-		screen.DrawTexture (bg, true, 103, 39, DTA_Clean, true);
-		screen.DrawTexture (header, true, 103, 39, DTA_Clean, true);
-		
-		int sx = 20;
-		int sy = 17;
-		
-		bool getout;
-		int iterator = 0;
-		for(int i = 0;i<2;i++)
-		{
-			for(int v = 0;v<6;v++)
-			{
-				string bTitle, bSub;
-				
-				sx = episodes[iterator].mXpos;
-				sy = episodes[iterator].mYpos;
-				
-				if(episodes[iterator].sub=="")
-				{
-					bTitle = "Chapter "..iterator+1;
-					bSub = episodes[iterator].name;
-				}
-				else
-				{
-					bTitle = episodes[iterator].name;
-					bSub = episodes[iterator].sub;
-				}
-				screen.DrawText(BigFont, em_itemSelected == iterator ? Font.FindFontColor("TSP_Yellow") : Font.FindFontColor("TSP_Green"), sx, sy, bTitle, DTA_Clean, true);
-				sy += BigFont.GetHeight()+3;
-				screen.DrawText(SmallFont, Font.CR_WHITE, sx+2, sy, bSub, DTA_Clean, true);
-				sy += SmallFont.GetHeight()+1;
-				iterator++;
-				if(iterator>=episodes.Size())
-				{
-					getout = true;
-					break;
-				}
-			}
-			//sy = 17;
-			//sx += 140;
-			if(getout) break;
-		}
-	}
+	int id_bh;
 
-	override bool MenuEvent (int mkey, bool fromcontroller)
+	override void Init(Menu parent, ListMenuDescriptor desc)
 	{
-		switch (mkey)
+		Super.Init(parent, desc);
+		for ( int i = 0; i < mDesc.mItems.Size(); i++ )
 		{
-			case MKEY_Up:
-				if(em_itemSelected!=6&&em_itemSelected>0)
-				{
-					em_itemSelected--;
-					S_Sound("menu/cursor",CHAN_UI);
-				}
-				return true;
+			let item = ListMenuItemTextItem(mDesc.mItems[i]);
 			
-			case MKEY_Down:
-				if(em_itemSelected!=5&&em_itemSelected<episodes.Size()-1)
-				{
-					em_itemSelected++;
-					S_Sound("menu/cursor",CHAN_UI);
-				}
-				return true;
+			if ( !item ) continue;
 			
-			case MKEY_Left:
-				em_itemSelected-=6;
-				while(em_itemSelected<0)
-				{
-					em_itemSelected++;
-				}
-				S_Sound("menu/cursor",CHAN_UI);
-				return true;
-			case MKEY_Right:
-				em_itemSelected+=6;
-				while(em_itemSelected>=episodes.Size())
-				{
-					em_itemSelected--;
-				}
-				S_Sound("menu/cursor",CHAN_UI);
-				return true;
-				
-			case MKEY_Enter:
-				S_Sound("menu/choose",CHAN_UI);
-				SetMenu("SkillMenu",episodes[em_itemSelected].id);
-				return true;
+			if ( item.mText == "TSPSpecialMapWarp" )
+			{
+				id_bh = i;
+			}
 		}
-		return super.MenuEvent(mkey, fromcontroller);
+		//Console.Printf("Squiritng shart");
+	}
+	
+	void GamemodeHack(int num)
+	{
+		id_gamemode = num;
+		if ( id_gamemode == 1 )
+		{
+			BountyHuntersInit();
+		}
+		else
+		{
+			for ( int i = 0; i < mDesc.mItems.Size(); i++ )
+			{
+				let item = ListMenuItemTextItem(mDesc.mItems[i]);
+				
+				if ( !item ) continue;
+				if ( item.mText == "TSPSpecialMapWarp" )
+				{
+					continue;
+				}
+				
+				let button = new("TSP_MenuButton");
+				button.Init();
+				button.text = item.mText;
+				button.pos = (480, 32+i*24);
+				button.size = (128, 24);
+				
+				let menuaction = new("TSP_MenuAction");
+				menuaction.type = TSP_MenuAction.RETURN_VALUE;
+				menuaction.value = ""..i;
+				button.menuaction = menuaction;
+				
+				AddItem(button);
+			}
+		}
+		
+		mDesc.mItems.Clear();
+	}
+	
+	override void Ticker ()
+	{
+		//SetMenu("SkillMenu", 0);
+		//Super.Ticker();
+	}
+	
+	override void Drawer ()
+	{
+		DrawItems();
 	}
 	
 	override bool MouseEvent(int type, int x, int y)
 	{
-		int sel = -1;
-
-		// convert x/y from screen to virtual coordinates, according to CleanX/Yfac use in DrawTexture
-		x = ((x - (screen.GetWidth() / 2)) / CleanXfac) + 160;
-		y = ((y - (screen.GetHeight() / 2)) / CleanYfac) + 100;
+		string ret = UpdateMouse(type, x, y);
 		
-		int iterator = 0;
-		for(int i = 0;i<episodes.Size();i++)
+		if ( ret != "" )
 		{
-			if(x>episodes[i].mXpos
-			&& x<episodes[i].mXpos+episodes[i].mWidth
-			&& y>episodes[i].mYpos
-			&& y<episodes[i].mYpos+episodes[i].mHeight)
+			if ( id_gamemode == 1 )
 			{
-				em_itemSelected = i;
-				break;
+				Console.Printf("Forcing "..id_bh);
+				let cvar = CVar.GetCVar("_tsp_bhmap");
+				cvar.SetString(ret);
+				SetMenu("SkillMenu", id_bh);
+			}
+			else
+			{
+				SetMenu("SkillMenu", ret.ToInt());
 			}
 		}
-
-		if (type == Menu.MOUSE_Release)
-		{
-			MenuEvent(MKEY_Enter,false);
-			return true;
-		}
+		
 		return Super.MouseEvent(type, x, y);
+	}
+	
+	override bool OnUIEvent(UIEvent ev)
+	{ 
+		bool res = false;
+		int y = ev.MouseY;
+		if (ev.type == UIEvent.Type_LButtonDown)
+		{
+			res |= MouseEvent(MOUSE_Click, ev.MouseX, y);
+			if (res)
+			{
+				SetCapture(true);
+			}
+
+		}
+		else if (ev.type == UIEvent.Type_MouseMove)
+		{
+			if (mMouseCapture || m_use_mouse == 1)
+			{	
+				res |= MouseEvent(MOUSE_Move, ev.MouseX, y);
+			}
+		}
+		else if (ev.type == UIEvent.Type_LButtonUp)
+		{
+			if (mMouseCapture)
+			{
+				SetCapture(false);
+				res |= MouseEvent(MOUSE_Release, ev.MouseX, y);
+			}
+		}
+		return false; 
 	}
 }
 

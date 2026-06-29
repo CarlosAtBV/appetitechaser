@@ -29,8 +29,7 @@ gameinfo
 		StatusBarClass = "TSP_StatusBar"
 		MessageBoxClass = "TSP_MessageBoxMenu"
 		
-	PrecacheClasses = "MelPistol", "MelPistolA",
-		"MelSMG", "MelSMGA"
+	ForceTextInMenus = true
 		
 	AddQuitMessages = "$QUITMSG15", "$QUITMSG16", "$QUITMSG17", "$QUITMSG18", "$QUITMSG19", "$QUITMSG20", "$QUITMSG21", "$QUITMSG22", "$QUITMSG23"
 }

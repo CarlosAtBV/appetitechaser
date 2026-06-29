@@ -5,6 +5,7 @@ DEFAULTLISTMENU
 	Font "DBIGFONT", "Green" //Font "MENUFNT", "DarkGreen"
 	Selector "M_SPSEL", -22, 3
 	Linespacing 15
+	ForceList
 }
 
 DEFAULTOPTIONMENU
@@ -15,11 +16,11 @@ DEFAULTOPTIONMENU
 //////////////////////////////
 // MAIN MENU
 //////////////////////////////
-LISTMENU "MainMenu"
+LISTMENU "MainMenuTextOnly"
 {
 	StaticText 0, 0, "$TSPMNU_MAIN_HEADER"
 
-	TextItem "$TSPMNU_MAIN_STARTGAME", "n", "TSP_GameModeMenu"
+	TextItem "$TSPMNU_MAIN_STARTGAME", "n", "TSP_Menu_ModeSelect"
 	TextItem "$TSPMNU_MAIN_OPTIONS", "o", "TSP_OptionsMenu"
 	//TextItem "$TSPMNU_MAIN_CODEX", "h", "TSP_CodexMenu"
 	TextItem "$TSPMNU_MAIN_LOAD", "l", "LoadGameMenu"
@@ -57,11 +58,8 @@ ListMenu "PlayerclassMenu"
 
 ListMenu "EpisodeMenu"
 {
-	Class "TSP_EpisodeMenuButFake"
+	Class "TSP_EpisodeMenu"
 	NetgameMessage "$NEWGAME"
-    //StaticPatch 103, 39, "SP_EPIS"	
-	Font "DBIGFONT", "Red"
-	Position 25, 43
 }
 
 ListMenu "LoadGameMenu"

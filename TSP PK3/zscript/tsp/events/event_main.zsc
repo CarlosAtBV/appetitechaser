@@ -21,7 +21,7 @@ Class TSP_EventHandler : EventHandler
 	
 	Array<Actor > dynlights;
 	
-	int gamemode;
+	TSP_GameModeThinker gamemode;
 	
 	override void OnRegister()
 	{
@@ -35,12 +35,10 @@ Class TSP_EventHandler : EventHandler
 	
 	override void WorldLoaded(WorldEvent e)
 	{
-		//gamemode = CVar.GetCVar("_tsp_gamemode",players[0]).GetInt();
-		
-		int check_gm = CVar.GetCVar("_tsp_gamemode",players[0]).GetInt();
+		int check_gm = CVar.GetCVar("_tsp_tempgm",players[0]).GetInt();
 		if ( check_gm == 1 )
 		{
-			let gm = new("TSP_GameMode_BountyHunters");
+			gamemode = new("TSP_GameMode_BountyHunters");
 		}
 		
 		ThinkerIterator findDeathPlane = ThinkerIterator.Create("TSP_DeathPlane");
@@ -151,7 +149,7 @@ Class TSP_EventHandler : EventHandler
 		}
 	}
 	
-	override void WorldThingSpawned(WorldEvent e)
+	/*override void WorldThingSpawned(WorldEvent e)
 	{
 		if ( eh_hasDeathPlane && e.Thing.bIsMonster )
 		{
@@ -174,9 +172,9 @@ Class TSP_EventHandler : EventHandler
 		{
 			e.Thing.DamageFactor = 4.0;
 		}
-	}
+	}*/
 	
-	override void WorldThingDamaged(WorldEvent e)
+	/*override void WorldThingDamaged(WorldEvent e)
 	{
 		if(!e.Thing.CountInv("TSP_Mel_StasisHandler")) return;
 		
@@ -200,13 +198,17 @@ Class TSP_EventHandler : EventHandler
 			case TSP_GM_HUNTERS:
 				break;
 		}
-	}
+	}*/
 	
 	override void WorldThingDied(WorldEvent e)
 	{
-		if(e.Thing is "TSP_PlayerPawn_ZSCBase" && !deathmatch) return;
+		if ( e.Thing is "TSP_PlayerPawn_ZSCBase" && !deathmatch ) return;
 		
-		if ( tsp_gamemode != 0 ) return;
+		if ( gamemode )
+		{
+			gamemode.WorldThingDied(e);
+			return;
+		}
 		
 		int myHealth = e.Thing.SpawnHealth()/5;
 		while(myHealth>=5)
@@ -231,7 +233,7 @@ Class TSP_EventHandler : EventHandler
 	
 	override void RenderOverlay(RenderEvent e)
 	{
-		if(menuactive)
+		/*if(menuactive)
 		{
 			if(Menu.GetCurrentMenu() is "OptionMenu")
 			{
@@ -260,7 +262,7 @@ Class TSP_EventHandler : EventHandler
 					TSP_EpisodeMenu(sin.GetCurrentMenu()).updateShit();
 				}
 			}
-		}
+		}*/
 		
 		if(Menu.GetCurrentMenu()!=null && !tsp_shopmusic)
 		{
