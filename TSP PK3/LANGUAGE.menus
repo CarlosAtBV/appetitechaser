@@ -49,8 +49,8 @@ QUITMSG9 =							"\cnAre you gonna just keep running away?";
 QUITMSG10 =							"\cnThe engines grow cold…\n\n"
 									"\cgBut the stars still burn.";
 									
-QUITMSG11 =							"\cnThere is no \ckknowledge\cn"
-									"that is not \c-power\cn.";
+QUITMSG11 =							"\cnThere is no \ckknowledge\n"
+									"\cnthat is not \c-power\cn.";
 QUITMSG12 =							"\cnEmpty your mind. Be formless, shapeless, like water.";
 
 QUITMSG13 =							"\cnThe very essence of martial arts is the thirst for knowledge and the truth about ourselves.";
@@ -59,24 +59,34 @@ QUITMSG14 =							"\cnWatch the skies everywhere.\n"
 									"Keep looking.\n\n"
 									"\cgKeep watching the skies.";
 									
-QUITMSG15 =							"\cnIt's not safe out here. It's wondrous, with treasures to satiate desires both subtle and gross...\n\n"
+QUITMSG15 =							"\cnIt's not safe out here.\n\n"
+									"\cnIt's wondrous, with treasures to satiate desires both subtle and gross...\n\n"
 									"\cg...but it's not for the timid.";
 
 QUITMSG16 =							"\cnIt is possible to commit no mistakes and still lose.\n\n"
-									"\ckThat is not a sign of weakness; \cdthat is life.";
+									"\ckThat is not a weakness. \c[TSP_Green]That is life.";
 									
-QUITMSG17 =							"\cnThe test of the warrior is not without; it is \ckwithin.";
+QUITMSG17 =							"\cnThe test of the warrior is not without.\n\c[TSP_Green]It is within.\n\n"
+									"\c[TSP_Green]There, we meet the challenge.";
 
-QUITMSG18 =							"\cnYou think I want to go to the stars? I don't even like to fly!\n\n"
-									"\cdI take TRAINS!";
+QUITMSG18 =							"\cnYou think I wanna go to the stars? I don't even like to fly!\n\n"
+									"\cgI take trains!";
 									
-QUITMSG19 =							"\cnFacing death is the ultimate test of character. I don't want to die, but if I have to...\n\n"
-									"\cd...I'd like to do it with a little pride.";
+QUITMSG19 =							"\cnI don't want to die, but if I have to,\n"
+									"\cnI'd like to do it with a little pride.";
 									
-QUITMSG20 =							"\cnWe all have scars, of one kind or another.";
+QUITMSG20 =							"\cnYour time of trial has ended.\n\n"
+									"\c[TSP_Green]You need to rest now.";
 									
-QUITMSG21 =							"\cnI'm gonna miss you...you had such potential.\n\n"
-									"\caBut then again, all good things...";
+QUITMSG21 =							"\cnI'm going to miss you. You had such potential. But then again...\n\n"
+									"\cgAll good things must come to an end.";
+									
+QUITMSG22 =							"\cnIf they don't know how I feel about them now,\n"
+									"\cna few parting words won't make the difference.";
+									
+QUITMSG23 =							"\cnRest easy. You have walked the path, and there is no greater glory.\n\n"
+									"\ckDon't you know?\n\n"
+									"\c[TSP_Green]You're the dreamer, and the dream.";
 									
 //////////////////////////////
 // MAIN MENU
