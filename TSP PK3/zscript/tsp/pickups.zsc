@@ -3,7 +3,11 @@ enum ETSPWeaponSlot
 	WEAPONSLOT_FISTS,
 	WEAPONSLOT_PISTOL,
 	WEAPONSLOT_SHOTGUN,
+	WEAPONSLOT_SUPERSHOTGUN,
 	WEAPONSLOT_CHAINGUN,
+	WEAPONSLOT_ROCKETLAUNCHER,
+	WEAPONSLOT_PLASMARIFLE,
+	WEAPONSLOT_BFG9000,
 }
 
 Class TSP_WeaponPickup : Inventory
@@ -20,23 +24,10 @@ Class TSP_WeaponPickup : Inventory
 	
 	override bool Use(bool pickup)
 	{
-		Class<Weapon> findWeap = "TSP_Weapon_Suzuka";
-		bool didHave = (owner.CountInv(findWeap) > 0);
-		bool didGive = owner.GiveInventory(findWeap, 1);
-		
-		if ( !didGive ) return false;
 		if ( owner.player == null ) return false;
 		
-		if ( owner.player.GetNeverSwitch() ) return false;
-		
-		Weapon daWeapon = Weapon(owner.FindInventory(findWeap));
-		
-		if ( !didHave && owner.player.ReadyWeapon != daWeapon )
-		{
-			owner.player.PendingWeapon = daWeapon;
-		}
-		
-		return true;
+		let player = TSP_PlayerPawn_ZSCBase(owner.player.mo);
+		return player.GiveWeaponPickup(slottogive);
 	}
 }
 
@@ -44,6 +35,11 @@ Class TSP_WeaponPickup : Inventory
 
 Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 {
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_PISTOL;
+	}
+	
 	States
 	{
 		Spawn:
@@ -54,6 +50,26 @@ Class TSP_Pickup_Pistol : TSP_WeaponPickup replaces Pistol
 
 Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 {
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_SHOTGUN;
+	}
+	
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_SuperShotgun : TSP_WeaponPickup replaces SuperShotgun
+{
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_SUPERSHOTGUN;
+	}
+	
 	States
 	{
 		Spawn:
@@ -64,6 +80,11 @@ Class TSP_Pickup_Shotgun : TSP_WeaponPickup replaces Shotgun
 
 Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
 {
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_CHAINGUN;
+	}
+	
 	States
 	{
 		Spawn:
@@ -74,6 +95,41 @@ Class TSP_Pickup_Chaingun : TSP_WeaponPickup replaces Chaingun
 
 Class TSP_Pickup_RocketLauncher : TSP_WeaponPickup replaces RocketLauncher
 {
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_ROCKETLAUNCHER;
+	}
+	
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_PlasmaRifle : TSP_WeaponPickup replaces PlasmaRifle
+{
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_PLASMARIFLE;
+	}
+	
+	States
+	{
+		Spawn:
+			131P A -1;
+			Stop;
+	}
+}
+
+Class TSP_Pickup_BFG9000 : TSP_WeaponPickup replaces BFG9000
+{
+	Default
+	{
+		TSP_WeaponPickup.SlotToGive WEAPONSLOT_BFG9000;
+	}
+	
 	States
 	{
 		Spawn:

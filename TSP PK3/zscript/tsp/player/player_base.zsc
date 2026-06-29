@@ -232,6 +232,33 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Vector2 pp_combinedRecoil;
 	Vector2 pp_lastRecoil;
 	
+	virtual bool GiveWeaponPickup (int slot)
+	{
+		return false;
+	}
+	
+	bool TSP_GiveWeapon (Class<Weapon> weapon)
+	{
+		bool didHave = CountInv(weapon);
+		
+		if ( didHave ) return false;
+		
+		bool didGive = GiveInventory(weapon, 1);
+		
+		if ( !didGive ) return false;
+		
+		if ( player.GetNeverSwitch() ) return true;
+		
+		Weapon daWeapon = Weapon(FindInventory(weapon));
+		
+		if ( !didHave && player.ReadyWeapon != daWeapon )
+		{
+			player.PendingWeapon = daWeapon;
+		}
+		
+		return true;
+	}
+	
 	override void Tick ()
 	{
 		if (!player || !player.mo || player.mo != self)
