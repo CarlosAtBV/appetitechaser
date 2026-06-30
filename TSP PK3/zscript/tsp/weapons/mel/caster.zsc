@@ -39,11 +39,18 @@ Class TSP_Weapon_Caster : TSP_BaseWeapon
 			161G A 1 A_WeaponReady();
 			Loop;
 		Fire:
-			161G A 35
+		/*	161G A 35
 			{
 				A_TSP_FireCaster();
 				A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
 			}
+			Goto Ready;
+		Fire_ProtonCannon:*/
+			161G AAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+			{
+				A_Caster_ProtonCannon();
+			}
+			161G A 35 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
 			Goto Ready;
 		
 		Anim_Fire:

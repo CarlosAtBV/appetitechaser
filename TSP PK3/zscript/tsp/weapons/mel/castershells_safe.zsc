@@ -1,0 +1,15 @@
+Extend Class TSP_Weapon_Caster
+{
+	action void A_Caster_ProtonCannon()
+	{
+		for ( int x = -8; x < 8; x++ )
+		{
+			for ( int y = -8; y < 8; y++ )
+			{
+				//A_FireBullets(0, 0, 1, 5, flags: FBF_NORANDOM, spawnheight: 32+y*2, spawnofs_xy: x*2);
+				LineAttack(invoker.owner.angle, PLAYERMISSILERANGE, invoker.owner.pitch, 2, 'Hitscan', "",
+					offsetz: y*4, offsetside: x*4);
+			}
+		}
+	}
+}
