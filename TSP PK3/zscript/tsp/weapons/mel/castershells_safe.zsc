@@ -1,8 +1,87 @@
 Extend Class TSP_Weapon_Caster
 {
+	States
+	{
+		Fire_ProtonCannon:
+			161G A 24
+			{
+				A_StartSound("caster/proton/charge", CHAN_WEAPON);
+				
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 20;
+				recoil.fadeout = 4;
+				recoil.pitch_shake = 0.3;
+				recoil.pitch_speed = 25;
+				recoil.roll_shake = 0.3;
+				recoil.roll_speed = 35;
+				A_TSP_AddRecoil(recoil);
+			}
+			161G A 0
+			{
+				let recoil = new("TSP_ViewRecoil");
+				recoil.duration = 50;
+				recoil.fadeout = 10;
+				recoil.yaw_shake = 0.6;
+				recoil.yaw_speed = 15;
+				recoil.pitch_shake = 0.6;
+				recoil.pitch_speed = 30;
+				recoil.roll_shake = 0.5;
+				recoil.roll_speed = 80;
+				A_TSP_AddRecoil(recoil);
+				A_StartSound("caster/proton/laser", 45);
+			}
+			161G AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+			{
+				invoker.LookScale = 0.25;
+				A_Caster_ProtonCannon();
+			}
+			161G A 0
+			{
+				invoker.LookScale = 1.0;
+				let recoil = new("TSP_ViewRecoil");
+				recoil.fadein = 1;
+				recoil.fadeout = 35;
+				recoil.pitch = -2.0;
+				recoil.roll = -1;
+				recoil.roll_shake = 0.2;
+				recoil.roll_speed = 55;
+				A_TSP_AddRecoil(recoil);
+			}
+			161G A 35 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
+			Goto Ready;
+	}
 	action void A_Caster_ProtonCannon()
 	{
-		for ( int x = -8; x < 8; x++ )
+		//A_TSP_FireBullets(16, 16, 1, 1);
+		Actor src = invoker.owner;
+			
+		BlockThingsIterator it = BlockThingsIterator.Create(self, 2048);
+		Actor mo;
+		bool hitSomething;
+			
+		while ( it.Next() )
+		{
+			mo = it.thing;
+			
+			if ( mo == src ) continue;
+			
+			if ( !mo.bShootable || mo.bDormant || mo.Health <= 0 ) continue;
+			if ( AbsAngle(src.angle, src.AngleTo(mo)) > 15 ) continue;
+			if ( AbsAngle(src.pitch, src.PitchTo(mo, zOfs: src.height/2, targZOfs: mo.height/2)) > 15 ) continue;
+			
+			mo.DamageMobj(src, src, 20, damageType);
+			for ( int i = 0; i < 3; i++ )
+			{
+				Vector3 bloodPos = mo.pos + (frandom(-mo.radius, mo.radius), frandom(-mo.radius, mo.radius), frandom(0, mo.height));
+				mo.SpawnBlood(bloodPos, 0, 13);
+			}
+			mo.TriggerPainChance(damageType, true);
+			mo.A_StartSound("melee/basic/normal/impact", CHAN_BODY, volume: frandom(0.6,0.7), pitch: frandom(0.8,1.2));
+		}
+				
+		A_SetPitch(pitch - 0.25);
+		A_SetAngle(angle + (frandom(-0.1,0.1)));
+		/*for ( int x = -8; x < 8; x++ )
 		{
 			for ( int y = -8; y < 8; y++ )
 			{
@@ -10,6 +89,6 @@ Extend Class TSP_Weapon_Caster
 				LineAttack(invoker.owner.angle, PLAYERMISSILERANGE, invoker.owner.pitch, 2, 'Hitscan', "",
 					offsetz: y*4, offsetside: x*4);
 			}
-		}
+		}*/
 	}
 }

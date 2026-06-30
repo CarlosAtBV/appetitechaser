@@ -1,0 +1,7 @@
+//
+//	Placeholder sounds put here for organization purposes
+//	When finalizing or redoing, please put in its proper SNDINFO
+//
+
+caster/proton/laser "sounds/placeholder/fulgore_lazor.ogg"
+caster/proton/charge "sounds/placeholder/fulgore_charge.ogg"

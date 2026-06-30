@@ -366,11 +366,12 @@ Class TSP_BaseWeapon : Weapon
 		{
 			invoker.melee_victims.Clear();
 			
-			BlockThingsIterator it = BlockThingsIterator.Create(self, range);
+			Actor src = invoker.owner;
+			
+			BlockThingsIterator it = BlockThingsIterator.Create(src, range);
 			Actor mo;
 			bool hitSomething;
 			
-			Actor src = invoker.owner;
 			let player = TSP_PlayerPawn_ZSCBase(src);
 			
 			let tracer = new('TSP_MeleeTracer');
