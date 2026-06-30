@@ -19,6 +19,7 @@ Class TSP_GameModeThinker : Thinker
 Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 {
 	Array<TSP_BountyHunterSpawn> spawns;
+	Array<TSP_BountyHunters_EnemySpawn> spawnpoints;
 	
 	int time_nextspawn;
 	
@@ -28,6 +29,7 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 	int wave_kills;
 	
 	const SPAWNSPERWAVE = 10;
+	const MAXMONSTERS = 20;
 	const KILLSTOPASS = 5;
 	
 	void TrySpawn()
@@ -57,7 +59,7 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 			
 			if ( weight <= 0 )
 			{
-				Vector3 newSpawn = level.PickDeathmatchStart();
+				Vector3 newSpawn = GetSpawnPoint();
 				let foe = Actor.Spawn(spawninfo[i].monster, newSpawn);
 				foe.target = players[0].mo;
 				foe.SetState(foe.SeeState);
@@ -68,8 +70,42 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		}
 	}
 	
+	Vector3 GetSpawnPoint()
+	{
+		int size = spawnpoints.Size();
+
+		for ( int i = 0; i < size; i++ )
+		{
+			int j = random(0, i);
+			
+			let temp = spawnpoints[i];
+			spawnpoints[i] = spawnpoints[j];
+			spawnpoints[j] = temp;
+		}
+
+		for ( int i = 0; i < size; i++ )
+		{
+			double diff = (players[0].mo.pos - spawnpoints[i].pos).Length();
+			if ( diff < 1024 || diff > 2048 )
+			{
+				continue;
+			}
+			//Console.Printf("y "..diff);
+			return spawnpoints[i].pos;
+		}
+		//Console.Printf("n");
+		return spawnpoints[random(0,size)].pos;
+	}
+	
 	override void PostBeginPlay()
 	{
+		ThinkerIterator it = ThinkerIterator.Create("TSP_BountyHunters_EnemySpawn");
+		TSP_BountyHunters_EnemySpawn mo;
+		while ( mo = TSP_BountyHunters_EnemySpawn(it.Next()) )
+		{
+			spawnpoints.Push(mo);
+		}
+		
 		spawns_left = SPAWNSPERWAVE;
 		
 		TSP_BountyHunterSpawn spawn;
@@ -139,10 +175,12 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 	
 	override void Tick()
 	{
+		if ( spawnpoints.Size() == 0 ) return;
+		
 		if ( level.maptime >= time_nextspawn )
 		{
 			time_nextspawn = level.maptime+35;
-			if ( monsters_active < 15 && spawns_left > 0 )
+			if ( monsters_active < MAXMONSTERS && spawns_left > 0 )
 			{
 				TrySpawn();
 				spawns_left -= 1;
@@ -156,13 +194,32 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		{
 			monsters_active -= 1;
 			wave_kills += 1;
-			if ( spawns_left <= 0 && monsters_active <= 5 )
+			if ( spawns_left <= 0 && wave_kills >= KILLSTOPASS )
 			{
 				spawns_left = SPAWNSPERWAVE;
 				wave += 1;
 				wave_kills = 0;
 				time_nextspawn = level.maptime + (35*4);
 				Console.Printf("Next wave lel");
+			}
+		}
+	}
+}
+
+Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
+{
+	protected void Apply(Name checksum, String mapname)
+	{
+		if ( _tsp_tempgm == 1 )
+		{
+			for ( int i = 0; i < GetThingCount(); i++ )
+			{
+				if ( GetThingEdNum(i) == 11 )
+				{
+					SetThingEdNum(i, 24800);
+					SetThingFlags(i, MTF_SINGLE);
+					continue;
+				}
 			}
 		}
 	}
