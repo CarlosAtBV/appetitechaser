@@ -5,25 +5,71 @@
 	Outlawdy Starswell
 */
 
+Class TSP_CasterShell play
+{
+	virtual State GetFireState (TSP_Weapon_Caster weapon)
+	{
+		Console.printf("Your shell didn't do shit lul");
+		return weapon.resolveState(null);
+	}
+}
+
+Class TSP_CasterShellKeeper : Inventory
+{
+	Array<TSP_CasterShell> shells;
+	
+	bool, State UseShell (TSP_Weapon_Caster weapon)
+	{
+		if ( shells.Size() <= 0 )
+		{
+			Console.Printf("no shells lul");
+			return false, weapon.resolveState(null);
+		}
+		
+		let shell = shells[0];
+		shells.Delete(0);
+		return true, shell.GetFireState(weapon);
+	}
+	
+	void GiveShell(Class<TSP_CasterShell> type)
+	{
+		TSP_CasterShell shell = TSP_CasterShell(new(type));
+		shells.Push(shell);
+	}
+}
+
 Class TSP_Weapon_Caster : TSP_BaseWeapon
 {
-	action void A_TSP_FireCaster()
+	action State A_TSP_FireCaster()
 	{
-		switch (random(0,2))
+		let shells = TSP_CasterShellKeeper(invoker.owner.FindInventory("TSP_CasterShellKeeper"));
+		bool used;
+		State fireState;
+		[used, fireState] = shells.UseShell(invoker);
+		
+		if ( !used )
 		{
-			case 0:
-				SpawnPlayerMissile("BFGBall", angle);
-				break;
-			case 1:
-				SpawnPlayerMissile("Rocket", angle);
-				break;
-			case 2:
-				SpawnPlayerMissile("PlasmaBall", angle+frandom(-5,5));
-				SpawnPlayerMissile("PlasmaBall", angle+frandom(-5,5));
-				SpawnPlayerMissile("PlasmaBall", angle+frandom(-5,5));
-				SpawnPlayerMissile("PlasmaBall", angle+frandom(-5,5));
-				SpawnPlayerMissile("PlasmaBall", angle+frandom(-5,5));
-				break;
+			return resolveState(null);
+		}
+		
+		return fireState;
+	}
+	
+	override void AttachToOwner(Actor other)
+	{
+		super.AttachToOwner(other);
+		// This block is only run if the item got
+		// successfully placed in the other's
+		// inventory:
+		if (owner)
+		{
+			owner.GiveInventory("TSP_CasterShellKeeper", 1);
+			let shells = TSP_CasterShellKeeper(owner.FindInventory("TSP_CasterShellKeeper"));
+			
+			for ( int i = 0; i < 5; i++ )
+			{
+				shells.GiveShell("TSP_CasterShell_SpectralBeam");
+			}
 		}
 	}
 	
@@ -43,7 +89,8 @@ Class TSP_Weapon_Caster : TSP_BaseWeapon
 			}
 			Loop;
 		Fire:
-			Goto Fire_ProtonCannon;
+			161G A 5 A_TSP_FireCaster();
+			Goto Ready;
 		
 		Anim_Fire:
 			TNT1 A 0

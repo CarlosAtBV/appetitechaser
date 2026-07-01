@@ -1,42 +1,8 @@
-Class TSP_Caster_ProtonBeam : Actor
+Class TSP_CasterShell_SpectralBeam : TSP_CasterShell
 {
-	Default
+	override State GetFireState (TSP_Weapon_Caster weapon)
 	{
-		RenderStyle "Add";
-		+BRIGHT
-	}
-	
-	States
-	{
-		Spawn:
-			POSS A -1;
-			Stop;
-	}
-	
-	override void Tick()
-	{
-		if ( !target ) return;
-		
-		angle = target.angle;
-		pitch = target.pitch + 90;
-		
-		Vector3 spawnPos = (target.pos.x, target.pos.y, target.player.viewz);
-	
-		Quat base = Quat.FromAngles(target.angle + target.viewangle, target.pitch + target.viewpitch, target.roll);
-		Vector3 forward = (1,0,0);
-		
-		/*Quat offset = Quat.AxisAngle((0,0,1), spreadX*cos(rot));
-		offset = offset * Quat.AxisAngle((0,1,0), spreadY*sin(rot));
-		Vector3 dir = base * offset * forward;*/
-		Vector3 tracerPos = spawnPos + (base * (4,-1,-1));
-		
-		SetOrigin(tracerPos, true);
-				
-		FLineTraceData tr;
-		target.LineTrace(target.angle, PLAYERMISSILERANGE, target.pitch, flags: TRF_ABSPOSITION, offsetz: tracerPos.z, offsetforward: tracerPos.x, offsetside: tracerPos.y, data: tr);
-		scale.y = tr.Distance / 32.;
-		
-		scale.x = (scale.y / 2.) + frandom(-0.1,0.1);//0.05;
+		return weapon.resolveState("Fire_SpectralCannon");
 	}
 }
 
@@ -46,7 +12,7 @@ Extend Class TSP_Weapon_Caster
 	
 	States
 	{
-		Fire_ProtonCannon:
+		Fire_SpectralCannon:
 			161G A 24
 			{
 				A_StartSound("caster/proton/charge", CHAN_WEAPON);
@@ -73,12 +39,12 @@ Extend Class TSP_Weapon_Caster
 				recoil.roll_speed = 80;
 				A_TSP_AddRecoil(recoil);
 				A_StartSound("caster/proton/laser", 45);
-				A_Caster_StartProtonBeam();
+				A_Caster_StartSpectralBeam();
 			}
 			161G AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
 			{
 				invoker.LookScale = 0.25;
-				A_Caster_ProtonCannon();
+				A_Caster_SpectralCannon();
 			}
 			161G A 0
 			{
@@ -92,17 +58,17 @@ Extend Class TSP_Weapon_Caster
 				recoil.roll_speed = 55;
 				A_TSP_AddRecoil(recoil);
 				
-				A_Caster_StopProtonBeam();
+				A_Caster_StopSpectralBeam();
 			}
 			161G A 35 A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
 			Goto Ready;
 	}
 	
-	TSP_Caster_ProtonBeam beam;
+	TSP_Caster_SpectralBeam beam;
 	
-	action void A_Caster_StartProtonBeam()
+	action void A_Caster_StartSpectralBeam()
 	{
-		invoker.beam = TSP_Caster_ProtonBeam(Spawn("TSP_Caster_ProtonBeam"));
+		invoker.beam = TSP_Caster_SpectralBeam(Spawn("TSP_Caster_SpectralBeam"));
 		invoker.beam.target = invoker.owner;
 		invoker.beam.scale.x = 0.5;
 		invoker.beam.Tick();
@@ -110,13 +76,13 @@ Extend Class TSP_Weapon_Caster
 		invoker.proton_mult = 1.0;
 	}
 	
-	action void A_Caster_StopProtonBeam()
+	action void A_Caster_StopSpectralBeam()
 	{
 		if ( !invoker.beam ) return;
 		invoker.beam.Destroy();
 	}
 	
-	action void A_Caster_ProtonCannon()
+	action void A_Caster_SpectralCannon()
 	{
 		//A_TSP_FireBullets(16, 16, 1, 1);
 		Actor src = invoker.owner;
@@ -168,5 +134,51 @@ Extend Class TSP_Weapon_Caster
 		A_TSP_AddBumper(bumper);
 		
 		invoker.proton_mult += 0.05;
+	}
+}
+
+/*
+	FX
+*/
+
+Class TSP_Caster_SpectralBeam : Actor
+{
+	Default
+	{
+		RenderStyle "Add";
+		+BRIGHT
+	}
+	
+	States
+	{
+		Spawn:
+			POSS A -1;
+			Stop;
+	}
+	
+	override void Tick()
+	{
+		if ( !target ) return;
+		
+		angle = target.angle;
+		pitch = target.pitch + 90;
+		
+		Vector3 spawnPos = (target.pos.x, target.pos.y, target.player.viewz);
+	
+		Quat base = Quat.FromAngles(target.angle + target.viewangle, target.pitch + target.viewpitch, target.roll);
+		Vector3 forward = (1,0,0);
+		
+		/*Quat offset = Quat.AxisAngle((0,0,1), spreadX*cos(rot));
+		offset = offset * Quat.AxisAngle((0,1,0), spreadY*sin(rot));
+		Vector3 dir = base * offset * forward;*/
+		Vector3 tracerPos = spawnPos + (base * (4,-1,-1));
+		
+		SetOrigin(tracerPos, true);
+				
+		FLineTraceData tr;
+		target.LineTrace(target.angle, PLAYERMISSILERANGE, target.pitch, flags: TRF_ABSPOSITION, offsetz: tracerPos.z, offsetforward: tracerPos.x, offsetside: tracerPos.y, data: tr);
+		scale.y = tr.Distance / 32.;
+		
+		scale.x = (scale.y / 2.) + frandom(-0.1,0.1);//0.05;
 	}
 }

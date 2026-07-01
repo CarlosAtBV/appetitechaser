@@ -1,4 +1,4 @@
-Model TSP_Caster_ProtonBeam
+Model TSP_Caster_SpectralBeam
 {
 	Path "models/tsp/weapons/caster" 
 	Model 0 "caster_protonbeam.obj"
