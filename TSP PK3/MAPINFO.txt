@@ -231,6 +231,8 @@ DoomEdNums
 	24801 = TSP_DeathPlane
 	
 	24851 = TSP_BountyHunters_ComboCrystal
+	
+	8008135 = TSP_BountyHunters_TimeExtCrystal
 }
 
 DamageType TSP_NoDamage

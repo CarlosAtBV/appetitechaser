@@ -4,6 +4,7 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	{
 		Health 15;
 		Height 68;
+		+SHOOTABLE
 		+FLOATBOB
 		+ROLLSPRITE
 		+ROLLCENTER
@@ -70,7 +71,11 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	
 	override int DamageMobj (Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
 	{
-		if(dmgDone<15)
+		if ( mod != 'Melee' )
+		{
+			return 0;
+		}
+		/*if(dmgDone<15)
 		{
 			dmgDone += damage;
 			if(dmgDone>=15)
@@ -79,8 +84,8 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 				CrystalDeathMoment();
 				SetStateLabel("Death");
 			}
-		}
-		return 0;
+		}*/
+		return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 	}
 }
 

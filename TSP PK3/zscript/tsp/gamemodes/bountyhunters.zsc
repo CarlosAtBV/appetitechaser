@@ -208,17 +208,50 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 
 Class TSP_BountyHunters_LevelEditor : LevelPostProcessor
 {
+	bool IsTypeClose (int og, int check, int dist)
+	{
+		Vector3 oldPos = GetThingPos(og);
+		for ( int i = 0; i < GetThingCount(); i++ )
+		{
+			if ( GetThingEdNum(i) != check ) continue;
+			
+			if ( (oldPos - GetThingPos(i)).Length() < dist )
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	protected void Apply(Name checksum, String mapname)
 	{
 		if ( _tsp_tempgm == 1 )
 		{
 			for ( int i = 0; i < GetThingCount(); i++ )
 			{
-				if ( GetThingEdNum(i) == 11 )
+				switch ( GetThingEdNum(i) )
 				{
-					SetThingEdNum(i, 24800);
-					SetThingFlags(i, MTF_SINGLE);
-					continue;
+					case 82:
+					case 2001:
+					case 2002:
+					case 2003:
+					case 2004:
+					case 2005:
+					case 2006:
+						if ( !IsTypeClose(i, 11, 64) && !IsTypeClose(i, 24800, 64) )
+						{
+							SetThingEdNum(i, 8008135);
+							SetThingFlags(i, MTF_SINGLE);
+						}
+						else
+						{
+							SetThingFlags(i, 0);
+						}
+						break;
+					case 11:
+						SetThingEdNum(i, 24800);
+						SetThingFlags(i, MTF_SINGLE);
+						break;
 				}
 			}
 		}
