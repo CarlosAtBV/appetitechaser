@@ -18,13 +18,17 @@ Class TSP_MeleeTracer : LineTracer
             return TRACE_Stop;
 		}
 		
-        if ( results.HitType == TRACE_HitActor && results.HitActor == toFind )
+        if ( results.HitType == TRACE_HitActor )
         {
-			foundFella = true;
-            return TRACE_Stop;
+			if ( results.HitActor == toFind )
+			{
+				foundFella = true;
+				return TRACE_Stop;
+			}
+            return TRACE_Skip;
         }
 
-        return TRACE_Skip;
+        return TRACE_Stop;
     }
 }
 
