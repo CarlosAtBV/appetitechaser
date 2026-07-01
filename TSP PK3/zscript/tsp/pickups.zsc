@@ -19,15 +19,19 @@ Class TSP_WeaponPickup : Inventory
 	Default
 	{
 		Inventory.PickupSound "general/weaponpickup";
-		+INVENTORY.AUTOACTIVATE
 	}
 	
-	override bool Use(bool pickup)
+	override bool TryPickup (in out Actor other)
 	{
-		if ( owner.player == null ) return false;
+		if ( other.player == null ) return false;
 		
-		let player = TSP_PlayerPawn_ZSCBase(owner.player.mo);
-		return player.GiveWeaponPickup(slottogive);
+		let player = TSP_PlayerPawn_ZSCBase(other.player.mo);
+		if ( player.GiveWeaponPickup(slottogive) )
+		{
+			GoAwayAndDie();
+			return true;
+		}
+		return false;
 	}
 }
 
