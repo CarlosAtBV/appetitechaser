@@ -94,7 +94,7 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 			return spawnpoints[i].pos;
 		}
 		//Console.Printf("n");
-		return spawnpoints[random(0,size)].pos;
+		return spawnpoints[random(0,size-1)].pos;
 	}
 	
 	override void PostBeginPlay()
