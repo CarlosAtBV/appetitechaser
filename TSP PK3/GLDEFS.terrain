@@ -24,3 +24,9 @@ hardwareshader texture "textures/tsp/test/waterfalltest.png"
 	texture "texRamp" "shaders/glsl/water/water_ramp_bastetia2.png"
 	texture "texUnder" "textures/tsp/ikati/ikati_stone_1.png"
 }
+
+hardwareshader texture "models/tsp/weapons/caster/beam.png"
+{
+	shader "shaders/glsl/caster_laser.fp"
+	texture "tex_mask" "models/tsp/weapons/caster/cloudbert.png"
+}
