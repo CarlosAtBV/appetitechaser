@@ -29,6 +29,10 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 	}
 	States
 	{
+		Spawn:
+			131P A -1;
+			Stop;
+			
 		Select:
 			132G A 20
 			{

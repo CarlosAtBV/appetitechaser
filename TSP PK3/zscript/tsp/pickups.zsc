@@ -21,6 +21,19 @@ Class TSP_WeaponPickup : Inventory
 		Inventory.PickupSound "general/weaponpickup";
 	}
 	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+		Class<Weapon> cls = TSP_PlayerPawn_ZSCBase(players[consoleplayer].mo).GetWeaponPickupClass(slottogive);
+		
+		if ( !cls ) return;
+		
+		let newState = GetDefaultByType(cls).FindState("Spawn");
+		
+		SetState(newState);
+	}
+	
 	override bool TryPickup (in out Actor other)
 	{
 		if ( other.player == null ) return false;

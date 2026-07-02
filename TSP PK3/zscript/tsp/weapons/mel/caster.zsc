@@ -126,5 +126,9 @@ Class TSP_Weapon_Caster : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(0.30, 32.28);
 			TNT1 A 1 A_WeaponOffset(0.13, 32.12);
 			Stop;
+			
+		Spawn:
+			161P A -1;
+			Stop;
 	}
 }

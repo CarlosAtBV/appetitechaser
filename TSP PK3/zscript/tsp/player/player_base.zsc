@@ -232,6 +232,11 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	Vector2 pp_combinedRecoil;
 	Vector2 pp_lastRecoil;
 	
+	virtual Class<Weapon> GetWeaponPickupClass (int slot)
+	{
+		return null;
+	}
+	
 	virtual bool GiveWeaponPickup (int slot)
 	{
 		return false;
