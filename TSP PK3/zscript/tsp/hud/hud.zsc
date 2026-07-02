@@ -622,11 +622,11 @@ Class TSP_StatusBar : BaseStatusBar
 					Centering = false;
 				}
 				
-			// DO the OBunty HUnters HSTUFff!!!!
+			let event = TSP_EventHandler.Get();
 			
-			if ( handler_bh )
+			if ( event && event.gamemode )
 			{
-				handler_bh.BH_DrawHud(TicFrac);
+				event.gamemode.DrawHUD(self, ticFrac);
 			}
 			
 			//================

@@ -23,6 +23,11 @@ Class TSP_EventHandler : EventHandler
 	
 	TSP_GameModeThinker gamemode;
 	
+	static clearscope TSP_EventHandler Get()
+	{
+		return TSP_EventHandler(EventHandler.Find("TSP_EventHandler"));
+	}
+	
 	override void OnRegister()
 	{
 		tsp_meleeonly = CVar.GetCVar("tsp_meleesupreme",players[0]).GetBool();

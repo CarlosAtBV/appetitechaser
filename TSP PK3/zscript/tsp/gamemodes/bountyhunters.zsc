@@ -14,6 +14,10 @@ Class TSP_GameModeThinker : Thinker
 	virtual void WorldThingDied (WorldEvent e)
 	{
 	}
+	
+	virtual ui void DrawHUD (TSP_StatusBar sbar, double ticFrac)
+	{
+	}
 }
 
 Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
@@ -27,6 +31,8 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 	int spawns_left;
 	int monsters_active;
 	int wave_kills;
+	
+	int time_left;
 	
 	const SPAWNSPERWAVE = 10;
 	const MAXMONSTERS = 20;
@@ -203,6 +209,11 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 				Console.Printf("Next wave lel");
 			}
 		}
+	}
+	
+	override void DrawHUD (TSP_StatusBar sbar, double ticFrac)
+	{
+		TSPUI.DrawText(0, 0, "\ckTime Left: \ct"..int(time_left/35.), size: 20);
 	}
 }
 
