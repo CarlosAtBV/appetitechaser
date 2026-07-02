@@ -17,7 +17,7 @@ Struct TSPUI
 		//Console.Printf(""..scale);
 		if ( align == 0 )
 		{
-			x -= fnt.StringWidth(text) / 2;
+			x -= (fnt.StringWidth(text)*scalar) / 2;
 		}
 		screen.DrawText(fnt, Font.CR_UNTRANSLATED, x, y, text,
 			DTA_ScaleX, scalar, DTA_ScaleY, scalar,

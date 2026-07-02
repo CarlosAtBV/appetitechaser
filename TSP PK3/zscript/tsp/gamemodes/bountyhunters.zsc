@@ -15,8 +15,9 @@ Class TSP_GameModeThinker : Thinker
 	{
 	}
 	
-	virtual ui void DrawHUD (TSP_StatusBar sbar, double ticFrac)
+	virtual ui int DrawHUD (TSP_StatusBar sbar, double ticFrac)
 	{
+		return 0;
 	}
 }
 
@@ -177,6 +178,8 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		spawn.spawn_start = 10;
 		spawn.weight = 25;
 		spawns.Push(spawn);
+		
+		time_left = 35*120;
 	}
 	
 	override void Tick()
@@ -192,6 +195,8 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 				spawns_left -= 1;
 			}
 		}
+		
+		time_left -= 1;
 	}
 	
 	override void WorldThingDied (WorldEvent e)
@@ -211,9 +216,12 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		}
 	}
 	
-	override void DrawHUD (TSP_StatusBar sbar, double ticFrac)
+	override int DrawHUD (TSP_StatusBar sbar, double ticFrac)
 	{
-		TSPUI.DrawText(0, 0, "\ckTime Left: \ct"..int(time_left/35.), size: 20);
+		TSPUI.DrawText(640, 4, "\ckTime Left:", size: 20, align: 0);
+		TSPUI.DrawText(640, 14, "\ct"..int(time_left/35.), size: 48, align: 0);
+		
+		return 64;
 	}
 }
 
