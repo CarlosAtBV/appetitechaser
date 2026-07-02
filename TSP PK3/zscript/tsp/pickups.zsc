@@ -39,8 +39,15 @@ Class TSP_WeaponPickup : Inventory
 		if ( other.player == null ) return false;
 		
 		let player = TSP_PlayerPawn_ZSCBase(other.player.mo);
-		if ( player.GiveWeaponPickup(slottogive) )
+		
+		bool didGive;
+		string pickupMsg;
+		
+		[didGive, pickupMsg] = player.GiveWeaponPickup(slottogive);
+		
+		if ( didGive )
 		{
+			player.AddLogMessage(StringTable.Localize(pickupMsg), 1);
 			GoAwayAndDie();
 			return true;
 		}

@@ -113,25 +113,30 @@ Class TSP_MelPlayer : TSP_PlayerPawn_ZSCBase
 		return super.GetWeaponPickupClass(slot);
 	}
 	
-	override bool GiveWeaponPickup (int slot)
+	override bool, String GiveWeaponPickup (int slot)
 	{
 		switch (slot)
 		{
 			case WEAPONSLOT_SHOTGUN:
 			case WEAPONSLOT_SUPERSHOTGUN:
-				return TSP_GiveWeapon("TSP_Weapon_Suzuka");
+				return TSP_GiveWeapon("TSP_Weapon_Suzuka"), "$MelSMGPickup";
 				break;
 			case WEAPONSLOT_CHAINGUN:
-				return TSP_GiveWeapon("TSP_Weapon_Medusa");
+				return TSP_GiveWeapon("TSP_Weapon_Medusa"), "$MelNunchuckPickup";
 				break;
 			case WEAPONSLOT_ROCKETLAUNCHER:
-				return TSP_GiveWeapon("TSP_Weapon_ShivaGauntlets");
+				return TSP_GiveWeapon("TSP_Weapon_ShivaGauntlets"), "$MelShivaPickup";
 				break;
 			case WEAPONSLOT_BFG9000:
-				return TSP_GiveWeapon("TSP_Weapon_Caster");
+				return TSP_GiveWeapon("TSP_Weapon_Caster"), "$MelCasterPickup";
 				break;
 		}
 		
-		return super.GiveWeaponPickup(slot);
+		bool didGive;
+		string pickupMsg;
+		
+		[didGive, pickupMsg] = super.GiveWeaponPickup(slot);
+		
+		return didGive, pickupMsg;
 	}
 }

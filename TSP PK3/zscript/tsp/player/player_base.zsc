@@ -237,9 +237,9 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 		return null;
 	}
 	
-	virtual bool GiveWeaponPickup (int slot)
+	virtual bool, String GiveWeaponPickup (int slot)
 	{
-		return false;
+		return false, "$TXT_DEFAULTPICKUPMSG";
 	}
 	
 	bool TSP_GiveWeapon (Class<Weapon> weapon)
