@@ -204,10 +204,14 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		
 		time_left -= 1;
 		
+		if ( time_left <= 0 )
+		{
+			players[0].mo.A_Die();
+		}
+		
 		switch ( time_left-30 )
 		{
 			case (30*35):
-				Console.Printf("30 sex remaining");
 				S_StartSound("ailene/bh/30secs", CHAN_VOICE);
 				break;
 			case (15*35):
