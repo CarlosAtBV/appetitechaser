@@ -61,6 +61,7 @@ Class TSP_HitEffect_Thrust : TSP_HitEffect
 	
 	override void DoEffect(Actor victim)
 	{
+		if ( victim.bDONTTHRUST ) return;
 		victim.vel += vel;
 	}
 }
@@ -329,6 +330,7 @@ Class TSP_BaseWeapon : Weapon
 			for ( int i = 0; i < invoker.melee_victims.size(); i++ )
 			{
 				Actor mo = invoker.melee_victims[i];
+				if ( mo == null ) continue;
 				effect.DoEffect(mo);
 			}			
 		}
