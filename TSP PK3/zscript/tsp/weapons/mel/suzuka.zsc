@@ -27,6 +27,9 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 		bumper.bump_angle = 90+frandom(-5.0,5.0);
 		A_TSP_AddBumper(bumper);
 	}
+	
+	bool muzzle_offset;
+	
 	States
 	{
 		Spawn:
@@ -56,14 +59,23 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 		Fire:
 			132G B 2
 			{
-				A_TSP_FireBullets(2, 4, 1, 12);
+				int yOff = -8 + (invoker.muzzle_offset ? -4 : 4);
+				A_TSP_FireBullets(2, 4, 1, 12, tracerOffset: (0,-8,yOff));
 				A_StartSound("suzuka/default/fire", CHAN_WEAPON, flags: CHANF_OVERLAP);
-				A_GunFlash("Flash");
-				
+				if ( invoker.muzzle_offset )
+				{
+					A_GunFlash("Flash2");
+				}
+				else
+				{
+					A_GunFlash("Flash");
+				}
 				A_SetPitch(pitch - 0.4);
 				A_SetAngle(angle + (frandom(-0.1,0.3)));
 				
 				A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
+				
+				invoker.muzzle_offset = !invoker.muzzle_offset;
 			}
 			132G A 1;
 			Goto Ready;
@@ -146,7 +158,15 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			{
 				A_OverlayFlags(OverlayID(), PSPF_RENDERSTYLE|PSPF_ADDWEAPON, true);
 				A_OverlayRenderstyle(OverlayID(), STYLE_Add);
-				invoker.owner.player.FindPSprite(OverlayID()).frame = random(0,3);
+				invoker.owner.player.FindPSprite(OverlayID()).frame = random(0,1);
+			}
+			Stop;
+		Flash2:
+			132F B 1 BRIGHT
+			{
+				A_OverlayFlags(OverlayID(), PSPF_RENDERSTYLE|PSPF_ADDWEAPON, true);
+				A_OverlayRenderstyle(OverlayID(), STYLE_Add);
+				invoker.owner.player.FindPSprite(OverlayID()).frame = random(2,3);
 			}
 			Stop;
 		AltFlash:
