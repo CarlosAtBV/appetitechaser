@@ -145,7 +145,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( player.onground )
 		{
-			if ( player.buttons & BT_SPEED )
+			if ( player.buttons & BT_RUN )
 			{
 				moveSpeedTarg = 192;
 			}
