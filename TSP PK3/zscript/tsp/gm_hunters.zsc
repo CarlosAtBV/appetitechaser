@@ -46,12 +46,13 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 	
 	virtual void CrystalDeathMoment()
 	{
-		let event = TSP_BHHandler(EventHandler.Find("TSP_BHHandler"));
-		if(event)
-		{
-			event.BH_AddTime(30);
-			TSP_PlayerPawn_ZSCBase(target).AddLogMessage("$TimeCrystal",30);
-		}
+		let it = ThinkerIterator.Create("TSP_GameMode_BountyHunters");
+		TSP_GameMode_BountyHunters mo = TSP_GameMode_BountyHunters(it.Next());
+		
+		if ( !mo ) return;
+		
+		mo.AddTime(30);
+		TSP_PlayerPawn_ZSCBase(players[0].mo).AddLogMessage("$TimeCrystal",30);
 	}
 	
 	override bool CanCollideWith(Actor other, bool passive)
@@ -75,17 +76,14 @@ Class TSP_BountyHunters_TimeExtCrystal : Actor
 		{
 			return 0;
 		}
-		/*if(dmgDone<15)
-		{
-			dmgDone += damage;
-			if(dmgDone>=15)
-			{
-				target = source;
-				CrystalDeathMoment();
-				SetStateLabel("Death");
-			}
-		}*/
+		
 		return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+	}
+	
+	override void Die (Actor source, Actor inflictor, int dmgflags, Name mod)
+	{
+		CrystalDeathMoment();
+		super.Die(source, inflictor, dmgflags, mod);
 	}
 }
 

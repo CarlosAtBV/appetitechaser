@@ -39,6 +39,12 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 	const MAXMONSTERS = 20;
 	const KILLSTOPASS = 5;
 	
+	void AddTime (int secs)
+	{
+		time_left += secs*35;
+		S_StartSound("ailene/bh/timeadded", CHAN_VOICE);
+	}
+	
 	void TrySpawn()
 	{
 		Array<TSP_BountyHunterSpawn> spawninfo;
@@ -179,7 +185,7 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		spawn.weight = 25;
 		spawns.Push(spawn);
 		
-		time_left = 35*120;
+		time_left = 35*45;
 	}
 	
 	override void Tick()
@@ -197,6 +203,26 @@ Class TSP_GameMode_BountyHunters : TSP_GameModeThinker
 		}
 		
 		time_left -= 1;
+		
+		switch ( time_left-30 )
+		{
+			case (30*35):
+				Console.Printf("30 sex remaining");
+				S_StartSound("ailene/bh/30secs", CHAN_VOICE);
+				break;
+			case (15*35):
+				S_StartSound("ailene/bh/10secs", CHAN_VOICE);
+				break;
+			case (3*35):
+				S_StartSound("ailene/bh/3secs", CHAN_VOICE);
+				break;
+			case (2*35):
+				S_StartSound("ailene/bh/2secs", CHAN_VOICE);
+				break;
+			case (1*35):
+				S_StartSound("ailene/bh/1secs", CHAN_VOICE);
+				break;
+		}
 	}
 	
 	override void WorldThingDied (WorldEvent e)

@@ -5,3 +5,10 @@
 
 caster/proton/laser "sounds/placeholder/fulgore_lazor.ogg"
 caster/proton/charge "sounds/placeholder/fulgore_charge.ogg"
+
+ailene/bh/30secs "sounds/placeholder/vega/vega_30secs.ogg"
+
+$random ailene/bh/timeadded { ailene/bh/timeadded1 ailene/bh/timeadded2 ailene/bh/timeadded3 }
+ailene/bh/timeadded1 "sounds/placeholder/vega/vega_timeadded1.ogg"
+ailene/bh/timeadded2 "sounds/placeholder/vega/vega_timeadded2.ogg"
+ailene/bh/timeadded3 "sounds/placeholder/vega/vega_timeadded3.ogg"
