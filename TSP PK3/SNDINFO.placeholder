@@ -12,3 +12,12 @@ $random ailene/bh/timeadded { ailene/bh/timeadded1 ailene/bh/timeadded2 ailene/b
 ailene/bh/timeadded1 "sounds/placeholder/vega/vega_timeadded1.ogg"
 ailene/bh/timeadded2 "sounds/placeholder/vega/vega_timeadded2.ogg"
 ailene/bh/timeadded3 "sounds/placeholder/vega/vega_timeadded3.ogg"
+
+$random shiva/rokket/impact { melee/metal/sweetener1 melee/metal/sweetener2 melee/metal/sweetener3 melee/metal/sweetener4 melee/metal/sweetener5 }
+$attenuation shiva/rokket/impact 0.5
+shiva/rokket/hit "sounds/placeholder/fulgore_kickbert.ogg"
+shiva/rokket/return "sounds/placeholder/fulgore_clawreturn.ogg"
+
+shiva/rokket/shoot "sounds/placeholder/de_rocketfire.ogg"
+shiva/rokket/fly "sounds/placeholder/de_rocketloop.ogg"
+$attenuation shiva/rokket/fly 0.75
