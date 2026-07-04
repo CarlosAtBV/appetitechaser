@@ -338,3 +338,112 @@ sc3 dsbounc3
 sc4 dsbounc4
 sc5 dsbounc5
 sc6 dsbounc6
+
+//////////////////////////
+// Slot 3: SHIVA GAUNTLETS
+//////////////////////////
+shiva/equip_left   "sounds/weapons/mel/shiva/sfx_shiva_equip_left.ogg"
+shiva/equip_right  "sounds/weapons/mel/shiva/sfx_shiva_equip_right.ogg"
+shiva/unequip      "sounds/weapons/mel/shiva/sfx_shiva_unequip.ogg"
+shiva/launch_ready "sounds/weapons/mel/shiva/sfx_shiva_launch_ready.ogg"
+
+$random shiva/swing {
+    shiva/swing01
+    shiva/swing02
+    shiva/swing03
+    shiva/swing04
+    shiva/swing05
+}
+shiva/swing01 "sounds/weapons/mel/shiva/sfx_shiva_swing01.ogg"
+shiva/swing02 "sounds/weapons/mel/shiva/sfx_shiva_swing02.ogg"
+shiva/swing03 "sounds/weapons/mel/shiva/sfx_shiva_swing03.ogg"
+shiva/swing04 "sounds/weapons/mel/shiva/sfx_shiva_swing04.ogg"
+shiva/swing05 "sounds/weapons/mel/shiva/sfx_shiva_swing05.ogg"
+
+$random shiva/swing_power {
+    shiva/swing_power01
+    shiva/swing_power02
+    shiva/swing_power03
+    shiva/swing_power04
+    shiva/swing_power05
+}
+shiva/swing_power01 "sounds/weapons/mel/shiva/sfx_shiva_swing_power01.ogg"
+shiva/swing_power02 "sounds/weapons/mel/shiva/sfx_shiva_swing_power02.ogg"
+shiva/swing_power03 "sounds/weapons/mel/shiva/sfx_shiva_swing_power03.ogg"
+shiva/swing_power04 "sounds/weapons/mel/shiva/sfx_shiva_swing_power04.ogg"
+shiva/swing_power05 "sounds/weapons/mel/shiva/sfx_shiva_swing_power05.ogg"
+
+$random shiva/impact_normal {
+    shiva/impact_normal01
+    shiva/impact_normal02
+    shiva/impact_normal03
+    shiva/impact_normal04
+    shiva/impact_normal05
+}
+shiva/impact_normal01 "sounds/weapons/mel/shiva/sfx_shiva_impact_normal01.ogg"
+shiva/impact_normal02 "sounds/weapons/mel/shiva/sfx_shiva_impact_normal02.ogg"
+shiva/impact_normal03 "sounds/weapons/mel/shiva/sfx_shiva_impact_normal03.ogg"
+shiva/impact_normal04 "sounds/weapons/mel/shiva/sfx_shiva_impact_normal04.ogg"
+shiva/impact_normal05 "sounds/weapons/mel/shiva/sfx_shiva_impact_normal05.ogg"
+
+$random shiva/impact_strong {
+    shiva/impact_strong01
+    shiva/impact_strong02
+    shiva/impact_strong03
+    shiva/impact_strong04
+    shiva/impact_strong05
+}
+shiva/impact_strong01 "sounds/weapons/mel/shiva/sfx_shiva_impact_strong01.ogg"
+shiva/impact_strong02 "sounds/weapons/mel/shiva/sfx_shiva_impact_strong02.ogg"
+shiva/impact_strong03 "sounds/weapons/mel/shiva/sfx_shiva_impact_strong03.ogg"
+shiva/impact_strong04 "sounds/weapons/mel/shiva/sfx_shiva_impact_strong04.ogg"
+shiva/impact_strong05 "sounds/weapons/mel/shiva/sfx_shiva_impact_strong05.ogg"
+
+$random shiva/impact_wall {
+    shiva/impact_wall01
+    shiva/impact_wall02
+    shiva/impact_wall03
+    shiva/impact_wall04
+    shiva/impact_wall05
+}
+shiva/impact_wall01 "sounds/weapons/mel/shiva/sfx_shiva_impact_wall01.ogg"
+shiva/impact_wall02 "sounds/weapons/mel/shiva/sfx_shiva_impact_wall02.ogg"
+shiva/impact_wall03 "sounds/weapons/mel/shiva/sfx_shiva_impact_wall03.ogg"
+shiva/impact_wall04 "sounds/weapons/mel/shiva/sfx_shiva_impact_wall04.ogg"
+shiva/impact_wall05 "sounds/weapons/mel/shiva/sfx_shiva_impact_wall05.ogg"
+
+$random shiva/impact_aoe {
+    shiva/impact_aoe01
+    shiva/impact_aoe02
+    shiva/impact_aoe03
+}
+shiva/impact_aoe01 "sounds/weapons/mel/shiva/sfx_shiva_impact_aoe01.ogg"
+shiva/impact_aoe02 "sounds/weapons/mel/shiva/sfx_shiva_impact_aoe02.ogg"
+shiva/impact_aoe03 "sounds/weapons/mel/shiva/sfx_shiva_impact_aoe03.ogg"
+
+$random shiva/impact_rocketpunch {
+    shiva/impact_rocketpunch01
+    shiva/impact_rocketpunch02
+    shiva/impact_rocketpunch03
+}
+shiva/impact_rocketpunch01 "sounds/weapons/mel/shiva/sfx_shiva_impact_rocketpunch01.ogg"
+shiva/impact_rocketpunch02 "sounds/weapons/mel/shiva/sfx_shiva_impact_rocketpunch02.ogg"
+shiva/impact_rocketpunch03 "sounds/weapons/mel/shiva/sfx_shiva_impact_rocketpunch03.ogg"
+
+$random shiva/launch {
+    shiva/launch01
+    shiva/launch02
+    shiva/launch03
+}
+shiva/launch01 "sounds/weapons/mel/shiva/sfx_shiva_launch01.ogg"
+shiva/launch02 "sounds/weapons/mel/shiva/sfx_shiva_launch02.ogg"
+shiva/launch03 "sounds/weapons/mel/shiva/sfx_shiva_launch03.ogg"
+
+$random shiva/return {
+    shiva/return01
+    shiva/return02
+    shiva/return03
+}
+shiva/return01 "sounds/weapons/mel/shiva/sfx_shiva_return01.ogg"
+shiva/return02 "sounds/weapons/mel/shiva/sfx_shiva_return02.ogg"
+shiva/return03 "sounds/weapons/mel/shiva/sfx_shiva_return03.ogg"
