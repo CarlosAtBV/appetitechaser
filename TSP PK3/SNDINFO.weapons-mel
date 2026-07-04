@@ -448,3 +448,9 @@ $random shiva/return {
 shiva/return01 "sounds/weapons/mel/shiva/sfx_shiva_return01.ogg"
 shiva/return02 "sounds/weapons/mel/shiva/sfx_shiva_return02.ogg"
 shiva/return03 "sounds/weapons/mel/shiva/sfx_shiva_return03.ogg"
+
+//////////////////////////
+// Slot 7: CASTER
+//////////////////////////
+caster/charge/03	"sounds/weapons/mel/caster/sfx_caster_charge_shell03.ogg"
+caster/fire/03		"sounds/weapons/mel/caster/sfx_caster_fire_shell03.ogg"

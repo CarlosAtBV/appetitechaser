@@ -2,7 +2,7 @@ Class TSP_CasterShell_SpectralBeam : TSP_CasterShell
 {
 	override State GetFireState (TSP_Weapon_Caster weapon)
 	{
-		return weapon.resolveState("Fire_SpectralCannon");
+		return weapon.resolveState("Fire_SpectralCannon"); // #03
 	}
 }
 
@@ -15,7 +15,7 @@ Extend Class TSP_Weapon_Caster
 		Fire_SpectralCannon:
 			161G A 24
 			{
-				A_StartSound("caster/proton/charge", CHAN_WEAPON);
+				A_StartSound("caster/charge/03", CHAN_WEAPON);
 				
 				let recoil = new("TSP_ViewRecoil");
 				recoil.fadein = 20;
@@ -38,7 +38,7 @@ Extend Class TSP_Weapon_Caster
 				recoil.roll_shake = 0.5;
 				recoil.roll_speed = 80;
 				A_TSP_AddRecoil(recoil);
-				A_StartSound("caster/proton/laser", 45);
+				A_StartSound("caster/fire/03", 45);
 				A_Caster_StartSpectralBeam();
 			}
 			161G AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
