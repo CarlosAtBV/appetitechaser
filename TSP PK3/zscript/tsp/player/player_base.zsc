@@ -246,7 +246,16 @@ Class TSP_PlayerPawn_ZSCBase : DoomPlayer
 	{
 		bool didHave = CountInv(weapon);
 		
-		if ( didHave ) return false;
+		if ( didHave )
+		{
+			let wep = GetDefaultByType(weapon);
+			let inv = FindInventory(wep.AmmoType1);
+			if ( !inv || inv.amount < inv.MaxAmount )
+			{
+				return GiveInventory(wep.AmmoType1, wep.AmmoGive1);
+			}
+			return false;
+		}
 		
 		bool didGive = GiveInventory(weapon, 1);
 		
