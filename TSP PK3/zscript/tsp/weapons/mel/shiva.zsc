@@ -46,7 +46,7 @@ Class TSP_ShivaGauntlet_RokketoPawnch : Actor
 			if ( diff.Length() <= speed )
 			{
 				A_StopSound(CHAN_VOICE);
-				target.A_StartSound("shiva/rokket/return", CHAN_WEAPON, CHANF_OVERLAP);
+				target.A_StartSound("shiva/return", CHAN_WEAPON, CHANF_OVERLAP);
 				Destroy();
 			}
 		}
@@ -61,10 +61,10 @@ Class TSP_ShivaGauntlet_RokketoPawnch : Actor
 			hitDelay = 3;
 			vel = (0,0,0.25);
 			A_Explode(144, 128, 0);
-			A_StartSound("shiva/rokket/impact", CHAN_BODY);
+			A_StartSound("shiva/impact/wall", CHAN_BODY);
 			if ( bounceMobj )
 			{
-				bounceMobj.A_StartSound("shiva/rokket/hit", CHAN_BODY);
+				bounceMobj.A_StartSound("shiva/impact/rocketpunch", CHAN_BODY);
 			}
 			Spawn("TSP_RocketPunchImpact", pos);
 			backSpeed = 1/35.;
@@ -104,7 +104,7 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 			"----" A 0
 			{
 				A_Overlay(PSP_WEAPONANIM, "Anim_PunchRight");
-				A_StartSound("melee/basic/normal/miss", 12);
+				A_StartSound("shiva/swing", 0);
 			}
 			151G B 5;
 			"----" A 0
@@ -121,7 +121,7 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 			"----" A 0
 			{
 				A_Overlay(PSP_WEAPONANIM, "Anim_PunchLeft");
-				A_StartSound("melee/basic/normal/miss", 12);
+				A_StartSound("shiva/swing", 0);
 			}
 			151G C 5;
 			"----" A 0
@@ -147,7 +147,7 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 				}
 				A_Overlay(PSP_WEAPONANIM, "Anim_RocketFire");
 				invoker.rokketo = TSP_ShivaGauntlet_RokketoPawnch(A_FireProjectile("TSP_ShivaGauntlet_RokketoPawnch"));
-				A_StartSound("shiva/rokket/shoot", CHAN_WEAPON, flags: CHANF_OVERLAP);
+				A_StartSound("shiva/launch", CHAN_WEAPON, flags: CHANF_OVERLAP);
 				A_SetPitch(pitch - 1.8);
 				A_SetAngle(angle + (frandom(-0.3,0.3)));
 				return resolveState(null);
@@ -156,10 +156,10 @@ Class TSP_Weapon_ShivaGauntlets : TSP_BaseWeapon
 			Goto AltReady;
 		
 		NormalToAlt:
-			151G A 2 A_StartSound("nikki/spitfire/aim01", 12);
+			151G A 2 A_StartSound("shiva/launch/ready", 12);
 			Goto AltReady;
 		AltToNormal:
-			151G A 2 A_StartSound("nikki/spitfire/aim01", 12);
+			151G A 2 A_StartSound("shiva/launch/unready", 12);
 			Goto Ready;
 			
 		Anim_PunchRight:
