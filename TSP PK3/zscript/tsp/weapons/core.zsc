@@ -138,6 +138,12 @@ Class TSP_BaseWeapon : Weapon
 	
 	flagdef HoldForMod: tsp_modflags, 1;
 	
+	bool alt_active;
+	int mod_cooldown;
+	
+	Array<Actor> melee_victims;
+	Array<TSP_NextMoveInfo> nextmoves;
+	
 	Default
 	{
 		Weapon.WeaponScaleY 1.0;
@@ -154,11 +160,52 @@ Class TSP_BaseWeapon : Weapon
 			Wait;
 	}
 	
-	bool alt_active;
-	int mod_cooldown;
+	//
 	
-	Array<Actor> melee_victims;
-	Array<TSP_NextMoveInfo> nextmoves;
+	int ammo_clip;
+	int ammo_clipSize;
+	
+	property ClipSize : ammo_clipSize;
+	
+	//
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		ammo_clip = ammo_clipSize;
+	}
+	
+	bool TSP_CanUseAmmo (int amt)
+	{
+		return ammo_clip >= amt;
+	}
+	
+	bool TSP_CanReload ()
+	{
+		if ( ammo_clip >= ammo_clipSize ) return false;
+		
+		if ( AmmoType1 )
+		{
+			let ammo = owner.FindInventory(AmmoType1);
+			if ( ammo.Amount <= 0 ) return false;
+		}
+		
+		return true;
+	}
+	
+	bool TSP_NeedReload ()
+	{
+		if ( ammo_clipSize <= 0 ) return false;
+		
+		if ( ammo_clip <= 0 ) return true;
+		
+		return false;
+	}
+	
+	action void A_TSP_UseAmmo (int amt)
+	{
+		invoker.ammo_clip -= amt;
+	}
 	
 	bool SetAltActive (bool newvalue)
 	{
@@ -229,11 +276,36 @@ Class TSP_BaseWeapon : Weapon
 		return FindState('AltToNormal');
 	}
 	
-	action void A_TSP_WeaponReady(int flags = 0)
-	{
-		A_TSP_ClearNextStates();
-		A_WeaponReady(flags);
-	}
+		action void A_TSP_WeaponReady(int flags = 0)
+		{
+			A_TSP_ClearNextStates();
+			
+			if ( invoker.TSP_NeedReload() && invoker.TSP_CanReload() )
+			{
+				let player = invoker.owner.player;
+				player.SetPSprite(PSP_WEAPON, resolveState("Reload"));
+				return;
+			}
+			
+			A_WeaponReady(flags);
+		}
+		
+		action void A_TSP_RefillClip(int amount = 0)
+		{
+			let inv = invoker.owner.FindInventory(invoker.AmmoType1);
+			int amountLeft = amount;
+			while ( true )
+			{
+				amountLeft -= 1;
+				invoker.ammo_clip += 1;
+				inv.amount -= 1;
+				
+				if ( inv.amount <= 0 ) break;
+				if ( amount != 0 && amountLeft <= 0 ) break;
+				if ( invoker.ammo_clip >= invoker.ammo_clipSize ) break;
+			}
+		}
+
 	
 	/*
 		A_TSP_GotoReady()

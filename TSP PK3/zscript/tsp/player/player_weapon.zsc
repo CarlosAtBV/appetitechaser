@@ -147,7 +147,7 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		let psprite_weapon = player.FindPSprite(PSP_WEAPON);
 		let tsp_weap = TSP_BaseWeapon(player.ReadyWeapon);
 		
-		if ( !psprite_weapon || !tsp_weap ) return;
+		if ( !psprite_weapon ) return;
 		
 		// [Py] If we're in the select state, it's free real estate
 		if ( InStateSequence(psprite_weapon.CurState, player.ReadyWeapon.FindState("Select")) )
@@ -165,12 +165,14 @@ Extend Class TSP_PlayerPawn_ZSCBase
 			else
 			{
 				CheckWeaponChange();
-				TSP_CheckWeaponFire();
-				/*if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT))
+				if ( tsp_weap )
 				{
-					//CheckWeaponFire();
-				}*/
-				// Check custom buttons
+					TSP_CheckWeaponFire();
+				}
+				else if ( player.WeaponState & (WF_WEAPONREADY | WF_WEAPONREADYALT))
+				{
+					CheckWeaponFire();
+				}
 				CheckWeaponButtons();
 			}
 		}
@@ -209,6 +211,12 @@ Extend Class TSP_PlayerPawn_ZSCBase
 		
 		if ( player.WeaponState & WF_WEAPONREADY )
 		{
+			if ( player.cmd.buttons & BT_RELOAD && tsp_weap.TSP_CanReload() )
+			{
+				player.SetPSprite(PSP_WEAPON, tsp_weap.FindState("Reload"));
+				return;
+			}
+			
 			if ( tsp_weap.bHoldForMod )
 			{
 				if ( player.cmd.buttons & BT_ALTATTACK )

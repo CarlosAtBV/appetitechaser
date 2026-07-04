@@ -28,3 +28,29 @@ Class TSP_MeleeImpactFX : Actor
 			Loop;
 	}
 }
+
+Class TSP_RocketPunchImpact : Actor
+{
+    Default
+	{
+		+NOINTERACTION
+		+NOBLOCKMAP
+		+FORCEXYBILLBOARD
+		Scale 0.01;
+		Alpha 0.5;
+		+BRIGHT
+		RenderStyle "Add";
+	}
+	
+	States
+	{
+		Spawn:
+			SPHS C 1
+			{
+				scale.x = scale.x + (2.0 - scale.x) * 0.2;
+				scale.y = scale.x;
+				A_FadeOut(0.04);
+			}
+			Loop;
+	}
+}

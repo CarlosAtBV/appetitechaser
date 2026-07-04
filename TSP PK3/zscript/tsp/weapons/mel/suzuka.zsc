@@ -5,6 +5,19 @@
 	Sub-Machineody Gunswell
 */
 
+Class TSP_Ammo_SMG : Ammo
+{
+	Default
+	{
+		Inventory.Amount 10;
+		Inventory.MaxAmount 200;
+		Ammo.BackpackAmount 10;
+		Ammo.BackpackMaxAmount 400;
+		Inventory.Icon "CLIPA0";
+		Tag "$AMMO_CLIP";
+	}
+}
+
 Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 {
 	action void A_TSP_SuzuModBounce()
@@ -29,6 +42,13 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 	}
 	
 	bool muzzle_offset;
+	
+	Default
+	{
+		TSP_BaseWeapon.ClipSize 40;
+		Weapon.AmmoType "TSP_Ammo_SMG";
+		Weapon.AmmoGive 40;
+	}
 	
 	States
 	{
@@ -56,7 +76,16 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 		AltReady:
 			132A A 1 A_TSP_WeaponReady(WRF_ALLOWZOOM);
 			Loop;
+		
 		Fire:
+			131G B 0
+			{
+				if ( !invoker.TSP_CanUseAmmo(1) )
+				{
+					return resolveState("DryFire");
+				}
+				return resolveState(null);
+			}
 			132G B 2
 			{
 				int yOff = -8 + (invoker.muzzle_offset ? -4 : 4);
@@ -76,9 +105,24 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 				A_Overlay(PSP_WEAPONANIM, "Anim_Fire");
 				
 				invoker.muzzle_offset = !invoker.muzzle_offset;
+				
+				A_TSP_UseAmmo(1);
 			}
 			132G A 1;
+			132G A 0 A_Refire();
 			Goto Ready;
+		DryFire:
+			132G B 2
+			{
+				A_StartSound("suzuka/empty01", CHAN_WEAPON, flags: CHANF_OVERLAP);
+				
+				A_Overlay(PSP_WEAPONANIM, "Anim_DryFire");
+				
+				invoker.muzzle_offset = !invoker.muzzle_offset;
+			}
+			132G A 3;
+			Goto Ready;
+			
 		AltFire:
 			132A A 0
 			{
@@ -152,6 +196,25 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			132S B 1;
 			132S A 2;
 			Goto Ready;
+
+		Reload:
+			"----" A 0 A_Overlay(PSP_WEAPONANIM, "Anim_Reload_Weapon");
+			132G A 2;
+			132R A 3;
+			132R B 3 A_StartSound("suzuka/open", CHAN_WEAPON, CHANF_OVERLAP);
+			132R C 2;
+			132R D 1;
+			132R E 14;
+			132R D 7 A_StartSound("suzuka/load", CHAN_WEAPON, CHANF_OVERLAP);
+			132R C 2;
+			132R B 4
+			{
+				A_TSP_RefillClip();
+				A_StartSound("suzuka/close", CHAN_WEAPON, CHANF_OVERLAP);
+			}
+			132R A 4;
+			132G A 8;
+			Goto Ready;
 		
 		Flash:
 			132F B 1 BRIGHT
@@ -198,6 +261,19 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 				bumper.fadein = 1;
 				bumper.fadeout = 9;
 				bumper.bump_amount = frandom(2.0,6.0);
+				bumper.bump_angle = 50+frandom(-15.0,15.0);
+				A_TSP_AddBumper(bumper);
+			}
+			Stop;
+		Anim_DryFire:
+			TNT1 A 1
+			{
+				TSP_SpriteBumper bumper;
+				
+				bumper = new("TSP_SpriteBumper");
+				bumper.fadein = 1;
+				bumper.fadeout = 9;
+				bumper.bump_amount = frandom(0.5,1.0);
 				bumper.bump_angle = 50+frandom(-15.0,15.0);
 				A_TSP_AddBumper(bumper);
 			}
@@ -308,6 +384,58 @@ Class TSP_Weapon_Suzuka : TSP_BaseWeapon
 			TNT1 A 1 A_WeaponOffset(0.00, 32.82);
 			TNT1 A 1 A_WeaponOffset(0.00, 32.41);
 			TNT1 A 1 A_WeaponOffset(0.00, 32.14);
+			Stop;
+			
+		Anim_Reload_Weapon:
+			TNT1 A 1 A_WeaponOffset(0.00, 32.00);
+			TNT1 A 1 A_WeaponOffset(-2.99, 41.85);
+			TNT1 A 1 A_WeaponOffset(-12.08, 60.15);
+			TNT1 A 1 A_WeaponOffset(-32.44, 70.00);
+			TNT1 A 1 A_WeaponOffset(-66.75, 66.41);
+			TNT1 A 1 A_WeaponOffset(-85.00, 58.50);
+			TNT1 A 1 A_WeaponOffset(-92.38, 50.59);
+			TNT1 A 1 A_WeaponOffset(-94.67, 47.00);
+			TNT1 A 1 A_WeaponOffset(-93.67, 48.56);
+			TNT1 A 1 A_WeaponOffset(-83.58, 57.13);
+			TNT1 A 1 A_WeaponOffset(-57.56, 79.23);
+			TNT1 A 1 A_WeaponOffset(-58.14, 78.49);
+			TNT1 A 1 A_WeaponOffset(-60.73, 74.02);
+			TNT1 A 1 A_WeaponOffset(-64.85, 69.06);
+			TNT1 A 1 A_WeaponOffset(-67.78, 66.57);
+			TNT1 A 1 A_WeaponOffset(-69.59, 65.10);
+			TNT1 A 1 A_WeaponOffset(-70.75, 64.16);
+			TNT1 A 1 A_WeaponOffset(-71.49, 63.56);
+			TNT1 A 1 A_WeaponOffset(-71.94, 63.19);
+			TNT1 A 1 A_WeaponOffset(-72.17, 63.00);
+			TNT1 A 1 A_WeaponOffset(-72.25, 62.94);
+			TNT1 A 1 A_WeaponOffset(-72.25, 62.94);
+			TNT1 A 1 A_WeaponOffset(-72.25, 62.94);
+			TNT1 A 1 A_WeaponOffset(-72.25, 62.94);
+			TNT1 A 1 A_WeaponOffset(-72.25, 62.94);
+			TNT1 A 1 A_WeaponOffset(-76.39, 72.62);
+			TNT1 A 1 A_WeaponOffset(-84.10, 91.13);
+			TNT1 A 1 A_WeaponOffset(-88.25, 113.24);
+			TNT1 A 1 A_WeaponOffset(-88.16, 91.38);
+			TNT1 A 1 A_WeaponOffset(-87.89, 80.50);
+			TNT1 A 1 A_WeaponOffset(-87.37, 72.08);
+			TNT1 A 1 A_WeaponOffset(-86.50, 65.05);
+			TNT1 A 1 A_WeaponOffset(-85.14, 59.03);
+			TNT1 A 1 A_WeaponOffset(-82.99, 53.83);
+			TNT1 A 1 A_WeaponOffset(-79.46, 49.37);
+			TNT1 A 1 A_WeaponOffset(-73.06, 45.65);
+			TNT1 A 1 A_WeaponOffset(-61.05, 42.70);
+			TNT1 A 1 A_WeaponOffset(-47.85, 40.68);
+			TNT1 A 1 A_WeaponOffset(-32.60, 39.88);
+			TNT1 A 1 A_WeaponOffset(-12.06, 47.33);
+			TNT1 A 1 A_WeaponOffset(6.54, 61.58);
+			TNT1 A 1 A_WeaponOffset(14.22, 77.95);
+			TNT1 A 1 A_WeaponOffset(12.55, 62.43);
+			TNT1 A 1 A_WeaponOffset(8.55, 51.67);
+			TNT1 A 1 A_WeaponOffset(3.78, 44.12);
+			TNT1 A 1 A_WeaponOffset(-0.21, 38.91);
+			TNT1 A 1 A_WeaponOffset(-1.89, 35.45);
+			TNT1 A 1 A_WeaponOffset(-1.40, 33.35);
+			TNT1 A 1 A_WeaponOffset(-0.49, 32.29);
 			Stop;
 	}
 }
